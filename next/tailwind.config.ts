@@ -13,5 +13,6 @@ const config: Config = {
 		},
 	},
 	plugins: [],
+	safelist: ['action'],
 }
 export default config

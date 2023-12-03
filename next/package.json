@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@portabletext/react": "^3.0.11",
     "next": "14.0.3",
+    "next-sanity": "^7.0.1",
+    "next-sanity-image": "^6.1.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tailwind-merge": "^2.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -7,3 +7,82 @@
 		scroll-behavior: smooth;
 	}
 }
+
+@layer components {
+	/* ctas, links */
+
+	.action {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding: 0.5em 1em;
+	}
+
+	.link {
+		text-decoration: underline;
+	}
+
+	/* layout */
+
+	.section {
+		@apply max-w-screen-lg mx-auto py-12 px-4;
+	}
+}
+
+@layer utilities {
+	.full-width {
+		width: 100vw;
+		margin-inline: calc(50% - 50vw);
+	}
+
+	.carousel {
+		display: flex;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+
+		&>* {
+			flex: 0 0 calc(var(--size, min(300px, 80vw)));
+			scroll-snap-align: center;
+		}
+	}
+
+	/* richtext */
+
+	.richtext {
+		@apply space-y-2;
+	}
+
+	/* animations */
+
+	@keyframes anim-fade {
+		from {
+			opacity: 0;
+			translate: var(--x, 0) var(--y, 0);
+		}
+	}
+
+	.anim-fade,
+	.anim-fade-to-l,
+	.anim-fade-to-r,
+	.anim-fade-to-t,
+	.anim-fade-to-b {
+		animation: anim-fade 0.5s ease-in-out forwards;
+	}
+
+	.anim-fade-to-l {
+		--x: 1rem;
+	}
+
+	.anim-fade-to-r {
+		--x: -1rem;
+	}
+
+	.anim-fade-to-t {
+		--y: -1rem;
+	}
+
+	.anim-fade-to-b {
+		--y: 1rem;
+	}
+}
