@@ -1,13 +1,9 @@
-import { client } from '@/lib/sanity'
+import { client, fetchSanity } from '@/lib/sanity'
 import { groq } from 'next-sanity'
 import Modules from '@/components/modules'
 
-export default async function Page({
-	params,
-}: {
-	params: { slug?: string[] }
-}) {
-	const page = await client.fetch<Sanity.Page>(
+export default async function Page({ params }: Props) {
+	const page = await fetchSanity<Sanity.Page>(
 		groq`*[_type == 'page' && metadata.slug.current == $slug][0]{
 			...,
 			modules[]{
@@ -27,8 +23,15 @@ export default async function Page({
 	return <Modules modules={page.modules} />
 }
 
+export async function generateMetadata({ params }: Props) {
+	return await fetchSanity<Sanity.Metadata>(
+		groq`*[_type == 'page' && metadata.slug.current == $slug][0].metadata`,
+		{ slug: !params.slug ? 'index' : params.slug?.join('/') },
+	)
+}
+
 export async function generateStaticParams() {
-	const slugs = await client.fetch<string[]>(groq`
+	const slugs = await fetchSanity<string[]>(groq`
 		*[_type == 'page' && metadata.slug.current != '404'].metadata.slug.current
 	`)
 
@@ -38,3 +41,7 @@ export async function generateStaticParams() {
 }
 
 export const dynamicParams = false
+
+type Props = {
+	params: { slug?: string[] }
+}

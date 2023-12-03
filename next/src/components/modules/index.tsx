@@ -1,3 +1,4 @@
+import HeroCentered from './HeroCentered'
 import HeroPostcard from './HeroPostcard'
 
 export default function Modules({ modules }: Props) {
@@ -5,6 +6,8 @@ export default function Modules({ modules }: Props) {
 		<>
 			{modules?.map((module) => {
 				switch (module._type) {
+					case 'hero.centered':
+						return <HeroCentered {...module} key={module._key} />
 					case 'hero.postcard':
 						return <HeroPostcard {...module} key={module._key} />
 

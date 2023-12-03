@@ -1,4 +1,4 @@
-import { createClient } from 'next-sanity'
+import { createClient, type QueryParams } from 'next-sanity'
 import dev from '@/lib/env'
 
 export const client = createClient({
@@ -6,6 +6,16 @@ export const client = createClient({
 	dataset: 'production',
 	apiVersion: '2023-12-03',
 	useCdn: !dev,
-	token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
-	perspective: dev ? 'previewDrafts' : 'published',
 })
+
+export function fetchSanity<T = any>(query: string, params: QueryParams = {}) {
+	return client.fetch<T>(query, params, {
+		...(dev && {
+			token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
+			perspective: 'previewDrafts',
+		}),
+		next: {
+			revalidate: dev ? 0 : false,
+		},
+	})
+}
