@@ -1,9 +1,14 @@
-import { list } from './utils'
+import { list, singleton } from './utils'
 import type { StructureResolver } from 'sanity/desk'
+
+import { VscServerProcess } from 'react-icons/vsc'
 
 const structure: StructureResolver = (S, context) =>
 	S.list()
 		.title('Content')
-		.items([list(S, 'Pages', 'page')])
+		.items([
+			singleton(S, 'Site', 'site').icon(VscServerProcess),
+			list(S, 'Pages', 'page'),
+		])
 
 export default structure

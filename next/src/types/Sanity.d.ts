@@ -4,6 +4,11 @@ declare global {
 	namespace Sanity {
 		// documents
 
+		type Site = SanityDocument & {
+			title: string
+			menu: (Link | LinkList)[]
+		}
+
 		type Page = SanityDocument & {
 			title: string
 			modules?: Module[]
@@ -26,6 +31,11 @@ declare global {
 			type: 'internal' | 'external'
 			internal?: Page
 			external?: string
+		}
+
+		type LinkList = {
+			label: string
+			links: Link[]
 		}
 
 		type Metadata = {

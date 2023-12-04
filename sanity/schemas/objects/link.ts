@@ -1,8 +1,10 @@
 import { defineField, defineType } from 'sanity'
+import { VscLink } from 'react-icons/vsc'
 
 export default defineType({
 	name: 'link',
 	title: 'Link',
+	icon: VscLink,
 	type: 'object',
 	fields: [
 		defineField({
@@ -38,4 +40,16 @@ export default defineType({
 			hidden: ({ parent }) => parent?.type !== 'external',
 		}),
 	],
+	preview: {
+		select: {
+			label: 'label',
+			title: 'internal.title',
+			slug: 'internal.metadata.slug.current',
+			external: 'external',
+		},
+		prepare: ({ label, title, slug, external }) => ({
+			title: label || title,
+			subtitle: external || (slug && (slug === 'index' ? '/' : `/${slug}`)),
+		}),
+	},
 })
