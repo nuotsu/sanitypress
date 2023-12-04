@@ -1,5 +1,10 @@
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
+import {
+	dashboardTool,
+	projectInfoWidget,
+	projectUsersWidget,
+} from '@sanity/dashboard'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas'
 
@@ -14,7 +19,11 @@ export default defineConfig({
 	projectId: 'elyfelq1',
 	dataset: 'production',
 
-	plugins: [deskTool({ structure }), visionTool()],
+	plugins: [
+		deskTool({ structure }),
+		dashboardTool({ widgets: [projectInfoWidget(), projectUsersWidget()] }),
+		visionTool(),
+	],
 
 	schema: {
 		types: schemaTypes,
