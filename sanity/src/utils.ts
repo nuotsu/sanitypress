@@ -36,3 +36,20 @@ export const group = (
 	items: (ListItemBuilder | ListItem | Divider)[],
 ): ListItemBuilder =>
 	S.listItem().title(title).child(S.list().title(title).items(items))
+
+/**
+ * Return the text of a block type as a single string. Use in schema previews.
+ */
+export function getBlockText(
+	block?: {
+		children?: {
+			text: string
+		}[]
+	}[],
+) {
+	return (
+		block?.reduce((a, c) => {
+			return a + (c.children?.flatMap((c) => c.text).join('') || '')
+		}, '') || ''
+	)
+}
