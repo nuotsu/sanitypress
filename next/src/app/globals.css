@@ -67,7 +67,7 @@
 	.anim-fade-to-r,
 	.anim-fade-to-t,
 	.anim-fade-to-b {
-		animation: anim-fade 0.5s ease-in-out forwards;
+		animation: anim-fade var(--duration, 0.2s) ease-in-out forwards;
 	}
 
 	.anim-fade-to-l {
@@ -79,10 +79,10 @@
 	}
 
 	.anim-fade-to-t {
-		--y: -1rem;
+		--y: 1rem;
 	}
 
 	.anim-fade-to-b {
-		--y: 1rem;
+		--y: -1rem;
 	}
 }
