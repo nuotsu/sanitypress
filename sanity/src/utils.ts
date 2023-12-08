@@ -46,10 +46,12 @@ export function getBlockText(
 			text: string
 		}[]
 	}[],
+	lineBreakChar: string = '↵ '
 ) {
 	return (
-		block?.reduce((a, c) => {
-			return a + (c.children?.flatMap((c) => c.text).join('') || '')
+		block?.reduce((a, c, i) => {
+			const text = c.children?.flatMap((c) => c.text).join('') || ''
+			return a + text + (i !== block.length - 1 ? lineBreakChar : '')
 		}, '') || ''
 	)
 }
