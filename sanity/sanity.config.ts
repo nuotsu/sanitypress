@@ -8,6 +8,7 @@ import {
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas'
 
+import defaultDocumentNode from './src/defaultDocumentNode'
 import structure from './src/structure'
 
 const singletonTypes = ['site']
@@ -20,7 +21,7 @@ export default defineConfig({
 	dataset: 'production',
 
 	plugins: [
-		deskTool({ structure }),
+		deskTool({ defaultDocumentNode, structure }),
 		dashboardTool({ widgets: [projectInfoWidget(), projectUsersWidget()] }),
 		visionTool(),
 	],
@@ -40,7 +41,7 @@ export default defineConfig({
 						({ action }) =>
 							action &&
 							['publish', 'discardChanges', 'restore'].includes(action),
-				  )
+					)
 				: input,
 	},
 })
