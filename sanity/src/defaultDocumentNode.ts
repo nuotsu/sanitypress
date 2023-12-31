@@ -1,8 +1,6 @@
+import { isDev, type SanityDocument } from 'sanity'
 import { Iframe } from 'sanity-plugin-iframe-pane'
 import type { DefaultDocumentNodeResolver } from 'sanity/desk'
-import type { SanityDocument } from 'sanity'
-
-const dev = process.env.NODE_ENV === 'development'
 
 const defaultDocumentNode: DefaultDocumentNodeResolver = (
 	S,
@@ -17,8 +15,8 @@ const defaultDocumentNode: DefaultDocumentNodeResolver = (
 					.options({
 						url: (doc: SanityPage) => {
 							const slug = doc?.metadata?.slug?.current
-							const path = slug === 'index' ? '' : `/${slug}`
-							return dev
+							const path = slug === 'index' ? '' : slug
+							return isDev
 								? `http://localhost:3000/${path}`
 								: `https://staging--human-marketing.netlify.app/${path}`
 						},
