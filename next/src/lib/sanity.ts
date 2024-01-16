@@ -8,7 +8,16 @@ export const client = createClient({
 	useCdn: !dev,
 })
 
-export function fetchSanity<T = any>(query: string, params: QueryParams = {}) {
+export function fetchSanity<T = any>(
+	query: string,
+	{
+		params,
+		tags,
+	}: {
+		params?: QueryParams
+		tags?: string[]
+	} = {},
+) {
 	return client.fetch<T>(query, params, {
 		...(dev && {
 			token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
@@ -16,6 +25,7 @@ export function fetchSanity<T = any>(query: string, params: QueryParams = {}) {
 		}),
 		next: {
 			revalidate: dev ? 0 : false,
+			tags,
 		},
 	})
 }
