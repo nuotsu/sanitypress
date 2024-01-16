@@ -17,7 +17,6 @@ export default async function NotFound() {
 				}
 			}
 		}`,
-		{ tags: ['404'] },
 	)
 
 	if (!page) return <h1 className="text-center text-5xl">404</h1>

@@ -31,7 +31,6 @@ export async function generateMetadata({ params }: Props) {
 		groq`*[_type == 'page' && metadata.slug.current == $slug][0].metadata`,
 		{
 			params: { slug: !params.slug ? 'index' : params.slug?.join('/') },
-			tags: ['page.metadata'],
 		},
 	)
 }
@@ -39,7 +38,6 @@ export async function generateMetadata({ params }: Props) {
 export async function generateStaticParams() {
 	const slugs = await fetchSanity<string[]>(
 		groq`*[_type == 'page' && metadata.slug.current != '404'].metadata.slug.current`,
-		{ tags: ['page.slug'] },
 	)
 
 	return slugs.map((slug) => ({
