@@ -12,6 +12,13 @@
 	html {
 		scroll-behavior: smooth;
 	}
+
+	summary {
+		cursor: pointer;
+	}
+	::-webkit-details-marker {
+		display: none;
+	}
 }
 
 @layer components {
