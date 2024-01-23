@@ -1,3 +1,4 @@
+import BlogRollup from './blog/Rollup'
 import HeroCentered from './HeroCentered'
 import HeroPostcard from './HeroPostcard'
 
@@ -6,6 +7,8 @@ export default function Modules({ modules }: Props) {
 		<>
 			{modules?.map((module) => {
 				switch (module._type) {
+					case 'blog-rollup':
+						return <BlogRollup {...module} key={module._key} />
 					case 'hero.centered':
 						return <HeroCentered {...module} key={module._key} />
 					case 'hero.postcard':

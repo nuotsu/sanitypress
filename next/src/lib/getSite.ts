@@ -4,18 +4,18 @@ import { fetchSanity } from './sanity'
 export default async function getSite() {
 	return await fetchSanity<Sanity.Site>(
 		groq`
-		*[_type == 'site'][0]{
-			...,
-			menu[]{
+			*[_type == 'site'][0]{
 				...,
-				internal->{ title, metadata },
-				links[]{
+				menu[]{
 					...,
-					internal->{ title, metadata }
+					internal->{ title, metadata },
+					links[]{
+						...,
+						internal->{ title, metadata }
+					}
 				}
 			}
-		}
-	`,
+		`,
 		{ tags: ['site'] },
 	)
 }

@@ -11,9 +11,13 @@ Referenced documentation: [`next-sanity` README](https://github.com/sanity-io/ne
 2. `sanity/sanity.cli.ts`
 3. `sanity/sanity.config.ts`
 
-## Your Sanity Schema Types
+## Global Types
 
-Sanity schema are stored in `next/src/types/Sanity.d.ts` and can be accessed anywhere in the `next/` directory (import unncecessary) with `Sanity.*`.
+Types, including Sanity schema, are stored in `next/src/types/*.d.ts` and can be accessed globally in the `next/` directory (import unncecessary) with `<namespace>.<type>`.
+
+```ts
+await fetch<Sanity.Page>(...)
+```
 
 ## Images (`<Img>`)
 
@@ -22,7 +26,9 @@ In Next.js, serve images from Sanity using the custom `<Img>` component. This co
 Utilize the `options.imageBuilder` prop to serve the appropriate size of the image based on the width. Typically, you want to set the width (or height) to 2x the actual size displayed in the viewport.
 
 ```jsx
-import Img from '@/components/Img'
+'use client' // required to use `imageBuilder`
+
+import Img from '@/ui/Img'
 
 function Component({ image }) {
 	return (

@@ -1,12 +1,7 @@
-import Header from '@/components/header'
-import Footer from '@/components/footer'
-import type { Metadata } from 'next'
-import './globals.css'
-
-export const metadata: Metadata = {
-	title: 'Next.js + Sanity Template',
-	description: '',
-}
+import Header from '@/ui/header'
+import Footer from '@/ui/footer'
+// import { GoogleTagManager } from '@next/third-parties/google'
+import '../styles/app.css'
 
 export default function RootLayout({
 	children,
@@ -20,6 +15,7 @@ export default function RootLayout({
 				{children}
 				<Footer />
 			</body>
+			{/* <GoogleTagManager gtmId='' /> */}
 		</html>
 	)
 }

@@ -1,9 +1,9 @@
-import Modules from '@/components/modules'
+import Modules from '@/ui/modules'
 import { fetchSanity } from '@/lib/sanity'
 import { groq } from 'next-sanity'
 
 export default async function NotFound() {
-	const page = await fetchSanity<Sanity.Page | undefined>(
+	const page = await fetchSanity<Sanity.Page>(
 		groq`*[_type == 'page' && metadata.slug.current == '404'][0]{
 			...,
 			modules[]{

@@ -15,6 +15,18 @@ declare global {
 			metadata: Metadata
 		}
 
+		type BlogPost = SanityDocument & {
+			title: string
+			body: any
+			categories: BlogCategory[]
+			publishDate: string
+			metadata: Metadata
+		}
+
+		type BlogCategory = SanityDocument & {
+			title: string
+		}
+
 		// objects
 
 		type CTA = {

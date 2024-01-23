@@ -1,14 +1,46 @@
+@import './fonts.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+	[hidden] {
+		display: none !important;
+	}
+
 	html {
 		scroll-behavior: smooth;
 	}
 }
 
 @layer components {
+	/* typography */
+
+	._h {
+		text-wrap: balance;
+		font-weight: bold;
+	}
+
+	.h1 {
+		@apply _h;
+	}
+	.h2 {
+		@apply _h;
+	}
+	.h3 {
+		@apply _h;
+	}
+	.h4 {
+		@apply _h;
+	}
+	.h5 {
+		@apply _h;
+	}
+	.h6 {
+		@apply _h;
+	}
+
 	/* ctas, links */
 
 	.action {
@@ -17,16 +49,22 @@
 		justify-content: center;
 		text-align: center;
 		padding: 0.5em 1em;
+		background: #000;
+		color: #fff;
 	}
 
 	.link {
 		text-decoration: underline;
+
+		&:hover {
+			text-decoration-thickness: 2px;
+		}
 	}
 
 	/* layout */
 
 	.section {
-		@apply max-w-screen-lg mx-auto py-12 px-4;
+		@apply mx-auto max-w-screen-lg px-4 py-12;
 	}
 }
 
@@ -41,16 +79,38 @@
 		overflow-x: auto;
 		scroll-snap-type: x mandatory;
 
-		&>* {
+		& > * {
 			flex: 0 0 calc(var(--size, min(300px, 80vw)));
 			scroll-snap-align: center;
 		}
 	}
 
-	/* richtext */
-
 	.richtext {
 		@apply space-y-2;
+
+		& h1 {
+			@apply h1;
+		}
+		& h2 {
+			@apply h2;
+		}
+		& h3 {
+			@apply h3;
+		}
+		& h4 {
+			@apply h4;
+		}
+		& h5 {
+			@apply h5;
+		}
+		& h6 {
+			@apply h6;
+		}
+
+		& :is(ul, ol) {
+			list-style: revert;
+			padding-left: 1.5em;
+		}
 	}
 
 	/* animations */
