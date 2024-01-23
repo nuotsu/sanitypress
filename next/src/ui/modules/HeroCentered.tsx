@@ -1,9 +1,9 @@
 import { PortableText } from '@portabletext/react'
-import CTAList from '../CTAList'
+import CTAList from '@/ui/CTAList'
 
 export default function HeroCentered({ content, ctas }: Props) {
 	return (
-		<section className="section text-center richtext">
+		<section className="section richtext text-center">
 			<PortableText value={content} />
 			<CTAList ctas={ctas} className="justify-center" />
 		</section>
