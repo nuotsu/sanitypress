@@ -5,7 +5,7 @@ import type {
 	StructureBuilder,
 	View,
 	ViewBuilder,
-} from 'sanity/desk'
+} from 'sanity/structure'
 
 export const singleton = (
 	S: StructureBuilder,
@@ -46,7 +46,7 @@ export function getBlockText(
 			text: string
 		}[]
 	}[],
-	lineBreakChar: string = '↵ '
+	lineBreakChar: string = '↵ ',
 ) {
 	return (
 		block?.reduce((a, c, i) => {

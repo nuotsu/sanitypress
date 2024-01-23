@@ -1,5 +1,5 @@
 import { defineConfig } from 'sanity'
-import { deskTool } from 'sanity/desk'
+import { structureTool } from 'sanity/structure'
 import {
 	dashboardTool,
 	projectInfoWidget,
@@ -21,7 +21,7 @@ export default defineConfig({
 	dataset: 'production',
 
 	plugins: [
-		deskTool({ defaultDocumentNode, structure }),
+		structureTool({ defaultDocumentNode, structure }),
 		dashboardTool({ widgets: [projectInfoWidget(), projectUsersWidget()] }),
 		visionTool(),
 	],

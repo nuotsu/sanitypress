@@ -1,6 +1,6 @@
 import { isDev, type SanityDocument } from 'sanity'
 import { Iframe } from 'sanity-plugin-iframe-pane'
-import type { DefaultDocumentNodeResolver } from 'sanity/desk'
+import type { DefaultDocumentNodeResolver } from 'sanity/structure'
 
 const defaultDocumentNode: DefaultDocumentNodeResolver = (
 	S,
