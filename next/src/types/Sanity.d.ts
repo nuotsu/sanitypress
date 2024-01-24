@@ -6,16 +6,20 @@ declare global {
 
 		type Site = SanityDocument & {
 			title: string
-			menu: (Link | LinkList)[]
+			menu?: (Link | LinkList)[]
 		}
 
 		type Page = SanityDocument & {
+			_type
+			page
 			title: string
 			modules?: Module[]
 			metadata: Metadata
 		}
 
 		type BlogPost = SanityDocument & {
+			_type
+			'blog.post'
 			title: string
 			body: any
 			categories: BlogCategory[]
@@ -31,7 +35,7 @@ declare global {
 
 		type CTA = {
 			link?: Link
-			style: string
+			style?: string
 		}
 
 		type Image = SanityImageAssetDocument & {
@@ -39,15 +43,17 @@ declare global {
 		}
 
 		type Link = {
+			_type: 'link'
 			label: string
 			type: 'internal' | 'external'
-			internal?: Page
+			internal?: Page | BlogPost
 			external?: string
 		}
 
 		type LinkList = {
+			_type: 'link.list'
 			label: string
-			links: Link[]
+			links?: Link[]
 		}
 
 		type Metadata = {

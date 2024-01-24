@@ -1,8 +1,8 @@
 {
-	"name": "next-sanity-template",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"author": "",
-	"license": "ISC"
+  "name": "next-sanity-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }

@@ -8,10 +8,10 @@ export default async function getSite() {
 				...,
 				menu[]{
 					...,
-					internal->{ title, metadata },
+					internal->{ _type, title, metadata },
 					links[]{
 						...,
-						internal->{ title, metadata }
+						internal->{ _type, title, metadata }
 					}
 				}
 			}

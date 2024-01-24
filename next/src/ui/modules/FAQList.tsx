@@ -13,6 +13,7 @@ export default function FAQList({ content, items }: Props) {
 
 			{items?.map(({ question, answer }, key) => (
 				<details
+					className="border-b"
 					itemScope
 					itemProp="mainEntity"
 					itemType="https://schema.org/Question"
@@ -26,7 +27,7 @@ export default function FAQList({ content, items }: Props) {
 						itemProp="acceptedAnswer"
 						itemType="https://schema.org/Answer"
 					>
-						<div itemProp="text">
+						<div className="richtext" itemProp="text">
 							<PortableText value={answer} />
 						</div>
 					</div>
