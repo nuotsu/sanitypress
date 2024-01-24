@@ -18,8 +18,7 @@ declare global {
 		}
 
 		type BlogPost = SanityDocument & {
-			_type
-			'blog.post'
+			readonly _type: 'blog.post'
 			title: string
 			body: any
 			categories: BlogCategory[]
@@ -43,7 +42,7 @@ declare global {
 		}
 
 		type Link = {
-			_type: 'link'
+			readonly _type: 'link'
 			label: string
 			type: 'internal' | 'external'
 			internal?: Page | BlogPost
@@ -51,7 +50,7 @@ declare global {
 		}
 
 		type LinkList = {
-			_type: 'link.list'
+			readonly _type: 'link.list'
 			label: string
 			links?: Link[]
 		}
