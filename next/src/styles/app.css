@@ -122,7 +122,7 @@
 
 	/* animations */
 
-	@keyframes anim-fade {
+	@keyframes anim-fade-to {
 		from {
 			opacity: 0;
 			translate: var(--x, 0) var(--y, 0);
@@ -134,7 +134,7 @@
 	.anim-fade-to-r,
 	.anim-fade-to-t,
 	.anim-fade-to-b {
-		animation: anim-fade var(--duration, 0.2s) ease-in-out forwards;
+		animation: anim-fade-to 0.2s ease-in-out forwards;
 	}
 
 	.anim-fade-to-l {
