@@ -1,4 +1,4 @@
-import { createClient, type QueryParams } from 'next-sanity'
+import { createClient, type QueryParamsWithoutQueryOptions } from 'next-sanity'
 import dev from '@/lib/env'
 
 export const client = createClient({
@@ -11,10 +11,10 @@ export const client = createClient({
 export function fetchSanity<T = any>(
 	query: string,
 	{
-		params,
+		params = {},
 		tags,
 	}: {
-		params?: QueryParams
+		params?: QueryParamsWithoutQueryOptions
 		tags?: string[]
 	} = {},
 ) {
