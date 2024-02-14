@@ -1,5 +1,4 @@
-import { fetchSanity } from '@/lib/sanity'
-import { groq } from 'next-sanity'
+import { fetchSanity, groq } from '@/lib/sanity'
 import { notFound } from 'next/navigation'
 import Post from '@/ui/modules/blog/Post'
 

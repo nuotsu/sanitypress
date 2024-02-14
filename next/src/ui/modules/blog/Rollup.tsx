@@ -1,6 +1,5 @@
-import { fetchSanity } from '@/lib/sanity'
+import { fetchSanity, groq } from '@/lib/sanity'
 import { PortableText } from '@portabletext/react'
-import { groq } from 'next-sanity'
 import Link from 'next/link'
 
 export default async function Rollup({ content }: Props) {
@@ -9,7 +8,7 @@ export default async function Rollup({ content }: Props) {
 			...,
 			categories[]->
 		}`,
-		{ tags: ['blog.post[]'] },
+		{ tags: ['posts'] },
 	)
 
 	return (

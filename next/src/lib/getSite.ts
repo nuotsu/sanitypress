@@ -1,5 +1,4 @@
-import { groq } from 'next-sanity'
-import { fetchSanity } from './sanity'
+import { fetchSanity, groq } from './sanity'
 
 export default async function getSite() {
 	return await fetchSanity<Sanity.Site>(
