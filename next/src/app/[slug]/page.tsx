@@ -1,5 +1,4 @@
-import { fetchSanity } from '@/lib/sanity'
-import { groq } from 'next-sanity'
+import { fetchSanity, groq } from '@/lib/sanity'
 import { notFound } from 'next/navigation'
 import Modules from '@/ui/modules'
 
@@ -17,7 +16,11 @@ export async function generateMetadata({ params }: Props) {
 
 async function getPage(params: Props['params']) {
 	return await fetchSanity<Sanity.Page>(
-		groq`*[_type == 'page' && metadata.slug.current == $slug][0]{
+		groq`*[
+			_type == 'page' &&
+			metadata.slug.current == $slug &&
+			!(metadata.slug.current in ['index', '404'])
+		][0]{
 			...,
 			modules[]{
 				...,
@@ -31,12 +34,12 @@ async function getPage(params: Props['params']) {
 			}
 		}`,
 		{
-			params: { slug: !params.slug ? 'index' : params.slug?.join('/') },
-			tags: ['page'],
+			params: { slug: params.slug },
+			tags: ['pages'],
 		},
 	)
 }
 
 type Props = {
-	params: { slug?: string[] }
+	params: { slug?: string }
 }

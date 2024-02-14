@@ -1,5 +1,6 @@
-import { createClient, type QueryParamsWithoutQueryOptions } from 'next-sanity'
+import { createClient, type QueryParams } from 'next-sanity'
 import dev from '@/lib/env'
+export { groq } from 'next-sanity'
 
 export const client = createClient({
 	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -14,7 +15,7 @@ export function fetchSanity<T = any>(
 		params = {},
 		tags,
 	}: {
-		params?: QueryParamsWithoutQueryOptions
+		params?: QueryParams
 		tags?: string[]
 	} = {},
 ) {
