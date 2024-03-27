@@ -1,6 +1,15 @@
 import { PortableText } from '@portabletext/react'
 
-export default function FAQList({ content, items }: Props) {
+export default function FAQList({
+	content,
+	items,
+}: Partial<{
+	content: any
+	items: {
+		question: string
+		answer: any
+	}[]
+}>) {
 	return (
 		<section
 			className="section"
@@ -36,11 +45,3 @@ export default function FAQList({ content, items }: Props) {
 		</section>
 	)
 }
-
-type Props = Partial<{
-	content: any
-	items: {
-		question: string
-		answer: any
-	}[]
-}>

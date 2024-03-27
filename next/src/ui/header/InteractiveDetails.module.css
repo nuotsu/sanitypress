@@ -1,0 +1,13 @@
+@screen md {
+	.safearea summary {
+		position: relative;
+	}
+
+	.safearea[open] summary:hover::before {
+		content: '';
+		position: absolute;
+		z-index: 1;
+		inset: 0 -1.5em;
+		translate: -1em 0;
+	}
+}

@@ -14,5 +14,9 @@ export default defineType({
 			type: 'array',
 			of: [{ type: 'link' }, { type: 'link.list' }],
 		}),
+		defineField({
+			name: 'ogimage',
+			type: 'image',
+		}),
 	],
 })

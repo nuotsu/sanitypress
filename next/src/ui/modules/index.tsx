@@ -3,7 +3,7 @@ import FAQList from './FAQList'
 import HeroCentered from './HeroCentered'
 import HeroPostcard from './HeroPostcard'
 
-export default function Modules({ modules }: Props) {
+export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 	return (
 		<>
 			{modules?.map((module) => {
@@ -23,8 +23,4 @@ export default function Modules({ modules }: Props) {
 			})}
 		</>
 	)
-}
-
-type Props = {
-	modules?: Sanity.Module[]
 }

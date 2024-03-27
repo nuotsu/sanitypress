@@ -7,7 +7,16 @@ import {
 import { client } from '@/lib/sanity'
 import Image, { type ImageProps } from 'next/image'
 
-export default function Img({ image, alt = '', options, ...props }: Props) {
+export default function Img({
+	image,
+	alt = '',
+	options,
+	...props
+}: Omit<ImageProps, 'src' | 'alt'> & {
+	image?: Sanity.Image
+	alt?: string
+	options?: UseNextSanityImageOptions
+}) {
 	if (!image) return null
 
 	const imageProps = useNextSanityImage(client, image, options)
@@ -15,10 +24,4 @@ export default function Img({ image, alt = '', options, ...props }: Props) {
 	return (
 		<Image {...imageProps} alt={image.alt || alt} loading="lazy" {...props} />
 	)
-}
-
-type Props = Omit<ImageProps, 'src' | 'alt'> & {
-	image?: Sanity.Image
-	alt?: string
-	options?: UseNextSanityImageOptions
 }

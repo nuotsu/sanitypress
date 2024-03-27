@@ -12,7 +12,8 @@ export default async function getSite() {
 						...,
 						internal->{ _type, title, metadata }
 					}
-				}
+				},
+				'ogimage': ogimage.asset->url
 			}
 		`,
 		{ tags: ['site'] },

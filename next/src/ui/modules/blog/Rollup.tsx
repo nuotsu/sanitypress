@@ -2,7 +2,11 @@ import { fetchSanity, groq } from '@/lib/sanity'
 import { PortableText } from '@portabletext/react'
 import Link from 'next/link'
 
-export default async function Rollup({ content }: Props) {
+export default async function Rollup({
+	content,
+}: Partial<{
+	content: any
+}>) {
 	const posts = await fetchSanity<Sanity.BlogPost[]>(
 		groq`*[_type == 'blog.post']|order(publishDate desc){
 			...,
@@ -30,7 +34,3 @@ export default async function Rollup({ content }: Props) {
 		</section>
 	)
 }
-
-type Props = Partial<{
-	content: any
-}>

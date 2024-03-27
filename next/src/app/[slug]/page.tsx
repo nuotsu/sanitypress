@@ -1,6 +1,7 @@
 import { fetchSanity, groq } from '@/lib/sanity'
 import { notFound } from 'next/navigation'
 import Modules from '@/ui/modules'
+import processMetadata from '@/lib/processMetadata'
 
 export default async function Page({ params }: Props) {
 	const page = await getPage(params)
@@ -11,7 +12,7 @@ export default async function Page({ params }: Props) {
 export async function generateMetadata({ params }: Props) {
 	const page = await getPage(params)
 	if (!page) notFound()
-	return page.metadata
+	return processMetadata(page.metadata)
 }
 
 async function getPage(params: Props['params']) {

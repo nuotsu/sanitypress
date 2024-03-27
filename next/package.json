@@ -1,6 +1,6 @@
 {
 	"name": "next-sanity-template",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
@@ -9,24 +9,26 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@next/third-parties": "^14.1.0",
-		"@portabletext/react": "^3.0.11",
-		"next": "^14.1.0",
-		"next-sanity": "^8.0.0",
+		"@next/third-parties": "^14.1.4",
+		"@portabletext/react": "^3.0.15",
+		"clsx": "^2.1.0",
+		"next": "^14.1.4",
+		"next-sanity": "^8.5.0",
 		"next-sanity-image": "^6.1.1",
-		"prettier-plugin-tailwindcss": "^0.5.11",
+		"prettier-plugin-tailwindcss": "^0.5.13",
 		"react": "^18",
+		"react-device-detect": "^2.2.3",
 		"react-dom": "^18",
-		"tailwind-merge": "^2.2.1"
+		"tailwind-merge": "^2.2.2"
 	},
 	"devDependencies": {
-		"@types/node": "^20.11.19",
-		"@types/react": "^18.2.57",
-		"@types/react-dom": "^18.2.19",
-		"autoprefixer": "^10.4.17",
-		"postcss": "^8.4.35",
+		"@types/node": "^20.11.30",
+		"@types/react": "^18.2.73",
+		"@types/react-dom": "^18",
+		"autoprefixer": "^10.4.19",
+		"postcss": "^8.4.38",
 		"prettier": "^3.2.5",
-		"tailwindcss": "^3.4.1",
+		"tailwindcss": "^3.4.3",
 		"typescript": "^5"
 	}
 }
