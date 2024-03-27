@@ -19,7 +19,7 @@ export default async function processMetadata(
 				.join('/'),
 			title,
 			description,
-			images: ogimage && [{ url: ogimage }],
+			images: ogimage && [ogimage],
 		},
 	}
 }

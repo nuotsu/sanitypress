@@ -1,5 +1,6 @@
 import { fetchSanity, groq } from '@/lib/sanity'
 import Modules from '@/ui/modules'
+import processMetadata from '@/lib/processMetadata'
 
 export default async function Page() {
 	const page = await getPage()
@@ -8,7 +9,7 @@ export default async function Page() {
 
 export async function generateMetadata() {
 	const page = await getPage()
-	return page.metadata
+	return processMetadata(page.metadata)
 }
 
 async function getPage() {
