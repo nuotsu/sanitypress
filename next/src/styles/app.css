@@ -134,6 +134,8 @@
 	.anim-fade-to-r,
 	.anim-fade-to-t,
 	.anim-fade-to-b {
+		--x: 0;
+		--y: 0;
 		animation: anim-fade-to 0.2s ease-in-out forwards;
 	}
 
