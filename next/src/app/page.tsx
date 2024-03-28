@@ -9,7 +9,7 @@ export default async function Page() {
 
 export async function generateMetadata() {
 	const page = await getPage()
-	return processMetadata(page.metadata)
+	return processMetadata(page)
 }
 
 async function getPage() {

@@ -11,9 +11,9 @@ declare global {
 		}
 
 		type Page = SanityDocument & {
-			_type
-			page
+			readonly _type: 'page'
 			title: string
+			noIndex: boolean
 			modules?: Module[]
 			metadata: Metadata
 		}

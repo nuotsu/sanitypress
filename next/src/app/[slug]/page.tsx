@@ -12,7 +12,7 @@ export default async function Page({ params }: Props) {
 export async function generateMetadata({ params }: Props) {
 	const page = await getPage(params)
 	if (!page) notFound()
-	return processMetadata(page.metadata)
+	return processMetadata(page)
 }
 
 async function getPage(params: Props['params']) {
