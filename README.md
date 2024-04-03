@@ -4,6 +4,15 @@
 
 Referenced documentation: [`next-sanity` README](https://github.com/sanity-io/next-sanity#readme)
 
+## Features
+
+- auto-generated `/sitemap.xml`
+- helpful Sanity schema for easy page creation
+  - `cta`, `link` and `link.list` objects
+  - `page` document with a `modules` array and a `metadata` object
+  - `blog.post` and `blog.category` documents
+  - several sample modules (`sanity/modules/*.ts`)
+
 ## Initialize a Sanity project and grab the project ID
 
 1. `sanity/sanity.cli.ts`
@@ -17,7 +26,7 @@ Types, including Sanity schema, are stored in `next/src/types/*.d.ts` and can be
 
 ```ts
 await fetch<Sanity.Page>("...");
-            ^
+            ^^^^^^^^^^^
 ```
 
 ## Images (`<Img>`)
