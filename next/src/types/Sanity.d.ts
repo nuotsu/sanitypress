@@ -48,6 +48,7 @@ declare global {
 			type: 'internal' | 'external'
 			internal?: Page | BlogPost
 			external?: string
+			params?: string
 		}
 
 		type LinkList = {

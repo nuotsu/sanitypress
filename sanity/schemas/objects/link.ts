@@ -42,6 +42,11 @@ export default defineType({
 				}),
 			hidden: ({ parent }) => parent?.type !== 'external',
 		}),
+		defineField({
+			name: 'params',
+			title: 'URL params',
+			type: 'string',
+		}),
 	],
 	preview: {
 		select: {
@@ -49,10 +54,16 @@ export default defineType({
 			title: 'internal.title',
 			slug: 'internal.metadata.slug.current',
 			external: 'external',
+			params: 'params',
 		},
-		prepare: ({ label, title, slug, external }) => ({
+		prepare: ({ label, title, slug, external, params }) => ({
 			title: label || title,
-			subtitle: external || (slug && (slug === 'index' ? '/' : `/${slug}`)),
+			subtitle: [
+				external || (slug && (slug === 'index' ? '/' : `/${slug}`)),
+				params,
+			]
+				.filter(Boolean)
+				.join(''),
 		}),
 	},
 })
