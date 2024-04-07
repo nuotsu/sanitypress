@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 import { VscQuestion } from 'react-icons/vsc'
 import { getBlockText } from '../../src/utils'
 
@@ -16,7 +16,32 @@ export default defineType({
 		defineField({
 			name: 'items',
 			type: 'array',
-			of: [{ type: 'faq-list.item' }],
+			of: [
+				defineArrayMember({
+					type: 'object',
+					fields: [
+						defineField({
+							name: 'question',
+							type: 'string',
+						}),
+						defineField({
+							name: 'answer',
+							type: 'array',
+							of: [{ type: 'block' }],
+						}),
+					],
+					preview: {
+						select: {
+							title: 'question',
+							answer: 'answer',
+						},
+						prepare: ({ title, answer }) => ({
+							title,
+							subtitle: getBlockText(answer),
+						}),
+					},
+				}),
+			],
 		}),
 	],
 	preview: {
@@ -26,33 +51,6 @@ export default defineType({
 		prepare: ({ content }) => ({
 			title: getBlockText(content),
 			subtitle: 'FAQ list',
-		}),
-	},
-})
-
-export const faqListItem = defineType({
-	name: 'faq-list.item',
-	title: 'FAQ list item',
-	type: 'object',
-	fields: [
-		defineField({
-			name: 'question',
-			type: 'string',
-		}),
-		defineField({
-			name: 'answer',
-			type: 'array',
-			of: [{ type: 'block' }],
-		}),
-	],
-	preview: {
-		select: {
-			title: 'question',
-			answer: 'answer',
-		},
-		prepare: ({ title, answer }) => ({
-			title,
-			subtitle: getBlockText(answer),
 		}),
 	},
 })

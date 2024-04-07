@@ -14,7 +14,7 @@ import metadata from './objects/metadata'
 import heroCentered from './modules/hero.centered'
 import heroPostcard from './modules/hero.postcard'
 import blogRollup from './modules/blog-rollup'
-import faqList, { faqListItem } from './modules/faq-list'
+import faqList from './modules/faq-list'
 
 export const schemaTypes = [
 	// documents
@@ -32,7 +32,6 @@ export const schemaTypes = [
 	// modules
 	blogRollup,
 	faqList,
-	faqListItem,
 	heroCentered,
 	heroPostcard,
 ]
