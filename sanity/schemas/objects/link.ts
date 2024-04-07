@@ -6,9 +6,6 @@ export default defineType({
 	title: 'Link',
 	icon: VscLink,
 	type: 'object',
-	options: {
-		columns: 2,
-	},
 	fields: [
 		defineField({
 			name: 'label',
@@ -29,7 +26,7 @@ export default defineType({
 		defineField({
 			name: 'internal',
 			type: 'reference',
-			to: [{ type: 'page' }, { type: 'blog.post' }],
+			to: [{ type: 'page' }],
 			hidden: ({ parent }) => parent?.type !== 'internal',
 		}),
 		defineField({
@@ -46,6 +43,7 @@ export default defineType({
 			name: 'params',
 			title: 'URL params',
 			type: 'string',
+			hidden: ({ parent }) => parent?.type !== 'internal',
 		}),
 	],
 	preview: {
