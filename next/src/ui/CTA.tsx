@@ -17,9 +17,9 @@ export default function CTA({
 	switch (link.type) {
 		case 'internal':
 			const slug = link.internal?.metadata?.slug?.current
-			const parent = link.internal?._type === 'blog.post' ? 'blog' : null
+			const directory = link.internal?._type === 'blog.post' ? 'blog/' : null
 			const path = slug === 'index' ? '' : slug
-			const href = '/' + [parent, path].filter(Boolean).join('/')
+			const href = ['/', directory, path, link.params].filter(Boolean).join('')
 
 			return <Link href={href} {...props} />
 

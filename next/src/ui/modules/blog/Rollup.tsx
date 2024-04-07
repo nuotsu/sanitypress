@@ -1,4 +1,5 @@
 import { fetchSanity, groq } from '@/lib/sanity'
+import Date from '@/ui/Date'
 import { PortableText } from '@portabletext/react'
 import Link from 'next/link'
 
@@ -26,7 +27,7 @@ export default async function Rollup({
 					<li key={key}>
 						<Link className="link" href={`/blog/${post.metadata.slug.current}`}>
 							{post.title}—
-							<time dateTime={post.publishDate}>{post.publishDate}</time>
+							<Date value={post.publishDate} />
 						</Link>
 					</li>
 				))}

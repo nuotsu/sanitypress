@@ -1,4 +1,8 @@
-import { createClient, type QueryParams } from 'next-sanity'
+import {
+	createClient,
+	type QueryParams,
+	type ResponseQueryOptions,
+} from 'next-sanity'
 import dev from '@/lib/env'
 export { groq } from 'next-sanity'
 
@@ -13,11 +17,8 @@ export function fetchSanity<T = any>(
 	query: string,
 	{
 		params = {},
-		tags,
-	}: {
-		params?: QueryParams
-		tags?: string[]
-	} = {},
+		...next
+	}: { params?: QueryParams } & ResponseQueryOptions['next'] = {},
 ) {
 	return client.fetch<T>(query, params, {
 		...(dev && {
@@ -26,7 +27,7 @@ export function fetchSanity<T = any>(
 		}),
 		next: {
 			revalidate: dev ? 0 : false,
-			tags,
+			...next,
 		},
 	})
 }
