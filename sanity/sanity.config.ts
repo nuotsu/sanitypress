@@ -1,5 +1,7 @@
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
+import defaultDocumentNode from './src/defaultDocumentNode'
+import structure from './src/structure'
 import {
 	dashboardTool,
 	projectInfoWidget,
@@ -7,9 +9,6 @@ import {
 } from '@sanity/dashboard'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas'
-
-import defaultDocumentNode from './src/defaultDocumentNode'
-import structure from './src/structure'
 
 const singletonTypes = ['site']
 
