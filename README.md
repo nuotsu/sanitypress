@@ -2,10 +2,11 @@
 
 ## Key Features
 
-- Modern Frontend Development with Next.js (App Router + RSC) and Tailwind CSS
-- Pre-built Sanity schema for rapid [webpage](sanity/src/defaultDocumentNode.ts) and [blog](sanity/src/defaultDocumentNode.ts) development
-- Auto-generated [sitemap.xml](sanity/src/defaultDocumentNode.ts)
-- Live previews (somewhat) when set up with a git branch ([`sanity/src/defaultDocumentNode.ts`](sanity/src/defaultDocumentNode.ts))
+- Modern Frontend Development with Next.js (App Router, RSC, Typescript) and Tailwind CSS
+- Pre-configured Sanity schema for rapid [webpage](sanity/schemas/documents/page.ts) and [blog](sanity/schemas/documents/blog.post.ts) development
+- Pre-built common website components ([next/src/ui](next/src/ui))
+- Auto-generated [sitemap.xml](next/src/app/sitemap.ts)
+- Live previews when set up with a [git branch](sanity/src/defaultDocumentNode.ts#L21)
 
 ## Getting Started
 
@@ -17,10 +18,13 @@
 npm -y create sanity@latest
 ```
 
+> [!NOTE]
+> The CLI will ask to create new directory with the Sanity files, but you can remove once the project ID is retrieved.
+
 ### 3. Replace `projectId` with the new project ID
 
-- [sanity/sanity.cli.ts](sanity/sanity.cli.ts)
-- [sanity/sanity.config.ts](sanity/sanity.config.ts)
+- [sanity/sanity.cli.ts](sanity/sanity.cli.ts#L5)
+- [sanity/sanity.config.ts](sanity/sanity.config.ts#L19)
 - [next/.env.local](next/.env.local) (duplicate [.env.example](next/.env.example))
   - [retrieve a token from Sanity](https://sanity.io/manage) to allow for live previews
 
@@ -30,7 +34,7 @@ npm -y create sanity@latest
 - Pages ([sanity/schemas/documents/page.ts](sanity/schemas/documents/page.ts))
 
 > [!IMPORTANT]
-> Required: Add a page with the slugs `index` for the Homepage
+> Required: Add a page with the slugs `index` for the Homepage<br>
 > Optional: Add a page with the slug `404` for the 404 page
 
 - Blog posts ([sanity/schemas/documents/post.ts](sanity/schemas/documents/post.ts))
@@ -52,10 +56,10 @@ npm i sanity-plugin-dashboard-widget-netlify
 ## Helpful Resources
 
 - Global Types in Next.js
-  - [Sanity types](next/src/types/Sanity.d.ts)
+  - [Sanity types](next/src/types/Sanity.d.ts#L4)
 - [`<Img>`](next/src/ui/Img.tsx) component for Sanity CDN images
 
-## Resources
+## External References
 
 - [Official Next.js + Sanity setup documentation article](https://www.sanity.io/plugins/next-sanity)
 - [`sanity-io/next-sanity` README](https://github.com/sanity-io/next-sanity#readme)
