@@ -9,28 +9,45 @@
 
 ## Getting Started
 
-1. [Create a new repo using this template](https://github.com/new?template_name=next-sanity-template&template_owner=nuotsu)
-2. Run `npm -y create sanity@latest` in order to grab a new Sanity project ID
-3. Replace `projectId` with the new project ID
+### 1. [Create a new repo using this template](https://github.com/new?template_name=next-sanity-template&template_owner=nuotsu)
+
+### 2. Grab a new Sanity project ID
+
+```sh
+npm -y create sanity@latest
+```
+
+### 3. Replace `projectId` with the new project ID
 
 - [sanity/sanity.cli.ts](sanity/sanity.cli.ts)
 - [sanity/sanity.config.ts](sanity/sanity.config.ts)
 - [next/.env.local](next/.env.local) (duplicate [.env.example](next/.env.example))
   - [retrieve a token from Sanity](https://sanity.io/manage) to allow for live previews
 
-4. Populate the Sanity project documents
+### 4. Populate the Sanity project
 
 - Site settings ([sanity/schemas/documents/site.ts](sanity/schemas/documents/site.ts))
 - Pages ([sanity/schemas/documents/page.ts](sanity/schemas/documents/page.ts))
 
-  - Added pages with the slugs: `index` and `404`
+> [!IMPORTANT]
+> Required: Add a page with the slugs `index` for the Homepage
+> Optional: Add a page with the slug `404` for the 404 page
 
 - Blog posts ([sanity/schemas/documents/post.ts](sanity/schemas/documents/post.ts))
 
-5. Setup the Sanity Dashboard with your deploment service
+### 5. Setup the Sanity Dashboard with your deploment service
 
-- For Vercel, run `npm i sanity-plugin-dashboard-widget-vercel`
-- For Netlify, run `npm i sanity-plugin-dashboard-widget-netlify`
+For Vercel:
+
+```sh
+npm i sanity-plugin-dashboard-widget-vercel
+```
+
+For Netlify:
+
+```sh
+npm i sanity-plugin-dashboard-widget-netlify
+```
 
 ## Helpful Resources
 
