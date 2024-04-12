@@ -1,54 +1,44 @@
-# Next.js + Sanity + Template
+# Next.js + Sanity.io Starter Template
 
-> A Next.js (App router), Sanity.io and Tailwind CSS starter template.
+## Key Features
 
-Referenced documentation: [`next-sanity` README](https://github.com/sanity-io/next-sanity#readme)
+- Modern Frontend Development with Next.js (App Router + RSC) and Tailwind CSS
+- Pre-built Sanity schema for rapid [webpage](sanity/src/defaultDocumentNode.ts) and [blog](sanity/src/defaultDocumentNode.ts) development
+- Auto-generated [sitemap.xml](sanity/src/defaultDocumentNode.ts)
+- Live previews (somewhat) when set up with a git branch ([`sanity/src/defaultDocumentNode.ts`](sanity/src/defaultDocumentNode.ts))
 
-## Features
+## Getting Started
 
-- auto-generated `/sitemap.xml`
-- helpful Sanity schema for easy page creation
-  - `cta`, `link` and `link.list` objects
-  - `page` document with a `modules` array and a `metadata` object
-  - `blog.post` and `blog.category` documents
-  - several sample modules (`sanity/modules/*.ts`)
+1. [Create a new repo using this template](https://github.com/new?template_name=next-sanity-template&template_owner=nuotsu)
+2. Run `npm -y create sanity@latest` in order to grab a new Sanity project ID
+3. Replace `projectId` with the new project ID
 
-## Initialize a Sanity project and grab the project ID
+- [sanity/sanity.cli.ts](sanity/sanity.cli.ts)
+- [sanity/sanity.config.ts](sanity/sanity.config.ts)
+- [next/.env.local](next/.env.local) (duplicate [.env.example](next/.env.example))
+  - [retrieve a token from Sanity](https://sanity.io/manage) to allow for live previews
 
-1. `sanity/sanity.cli.ts`
-2. `sanity/sanity.config.ts`
-3. `next/.env.local`
-   - Also retrieve a [token from Sanity](https://sanity.io/manage) to allow for live previewing in dev mode.
+4. Populate the Sanity project documents
 
-## Global Types
+- Site settings ([sanity/schemas/documents/site.ts](sanity/schemas/documents/site.ts))
+- Pages ([sanity/schemas/documents/page.ts](sanity/schemas/documents/page.ts))
 
-Types, including Sanity schema, are stored in `next/src/types/*.d.ts` and can be accessed globally in the `next/` directory (import unncecessary) with `<namespace>.<type>`.
+  - Added pages with the slugs: `index` and `404`
 
-```ts
-await fetch<Sanity.Page>("...");
-            ^^^^^^^^^^^
-```
+- Blog posts ([sanity/schemas/documents/post.ts](sanity/schemas/documents/post.ts))
 
-## Images (`<Img>`)
+5. Setup the Sanity Dashboard with your deploment service
 
-In Next.js, serve images from Sanity using the custom `<Img>` component. This component is a wrapper around the [next/image](https://nextjs.org/docs/api-reference/next/image) component. It will automatically generate a `srcset` and `sizes` attribute for the image, and will also lazy load the image.
+- For Vercel, run `npm i sanity-plugin-dashboard-widget-vercel`
+- For Netlify, run `npm i sanity-plugin-dashboard-widget-netlify`
 
-Utilize the `options.imageBuilder` prop to serve the appropriate size of the image based on the width. Typically, you want to set the width (or height) to 2x the actual size displayed in the viewport.
+## Helpful Resources
 
-```tsx
-"use client"; // required if using `options.imageBuilder`
-
-import Img from "@/ui/Img";
-
-<Img
-  image={image}
-  alt="..."
-  options={{
-    imageBuilder: (b) => b.width(200), // for a 100px wide image
-  }}
-/>;
-```
+- Global Types in Next.js
+  - [Sanity types](next/src/types/Sanity.d.ts)
+- [`<Img>`](next/src/ui/Img.tsx) component for Sanity CDN images
 
 ## Resources
 
 - [Official Next.js + Sanity setup documentation article](https://www.sanity.io/plugins/next-sanity)
+- [`sanity-io/next-sanity` README](https://github.com/sanity-io/next-sanity#readme)
