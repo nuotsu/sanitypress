@@ -13,12 +13,12 @@ export default function Img({
 	alt = '',
 	options,
 	...props
-}: Omit<ImageProps, 'src' | 'alt'> & {
+}: {
 	image?: Sanity.Image
 	imageWidth?: number
 	alt?: string
 	options?: UseNextSanityImageOptions
-}) {
+} & Omit<ImageProps, 'src' | 'alt'>) {
 	if (!image) return null
 
 	const imageProps = useNextSanityImage(

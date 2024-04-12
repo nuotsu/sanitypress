@@ -41,13 +41,13 @@ npm -y create sanity@latest
 
 ### 5. Setup the Sanity Dashboard with your deploment service
 
-For Vercel:
+For [Vercel](https://www.sanity.io/plugins/vercel-dashboard-widget):
 
 ```sh
 npm i sanity-plugin-dashboard-widget-vercel
 ```
 
-For Netlify:
+For [Netlify](https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-netlify):
 
 ```sh
 npm i sanity-plugin-dashboard-widget-netlify
