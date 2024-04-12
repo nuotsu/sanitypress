@@ -1,7 +1,6 @@
 import { fetchSanity, groq } from '@/lib/sanity'
-import Date from '@/ui/Date'
 import { PortableText } from '@portabletext/react'
-import Link from 'next/link'
+import PostPreview from './PostPreview'
 
 export default async function Rollup({
 	content,
@@ -25,10 +24,7 @@ export default async function Rollup({
 			<ul>
 				{posts?.map((post, key) => (
 					<li key={key}>
-						<Link className="link" href={`/blog/${post.metadata.slug.current}`}>
-							{post.title}—
-							<Date value={post.publishDate} />
-						</Link>
+						<PostPreview post={post} />
 					</li>
 				))}
 			</ul>

@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import { IoIosImage } from 'react-icons/io'
 
 export default defineType({
 	name: 'blog.post',
@@ -12,7 +13,24 @@ export default defineType({
 		defineField({
 			name: 'body',
 			type: 'array',
-			of: [{ type: 'block' }],
+			of: [
+				{ type: 'block' },
+				{
+					type: 'image',
+					icon: IoIosImage,
+					fields: [
+						defineField({
+							name: 'alt',
+							type: 'string',
+						}),
+						defineField({
+							name: 'caption',
+							type: 'text',
+							rows: 2,
+						}),
+					],
+				},
+			],
 		}),
 		defineField({
 			name: 'categories',

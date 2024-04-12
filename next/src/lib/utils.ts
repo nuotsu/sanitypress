@@ -9,3 +9,7 @@ export function nl2br(str?: string) {
 	if (!str) return ''
 	return str.split('\n').join('<br>')
 }
+
+export function slug(str: string) {
+	return str.toLowerCase().replace(/[\s]+/g, '-')
+}

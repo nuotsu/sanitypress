@@ -1,9 +1,4 @@
-export default function ({
-	value,
-	className,
-}: {
-	value: string
-} & React.HTMLAttributes<HTMLTimeElement>) {
+export default function ({ value }: { value: string }) {
 	if (!value) return null
 
 	const formatted = new Date(value + 'T00:00:00').toLocaleDateString('en-US', {
@@ -12,9 +7,5 @@ export default function ({
 		day: 'numeric',
 	})
 
-	return (
-		<time className={className} dateTime={value}>
-			{formatted}
-		</time>
-	)
+	return <time dateTime={value}>{formatted}</time>
 }
