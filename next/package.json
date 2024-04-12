@@ -9,11 +9,11 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@next/third-parties": "^14.1.4",
-		"@portabletext/react": "^3.0.17",
+		"@next/third-parties": "^14.2.1",
+		"@portabletext/react": "^3.0.18",
 		"clsx": "^2.1.0",
-		"next": "^14.1.4",
-		"next-sanity": "^8.5.3",
+		"next": "^14.2.1",
+		"next-sanity": "^9.0.2",
 		"next-sanity-image": "^6.1.1",
 		"prettier-plugin-tailwindcss": "^0.5.13",
 		"react": "^18",
@@ -22,13 +22,13 @@
 		"tailwind-merge": "^2.2.2"
 	},
 	"devDependencies": {
-		"@types/node": "^20.12.4",
-		"@types/react": "^18.2.74",
-		"@types/react-dom": "^18.2.24",
+		"@types/node": "^20.12.7",
+		"@types/react": "^18.2.77",
+		"@types/react-dom": "^18.2.25",
 		"autoprefixer": "^10.4.19",
 		"postcss": "^8.4.38",
 		"prettier": "^3.2.5",
 		"tailwindcss": "^3.4.3",
-		"typescript": "^5.4.4"
+		"typescript": "^5.4.5"
 	}
 }
