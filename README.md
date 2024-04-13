@@ -1,5 +1,7 @@
 # Next.js + Sanity.io Starter Template
 
+> [Published on Sanity.io](https://www.sanity.io/templates/next-sanity-template)
+
 ## Key Features
 
 - Modern Frontend Development with Next.js (App Router, RSC, Typescript) and Tailwind CSS
