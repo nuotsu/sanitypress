@@ -17,7 +17,7 @@ export default function HeroPostcard({
 	return (
 		<section className="section grid items-center gap-8 md:grid-cols-2 md:gap-x-12">
 			<figure className={cn(image?.onRight && 'md:order-1')}>
-				<Img image={image} />
+				<Img image={image} imageWidth={800} />
 			</figure>
 
 			<div className="richtext [&_a:not(.action)]:link">
