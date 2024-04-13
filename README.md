@@ -39,7 +39,7 @@ npm -y create sanity@latest
 > Required: Add a page with the slugs `index` for the Homepage<br>
 > Optional: Add a page with the slug `404` for the 404 page
 
-- Blog posts ([sanity/schemas/documents/post.ts](sanity/schemas/documents/post.ts))
+- Blog posts ([sanity/schemas/documents/blog.post.ts](sanity/schemas/documents/blog.post.ts))
 
 ### 5. Setup the Sanity Dashboard with your deploment service
 
