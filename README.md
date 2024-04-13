@@ -12,7 +12,9 @@
 
 ## Getting Started
 
-### 1. [Create a new repo using this template](https://github.com/new?template_name=next-sanity-template&template_owner=nuotsu)
+### 1. Create a new repo with the template
+
+> 👉 [nuotsu/next-sanity-template](https://github.com/new?template_name=next-sanity-template&template_owner=nuotsu)
 
 ### 2. Grab a new Sanity project ID
 
@@ -41,7 +43,7 @@ npm -y create sanity@latest
 
 - Blog posts ([sanity/schemas/documents/blog.post.ts](sanity/schemas/documents/blog.post.ts))
 
-### 5. Setup the Sanity Dashboard with your deploment service
+### 5. Setup the Sanity Dashboard with your deployment service
 
 For [Vercel](https://www.sanity.io/plugins/vercel-dashboard-widget):
 
