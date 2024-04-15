@@ -13,7 +13,6 @@ declare global {
 		type Page = SanityDocument & {
 			readonly _type: 'page'
 			title: string
-			noIndex: boolean
 			modules?: Module[]
 			metadata: Metadata
 		}
@@ -63,6 +62,7 @@ declare global {
 			title: string
 			description: string
 			slug: { current: string }
+			noIndex: boolean
 		}
 
 		type Module = {

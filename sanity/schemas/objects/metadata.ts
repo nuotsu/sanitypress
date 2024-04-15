@@ -24,5 +24,11 @@ export default defineType({
 			},
 			validation: (Rule) => Rule.required(),
 		}),
+		defineField({
+			name: 'noIndex',
+			description: 'Prevent search engines from indexing this page',
+			type: 'boolean',
+			initialValue: false,
+		}),
 	],
 })

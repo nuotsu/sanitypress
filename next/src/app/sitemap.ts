@@ -5,7 +5,11 @@ import type { MetadataRoute } from 'next'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const allPages = await fetchSanity<Record<string, MetadataRoute.Sitemap>>(
 		groq`{
-			'pages': *[_type == 'page' && !(metadata.slug.current in ['404']) && noIndex != true]|order(metadata.slug.current){
+			'pages': *[
+				_type == 'page' &&
+				!(metadata.slug.current in ['404']) &&
+				metadata.noIndex != true
+			]|order(metadata.slug.current){
 				'url': $baseUrl + select(metadata.slug.current == 'index' => '', metadata.slug.current),
 				'lastModified': _updatedAt,
 				'priority': select(
@@ -13,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 					0.5
 				),
 			},
-			'posts': *[_type == 'blog.post']|order(name){
+			'posts': *[_type == 'blog.post' && metadata.noIndex != true]|order(name){
 				'url': $baseUrl + 'blog/' + metadata.slug.current,
 				'lastModified': _updatedAt,
 				'priority': 0.4

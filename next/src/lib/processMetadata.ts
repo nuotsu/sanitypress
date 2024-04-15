@@ -4,10 +4,9 @@ import { BASE_URL } from './env'
 
 export default async function processMetadata({
 	metadata,
-	noIndex,
 }: Sanity.Page | Sanity.BlogPost): Promise<Metadata> {
 	const { ogimage } = await getSite()
-	const { title, description, slug } = metadata
+	const { title, description, slug, noIndex } = metadata
 
 	return {
 		metadataBase: new URL(BASE_URL),
