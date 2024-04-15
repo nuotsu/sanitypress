@@ -9,7 +9,7 @@ export { groq } from 'next-sanity'
 export const client = createClient({
 	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
 	dataset: 'production',
-	apiVersion: '2023-12-03',
+	apiVersion: '2024-04-01',
 	useCdn: !dev,
 })
 

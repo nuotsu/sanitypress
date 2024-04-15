@@ -26,7 +26,7 @@ export default defineType({
 		}),
 		defineField({
 			name: 'noIndex',
-			description: 'Prevent search engines from indexing this page',
+			description: 'Prevent search engines from indexing this page.',
 			type: 'boolean',
 			initialValue: false,
 		}),

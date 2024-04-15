@@ -1,6 +1,7 @@
 // documents
 import site from './documents/site'
 import page from './documents/page'
+import redirect from './documents/redirect'
 import blogPost from './documents/blog.post'
 import blogCategory from './documents/blog.category'
 
@@ -20,6 +21,7 @@ export const schemaTypes = [
 	// documents
 	site,
 	page,
+	redirect,
 	blogPost,
 	blogCategory,
 
