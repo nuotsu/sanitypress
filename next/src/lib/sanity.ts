@@ -4,7 +4,7 @@ import {
 	type ResponseQueryOptions,
 } from 'next-sanity'
 import dev from '@/lib/env'
-export { groq } from 'next-sanity'
+export { default as groq } from 'groq'
 
 export const client = createClient({
 	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,

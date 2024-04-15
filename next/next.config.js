@@ -1,4 +1,5 @@
-const { createClient, groq } = require('next-sanity')
+const { createClient } = require('next-sanity')
+const groq = require('groq')
 
 const client = createClient({
 	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,

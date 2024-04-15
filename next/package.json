@@ -12,6 +12,7 @@
 		"@next/third-parties": "^14.2.1",
 		"@portabletext/react": "^3.0.18",
 		"clsx": "^2.1.0",
+		"groq": "^3.37.2",
 		"next": "^14.2.1",
 		"next-sanity": "^9.0.2",
 		"next-sanity-image": "^6.1.1",
