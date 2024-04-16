@@ -23,13 +23,6 @@ export const singleton = (
 				.views([S.view.form(), ...views]),
 		)
 
-export const list = (
-	S: StructureBuilder,
-	title: string,
-	id: string,
-): ListItemBuilder =>
-	S.listItem().title(title).child(S.documentTypeList(id).title(title))
-
 export const group = (
 	S: StructureBuilder,
 	title: string,

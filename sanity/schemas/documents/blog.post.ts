@@ -1,9 +1,11 @@
 import { defineField, defineType } from 'sanity'
+import { VscEdit } from 'react-icons/vsc'
 import { IoIosImage } from 'react-icons/io'
 
 export default defineType({
 	name: 'blog.post',
 	title: 'Blog post',
+	icon: VscEdit,
 	type: 'document',
 	fields: [
 		defineField({
