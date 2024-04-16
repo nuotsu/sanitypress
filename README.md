@@ -7,7 +7,7 @@
 - Modern Frontend Development with Next.js (App Router, RSC, Typescript) and Tailwind CSS
 - Pre-configured Sanity schema for rapid [webpage](sanity/schemas/documents/page.ts) and [blog](sanity/schemas/documents/blog.post.ts) development
 - Pre-built common website components ([next/src/ui](next/src/ui))
-- Auto-generated [sitemap.xml](next/src/app/sitemap.ts)
+- Auto-generated [sitemap.xml](next/src/app/sitemap.ts) and [blog RSS]()
 - Live previews when set up with a [git branch](sanity/src/defaultDocumentNode.ts#L21)
 
 ## Getting Started
@@ -38,7 +38,7 @@ npm -y create sanity@latest
 - Pages ([sanity/schemas/documents/page.ts](sanity/schemas/documents/page.ts))
 
 > [!IMPORTANT]
-> Required: Add a page with the slugs `index` for the Homepage<br>
+> Required: Add a page with the slug `index` for the Homepage<br>
 > Optional: Add a page with the slug `404` for the 404 page
 
 - Blog posts ([sanity/schemas/documents/blog.post.ts](sanity/schemas/documents/blog.post.ts))
