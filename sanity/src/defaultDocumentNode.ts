@@ -2,10 +2,9 @@ import { isDev, type SanityDocument } from 'sanity'
 import { Iframe } from 'sanity-plugin-iframe-pane'
 import type { DefaultDocumentNodeResolver } from 'sanity/structure'
 
-const defaultDocumentNode: DefaultDocumentNodeResolver = (
-	S,
-	{ schemaType },
-) => {
+const previewUrl = 'https://next-sanity-starter-template.vercel.app'
+
+const defaultDocumentNode: DefaultDocumentNodeResolver = (S, { schemaType }) => {
 	switch (schemaType) {
 		case 'page':
 		case 'blog.post':
@@ -14,10 +13,10 @@ const defaultDocumentNode: DefaultDocumentNodeResolver = (
 				S.view
 					.component(Iframe)
 					.options({
-						url: (doc: SanityPage) => {
+						url: (doc: SanityDocument & { metadata?: { slug?: { current: string } } }) => {
 							const domain = isDev
 								? 'http://localhost:3000'
-								: 'https://next-sanity-starter-template.vercel.app'
+								: previewUrl
 
 							const slug = doc?.metadata?.slug?.current
 							const path = slug === 'index' ? '' : slug
@@ -38,7 +37,3 @@ const defaultDocumentNode: DefaultDocumentNodeResolver = (
 }
 
 export default defaultDocumentNode
-
-type SanityPage = SanityDocument & {
-	metadata?: { slug?: { current: string } }
-}

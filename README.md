@@ -8,7 +8,7 @@
 - Pre-configured Sanity schema for rapid [webpage](sanity/schemas/documents/page.ts) and [blog](sanity/schemas/documents/blog.post.ts) development
 - Pre-built common website components ([next/src/ui](next/src/ui))
 - Auto-generated [sitemap.xml](next/src/app/sitemap.ts) and [blog rss.xml](next/src/app/blog/rss.xml/route.ts)
-- Live previews when set up with a [git branch](sanity/src/defaultDocumentNode.ts#L21)
+- [Live previews](#live-previews) when set up with a git branch
 
 ## Getting Started
 
@@ -55,6 +55,30 @@ For [Netlify](https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-netli
 
 ```sh
 npm i sanity-plugin-dashboard-widget-netlify
+```
+
+## Live Previews
+
+1. Create a new git branch (call it anything—e.g. `staging` or `preview`) and set an environment variable specific to that branch in your deployment service (Vercel or Netlify):
+
+```sh
+git checkout -b staging
+```
+
+```sh
+ENABLE_PREVIEW = true
+
+# also set in next/src/lib/env.ts
+```
+
+2. In [sanity/src/defaultDocumentNode.ts](sanity/src/defaultDocumentNode.ts#L5), set `previewUrl` to your branch deployment URL
+
+```ts
+// e.g. Vercel
+const previewUrl = 'https://your-site-git-staging.vercel.app'
+
+// e.g. Netlify
+const previewUrl = 'https://staging--your-site.netlify.app'
 ```
 
 ## Helpful Resources
