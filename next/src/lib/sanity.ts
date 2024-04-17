@@ -21,9 +21,11 @@ export function fetchSanity<T = any>(
 	}: { params?: QueryParams } & ResponseQueryOptions['next'] = {},
 ) {
 	return client.fetch<T>(query, params, {
-		...(dev && {
+		...(dev ? {
 			token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
 			perspective: 'previewDrafts',
+		} : {
+			perspective: 'published',
 		}),
 		next: {
 			revalidate: dev ? 0 : false,
