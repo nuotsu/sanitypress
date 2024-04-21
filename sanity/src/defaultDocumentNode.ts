@@ -4,7 +4,10 @@ import type { DefaultDocumentNodeResolver } from 'sanity/structure'
 
 const previewUrl = 'https://next-sanity-starter-template.vercel.app'
 
-const defaultDocumentNode: DefaultDocumentNodeResolver = (S, { schemaType }) => {
+const defaultDocumentNode: DefaultDocumentNodeResolver = (
+	S,
+	{ schemaType },
+) => {
 	switch (schemaType) {
 		case 'page':
 		case 'blog.post':
@@ -13,16 +16,18 @@ const defaultDocumentNode: DefaultDocumentNodeResolver = (S, { schemaType }) => 
 				S.view
 					.component(Iframe)
 					.options({
-						url: (doc: SanityDocument & { metadata?: { slug?: { current: string } } }) => {
-							const domain = isDev
-								? 'http://localhost:3000'
-								: previewUrl
+						url: (
+							doc: SanityDocument & {
+								metadata?: { slug?: { current: string } }
+							},
+						) => {
+							const base = isDev ? 'http://localhost:3000' : previewUrl
 
 							const slug = doc?.metadata?.slug?.current
 							const path = slug === 'index' ? '' : slug
 							const directory = schemaType === 'blog.post' ? 'blog' : null
 
-							return [domain, directory, path].filter(Boolean).join('/')
+							return [base, directory, path].filter(Boolean).join('/')
 						},
 						reload: {
 							button: true,

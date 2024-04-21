@@ -1,7 +1,7 @@
 import RSS from 'rss'
-import { BASE_URL } from '@/lib/env'
 import { fetchSanity } from '@/lib/sanity'
 import groq from 'groq'
+import processUrl from '@/lib/processUrl'
 
 export async function GET() {
 	const { blog, posts } = await fetchSanity<{
@@ -9,20 +9,22 @@ export async function GET() {
 		posts: Sanity.BlogPost[]
 	}>(
 		groq`{
-			'blog': *[_type == 'page' && metadata.slug.current == "blog"][0]{
+			'blog': *[_type == 'page' && metadata.slug.current == 'blog'][0]{
+				_type,
 				title,
 				metadata
 			},
 			'posts': *[_type == 'blog.post']{
+				_type,
 				title,
 				publishDate,
 				metadata
 			}
 		}`,
-		{ tags: ['blog-rss'] }
+		{ tags: ['blog-rss'] },
 	)
 
-	const url = `${BASE_URL}/${blog.metadata.slug.current}`
+	const url = processUrl(blog)
 
 	const feed = new RSS({
 		title: `${blog.title}`,
@@ -31,16 +33,18 @@ export async function GET() {
 		language: 'en',
 	})
 
-	posts.map(post => feed.item({
-		title: post.title,
-		url: `${url}/${post.metadata.slug.current}`,
-		date: post.publishDate,
-		description: post.metadata.description,
-	}))
+	posts.map((post) =>
+		feed.item({
+			title: post.title,
+			url: processUrl(post),
+			date: post.publishDate,
+			description: post.metadata.description,
+		}),
+	)
 
 	return new Response(feed.xml({ indent: true }), {
 		headers: {
-			'Content-Type': 'application/atom+xml'
-		}
+			'Content-Type': 'application/atom+xml',
+		},
 	})
 }

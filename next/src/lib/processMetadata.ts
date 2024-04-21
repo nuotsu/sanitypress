@@ -1,12 +1,15 @@
-import type { Metadata } from 'next'
 import getSite from './getSite'
 import { BASE_URL } from './env'
+import processUrl from './processUrl'
+import type { Metadata } from 'next'
 
-export default async function processMetadata({
-	metadata,
-}: Sanity.Page | Sanity.BlogPost): Promise<Metadata> {
+export default async function processMetadata(
+	page: Sanity.Page | Sanity.BlogPost,
+): Promise<Metadata> {
 	const { ogimage } = await getSite()
-	const { title, description, slug, noIndex } = metadata
+
+	const url = processUrl(page)
+	const { title, description, noIndex } = page.metadata
 
 	return {
 		metadataBase: new URL(BASE_URL),
@@ -14,15 +17,19 @@ export default async function processMetadata({
 		description,
 		openGraph: {
 			type: 'website',
-			url: [slug.current === 'index' ? '/' : slug.current]
-				.filter(Boolean)
-				.join('/'),
+			url,
 			title,
 			description,
-			images: ogimage && [ogimage],
+			images: ogimage,
 		},
 		robots: {
 			index: !noIndex,
+		},
+		alternates: {
+			canonical: url,
+			types: {
+				'application/rss+xml': '/blog/rss.xml',
+			},
 		},
 	}
 }
