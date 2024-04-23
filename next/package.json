@@ -11,10 +11,10 @@
 	"dependencies": {
 		"@next/third-parties": "^14.2.2",
 		"@portabletext/react": "^3.0.18",
-		"clsx": "^2.1.0",
-		"groq": "^3.38.0",
+		"clsx": "^2.1.1",
+		"groq": "^3.39.0",
 		"next": "^14.2.2",
-		"next-sanity": "^9.0.7",
+		"next-sanity": "^9.0.10",
 		"next-sanity-image": "^6.1.1",
 		"prettier-plugin-tailwindcss": "^0.5.14",
 		"react": "^18",
