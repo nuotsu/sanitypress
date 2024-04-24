@@ -26,7 +26,7 @@ export default defineType({
 		defineField({
 			name: 'internal',
 			type: 'reference',
-			to: [{ type: 'page' }],
+			to: [{ type: 'page' }, { type: 'blog.post' }],
 			hidden: ({ parent }) => parent?.type !== 'internal',
 		}),
 		defineField({
@@ -49,14 +49,16 @@ export default defineType({
 	preview: {
 		select: {
 			label: 'label',
+			_type: 'internal._type',
 			title: 'internal.title',
 			slug: 'internal.metadata.slug.current',
 			external: 'external',
 			params: 'params',
 		},
-		prepare: ({ label, title, slug, external, params }) => ({
+		prepare: ({ label, _type, title, slug, external, params }) => ({
 			title: label || title,
 			subtitle: [
+				_type === 'blog.post' ? '/blog' : null,
 				external || (slug && (slug === 'index' ? '/' : `/${slug}`)),
 				params,
 			]

@@ -10,7 +10,7 @@ import {
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas'
 
-const singletonTypes = ['site']
+const singletonTypes = ['site', 'header', 'footer']
 
 export default defineConfig({
 	name: 'default',

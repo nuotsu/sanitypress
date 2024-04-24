@@ -2,6 +2,12 @@
 
 ## 1.5.0
 
+- Add `header` and `footer` documents
+- Add `generateStaticParams` for dynamic routes
+- Move global Sanity GROQ queries to [next/src/lib/sanity.ts](next/src/lib/sanity.ts)
+
+## 1.4.2
+
 - Add `PostPreview` styling
 - Add a mobile toggle option for the header
 - Add `closeAfterNavigate` parameter for `<InteractiveDetails>`

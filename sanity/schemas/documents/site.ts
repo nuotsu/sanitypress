@@ -10,18 +10,9 @@ export default defineType({
 			type: 'string',
 		}),
 		defineField({
-			name: 'menu',
-			type: 'array',
-			of: [{ type: 'link' }, { type: 'link.list' }],
-		}),
-		defineField({
-			name: 'ctas',
-			title: 'Call-to-actions',
-			type: 'array',
-			of: [{ type: 'cta' }],
-		}),
-		defineField({
 			name: 'ogimage',
+			title: 'Open Graph Image',
+			description: 'Used for social sharing previews',
 			type: 'image',
 		}),
 	],

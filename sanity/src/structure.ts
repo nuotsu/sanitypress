@@ -1,13 +1,21 @@
 import { singleton } from './utils'
 import type { StructureResolver } from 'sanity/structure'
 
-import { VscServerProcess } from 'react-icons/vsc'
+import {
+	VscLayoutMenubar,
+	VscLayoutPanelJustify,
+	VscServerProcess,
+} from 'react-icons/vsc'
 
 const structure: StructureResolver = (S, context) =>
 	S.list()
 		.title('Content')
 		.items([
 			singleton(S, 'Site', 'site').icon(VscServerProcess),
+			singleton(S, 'Header', 'header').icon(VscLayoutMenubar),
+			singleton(S, 'Footer', 'footer').icon(VscLayoutPanelJustify),
+			S.divider(),
+
 			S.documentTypeListItem('page').title('Pages'),
 			S.documentTypeListItem('redirect').title('Redirects'),
 			S.divider(),
