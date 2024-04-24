@@ -30,16 +30,16 @@
 	}
 
 	.h1 {
-		@apply _h;
+		@apply _h text-3xl;
 	}
 	.h2 {
-		@apply _h;
+		@apply _h text-2xl;
 	}
 	.h3 {
-		@apply _h;
+		@apply _h text-xl;
 	}
 	.h4 {
-		@apply _h;
+		@apply _h text-lg;
 	}
 	.h5 {
 		@apply _h;
@@ -76,6 +76,11 @@
 }
 
 @layer utilities {
+	.sticky-below-header {
+		position: sticky;
+		top: calc(var(--header-height) + var(--offset, 0px));
+	}
+
 	.full-bleed {
 		width: 100vw;
 		margin-inline: calc(50% - 50vw);
@@ -92,8 +97,32 @@
 		}
 	}
 
+	.accordion {
+		& summary {
+			display: grid;
+			grid-template-columns: 1fr auto;
+			align-items: center;
+			gap: 1em;
+
+			&::after {
+				content: '+';
+				font-family: monospace;
+				font-size: 1.5em;
+				line-height: 1;
+			}
+		}
+
+		& ::-webkit-details-marker {
+			display: none;
+		}
+
+		&[open] summary::after {
+			content: '-';
+		}
+	}
+
 	.richtext {
-		@apply space-y-2;
+		@apply space-y-2 leading-relaxed;
 
 		& h1 {
 			@apply h1;
@@ -117,6 +146,10 @@
 		& :is(ul, ol) {
 			list-style: revert;
 			padding-left: 1.5em;
+		}
+
+		& a:not([class*='action']) {
+			@apply link;
 		}
 	}
 

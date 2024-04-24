@@ -20,7 +20,7 @@ export default function HeroPostcard({
 				<Img image={image} imageWidth={800} />
 			</figure>
 
-			<div className="richtext [&_a:not(.action)]:link">
+			<div className="richtext">
 				<PortableText value={content} />
 				<CTAList ctas={ctas} />
 			</div>

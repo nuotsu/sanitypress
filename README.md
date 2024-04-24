@@ -4,11 +4,11 @@
 
 ## Key Features
 
-- Modern Frontend Development with Next.js (App Router, RSC, Typescript) and Tailwind CSS
-- Pre-configured Sanity schema for rapid [webpage](sanity/schemas/documents/page.ts) and [blog](sanity/schemas/documents/blog.post.ts) development
-- Pre-built common website components ([next/src/ui](next/src/ui))
-- Auto-generated [sitemap.xml](next/src/app/sitemap.ts) and [blog rss.xml](next/src/app/blog/rss.xml/route.ts)
-- [Live previews](#live-previews) when set up with a git branch
+- Modern Frontend Development with Next.js (App Router, RSC, Typescript) and Tailwind CSS.
+- Pre-configured Sanity schema for rapid [webpage](sanity/schemas/documents/page.ts) and [blog](sanity/schemas/documents/blog.post.ts) development.
+- Pre-built common website components ([next/src/ui](next/src/ui)).
+- Auto-generated [sitemap.xml](next/src/app/sitemap.ts) and [blog rss.xml](next/src/app/blog/rss.xml/route.ts).
+- [Live previews](#live-previews) when set up with a git branch.
 
 ## Getting Started
 
@@ -43,7 +43,7 @@ npm -y create sanity@latest
 
 - Blog posts ([sanity/schemas/documents/blog.post.ts](sanity/schemas/documents/blog.post.ts))
 
-### 5. Setup the Sanity Dashboard with your deployment service
+### 5. Set up the Sanity Dashboard with your deployment service
 
 For [Vercel](https://www.sanity.io/plugins/vercel-dashboard-widget):
 
@@ -75,10 +75,10 @@ ENABLE_PREVIEW = true
 
 ```ts
 // e.g. Vercel
-const previewUrl = 'https://your-site-git-staging.vercel.app'
+const previewUrl = "https://your-site-git-staging.vercel.app";
 
 // e.g. Netlify
-const previewUrl = 'https://staging--your-site.netlify.app'
+const previewUrl = "https://staging--your-site.netlify.app";
 ```
 
 ## Helpful Resources

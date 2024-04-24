@@ -1,11 +1,16 @@
 # Changelog
 
+## 1.4.1
+
+- Update demo site styles
+- Add `.accordion` class
+- Add `Custom HTML` module
+
 ## 1.4.0
 
 - Add `processUrl()` to handle website URLs
 - Add canonical links
 - Add RSS alternate link
-- Update NPM packages
 
 ## 1.3.5
 

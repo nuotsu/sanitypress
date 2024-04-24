@@ -65,10 +65,10 @@ declare global {
 			noIndex: boolean
 		}
 
-		type Module = {
+		type Module<T = {}> = {
 			_type: string
 			_key: string
-		}
+		} & T
 	}
 }
 

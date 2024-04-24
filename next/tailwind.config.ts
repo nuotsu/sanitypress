@@ -8,6 +8,6 @@ const config: Config = {
 			fontFamily: {},
 		},
 	},
-	plugins: [],
+	safelist: ['action'],
 }
 export default config
