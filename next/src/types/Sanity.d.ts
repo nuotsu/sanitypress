@@ -6,9 +6,16 @@ declare global {
 
 		type Site = SanityDocument & {
 			title: string
-			menu?: (Link | LinkList)[]
-			cta?: CTA[]
 			ogimage?: string
+		}
+
+		type Header = SanityDocument & {
+			menu?: (Link | LinkList)[]
+			ctas?: CTA[]
+		}
+
+		type Footer = SanityDocument & {
+			menu?: (Link | LinkList)[]
 		}
 
 		type Page = SanityDocument & {

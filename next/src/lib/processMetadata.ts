@@ -1,4 +1,4 @@
-import getSite from './getSite'
+import { getSite } from './sanity'
 import { BASE_URL } from './env'
 import processUrl from './processUrl'
 import type { Metadata } from 'next'

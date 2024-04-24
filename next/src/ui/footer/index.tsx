@@ -1,4 +1,4 @@
-import getSite from '@/lib/getSite'
+import { getSite } from '@/lib/sanity'
 
 export default async function Footer() {
 	const { title } = await getSite()

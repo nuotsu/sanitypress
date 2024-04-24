@@ -1,15 +1,14 @@
-import getSite from '@/lib/getSite'
+import { getHeader, getSite } from '@/lib/sanity'
 import Wrapper from './Wrapper'
 import Link from 'next/link'
-import CTA from '@/ui/CTA'
-import LinkList from './LinkList'
+import Menu from './Menu'
 import CTAList from '../CTAList'
 import Toggle from './Toggle'
 import { cn } from '@/lib/utils'
 import css from './Header.module.css'
 
 export default async function Header() {
-	const { title, menu, ctas } = await getSite()
+	const [{ title }, { ctas }] = await Promise.all([getSite(), getHeader()])
 
 	return (
 		<Wrapper className="sticky top-0 z-10 border-b bg-white/90 backdrop-blur">
@@ -25,23 +24,10 @@ export default async function Header() {
 					</Link>
 				</div>
 
-				<nav className="max-md:header-closed:hidden max-md:anim-fade-to-r flex gap-x-4 [grid-area:menu] max-md:flex-col">
-					{menu?.map((item, key) => {
-						switch (item._type) {
-							case 'link':
-								return <CTA className="link" link={item} key={key} />
-
-							case 'link.list':
-								return <LinkList {...item} key={key} />
-
-							default:
-								return null
-						}
-					})}
-				</nav>
+				<Menu />
 
 				<CTAList
-					className="max-md:header-closed:hidden [grid-area:ctas] max-md:*:w-full md:ml-auto"
+					className="[grid-area:ctas] max-md:*:w-full max-md:header-closed:hidden md:ml-auto"
 					ctas={ctas}
 				/>
 
