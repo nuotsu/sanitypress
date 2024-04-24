@@ -1,10 +1,16 @@
 # Changelog
 
+## 1.4.2
+
+- Add a mobile toggle option for the header
+- Add `closeAfterNavigate` parameter for `<InteractiveDetails>`
+
 ## 1.4.1
 
 - Update demo site styles
-- Add `.accordion` class
-- Add `Custom HTML` module
+- Add [`.accordion`](/next/src/styles/app.css) class
+- Add [Custom HTML](/sanity/schemas/modules/custom-html.ts) module
+- Add [Creative](/sanity/schemas/modules/creative-module.ts) module
 
 ## 1.4.0
 
