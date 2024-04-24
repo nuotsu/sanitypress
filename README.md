@@ -4,6 +4,8 @@
 
 ⏱️ For the latest updates, view the [changelog](/CHANGELOG.md).
 
+🚀 Checkout [the demo site](https://next-sanity-template-demo.vercel.app).
+
 ## Key Features
 
 - Modern Frontend Development with Next.js (App Router, RSC, Typescript) and Tailwind CSS.
