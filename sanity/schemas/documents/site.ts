@@ -15,6 +15,12 @@ export default defineType({
 			of: [{ type: 'link' }, { type: 'link.list' }],
 		}),
 		defineField({
+			name: 'ctas',
+			title: 'Call-to-actions',
+			type: 'array',
+			of: [{ type: 'cta' }],
+		}),
+		defineField({
 			name: 'ogimage',
 			type: 'image',
 		}),
