@@ -63,6 +63,8 @@ declare global {
 			title: string
 			description: string
 			slug: { current: string }
+			image?: Image
+			ogimage?: string
 			noIndex: boolean
 		}
 

@@ -35,6 +35,10 @@ async function getPage() {
 						}
 					}
 				}
+			},
+			metadata {
+				...,
+				'ogimage': image.asset->url
 			}
 		}`,
 		{

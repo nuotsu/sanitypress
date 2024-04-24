@@ -92,7 +92,7 @@
 		scroll-snap-type: x mandatory;
 
 		& > * {
-			flex: 0 0 calc(var(--size, min(300px, 80vw)));
+			flex: 0 0 calc(min(var(--size, 300px), 80vw));
 			scroll-snap-align: center;
 		}
 	}

@@ -6,10 +6,10 @@ import type { Metadata } from 'next'
 export default async function processMetadata(
 	page: Sanity.Page | Sanity.BlogPost,
 ): Promise<Metadata> {
-	const { ogimage } = await getSite()
+	const site = await getSite()
 
 	const url = processUrl(page)
-	const { title, description, noIndex } = page.metadata
+	const { title, description, ogimage, noIndex } = page.metadata
 
 	return {
 		metadataBase: new URL(BASE_URL),
@@ -20,7 +20,7 @@ export default async function processMetadata(
 			url,
 			title,
 			description,
-			images: ogimage,
+			images: ogimage || site.ogimage,
 		},
 		robots: {
 			index: !noIndex,

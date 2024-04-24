@@ -25,6 +25,10 @@ export default defineType({
 			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
+			name: 'image',
+			type: 'image',
+		}),
+		defineField({
 			name: 'noIndex',
 			description: 'Prevent search engines from indexing this page.',
 			type: 'boolean',

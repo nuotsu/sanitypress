@@ -42,6 +42,10 @@ async function getPage(params: Props['params']) {
 						}
 					}
 				}
+			},
+			metadata {
+				...,
+				'ogimage': image.asset->url
 			}
 		}`,
 		{

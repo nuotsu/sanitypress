@@ -13,6 +13,20 @@ export default defineType({
 			type: 'array',
 			of: [{ type: 'block' }],
 		}),
+		defineField({
+			name: 'layout',
+			type: 'string',
+			options: {
+				list: ['grid', 'carousel'],
+				layout: 'radio',
+			},
+			initialValue: 'carousel',
+		}),
+		defineField({
+			name: 'limit',
+			type: 'number',
+			validation: (Rule) => Rule.min(1).integer(),
+		}),
 	],
 	preview: {
 		select: {

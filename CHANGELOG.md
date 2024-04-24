@@ -1,7 +1,8 @@
 # Changelog
 
-## 1.4.2
+## 1.5.0
 
+- Add `PostPreview` styling
 - Add a mobile toggle option for the header
 - Add `closeAfterNavigate` parameter for `<InteractiveDetails>`
 
