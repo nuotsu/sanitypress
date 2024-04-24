@@ -2,7 +2,7 @@ import { isDev, type SanityDocument } from 'sanity'
 import { Iframe } from 'sanity-plugin-iframe-pane'
 import type { DefaultDocumentNodeResolver } from 'sanity/structure'
 
-const previewUrl = 'https://next-sanity-starter-template.vercel.app'
+const previewUrl = 'https://next-sanity-template-demo.vercel.app'
 
 const defaultDocumentNode: DefaultDocumentNodeResolver = (
 	S,
