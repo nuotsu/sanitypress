@@ -9,6 +9,10 @@
 		display: none !important;
 	}
 
+	:target {
+		scroll-margin-top: var(--header-height);
+	}
+
 	html {
 		scroll-behavior: smooth;
 	}

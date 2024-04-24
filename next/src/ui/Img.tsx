@@ -28,6 +28,12 @@ export default function Img({
 	)
 
 	return (
-		<Image {...imageProps} alt={image.alt || alt} loading="lazy" {...props} />
+		<Image
+			{...imageProps}
+			alt={image.alt || alt}
+			loading="lazy"
+			unoptimized
+			{...props}
+		/>
 	)
 }

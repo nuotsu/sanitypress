@@ -31,6 +31,14 @@ export default defineType({
 					type: 'boolean',
 					initialValue: false,
 				}),
+				defineField({
+					name: 'loading',
+					type: 'string',
+					options: {
+						list: ['lazy', 'eager'],
+					},
+					initialValue: 'lazy',
+				}),
 			],
 		}),
 	],
