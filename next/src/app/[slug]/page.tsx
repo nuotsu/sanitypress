@@ -15,6 +15,18 @@ export async function generateMetadata({ params }: Props) {
 	return processMetadata(page)
 }
 
+export async function generateStaticParams() {
+	const slugs = await fetchSanity<string[]>(
+		groq`*[
+			_type == 'page' &&
+			defined(metadata.slug.current) &&
+			!(metadata.slug.current in ['index', '404'])
+		].metadata.slug.current`,
+	)
+
+	return slugs.map((slug) => ({ slug }))
+}
+
 async function getPage(params: Props['params']) {
 	return await fetchSanity<Sanity.Page>(
 		groq`*[
