@@ -31,6 +31,16 @@ async function getPage(params: Props['params']) {
 						...,
 						internal->{ title, metadata }
 					}
+				},
+				modules[]{
+					...,
+					ctas[]{
+						...,
+						link{
+							...,
+							internal->{ title, metadata }
+						}
+					}
 				}
 			}
 		}`,

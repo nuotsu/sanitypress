@@ -24,6 +24,16 @@ async function getPage() {
 						...,
 						internal->{ title, metadata }
 					}
+				},
+				modules[]{
+					...,
+					ctas[]{
+						...,
+						link{
+							...,
+							internal->{ title, metadata }
+						}
+					}
 				}
 			}
 		}`,

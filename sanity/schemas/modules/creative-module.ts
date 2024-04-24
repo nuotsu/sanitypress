@@ -1,6 +1,7 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { VscExtensions, VscSymbolKeyword } from 'react-icons/vsc'
 import { IoIosImage } from 'react-icons/io'
+import { getBlockText } from '../../src/utils'
 
 export default defineType({
 	name: 'creative-module',
@@ -8,6 +9,11 @@ export default defineType({
 	icon: VscExtensions,
 	type: 'object',
 	fields: [
+		defineField({
+			name: 'content',
+			type: 'array',
+			of: [{ type: 'block' }],
+		}),
 		defineField({
 			name: 'columns',
 			type: 'number',
@@ -39,6 +45,12 @@ export default defineType({
 							type: 'array',
 							of: [{ type: 'block' }],
 						}),
+						defineField({
+							name: 'ctas',
+							title: 'Call-to-actions',
+							type: 'array',
+							of: [{ type: 'cta' }],
+						}),
 					],
 				}),
 			],
@@ -46,18 +58,12 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			columns: 'columns',
+			content: 'content',
 			modules: 'modules',
 		},
-		prepare: ({ columns, modules }) => {
-			const count = modules?.length || 0
-
-			return {
-				title: 'Creative module',
-				subtitle: [`${count} modules`, `${columns || count} columns`]
-					.filter(Boolean)
-					.join(' / '),
-			}
-		},
+		prepare: ({ content, modules }) => ({
+			title: getBlockText(content),
+			subtitle: `${modules?.length || 0} modules`,
+		}),
 	},
 })
