@@ -1,6 +1,8 @@
 # Next.js + Sanity.io Starter Template
 
-> [Published on Sanity.io](https://www.sanity.io/templates/next-sanity-template)
+🖋️ [Published on Sanity.io](https://www.sanity.io/templates/next-sanity-template)
+
+⏱️ For the latest updates, view the [changelog](/CHANGELOG.md).
 
 ## Key Features
 
@@ -14,7 +16,7 @@
 
 ### 1. Create a new repo with the template
 
-> 👉 [nuotsu/next-sanity-template](https://github.com/new?template_name=next-sanity-template&template_owner=nuotsu)
+👉 Check out on GitHub [nuotsu/next-sanity-template](https://github.com/new?template_name=next-sanity-template&template_owner=nuotsu)
 
 ### 2. Grab a new Sanity project ID
 
