@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.5.1
+
+- Add `ink` and `canvas` colors to the [Tailwind config](next/tailwind.config.ts)
+- Add [Pretitle](next/src/ui/Pretitle.tsx) component
+
 ## 1.5.0
 
 - Add `navigation` document

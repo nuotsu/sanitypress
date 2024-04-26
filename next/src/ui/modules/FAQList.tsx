@@ -23,7 +23,7 @@ export default function FAQList({
 			<div className="mx-auto max-w-screen-md">
 				{items?.map(({ question, answer }, key) => (
 					<details
-						className="accordion border-b"
+						className="accordion border-ink/10 border-b"
 						itemScope
 						itemProp="mainEntity"
 						itemType="https://schema.org/Question"

@@ -5,7 +5,10 @@ const config: Config = {
 	content: ['./src/{app,ui}/**/*.{ts,tsx}'],
 	theme: {
 		extend: {
-			colors: {},
+			colors: {
+				ink: '#000',
+				canvas: '#fff',
+			},
 			fontFamily: {},
 		},
 	},

@@ -1,6 +1,6 @@
 import { PortableText } from 'next-sanity'
-import Img from '../Img'
-import CTAList from '../CTAList'
+import Img from '@/ui/Img'
+import CTAList from '@/ui/CTAList'
 
 export default function CreativeModule({
 	content,

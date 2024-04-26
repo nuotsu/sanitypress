@@ -52,6 +52,12 @@
 		@apply _h;
 	}
 
+	.technical {
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-weight: bold;
+	}
+
 	/* ctas, links */
 
 	.action {
@@ -60,7 +66,7 @@
 		justify-content: center;
 		text-align: center;
 		padding: 0.5em 1em;
-		background: #000;
+		background: theme('colors.ink');
 		color: #fff;
 	}
 
@@ -75,7 +81,7 @@
 	/* layout */
 
 	.section {
-		@apply mx-auto max-w-screen-xl px-4 py-12;
+		@apply mx-auto max-w-screen-xl px-4 py-8 md:py-12;
 	}
 }
 
