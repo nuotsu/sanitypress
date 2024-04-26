@@ -25,22 +25,15 @@ export default function CreativeModule({
 					{modules?.map((module, key) => {
 						switch (module._type) {
 							case 'image':
-								return (
-									<Img
-										image={module as Sanity.Image}
-										className="mx-auto"
-										key={key}
-									/>
-								)
+								return <Img image={module} className="mx-auto" key={key} />
+
 							case 'richtext':
 								return (
 									<div className="richtext" key={key}>
-										<PortableText value={module.content} />
-										<CTAList ctas={module.ctas} />
+										<PortableText value={(module as Richtext).content} />
+										<CTAList ctas={(module as Richtext).ctas} />
 									</div>
 								)
-							default:
-								return <div data-type={module._type} key={module._key} />
 						}
 					})}
 				</div>
@@ -49,9 +42,12 @@ export default function CreativeModule({
 	)
 }
 
-type Image = Sanity.Image
+type Image = Sanity.Image & {
+	_type: 'image'
+}
 
 type Richtext = Partial<{
+	_type: 'richtext'
 	content: any
 	ctas: Sanity.CTA[]
 }>
