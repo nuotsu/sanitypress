@@ -1,4 +1,4 @@
-import { getHeader, getSite } from '@/lib/sanity'
+import { getSite } from '@/lib/sanity'
 import Wrapper from './Wrapper'
 import Link from 'next/link'
 import Menu from './Menu'
@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 import css from './Header.module.css'
 
 export default async function Header() {
-	const [{ title }, { ctas }] = await Promise.all([getSite(), getHeader()])
+	const { title, ctas } = await getSite()
 
 	return (
 		<Wrapper className="sticky top-0 z-10 border-b bg-white/90 backdrop-blur">

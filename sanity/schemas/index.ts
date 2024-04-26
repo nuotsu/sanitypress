@@ -1,7 +1,6 @@
 // documents
 import site from './documents/site'
-import header from './documents/header'
-import footer from './documents/footer'
+import navigation from './documents/navigation'
 import page from './documents/page'
 import redirect from './documents/redirect'
 import blogPost from './documents/blog.post'
@@ -24,8 +23,7 @@ import heroPostcard from './modules/hero.postcard'
 export const schemaTypes = [
 	// documents
 	site,
-	header,
-	footer,
+	navigation,
 	page,
 	redirect,
 	blogPost,

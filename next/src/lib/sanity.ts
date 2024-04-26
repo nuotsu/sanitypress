@@ -40,53 +40,36 @@ export function fetchSanity<T = any>(
 
 /* queries */
 
+const navigationQuery = groq`
+	title,
+	items[]{
+		...,
+		internal->{ _type, title, metadata },
+		links[]{
+			...,
+			internal->{ _type, title, metadata }
+		}
+	}
+`
+
 export async function getSite() {
 	return await fetchSanity<Sanity.Site>(
 		groq`
 			*[_type == 'site'][0]{
 				...,
+				ctas[]{
+					...,
+					link{
+						...,
+						internal->{ _type, title, metadata }
+					}
+				},
+				headerMenu->{ ${navigationQuery} },
+				footerMenu->{ ${navigationQuery} },
+				social->{ ${navigationQuery} },
 				'ogimage': ogimage.asset->url
 			}
 		`,
 		{ tags: ['site'] },
-	)
-}
-
-export async function getHeader() {
-	return await fetchSanity<Sanity.Header>(
-		groq`*[_type == 'header'][0]{
-			menu[]{
-				...,
-				internal->{ _type, title, metadata },
-				links[]{
-					...,
-					internal->{ _type, title, metadata }
-				}
-			},
-			ctas[]{
-				...,
-				link{
-					...,
-					internal->{ _type, title, metadata }
-				}
-			}
-		}`,
-		{ tags: ['header'] },
-	)
-}
-
-export async function getFooter() {
-	return await fetchSanity<Sanity.Footer>(
-		groq`*[_type == 'header'][0]{
-			menu[]{
-				...,
-				internal->{ _type, title, metadata },
-				links[]{
-					...,
-					internal->{ _type, title, metadata }
-				}
-			}
-		}`,
-		{ tags: ['footer'] },
 	)
 }

@@ -10,11 +10,11 @@ import {
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas'
 
-const singletonTypes = ['site', 'header', 'footer']
+const singletonTypes = ['site']
 
 export default defineConfig({
 	name: 'default',
-	title: 'Next.js + Sanity.io Starter',
+	title: 'Next.js + Sanity.io Starter Template',
 
 	projectId: 'elyfelq1',
 	dataset: 'production',
