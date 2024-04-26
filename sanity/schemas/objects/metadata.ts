@@ -26,6 +26,7 @@ export default defineType({
 		}),
 		defineField({
 			name: 'image',
+			description: 'Used for social sharing previews',
 			type: 'image',
 		}),
 		defineField({

@@ -2,9 +2,11 @@
 
 ## 1.5.0
 
-- Add `header` and `footer` documents
+- Add `navigation` document
+- Add [Social](next/src/ui/Social.tsx) component
 - Add `generateStaticParams` for dynamic routes
 - Move global Sanity GROQ queries to [next/src/lib/sanity.ts](next/src/lib/sanity.ts)
+- Add options to [`processUrl`](next/src/lib/processUrl.ts)
 
 ## 1.4.2
 
