@@ -52,6 +52,22 @@ const navigationQuery = groq`
 	}
 `
 
+export const creativeModuleQuery = groq`
+	modules[]{
+		...,
+		subModules[]{
+			...,
+			ctas[]{
+				...,
+				link{
+					...,
+					internal->{ title, metadata }
+				}
+			}
+		}
+	}
+`
+
 export async function getSite() {
 	return await fetchSanity<Sanity.Site>(
 		groq`

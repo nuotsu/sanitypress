@@ -9,11 +9,17 @@
 		display: none !important;
 	}
 
+	::selection {
+		@apply bg-ink text-canvas;
+	}
+
 	:target {
 		scroll-margin-top: var(--header-height);
 	}
 
 	html {
+		accent-color: theme('colors.ink');
+		caret-color: theme('colors.ink');
 		scroll-behavior: smooth;
 	}
 

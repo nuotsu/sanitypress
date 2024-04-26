@@ -4,6 +4,7 @@
 
 - Add `ink` and `canvas` colors to the [Tailwind config](next/tailwind.config.ts)
 - Add [Pretitle](next/src/ui/Pretitle.tsx) component
+- Add sub modules to the [Creative](/sanity/schemas/modules/creative-module.ts) module
 
 ## 1.5.0
 

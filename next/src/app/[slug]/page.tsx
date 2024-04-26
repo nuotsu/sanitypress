@@ -1,4 +1,4 @@
-import { fetchSanity, groq } from '@/lib/sanity'
+import { creativeModuleQuery, fetchSanity, groq } from '@/lib/sanity'
 import { notFound } from 'next/navigation'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
@@ -44,16 +44,7 @@ async function getPage(params: Props['params']) {
 						internal->{ title, metadata }
 					}
 				},
-				modules[]{
-					...,
-					ctas[]{
-						...,
-						link{
-							...,
-							internal->{ title, metadata }
-						}
-					}
-				}
+				${creativeModuleQuery}
 			},
 			metadata {
 				...,
