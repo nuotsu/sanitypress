@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
+import processUrl from '@/lib/processUrl'
 
 export default function CTA({
 	link,
@@ -16,12 +17,14 @@ export default function CTA({
 
 	switch (link.type) {
 		case 'internal':
-			const slug = link.internal?.metadata?.slug?.current
-			const directory = link.internal?._type === 'blog.post' ? 'blog/' : null
-			const path = slug === 'index' ? '' : slug
-			const href = ['/', directory, path, link.params].filter(Boolean).join('')
+			if (!link.internal) return null
 
-			return <Link href={href} {...props} />
+			return (
+				<Link
+					href={processUrl(link.internal, { base: false, params: link.params })}
+					{...props}
+				/>
+			)
 
 		case 'external':
 			return <a href={link.external} {...props} />
