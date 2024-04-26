@@ -1,10 +1,12 @@
 # Next.js + Sanity.io Starter Template
 
-🖋️ [Published on Sanity.io](https://www.sanity.io/templates/next-sanity-template)
+> An opinionated and minimally styled starter template with Tailwind CSS and pre-built schema for rapid website development.
+
+🖋️ Published on [Sanity.io](https://www.sanity.io/templates/next-sanity-template)
+
+🚀 Checkout the [demo site](https://next-sanity-template-demo.vercel.app).
 
 ⏱️ For the latest updates, view the [changelog](/CHANGELOG.md).
-
-🚀 Checkout [the demo site](https://next-sanity-template-demo.vercel.app).
 
 ## Key Features
 
