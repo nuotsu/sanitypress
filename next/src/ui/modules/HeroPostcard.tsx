@@ -1,13 +1,16 @@
 import { PortableText } from '@portabletext/react'
+import Pretitle from '@/ui/Pretitle'
 import CTAList from '@/ui/CTAList'
 import Img from '@/ui/Img'
 import { cn } from '@/lib/utils'
 
 export default function HeroPostcard({
+	pretitle,
 	content,
 	ctas,
 	image,
 }: Partial<{
+	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
 	image: Sanity.Image &
@@ -23,6 +26,7 @@ export default function HeroPostcard({
 			</figure>
 
 			<div className="richtext">
+				<Pretitle children={pretitle} />
 				<PortableText value={content} />
 				<CTAList ctas={ctas} />
 			</div>
