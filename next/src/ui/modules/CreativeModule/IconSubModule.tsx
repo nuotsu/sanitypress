@@ -8,11 +8,12 @@ export type IconSubModuleType = Sanity.Module<'icon'> &
 
 export default function IconSubModule({
 	module,
+	...props
 }: {
 	module: IconSubModuleType
-}) {
+} & React.HTMLAttributes<HTMLDivElement>) {
 	return (
-		<figure>
+		<figure {...props}>
 			<Img
 				className="w-auto"
 				image={module.icon}

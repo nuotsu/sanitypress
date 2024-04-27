@@ -5,14 +5,16 @@ import ImageSubModule, { type ImageSubModuleType } from './ImageSubModule'
 import RichtextSubModule, {
 	type RichtextSubModuleType,
 } from './RichtextSubModule'
+import { cn } from '@/lib/utils'
 
 export default function CreativeModule({
 	content,
-	columns,
 	modules,
+	columns,
+	textAlign,
+	alignItems,
 }: Partial<{
 	content: any
-	columns: number
 	modules: {
 		subModules: Array<
 			| CTAsSubModuleType
@@ -20,7 +22,11 @@ export default function CreativeModule({
 			| ImageSubModuleType
 			| RichtextSubModuleType
 		>
+		colSpan?: number
 	}[]
+	columns: number
+	textAlign: React.CSSProperties['textAlign']
+	alignItems: React.CSSProperties['alignItems']
 }>) {
 	return (
 		<section>
@@ -31,17 +37,50 @@ export default function CreativeModule({
 
 				<div
 					className="grid items-center gap-x-12 gap-y-8 md:grid-cols-[repeat(var(--col,1),minmax(0px,1fr))]"
-					style={{ '--col': columns || modules?.length } as React.CSSProperties}
+					style={
+						{
+							'--col': columns || modules?.length,
+							textAlign,
+							alignItems,
+						} as React.CSSProperties
+					}
 				>
-					{modules?.map((module, i) => (
-						<article className="space-y-4" key={i}>
-							{module.subModules.map((subModule, ii) => {
+					{modules?.map(({ subModules, colSpan = 1 }, i) => (
+						<article
+							className={cn(
+								'space-y-4',
+								colSpan > 1 && 'md:col-[var(--col-span,1)]',
+							)}
+							style={
+								{
+									'--col-span': colSpan > 1 && `span ${colSpan}`,
+								} as React.CSSProperties
+							}
+							key={i}
+						>
+							{subModules.map((subModule, ii) => {
 								switch (subModule._type) {
 									case 'ctas':
-										return <CTAsSubModule module={subModule} key={ii} />
+										return (
+											<CTAsSubModule
+												module={subModule}
+												className={cn(
+													textAlign === 'center' && 'justify-center',
+												)}
+												key={ii}
+											/>
+										)
 
 									case 'icon':
-										return <IconSubModule module={subModule} key={ii} />
+										return (
+											<IconSubModule
+												module={subModule}
+												className={cn(
+													textAlign === 'center' && '[&_img]:mx-auto',
+												)}
+												key={ii}
+											/>
+										)
 
 									case 'image':
 										return <ImageSubModule module={subModule} key={ii} />

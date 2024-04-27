@@ -7,8 +7,9 @@ export type CTAsSubModuleType = Sanity.Module<'ctas'> &
 
 export default function CTAsSubModule({
 	module,
+	...props
 }: {
 	module: CTAsSubModuleType
-}) {
-	return <CTAList ctas={module.ctas} />
+} & React.ComponentProps<typeof CTAList>) {
+	return <CTAList ctas={module.ctas} {...props} />
 }
