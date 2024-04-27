@@ -12,7 +12,9 @@ export default function RootLayout({
 		<html lang="en">
 			<body className="bg-canvas text-ink">
 				<Header />
-				{children}
+				<main id="main-content" tabIndex={-1}>
+					{children}
+				</main>
 				<Footer />
 			</body>
 			{/* <GoogleTagManager gtmId='' /> */}

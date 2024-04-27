@@ -1,9 +1,9 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
-import creativeCtas from './creative/creativeCtas'
-import creativeIcon from './creative/creativeIcon'
-import creativeImage from './creative/creativeImage'
-import creativeRichtext from './creative/creativeRichtext'
-import { getBlockText } from '../../src/utils'
+import creativeCtas from './creativeCtas'
+import creativeIcon from './creativeIcon'
+import creativeImage from './creativeImage'
+import creativeRichtext from './creativeRichtext'
+import { getBlockText } from '../../../src/utils'
 
 import { VscExtensions } from 'react-icons/vsc'
 

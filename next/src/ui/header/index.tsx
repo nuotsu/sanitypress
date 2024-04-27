@@ -1,4 +1,5 @@
 import { getSite } from '@/lib/sanity'
+import SkipToContent from '../SkipToContent'
 import Wrapper from './Wrapper'
 import Link from 'next/link'
 import Menu from './Menu'
@@ -11,7 +12,9 @@ export default async function Header() {
 	const { title, ctas } = await getSite()
 
 	return (
-		<Wrapper className="bg-canvas/90 border-ink/10 sticky top-0 z-10 border-b backdrop-blur">
+		<Wrapper className="sticky top-0 z-10 border-b border-ink/10 bg-canvas/90 backdrop-blur">
+			<SkipToContent />
+
 			<div
 				className={cn(
 					css.header,

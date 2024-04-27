@@ -14,7 +14,7 @@ import metadata from './objects/metadata'
 
 // modules
 import blogRollup from './modules/blog-rollup'
-import creativeModule from './modules/creative-module'
+import creativeModule from './modules/creative'
 import customHtml from './modules/custom-html'
 import faqList from './modules/faq-list'
 import heroCentered from './modules/hero.centered'

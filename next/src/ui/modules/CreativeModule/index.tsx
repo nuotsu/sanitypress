@@ -15,15 +15,15 @@ export default function CreativeModule({
 	alignItems,
 }: Partial<{
 	content: any
-	modules: {
+	modules: Partial<{
 		subModules: Array<
 			| CTAsSubModuleType
 			| IconSubModuleType
 			| ImageSubModuleType
 			| RichtextSubModuleType
 		>
-		colSpan?: number
-	}[]
+		colSpan: number
+	}>[]
 	columns: number
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
@@ -58,7 +58,7 @@ export default function CreativeModule({
 							}
 							key={i}
 						>
-							{subModules.map((subModule, ii) => {
+							{subModules?.map((subModule, ii) => {
 								switch (subModule._type) {
 									case 'ctas':
 										return (
