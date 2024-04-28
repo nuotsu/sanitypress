@@ -19,6 +19,7 @@ export default defineType({
 			of: [
 				defineArrayMember({
 					type: 'object',
+					icon: VscQuestion,
 					fields: [
 						defineField({
 							name: 'question',
