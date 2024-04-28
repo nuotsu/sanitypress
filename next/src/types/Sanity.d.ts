@@ -1,4 +1,5 @@
-import type { SanityDocument, SanityImageAssetDocument } from 'next-sanity'
+import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
+import type { SanityDocument } from 'next-sanity'
 
 declare global {
 	namespace Sanity {
@@ -6,26 +7,35 @@ declare global {
 
 		type Site = SanityDocument & {
 			title: string
-			menu?: (Link | LinkList)[]
+			ctas?: CTA[]
+			headerMenu?: Navigation
+			footerMenu?: Navigation
+			social?: Navigation
 			ogimage?: string
 		}
 
-		type Page = SanityDocument & {
-			readonly _type: 'page'
+		type Navigation = SanityDocument & {
 			title: string
-			modules?: Module[]
+			items?: (Link | LinkList)[]
+		}
+
+		type PageBase = SanityDocument & {
+			title: string
 			metadata: Metadata
 		}
 
-		type BlogPost = SanityDocument & {
+		type Page = PageBase & {
+			readonly _type: 'page'
+			modules?: Module[]
+		}
+
+		type BlogPost = PageBase & {
 			readonly _type: 'blog.post'
-			title: string
 			body: any
 			readTime: number
 			headings?: { style: string; text: string }[]
 			categories: BlogCategory[]
 			publishDate: string
-			metadata: Metadata
 		}
 
 		type BlogCategory = SanityDocument & {
@@ -39,7 +49,7 @@ declare global {
 			style?: string
 		}
 
-		type Image = SanityImageAssetDocument & {
+		type Image = SanityImageObject & {
 			alt?: string
 		}
 
@@ -62,13 +72,15 @@ declare global {
 			title: string
 			description: string
 			slug: { current: string }
+			image?: Image
+			ogimage?: string
 			noIndex: boolean
 		}
 
-		type Module = {
-			_type: string
+		type Module<T = any> = {
+			_type: T
 			_key: string
-		}
+		} & T
 	}
 }
 

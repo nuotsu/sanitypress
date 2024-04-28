@@ -58,6 +58,7 @@ export default defineType({
 		select: {
 			title: 'title',
 			subtitle: 'publishDate',
+			media: 'metadata.image',
 		},
 	},
 	orderings: [

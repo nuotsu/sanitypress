@@ -11,5 +11,8 @@ export function nl2br(str?: string) {
 }
 
 export function slug(str: string) {
-	return str.toLowerCase().replace(/[\s]+/g, '-')
+	return str
+		.toLowerCase()
+		.replace(/[\s\W]+/g, '-')
+		.replace(/-$/, '')
 }

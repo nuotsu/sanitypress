@@ -7,14 +7,16 @@ import Image from './Image'
 
 export default function Post({ post }: { post: Sanity.BlogPost }) {
 	return (
-		<article className="section richtext">
-			<header>
+		<article>
+			<header className="section space-y-4 text-center">
 				<h1 className="h1">{post.title}</h1>
-				<Date value={post.publishDate} />
-				<ReadTime value={post.readTime} />
+				<div className="flex flex-wrap items-center justify-center gap-x-4">
+					<Date value={post.publishDate} />
+					<ReadTime value={post.readTime} />
+				</div>
 			</header>
 
-			<div className="space-y-4">
+			<div className="section max-w-screen-md space-y-8">
 				<aside>
 					<TableOfContents headings={post.headings} />
 				</aside>

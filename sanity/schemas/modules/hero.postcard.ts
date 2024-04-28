@@ -8,6 +8,10 @@ export default defineType({
 	type: 'object',
 	fields: [
 		defineField({
+			name: 'pretitle',
+			type: 'string',
+		}),
+		defineField({
 			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],
@@ -30,6 +34,14 @@ export default defineType({
 					name: 'onRight',
 					type: 'boolean',
 					initialValue: false,
+				}),
+				defineField({
+					name: 'loading',
+					type: 'string',
+					options: {
+						list: ['lazy', 'eager'],
+					},
+					initialValue: 'lazy',
 				}),
 			],
 		}),

@@ -1,10 +1,24 @@
 import { BASE_URL } from './env'
 
-export default function ({ _type, metadata }: Sanity.Page | Sanity.BlogPost) {
-	const directory = _type === 'blog.post' ? 'blog' : null
+type Options = {
+	base?: boolean
+	params?: string
+}
 
-	const slug = metadata.slug.current
+export default function (
+	page: Sanity.PageBase,
+	{ base = true, params }: Options = {},
+) {
+	// prettier-ignore
+	const directory =
+		page._type === 'blog.post' ? 'blog' :
+		null
+
+	const slug = page.metadata?.slug.current
 	const path = slug === 'index' ? null : slug
 
-	return [BASE_URL, directory, path].filter(Boolean).join('/')
+	return (
+		(base ? BASE_URL : '/') +
+		[directory, path, params].filter(Boolean).join('/')
+	)
 }

@@ -1,20 +1,26 @@
 # Next.js + Sanity.io Starter Template
 
-> [Published on Sanity.io](https://www.sanity.io/templates/next-sanity-template)
+> An opinionated and minimally styled starter template with Tailwind CSS and pre-built schema for rapid website development.
+
+🖋️ Published on [Sanity.io](https://www.sanity.io/templates/next-sanity-template)
+
+🚀 Checkout the [demo site](https://next-sanity-template-demo.vercel.app).
+
+⏱️ For the latest updates, view the [changelog](/CHANGELOG.md).
 
 ## Key Features
 
-- Modern Frontend Development with Next.js (App Router, RSC, Typescript) and Tailwind CSS
-- Pre-configured Sanity schema for rapid [webpage](sanity/schemas/documents/page.ts) and [blog](sanity/schemas/documents/blog.post.ts) development
-- Pre-built common website components ([next/src/ui](next/src/ui))
-- Auto-generated [sitemap.xml](next/src/app/sitemap.ts) and [blog rss.xml](next/src/app/blog/rss.xml/route.ts)
-- [Live previews](#live-previews) when set up with a git branch
+- Modern Frontend Development with Next.js (App Router, RSC, Typescript) and Tailwind CSS.
+- Pre-configured Sanity schema for rapid [webpage](sanity/schemas/documents/page.ts) and [blog](sanity/schemas/documents/blog.post.ts) development.
+- Pre-built common website components ([next/src/ui](next/src/ui)).
+- Auto-generated [sitemap.xml](next/src/app/sitemap.ts) and [blog rss.xml](next/src/app/blog/rss.xml/route.ts).
+- [Live previews](#live-previews) when set up with a git branch.
 
 ## Getting Started
 
 ### 1. Create a new repo with the template
 
-> 👉 [nuotsu/next-sanity-template](https://github.com/new?template_name=next-sanity-template&template_owner=nuotsu)
+👉 Check out on GitHub [nuotsu/next-sanity-template](https://github.com/new?template_name=next-sanity-template&template_owner=nuotsu)
 
 ### 2. Grab a new Sanity project ID
 
@@ -43,7 +49,7 @@ npm -y create sanity@latest
 
 - Blog posts ([sanity/schemas/documents/blog.post.ts](sanity/schemas/documents/blog.post.ts))
 
-### 5. Setup the Sanity Dashboard with your deployment service
+### 5. Set up the Sanity Dashboard with your deployment service
 
 For [Vercel](https://www.sanity.io/plugins/vercel-dashboard-widget):
 
@@ -75,10 +81,10 @@ ENABLE_PREVIEW = true
 
 ```ts
 // e.g. Vercel
-const previewUrl = 'https://your-site-git-staging.vercel.app'
+const previewUrl = "https://your-site-git-staging.vercel.app";
 
 // e.g. Netlify
-const previewUrl = 'https://staging--your-site.netlify.app'
+const previewUrl = "https://staging--your-site.netlify.app";
 ```
 
 ## Helpful Resources

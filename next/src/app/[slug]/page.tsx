@@ -1,4 +1,4 @@
-import { fetchSanity, groq } from '@/lib/sanity'
+import { creativeModuleQuery, fetchSanity, groq } from '@/lib/sanity'
 import { notFound } from 'next/navigation'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
@@ -13,6 +13,18 @@ export async function generateMetadata({ params }: Props) {
 	const page = await getPage(params)
 	if (!page) notFound()
 	return processMetadata(page)
+}
+
+export async function generateStaticParams() {
+	const slugs = await fetchSanity<string[]>(
+		groq`*[
+			_type == 'page' &&
+			defined(metadata.slug.current) &&
+			!(metadata.slug.current in ['index', '404'])
+		].metadata.slug.current`,
+	)
+
+	return slugs.map((slug) => ({ slug }))
 }
 
 async function getPage(params: Props['params']) {
@@ -31,7 +43,12 @@ async function getPage(params: Props['params']) {
 						...,
 						internal->{ title, metadata }
 					}
-				}
+				},
+				${creativeModuleQuery}
+			},
+			metadata {
+				...,
+				'ogimage': image.asset->url
 			}
 		}`,
 		{

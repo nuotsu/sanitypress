@@ -14,6 +14,8 @@ export default defineType({
 			type: 'array',
 			of: [
 				{ type: 'blog-rollup' },
+				{ type: 'creative-module' },
+				{ type: 'custom-html' },
 				{ type: 'faq-list' },
 				{ type: 'hero.centered' },
 				{ type: 'hero.postcard' },
@@ -28,6 +30,7 @@ export default defineType({
 		select: {
 			title: 'title',
 			slug: 'metadata.slug.current',
+			media: 'metadata.image',
 		},
 		prepare: ({ title, slug }) => ({
 			title,

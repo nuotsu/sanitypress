@@ -12,36 +12,39 @@ export default function FAQList({
 }>) {
 	return (
 		<section
-			className="section"
+			className="section space-y-4"
 			itemScope
 			itemType="https://schema.org/FAQPage"
 		>
-			<header className="richtext">
+			<header className="richtext text-center">
 				<PortableText value={content} />
 			</header>
 
-			{items?.map(({ question, answer }, key) => (
-				<details
-					className="border-b"
-					itemScope
-					itemProp="mainEntity"
-					itemType="https://schema.org/Question"
-					key={key}
-				>
-					<summary itemProp="name">{question}</summary>
-
-					<div
-						className="anim-fade-to-b"
+			<div className="mx-auto max-w-screen-md">
+				{items?.map(({ question, answer }, key) => (
+					<details
+						className="accordion border-ink/10 border-b"
 						itemScope
-						itemProp="acceptedAnswer"
-						itemType="https://schema.org/Answer"
+						itemProp="mainEntity"
+						itemType="https://schema.org/Question"
+						key={key}
 					>
-						<div className="richtext" itemProp="text">
-							<PortableText value={answer} />
+						<summary className="py-4 font-bold" itemProp="name">
+							{question}
+						</summary>
+						<div
+							className="anim-fade-to-b pb-4"
+							itemScope
+							itemProp="acceptedAnswer"
+							itemType="https://schema.org/Answer"
+						>
+							<div className="richtext" itemProp="text">
+								<PortableText value={answer} />
+							</div>
 						</div>
-					</div>
-				</details>
-			))}
+					</details>
+				))}
+			</div>
 		</section>
 	)
 }

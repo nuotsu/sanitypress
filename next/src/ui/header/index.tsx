@@ -1,30 +1,41 @@
-import getSite from '@/lib/getSite'
+import { getSite } from '@/lib/sanity'
+import SkipToContent from '../SkipToContent'
 import Wrapper from './Wrapper'
 import Link from 'next/link'
-import CTA from '@/ui/CTA'
-import LinkList from './LinkList'
+import Menu from './Menu'
+import CTAList from '@/ui/CTAList'
+import Toggle from './Toggle'
+import { cn } from '@/lib/utils'
+import css from './Header.module.css'
 
 export default async function Header() {
-	const { title, menu } = await getSite()
+	const { title, ctas } = await getSite()
 
 	return (
-		<Wrapper className="sticky top-0 z-10">
-			<Link href="/">{title}</Link>
+		<Wrapper className="sticky top-0 z-10 border-b border-ink/10 bg-canvas/90 backdrop-blur">
+			<SkipToContent />
 
-			<nav className="flex gap-4">
-				{menu?.map((item, key) => {
-					switch (item._type) {
-						case 'link':
-							return <CTA className="link" link={item} key={key} />
+			<div
+				className={cn(
+					css.header,
+					'mx-auto grid max-w-screen-xl items-center gap-x-4 p-4',
+				)}
+			>
+				<div className="[grid-area:logo]">
+					<Link className="font-bold" href="/">
+						{title}
+					</Link>
+				</div>
 
-						case 'link.list':
-							return <LinkList {...item} key={key} />
+				<Menu />
 
-						default:
-							return null
-					}
-				})}
-			</nav>
+				<CTAList
+					className="[grid-area:ctas] max-md:*:w-full max-md:header-closed:hidden md:ml-auto"
+					ctas={ctas}
+				/>
+
+				<Toggle />
+			</div>
 		</Wrapper>
 	)
 }

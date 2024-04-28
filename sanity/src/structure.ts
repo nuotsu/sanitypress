@@ -8,8 +8,11 @@ const structure: StructureResolver = (S, context) =>
 		.title('Content')
 		.items([
 			singleton(S, 'Site', 'site').icon(VscServerProcess),
-			S.documentTypeListItem('page').title('Pages'),
+			S.documentTypeListItem('navigation'),
 			S.documentTypeListItem('redirect').title('Redirects'),
+			S.divider(),
+
+			S.documentTypeListItem('page').title('Pages'),
 			S.divider(),
 
 			S.documentTypeListItem('blog.post').title('Blog posts'),
