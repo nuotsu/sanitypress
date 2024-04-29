@@ -31,7 +31,7 @@ export default function CreativeModule({
 	return (
 		<section>
 			<div className="section space-y-8">
-				<header className="richtext text-center">
+				<header className="richtext mx-auto max-w-xl text-balance text-center">
 					<PortableText value={content} />
 				</header>
 

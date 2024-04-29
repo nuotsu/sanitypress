@@ -4,6 +4,7 @@
 
 - Add [Richtext](/sanity/schemas/modules/richtext-module.ts) module
 - Add [Docs](https://next-sanity-template-demo.vercel.app/docs) page
+- Add Categories component for blog categories
 - Move `BASE_URL` into [`/next/src/lib/processUrl.ts`](/next/src/lib/processUrl.ts)
 
 ## 1.5.1

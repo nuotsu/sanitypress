@@ -76,6 +76,10 @@ npm i sanity-plugin-dashboard-widget-vercel
 npm i sanity-plugin-dashboard-widget-netlify
 ```
 
+### 6. Customize the frontend
+
+Feel free to adjust styles and add more modules.
+
 ## Live Previews
 
 1. Create a new git branch (call it anything—e.g. `staging` or `preview`) and set an environment variable specific to that branch in your deployment service (Vercel or Netlify):
