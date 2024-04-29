@@ -1,6 +1,5 @@
 import { getSite } from './sanity'
-import { BASE_URL } from './env'
-import processUrl from './processUrl'
+import processUrl, { BASE_URL } from './processUrl'
 import type { Metadata } from 'next'
 
 export default async function processMetadata(

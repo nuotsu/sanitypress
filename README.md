@@ -31,12 +31,25 @@ npm -y create sanity@latest
 > [!NOTE]
 > The CLI will ask to create new directory with the Sanity files, but you can remove once the project ID is retrieved.
 
-### 3. Replace `projectId` with the new project ID
+### 3. Update environment variables
+
+#### `.env.local`
+
+```sh
+NEXT_PUBLIC_SANITY_PROJECT_ID = ...
+NEXT_PUBLIC_SANITY_TOKEN = ... # Retrieve from https://sanity.io/manage
+```
+
+#### Sanity Project ID (`projectId`)
 
 - [sanity/sanity.cli.ts](sanity/sanity.cli.ts#L5)
 - [sanity/sanity.config.ts](sanity/sanity.config.ts#L19)
 - [next/.env.local](next/.env.local) (duplicate [.env.example](next/.env.example))
   - [retrieve a token from Sanity](https://sanity.io/manage) to allow for live previews
+
+#### Production URL / Domain (`BASE_URL`)
+
+- [next/src/lib/processUrl.ts](next/src/lib/processUrl.ts#L1)
 
 ### 4. Populate the Sanity project
 
@@ -51,13 +64,13 @@ npm -y create sanity@latest
 
 ### 5. Set up the Sanity Dashboard with your deployment service
 
-For [Vercel](https://www.sanity.io/plugins/vercel-dashboard-widget):
+#### For [Vercel](https://www.sanity.io/plugins/vercel-dashboard-widget):
 
 ```sh
 npm i sanity-plugin-dashboard-widget-vercel
 ```
 
-For [Netlify](https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-netlify):
+#### For [Netlify](https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-netlify):
 
 ```sh
 npm i sanity-plugin-dashboard-widget-netlify
@@ -71,10 +84,10 @@ npm i sanity-plugin-dashboard-widget-netlify
 git checkout -b staging
 ```
 
+Set in `next/src/lib/env.ts`:
+
 ```sh
 ENABLE_PREVIEW = true
-
-# also set in next/src/lib/env.ts
 ```
 
 2. In [sanity/src/defaultDocumentNode.ts](sanity/src/defaultDocumentNode.ts#L5), set `previewUrl` to your branch deployment URL

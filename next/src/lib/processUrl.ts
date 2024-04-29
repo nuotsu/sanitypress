@@ -1,4 +1,4 @@
-import { BASE_URL } from './env'
+export const BASE_URL = 'https://next-sanity-template-demo.vercel.app'
 
 type Options = {
 	base?: boolean

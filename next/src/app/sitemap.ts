@@ -1,5 +1,5 @@
 import { fetchSanity, groq } from '@/lib/sanity'
-import { BASE_URL } from '@/lib/env'
+import { BASE_URL } from '@/lib/processUrl'
 import type { MetadataRoute } from 'next'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
