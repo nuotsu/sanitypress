@@ -6,10 +6,10 @@ export default function TableOfContents({
 	headings: Sanity.BlogPost['headings']
 }) {
 	return (
-		<details open>
+		<details className="accordion" open>
 			<summary>Table of Contents</summary>
 
-			<ol className="anim-fade-to-b">
+			<ol className="anim-fade-to-b mt-2">
 				{headings?.map(({ text, style }, key) => (
 					<li className={cn(style == 'h3' && 'ml-4')} key={key}>
 						<a className="link" href={`#${slug(text)}`}>

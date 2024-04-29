@@ -11,10 +11,12 @@ export default function AnchoredHeading({
 	const id = slug(value.children[0].text)
 
 	return (
-		<Tag id={id}>
+		<Tag id={id} className="group">
 			{children}
 
-			<a href={`#${id}`}>🔗</a>
+			<a className="ml-2 md:hidden md:group-hover:inline-block" href={`#${id}`}>
+				🔗
+			</a>
 		</Tag>
 	)
 }

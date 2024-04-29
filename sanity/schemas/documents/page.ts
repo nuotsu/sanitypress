@@ -19,6 +19,7 @@ export default defineType({
 				{ type: 'faq-list' },
 				{ type: 'hero.centered' },
 				{ type: 'hero.postcard' },
+				{ type: 'richtext-module' },
 			],
 		}),
 		defineField({

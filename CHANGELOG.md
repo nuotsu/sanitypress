@@ -1,19 +1,24 @@
 # Changelog
 
+# 1.6.0
+
+- Add [Richtext](/sanity/schemas/modules/richtext-module.ts) module
+- Add [Docs](https://next-sanity-template-demo.vercel.app/docs) page
+
 ## 1.5.1
 
-- Add `ink` and `canvas` colors to the [Tailwind config](next/tailwind.config.ts)
-- Add [Pretitle](next/src/ui/Pretitle.tsx) component
+- Add `ink` and `canvas` colors to the [Tailwind config](/next/tailwind.config.ts)
+- Add [Pretitle](/next/src/ui/Pretitle.tsx) component
 - Add styling/layout options and sub modules to the [Creative](/sanity/schemas/modules/creative-module.ts) module
 - Add skip-to-content link
 
 ## 1.5.0
 
 - Add `navigation` document
-- Add [Social](next/src/ui/Social.tsx) component
+- Add [Social](/next/src/ui/Social.tsx) component
 - Add `generateStaticParams` for dynamic routes
-- Move global Sanity GROQ queries to [next/src/lib/sanity.ts](next/src/lib/sanity.ts)
-- Add options to [`processUrl`](next/src/lib/processUrl.ts)
+- Move global Sanity GROQ queries to [next/src/lib/sanity.ts](/next/src/lib/sanity.ts)
+- Add options to [`processUrl`](/next/src/lib/processUrl.ts)
 
 ## 1.4.2
 

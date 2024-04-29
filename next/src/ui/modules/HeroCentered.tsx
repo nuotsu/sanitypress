@@ -9,7 +9,7 @@ export default function HeroCentered({
 	ctas: Sanity.CTA[]
 }>) {
 	return (
-		<section className="section richtext text-center">
+		<section className="section richtext text-center [&_:is(h1,h2)]:text-balance">
 			<PortableText value={content} />
 			<CTAList ctas={ctas} className="justify-center" />
 		</section>

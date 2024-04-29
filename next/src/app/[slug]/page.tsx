@@ -44,6 +44,12 @@ async function getPage(params: Props['params']) {
 						internal->{ title, metadata }
 					}
 				},
+				'headings': select(
+					tableOfContents => content[style in ['h2', 'h3']]{
+						style,
+						'text': pt::text(@)
+					}
+				),
 				${creativeModuleQuery}
 			},
 			metadata {

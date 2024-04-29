@@ -19,6 +19,7 @@ import customHtml from './modules/custom-html'
 import faqList from './modules/faq-list'
 import heroCentered from './modules/hero.centered'
 import heroPostcard from './modules/hero.postcard'
+import richtextModule from './modules/richtext-module'
 
 export const schemaTypes = [
 	// documents
@@ -42,4 +43,5 @@ export const schemaTypes = [
 	faqList,
 	heroCentered,
 	heroPostcard,
+	richtextModule,
 ]
