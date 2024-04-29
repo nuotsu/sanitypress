@@ -1,4 +1,5 @@
 import Date from '@/ui/Date'
+import Categories from './Categories'
 import ReadTime from './ReadTime'
 import { PortableText } from '@portabletext/react'
 import TableOfContents from '@/ui/modules/RichtextModule/TableOfContents'
@@ -12,6 +13,7 @@ export default function Post({ post }: { post: Sanity.BlogPost }) {
 				<h1 className="h1 text-balance">{post.title}</h1>
 				<div className="flex flex-wrap items-center justify-center gap-x-4">
 					<Date value={post.publishDate} />
+					<Categories categories={post.categories} />
 					<ReadTime value={post.readTime} />
 				</div>
 			</header>
