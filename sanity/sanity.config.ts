@@ -1,4 +1,5 @@
 import { defineConfig } from 'sanity'
+import { projectId } from './src/env'
 import { structureTool } from 'sanity/structure'
 import defaultDocumentNode from './src/defaultDocumentNode'
 import structure from './src/structure'
@@ -16,7 +17,7 @@ export default defineConfig({
 	name: 'default',
 	title: 'Next.js + Sanity.io Starter Template',
 
-	projectId: 'elyfelq1',
+	projectId,
 	dataset: 'production',
 
 	plugins: [

@@ -41,9 +41,17 @@ npm -y create sanity@latest
 
 #### `.env.local`
 
+- For the Next.js frontend:
+
 ```sh
 NEXT_PUBLIC_SANITY_PROJECT_ID = ...
 NEXT_PUBLIC_SANITY_TOKEN = ... # Retrieve from https://sanity.io/manage
+```
+
+- For the Sanity Studio:
+
+```sh
+SANITY_STUDIO_PROJECT_ID = ...
 ```
 
 #### Sanity Project ID (`projectId`)
