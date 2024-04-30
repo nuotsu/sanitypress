@@ -4,23 +4,29 @@
 
 🖋️ Published on [Sanity.io](https://www.sanity.io/templates/next-sanity-template)
 
-🚀 Checkout the [demo site](https://next-sanity-template-demo.vercel.app).
+🚀 Checkout the [demo site](https://next-sanity-template-demo.vercel.app) and the [docs](https://next-sanity-template-demo.vercel.app) page.
 
 ⏱️ For the latest updates, view the [changelog](/CHANGELOG.md).
+
+## Table of Contents
+
+- [Key Features](#key-features)
+- [Getting Started](#getting-started)
+- [Live Previews](#live-previews)
+- [Helpful Resources](#helpful-resources)
+- [External References](#external-references)
 
 ## Key Features
 
 - Modern Frontend Development with Next.js (App Router, RSC, Typescript) and Tailwind CSS.
-- Pre-configured Sanity schema for rapid [webpage](sanity/schemas/documents/page.ts) and [blog](sanity/schemas/documents/blog.post.ts) development.
+- [Pre-configured Sanity schema](https://next-sanity-template-demo.vercel.app/docs) for rapid website and blog development.
 - Pre-built common website components ([next/src/ui](next/src/ui)).
 - Auto-generated [sitemap.xml](next/src/app/sitemap.ts) and [blog rss.xml](next/src/app/blog/rss.xml/route.ts).
 - [Live previews](#live-previews) when set up with a git branch.
 
 ## Getting Started
 
-### 1. Create a new repo with the template
-
-👉 Check out on GitHub [nuotsu/next-sanity-template](https://github.com/new?template_name=next-sanity-template&template_owner=nuotsu)
+### 1. Create a new repo with the [GitHub template](https://github.com/new?template_name=next-sanity-template&template_owner=nuotsu)
 
 ### 2. Grab a new Sanity project ID
 
