@@ -1,5 +1,9 @@
 # Changelog
 
+# 1.6.1
+
+- Add Custom HTML submodule to the Creative module
+
 # 1.6.0
 
 - Add [Richtext](/sanity/schemas/modules/richtext-module.ts) module

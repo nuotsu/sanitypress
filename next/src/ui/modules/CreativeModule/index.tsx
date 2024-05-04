@@ -1,5 +1,8 @@
 import { PortableText } from 'next-sanity'
 import CTAsSubModule, { type CTAsSubModuleType } from './CTAsSubModule'
+import CustomHTMLSubmodule, {
+	type CustomHTMLSubmoduleType,
+} from './CustomHTMLSubmodule'
 import IconSubModule, { type IconSubModuleType } from './IconSubModule'
 import ImageSubModule, { type ImageSubModuleType } from './ImageSubModule'
 import RichtextSubModule, {
@@ -18,6 +21,7 @@ export default function CreativeModule({
 	modules: Partial<{
 		subModules: Array<
 			| CTAsSubModuleType
+			| CustomHTMLSubmoduleType
 			| IconSubModuleType
 			| ImageSubModuleType
 			| RichtextSubModuleType
@@ -70,6 +74,9 @@ export default function CreativeModule({
 												key={ii}
 											/>
 										)
+
+									case 'custom-html':
+										return <CustomHTMLSubmodule module={subModule} />
 
 									case 'icon':
 										return (
