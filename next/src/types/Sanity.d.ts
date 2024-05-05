@@ -42,6 +42,15 @@ declare global {
 			title: string
 		}
 
+		type Testimonial = SanityDocument & {
+			content: any
+			author?: {
+				name: string
+				title?: string
+				image?: Image
+			}
+		}
+
 		// objects
 
 		type CTA = {

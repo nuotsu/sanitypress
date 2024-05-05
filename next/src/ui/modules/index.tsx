@@ -5,6 +5,7 @@ import FAQList from './FAQList'
 import HeroCentered from './HeroCentered'
 import HeroPostcard from './HeroPostcard'
 import RichtextModule from './RichtextModule'
+import TestimonialList from './TestimonialList'
 
 export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 	return (
@@ -25,6 +26,8 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 						return <HeroPostcard {...module} key={module._key} />
 					case 'richtext-module':
 						return <RichtextModule {...module} key={module._key} />
+					case 'testimonial-list':
+						return <TestimonialList {...module} key={module._key} />
 
 					default:
 						return <div data-type={module._type} key={module._key} />

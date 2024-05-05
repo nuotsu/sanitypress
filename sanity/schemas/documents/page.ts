@@ -20,6 +20,7 @@ export default defineType({
 				{ type: 'hero.centered' },
 				{ type: 'hero.postcard' },
 				{ type: 'richtext-module' },
+				{ type: 'testimonial-list' },
 			],
 		}),
 		defineField({
