@@ -6,7 +6,5 @@ export default function Pretitle({
 }: React.HTMLProps<HTMLParagraphElement>) {
 	if (!children) return null
 
-	return (
-		<p className={cn('technical text-ink/50 text-sm', className)}>{children}</p>
-	)
+	return <p className={cn('technical text-sm', className)}>{children}</p>
 }

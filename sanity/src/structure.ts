@@ -1,7 +1,8 @@
 import { singleton } from './utils'
 import type { StructureResolver } from 'sanity/structure'
 
-import { VscServerProcess, VscSymbolMisc } from 'react-icons/vsc'
+import { VscServerProcess } from 'react-icons/vsc'
+import { BsDatabaseAdd } from 'react-icons/bs'
 
 const structure: StructureResolver = (S, context) =>
 	S.list()
@@ -21,11 +22,11 @@ const structure: StructureResolver = (S, context) =>
 
 			S.listItem()
 				.title('Content dump')
-				.icon(VscSymbolMisc)
+				.icon(BsDatabaseAdd)
 				.child(
 					S.documentList()
 						.title('Content dump')
-						.filter(`_type in ['testimonial']`),
+						.filter(`_type in ['testimonial', 'logo']`),
 				),
 		])
 

@@ -5,6 +5,7 @@ import page from './documents/page'
 import redirect from './documents/redirect'
 import blogPost from './documents/blog.post'
 import blogCategory from './documents/blog.category'
+import logo from './documents/logo'
 import testimonial from './documents/testimonial'
 
 // objects
@@ -20,6 +21,7 @@ import customHtml from './modules/custom-html'
 import faqList from './modules/faq-list'
 import heroCentered from './modules/hero.centered'
 import heroPostcard from './modules/hero.postcard'
+import logoList from './modules/logo-list'
 import richtextModule from './modules/richtext-module'
 import testimonialList from './modules/testimonial-list'
 
@@ -31,6 +33,7 @@ export const schemaTypes = [
 	redirect,
 	blogPost,
 	blogCategory,
+	logo,
 	testimonial,
 
 	// objects
@@ -46,6 +49,7 @@ export const schemaTypes = [
 	faqList,
 	heroCentered,
 	heroPostcard,
+	logoList,
 	richtextModule,
 	testimonialList,
 ]

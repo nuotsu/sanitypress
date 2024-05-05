@@ -42,6 +42,15 @@ declare global {
 			title: string
 		}
 
+		type Logo = SanityDocument & {
+			name: string
+			image: {
+				default?: Image
+				light?: Image
+				dark?: Image
+			}
+		}
+
 		type Testimonial = SanityDocument & {
 			content: any
 			author?: {

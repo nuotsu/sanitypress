@@ -25,6 +25,7 @@ async function getPage() {
 						internal->{ title, metadata }
 					}
 				},
+				logos[]->,
 				testimonials[]->,
 				${creativeModuleQuery}
 			},

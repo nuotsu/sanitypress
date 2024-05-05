@@ -26,7 +26,7 @@ export default function HeroPostcard({
 			</figure>
 
 			<div className="richtext [&_:is(h1,h2)]:text-balance">
-				<Pretitle children={pretitle} />
+				<Pretitle className="text-ink/50">{pretitle}</Pretitle>
 				<PortableText value={content} />
 				<CTAList ctas={ctas} />
 			</div>
