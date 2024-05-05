@@ -21,6 +21,7 @@ export default defineType({
 				{ type: 'hero.postcard' },
 				{ type: 'logo-list' },
 				{ type: 'richtext-module' },
+				{ type: 'stat-list' },
 				{ type: 'testimonial-list' },
 			],
 		}),

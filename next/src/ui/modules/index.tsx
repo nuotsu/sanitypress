@@ -6,6 +6,7 @@ import HeroCentered from './HeroCentered'
 import HeroPostcard from './HeroPostcard'
 import LogoList from './LogoList'
 import RichtextModule from './RichtextModule'
+import StatList from './StatList'
 import TestimonialList from './TestimonialList'
 
 export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
@@ -29,6 +30,8 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 						return <LogoList {...module} key={module._key} />
 					case 'richtext-module':
 						return <RichtextModule {...module} key={module._key} />
+					case 'stat-list':
+						return <StatList {...module} key={module._key} />
 					case 'testimonial-list':
 						return <TestimonialList {...module} key={module._key} />
 

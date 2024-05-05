@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { GrBlockQuote } from 'react-icons/gr'
-import { getBlockText } from '../../src/utils'
+import { count, getBlockText } from '../../src/utils'
 
 export default defineType({
 	name: 'testimonial-list',
@@ -25,8 +25,7 @@ export default defineType({
 			testimonials: 'testimonials',
 		},
 		prepare: ({ content, testimonials }) => ({
-			title:
-				getBlockText(content) || `${testimonials?.length || 0} testimonials`,
+			title: getBlockText(content) || count(testimonials, 'testimonial'),
 			subtitle: 'Testimonial list',
 		}),
 	},

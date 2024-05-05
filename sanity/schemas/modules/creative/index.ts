@@ -3,7 +3,7 @@ import creativeCtas from './creativeCtas'
 import creativeIcon from './creativeIcon'
 import creativeImage from './creativeImage'
 import creativeRichtext from './creativeRichtext'
-import { getBlockText } from '../../../src/utils'
+import { count, getBlockText } from '../../../src/utils'
 
 import { VscExtensions } from 'react-icons/vsc'
 
@@ -107,7 +107,7 @@ export default defineType({
 		},
 		prepare: ({ content, modules }) => ({
 			title: getBlockText(content),
-			subtitle: `${modules?.length || 0} modules`,
+			subtitle: count(modules, 'module'),
 		}),
 	},
 })

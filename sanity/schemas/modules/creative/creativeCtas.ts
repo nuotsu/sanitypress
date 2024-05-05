@@ -1,5 +1,6 @@
 import { defineArrayMember, defineField } from 'sanity'
 import { VscInspect } from 'react-icons/vsc'
+import { count } from '../../../src/utils'
 
 export default defineArrayMember({
 	name: 'ctas',
@@ -19,7 +20,7 @@ export default defineArrayMember({
 			ctas: 'ctas',
 		},
 		prepare: ({ ctas }) => ({
-			title: `${ctas?.length || 0} CTAs`,
+			title: count(ctas, 'CTA'),
 		}),
 	},
 })

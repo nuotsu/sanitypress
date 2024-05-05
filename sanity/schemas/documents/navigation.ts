@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { VscSymbolClass } from 'react-icons/vsc'
+import { count } from '../../src/utils'
 
 export default defineType({
 	name: 'navigation',
@@ -25,7 +26,7 @@ export default defineType({
 		},
 		prepare: ({ title, items }) => ({
 			title,
-			subtitle: `${items?.length || 0} items`,
+			subtitle: count(items, 'item'),
 		}),
 	},
 })

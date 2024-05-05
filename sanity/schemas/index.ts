@@ -23,6 +23,7 @@ import heroCentered from './modules/hero.centered'
 import heroPostcard from './modules/hero.postcard'
 import logoList from './modules/logo-list'
 import richtextModule from './modules/richtext-module'
+import statList from './modules/stat-list'
 import testimonialList from './modules/testimonial-list'
 
 export const schemaTypes = [
@@ -51,5 +52,6 @@ export const schemaTypes = [
 	heroPostcard,
 	logoList,
 	richtextModule,
+	statList,
 	testimonialList,
 ]
