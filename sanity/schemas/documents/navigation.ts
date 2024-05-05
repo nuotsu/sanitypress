@@ -26,7 +26,7 @@ export default defineType({
 		},
 		prepare: ({ title, items }) => ({
 			title,
-			subtitle: count(items, 'item'),
+			subtitle: count(items),
 		}),
 	},
 })

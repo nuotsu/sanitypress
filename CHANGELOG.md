@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.1
+
+- Add [Logo](/sanity/schemas/documents/logo.ts) document type and [Logo list](/sanity/schemas/modules/logo-list.ts) module
+- Add [Stat list](/sanity/schemas/modules/stat-list.ts) module
+- Add [`count()`](/sanity/src/utils.ts) utility function for Sanity schema preview
+
 ## 1.7.0
 
 - Add Custom HTML submodule to the Creative module
