@@ -4,6 +4,9 @@ export default defineType({
 	name: 'site',
 	title: 'Site',
 	type: 'document',
+	fieldsets: [
+		{ name: 'navigation', title: 'Navigation', options: { columns: 2 } },
+	],
 	fields: [
 		defineField({
 			name: 'title',
@@ -19,16 +22,19 @@ export default defineType({
 			name: 'headerMenu',
 			type: 'reference',
 			to: [{ type: 'navigation' }],
+			fieldset: 'navigation',
 		}),
 		defineField({
 			name: 'footerMenu',
 			type: 'reference',
 			to: [{ type: 'navigation' }],
+			fieldset: 'navigation',
 		}),
 		defineField({
 			name: 'social',
 			type: 'reference',
 			to: [{ type: 'navigation' }],
+			fieldset: 'navigation',
 		}),
 		defineField({
 			name: 'ogimage',

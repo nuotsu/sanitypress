@@ -1,10 +1,12 @@
 # Changelog
 
-# 1.6.1
+## 1.7.0
 
 - Add Custom HTML submodule to the Creative module
+- Add [Testimonial](/sanity/schemas/documents/testimonial.ts) document and [Testimonial list](/sanity/schemas/modules/testimonial-list.ts) module
+- Add "Content Dump" structure item for a collection of reference-able documents
 
-# 1.6.0
+## 1.6.0
 
 - Add [Richtext](/sanity/schemas/modules/richtext-module.ts) module
 - Add [Docs](https://next-sanity-template-demo.vercel.app/docs) page
