@@ -21,12 +21,16 @@ export default async function Social({
 	if (!social?.items?.length) return null
 
 	return (
-		<nav className={cn('flex flex-wrap items-center gap-x-4', className)}>
+		<nav className={cn('group flex flex-wrap items-center', className)}>
 			{social.items.map((item, key) => {
 				switch (item._type) {
 					case 'link':
 						return (
-							<CTA link={item} key={key}>
+							<CTA
+								className="px-2 hover:!opacity-100 group-has-[a:hover]:opacity-50"
+								link={item}
+								key={key}
+							>
 								<Icon url={item.external} aria-label={item.label} />
 							</CTA>
 						)

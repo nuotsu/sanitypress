@@ -112,6 +112,14 @@
 		}
 	}
 
+	.no-scrollbar {
+		-webkit-overflow-scrolling: touch;
+		overflow: auto;
+	}
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
 	.accordion {
 		& summary {
 			display: grid;
