@@ -19,7 +19,7 @@ import blogRollup from './modules/blog-rollup'
 import creativeModule from './modules/creative'
 import customHtml from './modules/custom-html'
 import faqList from './modules/faq-list'
-import heroCentered from './modules/hero.centered'
+import hero from './modules/hero'
 import heroPostcard from './modules/hero.postcard'
 import logoList from './modules/logo-list'
 import richtextModule from './modules/richtext-module'
@@ -48,7 +48,7 @@ export const schemaTypes = [
 	creativeModule,
 	customHtml,
 	faqList,
-	heroCentered,
+	hero,
 	heroPostcard,
 	logoList,
 	richtextModule,

@@ -13,11 +13,7 @@ export default function HeroPostcard({
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
-	image: Sanity.Image &
-		Partial<{
-			onRight: boolean
-			loading: 'lazy' | 'eager'
-		}>
+	image: Sanity.Image & { onRight?: boolean }
 }>) {
 	return (
 		<section className="section grid items-center gap-8 md:grid-cols-2 md:gap-x-12">

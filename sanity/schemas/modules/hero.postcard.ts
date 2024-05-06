@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { TfiLayoutMediaLeft } from 'react-icons/tfi'
+import { getBlockText } from '../../src/utils'
 
 export default defineType({
 	name: 'hero.postcard',
@@ -39,6 +40,7 @@ export default defineType({
 					name: 'loading',
 					type: 'string',
 					options: {
+						layout: 'radio',
 						list: ['lazy', 'eager'],
 					},
 					initialValue: 'lazy',
@@ -52,7 +54,7 @@ export default defineType({
 			media: 'image.asset',
 		},
 		prepare: ({ content, media }) => ({
-			title: content[0]?.children[0]?.text,
+			title: getBlockText(content),
 			subtitle: 'Hero (postcard)',
 			media,
 		}),
