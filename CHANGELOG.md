@@ -6,7 +6,7 @@
 - Add [Stat list](/sanity/schemas/modules/stat-list.ts) module
 - Add [`count()`](/sanity/src/utils.ts) utility function for Sanity schema preview
 - Add [`<Source>`](/next/src/ui/Img.tsx) component for responsive images
-- Rename `Hero (Centered)` to `Hero` and add more options
+- Rename "Hero (Centered)" to "Hero" and add more options
 - Rename "Content Dump" to "Miscellaneous"
 
 ## 1.7.0
