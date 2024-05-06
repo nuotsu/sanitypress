@@ -67,9 +67,11 @@ declare global {
 			style?: string
 		}
 
-		type Image = SanityImageObject & {
-			alt?: string
-		}
+		type Image = SanityImageObject &
+			Partial<{
+				alt: string
+				loading: 'lazy' | 'eager'
+			}>
 
 		type Link = {
 			readonly _type: 'link'
