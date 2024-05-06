@@ -1,4 +1,4 @@
-import { singleton } from './utils'
+import { group, singleton } from './utils'
 import type { StructureResolver } from 'sanity/structure'
 
 import { VscServerProcess } from 'react-icons/vsc'
@@ -20,14 +20,10 @@ const structure: StructureResolver = (S, context) =>
 			S.documentTypeListItem('blog.category').title('Blog categories'),
 			S.divider(),
 
-			S.listItem()
-				.title('Content dump')
-				.icon(BsDatabaseAdd)
-				.child(
-					S.documentList()
-						.title('Content dump')
-						.filter(`_type in ['testimonial', 'logo']`),
-				),
+			group(S, 'Miscellaneous', [
+				S.documentTypeListItem('logo').title('Logos'),
+				S.documentTypeListItem('testimonial').title('Testimonials'),
+			]).icon(BsDatabaseAdd),
 		])
 
 export default structure
