@@ -10,6 +10,9 @@ const config: Config = {
 				canvas: '#fff',
 			},
 			fontFamily: {},
+			maxHeight: {
+				fold: 'calc(100svh - var(--header-height))',
+			},
 		},
 	},
 	plugins: [

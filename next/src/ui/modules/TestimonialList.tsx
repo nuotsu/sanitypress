@@ -17,9 +17,9 @@ export default function TestimonialList({
 				</header>
 			)}
 
-			<div className="carousel full-bleed items-center gap-4 before:m-auto after:m-auto sm:[--size:65vw]">
+			<div className="carousel full-bleed items-center gap-4 before:m-auto after:m-auto">
 				{testimonials?.map(({ author, ...testimonial }, key) => (
-					<article key={key}>
+					<article className="!basis-[min(450px,80vw)]" key={key}>
 						<blockquote className="space-y-6">
 							<div className="richtext">
 								<PortableText value={testimonial.content} />

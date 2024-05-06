@@ -13,8 +13,11 @@ export default defineType({
 	icon: VscExtensions,
 	type: 'object',
 	groups: [
-		{ title: 'Content', name: 'content', default: true },
-		{ title: 'Options', name: 'options' },
+		{ name: 'content', title: 'Content', default: true },
+		{ name: 'options', title: 'Options' },
+	],
+	fieldsets: [
+		{ name: 'alignment', title: 'Alignment', options: { columns: 2 } },
 	],
 	fields: [
 		defineField({
@@ -84,6 +87,7 @@ export default defineType({
 			},
 			initialValue: 'left',
 			group: 'options',
+			fieldset: 'alignment',
 		}),
 		defineField({
 			name: 'alignItems',
@@ -98,6 +102,7 @@ export default defineType({
 			},
 			initialValue: 'center',
 			group: 'options',
+			fieldset: 'alignment',
 		}),
 	],
 	preview: {

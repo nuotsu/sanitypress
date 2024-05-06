@@ -6,16 +6,16 @@ export default async function Footer() {
 	const { title } = await getSite()
 
 	return (
-		<footer className="section bg-ink py-8 text-center text-canvas">
-			<div className="mx-auto max-w-screen-xl space-y-8">
-				<Navigation />
-
-				<Social className="justify-center" />
-
-				<p className="text-sm">
-					&copy; {new Date().getFullYear()} {title}
-				</p>
+		<section className="bg-ink text-center text-canvas">
+			<div className="section py-8">
+				<div className="mx-auto max-w-screen-xl space-y-8">
+					<Navigation />
+					<Social className="justify-center" />
+					<p className="text-sm">
+						&copy; {new Date().getFullYear()} {title}
+					</p>
+				</div>
 			</div>
-		</footer>
+		</section>
 	)
 }

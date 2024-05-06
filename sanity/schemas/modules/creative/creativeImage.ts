@@ -5,6 +5,9 @@ export default defineArrayMember({
 	name: 'image',
 	icon: IoIosImage,
 	type: 'image',
+	options: {
+		hotspot: true,
+	},
 	fields: [
 		defineField({
 			name: 'alt',

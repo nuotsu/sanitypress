@@ -35,6 +35,7 @@ export default async function Rollup({
 					layout === 'grid'
 						? 'grid md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]'
 						: 'carousel max-md:full-bleed [--size:320px] max-md:px-4',
+					posts.length > 3 && 'full-bleed px-4 md:px-8',
 				)}
 			>
 				{posts?.map((post, key) => (
