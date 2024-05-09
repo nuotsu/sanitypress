@@ -5,24 +5,24 @@ declare global {
 	namespace Sanity {
 		// documents
 
-		type Site = SanityDocument & {
+		type Site = SanityDocument<{
 			title: string
 			ctas?: CTA[]
 			headerMenu?: Navigation
 			footerMenu?: Navigation
 			social?: Navigation
 			ogimage?: string
-		}
+		}>
 
-		type Navigation = SanityDocument & {
+		type Navigation = SanityDocument<{
 			title: string
 			items?: (Link | LinkList)[]
-		}
+		}>
 
-		type PageBase = SanityDocument & {
+		type PageBase = SanityDocument<{
 			title: string
 			metadata: Metadata
-		}
+		}>
 
 		type Page = PageBase & {
 			readonly _type: 'page'
@@ -38,27 +38,27 @@ declare global {
 			publishDate: string
 		}
 
-		type BlogCategory = SanityDocument & {
+		type BlogCategory = SanityDocument<{
 			title: string
-		}
+		}>
 
-		type Logo = SanityDocument & {
+		type Logo = SanityDocument<{
 			name: string
 			image: {
 				default?: Image
 				light?: Image
 				dark?: Image
 			}
-		}
+		}>
 
-		type Testimonial = SanityDocument & {
+		type Testimonial = SanityDocument<{
 			content: any
 			author?: {
 				name: string
 				title?: string
 				image?: Image
 			}
-		}
+		}>
 
 		// objects
 

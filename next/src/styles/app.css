@@ -65,14 +65,17 @@
 
 	/* ctas, links */
 
-	.action {
+	._btn {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		text-align: center;
 		padding: 0.5em 1em;
+	}
+
+	.action {
+		text-align: center;
 		color: #fff;
-		@apply rounded bg-gradient-to-br from-ink/70 to-ink shadow;
+		@apply _btn rounded bg-gradient-to-br from-ink/70 to-ink shadow;
 	}
 
 	.link {
@@ -173,6 +176,10 @@
 
 		& a:not([class*='action']) {
 			@apply link;
+		}
+
+		& code {
+			@apply rounded bg-ink/10 px-1;
 		}
 	}
 

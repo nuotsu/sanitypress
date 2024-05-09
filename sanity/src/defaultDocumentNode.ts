@@ -1,9 +1,8 @@
-import { isDev, type SanityDocument } from 'sanity'
 import { Iframe } from 'sanity-plugin-iframe-pane'
+import { BASE_URL } from './env'
 import { VscEdit, VscEye } from 'react-icons/vsc'
+import type { SanityDocument } from 'sanity'
 import type { DefaultDocumentNodeResolver } from 'sanity/structure'
-
-const previewUrl = 'https://next-sanity-template-demo.vercel.app'
 
 const defaultDocumentNode: DefaultDocumentNodeResolver = (
 	S,
@@ -26,13 +25,11 @@ const defaultDocumentNode: DefaultDocumentNodeResolver = (
 								metadata?: { slug?: { current: string } }
 							},
 						) => {
-							const base = isDev ? 'http://localhost:3000' : previewUrl
-
 							const slug = doc?.metadata?.slug?.current
 							const path = slug === 'index' ? '' : slug
 							const directory = schemaType === 'blog.post' ? 'blog' : null
 
-							return [base, directory, path].filter(Boolean).join('/')
+							return [BASE_URL, directory, path].filter(Boolean).join('/')
 						},
 						reload: {
 							button: true,
