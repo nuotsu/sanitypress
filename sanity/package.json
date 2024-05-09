@@ -16,15 +16,15 @@
 	],
 	"dependencies": {
 		"@sanity/dashboard": "^3.1.6",
-		"@sanity/vision": "^3.40.0",
+		"@sanity/vision": "^3.41.1",
 		"dotenv": "^16.4.5",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
-		"react-icons": "^5.2.0",
+		"react-icons": "^5.2.1",
 		"react-is": "^18.3.1",
-		"sanity": "^3.40.0",
+		"sanity": "^3.41.1",
 		"sanity-plugin-iframe-pane": "^3.1.6",
-		"styled-components": "^6.1.9"
+		"styled-components": "^6.1.11"
 	},
 	"devDependencies": {
 		"@sanity/eslint-config-studio": "^4.0.0",
