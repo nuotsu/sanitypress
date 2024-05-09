@@ -21,7 +21,7 @@ An opinionated and minimally styled starter template with Tailwind CSS and pre-b
 - [Pre-configured Sanity schema](/sanity/schemas/index.ts) for rapid content structuring.
 - [Pre-built frontend components](/next/src/ui/) for rapid website development.
 - [Visual editing](#visual-editing) in Presentation mode inside the Sanity Studio.
-- Auto-generated [sitemap.xml](next/src/app/sitemap.ts) and [blog rss.xml](next/src/app/blog/rss.xml/route.ts).
+- Auto-generated [sitemap.xml](/next/src/app/sitemap.ts) and [blog rss.xml](/next/src/app/blog/rss.xml/route.ts).
 
 ## Getting Started
 
@@ -90,8 +90,11 @@ Now you can use the preview deployment URL to share staged content (unpublished 
 ## Other Helpful Resources
 
 - Global TypeScripts types useable in the Next.js frontend
-  - [Sanity types](next/src/types/Sanity.d.ts)
-- [`<Img>` and `<Source> components`](next/src/ui/Img.tsx) to display Sanity images
+  - [Sanity types](/next/src/types/Sanity.d.ts)
+- [`<Img>` and `<Source> components`](/next/src/ui/Img.tsx) to display Sanity images
+- [Helper functions](/sanity/src/utils.ts) to:
+  - structure the Sanity Studio
+  - prepare the preview for PortableText content
 
 ## External References
 
