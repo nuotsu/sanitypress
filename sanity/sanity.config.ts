@@ -1,8 +1,9 @@
 import { defineConfig } from 'sanity'
-import { projectId } from './src/env'
+import { BASE_URL, projectId } from './src/env'
 import { structureTool } from 'sanity/structure'
 import defaultDocumentNode from './src/defaultDocumentNode'
 import structure from './src/structure'
+import { presentationTool } from 'sanity/presentation'
 import {
 	dashboardTool,
 	projectInfoWidget,
@@ -21,10 +22,31 @@ export default defineConfig({
 	dataset: 'production',
 
 	plugins: [
-		structureTool({ defaultDocumentNode, structure }),
-		dashboardTool({ widgets: [projectInfoWidget(), projectUsersWidget()] }),
-		visionTool(),
+		structureTool({
+			title: 'Content',
+			defaultDocumentNode,
+			structure,
+		}),
+		presentationTool({
+			title: 'Editor',
+			previewUrl: {
+				draftMode: {
+					enable: `${BASE_URL}/api/draft`,
+				},
+			},
+		}),
+		dashboardTool({
+			title: 'Deployment',
+			widgets: [projectInfoWidget(), projectUsersWidget()],
+		}),
+		visionTool({
+			title: 'GROQ',
+		}),
 	],
+
+	scheduledPublishing: {
+		enabled: false,
+	},
 
 	schema: {
 		types: schemaTypes,

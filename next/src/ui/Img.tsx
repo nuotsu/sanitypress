@@ -6,6 +6,7 @@ import {
 } from 'next-sanity-image'
 import { client } from '@/lib/sanity'
 import Image, { type ImageProps } from 'next/image'
+import { stegaClean } from '@sanity/client/stega'
 
 export default function Img({
 	image,
@@ -19,7 +20,7 @@ export default function Img({
 	alt?: string
 	options?: UseNextSanityImageOptions
 } & Omit<ImageProps, 'src' | 'alt'>) {
-	if (!image) return null
+	if (!image?.asset) return null
 
 	const imageProps = useNextSanityImage(
 		client,
@@ -31,7 +32,7 @@ export default function Img({
 		<Image
 			{...imageProps}
 			alt={image.alt || alt}
-			loading={image.loading || 'lazy'}
+			loading={stegaClean(image.loading) || 'lazy'}
 			unoptimized
 			{...props}
 		/>

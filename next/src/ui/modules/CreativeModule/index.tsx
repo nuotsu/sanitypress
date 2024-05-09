@@ -9,6 +9,7 @@ import RichtextSubModule, {
 	type RichtextSubModuleType,
 } from './RichtextSubModule'
 import { cn } from '@/lib/utils'
+import { stegaClean } from '@sanity/client/stega'
 
 export default function CreativeModule({
 	content,
@@ -69,7 +70,8 @@ export default function CreativeModule({
 											<CTAsSubModule
 												module={subModule}
 												className={cn(
-													textAlign === 'center' && 'justify-center',
+													stegaClean(textAlign) === 'center' &&
+														'justify-center',
 												)}
 												key={ii}
 											/>
@@ -83,7 +85,8 @@ export default function CreativeModule({
 											<IconSubModule
 												module={subModule}
 												className={cn(
-													textAlign === 'center' && '[&_img]:mx-auto',
+													stegaClean(textAlign) === 'center' &&
+														'[&_img]:mx-auto',
 												)}
 												key={ii}
 											/>

@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils'
+import { stegaClean } from '@sanity/client/stega'
 
 export default function Pretitle({
 	className,
@@ -6,5 +7,7 @@ export default function Pretitle({
 }: React.HTMLProps<HTMLParagraphElement>) {
 	if (!children) return null
 
-	return <p className={cn('technical text-sm', className)}>{children}</p>
+	return (
+		<p className={cn('technical text-sm', className)}>{stegaClean(children)}</p>
+	)
 }

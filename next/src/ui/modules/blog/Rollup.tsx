@@ -2,6 +2,7 @@ import { fetchSanity, groq } from '@/lib/sanity'
 import { PortableText } from '@portabletext/react'
 import PostPreview from './PostPreview'
 import { cn } from '@/lib/utils'
+import { stegaClean } from '@sanity/client/stega'
 
 export default async function Rollup({
 	content,
@@ -32,10 +33,9 @@ export default async function Rollup({
 			<ul
 				className={cn(
 					'gap-6',
-					layout === 'grid'
+					stegaClean(layout) === 'grid'
 						? 'grid md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]'
-						: 'carousel max-md:full-bleed [--size:320px] max-md:px-4',
-					posts.length > 3 && 'full-bleed px-4 md:px-8',
+						: 'carousel max-xl:full-bleed [--size:320px] max-xl:px-4',
 				)}
 			>
 				{posts?.map((post, key) => (

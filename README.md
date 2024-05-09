@@ -12,17 +12,18 @@
 
 - [Key Features](#key-features)
 - [Getting Started](#getting-started)
-- [Live Previews](#live-previews)
+- [Staging](#staging)
+- [Visual Editing](#visual-editing)
 - [Helpful Resources](#helpful-resources)
 - [External References](#external-references)
 
 ## Key Features
 
 - Modern Frontend Development with Next.js (App Router, RSC, Typescript) and Tailwind CSS.
-- [Pre-configured Sanity schema](https://next-sanity-template-demo.vercel.app/docs) for rapid website and blog development.
-- Pre-built common website components ([next/src/ui](next/src/ui)).
+- [Pre-configured Sanity schema](/sanity/schemas/index.ts) for rapid content structuring.
+- [Pre-built frontend components](/next/src/ui/) for rapid website development.
+- [Visual editing](#visual-editing) in Presentation mode inside the Sanity Studio.
 - Auto-generated [sitemap.xml](next/src/app/sitemap.ts) and [blog rss.xml](next/src/app/blog/rss.xml/route.ts).
-- [Live previews](#live-previews) when set up with a git branch.
 
 ## Getting Started
 
@@ -52,18 +53,19 @@ NEXT_PUBLIC_SANITY_TOKEN = ... # Retrieve from https://sanity.io/manage
 
 ```sh
 SANITY_STUDIO_PROJECT_ID = ...
+SANITY_STUDIO_PREVIEW_URL = ...
 ```
 
 #### Sanity Project ID (`projectId`)
 
-- [sanity/sanity.cli.ts](sanity/sanity.cli.ts#L5)
-- [sanity/sanity.config.ts](sanity/sanity.config.ts#L19)
+- [sanity/sanity.cli.ts](sanity/sanity.cli.ts)
+- [sanity/sanity.config.ts](sanity/sanity.config.ts)
 - [next/.env.local](next/.env.local) (duplicate [.env.example](next/.env.example))
   - [retrieve a token from Sanity](https://sanity.io/manage) to allow for live previews
 
 #### Production URL / Domain (`BASE_URL`)
 
-- [next/src/lib/processUrl.ts](next/src/lib/processUrl.ts#L1)
+- [next/src/lib/processUrl.ts](next/src/lib/processUrl.ts)
 
 ### 4. Populate the Sanity project
 
@@ -94,12 +96,12 @@ npm i sanity-plugin-dashboard-widget-netlify
 
 Feel free to adjust styles and add more modules.
 
-## Live Previews
+## Staging
 
-1. Create a new git branch (call it anything—e.g. `staging` or `preview`) and set an environment variable specific to that branch in your deployment service (Vercel or Netlify):
+Create a new git branch (call it anything—e.g. `staging` or `preview`) and set an environment variable specific to that branch in your deployment service (Vercel or Netlify):
 
 ```sh
-git checkout -b staging
+git checkout -b staging   # can be any name
 ```
 
 Set in `next/src/lib/env.ts`:
@@ -108,20 +110,12 @@ Set in `next/src/lib/env.ts`:
 ENABLE_PREVIEW = true
 ```
 
-2. In [sanity/src/defaultDocumentNode.ts](sanity/src/defaultDocumentNode.ts#L5), set `previewUrl` to your branch deployment URL
-
-```ts
-// e.g. Vercel
-const previewUrl = "https://your-site-git-staging.vercel.app";
-
-// e.g. Netlify
-const previewUrl = "https://staging--your-site.netlify.app";
-```
+## Visual Editing
 
 ## Helpful Resources
 
 - Global Types in Next.js
-  - [Sanity types](next/src/types/Sanity.d.ts#L4)
+  - [Sanity types](next/src/types/Sanity.d.ts)
 - [`<Img>`](next/src/ui/Img.tsx) component for Sanity CDN images
 
 ## External References

@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0
+
+- Enable Sanity Presentation and Visual Editing
+
 ## 1.8.0
 
 - Add [Logo](/sanity/schemas/documents/logo.ts) document type and [Logo list](/sanity/schemas/modules/logo-list.ts) module

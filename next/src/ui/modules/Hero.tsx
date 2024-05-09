@@ -3,6 +3,7 @@ import { PortableText } from '@portabletext/react'
 import CTAList from '@/ui/CTAList'
 import Pretitle from '@/ui/Pretitle'
 import { cn } from '@/lib/utils'
+import { stegaClean } from '@sanity/client/stega'
 
 export default function Hero({
 	pretitle,
@@ -33,7 +34,7 @@ export default function Hero({
 				<picture>
 					<Source image={bgImageMobile} />
 					<Img
-						className="max-h-fold size-full object-cover"
+						className="size-full max-h-fold object-cover"
 						image={bgImage}
 						draggable={false}
 					/>
@@ -46,17 +47,17 @@ export default function Hero({
 						className={cn(
 							'richtext relative max-w-xl [&_:is(h1,h2)]:text-balance',
 							{
-								'mb-8': alignItems === 'start',
-								'my-auto': alignItems === 'center',
-								'mt-auto': alignItems === 'end',
+								'mb-8': stegaClean(alignItems) === 'start',
+								'my-auto': stegaClean(alignItems) === 'center',
+								'mt-auto': stegaClean(alignItems) === 'end',
 							},
 							{
-								'mr-auto': textAlign === 'left',
-								'mx-auto': textAlign === 'center',
-								'ml-auto': textAlign === 'right',
+								'mr-auto': stegaClean(textAlign) === 'left',
+								'mx-auto': stegaClean(textAlign) === 'center',
+								'ml-auto': stegaClean(textAlign) === 'right',
 							},
 						)}
-						style={{ textAlign }}
+						style={{ textAlign: stegaClean(textAlign) }}
 					>
 						<Pretitle
 							className={cn(hasImage ? 'text-canvas/70' : 'text-ink/50')}
@@ -67,9 +68,9 @@ export default function Hero({
 						<CTAList
 							ctas={ctas}
 							className={cn({
-								'justify-start': textAlign === 'left',
-								'justify-center': textAlign === 'center',
-								'justify-end': textAlign === 'right',
+								'justify-start': stegaClean(textAlign) === 'left',
+								'justify-center': stegaClean(textAlign) === 'center',
+								'justify-end': stegaClean(textAlign) === 'right',
 							})}
 						/>
 					</div>
