@@ -1,6 +1,5 @@
 import RSS from 'rss'
-import { fetchSanity } from '@/lib/sanity'
-import groq from 'groq'
+import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import processUrl from '@/lib/processUrl'
 
 export async function GET() {

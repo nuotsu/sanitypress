@@ -1,4 +1,4 @@
-import { fetchSanity, groq } from '@/lib/sanity'
+import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import { PortableText } from '@portabletext/react'
 import PostPreview from './PostPreview'
 import { cn } from '@/lib/utils'

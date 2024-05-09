@@ -1,4 +1,4 @@
-import { getSite } from '@/lib/sanity'
+import { getSite } from '@/lib/sanity/queries'
 import SkipToContent from '../SkipToContent'
 import Wrapper from './Wrapper'
 import Link from 'next/link'
@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils'
 import css from './Header.module.css'
 
 export default async function Header() {
-	const { title, headerMenu, ctas } = await getSite()
+	const { title, ctas } = await getSite()
 
 	return (
 		<Wrapper className="sticky top-0 z-10 border-b border-ink/10 bg-canvas/90 backdrop-blur">

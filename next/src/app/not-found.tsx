@@ -1,4 +1,4 @@
-import { fetchSanity, groq } from '@/lib/sanity'
+import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import Modules from '@/ui/modules'
 
 export default async function NotFound() {

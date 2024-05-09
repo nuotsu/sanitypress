@@ -4,7 +4,7 @@ import {
 	useNextSanityImage,
 	type UseNextSanityImageOptions,
 } from 'next-sanity-image'
-import { client } from '@/lib/sanity'
+import client from '@/lib/sanity/client'
 import Image, { type ImageProps } from 'next/image'
 import { stegaClean } from '@sanity/client/stega'
 
@@ -52,7 +52,7 @@ export function Source({
 }) {
 	if (!image) return null
 
-	const { src, ...imageProps } = useNextSanityImage(
+	const { src, loader, ...imageProps } = useNextSanityImage(
 		client,
 		image,
 		imageWidth ? { imageBuilder: (b) => b.width(imageWidth) } : options,

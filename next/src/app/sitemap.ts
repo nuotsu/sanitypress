@@ -1,4 +1,4 @@
-import { fetchSanity, groq } from '@/lib/sanity'
+import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import { BASE_URL } from '@/lib/processUrl'
 import type { MetadataRoute } from 'next'
 
