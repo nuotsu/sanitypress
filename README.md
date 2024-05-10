@@ -74,6 +74,9 @@ Feel free to adjust styles, add more schema and modules, and more.
 
 ## Visual Editing
 
+> [!NOTE]
+> Currently in beta; Currently only works on the local development environment of the Sanity Studio.
+
 Content can be edited and previewed live from the Sanity Presentation mode by navigating to the **Editor** tab in the Studio.
 
 ## Staging
