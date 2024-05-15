@@ -7,6 +7,7 @@ declare global {
 
 		type Site = SanityDocument<{
 			title: string
+			logo: Logo
 			ctas?: CTA[]
 			headerMenu?: Navigation
 			footerMenu?: Navigation

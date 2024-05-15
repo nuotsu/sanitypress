@@ -4,43 +4,56 @@ export default defineType({
 	name: 'site',
 	title: 'Site',
 	type: 'document',
-	fieldsets: [
-		{ name: 'navigation', title: 'Navigation', options: { columns: 2 } },
+	groups: [
+		{ name: 'general', title: 'General', default: true },
+		{ name: 'navigation', title: 'Navigation' },
 	],
 	fields: [
 		defineField({
 			name: 'title',
 			type: 'string',
+			group: 'general',
+		}),
+		defineField({
+			name: 'logo',
+			type: 'logo',
+			options: {
+				collapsable: true,
+				collapsed: true,
+			},
+			group: 'general',
 		}),
 		defineField({
 			name: 'ctas',
-			title: 'Call-to-actions',
+			title: 'Main call-to-action(s)',
 			type: 'array',
 			of: [{ type: 'cta' }],
+			group: 'navigation',
 		}),
 		defineField({
 			name: 'headerMenu',
 			type: 'reference',
 			to: [{ type: 'navigation' }],
-			fieldset: 'navigation',
+			group: 'navigation',
 		}),
 		defineField({
 			name: 'footerMenu',
 			type: 'reference',
 			to: [{ type: 'navigation' }],
-			fieldset: 'navigation',
+			group: 'navigation',
 		}),
 		defineField({
 			name: 'social',
 			type: 'reference',
 			to: [{ type: 'navigation' }],
-			fieldset: 'navigation',
+			group: 'navigation',
 		}),
 		defineField({
 			name: 'ogimage',
 			title: 'Open Graph Image (global)',
 			description: 'Used for social sharing previews',
 			type: 'image',
+			group: 'general',
 		}),
 	],
 })
