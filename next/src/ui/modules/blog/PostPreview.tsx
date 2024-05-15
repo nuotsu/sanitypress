@@ -6,7 +6,7 @@ import processUrl from '@/lib/processUrl'
 export default function PostPreview({ post }: { post: Sanity.BlogPost }) {
 	return (
 		<Link className="group block" href={processUrl(post, { base: false })}>
-			<figure className="bg-ink/5 aspect-video">
+			<figure className="aspect-video bg-ink/5">
 				<Img
 					className="aspect-[inherit] w-full object-cover"
 					image={post.metadata.image}

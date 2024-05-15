@@ -33,6 +33,8 @@ export default function CreativeModule({
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }>) {
+	const imageWidth = Math.round((1000 / (modules?.length || 1)) * 1.5)
+
 	return (
 		<section>
 			<div className="section space-y-8">
@@ -93,7 +95,13 @@ export default function CreativeModule({
 										)
 
 									case 'image':
-										return <ImageSubModule module={subModule} key={ii} />
+										return (
+											<ImageSubModule
+												module={subModule}
+												imageWidth={imageWidth}
+												key={ii}
+											/>
+										)
 
 									case 'richtext':
 										return <RichtextSubModule module={subModule} key={ii} />
