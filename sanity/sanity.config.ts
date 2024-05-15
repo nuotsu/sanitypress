@@ -11,6 +11,7 @@ import {
 } from '@sanity/dashboard'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas'
+import { vercelWidget } from 'sanity-plugin-dashboard-widget-vercel'
 
 const singletonTypes = ['site']
 
@@ -37,7 +38,15 @@ export default defineConfig({
 		}),
 		dashboardTool({
 			title: 'Deployment',
-			widgets: [projectInfoWidget(), projectUsersWidget()],
+			widgets: [
+				projectInfoWidget(),
+				projectUsersWidget(),
+				vercelWidget({
+					layout: {
+						width: 'auto',
+					},
+				}),
+			],
 		}),
 		visionTool({
 			title: 'GROQ',
