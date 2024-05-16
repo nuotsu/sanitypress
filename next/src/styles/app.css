@@ -123,6 +123,17 @@
 		display: none;
 	}
 
+	.overflow-fade {
+		--offset: 2rem;
+		mask: linear-gradient(
+			to right,
+			transparent,
+			black var(--offset),
+			black calc(100% - var(--offset)),
+			transparent
+		);
+	}
+
 	.accordion {
 		& summary {
 			display: grid;

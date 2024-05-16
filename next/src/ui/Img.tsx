@@ -6,7 +6,7 @@ import client from '@/lib/sanity/client'
 import { urlFor } from '@/lib/sanity/urlFor'
 import { stegaClean } from '@sanity/client/stega'
 
-const SIZES = [120, 240, 480, 720, 960, 1200, 1440]
+const SIZES = [60, 120, 240, 360, 480, 640, 720, 960, 1200, 1440]
 
 export default function Img({
 	image,
@@ -32,7 +32,7 @@ export default function Img({
 	return (
 		<img
 			src={src}
-			srcSet={generateSrcSet(image, imageSizes)}
+			srcSet={generateSrcSet(image, { width: imageWidth, sizes: imageSizes })}
 			width={width}
 			height={height}
 			alt={image.alt || alt}
@@ -66,7 +66,9 @@ export function Source({
 
 	return (
 		<source
-			srcSet={generateSrcSet(image, imageSizes) || src}
+			srcSet={
+				generateSrcSet(image, { width: imageWidth, sizes: imageSizes }) || src
+			}
 			width={width}
 			height={height}
 			media={media}
@@ -74,9 +76,19 @@ export function Source({
 	)
 }
 
-function generateSrcSet(image: Sanity.Image, sizes: number[] = SIZES) {
+function generateSrcSet(
+	image: Sanity.Image,
+	{
+		width,
+		sizes = SIZES,
+	}: {
+		width?: number
+		sizes: number[]
+	},
+) {
 	return (
 		sizes
+			.filter((size) => !width || size <= width)
 			.map(
 				(size) => `${urlFor(image).width(size).auto('format').url()} ${size}w`,
 			)

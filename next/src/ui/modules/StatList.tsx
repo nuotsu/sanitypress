@@ -22,7 +22,7 @@ export default function StatList({
 				{stats?.map((stat, key) => (
 					<div className="w-full max-w-[250px]" key={key}>
 						<dt className="text-6xl font-bold">{stat.value}</dt>
-						<dd className="font-bold">{stat.text}</dd>
+						<dd className="text-balance font-bold">{stat.text}</dd>
 					</div>
 				))}
 			</dl>
