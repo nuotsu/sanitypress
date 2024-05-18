@@ -24,6 +24,12 @@ export default defineType({
 			group: 'general',
 		}),
 		defineField({
+			name: 'copyright',
+			type: 'array',
+			of: [{ type: 'block' }],
+			group: 'general',
+		}),
+		defineField({
 			name: 'ctas',
 			title: 'Main call-to-action(s)',
 			type: 'array',

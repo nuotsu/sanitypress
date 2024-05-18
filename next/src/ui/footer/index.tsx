@@ -1,9 +1,10 @@
 import { getSite } from '@/lib/sanity/queries'
 import Navigation from './Navigation'
 import Social from '@/ui/Social'
+import { PortableText } from 'next-sanity'
 
 export default async function Footer() {
-	const { title } = await getSite()
+	const { title, copyright } = await getSite()
 
 	return (
 		<section className="bg-ink text-center text-canvas">
@@ -11,9 +12,10 @@ export default async function Footer() {
 				<div className="mx-auto max-w-screen-xl space-y-8">
 					<Navigation />
 					<Social className="justify-center" />
-					<p className="text-sm">
-						&copy; {new Date().getFullYear()} {title}
-					</p>
+					<div className="flex justify-center gap-x-4 text-sm">
+						&copy; {new Date().getFullYear()}{' '}
+						{copyright ? <PortableText value={copyright} /> : title}
+					</div>
 				</div>
 			</div>
 		</section>
