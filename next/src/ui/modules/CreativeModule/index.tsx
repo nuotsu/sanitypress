@@ -33,7 +33,7 @@ export default function CreativeModule({
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }>) {
-	const imageWidth = Math.round((1000 / (modules?.length || 1)) * 1.5)
+	const imageWidth = Math.round((1200 / (modules?.length || 1)) * 1.5)
 
 	return (
 		<section>
