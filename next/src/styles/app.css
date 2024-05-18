@@ -63,6 +63,10 @@
 		font-weight: bold;
 	}
 
+	.text-gradient {
+		@apply bg-gradient-to-br from-ink/5 to-ink bg-clip-text text-transparent;
+	}
+
 	/* ctas, links */
 
 	._btn {

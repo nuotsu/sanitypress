@@ -4,6 +4,7 @@ import CustomHTML from './CustomHTML'
 import FAQList from './FAQList'
 import Hero from './Hero'
 import HeroPostcard from './HeroPostcard'
+import HeroSaaS from './HeroSaaS'
 import LogoList from './LogoList'
 import RichtextModule from './RichtextModule'
 import StatList from './StatList'
@@ -26,6 +27,8 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 						return <Hero {...module} key={module._key} />
 					case 'hero.postcard':
 						return <HeroPostcard {...module} key={module._key} />
+					case 'hero.saas':
+						return <HeroSaaS {...module} key={module._key} />
 					case 'logo-list':
 						return <LogoList {...module} key={module._key} />
 					case 'richtext-module':

@@ -9,7 +9,10 @@ export default function CTAList({
 }) {
 	return (
 		<nav
-			className={cn('flex flex-wrap items-center gap-x-4 gap-y-2', className)}
+			className={cn(
+				'flex flex-wrap items-center gap-x-[.5em] gap-y-[.25em]',
+				className,
+			)}
 		>
 			{ctas?.map((cta, key) => <CTA {...cta} key={key} />)}
 		</nav>

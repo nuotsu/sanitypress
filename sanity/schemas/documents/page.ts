@@ -19,6 +19,7 @@ export default defineType({
 				{ type: 'faq-list' },
 				{ type: 'hero' },
 				{ type: 'hero.postcard' },
+				{ type: 'hero.saas' },
 				{ type: 'logo-list' },
 				{ type: 'richtext-module' },
 				{ type: 'stat-list' },
