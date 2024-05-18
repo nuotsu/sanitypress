@@ -12,13 +12,13 @@ export default async function Header() {
 	const { title, ctas } = await getSite()
 
 	return (
-		<Wrapper className="sticky top-0 z-10 border-b border-ink/10 bg-canvas/90 backdrop-blur">
+		<Wrapper className="sticky top-0 z-10 border-b border-ink/10 bg-canvas/90 backdrop-blur backdrop-saturate-150">
 			<SkipToContent />
 
 			<div
 				className={cn(
 					css.header,
-					'mx-auto grid max-w-screen-xl items-center gap-x-4 p-4',
+					'mx-auto grid max-w-screen-xl items-center gap-x-6 p-4',
 				)}
 			>
 				<div className="[grid-area:logo]">
@@ -30,8 +30,8 @@ export default async function Header() {
 				<Navigation />
 
 				<CTAList
-					className="[grid-area:ctas] max-md:*:w-full max-md:header-closed:hidden md:ml-auto"
 					ctas={ctas}
+					className="[grid-area:ctas] max-md:*:w-full max-md:header-closed:hidden md:ml-auto"
 				/>
 
 				<Toggle />

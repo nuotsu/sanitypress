@@ -66,7 +66,7 @@ export default function Hero({
 						<PortableText value={content} />
 						<CTAList
 							ctas={ctas}
-							className={cn({
+							className={cn('!mt-4', {
 								'justify-start': stegaClean(textAlign) === 'left',
 								'justify-center': stegaClean(textAlign) === 'center',
 								'justify-end': stegaClean(textAlign) === 'right',

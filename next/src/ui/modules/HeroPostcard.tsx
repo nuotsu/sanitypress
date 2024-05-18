@@ -24,7 +24,7 @@ export default function HeroPostcard({
 			<div className="richtext [&_:is(h1,h2)]:text-balance">
 				<Pretitle>{pretitle}</Pretitle>
 				<PortableText value={content} />
-				<CTAList ctas={ctas} />
+				<CTAList ctas={ctas} className="!mt-4" />
 			</div>
 		</section>
 	)

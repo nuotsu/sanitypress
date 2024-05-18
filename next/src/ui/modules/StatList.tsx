@@ -21,7 +21,7 @@ export default function StatList({
 
 			<dl className="flex items-start justify-center gap-x-12 gap-y-6 max-md:flex-col">
 				{stats?.map((stat, key) => (
-					<div className="w-full max-w-[250px]" key={key}>
+					<div className="w-full max-w-[250px] space-y-2" key={key}>
 						<dt className="text-6xl font-bold">
 							{stat.value}
 							{stat.subValue && (
