@@ -20,6 +20,6 @@ const config: Config = {
 			addVariant('header-closed', 'body:has(#header-open:not(:checked)) &')
 		}),
 	],
-	safelist: ['action'],
+	safelist: ['action', 'ghost'],
 }
 export default config

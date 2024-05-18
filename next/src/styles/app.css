@@ -70,12 +70,15 @@
 		align-items: center;
 		justify-content: center;
 		padding: 0.5em 1em;
+		text-align: center;
 	}
 
 	.action {
-		text-align: center;
-		color: #fff;
-		@apply _btn rounded bg-gradient-to-br from-ink/70 to-ink shadow;
+		@apply _btn rounded bg-gradient-to-br from-ink/70 to-ink text-white shadow backdrop-blur;
+	}
+
+	.ghost {
+		@apply _btn rounded backdrop-blur hover:bg-ink/5;
 	}
 
 	.link {
@@ -185,7 +188,7 @@
 			padding-left: 1.5em;
 		}
 
-		& a:not([class*='action']) {
+		& a:not(:is([class*='action'], [class*='ghost'])) {
 			@apply link;
 		}
 

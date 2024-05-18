@@ -15,10 +15,7 @@ export default defineType({
 			name: 'style',
 			type: 'string',
 			options: {
-				list: [
-					{ title: 'action', value: 'action' },
-					{ title: 'link', value: 'link' },
-				],
+				list: ['action', 'ghost', 'link'],
 			},
 		}),
 	],
