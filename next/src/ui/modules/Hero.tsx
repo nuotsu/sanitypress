@@ -60,9 +60,7 @@ export default function Hero({
 						)}
 						style={{ textAlign: stegaClean(textAlign) }}
 					>
-						<Pretitle
-							className={cn(hasImage ? 'text-canvas/70' : 'text-ink/50')}
-						>
+						<Pretitle className={cn(hasImage && 'text-canvas/70')}>
 							{pretitle}
 						</Pretitle>
 						<PortableText value={content} />

@@ -124,7 +124,7 @@
 	}
 
 	.overflow-fade {
-		--offset: 2rem;
+		--offset: 4rem;
 		mask: linear-gradient(
 			to right,
 			transparent,

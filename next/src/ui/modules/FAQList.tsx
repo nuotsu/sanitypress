@@ -12,7 +12,7 @@ export default function FAQList({
 }>) {
 	return (
 		<section
-			className="section space-y-4"
+			className="section space-y-8"
 			itemScope
 			itemType="https://schema.org/FAQPage"
 		>
@@ -23,7 +23,7 @@ export default function FAQList({
 			<div className="mx-auto max-w-screen-md">
 				{items?.map(({ question, answer }, key) => (
 					<details
-						className="accordion border-ink/10 border-b"
+						className="accordion border-b border-ink/10"
 						itemScope
 						itemProp="mainEntity"
 						itemType="https://schema.org/Question"

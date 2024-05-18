@@ -30,6 +30,11 @@ export default function RichtextModule({
 						block: {
 							h2: (node) => <AnchoredHeading as="h2" {...node} />,
 							h3: (node) => <AnchoredHeading as="h3" {...node} />,
+							blockquote: ({ children }) => (
+								<blockquote className="border-l-2 pl-4">
+									<p>{children}</p>
+								</blockquote>
+							),
 						},
 						types: {
 							image: Image,

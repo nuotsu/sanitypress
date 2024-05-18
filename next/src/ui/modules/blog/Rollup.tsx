@@ -25,7 +25,7 @@ export default async function Rollup({
 	)
 
 	return (
-		<section className="section space-y-4">
+		<section className="section space-y-8">
 			<header className="richtext">
 				<PortableText value={content} />
 			</header>
