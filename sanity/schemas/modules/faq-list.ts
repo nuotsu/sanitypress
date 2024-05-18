@@ -7,11 +7,16 @@ export default defineType({
 	title: 'FAQ list',
 	type: 'object',
 	icon: VscQuestion,
+	groups: [
+		{ name: 'content', title: 'Content', default: true },
+		{ name: 'options', title: 'Options' },
+	],
 	fields: [
 		defineField({
 			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],
+			group: 'content',
 		}),
 		defineField({
 			name: 'items',
@@ -30,6 +35,11 @@ export default defineType({
 							type: 'array',
 							of: [{ type: 'block' }],
 						}),
+						defineField({
+							name: 'open',
+							type: 'boolean',
+							initialValue: false,
+						}),
 					],
 					preview: {
 						select: {
@@ -43,6 +53,17 @@ export default defineType({
 					},
 				}),
 			],
+			group: 'content',
+		}),
+		defineField({
+			name: 'layout',
+			type: 'string',
+			options: {
+				layout: 'radio',
+				list: ['vertical', 'horizontal'],
+			},
+			initialValue: 'vertical',
+			group: 'options',
 		}),
 	],
 	preview: {

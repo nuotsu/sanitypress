@@ -1,29 +1,44 @@
+import { cn } from '@/lib/utils'
 import { PortableText } from '@portabletext/react'
 
 export default function FAQList({
 	content,
 	items,
+	layout = 'vertical',
 }: Partial<{
 	content: any
 	items: {
 		question: string
 		answer: any
+		open?: boolean
 	}[]
+	layout: 'vertical' | 'horizontal'
 }>) {
 	return (
 		<section
-			className="section space-y-8"
+			className={cn(
+				'section',
+				layout === 'horizontal' ? 'grid gap-8 md:grid-cols-2' : 'space-y-8',
+			)}
 			itemScope
 			itemType="https://schema.org/FAQPage"
 		>
-			<header className="richtext text-center">
+			<header
+				className={cn(
+					'richtext',
+					layout === 'horizontal'
+						? 'md:sticky-below-header self-start [--offset:1rem]'
+						: 'text-center',
+				)}
+			>
 				<PortableText value={content} />
 			</header>
 
-			<div className="mx-auto max-w-screen-md">
-				{items?.map(({ question, answer }, key) => (
+			<div className="mx-auto w-full max-w-screen-md">
+				{items?.map(({ question, answer, open }, key) => (
 					<details
 						className="accordion border-b border-ink/10"
+						open={open}
 						itemScope
 						itemProp="mainEntity"
 						itemType="https://schema.org/Question"
