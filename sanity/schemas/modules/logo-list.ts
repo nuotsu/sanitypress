@@ -39,7 +39,7 @@ export default defineType({
 			content: 'content',
 		},
 		prepare: ({ pretitle, content }) => ({
-			title: pretitle || getBlockText(content),
+			title: getBlockText(content) || pretitle,
 			subtitle: 'Logo list',
 		}),
 	},

@@ -9,7 +9,7 @@ import Image from '@/ui/modules/RichtextModule/Image'
 export default function Post({ post }: { post: Sanity.BlogPost }) {
 	return (
 		<article>
-			<header className="section space-y-4 text-center">
+			<header className="section space-y-6 text-center">
 				<h1 className="h1 text-balance">{post.title}</h1>
 				<div className="flex flex-wrap items-center justify-center gap-x-4">
 					<Date value={post.publishDate} />

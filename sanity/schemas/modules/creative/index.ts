@@ -55,18 +55,18 @@ export default defineType({
 					preview: {
 						select: {
 							subModules: 'subModules',
+							colSpan: 'colSpan',
 						},
-						prepare: ({ subModules }) => {
-							return {
-								title: subModules
-									.map(
-										(subModule: any) =>
-											subModule.title || subModule.name || subModule._type,
-									)
-									.filter(Boolean)
-									.join(' + '),
-							}
-						},
+						prepare: ({ subModules, colSpan }) => ({
+							title: subModules
+								.map(
+									(subModule: any) =>
+										subModule.title || subModule.name || subModule._type,
+								)
+								.filter(Boolean)
+								.join(' + '),
+							subtitle: colSpan > 1 ? `${colSpan}-column span` : undefined,
+						}),
 					},
 				}),
 			],

@@ -25,15 +25,24 @@ export default defineType({
 							type: 'string',
 						}),
 						defineField({
+							name: 'subValue',
+							type: 'string',
+						}),
+						defineField({
 							name: 'text',
 							type: 'string',
 						}),
 					],
 					preview: {
 						select: {
-							title: 'value',
+							value: 'value',
+							subValue: 'subValue',
 							subtitle: 'text',
 						},
+						prepare: ({ value, subValue, subtitle }) => ({
+							title: [value, subValue].filter(Boolean).join(' '),
+							subtitle,
+						}),
 					},
 				}),
 			],

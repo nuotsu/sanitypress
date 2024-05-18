@@ -13,7 +13,6 @@ export default defineType({
 		{ name: 'image', title: 'Image' },
 	],
 	fieldsets: [
-		{ name: 'image', title: 'Image', options: { columns: 2 } },
 		{ name: 'alignment', title: 'Alignment', options: { columns: 2 } },
 	],
 	fields: [
@@ -84,7 +83,6 @@ export default defineType({
 					initialValue: 'lazy',
 				}),
 			],
-			fieldset: 'image',
 			group: 'image',
 		}),
 		defineField({
@@ -94,7 +92,6 @@ export default defineType({
 			options: {
 				hotspot: true,
 			},
-			fieldset: 'image',
 			group: 'image',
 		}),
 	],
