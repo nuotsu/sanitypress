@@ -18,7 +18,7 @@ declare global {
 		}>
 
 		type PageBase = SanityDocument<{
-			title: string
+			title?: string
 			metadata: Metadata
 		}>
 
@@ -39,7 +39,7 @@ declare global {
 			end?: string
 		}>
 
-		type BlogPost = PageBase & {
+		type BlogPost = Omit<PageBase, 'title'> & {
 			readonly _type: 'blog.post'
 			body: any
 			readTime: number

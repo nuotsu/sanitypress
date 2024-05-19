@@ -22,4 +22,5 @@ const config: Config = {
 	],
 	safelist: ['action', 'ghost'],
 }
+
 export default config

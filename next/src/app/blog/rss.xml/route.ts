@@ -34,7 +34,7 @@ export async function GET() {
 
 	posts.map((post) =>
 		feed.item({
-			title: post.title,
+			title: post.metadata.title,
 			url: processUrl(post),
 			date: post.publishDate,
 			description: post.metadata.description,

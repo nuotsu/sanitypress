@@ -1,7 +1,8 @@
 import Link from 'next/link'
-import Date from '@/ui/Date'
-import Img from '@/ui/Img'
 import processUrl from '@/lib/processUrl'
+import Img from '@/ui/Img'
+import Date from '@/ui/Date'
+import Categories from './Categories'
 
 export default function PostPreview({ post }: { post: Sanity.BlogPost }) {
 	return (
@@ -17,10 +18,11 @@ export default function PostPreview({ post }: { post: Sanity.BlogPost }) {
 				/>
 			</figure>
 
-			<div className="h3 group-hover:underline">{post.title}</div>
+			<div className="h3 group-hover:underline">{post.metadata.title}</div>
 
-			<div>
+			<div className="flex flex-wrap gap-x-4">
 				<Date value={post.publishDate} />
+				<Categories categories={post.categories} />
 			</div>
 		</Link>
 	)

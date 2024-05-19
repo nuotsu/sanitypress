@@ -8,13 +8,16 @@ export default function AnchoredHeading({
 }: {
 	as: keyof JSX.IntrinsicElements
 } & PortableTextComponentProps<PortableTextBlock>) {
-	const id = slug(value.children[0].text)
+	const id = slug(value.children.reduce((acc, { text }) => acc + text, ''))
 
 	return (
 		<Tag id={id} className="group">
 			{children}
 
-			<a className="ml-2 md:hidden md:group-hover:inline-block" href={`#${id}`}>
+			<a
+				className="anim-fade-to-r ml-2 !no-underline md:hidden md:group-hover:inline-block"
+				href={`#${id}`}
+			>
 				🔗
 			</a>
 		</Tag>
