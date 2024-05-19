@@ -31,6 +31,13 @@ export default defineType({
 			description: 'Higher order has higher precedence',
 		}),
 		defineField({
+			name: 'ctas',
+			title: 'Call-to-action',
+			type: 'array',
+			of: [{ type: 'cta' }],
+			group: 'general',
+		}),
+		defineField({
 			name: 'copyright',
 			type: 'array',
 			of: [
@@ -40,13 +47,6 @@ export default defineType({
 				},
 			],
 			group: 'general',
-		}),
-		defineField({
-			name: 'ctas',
-			title: 'Main call-to-action(s)',
-			type: 'array',
-			of: [{ type: 'cta' }],
-			group: 'navigation',
 		}),
 		defineField({
 			name: 'headerMenu',

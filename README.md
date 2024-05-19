@@ -2,6 +2,8 @@
 
 An opinionated and minimally styled starter template with Tailwind CSS and pre-built schema and modules for rapid website development.
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnuotsu%2Fnext-sanity-template&env=NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_TOKEN)
+
 🖋️ Published on [Sanity.io](https://www.sanity.io/templates/next-sanity-template)
 
 ⚡ [Perfect Lighthouse scores](https://pagespeed.web.dev/analysis/https-next-sanity-template-demo-vercel-app/vl6u8dhppv?form_factor=desktop) on desktop and 99/100 on mobile.
