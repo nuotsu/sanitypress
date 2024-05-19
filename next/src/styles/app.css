@@ -196,8 +196,12 @@
 			@apply link;
 		}
 
-		& code {
-			@apply rounded bg-ink/10 px-1;
+		& :not(pre) > code {
+			@apply rounded bg-ink/5 px-1;
+		}
+
+		& pre {
+			@apply overflow-x-auto rounded bg-transparent p-3 text-xs leading-relaxed;
 		}
 	}
 

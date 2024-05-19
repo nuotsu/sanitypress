@@ -10,6 +10,7 @@ import logo from './documents/logo'
 import testimonial from './documents/testimonial'
 
 // objects
+import codeBlock from './objects/code-block'
 import cta from './objects/cta'
 import link from './objects/link'
 import linkList from './objects/link.list'
@@ -42,6 +43,7 @@ export const schemaTypes = [
 	testimonial,
 
 	// objects
+	codeBlock,
 	cta,
 	link,
 	linkList,

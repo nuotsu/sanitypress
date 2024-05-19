@@ -1,6 +1,7 @@
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 import { VscEdit } from 'react-icons/vsc'
 import { IoIosImage } from 'react-icons/io'
+import { VscCode } from 'react-icons/vsc'
 
 export default defineType({
 	name: 'blog.post',
@@ -9,15 +10,11 @@ export default defineType({
 	type: 'document',
 	fields: [
 		defineField({
-			name: 'title',
-			type: 'string',
-		}),
-		defineField({
 			name: 'body',
 			type: 'array',
 			of: [
 				{ type: 'block' },
-				{
+				defineArrayMember({
 					type: 'image',
 					icon: IoIosImage,
 					fields: [
@@ -31,7 +28,8 @@ export default defineType({
 							rows: 2,
 						}),
 					],
-				},
+				}),
+				{ type: 'code-block' },
 			],
 		}),
 		defineField({
@@ -56,7 +54,7 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			title: 'title',
+			title: 'metadata.title',
 			subtitle: 'publishDate',
 			media: 'metadata.image',
 		},
@@ -69,7 +67,7 @@ export default defineType({
 		},
 		{
 			title: 'Title',
-			name: 'title',
+			name: 'metadata.title',
 			by: [{ field: 'title', direction: 'asc' }],
 		},
 	],

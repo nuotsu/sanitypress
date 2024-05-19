@@ -5,6 +5,7 @@ import { PortableText } from '@portabletext/react'
 import TableOfContents from '@/ui/modules/RichtextModule/TableOfContents'
 import AnchoredHeading from '@/ui/modules/RichtextModule/AnchoredHeading'
 import Image from '@/ui/modules/RichtextModule/Image'
+import CodeBlock from '../RichtextModule/CodeBlock'
 
 export default function Post({ post }: { post: Sanity.BlogPost }) {
 	return (
@@ -33,6 +34,7 @@ export default function Post({ post }: { post: Sanity.BlogPost }) {
 							},
 							types: {
 								image: Image,
+								'code-block': CodeBlock,
 							},
 						}}
 					/>
