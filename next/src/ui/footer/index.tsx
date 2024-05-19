@@ -12,7 +12,7 @@ export default async function Footer() {
 				<div className="mx-auto max-w-screen-xl space-y-8">
 					<Navigation />
 					<Social className="justify-center" />
-					<div className="flex justify-center gap-x-4 text-sm">
+					<div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
 						&copy; {new Date().getFullYear()}{' '}
 						{copyright ? <PortableText value={copyright} /> : title}
 					</div>

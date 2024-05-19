@@ -7,7 +7,7 @@ export default function TableOfContents({
 }) {
 	return (
 		<details className="accordion" open>
-			<summary>Table of Contents</summary>
+			<summary className="font-bold">Table of Contents</summary>
 
 			<ol className="anim-fade-to-b mt-2">
 				{headings?.map(({ text, style }, key) => (

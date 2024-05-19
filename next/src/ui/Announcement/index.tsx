@@ -17,9 +17,7 @@ export default async function Announcement() {
 		},
 	)
 
-	console.log({ announcements })
-
-	if (!announcements?.length) return null
+	if (!announcements) return null
 
 	const active = announcements.find(({ start, end }) => {
 		return (
