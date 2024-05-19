@@ -12,10 +12,7 @@ export default defineType({
 	title: 'Creative module',
 	icon: VscExtensions,
 	type: 'object',
-	groups: [
-		{ name: 'content', title: 'Content', default: true },
-		{ name: 'options', title: 'Options' },
-	],
+	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fieldsets: [
 		{ name: 'alignment', title: 'Alignment', options: { columns: 2 } },
 	],

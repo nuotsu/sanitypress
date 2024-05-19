@@ -4,7 +4,7 @@ const groq = require('groq')
 const client = createClient({
 	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
 	dataset: 'production',
-	apiVersion: '2024-04-01',
+	apiVersion: '2024-05-01',
 	useCdn: true,
 })
 
@@ -20,12 +20,11 @@ const nextConfig = {
 	},
 
 	async redirects() {
-		const redirects = await client.fetch(groq`*[_type == 'redirect']`)
-		return redirects?.map(({ source, destination, permanent }) => ({
+		return await client.fetch(groq`*[_type == 'redirect']{
 			source,
 			destination,
-			permanent,
-		}))
+			permanent
+		}`)
 	},
 
 	// logging: {

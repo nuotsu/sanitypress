@@ -8,9 +8,9 @@ export default defineType({
 	icon: TfiLayoutCtaCenter,
 	type: 'object',
 	groups: [
-		{ name: 'content', title: 'Content', default: true },
-		{ name: 'options', title: 'Options' },
-		{ name: 'image', title: 'Image' },
+		{ name: 'content', default: true },
+		{ name: 'options' },
+		{ name: 'image' },
 	],
 	fieldsets: [
 		{ name: 'alignment', title: 'Alignment', options: { columns: 2 } },

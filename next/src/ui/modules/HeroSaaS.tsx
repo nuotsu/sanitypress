@@ -28,6 +28,7 @@ export default function HeroSaaS({
 			<Img
 				image={image}
 				className={cn(
+					'anim-fade-to-t [animation-duration:1s]',
 					image?.faded &&
 						'[mask-image:linear-gradient(to_bottom,#000_50%,transparent)]',
 				)}
