@@ -1,10 +1,10 @@
 import { PortableText } from 'next-sanity'
 
 export default function StatList({
-	content,
+	intro,
 	stats,
 }: Partial<{
-	content: any
+	intro: any
 	stats: {
 		value: string
 		subValue?: string
@@ -13,9 +13,9 @@ export default function StatList({
 }>) {
 	return (
 		<section className="section space-y-8">
-			{content && (
+			{intro && (
 				<header className="richtext text-center">
-					<PortableText value={content} />
+					<PortableText value={intro} />
 				</header>
 			)}
 

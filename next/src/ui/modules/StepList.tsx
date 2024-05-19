@@ -1,19 +1,21 @@
 import { PortableText } from 'next-sanity'
 
 export default function StepList({
-	content,
+	intro,
 	steps,
 }: Partial<{
-	content: any
+	intro: any
 	steps: {
 		content: any
 	}[]
 }>) {
 	return (
 		<section className="section space-y-8">
-			<header className="richtext text-center">
-				<PortableText value={content} />
-			</header>
+			{intro && (
+				<header className="richtext text-center">
+					<PortableText value={intro} />
+				</header>
+			)}
 
 			<ol className="grid gap-8 md:grid-cols-[repeat(auto-fit,minmax(250px,1fr))]">
 				{steps?.map((step, index) => (

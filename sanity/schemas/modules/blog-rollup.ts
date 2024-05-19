@@ -9,7 +9,7 @@ export default defineType({
 	type: 'object',
 	fields: [
 		defineField({
-			name: 'content',
+			name: 'intro',
 			type: 'array',
 			of: [{ type: 'block' }],
 		}),
@@ -30,10 +30,10 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			content: 'content',
+			intro: 'intro',
 		},
-		prepare: ({ content }) => ({
-			title: getBlockText(content),
+		prepare: ({ intro }) => ({
+			title: getBlockText(intro),
 			subtitle: 'Blog rollup',
 		}),
 	},

@@ -3,17 +3,17 @@ import Img from '../Img'
 import { cn } from '@/lib/utils'
 
 export default function TestimonialList({
-	content,
+	intro,
 	testimonials,
 }: Partial<{
-	content: any
+	intro: any
 	testimonials: Sanity.Testimonial[]
 }>) {
 	return (
 		<section className="section space-y-8 text-center">
-			{content && (
+			{intro && (
 				<header className="richtext">
-					<PortableText value={content} />
+					<PortableText value={intro} />
 				</header>
 			)}
 

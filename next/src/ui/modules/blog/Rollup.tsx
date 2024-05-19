@@ -5,11 +5,11 @@ import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 
 export default async function Rollup({
-	content,
+	intro,
 	limit = 100,
 	layout,
 }: Partial<{
-	content: any
+	intro: any
 	limit?: number
 	layout: 'grid' | 'carousel'
 }>) {
@@ -26,9 +26,11 @@ export default async function Rollup({
 
 	return (
 		<section className="section space-y-8">
-			<header className="richtext">
-				<PortableText value={content} />
-			</header>
+			{intro && (
+				<header className="richtext">
+					<PortableText value={intro} />
+				</header>
+			)}
 
 			<ul
 				className={cn(

@@ -12,13 +12,13 @@ import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 
 export default function CreativeModule({
-	content,
+	intro,
 	modules,
 	columns,
 	textAlign,
 	alignItems,
 }: Partial<{
-	content: any
+	intro: any
 	modules: Partial<{
 		subModules: Array<
 			| CTAsSubModuleType
@@ -38,9 +38,11 @@ export default function CreativeModule({
 	return (
 		<section>
 			<div className="section space-y-8">
-				<header className="richtext mx-auto max-w-xl text-balance text-center">
-					<PortableText value={content} />
-				</header>
+				{intro && (
+					<header className="richtext mx-auto max-w-xl text-balance text-center">
+						<PortableText value={intro} />
+					</header>
+				)}
 
 				<div
 					className="grid items-center gap-x-12 gap-y-8 md:grid-cols-[repeat(var(--col,1),minmax(0px,1fr))]"

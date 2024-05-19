@@ -2,11 +2,11 @@ import { cn } from '@/lib/utils'
 import { PortableText } from '@portabletext/react'
 
 export default function FAQList({
-	content,
+	intro,
 	items,
 	layout = 'vertical',
 }: Partial<{
-	content: any
+	intro: any
 	items: {
 		question: string
 		answer: any
@@ -31,7 +31,7 @@ export default function FAQList({
 						: 'text-center',
 				)}
 			>
-				<PortableText value={content} />
+				<PortableText value={intro} />
 			</header>
 
 			<div className="mx-auto w-full max-w-screen-md">

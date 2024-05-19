@@ -5,12 +5,12 @@ import Img from '../Img'
 
 export default async function LogoList({
 	pretitle,
-	content,
+	intro,
 	logoType = 'default',
 	logos,
 }: Partial<{
 	pretitle: string
-	content: any
+	intro: any
 	logoType: 'default' | 'light' | 'dark'
 	logos: Sanity.Logo[]
 }>) {
@@ -19,10 +19,12 @@ export default async function LogoList({
 
 	return (
 		<section className="section space-y-8">
-			<header className="richtext text-center">
-				<Pretitle>{pretitle}</Pretitle>
-				<PortableText value={content} />
-			</header>
+			{(pretitle || intro) && (
+				<header className="richtext text-center">
+					<Pretitle>{pretitle}</Pretitle>
+					<PortableText value={intro} />
+				</header>
+			)}
 
 			<figure className="item-center mx-auto flex flex-wrap justify-center gap-x-4 gap-y-8">
 				{allLogos.map((logo, key) => (

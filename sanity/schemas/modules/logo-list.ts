@@ -13,7 +13,7 @@ export default defineType({
 			type: 'string',
 		}),
 		defineField({
-			name: 'content',
+			name: 'intro',
 			type: 'array',
 			of: [{ type: 'block' }],
 		}),
@@ -36,10 +36,10 @@ export default defineType({
 	preview: {
 		select: {
 			pretitle: 'pretitle',
-			content: 'content',
+			intro: 'intro',
 		},
-		prepare: ({ pretitle, content }) => ({
-			title: getBlockText(content) || pretitle,
+		prepare: ({ pretitle, intro }) => ({
+			title: getBlockText(intro) || pretitle,
 			subtitle: 'Logo list',
 		}),
 	},
