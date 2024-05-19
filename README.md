@@ -4,7 +4,7 @@ An opinionated and minimally styled starter template with Tailwind CSS and pre-b
 
 🖋️ Published on [Sanity.io](https://www.sanity.io/templates/next-sanity-template)
 
-⚡ [Perfect Lighthouse scores](https://pagespeed.web.dev/analysis/https-next-sanity-template-demo-vercel-app/vl6u8dhppv?form_factor=desktop) on desktop and 95+/100 on mobile.
+⚡ [Perfect Lighthouse scores](https://pagespeed.web.dev/analysis/https-next-sanity-template-demo-vercel-app/vl6u8dhppv?form_factor=desktop) on desktop and 99/100 on mobile.
 
 🚀 Checkout the [demo site](https://next-sanity-template-demo.vercel.app), [playground](https://next-sanity-template-demo.vercel.app/playground) and [docs](https://next-sanity-template-demo.vercel.app/docs) page.
 

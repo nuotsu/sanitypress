@@ -19,7 +19,7 @@ export default function StatList({
 				</header>
 			)}
 
-			<dl className="flex items-start justify-center gap-x-12 gap-y-6 max-md:flex-col">
+			<dl className="mx-auto flex items-start justify-center gap-x-12 gap-y-6 max-md:max-w-max max-md:flex-col">
 				{stats?.map((stat, key) => (
 					<div className="w-full max-w-[250px] space-y-2" key={key}>
 						<dt className="font-bold">
