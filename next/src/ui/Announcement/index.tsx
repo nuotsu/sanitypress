@@ -13,11 +13,13 @@ export default async function Announcement() {
 		}`,
 		{
 			tags: ['announcements'],
-			revalidate: 1,
+			revalidate: 30,
 		},
 	)
 
-	if (!announcements) return <div>{new Date().toTimeString()}</div>
+	console.log({ announcements })
+
+	if (!announcements?.length) return null
 
 	const active = announcements.find(({ start, end }) => {
 		return (
