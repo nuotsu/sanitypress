@@ -25,6 +25,7 @@ import heroSaas from './modules/hero.saas'
 import logoList from './modules/logo-list'
 import richtextModule from './modules/richtext-module'
 import statList from './modules/stat-list'
+import stepList from './modules/step-list'
 import testimonialList from './modules/testimonial-list'
 
 export const schemaTypes = [
@@ -55,5 +56,6 @@ export const schemaTypes = [
 	logoList,
 	richtextModule,
 	statList,
+	stepList,
 	testimonialList,
 ]

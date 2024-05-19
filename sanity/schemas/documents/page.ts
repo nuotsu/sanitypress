@@ -23,6 +23,7 @@ export default defineType({
 				{ type: 'logo-list' },
 				{ type: 'richtext-module' },
 				{ type: 'stat-list' },
+				{ type: 'step-list' },
 				{ type: 'testimonial-list' },
 			],
 		}),

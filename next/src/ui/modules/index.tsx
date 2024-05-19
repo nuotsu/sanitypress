@@ -8,6 +8,7 @@ import HeroSaaS from './HeroSaaS'
 import LogoList from './LogoList'
 import RichtextModule from './RichtextModule'
 import StatList from './StatList'
+import StepList from './StepList'
 import TestimonialList from './TestimonialList'
 
 export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
@@ -35,6 +36,8 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 						return <RichtextModule {...module} key={module._key} />
 					case 'stat-list':
 						return <StatList {...module} key={module._key} />
+					case 'step-list':
+						return <StepList {...module} key={module._key} />
 					case 'testimonial-list':
 						return <TestimonialList {...module} key={module._key} />
 
