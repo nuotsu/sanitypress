@@ -1,8 +1,10 @@
 import { PortableText } from 'next-sanity'
+import { stegaClean } from '@sanity/client/stega'
 
 export default function StatList({
 	intro,
 	stats,
+	textAlign = 'center',
 }: Partial<{
 	intro: any
 	stats: {
@@ -10,9 +12,13 @@ export default function StatList({
 		subValue?: string
 		text: string
 	}[]
+	textAlign: React.CSSProperties['textAlign']
 }>) {
 	return (
-		<section className="section space-y-8">
+		<section
+			className="section space-y-8"
+			style={{ textAlign: stegaClean(textAlign) }}
+		>
 			{intro && (
 				<header className="richtext text-center">
 					<PortableText value={intro} />

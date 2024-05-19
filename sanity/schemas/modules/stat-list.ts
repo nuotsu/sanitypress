@@ -7,11 +7,13 @@ export default defineType({
 	title: 'Stat list',
 	icon: GoNumber,
 	type: 'object',
+	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fields: [
 		defineField({
 			name: 'intro',
 			type: 'array',
 			of: [{ type: 'block' }],
+			group: 'content',
 		}),
 		defineField({
 			name: 'stats',
@@ -46,6 +48,17 @@ export default defineType({
 					},
 				}),
 			],
+			group: 'content',
+		}),
+		defineField({
+			name: 'textAlign',
+			type: 'string',
+			options: {
+				layout: 'radio',
+				list: ['left', 'center', 'right'],
+			},
+			initialValue: 'center',
+			group: 'options',
 		}),
 	],
 	preview: {
