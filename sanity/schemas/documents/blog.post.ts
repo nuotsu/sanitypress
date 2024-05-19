@@ -1,7 +1,6 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { VscEdit } from 'react-icons/vsc'
 import { IoIosImage } from 'react-icons/io'
-import { VscCode } from 'react-icons/vsc'
 
 export default defineType({
 	name: 'blog.post',
@@ -17,6 +16,9 @@ export default defineType({
 				defineArrayMember({
 					type: 'image',
 					icon: IoIosImage,
+					options: {
+						hotspot: true,
+					},
 					fields: [
 						defineField({
 							name: 'alt',

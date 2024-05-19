@@ -1,0 +1,13 @@
+.body {
+	@screen md {
+		grid-template-columns: [bleed-start] 1fr [content-start] auto [content-end] 1fr [bleed-end];
+
+		& > * {
+			grid-column: content;
+		}
+
+		& > *:not([class*='grid-column:bleed']) {
+			max-width: 65ch;
+		}
+	}
+}

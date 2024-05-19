@@ -6,6 +6,8 @@ import TableOfContents from '@/ui/modules/RichtextModule/TableOfContents'
 import AnchoredHeading from '@/ui/modules/RichtextModule/AnchoredHeading'
 import Image from '@/ui/modules/RichtextModule/Image'
 import CodeBlock from '../RichtextModule/CodeBlock'
+import css from './Post.module.css'
+import { cn } from '@/lib/utils'
 
 export default function Post({ post }: { post: Sanity.BlogPost }) {
 	return (
@@ -19,12 +21,17 @@ export default function Post({ post }: { post: Sanity.BlogPost }) {
 				</div>
 			</header>
 
-			<div className="section grid gap-8 md:grid-cols-[1fr,auto]">
-				<aside className="md:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] md:order-1 md:w-[250px]">
+			<div className="section grid gap-8 lg:grid-cols-[1fr,auto]">
+				<aside className="lg:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] lg:order-1 lg:w-[250px]">
 					<TableOfContents headings={post.headings} />
 				</aside>
 
-				<div className="richtext mx-auto w-full max-w-screen-sm !space-y-[1em] [&>:not(:first-of-type)]:!mt-[1em]">
+				<div
+					className={cn(
+						css.body,
+						'richtext mx-auto grid w-full max-w-screen-md !space-y-[1em] [&>:first-of-type]:!mt-0',
+					)}
+				>
 					<PortableText
 						value={post.body}
 						components={{
