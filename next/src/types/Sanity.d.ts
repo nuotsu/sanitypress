@@ -39,7 +39,7 @@ declare global {
 			end?: string
 		}>
 
-		type BlogPost = Omit<PageBase, 'title'> & {
+		type BlogPost = PageBase & {
 			readonly _type: 'blog.post'
 			body: any
 			readTime: number
