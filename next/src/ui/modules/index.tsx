@@ -3,7 +3,7 @@ import CreativeModule from './CreativeModule'
 import CustomHTML from './CustomHTML'
 import FAQList from './FAQList'
 import Hero from './Hero'
-import HeroPostcard from './HeroPostcard'
+import HeroSplit from './HeroSplit'
 import HeroSaaS from './HeroSaaS'
 import LogoList from './LogoList'
 import RichtextModule from './RichtextModule'
@@ -26,8 +26,8 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 						return <FAQList {...module} key={module._key} />
 					case 'hero':
 						return <Hero {...module} key={module._key} />
-					case 'hero.postcard':
-						return <HeroPostcard {...module} key={module._key} />
+					case 'hero.split':
+						return <HeroSplit {...module} key={module._key} />
 					case 'hero.saas':
 						return <HeroSaaS {...module} key={module._key} />
 					case 'logo-list':

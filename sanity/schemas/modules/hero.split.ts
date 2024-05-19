@@ -3,8 +3,8 @@ import { TfiLayoutMediaLeft } from 'react-icons/tfi'
 import { getBlockText } from '../../src/utils'
 
 export default defineType({
-	name: 'hero.postcard',
-	title: 'Hero (postcard)',
+	name: 'hero.split',
+	title: 'Hero (split)',
 	icon: TfiLayoutMediaLeft,
 	type: 'object',
 	fields: [
@@ -58,7 +58,7 @@ export default defineType({
 		},
 		prepare: ({ content, media }) => ({
 			title: getBlockText(content),
-			subtitle: 'Hero (postcard)',
+			subtitle: 'Hero (split)',
 			media,
 		}),
 	},
