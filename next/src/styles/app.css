@@ -13,10 +13,6 @@
 		display: none !important;
 	}
 
-	::selection {
-		@apply bg-ink text-canvas;
-	}
-
 	:target {
 		scroll-margin-top: var(--header-height);
 	}

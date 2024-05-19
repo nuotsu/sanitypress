@@ -19,7 +19,7 @@ export default function HeroSaaS({
 }>) {
 	return (
 		<section className="section space-y-8 text-center">
-			<div className="richtext [&_strong]:text-gradient mx-auto max-w-2xl text-balance">
+			<div className="richtext mx-auto max-w-2xl text-balance">
 				<Pretitle>{pretitle}</Pretitle>
 				<PortableText value={content} />
 				<CTAList ctas={ctas} className="!mt-8 justify-center" />
