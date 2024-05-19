@@ -1,10 +1,11 @@
 // documents
 import site from './documents/site'
-import navigation from './documents/navigation'
 import page from './documents/page'
-import redirect from './documents/redirect'
 import blogPost from './documents/blog.post'
 import blogCategory from './documents/blog.category'
+import navigation from './documents/navigation'
+import announcement from './documents/announcement'
+import redirect from './documents/redirect'
 import logo from './documents/logo'
 import testimonial from './documents/testimonial'
 
@@ -31,11 +32,12 @@ import testimonialList from './modules/testimonial-list'
 export const schemaTypes = [
 	// documents
 	site,
-	navigation,
 	page,
-	redirect,
 	blogPost,
 	blogCategory,
+	navigation,
+	announcement,
+	redirect,
 	logo,
 	testimonial,
 

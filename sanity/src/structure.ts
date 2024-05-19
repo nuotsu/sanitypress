@@ -13,7 +13,7 @@ const structure: StructureResolver = (S, context) =>
 			S.divider(),
 
 			S.documentTypeListItem('navigation'),
-			S.documentTypeListItem('announcement'),
+			S.documentTypeListItem('announcement').title('Announcements'),
 			S.documentTypeListItem('redirect').title('Redirects'),
 			S.divider(),
 

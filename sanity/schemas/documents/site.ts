@@ -24,9 +24,21 @@ export default defineType({
 			group: 'general',
 		}),
 		defineField({
+			name: 'announcements',
+			type: 'array',
+			of: [{ type: 'reference', to: [{ type: 'announcement' }] }],
+			group: 'general',
+			description: 'Higher order has higher precedence',
+		}),
+		defineField({
 			name: 'copyright',
 			type: 'array',
-			of: [{ type: 'block' }],
+			of: [
+				{
+					type: 'block',
+					styles: [{ title: 'Normal', value: 'normal' }],
+				},
+			],
 			group: 'general',
 		}),
 		defineField({
