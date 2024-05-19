@@ -15,7 +15,7 @@ export default async function CodeBlock({
 	})
 
 	return (
-		<div>
+		<div className="!my-4">
 			<div dangerouslySetInnerHTML={{ __html: html }} />
 		</div>
 	)

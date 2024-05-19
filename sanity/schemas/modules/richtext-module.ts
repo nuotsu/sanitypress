@@ -17,6 +17,9 @@ export default defineType({
 				{
 					type: 'image',
 					icon: IoIosImage,
+					options: {
+						hotspot: true,
+					},
 					fields: [
 						defineField({
 							name: 'alt',
@@ -29,6 +32,7 @@ export default defineType({
 						}),
 					],
 				},
+				{ type: 'code-block' },
 			],
 		}),
 		defineField({

@@ -1,7 +1,5 @@
-import { PortableText } from 'next-sanity'
 import TableOfContents from './TableOfContents'
-import AnchoredHeading from './AnchoredHeading'
-import Image from './Image'
+import Content from './Content'
 
 export default function RichtextModule({
 	content,
@@ -16,32 +14,14 @@ export default function RichtextModule({
 	}[]
 }>) {
 	return (
-		<section className="section grid gap-8 md:grid-cols-[1fr,auto]">
+		<section className="section grid gap-8 lg:grid-cols-[1fr,auto]">
 			{tableOfContents && (
-				<aside className="md:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] md:order-1 md:w-[250px]">
+				<aside className="lg:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] lg:order-1 lg:w-[250px]">
 					<TableOfContents headings={headings} />
 				</aside>
 			)}
 
-			<div className="richtext mx-auto w-full max-w-screen-lg [&>:not(:first-of-type)]:!mt-[1em]">
-				<PortableText
-					value={content}
-					components={{
-						block: {
-							h2: (node) => <AnchoredHeading as="h2" {...node} />,
-							h3: (node) => <AnchoredHeading as="h3" {...node} />,
-							blockquote: ({ children }) => (
-								<blockquote className="border-l-2 pl-4">
-									<p>{children}</p>
-								</blockquote>
-							),
-						},
-						types: {
-							image: Image,
-						},
-					}}
-				/>
-			</div>
+			<Content value={content} className="max-w-screen-lg" />
 		</section>
 	)
 }
