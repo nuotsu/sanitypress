@@ -22,7 +22,7 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 						return <CreativeModule {...module} key={module._key} />
 					case 'custom-html':
 						return <CustomHTML {...module} key={module._key} />
-					case 'faq-list':
+					case 'accordion-list':
 						return <FAQList {...module} key={module._key} />
 					case 'hero':
 						return <Hero {...module} key={module._key} />

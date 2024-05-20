@@ -17,10 +17,10 @@ import linkList from './objects/link.list'
 import metadata from './objects/metadata'
 
 // modules
+import accordionList from './modules/accordion-list'
 import blogRollup from './modules/blog-rollup'
 import creativeModule from './modules/creative'
 import customHtml from './modules/custom-html'
-import faqList from './modules/faq-list'
 import hero from './modules/hero'
 import heroSaas from './modules/hero.saas'
 import HeroSplit from './modules/hero.split'
@@ -50,10 +50,10 @@ export const schemaTypes = [
 	metadata,
 
 	// modules
+	accordionList,
 	blogRollup,
 	creativeModule,
 	customHtml,
-	faqList,
 	hero,
 	heroSaas,
 	HeroSplit,

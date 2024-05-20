@@ -13,10 +13,10 @@ export default defineType({
 			name: 'modules',
 			type: 'array',
 			of: [
+				{ type: 'accordion-list' },
 				{ type: 'blog-rollup' },
 				{ type: 'creative-module' },
 				{ type: 'custom-html' },
-				{ type: 'faq-list' },
 				{ type: 'hero' },
 				{ type: 'hero.saas' },
 				{ type: 'hero.split' },

@@ -3,8 +3,8 @@ import { VscQuestion } from 'react-icons/vsc'
 import { getBlockText } from '../../src/utils'
 
 export default defineType({
-	name: 'faq-list',
-	title: 'FAQ list',
+	name: 'accordion-list',
+	title: 'Accordion list',
 	type: 'object',
 	icon: VscQuestion,
 	groups: [
@@ -72,7 +72,7 @@ export default defineType({
 		},
 		prepare: ({ intro }) => ({
 			title: getBlockText(intro),
-			subtitle: 'FAQ list',
+			subtitle: 'Accordion list',
 		}),
 	},
 })
