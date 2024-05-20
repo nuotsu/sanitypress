@@ -21,12 +21,13 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			title: 'link.label',
+			label: 'link.label',
+			pageTitle: 'link.internal.title',
 			internal: 'link.internal.metadata.slug.current',
 			external: 'link.external',
 		},
-		prepare: ({ title, internal, external }) => ({
-			title,
+		prepare: ({ label, pageTitle, internal, external }) => ({
+			title: label || pageTitle,
 			subtitle:
 				external || (internal && (internal === 'index' ? '/' : `/${internal}`)),
 		}),

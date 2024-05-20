@@ -106,6 +106,56 @@
 	.section {
 		@apply mx-auto max-w-screen-xl p-8 max-md:px-4 md:py-12;
 	}
+
+	.richtext {
+		@apply space-y-2 leading-relaxed;
+
+		& :is(h1, h2, h3, h4, h5, h6) strong {
+			@apply text-gradient;
+		}
+
+		& h1 {
+			@apply h1;
+		}
+		& h2 {
+			@apply h2;
+		}
+		& h3 {
+			@apply h3;
+		}
+		& h4 {
+			@apply h4;
+		}
+		& h5 {
+			@apply h5;
+		}
+		& h6 {
+			@apply h6;
+		}
+
+		& :is(ul, ol) {
+			list-style: revert;
+			padding-left: 1.5em;
+		}
+
+		& a:not(:is(.action, .ghost)) {
+			@apply link;
+
+			&[href^='http']::after {
+				content: ' ↗';
+				font-size: 0.75em;
+				vertical-align: text-top;
+			}
+		}
+
+		& :not(pre) > code {
+			@apply rounded bg-ink/5 px-1;
+		}
+
+		& pre {
+			@apply overflow-x-auto rounded bg-transparent p-3 text-xs leading-relaxed;
+		}
+	}
 }
 
 @layer utilities {
@@ -122,9 +172,10 @@
 	.no-scrollbar {
 		-webkit-overflow-scrolling: touch;
 		overflow: auto;
-	}
-	.no-scrollbar::-webkit-scrollbar {
-		display: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
 	}
 
 	.frosted-glass {
@@ -175,56 +226,6 @@
 
 		&[open] summary::after {
 			rotate: 135deg;
-		}
-	}
-
-	.richtext {
-		@apply space-y-[1em] leading-relaxed;
-
-		& :is(h1, h2, h3, h4, h5, h6) strong {
-			@apply text-gradient;
-		}
-
-		& h1 {
-			@apply h1;
-		}
-		& h2 {
-			@apply h2;
-		}
-		& h3 {
-			@apply h3;
-		}
-		& h4 {
-			@apply h4;
-		}
-		& h5 {
-			@apply h5;
-		}
-		& h6 {
-			@apply h6;
-		}
-
-		& :is(ul, ol) {
-			list-style: revert;
-			padding-left: 1.5em;
-		}
-
-		& a:not(:is(.action, .ghost)) {
-			@apply link;
-
-			&[href^='http']::after {
-				content: ' ↗';
-				font-size: 0.75em;
-				vertical-align: text-top;
-			}
-		}
-
-		& :not(pre) > code {
-			@apply rounded bg-ink/5 px-1;
-		}
-
-		& pre {
-			@apply overflow-x-auto rounded bg-transparent p-3 text-xs leading-relaxed;
 		}
 	}
 

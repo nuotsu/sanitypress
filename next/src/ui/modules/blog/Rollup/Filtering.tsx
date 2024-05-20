@@ -24,7 +24,7 @@ export default async function Filtering({
 		<fieldset>
 			<legend className="sr-only">Filter by category</legend>
 
-			<div className="flex flex-wrap gap-x-2">
+			<div className="flex flex-wrap gap-1">
 				<Filter label="All" />
 
 				{filtered?.map((category, key) => (

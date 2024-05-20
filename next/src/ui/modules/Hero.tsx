@@ -36,8 +36,8 @@ export default function Hero({
 					<Img
 						className="size-full max-h-fold object-cover"
 						image={bgImage}
-						draggable={false}
 						imageWidth={1800}
+						draggable={false}
 					/>
 				</picture>
 			)}

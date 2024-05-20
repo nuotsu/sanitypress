@@ -22,7 +22,7 @@ export default function List({
 		.filter(
 			(post) =>
 				!predefinedFilters?.length ||
-				post.categories.some((category) =>
+				post.categories?.some((category) =>
 					predefinedFilters.some((filter) => filter._id === category._id),
 				),
 		)

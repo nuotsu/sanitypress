@@ -13,7 +13,7 @@ export default function LinkList({ label, links }: Sanity.LinkList) {
 			<ul className="anim-fade-to-b md:frosted-glass left-0 top-full space-y-1 px-3 py-2 max-md:border-l md:absolute md:min-w-max md:rounded md:border md:bg-canvas md:shadow-md">
 				{links?.map((link, key) => (
 					<li key={key}>
-						<CTA className="link" link={link} />
+						<CTA className="hover:link" link={link} />
 					</li>
 				))}
 			</ul>
