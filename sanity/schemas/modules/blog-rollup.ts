@@ -7,11 +7,17 @@ export default defineType({
 	title: 'Blog rollup',
 	icon: VscEdit,
 	type: 'object',
+	groups: [
+		{ name: 'content', default: true },
+		{ name: 'filtering' },
+		{ name: 'options' },
+	],
 	fields: [
 		defineField({
 			name: 'intro',
 			type: 'array',
 			of: [{ type: 'block' }],
+			group: 'content',
 		}),
 		defineField({
 			name: 'layout',
@@ -21,17 +27,33 @@ export default defineType({
 				layout: 'radio',
 			},
 			initialValue: 'carousel',
+			group: 'options',
 		}),
 		defineField({
 			name: 'limit',
 			type: 'number',
+			description: 'Number of posts to show. Leave empty to show all posts.',
 			validation: (Rule) => Rule.min(1).integer(),
+			group: 'filtering',
 		}),
 		defineField({
-			name: 'enableFiltering',
+			name: 'displayFilters',
+			title: 'Display category filter buttons',
 			type: 'boolean',
-			description: 'Enable filtering by category',
 			initialValue: false,
+			group: 'filtering',
+		}),
+		defineField({
+			name: 'predefinedFilters',
+			type: 'array',
+			of: [
+				{
+					type: 'reference',
+					to: [{ type: 'blog.category' }],
+				},
+			],
+			description: 'Filter posts by category',
+			group: 'filtering',
 		}),
 	],
 	preview: {

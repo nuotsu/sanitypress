@@ -52,6 +52,7 @@ async function getPage(params: Props['params']) {
 						'text': pt::text(@)
 					}
 				),
+				predefinedFilters[]->,
 				${creativeModuleQuery}
 			},
 			metadata {

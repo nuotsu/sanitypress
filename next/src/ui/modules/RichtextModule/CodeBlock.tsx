@@ -15,7 +15,7 @@ export default async function CodeBlock({
 	})
 
 	return (
-		<article className="relative !my-4 rounded bg-ink/5">
+		<article className="relative !my-8 rounded bg-ink/5">
 			{value.filename && (
 				<div className="p-2 font-mono text-xs">📁 {value.filename}</div>
 			)}

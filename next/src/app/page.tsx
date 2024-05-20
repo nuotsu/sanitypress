@@ -28,6 +28,7 @@ async function getPage() {
 				},
 				logos[]->,
 				testimonials[]->,
+				predefinedFilters[]->,
 				${creativeModuleQuery}
 			},
 			metadata {

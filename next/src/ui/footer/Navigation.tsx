@@ -9,7 +9,7 @@ export default async function Menu() {
 			{footerMenu?.items?.map((item, key) => {
 				switch (item._type) {
 					case 'link':
-						return <CTA className="link" link={item} key={key} />
+						return <CTA className="hover:link" link={item} key={key} />
 
 					default:
 						return null

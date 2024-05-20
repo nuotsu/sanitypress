@@ -1,20 +1,22 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import { PortableText } from '@portabletext/react'
-import Filtering from '@/ui/modules/blog/Filtering'
-import { cn } from '@/lib/utils'
-import { stegaClean } from '@sanity/client/stega'
+import Filtering from '@/ui/modules/blog/Rollup/Filtering'
 import List from './List'
+import { stegaClean } from '@sanity/client/stega'
+import { cn } from '@/lib/utils'
 
 export default async function Rollup({
 	intro,
-	limit = 100,
 	layout,
-	enableFiltering,
+	limit = 100,
+	displayFilters,
+	predefinedFilters,
 }: Partial<{
 	intro: any
 	layout: 'grid' | 'carousel'
 	limit: number
-	enableFiltering: boolean
+	displayFilters: boolean
+	predefinedFilters: Sanity.BlogCategory[]
 }>) {
 	const posts = await fetchSanity<Sanity.BlogPost[]>(
 		groq`*[_type == 'blog.post'][0...$limit]|order(publishDate desc){
@@ -35,10 +37,11 @@ export default async function Rollup({
 				</header>
 			)}
 
-			{enableFiltering && <Filtering />}
+			{displayFilters && <Filtering predefinedFilters={predefinedFilters} />}
 
 			<List
 				posts={posts}
+				predefinedFilters={predefinedFilters}
 				className={cn(
 					'gap-6',
 					stegaClean(layout) === 'grid'
