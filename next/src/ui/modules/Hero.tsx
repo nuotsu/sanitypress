@@ -47,7 +47,7 @@ export default function Hero({
 					<div
 						className={cn(
 							'richtext relative max-w-xl [&_:is(h1,h2)]:text-balance',
-							bgImage && 'text-shadow',
+							bgImage?.asset && 'text-shadow',
 							{
 								'mb-8': stegaClean(alignItems) === 'start',
 								'my-auto': stegaClean(alignItems) === 'center',

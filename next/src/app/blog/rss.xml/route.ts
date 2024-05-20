@@ -1,6 +1,6 @@
-import { Feed } from 'feed'
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import processUrl, { BASE_URL } from '@/lib/processUrl'
+import { Feed } from 'feed'
 import { toHTML } from '@portabletext/to-html'
 import { urlFor } from '@/lib/sanity/urlFor'
 

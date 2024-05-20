@@ -23,6 +23,10 @@
 		scroll-behavior: smooth;
 	}
 
+	label {
+		cursor: pointer;
+	}
+
 	summary {
 		cursor: pointer;
 	}
@@ -161,6 +165,7 @@
 				font-family: monospace;
 				font-size: 1.5em;
 				line-height: 1;
+				transition: rotate 0.2s;
 			}
 		}
 
@@ -169,7 +174,7 @@
 		}
 
 		&[open] summary::after {
-			content: '-';
+			rotate: 135deg;
 		}
 	}
 
