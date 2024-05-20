@@ -1,7 +1,7 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import processUrl, { BASE_URL } from '@/lib/processUrl'
 import { Feed } from 'feed'
-import { toHTML } from '@portabletext/to-html'
+import { escapeHTML, toHTML } from '@portabletext/to-html'
 import { urlFor } from '@/lib/sanity/urlFor'
 
 export async function GET() {
@@ -56,7 +56,7 @@ export async function GET() {
 						image: ({ value }) =>
 							`<img src="${urlFor(value).url()}" alt="${value.alt}" />`,
 						'code-block': ({ value }) =>
-							`<pre><code>${value.code}</code></pre>`,
+							`<pre><code>${escapeHTML(value.code)}</code></pre>`,
 					},
 				},
 			}),

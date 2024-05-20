@@ -209,7 +209,7 @@
 			padding-left: 1.5em;
 		}
 
-		& a:not(:is([class*='action'], [class*='ghost'])) {
+		& a:not(:is(.action, .ghost)) {
 			@apply link;
 
 			&[href^='http']::after {
