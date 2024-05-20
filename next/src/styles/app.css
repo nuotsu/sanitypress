@@ -211,6 +211,12 @@
 
 		& a:not(:is([class*='action'], [class*='ghost'])) {
 			@apply link;
+
+			&[href^='http']::after {
+				content: ' ↗';
+				font-size: 0.75em;
+				vertical-align: text-top;
+			}
 		}
 
 		& :not(pre) > code {
