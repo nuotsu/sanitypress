@@ -14,6 +14,7 @@ An opinionated and minimally styled starter template with Tailwind CSS and pre-b
 
 - [Key Features](#key-features)
 - [Getting Started](#getting-started)
+- [Time-based revalidation](#time-based-revalidation)
 - [Visual Editing](#visual-editing)
 - [Staging](#staging)
 - [Helpful Resources](#helpful-resources)
@@ -46,6 +47,7 @@ npm -y create sanity@latest
 # /next/.env.local
 NEXT_PUBLIC_SANITY_PROJECT_ID = ...
 NEXT_PUBLIC_SANITY_TOKEN = ... # retrieve from https://sanity.io/manage
+NEXT_PUBLIC_REVALIDATE = ... # number in seconds; leave empty for `revalidate: false`
 
 # /sanity/.env.local
 SANITY_STUDIO_PROJECT_ID = ...
@@ -75,6 +77,19 @@ npm i sanity-plugin-dashboard-widget-netlify
 ### 6. Customize the frontend
 
 Feel free to adjust styles, add more schema and modules, and more.
+
+## Time-based Revalidation
+
+Set `NEXT_PUBLIC_REVALIDATE` (optional) environment variable to allow [time-based revalidation](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#time-based-revalidation) for published Sanity documents.
+
+Leave blank to disable revalidation (`{ next: { revalidate: false } }`).
+
+```sh
+# /next/.env.local
+NEXT_PUBLIC_REVALIDATE = 3600	# every hour
+```
+
+When empty (`revalidate: false`), published Sanity documents will only be pushed to the live site when a new deployment is triggered.
 
 ## Visual Editing
 

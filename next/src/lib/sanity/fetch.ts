@@ -35,7 +35,7 @@ export function fetchSanity<T = any>(
 					perspective: 'published',
 					useCdn: true,
 					next: {
-						revalidate: false,
+						revalidate: Number(process.env.NEXT_PUBLIC_REVALIDATE) || false,
 						...next,
 					},
 				},
