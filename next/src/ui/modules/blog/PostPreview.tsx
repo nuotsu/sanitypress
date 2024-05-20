@@ -12,7 +12,7 @@ export default function PostPreview({ post }: { post: Sanity.BlogPost }) {
 		>
 			<figure className="aspect-video bg-ink/5">
 				<Img
-					className="aspect-[inherit] w-full object-cover"
+					className="aspect-video w-full object-cover"
 					image={post.metadata.image}
 					imageWidth={600}
 				/>
