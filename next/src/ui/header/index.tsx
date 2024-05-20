@@ -12,7 +12,7 @@ export default async function Header() {
 	const { title, ctas } = await getSite()
 
 	return (
-		<Wrapper className="sticky top-0 z-10 border-b border-ink/10 bg-canvas/90 backdrop-blur backdrop-saturate-150">
+		<Wrapper className="frosted-glass sticky top-0 z-10 border-b border-ink/10 bg-canvas">
 			<SkipToContent />
 
 			<div

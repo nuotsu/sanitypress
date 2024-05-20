@@ -10,7 +10,7 @@ export default function LinkList({ label, links }: Sanity.LinkList) {
 				<CgChevronRight className="transition-transform group-open:rotate-90 md:rotate-90" />
 			</summary>
 
-			<ul className="anim-fade-to-b left-0 top-full space-y-1 border px-3 py-2 shadow-md md:absolute md:min-w-max md:bg-canvas/90 md:backdrop-blur">
+			<ul className="anim-fade-to-b md:frosted-glass left-0 top-full space-y-1 border px-3 py-2 shadow-md md:absolute md:min-w-max md:bg-canvas">
 				{links?.map((link, key) => (
 					<li key={key}>
 						<CTA className="link" link={link} />

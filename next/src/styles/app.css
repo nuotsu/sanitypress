@@ -63,6 +63,10 @@
 		font-weight: bold;
 	}
 
+	.text-shadow {
+		text-shadow: 0 0 0.2em rgb(0 0 0 / 0.25);
+	}
+
 	.text-gradient {
 		@apply bg-gradient-to-br from-ink/5 to-ink bg-clip-text text-transparent;
 	}
@@ -78,11 +82,11 @@
 	}
 
 	.action {
-		@apply _btn rounded bg-gradient-to-br from-ink/70 to-ink text-white shadow backdrop-blur;
+		@apply _btn frosted-glass rounded bg-gradient-to-br from-ink/70 to-ink text-white shadow;
 	}
 
 	.ghost {
-		@apply _btn rounded backdrop-blur hover:bg-ink/5;
+		@apply _btn frosted-glass rounded hover:bg-ink/5;
 	}
 
 	.link {
@@ -101,25 +105,14 @@
 }
 
 @layer utilities {
-	.sticky-below-header {
-		position: sticky;
-		top: calc(var(--header-height) + var(--offset, 0px));
-	}
-
 	.full-bleed {
 		width: 100vw;
 		margin-inline: calc(50% - 50vw);
 	}
 
-	.carousel {
-		display: flex;
-		overflow-x: auto;
-		scroll-snap-type: x mandatory;
-
-		& > * {
-			flex: 0 0 calc(min(var(--size, 300px), 80vw));
-			scroll-snap-align: center;
-		}
+	.sticky-below-header {
+		position: sticky;
+		top: calc(var(--header-height) + var(--offset, 0px));
 	}
 
 	.no-scrollbar {
@@ -128,6 +121,10 @@
 	}
 	.no-scrollbar::-webkit-scrollbar {
 		display: none;
+	}
+
+	.frosted-glass {
+		@apply bg-opacity-75 backdrop-blur-sm backdrop-saturate-150;
 	}
 
 	.overflow-fade {
@@ -139,6 +136,17 @@
 			black calc(100% - var(--offset)),
 			transparent
 		);
+	}
+
+	.carousel {
+		display: flex;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+
+		& > * {
+			flex: 0 0 calc(min(var(--size, 300px), 80vw));
+			scroll-snap-align: center;
+		}
 	}
 
 	.accordion {
