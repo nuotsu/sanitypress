@@ -30,7 +30,7 @@ export default function List({
 		.filter(
 			(post) =>
 				selected === 'All' ||
-				post.categories.some((category) => category._id === selected),
+				post.categories?.some((category) => category._id === selected),
 		)
 
 	if (!filtered.length) {
