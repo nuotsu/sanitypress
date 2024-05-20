@@ -1,3 +1,5 @@
+import Category from './Category'
+
 export default function Categories({
 	categories,
 }: {
@@ -6,11 +8,10 @@ export default function Categories({
 	if (!categories?.length) return null
 
 	return (
-		<ul className="lowercase">
+		<ul>
 			{categories.map((category, key) => (
 				<li key={key}>
-					<span className="opacity-40">#</span>
-					{category.title}
+					<Category value={category} />
 				</li>
 			))}
 		</ul>
