@@ -11,9 +11,11 @@
 	"dependencies": {
 		"@next/third-parties": "^14.2.3",
 		"@portabletext/react": "^3.0.18",
+		"@portabletext/to-html": "^2.0.13",
 		"@sanity/image-url": "^1.0.2",
 		"@sanity/preview-url-secret": "^1.6.13",
 		"clsx": "^2.1.1",
+		"feed": "^4.2.2",
 		"groq": "^3.42.1",
 		"next": "^14.2.3",
 		"next-sanity": "^9.0.20",

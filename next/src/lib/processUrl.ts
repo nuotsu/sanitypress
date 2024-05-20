@@ -19,7 +19,7 @@ export default function (
 	const path = slug === 'index' ? null : slug
 
 	return (
-		(base ? BASE_URL : '/') +
+		(base ? BASE_URL + '/' : '/') +
 		[directory, path, params].filter(Boolean).join('/')
 	)
 }
