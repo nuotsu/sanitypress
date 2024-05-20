@@ -8,7 +8,7 @@ export default function Category({
 	return (
 		<>
 			<span className="opacity-40">#</span>
-			{label || value.title}
+			{label || value?.title}
 		</>
 	)
 }
