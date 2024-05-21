@@ -6,7 +6,7 @@ export default function TableOfContents({
 	headings: Sanity.BlogPost['headings']
 }) {
 	return (
-		<details className="accordion" open>
+		<details className="accordion max-lg:bg-neutral-100 max-lg:p-3" open>
 			<summary className="font-bold">Table of Contents</summary>
 
 			<ol className="anim-fade-to-b mt-2 space-y-2 leading-tight">
