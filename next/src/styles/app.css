@@ -226,9 +226,9 @@
 
 			&::after {
 				content: '+';
+				display: inline-block;
 				font-family: monospace;
 				font-size: 1.5em;
-				line-height: 1;
 				transition: rotate 0.2s;
 			}
 		}

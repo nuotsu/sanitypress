@@ -43,12 +43,12 @@ export default defineType({
 					],
 					preview: {
 						select: {
-							title: 'question',
-							answer: 'answer',
+							title: 'summary',
+							content: 'content',
 						},
-						prepare: ({ title, answer }) => ({
+						prepare: ({ title, content }) => ({
 							title,
-							subtitle: getBlockText(answer),
+							subtitle: getBlockText(content),
 						}),
 					},
 				}),
