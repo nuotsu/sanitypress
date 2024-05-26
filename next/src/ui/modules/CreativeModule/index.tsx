@@ -49,8 +49,8 @@ export default function CreativeModule({
 					style={
 						{
 							'--col': columns || modules?.length,
-							textAlign,
-							alignItems,
+							textAlign: stegaClean(textAlign),
+							alignItems: stegaClean(alignItems),
 						} as React.CSSProperties
 					}
 				>
