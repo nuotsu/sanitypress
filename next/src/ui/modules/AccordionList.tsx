@@ -1,15 +1,15 @@
 import { cn } from '@/lib/utils'
 import { PortableText } from '@portabletext/react'
 
-export default function FAQList({
+export default function AccordionList({
 	intro,
 	items,
 	layout = 'vertical',
 }: Partial<{
 	intro: any
 	items: {
-		question: string
-		answer: any
+		summary: string
+		content: any
 		open?: boolean
 	}[]
 	layout: 'vertical' | 'horizontal'
@@ -35,7 +35,7 @@ export default function FAQList({
 			</header>
 
 			<div className="mx-auto w-full max-w-screen-md">
-				{items?.map(({ question, answer, open }, key) => (
+				{items?.map(({ summary, content, open }, key) => (
 					<details
 						className="accordion border-b border-ink/10"
 						open={open}
@@ -45,8 +45,9 @@ export default function FAQList({
 						key={key}
 					>
 						<summary className="py-4 font-bold" itemProp="name">
-							{question}
+							{summary}
 						</summary>
+
 						<div
 							className="anim-fade-to-b pb-4"
 							itemScope
@@ -54,7 +55,7 @@ export default function FAQList({
 							itemType="https://schema.org/Answer"
 						>
 							<div className="richtext" itemProp="text">
-								<PortableText value={answer} />
+								<PortableText value={content} />
 							</div>
 						</div>
 					</details>

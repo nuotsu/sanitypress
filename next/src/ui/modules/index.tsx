@@ -1,7 +1,7 @@
+import AccordionList from './AccordionList'
 import BlogRollup from './blog/Rollup'
 import CreativeModule from './CreativeModule'
 import CustomHTML from './CustomHTML'
-import FAQList from './FAQList'
 import Hero from './Hero'
 import HeroSplit from './HeroSplit'
 import HeroSaaS from './HeroSaaS'
@@ -16,14 +16,14 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 		<>
 			{modules?.map((module) => {
 				switch (module._type) {
+					case 'accordion-list':
+						return <AccordionList {...module} key={module._key} />
 					case 'blog-rollup':
 						return <BlogRollup {...module} key={module._key} />
 					case 'creative-module':
 						return <CreativeModule {...module} key={module._key} />
 					case 'custom-html':
 						return <CustomHTML {...module} key={module._key} />
-					case 'accordion-list':
-						return <FAQList {...module} key={module._key} />
 					case 'hero':
 						return <Hero {...module} key={module._key} />
 					case 'hero.split':

@@ -27,11 +27,11 @@ export default defineType({
 					icon: VscQuestion,
 					fields: [
 						defineField({
-							name: 'question',
+							name: 'summary',
 							type: 'string',
 						}),
 						defineField({
-							name: 'answer',
+							name: 'content',
 							type: 'array',
 							of: [{ type: 'block' }],
 						}),
