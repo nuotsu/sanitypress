@@ -30,6 +30,7 @@
 	summary {
 		cursor: pointer;
 	}
+
 	::-webkit-details-marker {
 		display: none;
 	}
@@ -45,18 +46,23 @@
 	.h1 {
 		@apply _h text-3xl;
 	}
+
 	.h2 {
 		@apply _h text-2xl;
 	}
+
 	.h3 {
 		@apply _h text-xl;
 	}
+
 	.h4 {
 		@apply _h text-lg;
 	}
+
 	.h5 {
 		@apply _h;
 	}
+
 	.h6 {
 		@apply _h;
 	}
@@ -101,6 +107,12 @@
 		}
 	}
 
+	.is-external::after {
+		content: ' ↗';
+		font-size: 0.7em;
+		vertical-align: top;
+	}
+
 	/* layout */
 
 	.section {
@@ -117,18 +129,23 @@
 		& h1 {
 			@apply h1;
 		}
+
 		& h2 {
 			@apply h2;
 		}
+
 		& h3 {
 			@apply h3;
 		}
+
 		& h4 {
 			@apply h4;
 		}
+
 		& h5 {
 			@apply h5;
 		}
+
 		& h6 {
 			@apply h6;
 		}
@@ -141,14 +158,12 @@
 		& a:not(:is(.action, .ghost)) {
 			@apply link;
 
-			&[href^='http']::after {
-				content: ' ↗';
-				font-size: 0.75em;
-				vertical-align: text-top;
+			&[href^='http'] {
+				@apply is-external;
 			}
 		}
 
-		& :not(pre) > code {
+		& :not(pre)>code {
 			@apply rounded bg-ink/5 px-1;
 		}
 
@@ -184,13 +199,11 @@
 
 	.overflow-fade {
 		--offset: 4rem;
-		mask: linear-gradient(
-			to right,
-			transparent,
-			black var(--offset),
-			black calc(100% - var(--offset)),
-			transparent
-		);
+		mask: linear-gradient(to right,
+				transparent,
+				black var(--offset),
+				black calc(100% - var(--offset)),
+				transparent);
 	}
 
 	.carousel {
@@ -198,7 +211,7 @@
 		overflow-x: auto;
 		scroll-snap-type: x mandatory;
 
-		& > * {
+		&>* {
 			flex: 0 0 calc(min(var(--size, 300px), 80vw));
 			scroll-snap-align: center;
 		}
