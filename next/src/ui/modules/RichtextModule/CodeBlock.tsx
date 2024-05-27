@@ -1,4 +1,4 @@
-import { codeToHtml } from 'shiki'
+import { codeToHtml, splitLines } from 'shiki'
 import css from './CodeBlock.module.css'
 import { stegaClean } from '@sanity/client/stega'
 
@@ -12,15 +12,21 @@ export default async function CodeBlock({
 		code: string
 	}
 }) {
+	const lines = splitLines(value.code)?.length
+
+	const decorations =
+		value.decorations
+			?.map(stegaClean)
+			?.map(Number)
+			?.filter((d) => !isNaN(d) && d >= 0 && d < lines) || undefined
+
 	const html = await codeToHtml(value.code, {
 		lang: value.language,
 		theme: 'github-dark',
-		decorations: value.decorations?.map((d) => {
-			const n = Number(stegaClean(d))
-
+		decorations: decorations?.map((d) => {
 			return {
-				start: { line: n - 1, character: 0 },
-				end: { line: n, character: 0 },
+				start: { line: d - 1, character: 0 },
+				end: { line: d, character: 0 },
 				properties: { class: css.highlight },
 			}
 		}),
