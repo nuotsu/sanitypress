@@ -18,6 +18,14 @@ export default defineType({
 			fieldset: 'metadata',
 		}),
 		defineField({
+			name: 'decorations',
+			type: 'array',
+			of: [{ type: 'string' }],
+			options: { layout: 'tags' },
+			description: 'Line numbers to highlight',
+			fieldset: 'metadata',
+		}),
+		defineField({
 			name: 'code',
 			type: 'text',
 			rows: 10,
