@@ -17,6 +17,7 @@ export default defineType({
 				{ type: 'blog-rollup' },
 				{ type: 'creative-module' },
 				{ type: 'custom-html' },
+				{ type: 'flag-list' },
 				{ type: 'hero' },
 				{ type: 'hero.saas' },
 				{ type: 'hero.split' },

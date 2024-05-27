@@ -21,6 +21,7 @@ import accordionList from './modules/accordion-list'
 import blogRollup from './modules/blog-rollup'
 import creativeModule from './modules/creative'
 import customHtml from './modules/custom-html'
+import flagList from './modules/flag-list'
 import hero from './modules/hero'
 import heroSaas from './modules/hero.saas'
 import HeroSplit from './modules/hero.split'
@@ -54,6 +55,7 @@ export const schemaTypes = [
 	blogRollup,
 	creativeModule,
 	customHtml,
+	flagList,
 	hero,
 	heroSaas,
 	HeroSplit,
