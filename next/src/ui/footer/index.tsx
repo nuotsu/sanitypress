@@ -1,7 +1,7 @@
 import { getSite } from '@/lib/sanity/queries'
 import Navigation from './Navigation'
 import Social from '@/ui/Social'
-import { PortableText } from 'next-sanity'
+import { PortableText } from '@portabletext/react'
 
 export default async function Footer() {
 	const { title, copyright } = await getSite()

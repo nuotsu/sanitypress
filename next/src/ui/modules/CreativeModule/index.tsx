@@ -1,4 +1,4 @@
-import { PortableText } from 'next-sanity'
+import { PortableText } from '@portabletext/react'
 import CTAsSubModule, { type CTAsSubModuleType } from './CTAsSubModule'
 import CustomHTMLSubmodule, {
 	type CustomHTMLSubmoduleType,

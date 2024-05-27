@@ -1,4 +1,4 @@
-import { PortableText } from 'next-sanity'
+import { PortableText } from '@portabletext/react'
 import AnchoredHeading from './AnchoredHeading'
 import Image from './Image'
 import CodeBlock from './CodeBlock'

@@ -1,5 +1,5 @@
 import { PortableText, groq } from 'next-sanity'
-import CTA from '../CTA'
+import CTA from '@/ui/CTA'
 import { fetchSanity } from '@/lib/sanity/fetch'
 
 export default async function Announcement() {

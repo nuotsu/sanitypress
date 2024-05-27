@@ -1,7 +1,7 @@
-import { PortableText } from 'next-sanity'
-import Pretitle from '../Pretitle'
-import CTAList from '../CTAList'
-import Img from '../Img'
+import { PortableText } from '@portabletext/react'
+import Pretitle from '@/ui/Pretitle'
+import CTAList from '@/ui/CTAList'
+import Img from '@/ui/Img'
 import { cn } from '@/lib/utils'
 
 export default function HeroSaaS({

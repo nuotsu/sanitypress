@@ -1,5 +1,5 @@
-import { PortableText } from 'next-sanity'
-import Img from '../Img'
+import { PortableText } from '@portabletext/react'
+import Img from '@/ui/Img'
 import { cn } from '@/lib/utils'
 
 export default function TestimonialList({

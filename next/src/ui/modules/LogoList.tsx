@@ -1,7 +1,7 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import { PortableText } from '@portabletext/react'
-import Pretitle from '../Pretitle'
-import Img from '../Img'
+import Pretitle from '@/ui/Pretitle'
+import Img from '@/ui/Img'
 
 export default async function LogoList({
 	pretitle,
