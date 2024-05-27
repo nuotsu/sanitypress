@@ -1,13 +1,17 @@
 import TableOfContents from './TableOfContents'
 import Content from './Content'
+import { cn } from '@/lib/utils'
+import { stegaClean } from '@sanity/client/stega'
 
 export default function RichtextModule({
 	content,
 	tableOfContents,
+	tocPosition = 'right',
 	headings,
 }: Partial<{
 	content: any
 	tableOfContents: boolean
+	tocPosition: 'left' | 'right'
 	headings: {
 		style: string
 		text: string
@@ -16,7 +20,12 @@ export default function RichtextModule({
 	return (
 		<section className="section grid gap-8 lg:grid-cols-[1fr,auto]">
 			{tableOfContents && (
-				<aside className="lg:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] lg:order-1 lg:w-[250px]">
+				<aside
+					className={cn(
+						'lg:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] lg:w-[250px]',
+						stegaClean(tocPosition) === 'right' && 'lg:order-last',
+					)}
+				>
 					<TableOfContents headings={headings} />
 				</aside>
 			)}

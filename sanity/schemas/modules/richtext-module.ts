@@ -8,6 +8,10 @@ export default defineType({
 	title: 'Richtext module',
 	icon: VscSymbolKeyword,
 	type: 'object',
+	groups: [
+		{ name: 'content', title: 'Content', default: true },
+		{ name: 'options', title: 'Options' },
+	],
 	fields: [
 		defineField({
 			name: 'content',
@@ -34,11 +38,23 @@ export default defineType({
 				},
 				{ type: 'code-block' },
 			],
+			group: 'content',
 		}),
 		defineField({
 			name: 'tableOfContents',
 			type: 'boolean',
 			initialValue: false,
+			group: 'options',
+		}),
+		defineField({
+			name: 'tocPosition',
+			type: 'string',
+			options: {
+				list: ['left', 'right'],
+				layout: 'radio',
+			},
+			initialValue: 'right',
+			group: 'options',
 		}),
 	],
 	preview: {
