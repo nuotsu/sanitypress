@@ -20,7 +20,7 @@
 		content: '';
 		position: absolute;
 		z-index: 0;
-		inset-block: -2.5px;
+		inset-block: -2px;
 		inset-inline: -1.6ch -0.5ch;
 		@apply bg-green-400/20 border-l-4 border-green-400 rounded-r;
 	}
