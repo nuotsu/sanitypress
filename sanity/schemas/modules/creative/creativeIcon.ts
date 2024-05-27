@@ -11,7 +11,7 @@ export default defineArrayMember({
 			type: 'image',
 		}),
 		defineField({
-			name: 'height',
+			name: 'size',
 			type: 'number',
 			description: 'px',
 			validation: (Rule) => Rule.min(1).integer(),

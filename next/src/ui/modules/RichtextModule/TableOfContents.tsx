@@ -12,7 +12,7 @@ export default function TableOfContents({
 			<ol className="anim-fade-to-b mt-2 space-y-2 leading-tight">
 				{headings?.map(({ text, style }, key) => (
 					<li className={cn(style == 'h3' && 'ml-4')} key={key}>
-						<a className="link" href={`#${slug(text)}`}>
+						<a className="hover:link" href={`#${slug(text)}`}>
 							{text}
 						</a>
 					</li>

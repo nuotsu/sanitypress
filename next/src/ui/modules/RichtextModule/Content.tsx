@@ -11,7 +11,7 @@ export default function Content({
 	return (
 		<div
 			className={cn(
-				'richtext mx-auto w-full space-y-[1em] [&>:first-child]:mt-0',
+				'richtext mx-auto w-full space-y-[1em] [&>:first-child]:!mt-0',
 				className,
 			)}
 		>
