@@ -32,6 +32,7 @@ export default function HeroSaaS({
 					image?.faded &&
 						'[mask-image:linear-gradient(to_bottom,#000_50%,transparent)]',
 				)}
+				draggable={false}
 			/>
 		</section>
 	)

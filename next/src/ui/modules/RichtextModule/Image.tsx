@@ -8,7 +8,7 @@ export default function Image({
 	}
 }) {
 	return (
-		<figure className="max-lg:full-bleed !mb-4 !mt-8 space-y-2 text-center md:![grid-column:bleed]">
+		<figure className="max-lg:full-bleed !mb-4 !mt-8 space-y-2 bg-neutral-100 text-center md:![grid-column:bleed]">
 			<Img className="mx-auto" image={value} imageWidth={1200} />
 
 			{value.caption && (
