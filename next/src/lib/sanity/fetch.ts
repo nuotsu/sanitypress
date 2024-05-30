@@ -24,8 +24,8 @@ export function fetchSanity<T = any>(
 			? {
 					stega: true,
 					perspective: 'previewDrafts',
-					token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
 					useCdn: false,
+					token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
 					next: {
 						revalidate: 0,
 						...next,

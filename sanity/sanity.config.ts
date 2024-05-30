@@ -38,15 +38,7 @@ export default defineConfig({
 		}),
 		dashboardTool({
 			title: 'Deployment',
-			widgets: [
-				projectInfoWidget(),
-				projectUsersWidget(),
-				vercelWidget({
-					layout: {
-						width: 'auto',
-					},
-				}),
-			],
+			widgets: [projectInfoWidget(), projectUsersWidget(), vercelWidget()],
 		}),
 		visionTool({
 			title: 'GROQ',
