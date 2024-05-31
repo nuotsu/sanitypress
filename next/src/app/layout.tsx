@@ -4,6 +4,7 @@ import Header from '@/ui/header'
 import Footer from '@/ui/footer'
 import { draftMode } from 'next/headers'
 import { VisualEditing } from 'next-sanity'
+import { Analytics } from '@vercel/analytics/react'
 import '@/styles/app.css'
 
 export default async function RootLayout({
@@ -23,6 +24,7 @@ export default async function RootLayout({
 				</main>
 				<Footer />
 
+				<Analytics />
 				{draftMode().isEnabled && <VisualEditing />}
 			</body>
 		</html>
