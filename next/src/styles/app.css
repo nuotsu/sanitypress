@@ -119,6 +119,8 @@
 		@apply mx-auto max-w-screen-xl p-8 max-md:px-4 md:py-12;
 	}
 
+	/* richtext */
+
 	.richtext {
 		@apply space-y-2 leading-relaxed;
 
@@ -163,7 +165,7 @@
 			}
 		}
 
-		& :not(pre)>code {
+		& :not(pre) > code {
 			@apply rounded bg-ink/5 px-1;
 		}
 
@@ -172,51 +174,8 @@
 			@apply overflow-x-auto rounded bg-transparent p-3 text-xs leading-relaxed;
 		}
 	}
-}
 
-@layer utilities {
-	.full-bleed {
-		width: 100vw;
-		margin-inline: calc(50% - 50vw);
-	}
-
-	.sticky-below-header {
-		position: sticky;
-		top: calc(var(--header-height) + var(--offset, 0px));
-	}
-
-	.no-scrollbar {
-		-webkit-overflow-scrolling: touch;
-		overflow: auto;
-
-		&::-webkit-scrollbar {
-			display: none;
-		}
-	}
-
-	.frosted-glass {
-		@apply bg-opacity-75 backdrop-blur-sm backdrop-saturate-150;
-	}
-
-	.overflow-fade {
-		--offset: 4rem;
-		mask: linear-gradient(to right,
-				transparent,
-				black var(--offset),
-				black calc(100% - var(--offset)),
-				transparent);
-	}
-
-	.carousel {
-		display: flex;
-		overflow-x: auto;
-		scroll-snap-type: x mandatory;
-
-		&>* {
-			flex: 0 0 calc(min(var(--size, 300px), 80vw));
-			scroll-snap-align: center;
-		}
-	}
+	/* components */
 
 	.accordion {
 		& summary {
@@ -241,6 +200,53 @@
 		&[open] summary::after {
 			rotate: 135deg;
 		}
+	}
+
+	.carousel {
+		display: flex;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+
+		& > * {
+			flex: 0 0 min(var(--size, 300px), 80vw);
+			scroll-snap-align: center;
+		}
+	}
+}
+
+@layer utilities {
+	.frosted-glass {
+		@apply bg-opacity-75 backdrop-blur-sm backdrop-saturate-150;
+	}
+
+	.full-bleed {
+		width: 100vw;
+		margin-inline: calc(50% - 50vw);
+	}
+
+	.no-scrollbar {
+		-webkit-overflow-scrolling: touch;
+		overflow: auto;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+	.overflow-fade {
+		--offset: 4rem;
+		mask: linear-gradient(
+			to right,
+			transparent,
+			black var(--offset),
+			black calc(100% - var(--offset)),
+			transparent
+		);
+	}
+
+	.sticky-below-header {
+		position: sticky;
+		top: calc(var(--header-height) + var(--offset, 0px));
 	}
 
 	/* animations */
