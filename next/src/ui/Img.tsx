@@ -7,8 +7,8 @@ import { urlFor } from '@/lib/sanity/urlFor'
 import { stegaClean } from '@sanity/client/stega'
 
 const SIZES = [
-	120, 160, 200, 240, 320, 400, 480, 520, 560, 600, 640, 800, 960, 1280, 1600,
-	1800, 2000,
+	120, 160, 200, 240, 320, 400, 480, 520, 560, 600, 640, 800, 960, 1280, 1440,
+	1600, 1800, 2000,
 ]
 
 export default function Img({
