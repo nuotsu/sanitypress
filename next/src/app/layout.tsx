@@ -1,4 +1,5 @@
 // import { GoogleTagManager } from '@next/third-parties/google'
+import SkipToContent from '@/ui/SkipToContent'
 import Announcement from '@/ui/Announcement'
 import Header from '@/ui/header'
 import Footer from '@/ui/footer'
@@ -17,6 +18,7 @@ export default async function RootLayout({
 			{/* <GoogleTagManager gtmId='' /> */}
 
 			<body className="bg-canvas text-ink">
+				<SkipToContent />
 				<Announcement />
 				<Header />
 				<main id="main-content" tabIndex={-1}>
