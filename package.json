@@ -1,8 +1,8 @@
 {
   "name": "next-sanity-template",
-  "version": "2.6.4",
-  "description": "",
+  "version": "2.6.5",
+  "description": "Next.js + Sanity.io Starter Template",
   "main": "index.js",
-  "author": "",
+  "author": "nuotsu <mitchell@nuotsu.dev> (https://nuotsu.dev)",
   "license": "ISC"
 }

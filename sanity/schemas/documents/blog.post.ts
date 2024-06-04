@@ -21,15 +21,30 @@ export default defineType({
 					},
 					fields: [
 						defineField({
-							name: 'alt',
-							type: 'string',
-						}),
-						defineField({
 							name: 'caption',
 							type: 'text',
 							rows: 2,
 						}),
+						defineField({
+							name: 'alt',
+							type: 'string',
+						}),
+						defineField({
+							name: 'loading',
+							type: 'string',
+							options: {
+								list: ['lazy', 'eager'],
+							},
+							initialValue: 'lazy',
+						}),
 					],
+					preview: {
+						select: {
+							title: 'caption',
+							subtitle: 'alt',
+							media: 'asset',
+						},
+					},
 				}),
 				{ type: 'code-block' },
 			],
