@@ -7,13 +7,19 @@ import type {
 
 export const singleton = (
 	S: StructureBuilder,
-	title: string,
 	id: string,
+	title?: string,
 ): ListItemBuilder =>
 	S.listItem()
-		.title(title)
 		.id(id)
-		.child(S.document().schemaType(id).documentId(id))
+		.title(
+			title ||
+				id
+					.split(/(?=[A-Z])/)
+					.map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+					.join(' '),
+		)
+		.child(S.editor().id(id).schemaType(id).documentId(id))
 
 export const group = (
 	S: StructureBuilder,
