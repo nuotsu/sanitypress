@@ -32,7 +32,7 @@ export default function Hero({
 		>
 			{bgImage && (
 				<picture>
-					<Source image={bgImageMobile} />
+					<Source image={bgImageMobile} imageWidth={1200} />
 					<Img
 						className="size-full max-h-fold object-cover"
 						image={bgImage}
