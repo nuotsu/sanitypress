@@ -115,7 +115,7 @@ Now you can use the preview deployment URL to share staged content (unpublished 
 ## Other Helpful Resources
 
 - Global TypeScripts types useable in the Next.js frontend
-  - [Sanity types](/next/src/types/Sanity.d.ts)
+  - [Sanity types](https://next-sanity-template-demo.vercel.app/blog/sanity-helper-functions)
 - [`<Img>` and `<Source> components`](https://next-sanity-template-demo.vercel.app/blog/performant-images-with-img-and-source) to display Sanity images
 - [Helper functions](/sanity/src/utils.ts) to:
   - structure the Sanity Studio
@@ -124,5 +124,5 @@ Now you can use the preview deployment URL to share staged content (unpublished 
 ## External References
 
 - [The official Sanity toolkit for Next.js](https://www.sanity.io/plugins/next-sanity)
-- [Visual Editing with Next.js App Router and Sanity Studio](https://www.sanity.io/guides/nextjs-app-router-live-preview)
 - [`sanity-io/next-sanity` README](https://github.com/sanity-io/next-sanity#readme)
+- [Visual Editing with Next.js App Router and Sanity Studio](https://www.sanity.io/guides/nextjs-app-router-live-preview)
