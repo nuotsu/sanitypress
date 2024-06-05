@@ -45,7 +45,7 @@ export async function GET() {
 
 	posts.map((post) =>
 		feed.addItem({
-			title: post.metadata.title,
+			title: escapeHTML(post.metadata.title),
 			description: post.metadata.description,
 			id: processUrl(post),
 			link: processUrl(post),
@@ -55,6 +55,8 @@ export async function GET() {
 					types: {
 						image: ({ value }) =>
 							`<img src="${urlFor(value).url()}" alt="${value.alt}" />`,
+						code: ({ value }) =>
+							`<pre><code>${escapeHTML(value.code)}</code></pre>`,
 						'code-block': ({ value }) =>
 							`<pre><code>${escapeHTML(value.code)}</code></pre>`,
 					},

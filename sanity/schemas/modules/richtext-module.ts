@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 import { VscSymbolKeyword } from 'react-icons/vsc'
 import { IoIosImage } from 'react-icons/io'
 import { getBlockText } from '../../src/utils'
@@ -37,6 +37,12 @@ export default defineType({
 					],
 				},
 				{ type: 'code-block' },
+				defineArrayMember({
+					type: 'code',
+					options: {
+						withFilename: true,
+					},
+				}),
 			],
 			group: 'content',
 		}),
