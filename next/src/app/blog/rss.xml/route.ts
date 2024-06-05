@@ -57,8 +57,6 @@ export async function GET() {
 							`<img src="${urlFor(value).url()}" alt="${value.alt}" />`,
 						code: ({ value }) =>
 							`<pre><code>${escapeHTML(value.code)}</code></pre>`,
-						'code-block': ({ value }) =>
-							`<pre><code>${escapeHTML(value.code)}</code></pre>`,
 					},
 				},
 			}),
