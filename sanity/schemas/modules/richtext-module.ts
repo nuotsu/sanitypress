@@ -34,9 +34,23 @@ export default defineType({
 							type: 'text',
 							rows: 2,
 						}),
+						defineField({
+							name: 'loading',
+							type: 'string',
+							options: {
+								list: ['lazy', 'eager'],
+							},
+							initialValue: 'lazy',
+						}),
 					],
+					preview: {
+						select: {
+							title: 'caption',
+							subtitle: 'alt',
+							media: 'asset',
+						},
+					},
 				},
-				{ type: 'code-block' },
 				defineArrayMember({
 					type: 'code',
 					options: {

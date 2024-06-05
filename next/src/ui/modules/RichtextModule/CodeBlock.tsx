@@ -5,13 +5,15 @@ import { stegaClean } from '@sanity/client/stega'
 export default async function CodeBlock({
 	value,
 }: {
-	value: {
+	value?: {
 		language: string
 		filename?: string
 		decorations?: string[]
 		code: string
 	}
 }) {
+	if (!value?.code) return null
+
 	const lines = splitLines(value.code)?.length
 
 	const decorations =

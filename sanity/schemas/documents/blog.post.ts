@@ -47,6 +47,12 @@ export default defineType({
 					},
 				}),
 				{ type: 'code-block' },
+				defineArrayMember({
+					type: 'code',
+					options: {
+						withFilename: true,
+					},
+				}),
 			],
 		}),
 		defineField({
