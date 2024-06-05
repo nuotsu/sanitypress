@@ -42,6 +42,9 @@ const MonacoEditor: ComponentType<StringInputProps<StringSchemaType>> = ({
 								noSyntaxValidation: true,
 							},
 						)
+						monaco.languages.css.cssDefaults.setOptions({
+							validate: false,
+						})
 					}}
 					onChange={(value) => {
 						onChange(value ? set(value) : unset())
