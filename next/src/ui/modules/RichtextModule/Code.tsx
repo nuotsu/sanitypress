@@ -20,7 +20,7 @@ export default async function Code({
 		decorations: value.highlightedLines
 			?.map((row) => ({
 				row,
-				characters: stegaClean(splitLines(value.code)[row - 1][0]).length,
+				characters: stegaClean(splitLines(value.code)[row - 1]?.[0])?.length,
 			}))
 			?.filter(({ characters }) => characters > 0)
 			?.map(({ row, characters }) => {
