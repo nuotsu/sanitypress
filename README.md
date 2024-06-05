@@ -116,7 +116,7 @@ Now you can use the preview deployment URL to share staged content (unpublished 
 
 - Global TypeScripts types useable in the Next.js frontend
   - [Sanity types](/next/src/types/Sanity.d.ts)
-- [`<Img>` and `<Source> components`](/next/src/ui/Img.tsx) to display Sanity images
+- [`<Img>` and `<Source> components`](https://next-sanity-template-demo.vercel.app/blog/performant-images-with-img-and-source) to display Sanity images
 - [Helper functions](/sanity/src/utils.ts) to:
   - structure the Sanity Studio
   - prepare the preview for PortableText content
