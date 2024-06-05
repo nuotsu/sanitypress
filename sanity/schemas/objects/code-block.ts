@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { VscCode } from 'react-icons/vsc'
+import MonacoEditor from '../../src/components/MonacoEditor'
 
 export default defineType({
 	name: 'code-block',
@@ -28,7 +29,9 @@ export default defineType({
 		defineField({
 			name: 'code',
 			type: 'text',
-			rows: 10,
+			components: {
+				input: MonacoEditor,
+			},
 		}),
 	],
 	preview: {
