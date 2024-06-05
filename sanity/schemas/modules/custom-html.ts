@@ -10,8 +10,20 @@ export default defineType({
 		defineField({
 			name: 'html',
 			title: 'HTML',
-			type: 'text',
-			rows: 10,
+			type: 'code',
+			options: {
+				language: 'html',
+				languageAlternatives: [{ title: 'HTML', value: 'html' }],
+			},
 		}),
 	],
+	preview: {
+		select: {
+			code: 'html.code',
+		},
+		prepare: ({ code }) => ({
+			title: code,
+			subtitle: 'Custom HTML',
+		}),
+	},
 })
