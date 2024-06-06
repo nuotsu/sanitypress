@@ -2,16 +2,16 @@
 
 An opinionated and minimally styled starter template with Tailwind CSS and pre-built schema and modules for rapid website development.
 
-![](https://cdn.sanity.io/images/81pocpw8/production/2caf7fcbb73024d512ec9f149397f6bcb3c91aa5-5088x3912.jpg)
+![](https://cdn.sanity.io/images/81pocpw8/production/02b92fc2bab8636ee7c8026292d0e8b685041538-5088x3554.jpg)
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnuotsu%2Fsanitypress&env=NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_TOKEN)
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/nuotsu/sanitypress)
 
 🖋️ Published on [Sanity.io](https://www.sanity.io/templates/next-sanity-template)
 
-⚡ [Perfect Lighthouse scores](https://pagespeed.web.dev/analysis/https-next-sanity-template-demo-vercel-app/df9thblp9o?form_factor=desktop) on desktop and 98/100 on mobile.
+⚡ [Perfect Lighthouse scores](https://pagespeed.web.dev/analysis/https-sanitypress-vercel-app/10dmbl3nff?form_factor=desktop) on desktop and 98/100 on mobile.
 
-🚀 Checkout the [demo site](https://sanitypress-demo.vercel.app), [playground](https://sanitypress-demo.vercel.app/playground) and [docs](https://sanitypress-demo.vercel.app/docs) page.
+🚀 Checkout the [demo site](https://sanitypress.vercel.app), [playground](https://sanitypress.vercel.app/playground) and [docs](https://sanitypress.vercel.app/docs) page.
 
 ## Table of Contents
 
@@ -20,7 +20,7 @@ An opinionated and minimally styled starter template with Tailwind CSS and pre-b
 - [Time-based revalidation](#time-based-revalidation)
 - [Visual Editing](#visual-editing)
 - [Staging](#staging)
-- [Helpful Resources](#helpful-resources)
+- [Helpful Resources (The SanityPress Blog)](https://sanitypress.vercel.app/blog)
 - [External References](#external-references)
 
 ## Key Features
@@ -111,15 +111,6 @@ ENABLE_PREVIEW = true
 ```
 
 Now you can use the preview deployment URL to share staged content (unpublished changes) with your team or clients.
-
-## Other Helpful Resources
-
-- Global TypeScripts types useable in the Next.js frontend
-  - [Sanity types](https://sanitypress.vercel.app/blog/sanity-helper-functions)
-- [`<Img>` and `<Source> components`](https://sanitypress.vercel.app/blog/performant-images-with-img-and-source) to display Sanity images
-- [Helper functions](/sanity/src/utils.ts) to:
-  - structure the Sanity Studio
-  - prepare the preview for PortableText content
 
 ## External References
 

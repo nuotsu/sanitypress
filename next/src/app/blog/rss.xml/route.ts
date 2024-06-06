@@ -40,7 +40,7 @@ export async function GET() {
 		copyright: site.copyright,
 		favicon: BASE_URL + 'favicon.ico',
 		language: 'en',
-		generator: 'https://github.com/nuotsu/next-sanity-template',
+		generator: 'https://github.com/nuotsu/sanitypress',
 	})
 
 	posts.map((post) =>
