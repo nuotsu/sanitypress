@@ -53,8 +53,13 @@ export async function GET() {
 			content: toHTML(post.body, {
 				components: {
 					types: {
-						image: ({ value }) =>
-							`<img src="${urlFor(value).url()}" alt="${value.alt}" />`,
+						image: ({ value }) => {
+							const img = `<img src="${urlFor(value).url()}" alt="${value.alt}" />`
+							const figcaption = value.caption
+								? `<figcaption>${value.caption}</figcaption>`
+								: ''
+							return `<figure>${img}${figcaption}</figure>`
+						},
 						code: ({ value }) =>
 							`<pre><code>${escapeHTML(value.code)}</code></pre>`,
 					},

@@ -92,7 +92,7 @@
 	}
 
 	.action {
-		@apply _btn frosted-glass rounded bg-gradient-to-br from-ink/70 to-ink text-white shadow;
+		@apply _btn frosted-glass text-balance rounded bg-gradient-to-br from-ink/70 to-ink text-white shadow;
 	}
 
 	.ghost {
@@ -239,6 +239,15 @@
 			to right,
 			transparent,
 			black var(--offset),
+			black calc(100% - var(--offset)),
+			transparent
+		);
+	}
+	.overflow-fade-r {
+		--offset: 4rem;
+		mask: linear-gradient(
+			to right,
+			black 50%,
 			black calc(100% - var(--offset)),
 			transparent
 		);
