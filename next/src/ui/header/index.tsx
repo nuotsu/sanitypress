@@ -19,7 +19,7 @@ export default async function Header() {
 				)}
 			>
 				<div className="[grid-area:logo]">
-					<Link className="font-bold" href="/">
+					<Link className="h4 md:h3" href="/">
 						{title}
 					</Link>
 				</div>

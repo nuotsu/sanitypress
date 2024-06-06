@@ -34,10 +34,7 @@ export default async function Announcement() {
 				<PortableText value={active.content} />
 			</div>
 
-			<CTA
-				className="link anim-fade-to-l whitespace-nowrap"
-				link={active.cta}
-			/>
+			<CTA className="link anim-fade-to-l shrink-0" link={active.cta} />
 		</aside>
 	)
 }
