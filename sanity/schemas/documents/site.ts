@@ -74,4 +74,9 @@ export default defineType({
 			group: 'general',
 		}),
 	],
+	preview: {
+		prepare: () => ({
+			title: 'Site',
+		}),
+	},
 })

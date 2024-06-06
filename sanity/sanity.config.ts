@@ -18,7 +18,7 @@ const singletonTypes = ['site']
 
 export default defineConfig({
 	name: 'default',
-	title: 'Next.js + Sanity.io Starter Template',
+	title: 'SanityPress',
 
 	projectId,
 	dataset: 'production',
