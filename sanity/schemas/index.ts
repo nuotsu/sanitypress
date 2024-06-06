@@ -18,6 +18,7 @@ import metadata from './objects/metadata'
 // modules
 import accordionList from './modules/accordion-list'
 import blogRollup from './modules/blog-rollup'
+import callout from './modules/callout'
 import creativeModule from './modules/creative'
 import customHtml from './modules/custom-html'
 import flagList from './modules/flag-list'
@@ -51,6 +52,7 @@ export const schemaTypes = [
 	// modules
 	accordionList,
 	blogRollup,
+	callout,
 	creativeModule,
 	customHtml,
 	flagList,
