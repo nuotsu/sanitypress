@@ -4,14 +4,14 @@ An opinionated and minimally styled starter template with Tailwind CSS and pre-b
 
 ![](https://cdn.sanity.io/images/81pocpw8/production/2caf7fcbb73024d512ec9f149397f6bcb3c91aa5-5088x3912.jpg)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnuotsu%2Fnext-sanity-template&env=NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_TOKEN)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/nuotsu/next-sanity-template)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnuotsu%2Fsanitypress&env=NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_TOKEN)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/nuotsu/sanitypress)
 
 🖋️ Published on [Sanity.io](https://www.sanity.io/templates/next-sanity-template)
 
 ⚡ [Perfect Lighthouse scores](https://pagespeed.web.dev/analysis/https-next-sanity-template-demo-vercel-app/df9thblp9o?form_factor=desktop) on desktop and 98/100 on mobile.
 
-🚀 Checkout the [demo site](https://next-sanity-template-demo.vercel.app), [playground](https://next-sanity-template-demo.vercel.app/playground) and [docs](https://next-sanity-template-demo.vercel.app/docs) page.
+🚀 Checkout the [demo site](https://sanitypress-demo.vercel.app), [playground](https://sanitypress-demo.vercel.app/playground) and [docs](https://sanitypress-demo.vercel.app/docs) page.
 
 ## Table of Contents
 
@@ -33,7 +33,7 @@ An opinionated and minimally styled starter template with Tailwind CSS and pre-b
 
 ## Getting Started
 
-### 1. Start a new repo with the [GitHub template](https://github.com/new?template_name=next-sanity-template&template_owner=nuotsu)
+### 1. Start a new repo with the [GitHub template](https://github.com/new?template_name=sanitypress&template_owner=nuotsu)
 
 ### 2. Retrieve a new Sanity project ID
 
@@ -115,8 +115,8 @@ Now you can use the preview deployment URL to share staged content (unpublished 
 ## Other Helpful Resources
 
 - Global TypeScripts types useable in the Next.js frontend
-  - [Sanity types](https://next-sanity-template-demo.vercel.app/blog/sanity-helper-functions)
-- [`<Img>` and `<Source> components`](https://next-sanity-template-demo.vercel.app/blog/performant-images-with-img-and-source) to display Sanity images
+  - [Sanity types](https://sanitypress.vercel.app/blog/sanity-helper-functions)
+- [`<Img>` and `<Source> components`](https://sanitypress.vercel.app/blog/performant-images-with-img-and-source) to display Sanity images
 - [Helper functions](/sanity/src/utils.ts) to:
   - structure the Sanity Studio
   - prepare the preview for PortableText content
