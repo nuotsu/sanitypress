@@ -1,12 +1,13 @@
 // import { GoogleTagManager } from '@next/third-parties/google'
+import type { Metadata } from 'next'
 import SkipToContent from '@/ui/SkipToContent'
 import Announcement from '@/ui/Announcement'
 import Header from '@/ui/header'
 import Footer from '@/ui/footer'
 import { draftMode } from 'next/headers'
 import { VisualEditing } from 'next-sanity'
+import { Analytics } from "@vercel/analytics/react"
 import '@/styles/app.css'
-import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
 	icons: {
@@ -32,6 +33,7 @@ export default async function RootLayout({
 				</main>
 				<Footer />
 
+				<Analytics />
 				{draftMode().isEnabled && <VisualEditing />}
 			</body>
 		</html>
