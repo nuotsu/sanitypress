@@ -171,7 +171,7 @@
 
 		& pre {
 			tab-size: 2;
-			@apply overflow-x-auto rounded bg-transparent p-3 text-xs leading-relaxed;
+			@apply overflow-x-auto rounded bg-transparent p-3 text-xs/relaxed;
 		}
 	}
 
