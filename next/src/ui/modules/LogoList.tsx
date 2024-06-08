@@ -2,17 +2,21 @@ import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import { PortableText } from '@portabletext/react'
 import Pretitle from '@/ui/Pretitle'
 import Img from '@/ui/Img'
+import { cn } from '@/lib/utils'
+import css from './LogoList.module.css'
 
 export default async function LogoList({
 	pretitle,
 	intro,
-	logoType = 'default',
 	logos,
+	logoType = 'default',
+	autoScroll,
 }: Partial<{
 	pretitle: string
 	intro: any
-	logoType: 'default' | 'light' | 'dark'
 	logos: Sanity.Logo[]
+	logoType: 'default' | 'light' | 'dark'
+	autoScroll?: boolean
 }>) {
 	const allLogos =
 		logos || (await fetchSanity<Sanity.Logo[]>(groq`*[_type == 'logo']`))
@@ -26,11 +30,24 @@ export default async function LogoList({
 				</header>
 			)}
 
-			<figure className="item-center mx-auto flex flex-wrap justify-center gap-x-4 gap-y-8">
+			<figure
+				className={cn(
+					'mx-auto flex items-center gap-y-8',
+					autoScroll
+						? `${css.track} overflow-fade max-w-max overflow-hidden`
+						: 'flex-wrap justify-center gap-x-4',
+				)}
+				style={
+					{
+						'--count': allLogos?.length,
+					} as React.CSSProperties
+				}
+			>
 				{allLogos.map((logo, key) => (
 					<Img
-						className="max-h-[2em] max-w-[200px] object-contain"
-						image={logo.image[logoType]}
+						className="h-[2em] w-[200px] shrink-0 object-contain"
+						style={{ '--index': key } as React.CSSProperties}
+						image={logo.image?.[logoType]}
 						imageWidth={400}
 						key={key}
 					/>

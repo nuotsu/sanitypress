@@ -7,15 +7,25 @@ export default defineType({
 	title: 'Logo list',
 	icon: VscSymbolMisc,
 	type: 'object',
+	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fields: [
 		defineField({
 			name: 'pretitle',
 			type: 'string',
+			group: 'content',
 		}),
 		defineField({
 			name: 'intro',
 			type: 'array',
 			of: [{ type: 'block' }],
+			group: 'content',
+		}),
+		defineField({
+			name: 'logos',
+			type: 'array',
+			of: [{ type: 'reference', to: [{ type: 'logo' }] }],
+			description: 'Leave empty to display all logos',
+			group: 'content',
 		}),
 		defineField({
 			name: 'logoType',
@@ -25,12 +35,13 @@ export default defineType({
 				list: ['default', 'light', 'dark'],
 			},
 			initialValue: 'default',
+			group: 'options',
 		}),
 		defineField({
-			name: 'logos',
-			type: 'array',
-			of: [{ type: 'reference', to: [{ type: 'logo' }] }],
-			description: 'Leave empty to display all logos',
+			name: 'autoScroll',
+			type: 'boolean',
+			initialValue: false,
+			group: 'options',
 		}),
 	],
 	preview: {
