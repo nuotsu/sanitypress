@@ -1,5 +1,6 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { GoNumber } from 'react-icons/go'
+import { textAlign } from '../fragments/fields/alignment'
 import { count, getBlockText } from '../../src/utils'
 
 export default defineType({
@@ -50,16 +51,7 @@ export default defineType({
 			],
 			group: 'content',
 		}),
-		defineField({
-			name: 'textAlign',
-			type: 'string',
-			options: {
-				layout: 'radio',
-				list: ['left', 'center', 'right'],
-			},
-			initialValue: 'center',
-			group: 'options',
-		}),
+		defineField(textAlign),
 	],
 	preview: {
 		select: {

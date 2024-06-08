@@ -1,6 +1,6 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { VscSymbolKeyword } from 'react-icons/vsc'
-import { IoIosImage } from 'react-icons/io'
+import imageBlock from '../fragments/image-block'
 import { getBlockText } from '../../src/utils'
 
 export default defineType({
@@ -18,43 +18,7 @@ export default defineType({
 			type: 'array',
 			of: [
 				{ type: 'block' },
-				{
-					type: 'image',
-					icon: IoIosImage,
-					options: {
-						hotspot: true,
-					},
-					fields: [
-						defineField({
-							name: 'alt',
-							type: 'string',
-						}),
-						defineField({
-							name: 'caption',
-							type: 'text',
-							rows: 2,
-						}),
-						defineField({
-							name: 'source',
-							type: 'url',
-						}),
-						defineField({
-							name: 'loading',
-							type: 'string',
-							options: {
-								list: ['lazy', 'eager'],
-							},
-							initialValue: 'lazy',
-						}),
-					],
-					preview: {
-						select: {
-							title: 'caption',
-							subtitle: 'alt',
-							media: 'asset',
-						},
-					},
-				},
+				imageBlock,
 				defineArrayMember({
 					type: 'code',
 					options: {

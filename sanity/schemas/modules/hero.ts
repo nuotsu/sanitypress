@@ -1,6 +1,11 @@
 import { defineField, defineType } from 'sanity'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
 import { getBlockText } from '../../src/utils'
+import {
+	textAlign,
+	alignItems,
+	alignmentFieldset,
+} from '../fragments/fields/alignment'
 
 export default defineType({
 	name: 'hero',
@@ -9,12 +14,10 @@ export default defineType({
 	type: 'object',
 	groups: [
 		{ name: 'content', default: true },
-		{ name: 'options' },
 		{ name: 'image' },
+		{ name: 'options' },
 	],
-	fieldsets: [
-		{ name: 'alignment', title: 'Alignment', options: { columns: 2 } },
-	],
+	fieldsets: [alignmentFieldset],
 	fields: [
 		defineField({
 			name: 'pretitle',
@@ -33,33 +36,6 @@ export default defineType({
 			type: 'array',
 			of: [{ type: 'cta' }],
 			group: 'content',
-		}),
-		defineField({
-			name: 'textAlign',
-			type: 'string',
-			options: {
-				layout: 'radio',
-				list: ['left', 'center', 'right'],
-			},
-			initialValue: 'center',
-			group: 'options',
-			fieldset: 'alignment',
-		}),
-		defineField({
-			name: 'alignItems',
-			title: 'Vertical alignment',
-			type: 'string',
-			options: {
-				layout: 'radio',
-				list: [
-					{ title: 'Top', value: 'start' },
-					'center',
-					{ title: 'Bottom', value: 'end' },
-				],
-			},
-			initialValue: 'center',
-			group: 'options',
-			fieldset: 'alignment',
 		}),
 		defineField({
 			name: 'bgImage',
@@ -93,6 +69,14 @@ export default defineType({
 				hotspot: true,
 			},
 			group: 'image',
+		}),
+		defineField({
+			...textAlign,
+			fieldset: 'alignment',
+		}),
+		defineField({
+			...alignItems,
+			fieldset: 'alignment',
 		}),
 	],
 	preview: {
