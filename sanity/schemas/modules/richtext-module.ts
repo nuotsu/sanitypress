@@ -35,6 +35,10 @@ export default defineType({
 							rows: 2,
 						}),
 						defineField({
+							name: 'source',
+							type: 'url',
+						}),
+						defineField({
 							name: 'loading',
 							type: 'string',
 							options: {

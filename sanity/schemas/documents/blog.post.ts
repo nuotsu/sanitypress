@@ -30,6 +30,10 @@ export default defineType({
 							type: 'string',
 						}),
 						defineField({
+							name: 'source',
+							type: 'url',
+						}),
+						defineField({
 							name: 'loading',
 							type: 'string',
 							options: {
