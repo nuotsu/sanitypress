@@ -9,8 +9,8 @@ export default defineType({
 	type: 'object',
 	fields: [
 		defineField({
-			name: 'label',
-			type: 'string',
+			name: 'link',
+			type: 'link',
 		}),
 		defineField({
 			name: 'links',
@@ -20,11 +20,11 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			title: 'label',
+			link: 'link',
 			links: 'links',
 		},
-		prepare: ({ title, links }) => ({
-			title,
+		prepare: ({ link, links }) => ({
+			title: link.label || link.internal?.title,
 			subtitle: count(links, 'link'),
 		}),
 	},

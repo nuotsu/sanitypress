@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { cn } from '@/lib/utils'
 import processUrl from '@/lib/processUrl'
+import { cn } from '@/lib/utils'
 
 export default function CTA({
 	link,
@@ -8,28 +8,25 @@ export default function CTA({
 	className,
 	children,
 }: Sanity.CTA & React.HTMLAttributes<HTMLAnchorElement>) {
-	if (!link?.type) return null
-
 	const props = {
 		className: cn(style, className),
-		children: children || link.label || link.internal?.title,
+		children:
+			children || link?.label || link?.internal?.title || link?.external,
 	}
 
-	switch (link.type) {
-		case 'internal':
-			if (!link.internal) return null
+	if (link?.type === 'internal' && link.internal)
+		return (
+			<Link
+				href={processUrl(link.internal, {
+					base: false,
+					params: link.params,
+				})}
+				{...props}
+			/>
+		)
 
-			return (
-				<Link
-					href={processUrl(link.internal, { base: false, params: link.params })}
-					{...props}
-				/>
-			)
+	if (link?.type === 'external' && link.external)
+		return <a href={link.external} {...props} />
 
-		case 'external':
-			return <a href={link.external} {...props} />
-
-		default:
-			return null
-	}
+	return props.children
 }

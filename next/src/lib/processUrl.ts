@@ -1,3 +1,5 @@
+import { stegaClean } from '@sanity/client/stega'
+
 export const BASE_URL = 'https://sanitypress.vercel.app'
 
 export default function (
@@ -20,6 +22,6 @@ export default function (
 
 	return (
 		(base ? BASE_URL + '/' : '/') +
-		[directory, path, params].filter(Boolean).join('/')
+		[directory, path, stegaClean(params)].filter(Boolean).join('/')
 	)
 }

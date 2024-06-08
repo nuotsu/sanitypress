@@ -24,7 +24,6 @@ export default defineType({
 					{ title: 'external', value: 'external' },
 				],
 			},
-			initialValue: 'internal',
 		}),
 		defineField({
 			name: 'internal',

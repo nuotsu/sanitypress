@@ -94,7 +94,7 @@ declare global {
 
 		type LinkList = {
 			readonly _type: 'link.list'
-			label: string
+			link: Link
 			links?: Link[]
 		}
 
