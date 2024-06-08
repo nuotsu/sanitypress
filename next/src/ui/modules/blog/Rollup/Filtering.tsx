@@ -1,5 +1,7 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import Filter from './Filter'
+import css from './Filtering.module.css'
+import { cn } from '@/lib/utils'
 
 export default async function Filtering({
 	predefinedFilters,
@@ -24,13 +26,24 @@ export default async function Filtering({
 		<fieldset>
 			<legend className="sr-only">Filter by category</legend>
 
-			<div className="flex flex-wrap gap-1">
+			<div className={cn(css.list, 'filtering group flex flex-wrap gap-1')}>
 				<Filter label="All" />
 
 				{filtered?.map((category, key) => (
 					<Filter label={category.title} value={category._id} key={key} />
 				))}
 			</div>
+
+			<style>{`
+				@supports (anchor-name: --a) {
+					${['All', ...filtered?.map((category) => category._id)]
+						.map(
+							(value, i) =>
+								`.filtering:has(button:nth-of-type(${i + 1}):hover) { --anchor: --anchor-${value}; }`,
+						)
+						.join('')}
+				}
+			`}</style>
 		</fieldset>
 	)
 }

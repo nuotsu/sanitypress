@@ -1,0 +1,28 @@
+@supports (anchor-name: --a) {
+	.list {
+		gap: 0;
+
+		&::before {
+			content: '';
+			position: absolute;
+			left: anchor(var(--anchor) left);
+			top: anchor(var(--anchor) top);
+			width: anchor-size(var(--anchor) width);
+			height: anchor-size(var(--anchor) height);
+			@apply rounded bg-ink/5 transition-all;
+		}
+
+		&:not(:hover)::before {
+			opacity: 0;
+		}
+	}
+
+	.filter {
+		position: relative;
+
+		&:global(.ghost) {
+			background: none !important;
+			backdrop-filter: none !important;
+		}
+	}
+}

@@ -5,6 +5,7 @@ import Category from '../Category'
 import { cn } from '@/lib/utils'
 import { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
+import css from './Filtering.module.css'
 
 export default function Filter({
 	label,
@@ -19,7 +20,12 @@ export default function Filter({
 
 	return (
 		<button
-			className={cn('ghost !py-1', selected === value && 'action')}
+			className={cn(
+				css.filter,
+				'!py-1 group-has-[&:hover]:[--anchor:var()]',
+				selected === value ? 'action' : 'ghost',
+			)}
+			style={{ anchorName: `--anchor-${value}` } as React.CSSProperties}
 			onClick={() => setSelected(value)}
 		>
 			<Category label={label} />
