@@ -30,8 +30,12 @@ export async function GET() {
 		{ tags: ['blog-rss'] },
 	)
 
-	if (!blog || !posts || !site)
-		return new Response('Not found', { status: 500 })
+	if (!blog || !posts || !site) {
+		console.error(
+			'Error generating blog RSS feed. Missing either a blog page, blog posts, or site metadata.',
+		)
+		return new Response('Error generating blog RSS feed', { status: 500 })
+	}
 
 	const url = processUrl(blog)
 
