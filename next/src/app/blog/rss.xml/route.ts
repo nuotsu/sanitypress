@@ -31,7 +31,7 @@ export async function GET() {
 	)
 
 	if (!blog || !posts || !site)
-		return new Response('Not found', { status: 404 })
+		return new Response('Not found', { status: 500 })
 
 	const url = processUrl(blog)
 
