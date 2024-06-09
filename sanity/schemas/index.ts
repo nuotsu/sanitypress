@@ -7,6 +7,7 @@ import navigation from './documents/navigation'
 import announcement from './documents/announcement'
 import redirect from './documents/redirect'
 import logo from './documents/logo'
+import pricing from './documents/pricing'
 import testimonial from './documents/testimonial'
 
 // objects
@@ -26,6 +27,7 @@ import hero from './modules/hero'
 import heroSaas from './modules/hero.saas'
 import HeroSplit from './modules/hero.split'
 import logoList from './modules/logo-list'
+import pricingList from './modules/pricing-list'
 import richtextModule from './modules/richtext-module'
 import statList from './modules/stat-list'
 import stepList from './modules/step-list'
@@ -41,6 +43,7 @@ export const schemaTypes = [
 	announcement,
 	redirect,
 	logo,
+	pricing,
 	testimonial,
 
 	// objects
@@ -60,6 +63,7 @@ export const schemaTypes = [
 	heroSaas,
 	HeroSplit,
 	logoList,
+	pricingList,
 	richtextModule,
 	statList,
 	stepList,

@@ -52,6 +52,8 @@ declare global {
 			title: string
 		}>
 
+		// miscellaneous
+
 		type Logo = SanityDocument<{
 			name: string
 			image: {
@@ -59,6 +61,18 @@ declare global {
 				light?: Image
 				dark?: Image
 			}
+		}>
+
+		type Pricing = SanityDocument<{
+			title: string
+			highlight?: string
+			price: {
+				base: number
+				strikethrough?: number
+				suffix?: string
+			}
+			ctas?: CTA[]
+			content?: any
 		}>
 
 		type Testimonial = SanityDocument<{

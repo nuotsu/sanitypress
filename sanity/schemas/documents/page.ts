@@ -23,6 +23,7 @@ export default defineType({
 				{ type: 'hero.saas' },
 				{ type: 'hero.split' },
 				{ type: 'logo-list' },
+				{ type: 'pricing-list' },
 				{ type: 'richtext-module' },
 				{ type: 'stat-list' },
 				{ type: 'step-list' },
