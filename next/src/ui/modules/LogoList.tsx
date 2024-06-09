@@ -32,7 +32,7 @@ export default async function LogoList({
 
 			<figure
 				className={cn(
-					'mx-auto flex items-center gap-y-8',
+					'mx-auto flex items-center gap-y-8 pb-4',
 					autoScroll
 						? `${css.track} overflow-fade max-w-max overflow-hidden`
 						: 'flex-wrap justify-center gap-x-4',
@@ -45,7 +45,7 @@ export default async function LogoList({
 			>
 				{allLogos.map((logo, key) => (
 					<Img
-						className="h-[2em] w-[200px] shrink-0 object-contain"
+						className="h-[2.5em] w-[200px] shrink-0 object-contain max-sm:w-[150px]"
 						style={{ '--index': key } as React.CSSProperties}
 						image={logo.image?.[logoType]}
 						imageWidth={400}

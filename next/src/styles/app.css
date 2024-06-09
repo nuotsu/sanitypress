@@ -15,6 +15,14 @@
 
 	:target {
 		scroll-margin-top: var(--header-height);
+		animation: target 2s ease-in-out forwards;
+	}
+
+	@keyframes target {
+		0%,
+		50% {
+			@apply bg-amber-400/50;
+		}
 	}
 
 	html {
