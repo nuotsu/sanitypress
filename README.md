@@ -67,7 +67,11 @@ SANITY_STUDIO_PREVIEW_URL = ... # your live or staging site URL
 > Required: Add a page with the slug `index` for the Homepage<br>
 > Optional: Add a page with the slug `404` for the 404 page
 
-### 5. Set up the Sanity Dashboard with your deployment service
+### 5. Deployment Service Setup
+
+Update the **Root Directory** (Vercel) / **Project Directory** (Netlify) to `next`. This is required to deploy the Next.js frontend.
+
+Set up the Sanity Dashboard with your deployment service:
 
 ```sh
 # Vercel — https://www.sanity.io/plugins/vercel-dashboard-widget
