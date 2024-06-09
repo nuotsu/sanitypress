@@ -92,7 +92,11 @@
 	}
 
 	.action {
-		@apply _btn frosted-glass text-balance rounded bg-gradient-to-br from-ink/70 to-ink text-white shadow;
+		@apply _btn frosted-glass text-balance rounded border border-transparent bg-gradient-to-br from-ink/70 to-ink text-white shadow;
+	}
+
+	.action-outline {
+		@apply _btn frosted-glass text-balance rounded border border-ink/5 bg-gradient-to-br from-canvas/70 to-canvas text-ink hover:border-ink/10;
 	}
 
 	.ghost {
@@ -157,7 +161,7 @@
 			padding-left: 1.5em;
 		}
 
-		& a:not(:is(.action, .ghost)) {
+		& a:not(:is(.action, .action-outline, .ghost)) {
 			@apply link;
 
 			&[href^='http'] {
