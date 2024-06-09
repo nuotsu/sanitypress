@@ -14,5 +14,6 @@ export function slug(str: string) {
 	return str
 		.toLowerCase()
 		.replace(/[\s\W]+/g, '-')
-		.replace(/-$/, '')
+		.replace(/^-+/, '')
+		.replace(/-+$/, '')
 }

@@ -8,9 +8,7 @@ export default function AnchoredHeading({
 }: {
 	as: keyof JSX.IntrinsicElements
 } & PortableTextComponentProps<PortableTextBlock>) {
-	const id = slug(
-		value.children.reduce((acc, { text }) => acc + text, ''),
-	).replace(/^-+/g, '')
+	const id = slug(value.children.reduce((acc, { text }) => acc + text, ''))
 
 	return (
 		<Tag id={id} className="group">
