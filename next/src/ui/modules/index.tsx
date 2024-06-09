@@ -1,5 +1,6 @@
 import AccordionList from './AccordionList'
 import BlogRollup from './blog/Rollup'
+import Breadcrumbs from './Breadcrumbs'
 import Callout from './Callout'
 import CreativeModule from './CreativeModule'
 import CustomHTML from './CustomHTML'
@@ -14,7 +15,13 @@ import StatList from './StatList'
 import StepList from './StepList'
 import TestimonialList from './TestimonialList'
 
-export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
+export default function Modules({
+	modules,
+	page,
+}: {
+	modules?: Sanity.Module[]
+	page?: Sanity.Page
+}) {
 	return (
 		<>
 			{modules?.map((module) => {
@@ -23,6 +30,10 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 						return <AccordionList {...module} key={module._key} />
 					case 'blog-rollup':
 						return <BlogRollup {...module} key={module._key} />
+					case 'breadcrumbs':
+						return (
+							<Breadcrumbs {...module} currentPage={page} key={module._key} />
+						)
 					case 'callout':
 						return <Callout {...module} key={module._key} />
 					case 'creative-module':
