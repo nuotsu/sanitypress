@@ -30,6 +30,9 @@ export async function GET() {
 		{ tags: ['blog-rss'] },
 	)
 
+	if (!blog || !posts || !site)
+		return new Response('Not found', { status: 404 })
+
 	const url = processUrl(blog)
 
 	const feed = new Feed({
