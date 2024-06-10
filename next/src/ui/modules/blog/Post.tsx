@@ -42,7 +42,7 @@ export default async function Post({ post }: { post: Sanity.BlogPost }) {
 
 			<Breadcrumbs
 				crumbs={
-					crumbs.map((crumb) => ({
+					crumbs?.map((crumb) => ({
 						type: 'internal',
 						internal: crumb,
 					})) as Omit<Sanity.Link[], '_type' | 'label'>

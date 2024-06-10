@@ -9,7 +9,7 @@ export default function CTA({
 	children,
 }: Sanity.CTA & React.HTMLAttributes<HTMLAnchorElement>) {
 	const props = {
-		className: cn(style, className),
+		className: cn(style, className) || undefined,
 		children:
 			children || link?.label || link?.internal?.title || link?.external,
 	}
