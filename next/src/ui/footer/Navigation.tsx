@@ -18,7 +18,7 @@ export default async function Menu() {
 							<div className="space-y-2 text-left">
 								<div className="technical text-xs">
 									<CTA link={item.link}>
-										{stegaClean(item.link.label) || item.link.internal?.title}
+										{stegaClean(item.link?.label) || item.link.internal?.title}
 									</CTA>
 								</div>
 
