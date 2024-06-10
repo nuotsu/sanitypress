@@ -11,7 +11,7 @@ export default async function Breadcrumbs({
 	return (
 		<nav className="section py-4 text-sm">
 			<ol
-				className="flex flex-wrap items-center gap-x-2"
+				className="flex flex-wrap items-center gap-x-2 gap-y-1"
 				itemScope
 				itemType="https://schema.org/BreadcrumbList"
 			>
@@ -49,6 +49,7 @@ function Crumb({
 
 	return (
 		<li
+			className="line-clamp-1"
 			itemProp="itemListElement"
 			itemScope
 			itemType="https://schema.org/ListItem"

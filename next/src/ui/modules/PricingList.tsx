@@ -23,7 +23,7 @@ export default function PricingList({
 				style={{ '--col': tiers?.length } as React.CSSProperties}
 			>
 				{tiers?.map((tier) => (
-					<div className="space-y-6 border p-4" key={tier._id}>
+					<div className="space-y-6 rounded border p-4" key={tier._id}>
 						<div className="space-y-3">
 							<dt className="h3 flex flex-wrap items-center gap-x-4">
 								{tier.title}

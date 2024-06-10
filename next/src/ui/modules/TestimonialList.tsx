@@ -26,27 +26,21 @@ export default function TestimonialList({
 							</div>
 
 							{testimonial.author && (
-								<footer>
-									<cite>
-										<div className="inline-flex items-center gap-2">
-											<Img
-												className="size-[40px] rounded-full object-cover"
-												image={testimonial.author?.image}
-												imageWidth={80}
-											/>
-											<div
-												className={cn(testimonial.author?.image && 'text-left')}
-											>
-												<div>{testimonial.author?.name}</div>
-												{testimonial.author?.title && (
-													<div className="text-sm">
-														{testimonial.author?.title}
-													</div>
-												)}
-											</div>
-										</div>
-									</cite>
-								</footer>
+								<div className="inline-flex items-center gap-2">
+									<Img
+										className="size-[40px] rounded-full object-cover"
+										image={testimonial.author?.image}
+										imageWidth={80}
+									/>
+
+									<dl className="text-left">
+										<dt>{testimonial.author?.name}</dt>
+
+										{testimonial.author?.title && (
+											<dd className="text-sm">{testimonial.author?.title}</dd>
+										)}
+									</dl>
+								</div>
 							)}
 						</blockquote>
 					</article>
