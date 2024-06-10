@@ -29,6 +29,7 @@ export default defineType({
 				{ type: 'stat-list' },
 				{ type: 'step-list' },
 				{ type: 'testimonial-list' },
+				{ type: 'testimonial.featured' },
 			],
 		}),
 		defineField({

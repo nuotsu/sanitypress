@@ -57,6 +57,7 @@ async function getPage(params: Props['params']) {
 				),
 				logos[]->,
 				tiers[]->,
+				testimonial->,
 				testimonials[]->,
 				predefinedFilters[]->,
 				${creativeModuleQuery}
