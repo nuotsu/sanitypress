@@ -1,0 +1,32 @@
+@supports (anchor-name: --a) {
+	.list {
+		gap: 0;
+
+		&::before {
+			content: '';
+			position: absolute;
+			left: anchor(--filter left);
+			top: anchor(--filter top);
+			width: anchor-size(--filter width);
+			height: anchor-size(--filter height);
+			@apply rounded bg-ink/5 transition-all;
+		}
+
+		&:not(:hover)::before {
+			opacity: 0;
+		}
+
+		& button:is(:hover, :focus-visible) {
+			anchor-name: --filter;
+		}
+	}
+
+	.filter {
+		position: relative;
+
+		&:global(.ghost) {
+			background: none !important;
+			backdrop-filter: none !important;
+		}
+	}
+}

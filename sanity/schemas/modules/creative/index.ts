@@ -3,8 +3,12 @@ import creativeCtas from './creativeCtas'
 import creativeIcon from './creativeIcon'
 import creativeImage from './creativeImage'
 import creativeRichtext from './creativeRichtext'
+import {
+	textAlign,
+	alignItems,
+	alignmentFieldset,
+} from '../../fragments/fields/alignment'
 import { count, getBlockText } from '../../../src/utils'
-
 import { VscExtensions } from 'react-icons/vsc'
 
 export default defineType({
@@ -13,9 +17,7 @@ export default defineType({
 	icon: VscExtensions,
 	type: 'object',
 	groups: [{ name: 'content', default: true }, { name: 'options' }],
-	fieldsets: [
-		{ name: 'alignment', title: 'Alignment', options: { columns: 2 } },
-	],
+	fieldsets: [alignmentFieldset],
 	fields: [
 		defineField({
 			name: 'intro',
@@ -74,28 +76,11 @@ export default defineType({
 			group: 'options',
 		}),
 		defineField({
-			name: 'textAlign',
-			type: 'string',
-			options: {
-				list: ['left', 'center', 'right'],
-			},
-			initialValue: 'left',
-			group: 'options',
+			...textAlign,
 			fieldset: 'alignment',
 		}),
 		defineField({
-			name: 'alignItems',
-			title: 'Vertical alignment',
-			type: 'string',
-			options: {
-				list: [
-					{ title: 'Top', value: 'start' },
-					'center',
-					{ title: 'Bottom', value: 'end' },
-				],
-			},
-			initialValue: 'center',
-			group: 'options',
+			...alignItems,
 			fieldset: 'alignment',
 		}),
 	],

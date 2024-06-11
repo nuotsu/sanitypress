@@ -1,7 +1,7 @@
 import client from '@/lib/sanity/client'
 import dev from '@/lib/env'
 // import { draftMode } from 'next/headers'
-import type { QueryParams, ResponseQueryOptions } from 'next-sanity'
+import type { QueryParams, QueryOptions } from 'next-sanity'
 
 export { default as groq } from 'groq'
 
@@ -12,7 +12,7 @@ export function fetchSanity<T = any>(
 		...next
 	}: {
 		params?: QueryParams
-	} & ResponseQueryOptions['next'] = {},
+	} & QueryOptions['next'] = {},
 ) {
 	const preview = dev
 	// || draftMode().isEnabled

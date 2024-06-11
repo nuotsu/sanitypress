@@ -30,6 +30,13 @@ export async function GET() {
 		{ tags: ['blog-rss'] },
 	)
 
+	if (!blog || !posts || !site) {
+		console.error(
+			'Error generating blog RSS feed. Missing either a blog page, blog posts, or site metadata.',
+		)
+		return new Response('Error generating blog RSS feed', { status: 500 })
+	}
+
 	const url = processUrl(blog)
 
 	const feed = new Feed({
@@ -55,10 +62,12 @@ export async function GET() {
 					types: {
 						image: ({ value }) => {
 							const img = `<img src="${urlFor(value).url()}" alt="${value.alt}" />`
-							const figcaption = value.caption
-								? `<figcaption>${value.caption}</figcaption>`
-								: ''
-							return `<figure>${img}${figcaption}</figure>`
+							const figcaption =
+								value.caption && `<figcaption>${value.caption}</figcaption>`
+							const source =
+								value.source && `<a href="${value.source}">(Source)</a>`
+
+							return `<figure>${[img, figcaption, source].filter(Boolean).join(' ')}</figure>`
 						},
 						code: ({ value }) =>
 							`<pre><code>${escapeHTML(value.code)}</code></pre>`,

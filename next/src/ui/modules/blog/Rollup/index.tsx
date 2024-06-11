@@ -46,7 +46,7 @@ export default async function Rollup({
 					'gap-x-6 gap-y-12',
 					stegaClean(layout) === 'grid'
 						? 'grid md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]'
-						: 'carousel max-xl:full-bleed overflow-fade-r pb-4 [--size:320px] max-xl:px-4',
+						: 'carousel max-xl:full-bleed md:overflow-fade-r pb-4 [--size:320px] max-xl:px-4',
 				)}
 			/>
 		</section>

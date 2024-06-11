@@ -1,13 +1,15 @@
 .body {
+	&::after {
+		content: '';
+		grid-column: content;
+		@apply mt-4 border-b;
+	}
+
 	@screen md {
 		grid-template-columns: [bleed-start] 1fr [content-start] min(100%, 65ch) [content-end] 1fr [bleed-end];
 
-		&>* {
+		& > * {
 			grid-column: content;
-		}
-
-		&>*:not([class*='grid-column:bleed']) {
-			/*max-width: 65ch;*/
 		}
 	}
 }

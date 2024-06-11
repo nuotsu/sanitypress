@@ -15,6 +15,7 @@ export default defineType({
 			of: [
 				{ type: 'accordion-list' },
 				{ type: 'blog-rollup' },
+				{ type: 'breadcrumbs' },
 				{ type: 'callout' },
 				{ type: 'creative-module' },
 				{ type: 'custom-html' },
@@ -23,10 +24,12 @@ export default defineType({
 				{ type: 'hero.saas' },
 				{ type: 'hero.split' },
 				{ type: 'logo-list' },
+				{ type: 'pricing-list' },
 				{ type: 'richtext-module' },
 				{ type: 'stat-list' },
 				{ type: 'step-list' },
 				{ type: 'testimonial-list' },
+				{ type: 'testimonial.featured' },
 			],
 		}),
 		defineField({

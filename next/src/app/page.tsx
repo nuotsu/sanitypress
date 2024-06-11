@@ -27,6 +27,8 @@ async function getPage() {
 					}
 				},
 				logos[]->,
+				tiers[]->,
+				testimonial->,
 				testimonials[]->,
 				predefinedFilters[]->,
 				${creativeModuleQuery}

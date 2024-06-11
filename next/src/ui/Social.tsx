@@ -27,7 +27,7 @@ export default async function Social({
 					case 'link':
 						return (
 							<CTA
-								className="px-2 hover:!opacity-100 group-has-[a:hover]:opacity-50"
+								className="px-2 py-1 hover:!opacity-100 group-has-[a:hover]:opacity-50"
 								link={item}
 								key={key}
 							>

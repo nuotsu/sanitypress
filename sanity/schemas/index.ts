@@ -7,6 +7,7 @@ import navigation from './documents/navigation'
 import announcement from './documents/announcement'
 import redirect from './documents/redirect'
 import logo from './documents/logo'
+import pricing from './documents/pricing'
 import testimonial from './documents/testimonial'
 
 // objects
@@ -18,6 +19,7 @@ import metadata from './objects/metadata'
 // modules
 import accordionList from './modules/accordion-list'
 import blogRollup from './modules/blog-rollup'
+import breadcrumbs from './modules/breadcrumbs'
 import callout from './modules/callout'
 import creativeModule from './modules/creative'
 import customHtml from './modules/custom-html'
@@ -26,9 +28,11 @@ import hero from './modules/hero'
 import heroSaas from './modules/hero.saas'
 import HeroSplit from './modules/hero.split'
 import logoList from './modules/logo-list'
+import pricingList from './modules/pricing-list'
 import richtextModule from './modules/richtext-module'
 import statList from './modules/stat-list'
 import stepList from './modules/step-list'
+import testimonialFeatured from './modules/testimonial.featured'
 import testimonialList from './modules/testimonial-list'
 
 export const schemaTypes = [
@@ -41,6 +45,7 @@ export const schemaTypes = [
 	announcement,
 	redirect,
 	logo,
+	pricing,
 	testimonial,
 
 	// objects
@@ -52,6 +57,7 @@ export const schemaTypes = [
 	// modules
 	accordionList,
 	blogRollup,
+	breadcrumbs,
 	callout,
 	creativeModule,
 	customHtml,
@@ -60,8 +66,10 @@ export const schemaTypes = [
 	heroSaas,
 	HeroSplit,
 	logoList,
+	pricingList,
 	richtextModule,
 	statList,
 	stepList,
+	testimonialFeatured,
 	testimonialList,
 ]

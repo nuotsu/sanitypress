@@ -7,7 +7,7 @@ import processMetadata from '@/lib/processMetadata'
 export default async function Page({ params }: Props) {
 	const page = await getPage(params)
 	if (!page) notFound()
-	return <Modules modules={page?.modules} />
+	return <Modules modules={page?.modules} page={page} />
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -45,13 +45,20 @@ async function getPage(params: Props['params']) {
 						internal->{ title, metadata }
 					}
 				},
-				testimonials[]->,
+				crumbs[]{
+					...,
+					internal->{ title, metadata }
+				},
 				'headings': select(
 					tableOfContents => content[style in ['h2', 'h3']]{
 						style,
 						'text': pt::text(@)
 					}
 				),
+				logos[]->,
+				tiers[]->,
+				testimonial->,
+				testimonials[]->,
 				predefinedFilters[]->,
 				${creativeModuleQuery}
 			},

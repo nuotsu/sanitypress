@@ -8,10 +8,10 @@ export default function CTAList({
 	ctas?: Sanity.CTA[]
 }) {
 	return (
-		<nav className={cn('flex flex-wrap items-center gap-[.5em]', className)}>
+		<div className={cn('flex flex-wrap items-center gap-[.5em]', className)}>
 			{ctas?.map((cta, key) => (
 				<CTA className="max-sm:w-full" {...cta} key={key} />
 			))}
-		</nav>
+		</div>
 	)
 }
