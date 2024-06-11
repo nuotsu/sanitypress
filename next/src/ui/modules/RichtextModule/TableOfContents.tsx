@@ -7,7 +7,10 @@ import css from './TableOfContents.module.css'
 export default function TableOfContents({
 	headings,
 }: {
-	headings: Sanity.BlogPost['headings']
+	headings: {
+		text: string
+		style: string
+	}[]
 }) {
 	useEffect(() => {
 		if (typeof document === 'undefined') return
