@@ -18,7 +18,10 @@ export default async function Breadcrumbs({
 				{crumbs?.map((crumb, key) => (
 					<Fragment key={key}>
 						<Crumb link={crumb} position={key + 1} />
-						<Divider />
+
+						<li className="opacity-20" role="presentation">
+							/
+						</li>
 					</Fragment>
 				))}
 
@@ -67,8 +70,4 @@ function Crumb({
 			)}
 		</li>
 	)
-}
-
-function Divider() {
-	return <div className="opacity-20">/</div>
 }

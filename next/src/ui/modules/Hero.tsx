@@ -30,7 +30,7 @@ export default function Hero({
 				hasImage && 'grid bg-ink text-canvas *:col-span-full *:row-span-full',
 			)}
 		>
-			{bgImage && (
+			{bgImage?.asset && (
 				<picture>
 					<Source image={bgImageMobile} imageWidth={1200} />
 					<Img
