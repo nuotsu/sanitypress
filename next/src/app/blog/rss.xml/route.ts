@@ -5,10 +5,10 @@ import { escapeHTML, toHTML } from '@portabletext/to-html'
 import { urlFor } from '@/lib/sanity/urlFor'
 
 export async function GET() {
-	const { blog, posts, site } = await fetchSanity<{
+	const { blog, posts, copyright } = await fetchSanity<{
 		blog: Sanity.Page
 		posts: Array<Sanity.BlogPost & { image?: string }>
-		site: { copyright: string }
+		copyright: string
 	}>(
 		groq`{
 			'blog': *[_type == 'page' && metadata.slug.current == 'blog'][0]{
@@ -23,18 +23,16 @@ export async function GET() {
 				publishDate,
 				metadata
 			},
-			'site': *[_type == 'site'][0]{
-				'copyright': pt::text(copyright)
-			}
+			'copyright': pt::text(*[_type == 'site'][0].copyright)
 		}`,
 		{ tags: ['blog-rss'] },
 	)
 
-	if (!blog || !posts || !site) {
-		console.error(
-			'Error generating blog RSS feed. Missing either a blog page, blog posts, or site metadata.',
+	if (!blog || !posts) {
+		return new Response(
+			'Missing either a blog page or blog posts in Sanity Studio',
+			{ status: 500 },
 		)
-		return new Response('Error generating blog RSS feed', { status: 500 })
 	}
 
 	const url = processUrl(blog)
@@ -44,7 +42,7 @@ export async function GET() {
 		description: blog.metadata.description,
 		link: url,
 		id: url,
-		copyright: site.copyright,
+		copyright,
 		favicon: BASE_URL + 'favicon.ico',
 		language: 'en',
 		generator: 'https://github.com/nuotsu/sanitypress',

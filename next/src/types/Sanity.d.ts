@@ -9,8 +9,8 @@ declare global {
 			title: string
 			logo: Logo
 			announcements?: Announcement[]
-			copyright?: any
 			ctas?: CTA[]
+			copyright?: any
 			headerMenu?: Navigation
 			footerMenu?: Navigation
 			social?: Navigation
