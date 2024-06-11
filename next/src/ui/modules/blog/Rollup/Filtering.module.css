@@ -5,15 +5,19 @@
 		&::before {
 			content: '';
 			position: absolute;
-			left: anchor(var(--anchor) left);
-			top: anchor(var(--anchor) top);
-			width: anchor-size(var(--anchor) width);
-			height: anchor-size(var(--anchor) height);
+			left: anchor(--filter left);
+			top: anchor(--filter top);
+			width: anchor-size(--filter width);
+			height: anchor-size(--filter height);
 			@apply rounded bg-ink/5 transition-all;
 		}
 
 		&:not(:hover)::before {
 			opacity: 0;
+		}
+
+		& button:is(:hover, :focus-visible) {
+			anchor-name: --filter;
 		}
 	}
 

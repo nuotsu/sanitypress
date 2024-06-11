@@ -33,17 +33,6 @@ export default async function Filtering({
 					<Filter label={category.title} value={category._id} key={key} />
 				))}
 			</div>
-
-			<style>{`
-				@supports (anchor-name: --a) {
-					${['All', ...filtered?.map((category) => category._id)]
-						.map(
-							(value, i) =>
-								`.filtering:has(button:nth-of-type(${i + 1}):hover) { --anchor: --anchor-${value}; }`,
-						)
-						.join('')}
-				}
-			`}</style>
 		</fieldset>
 	)
 }

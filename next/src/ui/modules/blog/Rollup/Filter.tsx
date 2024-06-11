@@ -22,10 +22,9 @@ export default function Filter({
 		<button
 			className={cn(
 				css.filter,
-				'!py-1 group-has-[&:hover]:[--anchor:var()]',
+				'!py-1',
 				selected === value ? 'action' : 'ghost',
 			)}
-			style={{ anchorName: `--anchor-${value}` } as React.CSSProperties}
 			onClick={() => setSelected(value)}
 		>
 			<Category label={label} />
