@@ -1,5 +1,5 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
-import { creativeModuleQuery, linkQuery } from '@/lib/sanity/queries'
+import { modulesQuery } from '@/lib/sanity/queries'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
 
@@ -17,19 +17,7 @@ async function getPage() {
 	return await fetchSanity<Sanity.Page>(
 		groq`*[_type == 'page' && metadata.slug.current == 'index'][0]{
 			...,
-			modules[]{
-				...,
-				ctas[]{
-					...,
-					link{ ${linkQuery} }
-				},
-				logos[]->,
-				tiers[]->,
-				testimonial->,
-				testimonials[]->,
-				predefinedFilters[]->,
-				${creativeModuleQuery}
-			},
+			modules[]{ ${modulesQuery} },
 			metadata {
 				...,
 				'ogimage': image.asset->url

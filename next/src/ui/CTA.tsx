@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import processUrl from '@/lib/processUrl'
 import { cn } from '@/lib/utils'
+import { stegaClean } from '@sanity/client/stega'
 
 export default function CTA({
 	link,
@@ -26,7 +27,7 @@ export default function CTA({
 		)
 
 	if (link?.type === 'external' && link.external)
-		return <a href={link.external} {...props} />
+		return <a href={stegaClean(link.external)} {...props} />
 
 	return props.children
 }

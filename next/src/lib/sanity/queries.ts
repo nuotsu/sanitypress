@@ -14,19 +14,6 @@ const navigationQuery = groq`
 	}
 `
 
-export const creativeModuleQuery = groq`
-	modules[]{
-		...,
-		subModules[]{
-			...,
-			ctas[]{
-				...,
-				link{ ${linkQuery} }
-			}
-		}
-	}
-`
-
 export async function getSite() {
 	return await fetchSanity<Sanity.Site>(
 		groq`
@@ -45,3 +32,37 @@ export async function getSite() {
 		{ tags: ['site'] },
 	)
 }
+
+export const modulesQuery = groq`
+	...,
+	ctas[]{
+		...,
+		link{ ${linkQuery} }
+	},
+	_type == 'blog-rollup' => { predefinedFilters[]-> },
+	_type == 'breadcrumbs' => { crumbs[]{ ${linkQuery} } },
+	_type == 'creative-module' => {
+		modules[]{
+			...,
+			subModules[]{
+				...,
+				ctas[]{
+					...,
+					link{ ${linkQuery} }
+				}
+			}
+		}
+	},
+	_type == 'logo-list' => { logos[]-> },
+	_type == 'pricing-list' => { tiers[]-> },
+	_type == 'richtext-module' => {
+		'headings': select(
+			tableOfContents => content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{
+				style,
+				'text': pt::text(@)
+			}
+		),
+	},
+	_type == 'testimonial.featured' => { testimonial-> },
+	_type == 'testimonial-list' => { testimonials[]-> },
+`
