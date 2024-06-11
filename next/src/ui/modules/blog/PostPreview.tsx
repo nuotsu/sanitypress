@@ -10,9 +10,9 @@ export default function PostPreview({ post }: { post: Sanity.BlogPost }) {
 			className="group block space-y-2"
 			href={processUrl(post, { base: false })}
 		>
-			<figure className="aspect-video bg-ink/5">
+			<figure className="aspect-video overflow-hidden bg-ink/5">
 				<Img
-					className="aspect-video w-full object-cover transition-[filter] group-hover:brightness-110"
+					className="aspect-video w-full object-cover transition-[filter,transform] group-hover:scale-105 group-hover:brightness-110"
 					image={post.metadata.image}
 					imageWidth={800}
 				/>
