@@ -1,18 +1,16 @@
 import { fetchSanity, groq } from './fetch'
 
+export const linkQuery = groq`
+	...,
+	internal->{ _type, title, metadata }
+`
+
 const navigationQuery = groq`
 	title,
 	items[]{
-		...,
-		internal->{ _type, title, metadata },
-		link{
-			...,
-			internal->{ _type, title, metadata },
-		},
-		links[]{
-			...,
-			internal->{ _type, title, metadata }
-		}
+		${linkQuery},
+		link{ ${linkQuery} },
+		links[]{ ${linkQuery} }
 	}
 `
 
@@ -23,10 +21,7 @@ export const creativeModuleQuery = groq`
 			...,
 			ctas[]{
 				...,
-				link{
-					...,
-					internal->{ title, metadata }
-				}
+				link{ ${linkQuery} }
 			}
 		}
 	}
@@ -39,10 +34,7 @@ export async function getSite() {
 				...,
 				ctas[]{
 					...,
-					link{
-						...,
-						internal->{ _type, title, metadata }
-					}
+					link{ ${linkQuery} }
 				},
 				headerMenu->{ ${navigationQuery} },
 				footerMenu->{ ${navigationQuery} },

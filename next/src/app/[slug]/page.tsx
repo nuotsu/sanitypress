@@ -1,5 +1,5 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
-import { creativeModuleQuery } from '@/lib/sanity/queries'
+import { creativeModuleQuery, linkQuery } from '@/lib/sanity/queries'
 import { notFound } from 'next/navigation'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
@@ -40,15 +40,9 @@ async function getPage(params: Props['params']) {
 				...,
 				ctas[]{
 					...,
-					link{
-						...,
-						internal->{ title, metadata }
-					}
+					link{ ${linkQuery} }
 				},
-				crumbs[]{
-					...,
-					internal->{ title, metadata }
-				},
+				crumbs[]{ ${linkQuery} },
 				'headings': select(
 					tableOfContents => content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{
 						style,

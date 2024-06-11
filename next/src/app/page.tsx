@@ -1,5 +1,5 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
-import { creativeModuleQuery } from '@/lib/sanity/queries'
+import { creativeModuleQuery, linkQuery } from '@/lib/sanity/queries'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
 
@@ -21,10 +21,7 @@ async function getPage() {
 				...,
 				ctas[]{
 					...,
-					link{
-						...,
-						internal->{ title, metadata }
-					}
+					link{ ${linkQuery} }
 				},
 				logos[]->,
 				tiers[]->,
