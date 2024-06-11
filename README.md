@@ -11,7 +11,7 @@ An opinionated and minimally styled starter template with Tailwind CSS and pre-b
 
 ⚡ [Perfect Lighthouse scores](https://pagespeed.web.dev/analysis/https-sanitypress-vercel-app/fyc5qki4bd?form_factor=desktop) on desktop and 99/100 on mobile.
 
-🚀 Checkout the [demo site](https://sanitypress.vercel.app), [playground](https://sanitypress.vercel.app/playground) and [docs](https://sanitypress.vercel.app/docs) page.
+🚀 Checkout the [demo site](https://sanitypress.vercel.app), [documentation](https://sanitypress.vercel.app/docs) and [blog](https://sanitypress.vercel.app/blog).
 
 ## Table of Contents
 
