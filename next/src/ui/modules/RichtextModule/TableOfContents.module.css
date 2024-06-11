@@ -1,0 +1,5 @@
+@screen lg {
+	.inView:not(.inView ~ .inView) {
+		@apply border-accent border-l-4;
+	}
+}

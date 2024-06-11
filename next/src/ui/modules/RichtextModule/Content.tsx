@@ -21,6 +21,9 @@ export default function Content({
 					block: {
 						h2: (node) => <AnchoredHeading as="h2" {...node} />,
 						h3: (node) => <AnchoredHeading as="h3" {...node} />,
+						h4: (node) => <AnchoredHeading as="h4" {...node} />,
+						h5: (node) => <AnchoredHeading as="h5" {...node} />,
+						h6: (node) => <AnchoredHeading as="h6" {...node} />,
 						blockquote: ({ children }) => (
 							<blockquote className="border-l-2 pl-4">
 								<p>{children}</p>
