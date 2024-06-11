@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 export default function Content({
 	value,
 	className,
+	children,
 }: { value: any } & React.HTMLProps<HTMLDivElement>) {
 	return (
 		<div
@@ -36,6 +37,8 @@ export default function Content({
 					},
 				}}
 			/>
+
+			{children}
 		</div>
 	)
 }

@@ -36,7 +36,9 @@ export default async function Post({ post }: { post: Sanity.BlogPost }) {
 					<Content
 						value={post.body}
 						className={cn(css.body, 'grid max-w-screen-md')}
-					/>
+					>
+						<hr />
+					</Content>
 				</div>
 			</article>
 
