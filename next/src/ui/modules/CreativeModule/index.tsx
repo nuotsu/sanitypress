@@ -15,6 +15,7 @@ export default function CreativeModule({
 	intro,
 	modules,
 	columns,
+	bordered,
 	textAlign,
 	alignItems,
 }: Partial<{
@@ -30,6 +31,7 @@ export default function CreativeModule({
 		colSpan: number
 	}>[]
 	columns: number
+	bordered: boolean
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }>) {
@@ -45,12 +47,15 @@ export default function CreativeModule({
 				)}
 
 				<div
-					className="grid items-center gap-x-12 gap-y-8 md:grid-cols-[repeat(var(--col,1),minmax(0px,1fr))]"
+					className={cn(
+						'grid items-center md:grid-cols-[repeat(var(--col,1),minmax(0px,1fr))]',
+						bordered ? 'gap-4' : 'gap-x-12 gap-y-8',
+					)}
 					style={
 						{
 							'--col': columns || modules?.length,
 							textAlign: stegaClean(textAlign),
-							alignItems: stegaClean(alignItems),
+							alignItems: bordered ? 'stretch' : stegaClean(alignItems),
 						} as React.CSSProperties
 					}
 				>
@@ -59,6 +64,7 @@ export default function CreativeModule({
 							className={cn(
 								'space-y-4',
 								colSpan > 1 && 'md:col-[var(--col-span,1)]',
+								bordered && 'rounded border p-4',
 							)}
 							style={
 								{

@@ -76,12 +76,21 @@ export default defineType({
 			group: 'options',
 		}),
 		defineField({
+			name: 'bordered',
+			type: 'boolean',
+			initialValue: false,
+			group: 'options',
+			description:
+				'When enabled, vertical alignment will be set to "stretched"',
+		}),
+		defineField({
 			...textAlign,
 			fieldset: 'alignment',
 		}),
 		defineField({
 			...alignItems,
 			fieldset: 'alignment',
+			hidden: ({ parent }) => parent.bordered,
 		}),
 	],
 	preview: {
