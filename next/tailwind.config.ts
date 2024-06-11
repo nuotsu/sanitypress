@@ -8,6 +8,8 @@ const config: Config = {
 			colors: {
 				ink: '#000',
 				canvas: '#fff',
+
+				accent: '#000',
 			},
 			fontFamily: {},
 			maxHeight: {

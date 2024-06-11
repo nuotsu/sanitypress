@@ -7,7 +7,7 @@ export default function Category({
 }) {
 	return (
 		<>
-			<span className="opacity-40">#</span>
+			<span className="text-accent/40">#</span>
 			{label || value?.title}
 		</>
 	)

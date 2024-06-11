@@ -26,8 +26,8 @@
 	}
 
 	html {
-		accent-color: theme('colors.ink');
-		caret-color: theme('colors.ink');
+		accent-color: theme('colors.accent');
+		caret-color: theme('colors.accent');
 		scroll-behavior: smooth;
 	}
 
@@ -86,7 +86,7 @@
 	}
 
 	.text-gradient {
-		@apply bg-gradient-to-br from-ink/5 to-ink bg-clip-text text-transparent;
+		@apply from-accent/5 to-accent bg-gradient-to-br bg-clip-text text-transparent;
 	}
 
 	/* ctas, links */
@@ -100,15 +100,15 @@
 	}
 
 	.action {
-		@apply _btn frosted-glass text-balance rounded border border-transparent bg-gradient-to-br from-ink/70 to-ink text-white shadow;
+		@apply _btn frosted-glass from-accent/70 to-accent text-balance rounded border border-transparent bg-gradient-to-br text-white shadow;
 	}
 
 	.action-outline {
-		@apply _btn frosted-glass text-balance rounded border border-ink/5 bg-gradient-to-br from-canvas/70 to-canvas text-ink hover:border-ink/10;
+		@apply _btn frosted-glass border-accent/5 text-accent hover:border-accent/10 text-balance rounded border bg-gradient-to-br from-canvas/70 to-canvas;
 	}
 
 	.ghost {
-		@apply _btn frosted-glass rounded hover:bg-ink/5;
+		@apply _btn frosted-glass hover:bg-accent/5 rounded;
 	}
 
 	.link {
