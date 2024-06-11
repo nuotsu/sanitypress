@@ -14,7 +14,7 @@ export async function generateMetadata() {
 }
 
 async function getPage() {
-	return await fetchSanity<Sanity.Page>(
+	const page = await fetchSanity<Sanity.Page>(
 		groq`*[_type == 'page' && metadata.slug.current == 'index'][0]{
 			...,
 			modules[]{ ${modulesQuery} },
@@ -27,4 +27,11 @@ async function getPage() {
 			tags: ['homepage'],
 		},
 	)
+
+	if (!page)
+		throw new Error(
+			"Missing 'page' document with metadata.slug 'index' in Sanity Studio",
+		)
+
+	return page
 }

@@ -15,7 +15,7 @@ const navigationQuery = groq`
 `
 
 export async function getSite() {
-	return await fetchSanity<Sanity.Site>(
+	const site = await fetchSanity<Sanity.Site>(
 		groq`
 			*[_type == 'site'][0]{
 				...,
@@ -31,6 +31,10 @@ export async function getSite() {
 		`,
 		{ tags: ['site'] },
 	)
+
+	if (!site) throw new Error("Missing 'site' document in Sanity Studio")
+
+	return site
 }
 
 export const modulesQuery = groq`
