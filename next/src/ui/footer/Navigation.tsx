@@ -14,8 +14,6 @@ export default async function Menu() {
 						return <CTA className="hover:link" link={item} key={key} />
 
 					case 'link.list':
-						console.log(item.link)
-
 						return (
 							<div className="space-y-2 text-left" key={key}>
 								<div className="technical text-xs">
