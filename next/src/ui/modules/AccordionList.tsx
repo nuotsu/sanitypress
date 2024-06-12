@@ -19,7 +19,7 @@ export default function AccordionList({
 	}>) {
 	return (
 		<section
-			{...htmlId(props)}
+			id={htmlId(props)}
 			className={cn(
 				'section',
 				layout === 'horizontal' ? 'grid gap-8 md:grid-cols-2' : 'space-y-8',

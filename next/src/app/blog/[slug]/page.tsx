@@ -24,7 +24,7 @@ export async function generateStaticParams() {
 }
 
 async function getPost(params: Props['params']) {
-	const post = await fetchSanity<Sanity.BlogPost>(
+	return await fetchSanity<Sanity.BlogPost>(
 		groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{
 			...,
 			'body': select(_type == 'image' => asset->, body),
@@ -44,10 +44,6 @@ async function getPost(params: Props['params']) {
 			tags: ['blog.post'],
 		},
 	)
-
-	if (!post) throw new Error("Missing 'blog.post' document in Sanity Studio")
-
-	return post
 }
 
 type Props = {
