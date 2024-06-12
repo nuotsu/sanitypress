@@ -7,7 +7,7 @@ import css from './TableOfContents.module.css'
 export default function TableOfContents({
 	headings,
 }: {
-	headings: {
+	headings?: {
 		text: string
 		style: string
 	}[]
