@@ -7,7 +7,7 @@ declare global {
 
 		type Site = SanityDocument<{
 			title: string
-			logo: Logo
+			logo?: Logo
 			announcements?: Announcement[]
 			ctas?: CTA[]
 			copyright?: any
@@ -16,16 +16,6 @@ declare global {
 			social?: Navigation
 			ogimage?: string
 		}>
-
-		type PageBase = SanityDocument<{
-			title?: string
-			metadata: Metadata
-		}>
-
-		type Page = PageBase & {
-			readonly _type: 'page'
-			modules?: Module[]
-		}
 
 		type Navigation = SanityDocument<{
 			title: string
@@ -38,6 +28,18 @@ declare global {
 			start?: string
 			end?: string
 		}>
+
+		// pages
+
+		type PageBase = SanityDocument<{
+			title?: string
+			metadata: Metadata
+		}>
+
+		type Page = PageBase & {
+			readonly _type: 'page'
+			modules?: Module[]
+		}
 
 		type BlogPost = PageBase & {
 			readonly _type: 'blog.post'
@@ -124,7 +126,7 @@ declare global {
 		type Module<T = any> = {
 			_type: T
 			_key: string
-		} & T
+		}
 	}
 }
 

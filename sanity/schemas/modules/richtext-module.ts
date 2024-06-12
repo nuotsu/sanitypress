@@ -41,6 +41,7 @@ export default defineType({
 				list: ['left', 'right'],
 				layout: 'radio',
 			},
+			hidden: ({ parent }) => !parent.tableOfContents,
 			initialValue: 'right',
 			group: 'options',
 		}),

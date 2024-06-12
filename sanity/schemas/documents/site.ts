@@ -13,6 +13,7 @@ export default defineType({
 			name: 'title',
 			type: 'string',
 			group: 'general',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'logo',
