@@ -13,7 +13,7 @@
 		display: none !important;
 	}
 
-	:target {
+	:target:is(h1, h2, h3, h4, h5, h6) {
 		scroll-margin-top: var(--header-height);
 		animation: target 2s ease-in-out forwards;
 	}
@@ -86,7 +86,7 @@
 	}
 
 	.text-gradient {
-		@apply from-accent/5 to-accent bg-gradient-to-br bg-clip-text text-transparent;
+		@apply bg-gradient-to-br from-accent/5 to-accent bg-clip-text text-transparent;
 	}
 
 	/* ctas, links */
@@ -100,15 +100,15 @@
 	}
 
 	.action {
-		@apply _btn frosted-glass from-accent/70 to-accent text-balance rounded border border-transparent bg-gradient-to-br text-white shadow;
+		@apply _btn frosted-glass text-balance rounded border border-transparent bg-gradient-to-br from-accent/70 to-accent text-white shadow;
 	}
 
 	.action-outline {
-		@apply _btn frosted-glass border-accent/10 text-accent hover:border-accent/15 text-balance rounded border bg-gradient-to-br from-canvas/70 to-canvas;
+		@apply _btn frosted-glass text-balance rounded border border-accent/10 bg-gradient-to-br from-canvas/70 to-canvas text-accent hover:border-accent/15;
 	}
 
 	.ghost {
-		@apply _btn frosted-glass hover:bg-accent/5 rounded;
+		@apply _btn frosted-glass rounded hover:bg-accent/5;
 	}
 
 	.link {

@@ -123,9 +123,10 @@ declare global {
 			noIndex: boolean
 		}
 
-		type Module<T = any> = {
+		type Module<T = string> = {
 			_type: T
 			_key: string
+			htmlId?: string
 		}
 	}
 }

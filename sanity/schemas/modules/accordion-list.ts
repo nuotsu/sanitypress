@@ -65,6 +65,12 @@ export default defineType({
 			initialValue: 'vertical',
 			group: 'options',
 		}),
+		defineField({
+			name: 'htmlId',
+			title: 'HTML ID',
+			type: 'htmlId',
+			group: 'options',
+		}),
 	],
 	preview: {
 		select: {

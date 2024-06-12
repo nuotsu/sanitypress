@@ -1,3 +1,4 @@
+import htmlId from '@/lib/htmlId'
 import { cn } from '@/lib/utils'
 import { PortableText } from '@portabletext/react'
 
@@ -5,17 +6,20 @@ export default function AccordionList({
 	intro,
 	items,
 	layout = 'vertical',
-}: Partial<{
-	intro: any
-	items: {
-		summary: string
-		content: any
-		open?: boolean
-	}[]
-	layout: 'vertical' | 'horizontal'
-}>) {
+	...props
+}: Sanity.Module &
+	Partial<{
+		intro: any
+		items: {
+			summary: string
+			content: any
+			open?: boolean
+		}[]
+		layout: 'vertical' | 'horizontal'
+	}>) {
 	return (
 		<section
+			{...htmlId(props)}
 			className={cn(
 				'section',
 				layout === 'horizontal' ? 'grid gap-8 md:grid-cols-2' : 'space-y-8',
