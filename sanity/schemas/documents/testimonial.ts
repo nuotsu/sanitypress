@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { GrBlockQuote } from 'react-icons/gr'
+import { getBlockText } from '../../src/utils'
 
 export default defineType({
 	name: 'testimonial',
@@ -33,11 +34,12 @@ export default defineType({
 	],
 	preview: {
 		select: {
+			content: 'content',
 			author: 'author',
 		},
-		prepare: ({ author }) => ({
-			title: author?.name || 'No author',
-			subtitle: 'Testimonial',
+		prepare: ({ content, author }) => ({
+			title: getBlockText(content),
+			subtitle: author?.name || author?.title || 'No author',
 			media: author?.image,
 		}),
 	},
