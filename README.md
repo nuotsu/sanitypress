@@ -17,7 +17,6 @@ An opinionated and minimally styled starter template with Tailwind CSS and pre-b
 
 - [Key Features](#key-features)
 - [Getting Started](#getting-started)
-- [Time-based revalidation](#time-based-revalidation)
 - [Visual Editing](#visual-editing)
 - [Staging](#staging)
 - [Helpful Resources (The SanityPress Blog)](https://sanitypress.vercel.app/blog)
@@ -33,16 +32,15 @@ An opinionated and minimally styled starter template with Tailwind CSS and pre-b
 
 ## Getting Started
 
-### 1. Start a new repo with the [GitHub template](https://github.com/new?template_name=sanitypress&template_owner=nuotsu)
+Directions are also found on the [docs](https://sanitypress.vercel.app/docs).
 
-### 2. Retrieve a new Sanity project ID
+### 1. New repo
 
-```sh
-npm -y create sanity@latest
-```
+Clone, fork or use the template from [the GitHub template](https://github.com/nuots/sanitypress).
 
-> [!NOTE]
-> The CLI will ask to create new a directory with the Sanity files, but you can remove once the project ID is retrieved.
+### 2. Get a new Sanity project ID
+
+From the [Sanity.io Manage](https://sanity.io/manage) dashboard, create a new project _from scratch (blank schema) with CLI_.
 
 ### 3. Update environment variables
 
@@ -57,21 +55,19 @@ SANITY_STUDIO_PROJECT_ID = ...
 SANITY_STUDIO_PREVIEW_URL = ... # your live or staging site URL
 ```
 
-### 4. Populate the Sanity project with content
+### 4. Populate the Studio with content
 
-- Site settings ([sanity/schemas/documents/site.ts](sanity/schemas/documents/site.ts))
-- Pages ([sanity/schemas/documents/page.ts](sanity/schemas/documents/page.ts))
-- Blog posts ([sanity/schemas/documents/blog.post.ts](sanity/schemas/documents/blog.post.ts))
+Open your new Sanity Studio and add (and publish):
 
-> [!IMPORTANT]
-> Required: Add a page with the slug `index` for the Homepage<br>
-> Optional: Add a page with the slug `404` for the 404 page
+1. a **Site** document with a `title` field.
+2. a **Page** document with the slug `index` to use as the Home page.
+3. [Optional] a **Page** document with the slug `404` to use as the _Page not found_ page.
 
-### 5. Deployment Service Setup
+### 5. Set up deployments
 
-Update the **Root Directory** (Vercel) / **Project Directory** (Netlify) to `next`. This is required to deploy the Next.js frontend.
+Update the **Root Directory** (Vercel) / **Project Directory** (Netlify) with a value of `next`. This tells the deployment service to serve the next/ directory and not the root.
 
-Set up the Sanity Dashboard with your deployment service:
+Optionally, install either of the following plugins to add a widget to your Studio Dashboard:
 
 ```sh
 # Vercel — https://www.sanity.io/plugins/vercel-dashboard-widget
@@ -84,19 +80,6 @@ npm i sanity-plugin-dashboard-widget-netlify
 ### 6. Customize the frontend
 
 Feel free to adjust styles, add more schema and modules, and more.
-
-## Time-based Revalidation
-
-Set `NEXT_PUBLIC_REVALIDATE` (optional) environment variable to allow [time-based revalidation](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#time-based-revalidation) for published Sanity documents.
-
-Leave blank to disable revalidation (`{ next: { revalidate: false } }`).
-
-```sh
-# /next/.env.local
-NEXT_PUBLIC_REVALIDATE = 3600	# every hour
-```
-
-When empty (`revalidate: false`), published Sanity documents will only be pushed to the live site when a new deployment is triggered.
 
 ## Visual Editing
 
