@@ -4,6 +4,7 @@ import CTAList from '@/ui/CTAList'
 import Pretitle from '@/ui/Pretitle'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
+import css from './Hero.module.css'
 
 export default function Hero({
 	pretitle,
@@ -27,7 +28,8 @@ export default function Hero({
 	return (
 		<section
 			className={cn(
-				hasImage && 'grid bg-ink text-canvas *:col-span-full *:row-span-full',
+				hasImage &&
+					'grid overflow-hidden bg-ink text-canvas *:col-span-full *:row-span-full',
 			)}
 		>
 			{bgImage?.asset && (
@@ -46,8 +48,9 @@ export default function Hero({
 				<div className="section flex w-full flex-col">
 					<div
 						className={cn(
-							'richtext relative max-w-xl [&_:is(h1,h2)]:text-balance',
+							'richtext relative isolate max-w-xl [&_:is(h1,h2)]:text-balance',
 							bgImage?.asset && 'text-shadow',
+							hasImage && css.txt,
 							{
 								'mb-8': stegaClean(alignItems) === 'start',
 								'my-auto': stegaClean(alignItems) === 'center',

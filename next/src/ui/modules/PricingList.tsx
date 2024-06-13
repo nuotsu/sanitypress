@@ -71,5 +71,5 @@ const { format } = new Intl.NumberFormat('en-US', {
 
 function formatPrice(value: number) {
 	if (value === 0) return 'Free'
-	return format(value)
+	return format(value).replace(/\.00$/, '')
 }

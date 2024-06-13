@@ -106,7 +106,7 @@ export default function CreativeModule({
 										return (
 											<ImageSubModule
 												module={subModule}
-												imageWidth={imageWidth}
+												imageWidth={imageWidth * colSpan}
 												key={ii}
 											/>
 										)

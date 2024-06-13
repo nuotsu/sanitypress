@@ -24,7 +24,7 @@ export default async function LogoList({
 	return (
 		<section className="section space-y-8">
 			{(pretitle || intro) && (
-				<header className="richtext text-center">
+				<header className="richtext mx-auto max-w-screen-sm text-balance text-center">
 					<Pretitle>{pretitle}</Pretitle>
 					<PortableText value={intro} />
 				</header>
