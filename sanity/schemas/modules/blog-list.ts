@@ -3,8 +3,8 @@ import { VscEdit } from 'react-icons/vsc'
 import { getBlockText } from '../../src/utils'
 
 export default defineType({
-	name: 'blog-rollup',
-	title: 'Blog rollup',
+	name: 'blog-list',
+	title: 'Blog list',
 	icon: VscEdit,
 	type: 'object',
 	groups: [
@@ -62,7 +62,7 @@ export default defineType({
 		},
 		prepare: ({ intro }) => ({
 			title: getBlockText(intro),
-			subtitle: 'Blog rollup',
+			subtitle: 'Blog list',
 		}),
 	},
 })

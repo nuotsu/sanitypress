@@ -1,5 +1,5 @@
 import AccordionList from './AccordionList'
-import BlogRollup from './blog/Rollup'
+import BlogList from './blog/BlogList'
 import Breadcrumbs from './Breadcrumbs'
 import Callout from './Callout'
 import CreativeModule from './CreativeModule'
@@ -29,8 +29,8 @@ export default function Modules({
 				switch (module._type) {
 					case 'accordion-list':
 						return <AccordionList {...module} key={module._key} />
-					case 'blog-rollup':
-						return <BlogRollup {...module} key={module._key} />
+					case 'blog-list':
+						return <BlogList {...module} key={module._key} />
 					case 'breadcrumbs':
 						return (
 							<Breadcrumbs {...module} currentPage={page} key={module._key} />

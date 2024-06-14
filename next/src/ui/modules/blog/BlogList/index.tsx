@@ -1,11 +1,11 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import { PortableText } from '@portabletext/react'
-import Filtering from '@/ui/modules/blog/Rollup/Filtering'
+import Filtering from '@/ui/modules/blog/BlogList/Filtering'
 import List from './List'
 import { stegaClean } from '@sanity/client/stega'
 import { cn } from '@/lib/utils'
 
-export default async function Rollup({
+export default async function BlogList({
 	intro,
 	layout,
 	limit = 100,
