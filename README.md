@@ -2,6 +2,8 @@
 
 An opinionated and minimally styled starter template with Tailwind CSS and pre-built schema and modules for rapid website development.
 
+> [🍃 _Foliage_ theme](https://sanitypress.vercel.app/themes) now available!
+
 ![](https://cdn.sanity.io/images/81pocpw8/production/02b92fc2bab8636ee7c8026292d0e8b685041538-5088x3554.jpg)
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnuotsu%2Fsanitypress&env=NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_TOKEN)
