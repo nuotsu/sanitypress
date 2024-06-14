@@ -66,9 +66,9 @@ export default defineType({
 			group: 'options',
 		}),
 		defineField({
-			name: 'htmlId',
-			title: 'HTML ID',
-			type: 'htmlId',
+			name: 'uid',
+			title: 'Unique Identifier',
+			type: 'uid',
 			group: 'options',
 		}),
 	],

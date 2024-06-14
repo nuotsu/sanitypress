@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { defineType } from 'sanity'
-import { Box, Button, Flex, TextInput } from '@sanity/ui'
+import { Box, Button, Flex, Text, TextInput } from '@sanity/ui'
 import { VscCheck, VscCopy } from 'react-icons/vsc'
 
 export default defineType({
-	name: 'htmlId',
-	title: 'HTML ID',
-	description: 'Used for jump links.',
+	name: 'uid',
+	title: 'Unique Identifier',
+	description: 'Used for anchor/jump links (HTML `id` attribute).',
 	type: 'string',
 	validation: (Rule) =>
 		Rule.regex(/^[a-zA-Z0-9-]+$/g).error(
@@ -19,7 +19,9 @@ export default defineType({
 			const [checked, setChecked] = useState(false)
 
 			return (
-				<Flex gap={1}>
+				<Flex gap={1} align="center">
+					<Text muted>#</Text>
+
 					<Box flex={1}>
 						<TextInput {...elementProps} placeholder={moduleKey} radius={2} />
 					</Box>
@@ -30,7 +32,9 @@ export default defineType({
 						icon={checked ? VscCheck : VscCopy}
 						disabled={checked}
 						onClick={() => {
-							navigator.clipboard.writeText(elementProps.value || moduleKey)
+							navigator.clipboard.writeText(
+								'#' + elementProps.value || moduleKey,
+							)
 
 							setChecked(true)
 							setTimeout(() => setChecked(false), 1000)

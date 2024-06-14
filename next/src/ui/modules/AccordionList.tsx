@@ -1,4 +1,4 @@
-import htmlId from '@/lib/htmlId'
+import uid from '@/lib/uid'
 import { cn } from '@/lib/utils'
 import { PortableText } from '@portabletext/react'
 
@@ -19,7 +19,7 @@ export default function AccordionList({
 	}>) {
 	return (
 		<section
-			id={htmlId(props)}
+			id={uid(props)}
 			className={cn(
 				'section',
 				layout === 'horizontal' ? 'grid gap-8 md:grid-cols-2' : 'space-y-8',

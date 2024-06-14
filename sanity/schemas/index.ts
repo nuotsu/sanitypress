@@ -12,7 +12,7 @@ import testimonial from './documents/testimonial'
 
 // objects
 import cta from './objects/cta'
-import htmlId from './objects/htmlId'
+import uid from './objects/uid'
 import link from './objects/link'
 import linkList from './objects/link.list'
 import metadata from './objects/metadata'
@@ -51,7 +51,7 @@ export const schemaTypes = [
 
 	// objects
 	cta,
-	htmlId,
+	uid,
 	link,
 	linkList,
 	metadata,

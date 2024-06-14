@@ -126,7 +126,7 @@ declare global {
 		type Module<T = string> = {
 			_type: T
 			_key: string
-			htmlId?: string
+			uid?: string
 		}
 	}
 }
