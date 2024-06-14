@@ -3,9 +3,12 @@ import Navigation from './Navigation'
 import Social from '@/ui/Social'
 import { PortableText } from '@portabletext/react'
 import Link from 'next/link'
+import Img from '../Img'
 
 export default async function Footer() {
-	const { title, copyright } = await getSite()
+	const { title, logo, copyright } = await getSite()
+
+	const logoImage = logo?.image?.light || logo?.image?.default
 
 	return (
 		<footer className="bg-ink text-center text-canvas">
@@ -14,7 +17,15 @@ export default async function Footer() {
 					<div className="flex flex-wrap justify-between gap-x-12 gap-y-8">
 						<div className="flex flex-col gap-3 max-sm:mx-auto max-sm:items-center">
 							<Link className="h3 md:h2" href="/">
-								{title}
+								{logoImage ? (
+									<Img
+										className="max-h-[1.5em] w-auto"
+										image={logoImage}
+										alt={logo?.name || title}
+									/>
+								) : (
+									title
+								)}
 							</Link>
 
 							<Social />

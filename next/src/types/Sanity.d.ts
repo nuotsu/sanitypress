@@ -58,11 +58,11 @@ declare global {
 
 		type Logo = SanityDocument<{
 			name: string
-			image: {
-				default?: Image
-				light?: Image
-				dark?: Image
-			}
+			image?: Partial<{
+				default: Image
+				light: Image
+				dark: Image
+			}>
 		}>
 
 		type Pricing = SanityDocument<{

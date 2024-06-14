@@ -1,6 +1,7 @@
 import { getSite } from '@/lib/sanity/queries'
 import Wrapper from './Wrapper'
 import Link from 'next/link'
+import Img from '../Img'
 import Navigation from './Navigation'
 import CTAList from '@/ui/CTAList'
 import Toggle from './Toggle'
@@ -8,7 +9,9 @@ import { cn } from '@/lib/utils'
 import css from './Header.module.css'
 
 export default async function Header() {
-	const { title, ctas } = await getSite()
+	const { title, logo, ctas } = await getSite()
+
+	const logoImage = logo?.image?.dark || logo?.image?.default
 
 	return (
 		<Wrapper className="frosted-glass sticky top-0 z-10 border-b border-ink/10 bg-canvas max-md:header-open:shadow-lg">
@@ -19,8 +22,22 @@ export default async function Header() {
 				)}
 			>
 				<div className="[grid-area:logo]">
-					<Link className="h3 md:h2 text-gradient" href="/">
-						{title}
+					<Link
+						className={cn(
+							'h3 md:h2 inline-block',
+							logo?.image && 'max-w-[250px]',
+						)}
+						href="/"
+					>
+						{logoImage ? (
+							<Img
+								className="inline-block max-h-[1.2em] w-auto"
+								image={logoImage}
+								alt={logo?.name || title}
+							/>
+						) : (
+							<span className="text-gradient">{title}</span>
+						)}
 					</Link>
 				</div>
 
