@@ -40,27 +40,11 @@ export default defineType({
 	preview: {
 		select: {
 			content: 'content',
-			start: 'start',
-			end: 'end',
+			cta: 'cta.label',
 		},
-		prepare: ({ content, start, end }) => ({
+		prepare: ({ content, cta }) => ({
 			title: getBlockText(content),
-			subtitle: [formatDate(start), formatDate(end)]
-				.filter(Boolean)
-				.join(' - '),
+			subtitle: cta,
 		}),
 	},
 })
-
-const { format } = new Intl.DateTimeFormat('en', {
-	month: 'numeric',
-	day: 'numeric',
-	hour: '2-digit',
-	minute: 'numeric',
-	hour12: false,
-})
-
-function formatDate(date: string) {
-	if (!date) return ''
-	return format(new Date(date))
-}
