@@ -1,8 +1,8 @@
 import { defineConfig } from 'sanity'
 import { BASE_URL, projectId } from './src/env'
 import { structureTool } from 'sanity/structure'
-import defaultDocumentNode from './src/defaultDocumentNode'
 import structure from './src/structure'
+import { locations } from './src/presentation'
 import { presentationTool } from 'sanity/presentation'
 import {
 	dashboardTool,
@@ -26,7 +26,6 @@ export default defineConfig({
 	plugins: [
 		structureTool({
 			title: 'Content',
-			defaultDocumentNode,
 			structure,
 		}),
 		presentationTool({
@@ -36,6 +35,7 @@ export default defineConfig({
 					enable: `${BASE_URL}/api/draft`,
 				},
 			},
+			resolve: { locations },
 		}),
 		dashboardTool({
 			title: 'Deployment',
