@@ -1,3 +1,4 @@
+import client from '@/lib/sanity/client'
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import { notFound } from 'next/navigation'
 import Post from '@/ui/modules/blog/Post'
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-	const slugs = await fetchSanity<string[]>(
+	const slugs = await client.fetch<string[]>(
 		groq`*[_type == 'blog.post' && defined(metadata.slug.current)].metadata.slug.current`,
 	)
 
