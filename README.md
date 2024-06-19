@@ -19,7 +19,6 @@ An opinionated and minimally styled starter template with Tailwind CSS and pre-b
 
 - [Key Features](#key-features)
 - [Getting Started](#getting-started)
-- [Visual Editing](#visual-editing)
 - [Staging](#staging)
 - [Helpful Resources (The SanityPress Blog)](https://sanitypress.vercel.app/blog)
 - [External References](#external-references)
@@ -29,7 +28,7 @@ An opinionated and minimally styled starter template with Tailwind CSS and pre-b
 - Modern Frontend Development with Next.js (App Router, RSC, Typescript) and Tailwind CSS.
 - [Pre-configured Sanity schema](/sanity/schemas/index.ts) for rapid content structuring.
 - [Pre-built frontend components](/next/src/ui/) for rapid website development.
-- [Visual editing](#visual-editing) in Presentation mode inside the Sanity Studio.
+- [Visual editing](https://sanitypress.vercel.app/blog/visual-editing) right inside the Sanity Studio.
 - Auto-generated [sitemap.xml](/next/src/app/sitemap.ts) and [blog rss.xml](/next/src/app/blog/rss.xml/route.ts).
 
 ## Getting Started
@@ -82,13 +81,6 @@ npm i sanity-plugin-dashboard-widget-netlify
 ### 6. Customize the frontend
 
 Feel free to adjust styles, add more schema and modules, and more.
-
-## Visual Editing
-
-> [!NOTE]
-> Currently only works on the local development environment of the Sanity Studio.
-
-Content can be edited and previewed live from the Sanity Presentation mode by navigating to the **Editor** tab in the Studio.
 
 ## Staging
 
