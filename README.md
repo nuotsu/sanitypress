@@ -25,11 +25,11 @@ An opinionated and minimally styled starter template with Tailwind CSS and pre-b
 
 ## Key Features
 
-- Modern Frontend Development with Next.js (App Router, RSC, Typescript) and Tailwind CSS.
-- [Pre-configured Sanity schema](/sanity/schemas/index.ts) for rapid content structuring.
-- [Pre-built frontend components](/next/src/ui/) for rapid website development.
-- [Visual editing](https://sanitypress.vercel.app/blog/visual-editing) right inside the Sanity Studio.
-- Auto-generated [sitemap.xml](/next/src/app/sitemap.ts) and [blog rss.xml](/next/src/app/blog/rss.xml/route.ts).
+- [x] ✨ Modern Frontend Development with Next.js (App Router, RSC, Typescript) and Tailwind CSS.
+- [x] 📕 [Pre-configured Sanity schema](/sanity/schemas/index.ts) for rapid content structuring.
+- [x] 📘 [Pre-built frontend components](/next/src/ui/) for rapid website development.
+- [x] ✏️ [Visual editing](https://sanitypress.vercel.app/blog/visual-editing) right inside the Sanity Studio.
+- [x] ⌨️ Auto-generated [sitemap.xml](/next/src/app/sitemap.ts) and [blog rss.xml](/next/src/app/blog/rss.xml/route.ts).
 
 ## Getting Started
 

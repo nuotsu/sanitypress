@@ -28,5 +28,6 @@ export const locations: DocumentLocationResolver = (params, context) => {
 			}),
 		)
 	}
+
 	return null
 }
