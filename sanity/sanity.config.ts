@@ -41,9 +41,7 @@ export default defineConfig({
 			title: 'Deployment',
 			widgets: [projectInfoWidget(), projectUsersWidget(), vercelWidget()],
 		}),
-		visionTool({
-			title: 'GROQ',
-		}),
+		visionTool({ title: 'GROQ' }),
 		codeInput(),
 	],
 
