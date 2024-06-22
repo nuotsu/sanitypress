@@ -37,7 +37,7 @@ Directions are also found on the [docs](https://sanitypress.vercel.app/docs).
 
 ### 1. New repo
 
-Clone, fork or use the template from [the GitHub template](https://github.com/nuots/sanitypress).
+Clone, fork or use the template from [the GitHub template](https://github.com/nuotsu/sanitypress).
 
 ### 2. Get a new Sanity project ID
 
