@@ -2,7 +2,7 @@
 
 An opinionated and minimally styled starter template with Tailwind CSS and pre-built schema and modules for rapid website development.
 
-> [⚛️ _Neutrino_, 🔭 _Umbra_ and 🍃 _Foliage_ themes](https://sanitypress.vercel.app/themes) now available!
+> [⚛️ _Neutrino_, 🔭 _Umbra_ and 🍃 _Foliage_ themes](https://sanitypress.dev/themes) now available!
 
 ![](https://cdn.sanity.io/images/81pocpw8/production/02b92fc2bab8636ee7c8026292d0e8b685041538-5088x3554.jpg)
 
@@ -13,14 +13,14 @@ An opinionated and minimally styled starter template with Tailwind CSS and pre-b
 
 ⚡ [Perfect Lighthouse scores](https://pagespeed.web.dev/analysis/https-sanitypress-vercel-app/fyc5qki4bd?form_factor=desktop) on desktop and 99/100 on mobile.
 
-🚀 Checkout the [demo site](https://sanitypress.vercel.app), [documentation](https://sanitypress.vercel.app/docs) and [blog](https://sanitypress.vercel.app/blog).
+🚀 Checkout the [demo site](https://sanitypress.dev), [documentation](https://sanitypress.dev/docs) and [blog](https://sanitypress.dev/blog).
 
 ## Table of Contents
 
 - [Key Features](#key-features)
 - [Getting Started](#getting-started)
 - [Staging](#staging)
-- [Helpful Resources (The SanityPress Blog)](https://sanitypress.vercel.app/blog)
+- [Helpful Resources (The SanityPress Blog)](https://sanitypress.dev/blog)
 - [External References](#external-references)
 
 ## Key Features
@@ -28,12 +28,12 @@ An opinionated and minimally styled starter template with Tailwind CSS and pre-b
 - [x] ✨ Modern Frontend Development with Next.js (App Router, RSC, Typescript) and Tailwind CSS.
 - [x] 📕 [Pre-configured Sanity schema](/sanity/schemas/index.ts) for rapid content structuring.
 - [x] 📘 [Pre-built frontend components](/next/src/ui/) for rapid website development.
-- [x] ✏️ [Visual editing](https://sanitypress.vercel.app/blog/visual-editing) right inside the Sanity Studio.
+- [x] ✏️ [Visual editing](https://sanitypress.dev/blog/visual-editing) right inside the Sanity Studio.
 - [x] ⌨️ Auto-generated [sitemap.xml](/next/src/app/sitemap.ts) and [blog rss.xml](/next/src/app/blog/rss.xml/route.ts).
 
 ## Getting Started
 
-Directions are also found on the [docs](https://sanitypress.vercel.app/docs).
+Directions are also found on the [docs](https://sanitypress.dev/docs).
 
 ### 1. New repo
 

@@ -1,6 +1,6 @@
 import { stegaClean } from '@sanity/client/stega'
 
-export const BASE_URL = 'https://sanitypress.vercel.app'
+export const BASE_URL = 'https://sanitypress.dev'
 
 export default function (
 	page: Sanity.PageBase,
