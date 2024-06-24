@@ -2,7 +2,7 @@
 
 An opinionated and minimally styled starter template with Tailwind CSS and pre-built schema and modules for rapid website development.
 
-> [🔭 _Umbra_ ](https://sanitypress.vercel.app/themes) and [🍃 _Foliage_ ](https://sanitypress.vercel.app/themes) themes now available!
+> [⚛️ _Neutrino_, 🔭 _Umbra_ and 🍃 _Foliage_ themes](https://sanitypress.vercel.app/themes) now available!
 
 ![](https://cdn.sanity.io/images/81pocpw8/production/02b92fc2bab8636ee7c8026292d0e8b685041538-5088x3554.jpg)
 

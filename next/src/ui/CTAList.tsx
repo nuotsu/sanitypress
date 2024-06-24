@@ -7,6 +7,8 @@ export default function CTAList({
 }: React.HTMLAttributes<HTMLParagraphElement> & {
 	ctas?: Sanity.CTA[]
 }) {
+	if (!ctas?.length) return null
+
 	return (
 		<div className={cn('flex flex-wrap items-center gap-[.5em]', className)}>
 			{ctas?.map((cta, key) => (
