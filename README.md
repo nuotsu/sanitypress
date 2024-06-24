@@ -29,6 +29,7 @@ An opinionated and minimally styled starter template with Tailwind CSS and pre-b
 - [x] 📕 [Pre-configured Sanity schema](/sanity/schemas/index.ts) for rapid content structuring.
 - [x] 📘 [Pre-built frontend components](/next/src/ui/) for rapid website development.
 - [x] ✏️ [Visual editing](https://sanitypress.dev/blog/visual-editing) right inside the Sanity Studio.
+- [x] 📜 Auto-generated Table of Contents component based on headings.
 - [x] ⌨️ Auto-generated [sitemap.xml](/next/src/app/sitemap.ts) and [blog rss.xml](/next/src/app/blog/rss.xml/route.ts).
 
 ## Getting Started

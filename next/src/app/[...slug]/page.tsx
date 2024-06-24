@@ -26,7 +26,7 @@ export async function generateStaticParams() {
 		].metadata.slug.current`,
 	)
 
-	return slugs.map((slug) => ({ slug }))
+	return slugs.map((slug) => ({ slug: slug.split('/') }))
 }
 
 async function getPage(params: Props['params']) {
@@ -44,12 +44,12 @@ async function getPage(params: Props['params']) {
 			}
 		}`,
 		{
-			params: { slug: params.slug },
+			params: { slug: params.slug?.join('/') },
 			tags: ['pages'],
 		},
 	)
 }
 
 type Props = {
-	params: { slug?: string }
+	params: { slug?: string[] }
 }
