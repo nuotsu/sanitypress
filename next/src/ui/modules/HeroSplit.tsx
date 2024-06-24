@@ -20,10 +20,10 @@ export default function HeroSplit({
 			<figure
 				className={cn('max-md:full-bleed', image?.onRight && 'md:order-1')}
 			>
-				<Img image={image} imageWidth={1000} />
+				<Img image={image} imageWidth={1200} />
 			</figure>
 
-			<div className="richtext mx-auto max-w-lg [&_:is(h1,h2)]:text-balance">
+			<div className="richtext mx-auto w-full max-w-lg [&_:is(h1,h2)]:text-balance">
 				<Pretitle>{pretitle}</Pretitle>
 				<PortableText value={content} />
 				<CTAList ctas={ctas} className="!mt-4" />
