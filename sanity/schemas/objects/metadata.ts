@@ -6,6 +6,14 @@ export default defineType({
 	type: 'object',
 	fields: [
 		defineField({
+			name: 'slug',
+			type: 'slug',
+			options: {
+				source: (doc: any) => doc.metadata.title || doc.name || doc.title,
+			},
+			validation: (Rule) => Rule.required(),
+		}),
+		defineField({
 			name: 'title',
 			type: 'string',
 			validation: (Rule) => Rule.max(60).warning(),
@@ -15,14 +23,6 @@ export default defineType({
 			type: 'text',
 			rows: 3,
 			validation: (Rule) => Rule.max(160).warning(),
-		}),
-		defineField({
-			name: 'slug',
-			type: 'slug',
-			options: {
-				source: (doc: any) => doc.metadata.title || doc.name || doc.title,
-			},
-			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'image',

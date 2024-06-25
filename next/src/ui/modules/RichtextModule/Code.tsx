@@ -14,7 +14,7 @@ export default async function Code({
 }) {
 	if (!value?.code) return null
 
-	const html = await codeToHtml(value.code, {
+	const html = await codeToHtml(stegaClean(value.code), {
 		lang: value.language,
 		theme: 'dark-plus',
 		decorations: value.highlightedLines

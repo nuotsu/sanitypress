@@ -41,7 +41,6 @@ export default defineType({
 		select: {
 			title: 'title',
 			slug: 'metadata.slug.current',
-			media: 'metadata.image',
 		},
 		prepare: ({ title, slug }) => ({
 			title,

@@ -115,9 +115,9 @@ declare global {
 		}
 
 		type Metadata = {
+			slug: { current: string }
 			title: string
 			description: string
-			slug: { current: string }
 			image?: Image
 			ogimage?: string
 			noIndex: boolean

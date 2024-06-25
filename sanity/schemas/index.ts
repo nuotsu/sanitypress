@@ -37,7 +37,7 @@ import testimonialFeatured from './modules/testimonial.featured'
 import testimonialList from './modules/testimonial-list'
 
 export const schemaTypes = [
-	// documents
+	// documents
 	site,
 	page,
 	blogPost,
