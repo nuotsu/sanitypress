@@ -2,18 +2,18 @@
 
 An opinionated and minimally styled starter template with Tailwind CSS and pre-built schema and modules for rapid website development.
 
-> [⚛️ _Neutrino_, 🔭 _Umbra_ and 🍃 _Foliage_ themes](https://sanitypress.dev/themes) now available!
+> [⚛️ _Neutrino_, 🔭 _Umbra_ and 🍃 _Foliage_ themes](https://sanitypress.dev/themes) now available as [a bundle](https://payhip.com/b/QDUzE)!
 
-![](https://cdn.sanity.io/images/81pocpw8/production/02b92fc2bab8636ee7c8026292d0e8b685041538-5088x3554.jpg)
+![](https://cdn.sanity.io/images/81pocpw8/production/c2842358c289a3e6472dabe836815db2971125f9-5088x3352.jpg)
+
+Visit [here](https://sanitypress.dev/studio-screenshots) for more Studio screenshots.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnuotsu%2Fsanitypress&env=NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_TOKEN)
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/nuotsu/sanitypress)
 
-🖋️ Published on [Sanity.io](https://www.sanity.io/templates/next-sanity-template)
-
-⚡ [Perfect Lighthouse scores](https://pagespeed.web.dev/analysis/https-sanitypress-vercel-app/fyc5qki4bd?form_factor=desktop) on desktop and 99/100 on mobile.
-
-🚀 Checkout the [demo site](https://sanitypress.dev), [documentation](https://sanitypress.dev/docs) and [blog](https://sanitypress.dev/blog).
+- [x] 🖋️ Published on [Sanity.io](https://www.sanity.io/templates/next-sanity-template)
+- [x] ⚡ [Perfect Lighthouse scores](https://pagespeed.web.dev/analysis/https-sanitypress-vercel-app/fyc5qki4bd?form_factor=desktop) on desktop and 99/100 on mobile.
+- [x] 🚀 Checkout the [demo site](https://sanitypress.dev), [documentation](https://sanitypress.dev/docs) and [blog](https://sanitypress.dev/blog).
 
 ## Table of Contents
 
@@ -102,4 +102,4 @@ Now you can use the preview deployment URL to share staged content (unpublished 
 
 ---
 
-# Want to support future updates? [Buy me a coffee ☕!](https://buymeacoffee.com/nuotsu)
+# Want to support future updates? [Purchase a theme](https://payhip.com/SanityPress) or [buy me a coffee ☕!](https://buymeacoffee.com/nuotsu)
