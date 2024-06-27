@@ -18,7 +18,7 @@
 		"@vercel/speed-insights": "^1.0.12",
 		"clsx": "^2.1.1",
 		"feed": "^4.2.2",
-		"groq": "^3.47.1",
+		"groq": "^3.48.1",
 		"next": "^14.2.4",
 		"next-sanity": "^9.4.2",
 		"next-sanity-image": "^6.1.1",
@@ -28,12 +28,12 @@
 		"react-dom": "^18",
 		"react-icons": "^5.2.1",
 		"rss": "^1.2.2",
-		"shiki": "^1.9.0",
+		"shiki": "^1.9.1",
 		"tailwind-merge": "^2.3.0",
-		"zustand": "^4.5.2"
+		"zustand": "^4.5.4"
 	},
 	"devDependencies": {
-		"@types/node": "^20.14.8",
+		"@types/node": "^20.14.9",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"@types/rss": "^0.0.32",
