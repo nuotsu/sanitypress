@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import CTA from '@/ui/CTA'
+import { stegaClean } from '@sanity/client/stega'
 
 export default async function Breadcrumbs({
 	crumbs,
@@ -44,7 +45,9 @@ function Crumb({
 	const content = (
 		<>
 			<span itemProp="name">
-				{children || link?.label || link?.internal?.title || link?.external}
+				{stegaClean(
+					children || link?.label || link?.internal?.title || link?.external,
+				)}
 			</span>
 			<meta itemProp="position" content={position.toString()} />
 		</>
