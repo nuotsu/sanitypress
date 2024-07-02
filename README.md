@@ -48,6 +48,7 @@ From the [Sanity.io Manage](https://sanity.io/manage) dashboard, create a new pr
 
 ```sh
 # /next/.env.local
+NEXT_PUBLIC_BASE_URL = ...
 NEXT_PUBLIC_SANITY_PROJECT_ID = ...
 NEXT_PUBLIC_SANITY_TOKEN = ... # retrieve from https://sanity.io/manage
 NEXT_PUBLIC_REVALIDATE = ... # number in seconds; leave empty for `revalidate: false`

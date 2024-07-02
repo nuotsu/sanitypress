@@ -1,5 +1,5 @@
 import { getSite } from '@/lib/sanity/queries'
-import processUrl, { BASE_URL } from './processUrl'
+import processUrl from './processUrl'
 import type { Metadata } from 'next'
 
 export default async function processMetadata(
@@ -11,7 +11,7 @@ export default async function processMetadata(
 	const { title, description, ogimage, noIndex } = page.metadata
 
 	return {
-		metadataBase: new URL(BASE_URL),
+		metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
 		title,
 		description,
 		openGraph: {

@@ -1,5 +1,5 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
-import processUrl, { BASE_URL } from '@/lib/processUrl'
+import processUrl from '@/lib/processUrl'
 import { Feed } from 'feed'
 import { escapeHTML, toHTML } from '@portabletext/to-html'
 import { urlFor } from '@/lib/sanity/urlFor'
@@ -43,7 +43,7 @@ export async function GET() {
 		link: url,
 		id: url,
 		copyright,
-		favicon: BASE_URL + 'favicon.ico',
+		favicon: process.env.NEXT_PUBLIC_BASE_URL + 'favicon.ico',
 		language: 'en',
 		generator: 'https://github.com/nuotsu/sanitypress',
 	})

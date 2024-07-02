@@ -1,7 +1,5 @@
 import { stegaClean } from '@sanity/client/stega'
 
-export const BASE_URL = 'https://sanitypress.dev'
-
 export default function (
 	page: Sanity.PageBase,
 	{
@@ -18,7 +16,7 @@ export default function (
 	const path = slug === 'index' ? null : slug
 
 	return (
-		(base ? BASE_URL + '/' : '/') +
+		(base ? process.env.NEXT_PUBLIC_BASE_URL + '/' : '/') +
 		[directory, path, stegaClean(params)].filter(Boolean).join('/')
 	)
 }
