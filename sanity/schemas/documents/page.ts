@@ -4,10 +4,15 @@ export default defineType({
 	name: 'page',
 	title: 'Page',
 	type: 'document',
+	groups: [
+		{ name: 'content', default: true },
+		{ name: 'seo', title: 'SEO' },
+	],
 	fields: [
 		defineField({
 			name: 'title',
 			type: 'string',
+			group: 'content',
 		}),
 		defineField({
 			name: 'modules',
@@ -31,10 +36,12 @@ export default defineType({
 				{ type: 'testimonial-list' },
 				{ type: 'testimonial.featured' },
 			],
+			group: 'content',
 		}),
 		defineField({
 			name: 'metadata',
 			type: 'metadata',
+			group: 'seo',
 		}),
 	],
 	preview: {

@@ -7,6 +7,10 @@ export default defineType({
 	title: 'Blog post',
 	icon: VscEdit,
 	type: 'document',
+	groups: [
+		{ name: 'content', default: true },
+		{ name: 'seo', title: 'SEO' },
+	],
 	fields: [
 		defineField({
 			name: 'body',
@@ -21,6 +25,7 @@ export default defineType({
 					},
 				}),
 			],
+			group: 'content',
 		}),
 		defineField({
 			name: 'categories',
@@ -31,15 +36,18 @@ export default defineType({
 					to: [{ type: 'blog.category' }],
 				},
 			],
+			group: 'content',
 		}),
 		defineField({
 			name: 'publishDate',
 			type: 'date',
 			validation: (Rule) => Rule.required(),
+			group: 'content',
 		}),
 		defineField({
 			name: 'metadata',
 			type: 'metadata',
+			group: 'seo',
 		}),
 	],
 	preview: {
