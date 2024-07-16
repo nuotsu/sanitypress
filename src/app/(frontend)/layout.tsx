@@ -4,10 +4,9 @@ import SkipToContent from '@/ui/SkipToContent'
 import Announcement from '@/ui/Announcement'
 import Header from '@/ui/header'
 import Footer from '@/ui/footer'
-import { draftMode } from 'next/headers'
-import { VisualEditing } from 'next-sanity'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import VisualEditingControls from '@/ui/VisualEditingControls'
 import '@/styles/app.css'
 
 export const metadata: Metadata = {
@@ -36,7 +35,7 @@ export default async function RootLayout({
 
 				<Analytics />
 				<SpeedInsights />
-				{draftMode().isEnabled && <VisualEditing />}
+				<VisualEditingControls />
 			</body>
 		</html>
 	)
