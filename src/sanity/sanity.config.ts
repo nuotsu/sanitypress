@@ -22,6 +22,7 @@ export default defineConfig({
 
 	projectId,
 	dataset: 'production',
+	basePath: '/admin',
 
 	plugins: [
 		structureTool({
