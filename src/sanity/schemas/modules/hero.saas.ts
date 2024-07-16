@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
-import { getBlockText } from '../../src/utils'
+import { getBlockText } from '@/sanity/src/utils'
 
 export default defineType({
 	name: 'hero.saas',

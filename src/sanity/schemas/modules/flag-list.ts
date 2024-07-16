@@ -1,6 +1,6 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { TfiLayoutGrid2Thumb } from 'react-icons/tfi'
-import { count, getBlockText } from '../../src/utils'
+import { count, getBlockText } from '@/sanity/src/utils'
 
 export default defineType({
 	name: 'flag-list',
