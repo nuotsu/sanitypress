@@ -9,7 +9,7 @@ An opinionated and minimally styled starter template with Tailwind CSS and pre-b
 Visit [here](https://sanitypress.dev/studio-screenshots) for more Studio screenshots.
 
 - [x] 🖋️ Published on [Sanity.io](https://www.sanity.io/templates/sanitypress)
-- [x] ⚡ [Perfect Lighthouse scores](https://pagespeed.web.dev/analysis/https-sanitypress-vercel-app/fyc5qki4bd?form_factor=desktop) on desktop and 99/100 on mobile.
+- [x] ⚡ [Perfect Lighthouse scores](https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fsanitypress.dev%2F) on desktop and 99/100 on mobile.
 - [x] 🚀 Checkout the [demo site](https://sanitypress.dev), [documentation](https://sanitypress.dev/docs) and [blog](https://sanitypress.dev/blog).
 
 ## Table of Contents
