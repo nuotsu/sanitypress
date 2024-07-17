@@ -1,45 +1,30 @@
 import { defineField, defineType } from 'sanity'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
-import { getBlockText } from '@/sanity/src/utils'
-import {
-	textAlign,
-	alignItems,
-	alignmentFieldset,
-} from '../fragments/fields/alignment'
+import { getBlockText } from '@sanity/src/utils'
 
 export default defineType({
-	name: 'hero',
-	title: 'Hero',
+	name: 'hero.saas',
+	title: 'Hero (SaaS)',
 	icon: TfiLayoutCtaCenter,
 	type: 'object',
-	groups: [
-		{ name: 'content', default: true },
-		{ name: 'image' },
-		{ name: 'options' },
-	],
-	fieldsets: [alignmentFieldset],
 	fields: [
 		defineField({
 			name: 'pretitle',
 			type: 'string',
-			group: 'content',
 		}),
 		defineField({
 			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],
-			group: 'content',
 		}),
 		defineField({
 			name: 'ctas',
 			title: 'Call-to-actions',
 			type: 'array',
 			of: [{ type: 'cta' }],
-			group: 'content',
 		}),
 		defineField({
-			name: 'bgImage',
-			title: 'Background image',
+			name: 'image',
 			type: 'image',
 			options: {
 				hotspot: true,
@@ -48,6 +33,11 @@ export default defineType({
 				defineField({
 					name: 'alt',
 					type: 'string',
+				}),
+				defineField({
+					name: 'faded',
+					type: 'boolean',
+					initialValue: true,
 				}),
 				defineField({
 					name: 'loading',
@@ -59,34 +49,16 @@ export default defineType({
 					initialValue: 'lazy',
 				}),
 			],
-			group: 'image',
-		}),
-		defineField({
-			name: 'bgImageMobile',
-			title: 'Background image (mobile)',
-			type: 'image',
-			options: {
-				hotspot: true,
-			},
-			group: 'image',
-		}),
-		defineField({
-			...textAlign,
-			fieldset: 'alignment',
-		}),
-		defineField({
-			...alignItems,
-			fieldset: 'alignment',
 		}),
 	],
 	preview: {
 		select: {
 			content: 'content',
-			media: 'bgImage',
+			media: 'image',
 		},
 		prepare: ({ content, media }) => ({
 			title: getBlockText(content),
-			subtitle: 'Hero',
+			subtitle: 'Hero (SaaS)',
 			media,
 		}),
 	},

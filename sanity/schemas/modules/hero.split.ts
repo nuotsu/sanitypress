@@ -1,27 +1,31 @@
 import { defineField, defineType } from 'sanity'
-import { TfiLayoutCtaCenter } from 'react-icons/tfi'
-import { getBlockText } from '@/sanity/src/utils'
+import { TfiLayoutMediaLeft } from 'react-icons/tfi'
+import { getBlockText } from '@sanity/src/utils'
 
 export default defineType({
-	name: 'hero.saas',
-	title: 'Hero (SaaS)',
-	icon: TfiLayoutCtaCenter,
+	name: 'hero.split',
+	title: 'Hero (split)',
+	icon: TfiLayoutMediaLeft,
 	type: 'object',
+	groups: [{ name: 'content', default: true }, { name: 'image' }],
 	fields: [
 		defineField({
 			name: 'pretitle',
 			type: 'string',
+			group: 'content',
 		}),
 		defineField({
 			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],
+			group: 'content',
 		}),
 		defineField({
 			name: 'ctas',
 			title: 'Call-to-actions',
 			type: 'array',
 			of: [{ type: 'cta' }],
+			group: 'content',
 		}),
 		defineField({
 			name: 'image',
@@ -35,9 +39,9 @@ export default defineType({
 					type: 'string',
 				}),
 				defineField({
-					name: 'faded',
+					name: 'onRight',
 					type: 'boolean',
-					initialValue: true,
+					initialValue: false,
 				}),
 				defineField({
 					name: 'loading',
@@ -49,16 +53,17 @@ export default defineType({
 					initialValue: 'lazy',
 				}),
 			],
+			group: 'image',
 		}),
 	],
 	preview: {
 		select: {
 			content: 'content',
-			media: 'image',
+			media: 'image.asset',
 		},
 		prepare: ({ content, media }) => ({
 			title: getBlockText(content),
-			subtitle: 'Hero (SaaS)',
+			subtitle: 'Hero (split)',
 			media,
 		}),
 	},

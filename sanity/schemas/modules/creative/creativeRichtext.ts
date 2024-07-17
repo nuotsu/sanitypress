@@ -1,5 +1,5 @@
 import { defineArrayMember, defineField } from 'sanity'
-import { getBlockText } from '@/sanity/src/utils'
+import { getBlockText } from '@sanity/src/utils'
 import { VscSymbolKeyword } from 'react-icons/vsc'
 
 export default defineArrayMember({

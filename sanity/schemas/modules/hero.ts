@@ -1,13 +1,23 @@
 import { defineField, defineType } from 'sanity'
-import { TfiLayoutMediaLeft } from 'react-icons/tfi'
-import { getBlockText } from '@/sanity/src/utils'
+import { TfiLayoutCtaCenter } from 'react-icons/tfi'
+import { getBlockText } from '@sanity/src/utils'
+import {
+	textAlign,
+	alignItems,
+	alignmentFieldset,
+} from '../fragments/fields/alignment'
 
 export default defineType({
-	name: 'hero.split',
-	title: 'Hero (split)',
-	icon: TfiLayoutMediaLeft,
+	name: 'hero',
+	title: 'Hero',
+	icon: TfiLayoutCtaCenter,
 	type: 'object',
-	groups: [{ name: 'content', default: true }, { name: 'image' }],
+	groups: [
+		{ name: 'content', default: true },
+		{ name: 'image' },
+		{ name: 'options' },
+	],
+	fieldsets: [alignmentFieldset],
 	fields: [
 		defineField({
 			name: 'pretitle',
@@ -28,7 +38,8 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
-			name: 'image',
+			name: 'bgImage',
+			title: 'Background image',
 			type: 'image',
 			options: {
 				hotspot: true,
@@ -37,11 +48,6 @@ export default defineType({
 				defineField({
 					name: 'alt',
 					type: 'string',
-				}),
-				defineField({
-					name: 'onRight',
-					type: 'boolean',
-					initialValue: false,
 				}),
 				defineField({
 					name: 'loading',
@@ -55,15 +61,32 @@ export default defineType({
 			],
 			group: 'image',
 		}),
+		defineField({
+			name: 'bgImageMobile',
+			title: 'Background image (mobile)',
+			type: 'image',
+			options: {
+				hotspot: true,
+			},
+			group: 'image',
+		}),
+		defineField({
+			...textAlign,
+			fieldset: 'alignment',
+		}),
+		defineField({
+			...alignItems,
+			fieldset: 'alignment',
+		}),
 	],
 	preview: {
 		select: {
 			content: 'content',
-			media: 'image.asset',
+			media: 'bgImage',
 		},
 		prepare: ({ content, media }) => ({
 			title: getBlockText(content),
-			subtitle: 'Hero (split)',
+			subtitle: 'Hero',
 			media,
 		}),
 	},
