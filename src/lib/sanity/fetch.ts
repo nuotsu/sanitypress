@@ -34,7 +34,7 @@ export function fetchSanity<T = any>(
 					perspective: 'published',
 					useCdn: true,
 					next: {
-						revalidate: Number(process.env.NEXT_PUBLIC_REVALIDATE) || false,
+						revalidate: 3600, // every hour
 						...next,
 					},
 				},

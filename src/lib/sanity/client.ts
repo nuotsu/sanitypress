@@ -8,8 +8,6 @@ export default createClient({
 	useCdn: !dev,
 	stega: {
 		enabled: false,
-		studioUrl: dev
-			? 'http://localhost:3333'
-			: process.env.NEXT_PUBLIC_SANITY_STUDIO_URL,
+		studioUrl: '/admin',
 	},
 })

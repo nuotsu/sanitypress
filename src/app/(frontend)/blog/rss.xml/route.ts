@@ -45,7 +45,7 @@ export async function GET() {
 		copyright,
 		favicon: process.env.NEXT_PUBLIC_BASE_URL + 'favicon.ico',
 		language: 'en',
-		generator: 'https://github.com/nuotsu/sanitypress',
+		generator: 'https://sanitypress.dev',
 	})
 
 	posts.map((post) =>

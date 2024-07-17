@@ -8,9 +8,6 @@ An opinionated and minimally styled starter template with Tailwind CSS and pre-b
 
 Visit [here](https://sanitypress.dev/studio-screenshots) for more Studio screenshots.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnuotsu%2Fsanitypress&env=NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_TOKEN)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/nuotsu/sanitypress)
-
 - [x] 🖋️ Published on [Sanity.io](https://www.sanity.io/templates/sanitypress)
 - [x] ⚡ [Perfect Lighthouse scores](https://pagespeed.web.dev/analysis/https-sanitypress-vercel-app/fyc5qki4bd?form_factor=desktop) on desktop and 99/100 on mobile.
 - [x] 🚀 Checkout the [demo site](https://sanitypress.dev), [documentation](https://sanitypress.dev/docs) and [blog](https://sanitypress.dev/blog).
@@ -28,7 +25,7 @@ Visit [here](https://sanitypress.dev/studio-screenshots) for more Studio screens
 - [x] ✨ Modern Frontend Development with Next.js (App Router, RSC, Typescript) and Tailwind CSS.
 - [x] 📕 [Pre-configured Sanity schema](/sanity/schemas/index.ts) for rapid content structuring.
 - [x] 📘 [Pre-built frontend components](/next/src/ui/) for rapid website development.
-- [x] ✏️ [Visual editing](https://sanitypress.dev/blog/visual-editing) right inside the Sanity Studio.
+- [x] ✏️ [Visual editing](https://sanitypress.dev/blog/visual-editing) right inside the Embedded Sanity Studio.
 - [x] 📜 Auto-generated Table of Contents component based on headings.
 - [x] ⌨️ Auto-generated [sitemap.xml](/next/src/app/sitemap.ts) and [blog rss.xml](/next/src/app/blog/rss.xml/route.ts).
 
@@ -47,15 +44,10 @@ From the [Sanity.io Manage](https://sanity.io/manage) dashboard, create a new pr
 ### 3. Update environment variables
 
 ```sh
-# /next/.env.local
+# .env.local
 NEXT_PUBLIC_BASE_URL = ...
 NEXT_PUBLIC_SANITY_PROJECT_ID = ...
 NEXT_PUBLIC_SANITY_TOKEN = ... # retrieve from https://sanity.io/manage
-NEXT_PUBLIC_REVALIDATE = ... # number in seconds; leave empty for `revalidate: false`
-
-# /sanity/.env.local
-SANITY_STUDIO_PROJECT_ID = ...
-SANITY_STUDIO_PREVIEW_URL = ... # your live or staging site URL
 ```
 
 ### 4. Populate the Studio with content
