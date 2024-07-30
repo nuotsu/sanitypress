@@ -13,6 +13,7 @@ export default defineType({
 			name: 'title',
 			type: 'string',
 			group: 'content',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'modules',
@@ -36,6 +37,11 @@ export default defineType({
 				{ type: 'testimonial-list' },
 				{ type: 'testimonial.featured' },
 			],
+			options: {
+				insertMenu: {
+					views: [{ name: 'list' }, { name: 'grid' }],
+				},
+			},
 			group: 'content',
 		}),
 		defineField({

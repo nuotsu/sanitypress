@@ -8,6 +8,7 @@ export default defineType({
 		defineField({
 			name: 'slug',
 			type: 'slug',
+			description: 'URL path / permalink. Use "index" for the homepage.',
 			options: {
 				source: (doc: any) => doc.metadata.title || doc.name || doc.title,
 			},
@@ -31,7 +32,7 @@ export default defineType({
 		}),
 		defineField({
 			name: 'noIndex',
-			description: 'Prevent search engines from indexing this page.',
+			description: 'Prevent search engines from indexing this page',
 			type: 'boolean',
 			initialValue: false,
 		}),
