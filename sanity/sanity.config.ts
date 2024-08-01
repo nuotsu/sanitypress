@@ -46,12 +46,6 @@ export default defineConfig({
 		codeInput(),
 	],
 
-	beta: {
-		treeArrayEditing: {
-			enabled: true,
-		},
-	},
-
 	scheduledPublishing: {
 		enabled: false,
 	},
