@@ -48,6 +48,7 @@ declare global {
 			headings?: { style: string; text: string }[]
 			categories: BlogCategory[]
 			featured: boolean
+			hideTableOfContents: boolean
 			publishDate: string
 		}
 

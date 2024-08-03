@@ -16,6 +16,8 @@ export default async function Post({ post }: { post: Sanity.BlogPost }) {
 		}`,
 	)
 
+	const showTOC = !post.hideTableOfContents || !!post.headings?.length
+
 	return (
 		<>
 			<article>
@@ -28,10 +30,17 @@ export default async function Post({ post }: { post: Sanity.BlogPost }) {
 					</div>
 				</header>
 
-				<div className="section grid gap-8 lg:grid-cols-[1fr,auto]">
-					<aside className="lg:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] lg:order-1 lg:w-[250px]">
-						<TableOfContents headings={post.headings} />
-					</aside>
+				<div
+					className={cn(
+						'section grid gap-8',
+						showTOC && 'lg:grid-cols-[1fr,auto]',
+					)}
+				>
+					{showTOC && (
+						<aside className="lg:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] lg:order-1 lg:w-[250px]">
+							<TableOfContents headings={post.headings} />
+						</aside>
+					)}
 
 					<Content
 						value={post.body}
