@@ -37,7 +37,7 @@ async function getPost(params: Props['params']) {
 			categories[]->,
 			metadata {
 				...,
-				'ogimage': image.asset->url
+				'ogimage': image.asset->url + '?w=1200'
 			}
 		}`,
 		{
