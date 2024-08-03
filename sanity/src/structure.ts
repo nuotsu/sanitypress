@@ -9,16 +9,16 @@ const structure: StructureResolver = (S, context) =>
 		.title('Content')
 		.items([
 			singleton(S, 'site').title('Site settings').icon(VscServerProcess),
+			S.divider(),
+
 			S.documentTypeListItem('page').title('Pages').icon(VscMultipleWindows),
-			S.divider(),
-
-			S.documentTypeListItem('navigation'),
-			S.documentTypeListItem('announcement').title('Announcements'),
-			S.documentTypeListItem('redirect').title('Redirects'),
-			S.divider(),
-
 			S.documentTypeListItem('blog.post').title('Blog posts'),
 			S.documentTypeListItem('blog.category').title('Blog categories'),
+			S.divider(),
+
+			S.documentTypeListItem('announcement').title('Announcements'),
+			S.documentTypeListItem('navigation'),
+			S.documentTypeListItem('redirect').title('Redirects'),
 			S.divider(),
 
 			group(S, 'Miscellaneous', [
