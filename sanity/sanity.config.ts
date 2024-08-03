@@ -26,10 +26,12 @@ export default defineConfig({
 
 	plugins: [
 		structureTool({
+			name: 'content',
 			title: 'Content',
 			structure,
 		}),
 		presentationTool({
+			name: 'editor',
 			title: 'Editor',
 			previewUrl: {
 				draftMode: {
@@ -39,16 +41,21 @@ export default defineConfig({
 			resolve: { locations },
 		}),
 		dashboardTool({
+			name: 'deployment',
 			title: 'Deployment',
-			widgets: [projectInfoWidget(), projectUsersWidget(), vercelWidget()],
+			widgets: [vercelWidget()],
+		}),
+		dashboardTool({
+			name: 'info',
+			title: 'Info',
+			widgets: [projectInfoWidget(), projectUsersWidget()],
 		}),
 		visionTool({ title: 'GROQ' }),
 		codeInput(),
 	],
 
-	scheduledPublishing: {
-		enabled: false,
-	},
+	tasks: { enabled: false },
+	scheduledPublishing: { enabled: false },
 
 	schema: {
 		types: schemaTypes,
