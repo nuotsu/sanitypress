@@ -19,7 +19,7 @@ export default async function BlogList({
 	predefinedFilters: Sanity.BlogCategory[]
 }>) {
 	const posts = await fetchSanity<Sanity.BlogPost[]>(
-		groq`*[_type == 'blog.post']|order(publishDate desc)[0...$limit]{
+		groq`*[_type == 'blog.post']|order(featured desc, publishDate desc)[0...$limit]{
 			...,
 			categories[]->
 		}`,

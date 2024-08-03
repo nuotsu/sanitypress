@@ -9,6 +9,7 @@ export default defineType({
 	type: 'document',
 	groups: [
 		{ name: 'content', default: true },
+		{ name: 'options' },
 		{ name: 'seo', title: 'SEO' },
 	],
 	fields: [
@@ -45,6 +46,12 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
+			name: 'featured',
+			type: 'boolean',
+			group: 'options',
+			initialValue: false,
+		}),
+		defineField({
 			name: 'metadata',
 			type: 'metadata',
 			group: 'seo',
@@ -52,10 +59,16 @@ export default defineType({
 	],
 	preview: {
 		select: {
+			featured: 'featured',
 			title: 'metadata.title',
 			subtitle: 'publishDate',
 			media: 'metadata.image',
 		},
+		prepare: ({ title, subtitle, media, featured }) => ({
+			title: [featured && '★', title].filter(Boolean).join(' '),
+			subtitle,
+			media,
+		}),
 	},
 	orderings: [
 		{

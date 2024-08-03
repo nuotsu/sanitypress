@@ -47,6 +47,7 @@ declare global {
 			readTime: number
 			headings?: { style: string; text: string }[]
 			categories: BlogCategory[]
+			featured: boolean
 			publishDate: string
 		}
 
