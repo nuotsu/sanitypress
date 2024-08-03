@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
 	name: 'site',
-	title: 'Site',
+	title: 'Site settings',
 	type: 'document',
 	groups: [
 		{ name: 'general', title: 'General', default: true },
@@ -29,24 +29,15 @@ export default defineType({
 			type: 'array',
 			of: [{ type: 'reference', to: [{ type: 'announcement' }] }],
 			group: 'general',
-			description: 'Higher order has higher precedence',
+			description:
+				'One announcement shown at a time. Top items have higher precedence.',
 		}),
 		defineField({
 			name: 'ctas',
-			title: 'Call-to-action',
+			title: 'Call-to-action (Site-wide)',
+			description: 'Typically used in the header and/or footer.',
 			type: 'array',
 			of: [{ type: 'cta' }],
-			group: 'general',
-		}),
-		defineField({
-			name: 'copyright',
-			type: 'array',
-			of: [
-				{
-					type: 'block',
-					styles: [{ title: 'Normal', value: 'normal' }],
-				},
-			],
 			group: 'general',
 		}),
 		defineField({
@@ -68,16 +59,28 @@ export default defineType({
 			group: 'navigation',
 		}),
 		defineField({
+			name: 'copyright',
+			type: 'array',
+			of: [
+				{
+					type: 'block',
+					styles: [{ title: 'Normal', value: 'normal' }],
+				},
+			],
+			group: 'general',
+		}),
+		defineField({
 			name: 'ogimage',
-			title: 'Open Graph Image (global)',
-			description: 'Used for social sharing previews',
+			title: 'Open Graph Image (Site-wide)',
+			description:
+				'Used for social sharing previews. Set page-specific images in Page documents.',
 			type: 'image',
 			group: 'general',
 		}),
 	],
 	preview: {
 		prepare: () => ({
-			title: 'Site',
+			title: 'Site settings',
 		}),
 	},
 })

@@ -10,10 +10,10 @@ declare global {
 			logo?: Logo
 			announcements?: Announcement[]
 			ctas?: CTA[]
-			copyright?: any
 			headerMenu?: Navigation
 			footerMenu?: Navigation
 			social?: Navigation
+			copyright?: any
 			ogimage?: string
 		}>
 

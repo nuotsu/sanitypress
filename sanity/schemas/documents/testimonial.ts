@@ -41,8 +41,8 @@ export default defineType({
 			author: 'author',
 		},
 		prepare: ({ content, author }) => ({
-			title: getBlockText(content),
-			subtitle: author?.name || author?.title || 'No author',
+			title: author?.name || author?.title || 'No author',
+			subtitle: getBlockText(content),
 			media: author?.image,
 		}),
 	},

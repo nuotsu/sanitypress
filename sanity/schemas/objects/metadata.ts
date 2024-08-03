@@ -3,6 +3,7 @@ import { defineField, defineType } from 'sanity'
 export default defineType({
 	name: 'metadata',
 	title: 'Metadata',
+	description: 'For search engines',
 	type: 'object',
 	fields: [
 		defineField({

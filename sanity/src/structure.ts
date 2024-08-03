@@ -1,15 +1,15 @@
 import { group, singleton } from './utils'
 import type { StructureResolver } from 'sanity/structure'
 
-import { VscServerProcess } from 'react-icons/vsc'
+import { VscMultipleWindows, VscServerProcess } from 'react-icons/vsc'
 import { BsDatabaseAdd } from 'react-icons/bs'
 
 const structure: StructureResolver = (S, context) =>
 	S.list()
 		.title('Content')
 		.items([
-			singleton(S, 'site').icon(VscServerProcess),
-			S.documentTypeListItem('page').title('Pages'),
+			singleton(S, 'site').title('Site settings').icon(VscServerProcess),
+			S.documentTypeListItem('page').title('Pages').icon(VscMultipleWindows),
 			S.divider(),
 
 			S.documentTypeListItem('navigation'),
