@@ -7,19 +7,26 @@ export default defineArrayMember({
 	options: {
 		hotspot: true,
 	},
+	fieldsets: [
+		{ name: 'info', options: { collapsible: true, collapsed: true } },
+		{ name: 'options', options: { collapsible: true, collapsed: true } },
+	],
 	fields: [
 		defineField({
 			name: 'caption',
 			type: 'text',
 			rows: 2,
+			fieldset: 'info',
 		}),
 		defineField({
 			name: 'alt',
 			type: 'string',
+			fieldset: 'info',
 		}),
 		defineField({
 			name: 'source',
 			type: 'url',
+			fieldset: 'info',
 		}),
 		defineField({
 			name: 'loading',
@@ -28,6 +35,7 @@ export default defineArrayMember({
 				list: ['lazy', 'eager'],
 			},
 			initialValue: 'lazy',
+			fieldset: 'options',
 		}),
 	],
 	preview: {
