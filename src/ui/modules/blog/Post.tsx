@@ -1,6 +1,6 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
-import Breadcrumbs from '@/ui/modules/Breadcrumbs'
 import PostContent from './PostContent'
+import Breadcrumbs from '@/ui/modules/Breadcrumbs'
 
 export default async function Post({ post }: { post: Sanity.BlogPost }) {
 	const crumbs = await fetchSanity<Sanity.Page[]>(
@@ -13,7 +13,6 @@ export default async function Post({ post }: { post: Sanity.BlogPost }) {
 	return (
 		<>
 			<PostContent post={post} />
-
 			<Breadcrumbs
 				crumbs={
 					crumbs?.map((crumb) => ({

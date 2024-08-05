@@ -7,16 +7,16 @@ export default function AccordionList({
 	items,
 	layout = 'vertical',
 	...props
-}: Sanity.Module &
-	Partial<{
-		intro: any
-		items: {
-			summary: string
-			content: any
-			open?: boolean
-		}[]
-		layout: 'vertical' | 'horizontal'
-	}>) {
+}: Partial<{
+	intro: any
+	items: {
+		summary: string
+		content: any
+		open?: boolean
+	}[]
+	layout: 'vertical' | 'horizontal'
+}> &
+	Sanity.Module) {
 	return (
 		<section
 			id={uid(props)}
