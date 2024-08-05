@@ -56,7 +56,11 @@ Open your new Sanity Studio (`‌https://localhost:3000/admin`) and publish the 
 
 1. a **Site** document with a `title` field.
 2. a **Page** document with the slug `index` to use as the _Home_ page.
-3. [Optional] a **Page** document with the slug `404` to use as the _Page not found_ page.
+
+Optionally, publish the following documents:
+
+1. a **Page** document with the slug `404` to use as the _Page not found_ page.
+2. a **Page** document with the slug `blog` to use as the _Blog listing_ page.
 
 ### 5. Set up deployments
 
