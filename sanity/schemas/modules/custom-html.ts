@@ -14,7 +14,6 @@ export default defineType({
 		}),
 		defineField({
 			name: 'className',
-			title: 'HTML class attribute',
 			type: 'string',
 		}),
 		defineField({

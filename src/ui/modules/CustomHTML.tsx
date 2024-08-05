@@ -1,4 +1,5 @@
 import uid from '@/lib/uid'
+import { stegaClean } from '@sanity/client/stega'
 
 export default function CustomHTML({
 	className,
@@ -16,7 +17,7 @@ export default function CustomHTML({
 	return (
 		<section
 			id={uid(props)}
-			className={className}
+			className={stegaClean(className)}
 			dangerouslySetInnerHTML={{ __html: html.code }}
 		/>
 	)

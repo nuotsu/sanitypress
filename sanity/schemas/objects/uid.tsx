@@ -33,7 +33,7 @@ export default defineType({
 						disabled={checked}
 						onClick={() => {
 							navigator.clipboard.writeText(
-								'#' + elementProps.value || moduleKey,
+								'#' + (elementProps.value || moduleKey),
 							)
 
 							setChecked(true)
