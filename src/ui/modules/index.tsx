@@ -38,7 +38,11 @@ export default function Modules({
 						return <PostContent {...module} post={post} key={module._key} />
 					case 'breadcrumbs':
 						return (
-							<Breadcrumbs {...module} currentPage={page} key={module._key} />
+							<Breadcrumbs
+								{...module}
+								currentPage={post || page}
+								key={module._key}
+							/>
 						)
 					case 'callout':
 						return <Callout {...module} key={module._key} />
