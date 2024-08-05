@@ -5,13 +5,14 @@ export default function CustomHTML({
 	className,
 	html,
 	...props
-}: Partial<{
-	className: string
-	html: {
-		code: string
+}: Partial<
+	Sanity.Module & {
+		className: string
+		html: {
+			code: string
+		}
 	}
-}> &
-	Sanity.Module) {
+>) {
 	if (!html?.code) return null
 
 	return (
