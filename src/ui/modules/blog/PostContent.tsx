@@ -1,3 +1,4 @@
+import uid from '@/lib/uid'
 import Date from '@/ui/Date'
 import Categories from './Categories'
 import ReadTime from './ReadTime'
@@ -6,11 +7,16 @@ import Content from '@/ui/modules/RichtextModule/Content'
 import { cn } from '@/lib/utils'
 import css from './PostContent.module.css'
 
-export default function PostContent({ post }: { post: Sanity.BlogPost }) {
+export default function PostContent({
+	post,
+	...props
+}: { post?: Sanity.BlogPost } & Sanity.Module) {
+	if (!post) return null
+
 	const showTOC = !post.hideTableOfContents || !!post.headings?.length
 
 	return (
-		<article>
+		<article id={uid(props)}>
 			<header className="section space-y-6 text-center">
 				<h1 className="h1 text-balance">{post.metadata.title}</h1>
 				<div className="flex flex-wrap items-center justify-center gap-x-4">

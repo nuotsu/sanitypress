@@ -55,12 +55,16 @@ NEXT_PUBLIC_SANITY_TOKEN = ... # retrieve from https://sanity.io/manage
 Open your new Sanity Studio (`‌https://localhost:3000/admin`) and publish the following documents:
 
 1. a **Site** document with a `title` field.
-2. a **Page** document with the slug `index` to use as the _Home_ page.
+2. a **Page** document with slug: `index` to use as the _Home_ page.
 
-Optionally, publish the following documents:
+For websites with a blog, additionally publish the following documents:
 
-1. a **Page** document with the slug `404` to use as the _Page not found_ page.
-2. a **Page** document with the slug `blog` to use as the _Blog listing_ page.
+1. a **Page** document with slug: `blog` to use as the _Blog listing_ page.
+2. a **Page** document with slug: `blog/*` to use as the _Blog post_ template page.
+
+Optionally, you can publish the following documents:
+
+- a **Page** document with slug: `404` to use as the _Page not found_ page.
 
 ### 5. Set up deployments
 

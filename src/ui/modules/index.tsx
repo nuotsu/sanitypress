@@ -9,6 +9,7 @@ import Hero from './Hero'
 import HeroSplit from './HeroSplit'
 import HeroSaaS from './HeroSaaS'
 import LogoList from './LogoList'
+import PostContent from './blog/PostContent'
 import PricingList from './PricingList'
 import RichtextModule from './RichtextModule'
 import StatList from './StatList'
@@ -19,9 +20,11 @@ import TestimonialFeatured from './TestimonialFeatured'
 export default function Modules({
 	modules,
 	page,
+	post,
 }: {
 	modules?: Sanity.Module[]
 	page?: Sanity.Page
+	post?: Sanity.BlogPost
 }) {
 	return (
 		<>
@@ -31,6 +34,8 @@ export default function Modules({
 						return <AccordionList {...module} key={module._key} />
 					case 'blog-list':
 						return <BlogList {...module} key={module._key} />
+					case 'blog-post-content':
+						return <PostContent {...module} post={post} key={module._key} />
 					case 'breadcrumbs':
 						return (
 							<Breadcrumbs {...module} currentPage={page} key={module._key} />

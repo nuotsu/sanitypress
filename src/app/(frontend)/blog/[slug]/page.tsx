@@ -1,13 +1,15 @@
 import client from '@/lib/sanity/client'
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
+import { modulesQuery } from '@/lib/sanity/queries'
 import { notFound } from 'next/navigation'
-import Post from '@/ui/modules/blog/Post'
+import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
 
 export default async function Page({ params }: Props) {
+	const page = await getPageTemplate()
 	const post = await getPost(params)
-	if (!post) notFound()
-	return <Post post={post} />
+	if (!page || !post) notFound()
+	return <Modules modules={page?.modules} page={page} post={post} />
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -44,6 +46,17 @@ async function getPost(params: Props['params']) {
 			params,
 			tags: ['blog.post'],
 		},
+	)
+}
+
+async function getPageTemplate() {
+	return await fetchSanity<Sanity.Page>(
+		groq`*[_type == 'page' && metadata.slug.current == 'blog/*'][0]{
+			...,
+			modules[]{ ${modulesQuery} },
+			metadata { slug }
+		}`,
+		{ tags: ['blog/*'] },
 	)
 }
 

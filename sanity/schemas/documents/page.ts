@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { VscHome, VscEyeClosed, VscQuestion } from 'react-icons/vsc'
+import { VscHome, VscEyeClosed, VscQuestion, VscEdit } from 'react-icons/vsc'
 
 export default defineType({
 	name: 'page',
@@ -23,6 +23,7 @@ export default defineType({
 			of: [
 				{ type: 'accordion-list' },
 				{ type: 'blog-list' },
+				{ type: 'blog-post-content' },
 				{ type: 'breadcrumbs' },
 				{ type: 'callout' },
 				{ type: 'creative-module' },
@@ -42,6 +43,14 @@ export default defineType({
 			options: {
 				insertMenu: {
 					views: [{ name: 'list' }, { name: 'grid' }],
+					groups: [
+						{ name: 'blog', of: ['blog-list', 'blog-post-content'] },
+						{ name: 'hero', of: ['hero', 'hero.saas', 'hero.split'] },
+						{
+							name: 'testimonial',
+							of: ['testimonial-list', 'testimonial.featured'],
+						},
+					],
 				},
 			},
 			group: 'content',
@@ -66,6 +75,7 @@ export default defineType({
 				media ||
 				(slug === 'index' && VscHome) ||
 				(slug === '404' && VscQuestion) ||
+				(['blog', 'blog/*'].includes(slug) && VscEdit) ||
 				(noindex && VscEyeClosed),
 		}),
 	},
