@@ -28,7 +28,10 @@ export default function PostPreview({ post }: { post: Sanity.BlogPost }) {
 
 			<div className="flex flex-wrap gap-x-4">
 				<Date value={post.publishDate} />
-				<Categories categories={post.categories} />
+				<Categories
+					className="flex flex-wrap gap-x-2"
+					categories={post.categories}
+				/>
 			</div>
 		</Link>
 	)

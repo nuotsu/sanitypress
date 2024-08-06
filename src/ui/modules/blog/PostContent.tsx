@@ -19,9 +19,12 @@ export default function PostContent({
 		<article id={uid(props)}>
 			<header className="section space-y-6 text-center">
 				<h1 className="h1 text-balance">{post.metadata.title}</h1>
-				<div className="flex flex-wrap items-center justify-center gap-x-4">
+				<div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
 					<Date value={post.publishDate} />
-					<Categories categories={post.categories} />
+					<Categories
+						className="flex flex-wrap gap-x-2"
+						categories={post.categories}
+					/>
 					<ReadTime value={post.readTime} />
 				</div>
 			</header>

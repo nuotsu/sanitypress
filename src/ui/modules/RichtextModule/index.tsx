@@ -17,13 +17,20 @@ export default function RichtextModule({
 		text: string
 	}[]
 }>) {
+	const tocRight = tableOfContents && stegaClean(tocPosition) === 'right'
+
 	return (
-		<section className="section grid gap-8 lg:grid-cols-[1fr,auto]">
+		<section
+			className={cn(
+				'section grid gap-8',
+				tocRight ? 'lg:grid-cols-[1fr,auto]' : 'lg:grid-cols-[auto,1fr]',
+			)}
+		>
 			{tableOfContents && (
 				<aside
 					className={cn(
 						'lg:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] lg:w-[250px]',
-						stegaClean(tocPosition) === 'right' && 'lg:order-last',
+						tocRight && 'lg:order-last',
 					)}
 				>
 					<TableOfContents headings={headings} />
