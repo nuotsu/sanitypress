@@ -56,7 +56,7 @@ export default defineConfig({
 				sanitypressGuideWidget(),
 			],
 		}),
-		visionTool({ title: 'GROQ' }),
+		visionTool(),
 		codeInput(),
 	],
 
