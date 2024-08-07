@@ -47,6 +47,7 @@ From the [Sanity.io Manage](https://sanity.io/manage) dashboard, create a new pr
 # .env.local
 NEXT_PUBLIC_BASE_URL = ...
 NEXT_PUBLIC_SANITY_PROJECT_ID = ...
+NEXT_PUBLIC_SANITY_DATASET = ...
 NEXT_PUBLIC_SANITY_TOKEN = ... # retrieve from https://sanity.io/manage
 ```
 
@@ -65,6 +66,29 @@ For websites with a blog, additionally publish the following documents:
 Optionally, you can publish the following documents:
 
 - a **Page** document with slug: `404` to use as the _Page not found_ page.
+
+#### Import a demo dataset
+
+You can run a CLI command to import demo content to get SanityPress up and running in seconds.
+
+First, add your `projectId` to the Sanity CLI Config:
+
+```ts
+// sanity/sanity.cli.ts
+export default defineCliConfig({
+	api: {
+		projectId: 'elyfelq1',
+	},
+})
+```
+
+Then, run the following command in your terminal:
+
+```sh
+sanity dataset import sanity/demo.tar.gz
+```
+
+This will import a Site document and a Page document with slug: index, the minimum requirements for SanityPress to deploy successfully.
 
 ### 5. Set up deployments
 
