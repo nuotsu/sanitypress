@@ -1,6 +1,7 @@
 import { isDev } from 'sanity'
 
 export const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!
+export const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!
 
 export const BASE_URL = isDev
 	? 'http://localhost:3000'

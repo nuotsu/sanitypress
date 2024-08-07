@@ -1,5 +1,5 @@
 import { defineConfig } from 'sanity'
-import { BASE_URL, projectId } from './src/env'
+import { BASE_URL, projectId, dataset } from './src/env'
 import { structureTool } from 'sanity/structure'
 import structure from './src/structure'
 import { locations } from './src/presentation'
@@ -21,7 +21,7 @@ export default defineConfig({
 	title: 'SanityPress',
 
 	projectId,
-	dataset: 'production',
+	dataset,
 	basePath: '/admin',
 
 	plugins: [
