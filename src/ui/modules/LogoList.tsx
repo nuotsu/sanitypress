@@ -19,7 +19,10 @@ export default async function LogoList({
 	autoScroll?: boolean
 }>) {
 	const allLogos =
-		logos || (await fetchSanity<Sanity.Logo[]>(groq`*[_type == 'logo']`))
+		logos ||
+		(await fetchSanity<Sanity.Logo[]>(groq`*[_type == 'logo']|order(name)`, {
+			tags: ['logo'],
+		}))
 
 	return (
 		<section className="section space-y-8">
@@ -37,15 +40,11 @@ export default async function LogoList({
 						? `${css.track} overflow-fade max-w-max overflow-hidden`
 						: 'flex-wrap justify-center gap-x-4',
 				)}
-				style={
-					{
-						'--count': allLogos?.length,
-					} as React.CSSProperties
-				}
+				style={{ '--count': allLogos?.length } as React.CSSProperties}
 			>
 				{allLogos.map((logo, key) => (
 					<Img
-						className="h-[2.5em] w-[200px] shrink-0 object-contain max-sm:w-[150px]"
+						className="h-[2.5em] w-[200px] shrink-0 object-contain px-4 max-sm:w-[150px]"
 						style={{ '--index': key } as React.CSSProperties}
 						image={logo.image?.[logoType]}
 						imageWidth={400}

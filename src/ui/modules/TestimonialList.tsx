@@ -1,14 +1,19 @@
 import { PortableText } from '@portabletext/react'
+import { stegaClean } from '@sanity/client/stega'
 import Img from '@/ui/Img'
 import { cn } from '@/lib/utils'
 
 export default function TestimonialList({
 	intro,
 	testimonials,
+	layout,
 }: Partial<{
 	intro: any
 	testimonials: Sanity.Testimonial[]
+	layout: 'grid' | 'carousel'
 }>) {
+	const isCarousel = stegaClean(layout) === 'carousel'
+
 	return (
 		<section className="section space-y-8 text-center">
 			{intro && (
@@ -17,9 +22,19 @@ export default function TestimonialList({
 				</header>
 			)}
 
-			<div className="carousel max-xl:full-bleed overflow-fade items-center gap-x-8 pb-4 before:m-auto after:m-auto">
+			<div
+				className={cn(
+					'gap-4 max-md:px-4',
+					isCarousel
+						? 'carousel max-xl:full-bleed md:overflow-fade pb-4 md:gap-8 md:before:m-auto md:after:m-auto'
+						: 'max-md:carousel max-md:full-bleed grid max-md:pb-4 md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]',
+				)}
+			>
 				{testimonials?.map((testimonial, key) => (
-					<article className="!basis-[min(450px,70vw)]" key={key}>
+					<article
+						className="grid !basis-[min(450px,70vw)] place-content-center rounded border p-4"
+						key={key}
+					>
 						<blockquote className="space-y-6">
 							<div className="richtext text-balance">
 								<PortableText value={testimonial.content} />

@@ -23,7 +23,9 @@ export default function Filter({
 			className={cn(
 				css.filter,
 				'!py-1',
-				selected === value ? 'action *:text-white/50' : 'ghost',
+				selected === value
+					? 'action *:text-white/50'
+					: 'ghost border border-transparent',
 			)}
 			onClick={() => setSelected(value)}
 		>

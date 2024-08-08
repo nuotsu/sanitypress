@@ -7,16 +7,29 @@ export default defineType({
 	title: 'Testimonial list',
 	icon: GrBlockQuote,
 	type: 'object',
+	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fields: [
 		defineField({
 			name: 'intro',
 			type: 'array',
 			of: [{ type: 'block' }],
+			group: 'content',
 		}),
 		defineField({
 			name: 'testimonials',
 			type: 'array',
 			of: [{ type: 'reference', to: [{ type: 'testimonial' }] }],
+			group: 'content',
+		}),
+		defineField({
+			name: 'layout',
+			type: 'string',
+			options: {
+				list: ['grid', 'carousel'],
+				layout: 'radio',
+			},
+			group: 'options',
+			initialValue: 'carousel',
 		}),
 	],
 	preview: {
