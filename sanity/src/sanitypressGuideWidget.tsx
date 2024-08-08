@@ -1,5 +1,3 @@
-// import client from '@/lib/sanity/client'
-// import groq from 'groq'
 import { Box, Card, Code, Flex, Heading, Label, Stack, Text } from '@sanity/ui'
 import pkg from '../../package.json'
 import type { DashboardWidget, LayoutConfig } from '@sanity/dashboard'
@@ -19,7 +17,7 @@ const groups: Array<{
 	links: { label: string; url: string }[]
 }> = [
 	{
-		title: 'Documentation',
+		title: 'Resources',
 		links: [
 			{ label: 'Documentation', url: 'https://sanitypress.dev/docs' },
 			{
@@ -71,8 +69,6 @@ const groups: Array<{
 ]
 
 async function Component() {
-	// const site = await client.fetch<Sanity.Site>(groq`*[_type == 'site'][0]`)
-
 	return (
 		<Card paddingY={4}>
 			<Stack space={4}>

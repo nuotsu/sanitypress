@@ -8,10 +8,9 @@ import {
 	dashboardTool,
 	projectInfoWidget,
 	projectUsersWidget,
-	sanityTutorialsWidget,
 } from '@sanity/dashboard'
-import { vercelWidget } from 'sanity-plugin-dashboard-widget-vercel'
 import { sanitypressGuideWidget } from './src/sanitypressGuideWidget'
+import { vercelWidget } from 'sanity-plugin-dashboard-widget-vercel'
 import { visionTool } from '@sanity/vision'
 import { codeInput } from '@sanity/code-input'
 import { schemaTypes } from './schemas'
