@@ -2,7 +2,6 @@
 // import groq from 'groq'
 import { Box, Card, Code, Flex, Heading, Label, Stack, Text } from '@sanity/ui'
 import pkg from '../../package.json'
-import { ArrowTopRightIcon } from '@sanity/icons'
 import type { DashboardWidget, LayoutConfig } from '@sanity/dashboard'
 
 export function sanitypressGuideWidget(
@@ -97,11 +96,7 @@ async function Component() {
 						{group.links.map((link, key) => (
 							<Stack space={4} paddingX={3} key={key}>
 								<Text size={1}>
-									<a href={link.url} target="_blank">
-										<Flex align="center" gap={2}>
-											{link.label} <ArrowTopRightIcon />
-										</Flex>
-									</a>
+									<a href={link.url}>{link.label}</a>
 								</Text>
 							</Stack>
 						))}
