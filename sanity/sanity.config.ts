@@ -2,8 +2,8 @@ import { defineConfig } from 'sanity'
 import { BASE_URL, projectId, dataset } from './src/env'
 import { structureTool } from 'sanity/structure'
 import structure from './src/structure'
-import { locations } from './src/presentation'
 import { presentationTool } from 'sanity/presentation'
+import { locations } from './src/presentation'
 import {
 	dashboardTool,
 	projectInfoWidget,

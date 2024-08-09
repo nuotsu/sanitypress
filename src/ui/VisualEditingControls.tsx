@@ -1,6 +1,5 @@
 import { VisualEditing } from 'next-sanity'
 import { draftMode } from 'next/headers'
-import dev from '@/lib/env'
 
 export default function VisualEditingControls() {
 	return (
