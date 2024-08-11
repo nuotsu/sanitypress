@@ -69,17 +69,18 @@ async function getStargazers(reputation?: Sanity.Reputation) {
 
 	try {
 		const { data: { stargazers_count: count = 0 } = {} } =
-			await octokit.rest.repos.get({ owner, repo })
+			await octokit.rest.repos
+				.get({ owner, repo })
+				.catch(() => ({ data: { stargazers_count: 0 } }))
 
-		const { data: avatars } = await octokit.request(
-			'GET /repos/{owner}/{repo}/stargazers',
-			{
+		const { data: avatars } = await octokit
+			.request('GET /repos/{owner}/{repo}/stargazers', {
 				owner,
 				repo,
 				per_page: limit * 2,
 				page: Math.ceil(count / (limit * 2)),
-			},
-		)
+			})
+			.catch(() => ({ data: [] }))
 
 		return {
 			count,
