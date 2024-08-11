@@ -1,7 +1,11 @@
+import { Octokit } from 'octokit'
 import { stegaClean } from '@sanity/client/stega'
 import { cn } from '@/lib/utils'
 import Img from './Img'
-import { fetchAPI } from '@/lib/fetch'
+
+const octokit = new Octokit({
+	auth: process.env.NEXT_PUBLIC_GITHUB_TOKEN!,
+})
 
 export default async function Reputation({
 	reputation,
@@ -11,20 +15,7 @@ export default async function Reputation({
 } & React.HTMLAttributes<HTMLDivElement>) {
 	if (!reputation) return null
 
-	const { count, avatars } = await fetchAPI<{
-		error?: string
-		count?: number
-		avatars?: { avatar_url: string; login: string }[]
-	}>('/stargazers', {
-		params: {
-			repo: stegaClean(reputation.repo),
-			limit: reputation.limit,
-		},
-		next: {
-			revalidate: 3600,
-			tags: ['stargazers'],
-		},
-	})
+	const { count, avatars } = await getStargazers(reputation)
 
 	const imgClassname = cn(
 		'aspect-square h-8 w-auto rounded-full border-2 border-canvas object-cover -mr-2 last:mr-0',
@@ -68,4 +59,37 @@ export default async function Reputation({
 			</div>
 		</div>
 	)
+}
+
+async function getStargazers(reputation?: Sanity.Reputation) {
+	if (!reputation) return {}
+
+	const [owner, repo] = stegaClean(reputation.repo)?.split('/') ?? []
+	const limit = Number(stegaClean(reputation.limit)) || 5
+
+	try {
+		const { data: { stargazers_count: count = 0 } = {} } =
+			await octokit.rest.repos.get({ owner, repo })
+
+		const { data: avatars } = await octokit.request(
+			'GET /repos/{owner}/{repo}/stargazers',
+			{
+				owner,
+				repo,
+				per_page: limit * 2,
+				page: Math.ceil(count / (limit * 2)),
+			},
+		)
+
+		return {
+			count,
+			avatars: avatars.reverse().slice(0, limit) as {
+				avatar_url: string
+				login: string
+			}[],
+		}
+	} catch (e) {
+		console.error(e)
+		return {}
+	}
 }
