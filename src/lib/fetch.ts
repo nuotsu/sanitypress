@@ -14,7 +14,7 @@ export async function fetchAPI<T = any>(
 		next?: RequestInit['next']
 	} = {},
 ) {
-	const url = new URL(`/api${endpoint}`, BASE_URL)
+	const url = new URL(`/api${endpoint}`, `http://localhost:3000`)
 
 	if (params) {
 		Object.entries(params).forEach(([key, value]) => {
