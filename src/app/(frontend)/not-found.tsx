@@ -1,5 +1,5 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
-import { linkQuery } from '@/lib/sanity/queries'
+import { modulesQuery } from '@/lib/sanity/queries'
 import Modules from '@/ui/modules'
 
 export default async function NotFound() {
@@ -16,16 +16,8 @@ async function get404() {
 	return await fetchSanity<Sanity.Page>(
 		groq`*[_type == 'page' && metadata.slug.current == '404'][0]{
 			...,
-			modules[]{
-				...,
-				ctas[]{
-					...,
-					link{ ${linkQuery} }
-				}
-			}
+			modules[]{ ${modulesQuery} }
 		}`,
-		{
-			tags: ['404'],
-		},
+		{ tags: ['404'] },
 	)
 }

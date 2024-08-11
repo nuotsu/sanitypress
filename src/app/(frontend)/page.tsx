@@ -23,9 +23,7 @@ async function getPage() {
 				'ogimage': image.asset->url + '?w=1200',
 			}
 		}`,
-		{
-			tags: ['homepage'],
-		},
+		{ tags: ['homepage'] },
 	)
 
 	if (!page)

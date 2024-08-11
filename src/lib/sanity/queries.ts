@@ -14,15 +14,17 @@ const navigationQuery = groq`
 	}
 `
 
+export const ctaQuery = groq`
+	...,
+	link{ ${linkQuery} }
+`
+
 export async function getSite() {
 	const site = await fetchSanity<Sanity.Site>(
 		groq`
 			*[_type == 'site'][0]{
 				...,
-				ctas[]{
-					...,
-					link{ ${linkQuery} }
-				},
+				ctas[]{ ${ctaQuery} },
 				headerMenu->{ ${navigationQuery} },
 				footerMenu->{ ${navigationQuery} },
 				social->{ ${navigationQuery} },
@@ -50,10 +52,7 @@ export const modulesQuery = groq`
 			...,
 			subModules[]{
 				...,
-				ctas[]{
-					...,
-					link{ ${linkQuery} }
-				}
+				ctas[]{ ${ctaQuery} }
 			}
 		}
 	},
@@ -61,7 +60,12 @@ export const modulesQuery = groq`
 	_type == 'hero.saas' => { reputation-> },
 	_type == 'hero.split' => { reputation-> },
 	_type == 'logo-list' => { logos[]-> },
-	_type == 'pricing-list' => { tiers[]-> },
+	_type == 'pricing-list' => {
+		tiers[]->{
+			...,
+			ctas[]{ ${ctaQuery} }
+		}
+	},
 	_type == 'richtext-module' => {
 		'headings': select(
 			tableOfContents => content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{
