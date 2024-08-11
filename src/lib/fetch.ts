@@ -12,7 +12,7 @@ export async function fetchAPI<T = any>(
 		next?: RequestInit['next']
 	} = {},
 ) {
-	const url = new URL(`/api/${endpoint}`, BASE_URL)
+	const url = new URL(`/api${endpoint}`, BASE_URL)
 
 	if (params) {
 		Object.entries(params).forEach(([key, value]) => {
