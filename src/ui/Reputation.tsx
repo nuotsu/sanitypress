@@ -11,7 +11,20 @@ export default async function Reputation({
 } & React.HTMLAttributes<HTMLDivElement>) {
 	if (!reputation) return null
 
-	const { count, avatars } = await getStargazers(reputation)
+	const { count, avatars } = await fetchAPI<{
+		error?: string
+		count?: number
+		avatars?: { avatar_url: string; login: string }[]
+	}>('/stargazers', {
+		params: {
+			repo: stegaClean(reputation.repo),
+			limit: reputation.limit,
+		},
+		next: {
+			revalidate: 3600,
+			tags: ['stargazers'],
+		},
+	})
 
 	const imgClassname = cn(
 		'aspect-square h-8 w-auto rounded-full border-2 border-canvas object-cover -mr-2 last:mr-0',
@@ -55,23 +68,4 @@ export default async function Reputation({
 			</div>
 		</div>
 	)
-}
-
-async function getStargazers(reputation?: Sanity.Reputation) {
-	if (!reputation?.repo) return {}
-
-	return await fetchAPI<{
-		error?: string
-		count?: number
-		avatars?: { avatar_url: string; login: string }[]
-	}>('/stargazers', {
-		params: {
-			repo: stegaClean(reputation.repo),
-			limit: reputation.limit,
-		},
-		next: {
-			revalidate: 3600,
-			tags: ['stargazers'],
-		},
-	})
 }

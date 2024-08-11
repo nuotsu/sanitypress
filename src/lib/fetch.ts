@@ -1,5 +1,8 @@
-import { BASE_URL } from '@sanity/src/env'
 import dev from './env'
+
+const BASE_URL = dev
+	? `http://localhost:3000`
+	: process.env.NEXT_PUBLIC_BASE_URL
 
 export async function fetchAPI<T = any>(
 	endpoint: string,
