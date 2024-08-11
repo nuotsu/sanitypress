@@ -5,11 +5,13 @@ import Pretitle from '@/ui/Pretitle'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 import css from './Hero.module.css'
+import Reputation from '../Reputation'
 
 export default function Hero({
 	pretitle,
 	content,
 	ctas,
+	reputation,
 	bgImage,
 	bgImageMobile,
 	textAlign = 'center',
@@ -18,6 +20,7 @@ export default function Hero({
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
+	reputation: Sanity.Reputation
 	bgImage: Sanity.Image
 	bgImageMobile: Sanity.Image
 	textAlign: React.CSSProperties['textAlign']
@@ -67,7 +70,18 @@ export default function Hero({
 						<Pretitle className={cn(hasImage && 'text-canvas/70')}>
 							{pretitle}
 						</Pretitle>
+
 						<PortableText value={content} />
+
+						<Reputation
+							className={cn('!mt-4', hasImage && '[&_strong]:text-amber-400', {
+								'justify-start': stegaClean(textAlign) === 'left',
+								'justify-center': stegaClean(textAlign) === 'center',
+								'justify-end': stegaClean(textAlign) === 'right',
+							})}
+							reputation={reputation}
+						/>
+
 						<CTAList
 							ctas={ctas}
 							className={cn('!mt-4', {

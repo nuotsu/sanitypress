@@ -8,6 +8,7 @@ import announcement from './documents/announcement'
 import redirect from './documents/redirect'
 import logo from './documents/logo'
 import pricing from './documents/pricing'
+import reputation from './documents/reputation'
 import testimonial from './documents/testimonial'
 
 // objects
@@ -56,6 +57,7 @@ export const schemaTypes = [
 	link,
 	linkList,
 	metadata,
+	reputation,
 
 	// modules
 	accordionList,

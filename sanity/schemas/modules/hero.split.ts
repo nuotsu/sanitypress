@@ -28,6 +28,12 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
+			name: 'reputation',
+			type: 'reference',
+			to: [{ type: 'reputation' }],
+			group: 'content',
+		}),
+		defineField({
 			name: 'image',
 			type: 'image',
 			options: {
