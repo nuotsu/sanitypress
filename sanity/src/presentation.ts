@@ -1,5 +1,5 @@
-import { DocumentLocationResolver } from 'sanity/presentation'
 import { map } from 'rxjs'
+import type { DocumentLocationResolver } from 'sanity/presentation'
 
 export const locations: DocumentLocationResolver = (params, context) => {
 	if (['page', 'blog.post'].includes(params.type)) {
@@ -13,7 +13,7 @@ export const locations: DocumentLocationResolver = (params, context) => {
 			map((doc) => {
 				if (!doc?.metadata?.slug?.current) return null
 
-				const directory = params.type === 'blog.post' ? '/blog' : ''
+				const segment = params.type === 'blog.post' ? '/blog' : ''
 				const slug = doc.metadata.slug.current
 				const path = slug === 'index' ? '' : `/${slug}`
 
@@ -21,7 +21,7 @@ export const locations: DocumentLocationResolver = (params, context) => {
 					locations: [
 						{
 							title: doc.title || doc.metadata.title || 'Untitled',
-							href: [directory, path].filter(Boolean).join(''),
+							href: [segment, path].filter(Boolean).join(''),
 						},
 					],
 				}
