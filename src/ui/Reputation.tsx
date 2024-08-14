@@ -12,7 +12,7 @@ export default async function Reputation({
 	className,
 }: {
 	reputation?: Sanity.Reputation
-} & React.HTMLAttributes<HTMLDivElement>) {
+} & React.ComponentProps<'div'>) {
 	if (!reputation) return null
 
 	const { count, avatars } = await getStargazers(reputation)

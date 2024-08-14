@@ -5,7 +5,7 @@ export default function Categories({
 	...props
 }: {
 	categories?: Sanity.BlogCategory[]
-} & React.HTMLProps<HTMLUListElement>) {
+} & React.ComponentProps<'ul'>) {
 	if (!categories?.length) return null
 
 	return (

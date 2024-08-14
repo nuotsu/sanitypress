@@ -15,7 +15,7 @@ import { IoIosLink } from 'react-icons/io'
 
 export default async function Social({
 	className,
-}: React.HTMLProps<HTMLDivElement>) {
+}: React.ComponentProps<'div'>) {
 	const { social } = await getSite()
 
 	if (!social?.items?.length) return null
@@ -46,7 +46,7 @@ export default async function Social({
 function Icon({
 	url,
 	...props
-}: { url?: string } & React.HTMLProps<SVGElement>) {
+}: { url?: string } & React.ComponentProps<'svg'>) {
 	if (!url) return null
 
 	return url?.includes('facebook.com') ? (

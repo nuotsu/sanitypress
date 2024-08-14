@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 export default function Wrapper({
 	className,
 	children,
-}: React.HTMLAttributes<HTMLDivElement>) {
+}: React.ComponentProps<'header'>) {
 	const ref = useRef<HTMLDivElement>(null)
 	const pathname = usePathname()
 
