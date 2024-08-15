@@ -35,7 +35,7 @@ export default function Hero({
 					'grid overflow-hidden bg-ink text-canvas *:col-span-full *:row-span-full',
 			)}
 		>
-			{bgImage?.asset && (
+			{hasImage && (
 				<picture>
 					<Source image={bgImageMobile} imageWidth={1200} />
 					<Img
