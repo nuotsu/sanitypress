@@ -52,7 +52,7 @@ export default function Hero({
 					<div
 						className={cn(
 							'richtext relative isolate max-w-xl [&_:is(h1,h2)]:text-balance',
-							bgImage?.asset && 'text-shadow',
+							hasImage && 'text-shadow',
 							hasImage && css.txt,
 							{
 								'mb-8': stegaClean(alignItems) === 'start',
