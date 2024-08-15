@@ -2,10 +2,10 @@ import Img, { Source } from '@/ui/Img'
 import { PortableText } from '@portabletext/react'
 import CTAList from '@/ui/CTAList'
 import Pretitle from '@/ui/Pretitle'
+import Reputation from '@/ui/Reputation'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 import css from './Hero.module.css'
-import Reputation from '../Reputation'
 
 export default function Hero({
 	pretitle,
