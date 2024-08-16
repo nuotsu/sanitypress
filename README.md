@@ -45,9 +45,9 @@ From the [Sanity.io Manage](https://sanity.io/manage) dashboard, create a new pr
 
 ```sh
 # .env.local
-NEXT_PUBLIC_BASE_URL = ...
-NEXT_PUBLIC_SANITY_PROJECT_ID = ...
-NEXT_PUBLIC_SANITY_DATASET = ...
+NEXT_PUBLIC_BASE_URL = ... # https://sanitypress.dev
+NEXT_PUBLIC_SANITY_PROJECT_ID = ... # abcdefgh
+NEXT_PUBLIC_SANITY_DATASET = ... # production
 NEXT_PUBLIC_SANITY_TOKEN = ... # retrieve from https://sanity.io/manage
 ```
 
@@ -77,7 +77,7 @@ sanity dataset import sanity/demo.tar.gz
 
 This will import a Site document and a Page document with slug: index, the minimum requirements for SanityPress to deploy successfully.
 
-### 5. Deployment Setup
+### 5. Set up deployments
 
 Install either of the following plugins to add a widget to your Studio Dashboard:
 
