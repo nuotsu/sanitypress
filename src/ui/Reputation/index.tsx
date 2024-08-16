@@ -13,7 +13,7 @@ export default async function Reputation({
 	const { count, avatars } = await getStargazers(reputation)
 
 	const imgClassname = cn(
-		'aspect-square h-8 w-auto rounded-full border-2 border-canvas object-cover -mr-2 last:mr-0',
+		'aspect-square h-8 w-auto rounded-full border-2 border-canvas bg-canvas object-cover -mr-2 last:mr-0',
 	)
 
 	return (
