@@ -71,53 +71,22 @@ Optionally, you can publish the following documents:
 
 You can run a CLI command to import demo content to get SanityPress up and running in seconds.
 
-First, add your `projectId` to the Sanity CLI Config:
-
-```ts
-// sanity/sanity.cli.ts
-export default defineCliConfig({
-	api: {
-		projectId: 'elyfelq1',
-	},
-})
-```
-
-Then, run the following command in your terminal:
-
 ```sh
 sanity dataset import sanity/demo.tar.gz
 ```
 
 This will import a Site document and a Page document with slug: index, the minimum requirements for SanityPress to deploy successfully.
 
-### 5. Set up deployments
+### 5. Deployment Setup
 
-Update the **Root Directory** (Vercel) / **Project Directory** (Netlify) with a value of `next`. This tells the deployment service to serve the next/ directory and not the root.
+Install either of the following plugins to add a widget to your Studio Dashboard:
 
-Optionally, install either of the following plugins to add a widget to your Studio Dashboard:
+- Vercel: [`sanity-plugin-dashboard-widget-vercel`](https://www.sanity.io/plugins/vercel-dashboard-widget)
+- Netlify: [`sanity-plugin-dashboard-widget-netlify`](https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-netlify)
 
-```sh
-# Vercel — https://www.sanity.io/plugins/vercel-dashboard-widget
-npm i sanity-plugin-dashboard-widget-vercel
+### 6. Customize
 
-# Netlify — https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-netlify
-npm i sanity-plugin-dashboard-widget-netlify
-```
-
-### 6. Customize the frontend
-
-Feel free to adjust styles, add more schema and modules, and more.
-
-## Staging
-
-Create a new git branch (call it anything—e.g. `staging` or `preview`) and set an environment variable specific to that branch in your deployment service (Vercel or Netlify):
-
-```sh
-# Environment variable for the staging branch (in Vercel, Netlify, etc.)
-ENABLE_PREVIEW = true
-```
-
-Now you can use the preview deployment URL to share staged content (unpublished changes) with your team or clients.
+Adjust frontend styles, edit/add Sanity schema and modules, and more.
 
 ## External References
 

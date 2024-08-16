@@ -27,7 +27,7 @@ export default async function Reputation({
 								!!avatar && (
 									<img
 										className={imgClassname}
-										src={avatar.avatar_url + '&size=48'}
+										src={avatar.avatar_url + '&s=48'}
 										alt={avatar.login}
 										key={key}
 									/>
