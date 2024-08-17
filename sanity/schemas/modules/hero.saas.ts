@@ -1,4 +1,4 @@
-import { collate, defineField, defineType } from 'sanity'
+import { defineField, defineType } from 'sanity'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
 import { getBlockText } from '@sanity/src/utils'
 

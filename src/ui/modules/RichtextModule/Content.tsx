@@ -8,7 +8,7 @@ export default function Content({
 	value,
 	className,
 	children,
-}: { value: any } & React.HTMLProps<HTMLDivElement>) {
+}: { value: any } & React.ComponentProps<'div'>) {
 	return (
 		<div
 			className={cn(

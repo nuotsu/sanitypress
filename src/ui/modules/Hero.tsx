@@ -2,10 +2,10 @@ import Img, { Source } from '@/ui/Img'
 import { PortableText } from '@portabletext/react'
 import CTAList from '@/ui/CTAList'
 import Pretitle from '@/ui/Pretitle'
+import Reputation from '@/ui/Reputation'
 import { cn } from '@/lib/utils'
 import { stegaClean } from '@sanity/client/stega'
 import css from './Hero.module.css'
-import Reputation from '../Reputation'
 
 export default function Hero({
 	pretitle,
@@ -35,7 +35,7 @@ export default function Hero({
 					'grid overflow-hidden bg-ink text-canvas *:col-span-full *:row-span-full',
 			)}
 		>
-			{bgImage?.asset && (
+			{hasImage && (
 				<picture>
 					<Source image={bgImageMobile} imageWidth={1200} />
 					<Img
@@ -52,7 +52,7 @@ export default function Hero({
 					<div
 						className={cn(
 							'richtext relative isolate max-w-xl [&_:is(h1,h2)]:text-balance',
-							bgImage?.asset && 'text-shadow',
+							hasImage && 'text-shadow',
 							hasImage && css.txt,
 							{
 								'mb-8': stegaClean(alignItems) === 'start',

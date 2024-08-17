@@ -11,7 +11,6 @@ const config: Config = {
 
 				accent: '#000',
 			},
-			fontFamily: {},
 			maxHeight: {
 				fold: 'calc(100svh - var(--header-height))',
 			},

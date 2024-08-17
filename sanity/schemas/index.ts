@@ -49,6 +49,7 @@ export const schemaTypes = [
 	redirect,
 	logo,
 	pricing,
+	reputation,
 	testimonial,
 
 	// objects
@@ -57,7 +58,6 @@ export const schemaTypes = [
 	link,
 	linkList,
 	metadata,
-	reputation,
 
 	// modules
 	accordionList,
