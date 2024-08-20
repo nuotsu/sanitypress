@@ -1,4 +1,4 @@
-import CustomHTML from '../CustomHTML'
+import CustomHTML from '@/ui/modules/CustomHTML'
 import type { ComponentProps } from 'react'
 
 export type CustomHTMLSubmoduleType = Sanity.Module<'custom-html'> &

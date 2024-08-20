@@ -1,7 +1,7 @@
 import { PortableText } from 'next-sanity'
-import Pretitle from '../Pretitle'
+import Pretitle from '@/ui/Pretitle'
+import CTAList from '@/ui/CTAList'
 import { cn } from '@/lib/utils'
-import CTAList from '../CTAList'
 
 export default function PricingList({
 	intro,
