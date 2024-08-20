@@ -48,6 +48,7 @@ export default async function LogoList({
 						style={{ '--index': key } as React.CSSProperties}
 						image={logo.image?.[logoType]}
 						imageWidth={400}
+						alt={logo.name}
 						key={key}
 					/>
 				))}

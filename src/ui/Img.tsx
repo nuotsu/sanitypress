@@ -40,7 +40,7 @@ export default function Img({
 			}
 			width={width}
 			height={height}
-			alt={stegaClean(image.alt) || alt}
+			alt={image.alt || alt}
 			loading={stegaClean(image.loading) || 'lazy'}
 			decoding="async"
 			{...props}

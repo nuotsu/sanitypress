@@ -30,7 +30,7 @@ export default function TestimonialList({
 						: 'max-md:carousel max-md:full-bleed grid max-md:pb-4 md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]',
 				)}
 			>
-				{testimonials?.map((testimonial, key) => (
+				{testimonials?.map(({ author, ...testimonial }, key) => (
 					<article
 						className="grid !basis-[min(450px,70vw)] place-content-center rounded border p-4"
 						key={key}
@@ -40,19 +40,24 @@ export default function TestimonialList({
 								<PortableText value={testimonial.content} />
 							</div>
 
-							{testimonial.author && (
+							{author && (
 								<div className="inline-flex items-center gap-2">
 									<Img
 										className="size-[40px] rounded-full object-cover"
-										image={testimonial.author?.image}
+										image={author?.image}
 										imageWidth={80}
+										alt={
+											[author?.name, author?.title]
+												.filter(Boolean)
+												.join(', ') || 'Author'
+										}
 									/>
 
 									<dl className="text-left">
-										<dt>{testimonial.author?.name}</dt>
+										<dt>{author?.name}</dt>
 
-										{testimonial.author?.title && (
-											<dd className="text-sm">{testimonial.author?.title}</dd>
+										{author?.title && (
+											<dd className="text-sm">{author?.title}</dd>
 										)}
 									</dl>
 								</div>
