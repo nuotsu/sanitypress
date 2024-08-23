@@ -11,7 +11,7 @@ export default defineType({
 			type: 'slug',
 			description: 'URL path / permalink. Use "index" for the homepage.',
 			options: {
-				source: (doc: any) => doc.metadata.title || doc.name || doc.title,
+				source: (doc: any) => doc.title || doc.metadata.title,
 			},
 			validation: (Rule) => Rule.required(),
 		}),
