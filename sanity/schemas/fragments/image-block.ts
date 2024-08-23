@@ -33,6 +33,7 @@ export default defineArrayMember({
 			type: 'string',
 			options: {
 				list: ['lazy', 'eager'],
+				layout: 'radio',
 			},
 			initialValue: 'lazy',
 			fieldset: 'options',
