@@ -53,8 +53,8 @@ export default defineType({
 					name: 'loading',
 					type: 'string',
 					options: {
-						layout: 'radio',
 						list: ['lazy', 'eager'],
+						layout: 'radio',
 					},
 					initialValue: 'lazy',
 				}),
