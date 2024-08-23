@@ -47,6 +47,13 @@ export default defineType({
 				defineField({
 					name: 'onRight',
 					type: 'boolean',
+					description: 'Display to the right of the content on desktop',
+					initialValue: false,
+				}),
+				defineField({
+					name: 'onBottom',
+					type: 'boolean',
+					description: 'Display below the content on mobile',
 					initialValue: false,
 				}),
 				defineField({

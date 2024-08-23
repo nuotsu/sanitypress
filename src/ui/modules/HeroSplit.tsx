@@ -16,12 +16,19 @@ export default function HeroSplit({
 	content: any
 	ctas: Sanity.CTA[]
 	reputation: Sanity.Reputation
-	image: Sanity.Image & { onRight?: boolean }
+	image: Sanity.Image & {
+		onRight?: boolean
+		onBottom?: boolean
+	}
 }>) {
 	return (
 		<section className="section grid items-center gap-8 md:grid-cols-2 md:gap-x-12">
 			<figure
-				className={cn('max-md:full-bleed', image?.onRight && 'md:order-1')}
+				className={cn(
+					'max-md:full-bleed',
+					image?.onRight && 'md:order-1',
+					image?.onBottom && 'max-md:order-last',
+				)}
 			>
 				<Img image={image} imageWidth={1200} />
 			</figure>
