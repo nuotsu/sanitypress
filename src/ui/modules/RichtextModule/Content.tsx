@@ -2,6 +2,7 @@ import { PortableText } from '@portabletext/react'
 import AnchoredHeading from './AnchoredHeading'
 import Image from './Image'
 import Code from './Code'
+import CustomHTML from '@/ui/modules/CustomHTML'
 import { cn } from '@/lib/utils'
 
 export default function Content({
@@ -34,6 +35,7 @@ export default function Content({
 					types: {
 						image: Image,
 						code: Code,
+						'custom-html': ({ value }) => <CustomHTML {...value} />,
 					},
 				}}
 			/>
