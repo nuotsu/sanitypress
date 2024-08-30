@@ -35,7 +35,12 @@ export default function Content({
 					types: {
 						image: Image,
 						code: Code,
-						'custom-html': ({ value }) => <CustomHTML {...value} />,
+						'custom-html': ({ value }) => (
+							<CustomHTML
+								className="has-[table]:mx-auto has-[table]:md:[grid-column:bleed]"
+								{...value}
+							/>
+						),
 					},
 				}}
 			/>

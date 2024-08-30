@@ -19,6 +19,7 @@
 	}
 
 	@keyframes target {
+
 		0%,
 		50% {
 			@apply bg-amber-400/50;
@@ -178,13 +179,37 @@
 			}
 		}
 
-		& :not(pre) > code {
+		& :not(pre)>code {
 			@apply rounded bg-ink/5 px-1;
 		}
 
 		& pre {
 			tab-size: 2;
 			@apply overflow-x-auto rounded bg-transparent p-3 text-xs/relaxed;
+		}
+
+		& table {
+			display: block;
+			overflow-x: auto;
+			text-wrap: balance;
+			line-height: initial;
+
+			@apply min-w-full max-md:full-bleed;
+
+			& th,
+			td {
+				@apply p-3 text-center;
+			}
+
+			& tbody {
+				& tr:nth-child(odd) {
+					@apply bg-neutral-100;
+				}
+
+				& tr th:first-child {
+					text-align: left;
+				}
+			}
 		}
 	}
 
@@ -220,7 +245,7 @@
 		overflow-x: auto;
 		scroll-snap-type: x mandatory;
 
-		& > * {
+		&>* {
 			flex: 0 0 min(var(--size, 300px), 80vw);
 			scroll-snap-align: center;
 		}
@@ -248,23 +273,19 @@
 
 	.overflow-fade {
 		--offset: 4rem;
-		mask: linear-gradient(
-			to right,
-			transparent,
-			black var(--offset),
-			black calc(100% - var(--offset)),
-			transparent
-		);
+		mask: linear-gradient(to right,
+				transparent,
+				black var(--offset),
+				black calc(100% - var(--offset)),
+				transparent);
 	}
 
 	.overflow-fade-r {
 		--offset: 4rem;
-		mask: linear-gradient(
-			to right,
-			black 50%,
-			black calc(100% - var(--offset)),
-			transparent
-		);
+		mask: linear-gradient(to right,
+				black 50%,
+				black calc(100% - var(--offset)),
+				transparent);
 	}
 
 	.sticky-below-header {
