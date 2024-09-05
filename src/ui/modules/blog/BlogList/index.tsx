@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 export default async function BlogList({
 	intro,
 	layout,
-	limit = 100,
+	limit,
 	displayFilters,
 	predefinedFilters,
 }: Partial<{
@@ -19,7 +19,7 @@ export default async function BlogList({
 	predefinedFilters: Sanity.BlogCategory[]
 }>) {
 	const posts = await fetchSanity<Sanity.BlogPost[]>(
-		groq`*[_type == 'blog.post']|order(featured desc, publishDate desc)[0...$limit]{
+		groq`*[_type == 'blog.post']|order(featured desc, publishDate desc){
 			...,
 			categories[]->
 		}`,
@@ -42,6 +42,7 @@ export default async function BlogList({
 			<List
 				posts={posts}
 				predefinedFilters={predefinedFilters}
+				limit={limit}
 				className={cn(
 					'gap-x-6 gap-y-12',
 					stegaClean(layout) === 'grid'

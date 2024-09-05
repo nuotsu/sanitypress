@@ -8,10 +8,12 @@ import { usePathname } from 'next/navigation'
 export default function List({
 	posts,
 	predefinedFilters,
+	limit,
 	...props
 }: {
 	posts: Sanity.BlogPost[]
 	predefinedFilters?: Sanity.BlogCategory[]
+	limit?: number
 } & React.ComponentProps<'ul'>) {
 	const { selected, reset } = categoryStore()
 
@@ -23,7 +25,7 @@ export default function List({
 			(post) =>
 				!predefinedFilters?.length ||
 				post.categories?.some((category) =>
-					predefinedFilters.some((filter) => filter._id === category._id),
+					predefinedFilters.some((filter) => filter?._id === category._id),
 				),
 		)
 		// filter by selected category
@@ -32,6 +34,7 @@ export default function List({
 				selected === 'All' ||
 				post.categories?.some((category) => category._id === selected),
 		)
+		.slice(0, limit)
 
 	if (!filtered.length) {
 		return <div>No posts found...</div>

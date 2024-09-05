@@ -19,7 +19,7 @@ export default async function Filtering({
 	const filtered = categories?.filter(
 		(category) =>
 			!predefinedFilters?.length ||
-			predefinedFilters.some((filter) => filter._id === category._id),
+			predefinedFilters.some((filter) => filter?._id === category._id),
 	)
 
 	return (
