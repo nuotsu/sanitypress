@@ -45,7 +45,7 @@ export const modulesQuery = groq`
 		...,
 		link{ ${linkQuery} }
 	},
-	_type == 'blog-list' => { predefinedFilters[]-> },
+	_type == 'blog-list' => { filteredCategory-> },
 	_type == 'breadcrumbs' => { crumbs[]{ ${linkQuery} } },
 	_type == 'creative-module' => {
 		modules[]{
