@@ -1,6 +1,6 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import { PortableText } from '@portabletext/react'
-import Filtering from '@/ui/modules/blog/BlogList/Filtering'
+import FilterList from '@/ui/modules/blog/BlogList/FilterList'
 import List from './List'
 import { stegaClean } from '@sanity/client/stega'
 import { cn } from '@/lib/utils'
@@ -9,12 +9,14 @@ export default async function BlogList({
 	intro,
 	layout,
 	limit = null,
+	showFeaturedPostsFirst,
 	displayFilters,
 	filteredCategory,
 }: Partial<{
 	intro: any
 	layout: 'grid' | 'carousel'
 	limit: number | null
+	showFeaturedPostsFirst: boolean
 	displayFilters: boolean
 	filteredCategory: Sanity.BlogCategory
 }>) {
@@ -23,8 +25,10 @@ export default async function BlogList({
 			*[
 				_type == 'blog.post'
 				${filteredCategory ? `&& $filteredCategory in categories[]->._id` : ''}
-			]
-			|order(featured desc, publishDate desc)
+			]|order(
+				${showFeaturedPostsFirst ? 'featured desc, ' : ''}
+				publishDate desc
+			)
 			${limit ? `[0...${limit}]` : ''}
 			{
 				...,
@@ -48,7 +52,7 @@ export default async function BlogList({
 				</header>
 			)}
 
-			{displayFilters && !filteredCategory && <Filtering />}
+			{displayFilters && !filteredCategory && <FilterList />}
 
 			<List
 				posts={posts}

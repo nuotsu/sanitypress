@@ -1,8 +1,8 @@
 'use client'
 
+import { useEffect } from 'react'
 import { categoryStore } from '../store'
 import PostPreview from '../PostPreview'
-import { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 
 export default function List({
@@ -11,17 +11,11 @@ export default function List({
 }: {
 	posts: Sanity.BlogPost[]
 } & React.ComponentProps<'ul'>) {
-	const { selected, reset } = categoryStore()
+	const { reset } = categoryStore()
 
 	useEffect(reset, [usePathname()])
 
-	const filtered = posts
-		// filter by selected category
-		.filter(
-			(post) =>
-				selected === 'All' ||
-				post.categories?.some((category) => category._id === selected),
-		)
+	const filtered = filterPosts(posts)
 
 	if (!filtered.length) {
 		return <div>No posts found...</div>
@@ -35,5 +29,15 @@ export default function List({
 				</li>
 			))}
 		</ul>
+	)
+}
+
+export function filterPosts(posts: Sanity.BlogPost[]) {
+	const { selected } = categoryStore()
+
+	return posts.filter(
+		(post) =>
+			selected === 'All' ||
+			post.categories?.some((category) => category._id === selected),
 	)
 }

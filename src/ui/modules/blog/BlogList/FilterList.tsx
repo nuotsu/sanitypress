@@ -1,9 +1,9 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import Filter from './Filter'
-import css from './Filtering.module.css'
+import css from './FilterList.module.css'
 import { cn } from '@/lib/utils'
 
-export default async function Filtering() {
+export default async function FilterList() {
 	const categories = await fetchSanity<Sanity.BlogCategory[]>(
 		groq`*[
 			_type == 'blog.category' &&

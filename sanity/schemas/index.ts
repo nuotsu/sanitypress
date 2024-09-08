@@ -20,6 +20,7 @@ import metadata from './objects/metadata'
 
 // modules
 import accordionList from './modules/accordion-list'
+import blogFrontpage from './modules/blog-frontpage'
 import blogList from './modules/blog-list'
 import blogPostContent from './modules/blog-post-content'
 import breadcrumbs from './modules/breadcrumbs'
@@ -61,6 +62,7 @@ export const schemaTypes = [
 
 	// modules
 	accordionList,
+	blogFrontpage,
 	blogList,
 	blogPostContent,
 	breadcrumbs,

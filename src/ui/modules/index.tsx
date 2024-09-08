@@ -1,4 +1,5 @@
 import AccordionList from './AccordionList'
+import BlogFrontpage from './blog/BlogFrontpage'
 import BlogList from './blog/BlogList'
 import Breadcrumbs from './Breadcrumbs'
 import Callout from './Callout'
@@ -32,6 +33,8 @@ export default function Modules({
 				switch (module._type) {
 					case 'accordion-list':
 						return <AccordionList {...module} key={module._key} />
+					case 'blog-frontpage':
+						return <BlogFrontpage {...module} key={module._key} />
 					case 'blog-list':
 						return <BlogList {...module} key={module._key} />
 					case 'blog-post-content':

@@ -22,6 +22,7 @@ export default defineType({
 			type: 'array',
 			of: [
 				{ type: 'accordion-list' },
+				{ type: 'blog-frontpage' },
 				{ type: 'blog-list' },
 				{ type: 'blog-post-content' },
 				{ type: 'breadcrumbs' },

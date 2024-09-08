@@ -1,11 +1,11 @@
 'use client'
 
+import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { categoryStore } from '../store'
 import Category from '../Category'
 import { cn } from '@/lib/utils'
-import { useEffect } from 'react'
-import { usePathname } from 'next/navigation'
-import css from './Filtering.module.css'
+import css from './FilterList.module.css'
 
 export default function Filter({
 	label,

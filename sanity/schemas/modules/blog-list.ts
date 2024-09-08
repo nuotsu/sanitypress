@@ -30,6 +30,12 @@ export default defineType({
 			group: 'options',
 		}),
 		defineField({
+			name: 'showFeaturedPostsFirst',
+			type: 'boolean',
+			initialValue: true,
+			group: 'filtering',
+		}),
+		defineField({
 			name: 'displayFilters',
 			title: 'Display category filter buttons',
 			description: 'Allows for on-page filtering of posts by category',
