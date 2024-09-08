@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { categoryStore } from '../store'
 import PostPreview from '../PostPreview'
-import { usePathname } from 'next/navigation'
 
 export default function List({
 	posts,
