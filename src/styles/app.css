@@ -19,7 +19,6 @@
 	}
 
 	@keyframes target {
-
 		0%,
 		50% {
 			@apply bg-amber-400/50;
@@ -179,7 +178,7 @@
 			}
 		}
 
-		& :not(pre)>code {
+		& :not(pre) > code {
 			@apply rounded bg-ink/5 px-1;
 		}
 
@@ -194,7 +193,7 @@
 			text-wrap: balance;
 			line-height: initial;
 
-			@apply min-w-full max-md:full-bleed;
+			@apply max-md:full-bleed min-w-full;
 
 			& th,
 			td {
@@ -245,7 +244,7 @@
 		overflow-x: auto;
 		scroll-snap-type: x mandatory;
 
-		&>* {
+		& > * {
 			flex: 0 0 min(var(--size, 300px), 80vw);
 			scroll-snap-align: center;
 		}
@@ -273,19 +272,23 @@
 
 	.overflow-fade {
 		--offset: 4rem;
-		mask: linear-gradient(to right,
-				transparent,
-				black var(--offset),
-				black calc(100% - var(--offset)),
-				transparent);
+		mask: linear-gradient(
+			to right,
+			transparent,
+			black var(--offset),
+			black calc(100% - var(--offset)),
+			transparent
+		);
 	}
 
 	.overflow-fade-r {
 		--offset: 4rem;
-		mask: linear-gradient(to right,
-				black 50%,
-				black calc(100% - var(--offset)),
-				transparent);
+		mask: linear-gradient(
+			to right,
+			black 50%,
+			black calc(100% - var(--offset)),
+			transparent
+		);
 	}
 
 	.sticky-below-header {
