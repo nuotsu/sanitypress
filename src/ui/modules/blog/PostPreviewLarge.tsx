@@ -26,7 +26,9 @@ export default function PostPreviewLarge({ post }: { post: Sanity.BlogPost }) {
 			</figure>
 
 			<div className="mx-auto max-w-lg space-y-4">
-				<div className="h3 group-hover:underline">{post.metadata.title}</div>
+				<h2 className="h2 md:h1 group-hover:underline">
+					{post.metadata.title}
+				</h2>
 
 				<p className="line-clamp-4 max-md:text-sm">
 					{post.metadata.description}
