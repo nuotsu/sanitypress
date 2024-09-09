@@ -50,7 +50,7 @@ From the [Sanity.io Manage](https://sanity.io/manage) dashboard, create a new pr
 NEXT_PUBLIC_BASE_URL = ... # https://sanitypress.dev
 NEXT_PUBLIC_SANITY_PROJECT_ID = ... # abcdefgh
 NEXT_PUBLIC_SANITY_DATASET = ... # production
-NEXT_PUBLIC_SANITY_TOKEN = ... # retrieve from https://sanity.io/manage
+NEXT_PUBLIC_SANITY_TOKEN = ... # "Viewer" token from https://sanity.io/manage
 ```
 
 ### 4. Populate the Studio with your content
