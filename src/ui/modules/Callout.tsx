@@ -15,7 +15,7 @@ export default function Callout({
 					<PortableText value={content} />
 				</div>
 
-				<CTAList ctas={ctas} />
+				<CTAList className="m-auto" ctas={ctas} />
 			</div>
 		</section>
 	)
