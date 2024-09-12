@@ -1,6 +1,6 @@
 {
 	"name": "sanitypress",
-	"version": "4.6.2",
+	"version": "4.6.3",
 	"description": "A Next.js + Sanity.io Starter Template",
 	"author": "nuotsu <mitchell@nuotsu.dev> (https://nuotsu.dev)",
 	"license": "ISC",
@@ -11,7 +11,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@next/third-parties": "^14.2.9",
+		"@next/third-parties": "^14.2.11",
 		"@portabletext/react": "^3.1.0",
 		"@portabletext/to-html": "^2.0.13",
 		"@sanity/code-input": "^4.1.4",
@@ -24,7 +24,7 @@
 		"clsx": "^2.1.1",
 		"feed": "^4.2.2",
 		"groq": "^3.57.2",
-		"next": "^14.2.9",
+		"next": "^14.2.11",
 		"next-sanity": "^9.4.7",
 		"next-sanity-image": "^6.1.1",
 		"octokit": "^4.0.2",
@@ -37,7 +37,7 @@
 		"rxjs": "^7.8.1",
 		"sanity": "^3.57.2",
 		"sanity-plugin-dashboard-widget-vercel": "^2.0.1",
-		"shiki": "^1.17.0",
+		"shiki": "^1.17.5",
 		"styled-components": "^6.1.13",
 		"tailwind-merge": "^2.5.2",
 		"zustand": "^4.5.5"
