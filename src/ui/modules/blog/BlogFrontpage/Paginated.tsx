@@ -5,11 +5,17 @@ import usePagination from '@/lib/usePagination'
 import { categoryStore } from '../store'
 import List, { filterPosts } from '../BlogList/List'
 
-export default function Paginated({ posts }: { posts: Sanity.BlogPost[] }) {
+export default function Paginated({
+	posts,
+	itemsPerPage = 6,
+}: {
+	posts: Sanity.BlogPost[]
+	itemsPerPage?: number
+}) {
 	const { paginatedItems, resetPage, Pagination } =
 		usePagination<Sanity.BlogPost>({
 			items: filterPosts(posts),
-			itemsPerPage: 6,
+			itemsPerPage,
 		})
 
 	const { selected } = categoryStore()
