@@ -37,7 +37,7 @@
 		"rxjs": "^7.8.1",
 		"sanity": "^3.57.3",
 		"sanity-plugin-dashboard-widget-vercel": "^2.0.1",
-		"shiki": "^1.17.6",
+		"shiki": "^1.17.7",
 		"styled-components": "^6.1.13",
 		"tailwind-merge": "^2.5.2",
 		"zustand": "^4.5.5"
@@ -45,7 +45,7 @@
 	"devDependencies": {
 		"@sanity/eslint-config-studio": "^4.0.0",
 		"@types/node": "^22.5.5",
-		"@types/react": "^18.3.5",
+		"@types/react": "^18.3.6",
 		"@types/react-dom": "^18.3.0",
 		"@types/rss": "^0.0.32",
 		"autoprefixer": "^10.4.20",
