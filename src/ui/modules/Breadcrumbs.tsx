@@ -4,9 +4,11 @@ import { stegaClean } from '@sanity/client/stega'
 
 export default async function Breadcrumbs({
 	crumbs,
+	hideCurrent,
 	currentPage,
 }: Partial<{
 	crumbs: Sanity.Link[]
+	hideCurrent?: boolean
 	currentPage: Sanity.Page | Sanity.BlogPost
 }>) {
 	return (
@@ -20,13 +22,15 @@ export default async function Breadcrumbs({
 					<Fragment key={key}>
 						<Crumb link={crumb} position={key + 1} />
 
-						<li className="opacity-20" role="presentation">
-							/
-						</li>
+						{(key < crumbs.length - 1 || !hideCurrent) && (
+							<li className="opacity-20" role="presentation">
+								/
+							</li>
+						)}
 					</Fragment>
 				))}
 
-				<Crumb position={(crumbs?.length || 0) + 2}>
+				<Crumb position={(crumbs?.length || 0) + 2} hidden={hideCurrent}>
 					{currentPage?.title || currentPage?.metadata.title}
 				</Crumb>
 			</ol>
@@ -38,13 +42,15 @@ function Crumb({
 	link,
 	position,
 	children,
+	hidden,
 }: {
 	link?: Omit<Sanity.Link, '_type'>
 	position: number
+	hide?: boolean
 } & React.ComponentProps<'li'>) {
 	const content = (
 		<>
-			<span itemProp="name">
+			<span itemProp="name" hidden={hidden}>
 				{stegaClean(
 					children || link?.label || link?.internal?.title || link?.external,
 				)}

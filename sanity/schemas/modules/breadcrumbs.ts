@@ -14,6 +14,12 @@ export default defineType({
 			of: [{ type: 'link', initialValue: { type: 'internal' } }],
 			description: 'Current page is automatically included',
 		}),
+		defineField({
+			name: 'hideCurrent',
+			title: 'Hide current page',
+			type: 'boolean',
+			initialValue: false,
+		}),
 	],
 	preview: {
 		select: {
