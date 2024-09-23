@@ -1,6 +1,6 @@
 import moduleProps from '@/lib/moduleProps'
 import { cn } from '@/lib/utils'
-import { PortableText } from '@portabletext/react'
+import { PortableText } from 'next-sanity'
 
 export default function AccordionList({
 	intro,

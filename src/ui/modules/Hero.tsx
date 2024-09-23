@@ -1,5 +1,5 @@
 import Img, { Source } from '@/ui/Img'
-import { PortableText } from '@portabletext/react'
+import { PortableText } from 'next-sanity'
 import CTAList from '@/ui/CTAList'
 import Pretitle from '@/ui/Pretitle'
 import Reputation from '@/ui/Reputation'

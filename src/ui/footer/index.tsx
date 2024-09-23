@@ -1,7 +1,7 @@
 import { getSite } from '@/lib/sanity/queries'
 import Navigation from './Navigation'
 import Social from '@/ui/Social'
-import { PortableText } from '@portabletext/react'
+import { PortableText } from 'next-sanity'
 import Link from 'next/link'
 import Img from '@/ui/Img'
 

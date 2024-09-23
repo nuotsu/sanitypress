@@ -1,5 +1,5 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
-import { PortableText } from '@portabletext/react'
+import { PortableText } from 'next-sanity'
 import Pretitle from '@/ui/Pretitle'
 import Img from '@/ui/Img'
 import { cn } from '@/lib/utils'

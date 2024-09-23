@@ -1,4 +1,4 @@
-import { PortableText } from '@portabletext/react'
+import { PortableText } from 'next-sanity'
 
 export type RichtextSubModuleType = Sanity.Module<'richtext'> &
 	Partial<{

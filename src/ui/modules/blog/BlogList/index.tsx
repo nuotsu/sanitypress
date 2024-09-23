@@ -1,5 +1,5 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
-import { PortableText } from '@portabletext/react'
+import { PortableText } from 'next-sanity'
 import FilterList from '@/ui/modules/blog/BlogList/FilterList'
 import List from './List'
 import { stegaClean } from '@sanity/client/stega'

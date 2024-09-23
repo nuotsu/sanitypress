@@ -1,6 +1,6 @@
 {
 	"name": "sanitypress",
-	"version": "4.7.3",
+	"version": "4.7.4",
 	"description": "A Next.js + Sanity.io Starter Template",
 	"author": "nuotsu <mitchell@nuotsu.dev> (https://nuotsu.dev)",
 	"license": "ISC",
@@ -12,7 +12,6 @@
 	},
 	"dependencies": {
 		"@next/third-parties": "^14.2.13",
-		"@portabletext/react": "^3.1.0",
 		"@portabletext/to-html": "^2.0.13",
 		"@sanity/code-input": "^4.1.4",
 		"@sanity/dashboard": "^4.0.0",

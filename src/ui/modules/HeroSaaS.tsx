@@ -1,4 +1,4 @@
-import { PortableText } from '@portabletext/react'
+import { PortableText } from 'next-sanity'
 import Pretitle from '@/ui/Pretitle'
 import Reputation from '@/ui/Reputation'
 import CTAList from '@/ui/CTAList'
