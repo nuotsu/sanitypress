@@ -4,6 +4,7 @@ import Reputation from '@/ui/Reputation'
 import CTAList from '@/ui/CTAList'
 import Img from '@/ui/Img'
 import { cn } from '@/lib/utils'
+import moduleProps from '@/lib/moduleProps'
 
 export default function HeroSaaS({
 	pretitle,
@@ -11,6 +12,7 @@ export default function HeroSaaS({
 	ctas,
 	reputation,
 	image,
+	...props
 }: Partial<{
 	pretitle: string
 	content: any
@@ -19,9 +21,10 @@ export default function HeroSaaS({
 	image: Sanity.Image & {
 		faded?: boolean
 	}
-}>) {
+}> &
+	Sanity.Module) {
 	return (
-		<section className="section space-y-8 text-center">
+		<section className="section space-y-8 text-center" {...moduleProps(props)}>
 			<div className="richtext mx-auto max-w-2xl text-balance">
 				<Pretitle>{pretitle}</Pretitle>
 				<PortableText value={content} />

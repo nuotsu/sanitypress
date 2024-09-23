@@ -7,7 +7,11 @@ export default defineType({
 	title: 'Hero (SaaS)',
 	icon: TfiLayoutCtaCenter,
 	type: 'object',
-	groups: [{ name: 'content', default: true }, { name: 'image' }],
+	groups: [
+		{ name: 'content', default: true },
+		{ name: 'image' },
+		{ name: 'options' },
+	],
 	fields: [
 		defineField({
 			name: 'pretitle',
@@ -60,6 +64,12 @@ export default defineType({
 					initialValue: 'lazy',
 				}),
 			],
+		}),
+		defineField({
+			name: 'uid',
+			title: 'Unique Identifier',
+			type: 'uid',
+			group: 'options',
 		}),
 	],
 	preview: {

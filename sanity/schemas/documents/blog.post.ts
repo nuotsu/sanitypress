@@ -68,12 +68,15 @@ export default defineType({
 		select: {
 			featured: 'featured',
 			title: 'metadata.title',
-			subtitle: 'publishDate',
+			publishDate: 'publishDate',
+			slug: 'metadata.slug.current',
 			media: 'metadata.image',
 		},
-		prepare: ({ title, subtitle, media, featured }) => ({
+		prepare: ({ title, publishDate, slug, media, featured }) => ({
 			title: [featured && '★', title].filter(Boolean).join(' '),
-			subtitle,
+			subtitle: [publishDate || 'No date', slug && `/${slug}`]
+				.filter(Boolean)
+				.join(' — '),
 			media,
 		}),
 	},

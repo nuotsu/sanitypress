@@ -1,4 +1,4 @@
-import uid from '@/lib/uid'
+import moduleProps from '@/lib/moduleProps'
 import Date from '@/ui/Date'
 import Categories from './Categories'
 import ReadTime from './ReadTime'
@@ -16,7 +16,7 @@ export default function PostContent({
 	const showTOC = !post.hideTableOfContents || !!post.headings?.length
 
 	return (
-		<article id={uid(props)}>
+		<article {...moduleProps(props)}>
 			<header className="section space-y-6 text-center">
 				<h1 className="h1 text-balance">{post.metadata.title}</h1>
 				<div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">

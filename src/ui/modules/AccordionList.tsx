@@ -1,4 +1,4 @@
-import uid from '@/lib/uid'
+import moduleProps from '@/lib/moduleProps'
 import { cn } from '@/lib/utils'
 import { PortableText } from '@portabletext/react'
 
@@ -19,13 +19,13 @@ export default function AccordionList({
 	Sanity.Module) {
 	return (
 		<section
-			id={uid(props)}
 			className={cn(
 				'section',
 				layout === 'horizontal' ? 'grid gap-8 md:grid-cols-2' : 'space-y-8',
 			)}
 			itemScope
 			itemType="https://schema.org/FAQPage"
+			{...moduleProps(props)}
 		>
 			<header
 				className={cn(

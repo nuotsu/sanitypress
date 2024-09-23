@@ -7,10 +7,7 @@ export default defineType({
 	title: 'Accordion list',
 	type: 'object',
 	icon: VscQuestion,
-	groups: [
-		{ name: 'content', title: 'Content', default: true },
-		{ name: 'options', title: 'Options' },
-	],
+	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fields: [
 		defineField({
 			name: 'intro',

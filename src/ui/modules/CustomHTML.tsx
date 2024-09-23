@@ -1,6 +1,6 @@
 'use client'
 
-import uid from '@/lib/uid'
+import moduleProps from '@/lib/moduleProps'
 import { stegaClean } from '@sanity/client/stega'
 import { useEffect, useRef, useState } from 'react'
 
@@ -8,14 +8,13 @@ export default function CustomHTML({
 	className,
 	html,
 	...props
-}: Partial<
-	Sanity.Module & {
-		className: string
-		html: {
-			code: string
-		}
+}: Partial<{
+	className: string
+	html: {
+		code: string
 	}
->) {
+}> &
+	Sanity.Module) {
 	const ref = useRef<HTMLElement>(null)
 	const [firstRender, setFirstRender] = useState(true)
 
@@ -24,9 +23,9 @@ export default function CustomHTML({
 	if (!html.code.includes('<script'))
 		return (
 			<section
-				id={uid(props)}
 				className={stegaClean(className)}
 				dangerouslySetInnerHTML={{ __html: stegaClean(html.code) }}
+				{...moduleProps(props)}
 			/>
 		)
 
@@ -44,5 +43,11 @@ export default function CustomHTML({
 		}
 	}, [ref.current, html.code])
 
-	return <section ref={ref} id={uid(props)} className={stegaClean(className)} />
+	return (
+		<section
+			ref={ref}
+			className={stegaClean(className)}
+			{...moduleProps(props)}
+		/>
+	)
 }
