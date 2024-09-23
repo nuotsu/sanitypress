@@ -8,13 +8,14 @@ export default function CustomHTML({
 	className,
 	html,
 	...props
-}: Partial<{
-	className: string
-	html: {
-		code: string
-	}
-}> &
-	Sanity.Module) {
+}: Partial<
+	{
+		className: string
+		html: {
+			code: string
+		}
+	} & Sanity.Module
+>) {
 	const ref = useRef<HTMLElement>(null)
 	const [firstRender, setFirstRender] = useState(true)
 
