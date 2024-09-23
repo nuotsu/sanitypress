@@ -8,9 +8,11 @@ import { stegaClean } from '@sanity/client/stega'
 export default async function BlogFrontpage({
 	mainPost,
 	showFeaturedPostsFirst,
+	itemsPerPage,
 }: Partial<{
 	mainPost: 'recent' | 'featured'
 	showFeaturedPostsFirst: boolean
+	itemsPerPage: number
 }>) {
 	const posts = await fetchSanity<Sanity.BlogPost[]>(
 		groq`*[_type == 'blog.post']|order(publishDate desc){
@@ -34,6 +36,7 @@ export default async function BlogFrontpage({
 			<FilterList />
 			<Paginated
 				posts={sortFeaturedPosts(otherPosts, showFeaturedPostsFirst)}
+				itemsPerPage={itemsPerPage}
 			/>
 		</section>
 	)

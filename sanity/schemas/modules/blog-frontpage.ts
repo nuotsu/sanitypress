@@ -21,14 +21,24 @@ export default defineType({
 		}),
 		defineField({
 			name: 'showFeaturedPostsFirst',
+			description: 'In the list below the main post',
 			type: 'boolean',
 			initialValue: true,
-			hidden: ({ parent }) => parent?.mainPost === 'featured',
+		}),
+		defineField({
+			name: 'itemsPerPage',
+			type: 'number',
+			initialValue: 6,
+			validation: (Rule) => Rule.required().min(1),
 		}),
 	],
 	preview: {
-		prepare: () => ({
+		select: {
+			mainPost: 'mainPost',
+		},
+		prepare: ({ mainPost }) => ({
 			title: 'Blog frontpage',
+			subtitle: `Main post: ${mainPost}`,
 		}),
 	},
 })
