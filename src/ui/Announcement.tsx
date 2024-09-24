@@ -27,7 +27,7 @@ export default async function Announcement() {
 	if (!active) return null
 
 	return (
-		<aside className="flex items-center justify-center gap-x-4 bg-ink p-2 text-center text-canvas max-md:text-sm md:gap-x-6">
+		<aside className="flex items-center justify-center gap-x-4 bg-accent p-2 text-center text-canvas max-md:text-sm md:gap-x-6">
 			<div className="anim-fade-to-r [&_a]:link text-balance">
 				<PortableText value={active.content} />
 			</div>
