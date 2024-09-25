@@ -38,6 +38,7 @@ export default defineType({
 				{ type: 'richtext-module' },
 				{ type: 'stat-list' },
 				{ type: 'step-list' },
+				{ type: 'tabbed-content' },
 				{ type: 'testimonial-list' },
 				{ type: 'testimonial.featured' },
 			],

@@ -36,6 +36,7 @@ import pricingList from './modules/pricing-list'
 import richtextModule from './modules/richtext-module'
 import statList from './modules/stat-list'
 import stepList from './modules/step-list'
+import tabbedContent from './modules/tabbed-content'
 import testimonialFeatured from './modules/testimonial.featured'
 import testimonialList from './modules/testimonial-list'
 
@@ -78,6 +79,7 @@ export const schemaTypes = [
 	richtextModule,
 	statList,
 	stepList,
+	tabbedContent,
 	testimonialFeatured,
 	testimonialList,
 ]

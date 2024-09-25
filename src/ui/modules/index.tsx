@@ -15,6 +15,7 @@ import PricingList from './PricingList'
 import RichtextModule from './RichtextModule'
 import StatList from './StatList'
 import StepList from './StepList'
+import TabbedContent from './TabbedContent'
 import TestimonialList from './TestimonialList'
 import TestimonialFeatured from './TestimonialFeatured'
 
@@ -71,6 +72,8 @@ export default function Modules({
 						return <StatList {...module} key={module._key} />
 					case 'step-list':
 						return <StepList {...module} key={module._key} />
+					case 'tabbed-content':
+						return <TabbedContent {...module} key={module._key} />
 					case 'testimonial-list':
 						return <TestimonialList {...module} key={module._key} />
 					case 'testimonial.featured':
