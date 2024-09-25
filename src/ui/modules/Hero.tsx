@@ -1,10 +1,9 @@
 import Img, { Source } from '@/ui/Img'
-import { PortableText } from 'next-sanity'
+import { PortableText, stegaClean } from 'next-sanity'
 import CTAList from '@/ui/CTAList'
 import Pretitle from '@/ui/Pretitle'
 import Reputation from '@/ui/Reputation'
 import { cn } from '@/lib/utils'
-import { stegaClean } from '@sanity/client/stega'
 import css from './Hero.module.css'
 
 export default function Hero({

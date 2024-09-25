@@ -1,8 +1,8 @@
 import { codeToHtml, splitLines } from 'shiki'
-import { stegaClean } from '@sanity/client/stega'
 import ClickToCopy from '@/ui/ClickToCopy'
 import css from './Code.module.css'
 import { cn } from '@/lib/utils'
+import { stegaClean } from 'next-sanity'
 
 export default async function Code({
 	value,

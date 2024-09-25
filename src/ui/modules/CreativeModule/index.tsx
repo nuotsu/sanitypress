@@ -1,4 +1,4 @@
-import { PortableText } from 'next-sanity'
+import { PortableText, stegaClean } from 'next-sanity'
 import CTAsSubModule, { type CTAsSubModuleType } from './CTAsSubModule'
 import CustomHTMLSubmodule, {
 	type CustomHTMLSubmoduleType,
@@ -9,7 +9,6 @@ import RichtextSubModule, {
 	type RichtextSubModuleType,
 } from './RichtextSubModule'
 import { cn } from '@/lib/utils'
-import { stegaClean } from '@sanity/client/stega'
 
 export default function CreativeModule({
 	intro,

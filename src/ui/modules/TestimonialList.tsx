@@ -1,5 +1,4 @@
-import { PortableText } from 'next-sanity'
-import { stegaClean } from '@sanity/client/stega'
+import { PortableText, stegaClean } from 'next-sanity'
 import Img from '@/ui/Img'
 import { cn } from '@/lib/utils'
 

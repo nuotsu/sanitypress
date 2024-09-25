@@ -1,7 +1,7 @@
 import TableOfContents from './TableOfContents'
 import Content from './Content'
 import { cn } from '@/lib/utils'
-import { stegaClean } from '@sanity/client/stega'
+import { stegaClean } from 'next-sanity'
 
 export default function RichtextModule({
 	content,

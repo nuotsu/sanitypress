@@ -1,5 +1,5 @@
 import Img from '@/ui/Img'
-import { stegaClean } from '@sanity/client/stega'
+import { stegaClean } from 'next-sanity'
 
 export default function Image({
 	value,

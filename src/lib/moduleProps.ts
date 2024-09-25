@@ -1,4 +1,4 @@
-import { stegaClean } from '@sanity/client/stega'
+import { stegaClean } from 'next-sanity'
 
 export default function ({ _type, uid, _key }: Partial<Sanity.Module>) {
 	return {

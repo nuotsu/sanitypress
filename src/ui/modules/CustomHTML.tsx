@@ -1,7 +1,7 @@
 'use client'
 
 import moduleProps from '@/lib/moduleProps'
-import { stegaClean } from '@sanity/client/stega'
+import { stegaClean } from 'next-sanity'
 import { useEffect, useRef, useState } from 'react'
 
 export default function CustomHTML({

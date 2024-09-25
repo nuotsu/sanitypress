@@ -1,7 +1,6 @@
-import { PortableText } from 'next-sanity'
+import { PortableText, stegaClean } from 'next-sanity'
 import Img from '@/ui/Img'
 import { cn } from '@/lib/utils'
-import { stegaClean } from '@sanity/client/stega'
 
 export default function FlagList({
 	intro,

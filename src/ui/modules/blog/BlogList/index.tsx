@@ -1,8 +1,7 @@
 import { fetchSanity, groq } from '@/lib/sanity/fetch'
-import { PortableText } from 'next-sanity'
+import { PortableText, stegaClean } from 'next-sanity'
 import FilterList from '@/ui/modules/blog/BlogList/FilterList'
 import List from './List'
-import { stegaClean } from '@sanity/client/stega'
 import { cn } from '@/lib/utils'
 
 export default async function BlogList({

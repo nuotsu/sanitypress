@@ -3,7 +3,7 @@ import FilterList from '../BlogList/FilterList'
 import PostPreviewLarge from '../PostPreviewLarge'
 import Paginated from './Paginated'
 import sortFeaturedPosts from './sortFeaturedPosts'
-import { stegaClean } from '@sanity/client/stega'
+import { stegaClean } from 'next-sanity'
 
 export default async function BlogFrontpage({
 	mainPost,

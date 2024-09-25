@@ -1,5 +1,4 @@
-import { PortableText } from 'next-sanity'
-import { stegaClean } from '@sanity/client/stega'
+import { PortableText, stegaClean } from 'next-sanity'
 
 export default function StatList({
 	intro,
