@@ -20,7 +20,6 @@ Visit [here](https://sanitypress.dev/studio-screenshots) for more Studio screens
 
 - [Key Features](#key-features)
 - [Getting Started](#getting-started)
-- [Staging](#staging)
 - [Helpful Resources (The SanityPress Blog)](https://sanitypress.dev/blog)
 - [External References](#external-references)
 
@@ -29,7 +28,7 @@ Visit [here](https://sanitypress.dev/studio-screenshots) for more Studio screens
 - [x] ✨ Modern Frontend Development with Next.js (App Router, RSC, Typescript) and Tailwind CSS.
 - [x] 📕 [Pre-configured Sanity schema](/sanity/schemas/index.ts) for rapid content structuring.
 - [x] 📘 [Pre-built frontend components](/next/src/ui/) for rapid website development.
-- [x] ✏️ [Visual editing](https://sanitypress.dev/blog/visual-editing) right inside the Embedded Sanity Studio.
+- [x] ✏️ [Visual editing](https://sanitypress.dev/blog/visual-editing) right inside the [Embedded Sanity Studio](https://sanitypress.dev/blog/why-you-should-embed-your-studio).
 - [x] 📜 Auto-generated Table of Contents component based on headings.
 - [x] ⌨️ Auto-generated [sitemap.xml](/next/src/app/sitemap.ts) and [blog rss.xml](/next/src/app/blog/rss.xml/route.ts).
 
