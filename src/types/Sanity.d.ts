@@ -47,6 +47,7 @@ declare global {
 			readTime: number
 			headings?: { style: string; text: string }[]
 			categories: BlogCategory[]
+			authors: Person[]
 			featured: boolean
 			hideTableOfContents: boolean
 			publishDate: string
@@ -65,6 +66,11 @@ declare global {
 				light: Image
 				dark: Image
 			}>
+		}>
+
+		type Person = SanityDocument<{
+			name: string
+			image?: Image
 		}>
 
 		type Pricing = SanityDocument<{

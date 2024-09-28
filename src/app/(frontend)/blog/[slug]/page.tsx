@@ -37,6 +37,7 @@ async function getPost(params: Props['params']) {
 				'text': pt::text(@)
 			},
 			categories[]->,
+			authors[]->,
 			metadata {
 				...,
 				'ogimage': image.asset->url + '?w=1200'

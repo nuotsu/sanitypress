@@ -3,6 +3,7 @@ import processUrl from '@/lib/processUrl'
 import Img from '@/ui/Img'
 import Date from '@/ui/Date'
 import Categories from './Categories'
+import Authors from './Authors'
 
 export default function PostPreviewLarge({ post }: { post: Sanity.BlogPost }) {
 	return (
@@ -41,6 +42,13 @@ export default function PostPreviewLarge({ post }: { post: Sanity.BlogPost }) {
 						categories={post.categories}
 					/>
 				</div>
+
+				{post.authors?.length && (
+					<Authors
+						className="flex flex-wrap items-center gap-4"
+						authors={post.authors}
+					/>
+				)}
 			</div>
 		</Link>
 	)

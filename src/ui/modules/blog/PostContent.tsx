@@ -1,6 +1,7 @@
 import moduleProps from '@/lib/moduleProps'
 import Date from '@/ui/Date'
 import Categories from './Categories'
+import Authors from './Authors'
 import ReadTime from './ReadTime'
 import TableOfContents from '@/ui/modules/RichtextModule/TableOfContents'
 import Content from '@/ui/modules/RichtextModule/Content'
@@ -27,6 +28,13 @@ export default function PostContent({
 					/>
 					<ReadTime value={post.readTime} />
 				</div>
+
+				{post.authors?.length && (
+					<Authors
+						className="flex flex-wrap items-center justify-center gap-4"
+						authors={post.authors}
+					/>
+				)}
 			</header>
 
 			<div

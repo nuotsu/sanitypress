@@ -7,6 +7,7 @@ import navigation from './documents/navigation'
 import announcement from './documents/announcement'
 import redirect from './documents/redirect'
 import logo from './documents/logo'
+import person from './documents/person'
 import pricing from './documents/pricing'
 import reputation from './documents/reputation'
 import testimonial from './documents/testimonial'
@@ -50,6 +51,7 @@ export const schemaTypes = [
 	announcement,
 	redirect,
 	logo,
+	person,
 	pricing,
 	reputation,
 	testimonial,

@@ -31,7 +31,8 @@ export default async function BlogList({
 			${limit ? `[0...${limit}]` : ''}
 			{
 				...,
-				categories[]->
+				categories[]->,
+				authors[]->
 			}
 		`,
 		{
@@ -56,7 +57,7 @@ export default async function BlogList({
 			<List
 				posts={posts}
 				className={cn(
-					'gap-x-6 gap-y-12',
+					'items-stretch gap-x-8 gap-y-12',
 					stegaClean(layout) === 'grid'
 						? 'grid md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]'
 						: 'carousel max-xl:full-bleed md:overflow-fade-r pb-4 [--size:320px] max-xl:px-4',
