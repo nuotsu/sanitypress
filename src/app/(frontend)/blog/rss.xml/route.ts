@@ -21,6 +21,7 @@ export async function GET() {
 				_type,
 				body,
 				publishDate,
+				authors[]->,
 				metadata
 			},
 			'copyright': pt::text(*[_type == 'site'][0].copyright)
@@ -55,6 +56,9 @@ export async function GET() {
 			id: processUrl(post),
 			link: processUrl(post),
 			date: new Date(post.publishDate),
+			author: post.authors?.map((author) => ({
+				name: author.name,
+			})),
 			content: toHTML(post.body, {
 				components: {
 					types: {
