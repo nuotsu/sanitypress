@@ -26,6 +26,7 @@ import blogList from './modules/blog-list'
 import blogPostContent from './modules/blog-post-content'
 import breadcrumbs from './modules/breadcrumbs'
 import callout from './modules/callout'
+import cardList from './modules/card-list'
 import creativeModule from './modules/creative'
 import customHtml from './modules/custom-html'
 import flagList from './modules/flag-list'
@@ -70,6 +71,7 @@ export const schemaTypes = [
 	blogPostContent,
 	breadcrumbs,
 	callout,
+	cardList,
 	creativeModule,
 	customHtml,
 	flagList,

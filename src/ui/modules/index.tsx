@@ -3,6 +3,7 @@ import BlogFrontpage from './blog/BlogFrontpage'
 import BlogList from './blog/BlogList'
 import Breadcrumbs from './Breadcrumbs'
 import Callout from './Callout'
+import CardList from './CardList'
 import CreativeModule from './CreativeModule'
 import CustomHTML from './CustomHTML'
 import FlagList from './FlagList'
@@ -50,6 +51,8 @@ export default function Modules({
 						)
 					case 'callout':
 						return <Callout {...module} key={module._key} />
+					case 'card-list':
+						return <CardList {...module} key={module._key} />
 					case 'creative-module':
 						return <CreativeModule {...module} key={module._key} />
 					case 'custom-html':

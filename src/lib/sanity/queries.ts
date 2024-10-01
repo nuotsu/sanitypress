@@ -47,6 +47,12 @@ export const modulesQuery = groq`
 	},
 	_type == 'blog-list' => { filteredCategory-> },
 	_type == 'breadcrumbs' => { crumbs[]{ ${linkQuery} } },
+	_type == 'card-list' => {
+		cards[]{
+			...,
+			ctas[]{ ${ctaQuery} }
+		}
+	},
 	_type == 'creative-module' => {
 		modules[]{
 			...,
