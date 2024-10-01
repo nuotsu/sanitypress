@@ -31,7 +31,7 @@ export default function TestimonialFeatured({
 				</div>
 
 				<Img
-					className="max-w-[200px] shrink-0 rounded"
+					className="mx-auto max-w-[200px] shrink-0 rounded"
 					image={author?.image}
 					imageWidth={400}
 					alt={
