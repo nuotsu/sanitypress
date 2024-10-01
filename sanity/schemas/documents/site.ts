@@ -75,6 +75,9 @@ export default defineType({
 			description:
 				'Used for social sharing previews. Set page-specific images in Page documents.',
 			type: 'image',
+			options: {
+				hotspot: true,
+			},
 			group: 'general',
 		}),
 	],

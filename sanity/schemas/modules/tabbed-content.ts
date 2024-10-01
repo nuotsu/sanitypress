@@ -47,6 +47,9 @@ export default defineType({
 						defineField({
 							name: 'image',
 							type: 'image',
+							options: {
+								hotspot: true,
+							},
 							fields: [
 								defineField({
 									name: 'alt',

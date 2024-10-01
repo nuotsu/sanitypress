@@ -30,6 +30,9 @@ export default defineType({
 			name: 'image',
 			description: 'Used for social sharing previews',
 			type: 'image',
+			options: {
+				hotspot: true,
+			},
 		}),
 		defineField({
 			name: 'noIndex',
