@@ -42,7 +42,7 @@ export default function CardList({
 					<article className="flex flex-col gap-2 border p-4" key={key}>
 						{card.image && (
 							<figure>
-								<Img image={card.image} imageWidth={600} />
+								<Img className="w-full" image={card.image} imageWidth={600} />
 							</figure>
 						)}
 
