@@ -10,6 +10,12 @@ export default defineType({
 	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fields: [
 		defineField({
+			name: 'uid',
+			title: 'Unique Identifier',
+			type: 'uid',
+			group: 'options',
+		}),
+		defineField({
 			name: 'pretitle',
 			type: 'string',
 			group: 'content',

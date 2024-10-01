@@ -1,14 +1,16 @@
+import moduleProps from '@/lib/moduleProps'
 import Pretitle from '@/ui/Pretitle'
 import { PortableText, stegaClean } from 'next-sanity'
-import { cn } from '@/lib/utils'
 import Img from '@/ui/Img'
 import CTAList from '@/ui/CTAList'
+import { cn } from '@/lib/utils'
 
 export default function CardList({
 	pretitle,
 	intro,
 	cards,
 	layout,
+	...props
 }: Partial<{
 	pretitle: string
 	intro: any
@@ -18,11 +20,12 @@ export default function CardList({
 		ctas: Sanity.CTA[]
 	}>[]
 	layout: 'grid' | 'carousel'
-}>) {
+}> &
+	Sanity.Module) {
 	const isCarousel = stegaClean(layout) === 'carousel'
 
 	return (
-		<section className="section space-y-12">
+		<section className="section space-y-12" {...moduleProps(props)}>
 			{(pretitle || intro) && (
 				<header className="richtext text-center">
 					<Pretitle>{pretitle}</Pretitle>
@@ -42,7 +45,11 @@ export default function CardList({
 					<article className="flex flex-col gap-2 border p-4" key={key}>
 						{card.image && (
 							<figure>
-								<Img className="w-full" image={card.image} imageWidth={600} />
+								<Img
+									className="aspect-video w-full object-cover"
+									image={card.image}
+									imageWidth={600}
+								/>
 							</figure>
 						)}
 

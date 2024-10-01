@@ -14,6 +14,12 @@ export default defineType({
 	],
 	fields: [
 		defineField({
+			name: 'uid',
+			title: 'Unique Identifier',
+			type: 'uid',
+			group: 'options',
+		}),
+		defineField({
 			name: 'pretitle',
 			type: 'string',
 			group: 'content',
@@ -64,12 +70,6 @@ export default defineType({
 					initialValue: 'lazy',
 				}),
 			],
-		}),
-		defineField({
-			name: 'uid',
-			title: 'Unique Identifier',
-			type: 'uid',
-			group: 'options',
 		}),
 	],
 	preview: {
