@@ -10,14 +10,12 @@ export default function HeroSaaS({
 	pretitle,
 	content,
 	ctas,
-	reputation,
 	image,
 	...props
 }: Partial<{
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
-	reputation: Sanity.Reputation
 	image: Sanity.Image & {
 		faded?: boolean
 	}
@@ -27,8 +25,19 @@ export default function HeroSaaS({
 		<section className="section space-y-8 text-center" {...moduleProps(props)}>
 			<div className="richtext mx-auto max-w-2xl text-balance">
 				<Pretitle>{pretitle}</Pretitle>
-				<PortableText value={content} />
-				<Reputation className="!mt-4 justify-center" reputation={reputation} />
+				<PortableText
+					value={content}
+					components={{
+						types: {
+							reputation: ({ value }) => (
+								<Reputation
+									className="!mt-4 justify-center"
+									reputation={value.reputation}
+								/>
+							),
+						},
+					}}
+				/>
 				<CTAList ctas={ctas} className="!mt-8 justify-center" />
 			</div>
 

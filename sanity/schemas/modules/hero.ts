@@ -1,11 +1,12 @@
 import { defineField, defineType } from 'sanity'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
-import { getBlockText } from '@sanity/src/utils'
+import { reputationBlock } from '../documents/reputation'
 import {
 	textAlign,
 	alignItems,
 	alignmentFieldset,
 } from '../fragments/fields/alignment'
+import { getBlockText } from '@sanity/src/utils'
 
 export default defineType({
 	name: 'hero',
@@ -27,7 +28,7 @@ export default defineType({
 		defineField({
 			name: 'content',
 			type: 'array',
-			of: [{ type: 'block' }],
+			of: [{ type: 'block' }, reputationBlock],
 			group: 'content',
 		}),
 		defineField({
@@ -35,12 +36,6 @@ export default defineType({
 			title: 'Call-to-actions',
 			type: 'array',
 			of: [{ type: 'cta' }],
-			group: 'content',
-		}),
-		defineField({
-			name: 'reputation',
-			type: 'reference',
-			to: [{ type: 'reputation' }],
 			group: 'content',
 		}),
 		defineField({

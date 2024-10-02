@@ -10,7 +10,6 @@ export default function Hero({
 	pretitle,
 	content,
 	ctas,
-	reputation,
 	bgImage,
 	bgImageMobile,
 	textAlign = 'center',
@@ -19,7 +18,6 @@ export default function Hero({
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
-	reputation: Sanity.Reputation
 	bgImage: Sanity.Image
 	bgImageMobile: Sanity.Image
 	textAlign: React.CSSProperties['textAlign']
@@ -70,15 +68,26 @@ export default function Hero({
 							{pretitle}
 						</Pretitle>
 
-						<PortableText value={content} />
-
-						<Reputation
-							className={cn('!mt-4', hasImage && '[&_strong]:text-amber-400', {
-								'justify-start': stegaClean(textAlign) === 'left',
-								'justify-center': stegaClean(textAlign) === 'center',
-								'justify-end': stegaClean(textAlign) === 'right',
-							})}
-							reputation={reputation}
+						<PortableText
+							value={content}
+							components={{
+								types: {
+									reputation: ({ value }) => (
+										<Reputation
+											className={cn(
+												'!mt-4',
+												hasImage && '[&_strong]:text-amber-400',
+												{
+													'justify-start': stegaClean(textAlign) === 'left',
+													'justify-center': stegaClean(textAlign) === 'center',
+													'justify-end': stegaClean(textAlign) === 'right',
+												},
+											)}
+											reputation={value.reputation}
+										/>
+									),
+								},
+							}}
 						/>
 
 						<CTAList

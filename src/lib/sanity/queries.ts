@@ -39,6 +39,10 @@ export async function getSite() {
 	return site
 }
 
+export const reputationBlockQuery = groq`
+	_type == 'reputation' => { reputation-> }
+`
+
 export const modulesQuery = groq`
 	...,
 	ctas[]{
@@ -62,9 +66,24 @@ export const modulesQuery = groq`
 			}
 		}
 	},
-	_type == 'hero' => { reputation-> },
-	_type == 'hero.saas' => { reputation-> },
-	_type == 'hero.split' => { reputation-> },
+	_type == 'hero' => {
+		content[]{
+			...,
+			${reputationBlockQuery}
+		}
+	},
+	_type == 'hero.saas' => {
+		content[]{
+			...,
+			${reputationBlockQuery}
+		}
+	},
+	_type == 'hero.split' => {
+		content[]{
+			...,
+			${reputationBlockQuery}
+		}
+	},
 	_type == 'logo-list' => { logos[]-> },
 	_type == 'pricing-list' => {
 		tiers[]->{

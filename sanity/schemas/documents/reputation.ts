@@ -1,7 +1,7 @@
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 import { VscStarFull } from 'react-icons/vsc'
 
-export default defineType({
+const reputation = defineType({
 	name: 'reputation',
 	title: 'Reputation',
 	icon: VscStarFull,
@@ -51,5 +51,28 @@ export default defineType({
 			title: title || repo || '★★★★★',
 			subtitle: subtitle || repo,
 		}),
+	},
+})
+
+export default reputation
+
+export const reputationBlock = defineArrayMember({
+	name: 'reputation',
+	type: 'object',
+	icon: VscStarFull,
+	fields: [
+		defineField({
+			name: 'reputation',
+			type: 'reference',
+			to: [{ type: 'reputation' }],
+		}),
+	],
+	preview: {
+		select: {
+			title: 'reputation.title',
+			subtitle: 'reputation.subtitle',
+			repo: 'reputation.repo',
+		},
+		prepare: reputation.preview?.prepare,
 	},
 })
