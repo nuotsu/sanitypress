@@ -99,4 +99,4 @@ Adjust frontend styles, edit/add Sanity schema and modules, and more.
 
 ---
 
-# Want to support future updates? [Purchase a theme](https://payhip.com/SanityPress) or [buy me a coffee ☕!](https://buymeacoffee.com/nuotsu)
+## Want to support future updates? [Buy me a coffee ☕](https://buymeacoffee.com/nuotsu) or [🩷 Sponsor on GitHub](https://github.com/sponsors/nuotsu)!
