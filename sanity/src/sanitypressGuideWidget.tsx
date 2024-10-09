@@ -102,16 +102,16 @@ const linkGroups: Array<{
 		title: 'Guides',
 		links: [
 			{
-				label: 'Schema & Modules',
+				label: 'Sanity Schema',
 				url: 'https://sanitypress.dev/docs/schema-and-modules',
+			},
+			{
+				label: 'Built-in Modules',
+				url: 'https://sanitypress.dev/docs/schema-and-modules#builtin-modules',
 			},
 			{
 				label: 'Adding New Modules',
 				url: 'https://sanitypress.dev/blog/adding-new-modules',
-			},
-			{
-				label: 'Live Module Examples',
-				url: 'https://sanitypress.dev/playground',
 			},
 			{
 				label: 'Useful GROQ Queries',
