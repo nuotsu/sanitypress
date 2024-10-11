@@ -33,21 +33,23 @@ export default function PricingList({
 								</Pretitle>
 							</dt>
 
-							<dt className="flex flex-wrap items-end gap-x-2">
-								{!isNaN(tier.price.base) && (
-									<b className="h1">{formatPrice(tier.price.base)}</b>
-								)}
-								{tier.price.suffix && (
-									<span className={cn(isNaN(tier.price.base) && 'h1')}>
-										{tier.price.suffix}
-									</span>
-								)}
-								{tier.price.strikethrough && (
-									<s className="font-bold decoration-red-500">
-										{formatPrice(tier.price.strikethrough)}
-									</s>
-								)}
-							</dt>
+							{tier.price?.base !== undefined && (
+								<dt className="flex flex-wrap items-end gap-x-2">
+									{tier.price.base !== undefined && !isNaN(tier.price.base) && (
+										<b className="h1">{formatPrice(tier.price.base)}</b>
+									)}
+									{tier.price.suffix && (
+										<span className={cn(isNaN(tier.price.base) && 'h1')}>
+											{tier.price.suffix}
+										</span>
+									)}
+									{tier.price.strikethrough && (
+										<s className="font-bold decoration-red-500">
+											{formatPrice(tier.price?.strikethrough)}
+										</s>
+									)}
+								</dt>
+							)}
 						</div>
 
 						<dd>

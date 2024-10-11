@@ -77,7 +77,7 @@ declare global {
 			title: string
 			highlight?: string
 			price: {
-				base: number
+				base?: number
 				strikethrough?: number
 				suffix?: string
 			}
