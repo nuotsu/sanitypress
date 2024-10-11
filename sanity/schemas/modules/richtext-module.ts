@@ -14,6 +14,12 @@ export default defineType({
 	],
 	fields: [
 		defineField({
+			name: 'uid',
+			title: 'Unique Identifier',
+			type: 'uid',
+			group: 'options',
+		}),
+		defineField({
 			name: 'content',
 			type: 'array',
 			of: [
@@ -44,6 +50,13 @@ export default defineType({
 			},
 			hidden: ({ parent }) => !parent.tableOfContents,
 			initialValue: 'right',
+			group: 'options',
+		}),
+		defineField({
+			name: 'stretch',
+			type: 'boolean',
+			initialValue: false,
+			hidden: ({ parent }) => parent.tableOfContents,
 			group: 'options',
 		}),
 	],

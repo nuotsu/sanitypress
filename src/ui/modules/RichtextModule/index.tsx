@@ -1,3 +1,4 @@
+import moduleProps from '@/lib/moduleProps'
 import TableOfContents from './TableOfContents'
 import Content from './Content'
 import { cn } from '@/lib/utils'
@@ -7,24 +8,30 @@ export default function RichtextModule({
 	content,
 	tableOfContents,
 	tocPosition = 'right',
+	stretch,
 	headings,
+	...props
 }: Partial<{
 	content: any
 	tableOfContents: boolean
 	tocPosition: 'left' | 'right'
+	stretch: boolean
 	headings: {
 		style: string
 		text: string
 	}[]
-}>) {
-	const tocRight = tableOfContents && stegaClean(tocPosition) === 'right'
+}> &
+	Sanity.Module) {
+	const tocRight = stegaClean(tocPosition) === 'right'
 
 	return (
 		<section
 			className={cn(
 				'section grid gap-8',
-				tocRight ? 'lg:grid-cols-[1fr,auto]' : 'lg:grid-cols-[auto,1fr]',
+				tableOfContents &&
+					(tocRight ? 'lg:grid-cols-[1fr,auto]' : 'lg:grid-cols-[auto,1fr]'),
 			)}
+			{...moduleProps(props)}
 		>
 			{tableOfContents && (
 				<aside
@@ -37,7 +44,12 @@ export default function RichtextModule({
 				</aside>
 			)}
 
-			<Content value={content} className="max-w-screen-lg" />
+			<Content
+				value={content}
+				className={cn(
+					!tableOfContents && (stretch ? 'max-w-screen-lg' : 'max-w-screen-md'),
+				)}
+			/>
 		</section>
 	)
 }
