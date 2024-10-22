@@ -89,17 +89,20 @@ function generateSrcset(
 	const filtered = sizes.filter((size) => !width || size <= width)
 
 	return {
-		srcSet: filtered
-			.map(
-				(size) => `${urlFor(image).width(size).auto('format').url()} ${size}w`,
-			)
-			.join(', '),
+		srcSet:
+			filtered
+				.map(
+					(size) =>
+						`${urlFor(image).width(size).auto('format').url()} ${size}w`,
+				)
+				.join(', ') || undefined,
 
-		sizes: filtered
-			.map(
-				(size, i) =>
-					`${i < filtered.length - 1 ? `(max-width: ${size + 1}px) ` : ''}${size}px`,
-			)
-			.join(', '),
+		sizes:
+			filtered
+				.map(
+					(size, i) =>
+						`${i < filtered.length - 1 ? `(max-width: ${size + 1}px) ` : ''}${size}px`,
+				)
+				.join(', ') || undefined,
 	}
 }
