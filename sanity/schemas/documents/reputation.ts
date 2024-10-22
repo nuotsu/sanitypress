@@ -57,7 +57,7 @@ const reputation = defineType({
 export default reputation
 
 export const reputationBlock = defineArrayMember({
-	name: 'reputation',
+	name: 'reputation-block',
 	type: 'object',
 	icon: VscStarFull,
 	fields: [

@@ -40,7 +40,7 @@ export async function getSite() {
 }
 
 export const reputationBlockQuery = groq`
-	_type == 'reputation' => { reputation-> }
+	_type == 'reputation-block' => { reputation-> }
 `
 
 export const modulesQuery = groq`

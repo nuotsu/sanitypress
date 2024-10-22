@@ -9,13 +9,11 @@ export default function HeroSplit({
 	pretitle,
 	content,
 	ctas,
-	reputation,
 	image,
 }: Partial<{
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
-	reputation: Sanity.Reputation
 	image: Sanity.Image & {
 		onRight?: boolean
 		onBottom?: boolean
@@ -39,7 +37,7 @@ export default function HeroSplit({
 					value={content}
 					components={{
 						types: {
-							reputation: ({ value }) => (
+							'reputation-block': ({ value }) => (
 								<Reputation className="!mt-4" reputation={value.reputation} />
 							),
 						},

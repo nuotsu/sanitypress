@@ -72,7 +72,7 @@ export default function Hero({
 							value={content}
 							components={{
 								types: {
-									reputation: ({ value }) => (
+									'reputation-block': ({ value }) => (
 										<Reputation
 											className={cn(
 												'!mt-4',

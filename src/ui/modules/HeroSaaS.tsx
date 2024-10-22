@@ -29,7 +29,7 @@ export default function HeroSaaS({
 					value={content}
 					components={{
 						types: {
-							reputation: ({ value }) => (
+							'reputation-block': ({ value }) => (
 								<Reputation
 									className="!mt-4 justify-center"
 									reputation={value.reputation}
