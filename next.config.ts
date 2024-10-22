@@ -1,5 +1,5 @@
-const { createClient } = require('next-sanity')
-const groq = require('groq')
+import { createClient, groq } from 'next-sanity'
+import type { NextConfig } from 'next'
 
 const client = createClient({
 	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -8,8 +8,7 @@ const client = createClient({
 	useCdn: true,
 })
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
 	images: {
 		remotePatterns: [
 			{
@@ -34,4 +33,4 @@ const nextConfig = {
 	// },
 }
 
-module.exports = nextConfig
+export default nextConfig

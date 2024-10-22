@@ -3,7 +3,7 @@ import dev from '@/lib/env'
 import { draftMode } from 'next/headers'
 import type { QueryParams, QueryOptions } from 'next-sanity'
 
-export { default as groq } from 'groq'
+export { groq } from 'next-sanity'
 
 export async function fetchSanity<T = any>(
 	query: string,
