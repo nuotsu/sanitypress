@@ -8,6 +8,8 @@ export default function CTA({
 	style,
 	className,
 	children,
+	_type,
+	_key,
 	...rest
 }: Sanity.CTA & React.ComponentProps<'a'>) {
 	const props = {

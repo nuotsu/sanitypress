@@ -7,8 +7,7 @@ import { urlFor } from '@/lib/sanity/urlFor'
 import { stegaClean } from 'next-sanity'
 
 const SIZES = [
-	120, 160, 200, 240, 320, 400, 480, 520, 560, 600, 640, 800, 960, 1280, 1440,
-	1600, 1800, 2000,
+	120, 240, 360, 480, 640, 720, 800, 880, 960, 1280, 1440, 1600, 1800, 2000,
 ]
 
 export default function Img({
@@ -35,9 +34,7 @@ export default function Img({
 	return (
 		<img
 			src={src}
-			srcSet={
-				generateSrcset(image, { width: imageWidth, sizes: imageSizes }) || src
-			}
+			{...generateSrcset(image, { width: imageWidth, sizes: imageSizes })}
 			width={width}
 			height={height}
 			alt={image.alt || alt}
@@ -71,9 +68,7 @@ export function Source({
 
 	return (
 		<source
-			srcSet={
-				generateSrcset(image, { width: imageWidth, sizes: imageSizes }) || src
-			}
+			{...generateSrcset(image, { width: imageWidth, sizes: imageSizes })}
 			width={width}
 			height={height}
 			media={media}
@@ -91,12 +86,20 @@ function generateSrcset(
 		sizes: number[]
 	},
 ) {
-	return (
-		sizes
-			.filter((size) => !width || size <= width)
+	const filtered = sizes.filter((size) => !width || size <= width)
+
+	return {
+		srcSet: filtered
 			.map(
 				(size) => `${urlFor(image).width(size).auto('format').url()} ${size}w`,
 			)
-			.join(', ') || undefined
-	)
+			.join(', '),
+
+		sizes: filtered
+			.map(
+				(size, i) =>
+					`${i < filtered.length - 1 ? `(max-width: ${size + 1}px) ` : ''}${size}px`,
+			)
+			.join(', '),
+	}
 }

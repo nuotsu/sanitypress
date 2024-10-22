@@ -105,6 +105,8 @@ declare global {
 		// objects
 
 		type CTA = {
+			readonly _type?: 'cta'
+			_key?: string
 			link?: Link
 			style?: string
 		}

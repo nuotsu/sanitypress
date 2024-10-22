@@ -43,6 +43,7 @@ export default function HeroSaaS({
 
 			<Img
 				image={image}
+				imageWidth={1800}
 				className={cn(
 					'anim-fade-to-t [animation-duration:1s]',
 					image?.faded &&
