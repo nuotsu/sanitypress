@@ -5,7 +5,7 @@ import type { QueryParams, QueryOptions } from 'next-sanity'
 
 export { default as groq } from 'groq'
 
-export function fetchSanity<T = any>(
+export async function fetchSanity<T = any>(
 	query: string,
 	{
 		params = {},
@@ -14,7 +14,8 @@ export function fetchSanity<T = any>(
 		params?: QueryParams
 	} & QueryOptions['next'] = {},
 ) {
-	const preview = dev || draftMode().isEnabled
+	const isDraft = (await draftMode()).isEnabled
+	const preview = dev || isDraft
 
 	return client.fetch<T>(
 		query,

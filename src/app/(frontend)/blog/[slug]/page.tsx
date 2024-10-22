@@ -7,13 +7,13 @@ import processMetadata from '@/lib/processMetadata'
 
 export default async function Page({ params }: Props) {
 	const page = await getPageTemplate()
-	const post = await getPost(params)
+	const post = await getPost(await params)
 	if (!page || !post) notFound()
 	return <Modules modules={page?.modules} page={page} post={post} />
 }
 
 export async function generateMetadata({ params }: Props) {
-	const post = await getPost(params)
+	const post = await getPost(await params)
 	if (!post) notFound()
 	return processMetadata(post)
 }
@@ -26,7 +26,7 @@ export async function generateStaticParams() {
 	return slugs.map((slug) => ({ slug }))
 }
 
-async function getPost(params: Props['params']) {
+async function getPost(params: { slug?: string }) {
 	return await fetchSanity<Sanity.BlogPost>(
 		groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{
 			...,
@@ -62,5 +62,5 @@ async function getPageTemplate() {
 }
 
 type Props = {
-	params: { slug?: string }
+	params: Promise<{ slug?: string }>
 }
