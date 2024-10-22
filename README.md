@@ -1,4 +1,4 @@
-# SanityPress
+# 🖤 SanityPress
 
 > _Ready, Set, Impress._
 
