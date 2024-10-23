@@ -11,7 +11,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@next/third-parties": "^15.0.0",
+		"@next/third-parties": "^15.0.1",
 		"@portabletext/to-html": "^2.0.13",
 		"@sanity/code-input": "^4.1.4",
 		"@sanity/dashboard": "^4.1.0",
@@ -22,8 +22,8 @@
 		"@vercel/speed-insights": "^1.0.13",
 		"clsx": "^2.1.1",
 		"feed": "^4.2.2",
-		"next": "^15.0.0",
-		"next-sanity": "^9.7.0",
+		"next": "^15.0.1",
+		"next-sanity": "^9.8.0",
 		"next-sanity-image": "^6.1.1",
 		"octokit": "^4.0.2",
 		"react": "^18",
@@ -41,8 +41,8 @@
 	},
 	"devDependencies": {
 		"@sanity/eslint-config-studio": "^4.0.0",
-		"@types/node": "^22.7.8",
-		"@types/react": "^18.3.11",
+		"@types/node": "^22.7.9",
+		"@types/react": "^18.3.12",
 		"@types/react-dom": "^18.3.1",
 		"autoprefixer": "^10.4.20",
 		"eslint": "^9.13.0",
