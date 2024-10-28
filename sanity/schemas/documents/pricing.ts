@@ -60,9 +60,9 @@ export default defineType({
 			return {
 				title,
 				subtitle: [
-					price.base || 'Free',
-					price.strikethrough && `(${price.strikethrough})`,
-					price.suffix,
+					price?.base || 'Free',
+					price?.strikethrough && `(${price.strikethrough})`,
+					price?.suffix,
 				]
 					.filter(Boolean)
 					.join(' '),
