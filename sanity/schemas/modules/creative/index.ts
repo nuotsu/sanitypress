@@ -57,10 +57,11 @@ export default defineType({
 							colSpan: 'colSpan',
 						},
 						prepare: ({ subModules, colSpan }) => ({
-							title: subModules
-								.map((subModule: any) => subModule._type)
-								.filter(Boolean)
-								.join(' + '),
+							title:
+								subModules
+									?.map((subModule: any) => subModule?._type)
+									?.filter(Boolean)
+									?.join(' + ') || 'Empty',
 							subtitle: colSpan > 1 ? `${colSpan}-column span` : undefined,
 						}),
 					},
