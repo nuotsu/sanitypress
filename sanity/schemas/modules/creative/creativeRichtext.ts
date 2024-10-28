@@ -8,6 +8,10 @@ export default defineArrayMember({
 	type: 'object',
 	fields: [
 		defineField({
+			name: 'pretitle',
+			type: 'string',
+		}),
+		defineField({
 			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],
