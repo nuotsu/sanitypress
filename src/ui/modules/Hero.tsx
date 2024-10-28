@@ -4,7 +4,6 @@ import CTAList from '@/ui/CTAList'
 import Pretitle from '@/ui/Pretitle'
 import Reputation from '@/ui/Reputation'
 import { cn } from '@/lib/utils'
-import css from './Hero.module.css'
 
 export default function Hero({
 	pretitle,
@@ -50,7 +49,6 @@ export default function Hero({
 						className={cn(
 							'richtext relative isolate max-w-xl [&_:is(h1,h2)]:text-balance',
 							hasImage && 'text-shadow',
-							hasImage && css.txt,
 							{
 								'mb-8': stegaClean(alignItems) === 'start',
 								'my-auto': stegaClean(alignItems) === 'center',

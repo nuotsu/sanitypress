@@ -1,9 +1,0 @@
-.txt::before {
-	content: '';
-	position: absolute;
-	inset: -50%;
-	z-index: -1;
-	mask-image: radial-gradient(ellipse at center, black 25%, transparent 50%);
-
-	@apply backdrop-brightness-75;
-}
