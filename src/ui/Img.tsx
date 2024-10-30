@@ -4,6 +4,7 @@ import {
 } from 'next-sanity-image'
 import client from '@/lib/sanity/client'
 import { urlFor } from '@/lib/sanity/urlFor'
+import { preload } from 'react-dom'
 import { stegaClean } from 'next-sanity'
 
 const SIZES = [
@@ -30,6 +31,10 @@ export default function Img({
 		image,
 		imageWidth ? { imageBuilder: (b) => b.width(imageWidth) } : options,
 	)
+
+	if (stegaClean(image.loading) === 'eager') {
+		preload(src, { as: 'image' })
+	}
 
 	return (
 		<img
@@ -65,6 +70,10 @@ export function Source({
 		image,
 		imageWidth ? { imageBuilder: (b) => b.width(imageWidth) } : options,
 	)
+
+	if (stegaClean(image.loading) === 'eager') {
+		preload(src, { as: 'image' })
+	}
 
 	return (
 		<source

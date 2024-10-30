@@ -69,6 +69,17 @@ export default defineType({
 			options: {
 				hotspot: true,
 			},
+			fields: [
+				defineField({
+					name: 'loading',
+					type: 'string',
+					options: {
+						list: ['lazy', 'eager'],
+						layout: 'radio',
+					},
+					initialValue: 'lazy',
+				}),
+			],
 			group: 'image',
 		}),
 		defineField({
