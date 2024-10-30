@@ -18,7 +18,7 @@ export default defineType({
 		{ name: 'image' },
 		{ name: 'options' },
 	],
-	fieldsets: [alignmentFieldset],
+	fieldsets: [alignmentFieldset, { name: 'image', options: { columns: 2 } }],
 	fields: [
 		defineField({
 			name: 'pretitle',
@@ -61,6 +61,7 @@ export default defineType({
 				}),
 			],
 			group: 'image',
+			fieldset: 'image',
 		}),
 		defineField({
 			name: 'bgImageMobile',
@@ -81,6 +82,7 @@ export default defineType({
 				}),
 			],
 			group: 'image',
+			fieldset: 'image',
 		}),
 		defineField({
 			...textAlign,
