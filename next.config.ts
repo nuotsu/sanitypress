@@ -4,7 +4,8 @@ import type { NextConfig } from 'next'
 const client = createClient({
 	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
 	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-	apiVersion: '2024-10-01',
+	// token: process.env.NEXT_PUBLIC_SANITY_TOKEN for private datasets
+	apiVersion: '2024-10-30',
 	useCdn: true,
 })
 
