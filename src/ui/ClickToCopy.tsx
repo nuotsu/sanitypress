@@ -8,7 +8,7 @@ export default function ClickToCopy({
 	...props
 }: {
 	value?: string
-} & React.ButtonHTMLAttributes<HTMLButtonElement>) {
+} & React.ComponentProps<'button'>) {
 	return (
 		<button
 			onClick={() => {

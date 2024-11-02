@@ -1,6 +1,5 @@
 import Img from '@/ui/Img'
 import { stegaClean } from 'next-sanity'
-import type { ComponentProps } from 'react'
 
 export type ImageSubModuleType = Sanity.Module<'image'> &
 	Sanity.Image &
@@ -13,7 +12,7 @@ export default function ImageSubModule({
 	...props
 }: {
 	module: ImageSubModuleType
-} & Omit<ComponentProps<typeof Img>, 'image'>) {
+} & Omit<React.ComponentProps<typeof Img>, 'image'>) {
 	return (
 		<figure>
 			<Img

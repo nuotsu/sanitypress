@@ -1,11 +1,10 @@
 import Img from '@/ui/Img'
 import { GoPerson } from 'react-icons/go'
-import type { ComponentProps } from 'react'
 
 export default function Authors({
 	authors,
 	...props
-}: { authors?: Sanity.Person[] } & ComponentProps<'dl'>) {
+}: { authors?: Sanity.Person[] } & React.ComponentProps<'dl'>) {
 	if (!authors?.length) return null
 
 	return (

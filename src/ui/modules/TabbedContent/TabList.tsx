@@ -3,11 +3,10 @@
 import { tabbedContentStore } from './store'
 import TabbedContent from '.'
 import { cn } from '@/lib/utils'
-import type { ComponentProps } from 'react'
 
 export default function TabList({
 	tabs,
-}: ComponentProps<typeof TabbedContent>) {
+}: React.ComponentProps<typeof TabbedContent>) {
 	const { active, setActive } = tabbedContentStore()
 
 	return (
