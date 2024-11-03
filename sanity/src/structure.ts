@@ -4,7 +4,7 @@ import type { StructureResolver } from 'sanity/structure'
 import { VscMultipleWindows, VscServerProcess } from 'react-icons/vsc'
 import { BsDatabaseAdd } from 'react-icons/bs'
 
-const structure: StructureResolver = (S, context) =>
+export const structure: StructureResolver = (S) =>
 	S.list()
 		.title('Content')
 		.items([
@@ -29,5 +29,3 @@ const structure: StructureResolver = (S, context) =>
 				S.documentTypeListItem('testimonial').title('Testimonials'),
 			]).icon(BsDatabaseAdd),
 		])
-
-export default structure

@@ -1,3 +1,5 @@
+'use client'
+
 import { Box, Card, Code, Flex, Heading, Label, Stack, Text } from '@sanity/ui'
 import pkg from '../../package.json'
 import { VscGithubInverted } from 'react-icons/vsc'
@@ -14,7 +16,7 @@ export function sanitypressGuideWidget(
 	}
 }
 
-async function Component() {
+function Component() {
 	return (
 		<Card paddingY={4}>
 			<Stack space={4}>

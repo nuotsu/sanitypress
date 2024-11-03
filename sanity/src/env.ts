@@ -1,3 +1,5 @@
+'use client'
+
 import { isDev } from 'sanity'
 
 export const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!

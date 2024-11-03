@@ -2,7 +2,7 @@ import { fetchSanity, groq } from '@/lib/sanity/fetch'
 import processUrl from '@/lib/processUrl'
 import { Feed } from 'feed'
 import { escapeHTML, toHTML } from '@portabletext/to-html'
-import { urlFor } from '@/lib/sanity/urlFor'
+import { urlFor } from '@/lib/sanity/image'
 
 export async function GET() {
 	const { blog, posts, copyright } = await fetchSanity<{

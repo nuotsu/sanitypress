@@ -1,7 +1,9 @@
+'use client'
+
 import { defineConfig } from 'sanity'
 import { projectId, dataset } from './src/env'
 import { structureTool } from 'sanity/structure'
-import structure from './src/structure'
+import { structure } from './src/structure'
 import { presentationTool } from 'sanity/presentation'
 import { resolve } from './src/presentation/resolve'
 import {
@@ -18,9 +20,6 @@ import { schemaTypes } from './schemas'
 const singletonTypes = ['site']
 
 export default defineConfig({
-	name: 'default',
-	title: 'SanityPress',
-
 	projectId,
 	dataset,
 	basePath: '/admin',

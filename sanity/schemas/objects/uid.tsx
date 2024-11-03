@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { defineType } from 'sanity'
 import { Box, Button, Flex, Text, TextInput } from '@sanity/ui'

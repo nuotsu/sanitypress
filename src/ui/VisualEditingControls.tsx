@@ -1,19 +1,16 @@
-import { VisualEditing } from 'next-sanity'
 import { draftMode } from 'next/headers'
+import { SanityLive } from '@/lib/sanity/fetch'
+import { VisualEditing } from 'next-sanity'
+import { DisableDraftMode } from './DisableDraftMode'
 
 export default async function VisualEditingControls() {
 	return (
 		<>
 			{(await draftMode()).isEnabled && (
 				<>
+					<SanityLive />
 					<VisualEditing />
-
-					<a
-						className="action fixed bottom-0 right-4 rounded-b-none text-xs opacity-50 hover:opacity-100"
-						href="/api/draft-mode/disable"
-					>
-						Disable draft mode
-					</a>
+					<DisableDraftMode />
 				</>
 			)}
 		</>

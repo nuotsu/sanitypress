@@ -1,3 +1,5 @@
+'use client'
+
 import {
 	defineLocations,
 	type PresentationPluginOptions,

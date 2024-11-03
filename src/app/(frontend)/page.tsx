@@ -1,4 +1,5 @@
-import { groq, sanityFetch } from '@/lib/sanity/fetch'
+import { sanityFetch } from '@/lib/sanity/fetch'
+import { defineQuery } from 'next-sanity'
 import { modulesQuery } from '@/lib/sanity/queries'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
@@ -15,14 +16,15 @@ export async function generateMetadata() {
 
 async function getPage() {
 	const { data } = await sanityFetch({
-		query: groq`*[_type == 'page' && metadata.slug.current == 'index'][0]{
-			...,
-			modules[]{ ${modulesQuery} },
-			metadata {
+		query:
+			defineQuery(`*[_type == 'page' && metadata.slug.current == 'index'][0]{
 				...,
-				'ogimage': image.asset->url + '?w=1200',
-			}
-		}`,
+				modules[]{ ${modulesQuery} },
+				metadata {
+					...,
+					'ogimage': image.asset->url + '?w=1200',
+				}
+			}`),
 	})
 
 	if (!data)
