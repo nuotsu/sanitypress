@@ -1,9 +1,9 @@
 import { defineConfig } from 'sanity'
-import { BASE_URL, projectId, dataset } from './src/env'
+import { projectId, dataset } from './src/env'
 import { structureTool } from 'sanity/structure'
 import structure from './src/structure'
 import { presentationTool } from 'sanity/presentation'
-import { locations } from './src/presentation'
+import { resolve } from './src/presentation/resolve'
 import {
 	dashboardTool,
 	projectInfoWidget,
@@ -35,11 +35,11 @@ export default defineConfig({
 			name: 'editor',
 			title: 'Editor',
 			previewUrl: {
-				draftMode: {
-					enable: `${BASE_URL}/api/draft`,
+				previewMode: {
+					enable: '/api/draft-mode/enable',
 				},
 			},
-			resolve: { locations },
+			resolve,
 		}),
 		dashboardTool({
 			name: 'deployment',

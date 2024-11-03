@@ -1,11 +1,12 @@
 import { createClient, groq } from 'next-sanity'
+// import { token } from '@/lib/sanity/token'
 import type { NextConfig } from 'next'
 
 const client = createClient({
 	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
 	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-	// token: process.env.NEXT_PUBLIC_SANITY_TOKEN for private datasets
-	apiVersion: '2024-10-30',
+	// token, // for private datasets
+	apiVersion: '2024-11-01',
 	useCdn: true,
 })
 
@@ -25,6 +26,10 @@ const nextConfig: NextConfig = {
 			destination,
 			permanent
 		}`)
+	},
+
+	env: {
+		SC_DISABLE_SPEEDY: 'false',
 	},
 
 	// logging: {

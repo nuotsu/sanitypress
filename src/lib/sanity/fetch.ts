@@ -1,7 +1,8 @@
 import client from '@/lib/sanity/client'
-import dev from '@/lib/env'
+import { token } from '@/lib/sanity/token'
+import { dev } from '@/lib/env'
 import { draftMode } from 'next/headers'
-import type { QueryParams, QueryOptions } from 'next-sanity'
+import { type QueryParams, type QueryOptions, defineLive } from 'next-sanity'
 
 export { groq } from 'next-sanity'
 
@@ -14,8 +15,7 @@ export async function fetchSanity<T = any>(
 		params?: QueryParams
 	} & QueryOptions['next'] = {},
 ) {
-	const isDraft = (await draftMode()).isEnabled
-	const preview = dev || isDraft
+	const preview = dev || (await draftMode()).isEnabled
 
 	return client.fetch<T>(
 		query,
@@ -25,7 +25,7 @@ export async function fetchSanity<T = any>(
 					stega: true,
 					perspective: 'previewDrafts',
 					useCdn: false,
-					token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
+					token,
 					next: {
 						revalidate: 0,
 						...next,
@@ -41,3 +41,9 @@ export async function fetchSanity<T = any>(
 				},
 	)
 }
+
+export const { sanityFetch, SanityLive } = defineLive({
+	client,
+	serverToken: token,
+	browserToken: token,
+})
