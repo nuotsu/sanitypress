@@ -1,4 +1,4 @@
-import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
+import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
 import type { SanityDocument } from 'next-sanity'
 
 declare global {
@@ -111,7 +111,7 @@ declare global {
 			style?: string
 		}
 
-		type Image = SanityImageSource &
+		type Image = SanityImageObject &
 			Partial<{
 				alt: string
 				loading: 'lazy' | 'eager'
