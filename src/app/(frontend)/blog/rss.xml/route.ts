@@ -1,8 +1,8 @@
-import { groq, sanityFetch } from '@/lib/sanity/fetch'
+import { groq, sanityFetch } from '@/sanity/lib/fetch'
 import processUrl from '@/lib/processUrl'
 import { Feed } from 'feed'
 import { escapeHTML, toHTML } from '@portabletext/to-html'
-import { urlFor } from '@/lib/sanity/image'
+import { urlFor } from '@/sanity/lib/image'
 
 export async function GET() {
 	const { data } = await sanityFetch({

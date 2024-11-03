@@ -1,4 +1,4 @@
-import { getSite } from '@/lib/sanity/queries'
+import { getSite } from '@/sanity/lib/queries'
 import CTA from '@/ui/CTA'
 import LinkList from './LinkList'
 

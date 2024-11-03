@@ -1,4 +1,4 @@
-import { groq, sanityFetch } from '@/lib/sanity/fetch'
+import { groq, sanityFetch } from '@/sanity/lib/fetch'
 import type { MetadataRoute } from 'next'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

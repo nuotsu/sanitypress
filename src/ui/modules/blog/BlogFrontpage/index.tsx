@@ -1,4 +1,4 @@
-import { groq, sanityFetch } from '@/lib/sanity/fetch'
+import { groq, sanityFetch } from '@/sanity/lib/fetch'
 import FilterList from '../BlogList/FilterList'
 import PostPreviewLarge from '../PostPreviewLarge'
 import Paginated from './Paginated'

@@ -1,6 +1,6 @@
 import { PortableText, groq } from 'next-sanity'
-import { fetchSanity } from '@/lib/sanity/fetch'
-import { linkQuery } from '@/lib/sanity/queries'
+import { fetchSanity } from '@/sanity/lib/fetch'
+import { linkQuery } from '@/sanity/lib/queries'
 import CTA from '@/ui/CTA'
 
 export default async function Announcement() {

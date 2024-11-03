@@ -1,5 +1,5 @@
-import { groq, sanityFetch } from '@/lib/sanity/fetch'
-import { modulesQuery } from '@/lib/sanity/queries'
+import { groq, sanityFetch } from '@/sanity/lib/fetch'
+import { modulesQuery } from '@/sanity/lib/queries'
 import Modules from '@/ui/modules'
 
 export default async function NotFound() {

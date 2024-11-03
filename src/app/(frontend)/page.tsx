@@ -1,5 +1,5 @@
-import { sanityFetch, groq } from '@/lib/sanity/fetch'
-import { modulesQuery } from '@/lib/sanity/queries'
+import { sanityFetch, groq } from '@/sanity/lib/fetch'
+import { modulesQuery } from '@/sanity/lib/queries'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
 

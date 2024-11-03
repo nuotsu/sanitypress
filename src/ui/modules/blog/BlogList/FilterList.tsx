@@ -1,4 +1,4 @@
-import { groq, sanityFetch } from '@/lib/sanity/fetch'
+import { groq, sanityFetch } from '@/sanity/lib/fetch'
 import Filter from './Filter'
 import css from './FilterList.module.css'
 import { cn } from '@/lib/utils'

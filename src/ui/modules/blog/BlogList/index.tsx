@@ -1,4 +1,4 @@
-import { groq, sanityFetch } from '@/lib/sanity/fetch'
+import { groq, sanityFetch } from '@/sanity/lib/fetch'
 import { PortableText, stegaClean } from 'next-sanity'
 import FilterList from '@/ui/modules/blog/BlogList/FilterList'
 import List from './List'

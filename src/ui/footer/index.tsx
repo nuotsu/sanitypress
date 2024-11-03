@@ -1,4 +1,4 @@
-import { getSite } from '@/lib/sanity/queries'
+import { getSite } from '@/sanity/lib/queries'
 import Navigation from './Navigation'
 import Social from '@/ui/Social'
 import { PortableText } from 'next-sanity'

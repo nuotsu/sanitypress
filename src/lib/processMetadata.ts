@@ -1,4 +1,4 @@
-import { getSite } from '@/lib/sanity/queries'
+import { getSite } from '@/sanity/lib/queries'
 import processUrl from './processUrl'
 import type { Metadata } from 'next'
 

@@ -1,4 +1,4 @@
-import { groq, sanityFetch } from '@/lib/sanity/fetch'
+import { groq, sanityFetch } from '@/sanity/lib/fetch'
 import { PortableText } from 'next-sanity'
 import Pretitle from '@/ui/Pretitle'
 import Img from '@/ui/Img'
