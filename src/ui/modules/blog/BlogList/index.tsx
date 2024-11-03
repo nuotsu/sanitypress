@@ -1,4 +1,4 @@
-import { fetchSanity, groq } from '@/lib/sanity/fetch'
+import { groq, sanityFetch } from '@/lib/sanity/fetch'
 import { PortableText, stegaClean } from 'next-sanity'
 import FilterList from '@/ui/modules/blog/BlogList/FilterList'
 import List from './List'
@@ -19,8 +19,8 @@ export default async function BlogList({
 	displayFilters: boolean
 	filteredCategory: Sanity.BlogCategory
 }>) {
-	const posts = await fetchSanity<Sanity.BlogPost[]>(
-		groq`
+	const { data } = await sanityFetch({
+		query: groq`
 			*[
 				_type == 'blog.post'
 				${filteredCategory ? `&& $filteredCategory in categories[]->._id` : ''}
@@ -35,14 +35,11 @@ export default async function BlogList({
 				authors[]->
 			}
 		`,
-		{
-			params: {
-				filteredCategory: filteredCategory?._id || null,
-				limit,
-			},
-			tags: ['posts'],
+		params: {
+			filteredCategory: filteredCategory?._id || null,
+			limit,
 		},
-	)
+	})
 
 	return (
 		<section className="section space-y-8">
@@ -55,7 +52,7 @@ export default async function BlogList({
 			{displayFilters && !filteredCategory && <FilterList />}
 
 			<List
-				posts={posts}
+				posts={data as Sanity.BlogPost[]}
 				className={cn(
 					'items-stretch gap-x-8 gap-y-12',
 					stegaClean(layout) === 'grid'

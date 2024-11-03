@@ -1,4 +1,4 @@
-import { fetchSanity, groq } from '@/lib/sanity/fetch'
+import { groq, sanityFetch } from '@/lib/sanity/fetch'
 import FilterList from '../BlogList/FilterList'
 import PostPreviewLarge from '../PostPreviewLarge'
 import Paginated from './Paginated'
@@ -14,8 +14,8 @@ export default async function BlogFrontpage({
 	showFeaturedPostsFirst: boolean
 	itemsPerPage: number
 }>) {
-	const posts = await fetchSanity<Sanity.BlogPost[]>(
-		groq`*[_type == 'blog.post']|order(publishDate desc){
+	const { data } = (await sanityFetch({
+		query: groq`*[_type == 'blog.post']|order(publishDate desc){
 				_type,
 				_id,
 				featured,
@@ -25,10 +25,10 @@ export default async function BlogFrontpage({
 				publishDate,
 			}
 		`,
-	)
+	})) as { data: Sanity.BlogPost[] }
 
 	const [firstPost, ...otherPosts] =
-		stegaClean(mainPost) === 'featured' ? sortFeaturedPosts(posts) : posts
+		stegaClean(mainPost) === 'featured' ? sortFeaturedPosts(data) : data
 
 	return (
 		<section className="section space-y-12">
