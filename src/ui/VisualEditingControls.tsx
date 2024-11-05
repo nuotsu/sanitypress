@@ -6,9 +6,10 @@ import DisableDraftMode from './DisableDraftMode'
 export default async function VisualEditingControls() {
 	return (
 		<>
+			<SanityLive />
+
 			{(await draftMode()).isEnabled && (
 				<>
-					<SanityLive />
 					<VisualEditing />
 					<DisableDraftMode />
 				</>
