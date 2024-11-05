@@ -2,9 +2,11 @@ import client from '@/sanity/client'
 import { token } from '@/sanity/lib/token'
 import { dev } from '@/lib/env'
 import { draftMode } from 'next/headers'
-import { type QueryParams, type QueryOptions, defineLive } from 'next-sanity'
+import { defineLive, type QueryParams, type QueryOptions } from 'next-sanity'
 
 export { groq } from 'next-sanity'
+
+const REVALIDATE_TIME = 3600 // every hour
 
 export async function fetchSanity<T = any>(
 	query: string,
@@ -35,7 +37,7 @@ export async function fetchSanity<T = any>(
 					perspective: 'published',
 					useCdn: true,
 					next: {
-						revalidate: 3600, // every hour
+						revalidate: REVALIDATE_TIME,
 						...next,
 					},
 				},
@@ -47,16 +49,18 @@ export const { sanityFetch, SanityLive } = defineLive({
 	serverToken: token,
 	browserToken: token,
 	fetchOptions: {
-		revalidate: dev ? 0 : 3600,
+		revalidate: dev ? 0 : REVALIDATE_TIME,
 	},
 })
 
 export async function fetchSanityLive<T = any>(
 	args: Parameters<typeof sanityFetch>[0],
 ) {
+	const preview = dev || (await draftMode()).isEnabled
+
 	const { data } = await sanityFetch({
 		...args,
-		perspective: dev ? 'previewDrafts' : 'published',
+		perspective: preview ? 'previewDrafts' : 'published',
 	})
 
 	return data as T
