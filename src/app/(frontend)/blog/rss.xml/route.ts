@@ -1,11 +1,15 @@
-import { groq, sanityFetch } from '@/sanity/lib/fetch'
+import { fetchSanityLive, groq } from '@/sanity/lib/fetch'
 import processUrl from '@/lib/processUrl'
 import { Feed } from 'feed'
 import { escapeHTML, toHTML } from '@portabletext/to-html'
 import { urlFor } from '@/sanity/lib/image'
 
 export async function GET() {
-	const { data } = await sanityFetch({
+	const { blog, posts, copyright } = await fetchSanityLive<{
+		blog: Sanity.Page
+		posts: Array<Sanity.BlogPost & { image?: string }>
+		copyright: string
+	}>({
 		query: groq`{
 			'blog': *[_type == 'page' && metadata.slug.current == 'blog'][0]{
 				_type,
@@ -23,12 +27,6 @@ export async function GET() {
 			'copyright': pt::text(*[_type == 'site'][0].copyright)
 		}`,
 	})
-
-	const { blog, posts, copyright } = data as {
-		blog: Sanity.Page
-		posts: Array<Sanity.BlogPost & { image?: string }>
-		copyright: string
-	}
 
 	if (!blog || !posts) {
 		return new Response(

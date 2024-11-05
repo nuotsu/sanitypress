@@ -1,5 +1,5 @@
 import client from '@/sanity/client'
-import { groq, sanityFetch } from '@/sanity/lib/fetch'
+import { fetchSanityLive, groq } from '@/sanity/lib/fetch'
 import { modulesQuery } from '@/sanity/lib/queries'
 import { notFound } from 'next/navigation'
 import Modules from '@/ui/modules'
@@ -30,7 +30,7 @@ export async function generateStaticParams() {
 }
 
 async function getPage(params: { slug?: string[] }) {
-	const { data } = await sanityFetch({
+	return await fetchSanityLive<Sanity.Page>({
 		query: groq`*[
 			_type == 'page' &&
 			metadata.slug.current == $slug &&
@@ -45,8 +45,6 @@ async function getPage(params: { slug?: string[] }) {
 		}`,
 		params: { slug: params.slug?.join('/') },
 	})
-
-	return data as Sanity.Page
 }
 
 type Props = {

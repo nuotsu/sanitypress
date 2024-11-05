@@ -1,4 +1,4 @@
-import { groq, sanityFetch } from './fetch'
+import { fetchSanityLive, groq } from './fetch'
 
 export const linkQuery = groq`
 	...,
@@ -20,7 +20,7 @@ export const ctaQuery = groq`
 `
 
 export async function getSite() {
-	const { data } = await sanityFetch({
+	const data = await fetchSanityLive<Sanity.Site>({
 		query: groq`
 			*[_type == 'site'][0]{
 				...,
@@ -35,7 +35,7 @@ export async function getSite() {
 
 	if (!data) throw new Error("Missing 'site' document in Sanity Studio")
 
-	return data as Sanity.Site
+	return data
 }
 
 export const reputationBlockQuery = groq`

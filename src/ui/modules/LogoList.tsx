@@ -1,4 +1,4 @@
-import { groq, sanityFetch } from '@/sanity/lib/fetch'
+import { fetchSanityLive, groq } from '@/sanity/lib/fetch'
 import { PortableText } from 'next-sanity'
 import Pretitle from '@/ui/Pretitle'
 import Img from '@/ui/Img'
@@ -20,8 +20,9 @@ export default async function LogoList({
 }>) {
 	const allLogos =
 		logos ||
-		((await sanityFetch({ query: groq`*[_type == 'logo']|order(name)` }))
-			.data as Sanity.Logo[])
+		(await fetchSanityLive<Sanity.Logo[]>({
+			query: groq`*[_type == 'logo']|order(name)`,
+		}))
 
 	return (
 		<section className="section space-y-8">

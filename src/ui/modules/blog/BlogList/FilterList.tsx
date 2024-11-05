@@ -1,15 +1,15 @@
-import { groq, sanityFetch } from '@/sanity/lib/fetch'
+import { fetchSanityLive, groq } from '@/sanity/lib/fetch'
 import Filter from './Filter'
 import css from './FilterList.module.css'
 import { cn } from '@/lib/utils'
 
 export default async function FilterList() {
-	const { data } = (await sanityFetch({
+	const categories = await fetchSanityLive<Sanity.BlogCategory[]>({
 		query: groq`*[
 			_type == 'blog.category' &&
 			count(*[_type == 'blog.post' && references(^._id)]) > 0
 		]|order(title)`,
-	})) as { data: Sanity.BlogCategory[] }
+	})
 
 	return (
 		<fieldset>
@@ -23,7 +23,7 @@ export default async function FilterList() {
 			>
 				<Filter label="All" />
 
-				{data?.map((category, key) => (
+				{categories?.map((category, key) => (
 					<Filter label={category.title} value={category._id} key={key} />
 				))}
 			</div>

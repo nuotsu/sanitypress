@@ -50,3 +50,14 @@ export const { sanityFetch, SanityLive } = defineLive({
 		revalidate: dev ? 0 : 3600,
 	},
 })
+
+export async function fetchSanityLive<T = any>(
+	args: Parameters<typeof sanityFetch>[0],
+) {
+	const { data } = await sanityFetch({
+		...args,
+		perspective: dev ? 'previewDrafts' : 'published',
+	})
+
+	return data as T
+}

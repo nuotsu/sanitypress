@@ -1,4 +1,4 @@
-import { sanityFetch, groq } from '@/sanity/lib/fetch'
+import { groq, fetchSanityLive } from '@/sanity/lib/fetch'
 import { modulesQuery } from '@/sanity/lib/queries'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
@@ -14,7 +14,7 @@ export async function generateMetadata() {
 }
 
 async function getPage() {
-	const { data } = await sanityFetch({
+	const data = await fetchSanityLive<Sanity.Page>({
 		query: groq`*[_type == 'page' && metadata.slug.current == 'index'][0]{
 			...,
 			modules[]{ ${modulesQuery} },
@@ -30,5 +30,5 @@ async function getPage() {
 			"Missing 'page' document with metadata.slug 'index' in Sanity Studio",
 		)
 
-	return data as Sanity.Page
+	return data
 }

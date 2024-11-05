@@ -1,8 +1,8 @@
-import { groq, sanityFetch } from '@/sanity/lib/fetch'
+import { fetchSanityLive, groq } from '@/sanity/lib/fetch'
 import type { MetadataRoute } from 'next'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-	const { data } = await sanityFetch({
+	const data = await fetchSanityLive<Record<string, MetadataRoute.Sitemap>>({
 		query: groq`{
 			'pages': *[
 				_type == 'page' &&
@@ -27,5 +27,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		},
 	})
 
-	return Object.values(data as Record<string, MetadataRoute.Sitemap>).flat()
+	return Object.values(data).flat()
 }
