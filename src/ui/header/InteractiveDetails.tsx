@@ -38,6 +38,7 @@ export default function InteractiveDetails({
 		<details
 			className={cn(safeAreaOnHover && css.safearea, className)}
 			open={$open}
+			key={String($open)}
 			{...events}
 			{...props}
 		/>

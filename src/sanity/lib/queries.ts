@@ -98,6 +98,12 @@ export const modulesQuery = groq`
 			}
 		),
 	},
+	_type == 'tabbed-content' => {
+		tabs[]{
+			...,
+			ctas[]{ ${ctaQuery} }
+		}
+	},
 	_type == 'testimonial.featured' => { testimonial-> },
 	_type == 'testimonial-list' => { testimonials[]-> },
 `

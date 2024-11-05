@@ -2,10 +2,8 @@
 
 import { defineConfig } from 'sanity'
 import { projectId, dataset } from '@/sanity/lib/env'
-import { structureTool } from 'sanity/structure'
 import { structure } from './src/sanity/structure'
-import { presentationTool } from 'sanity/presentation'
-import { resolve } from './src/sanity/presentation/resolve'
+import { presentation } from './src/sanity/presentation/resolve'
 import {
 	dashboardTool,
 	projectInfoWidget,
@@ -25,21 +23,8 @@ export default defineConfig({
 	basePath: '/admin',
 
 	plugins: [
-		structureTool({
-			name: 'content',
-			title: 'Content',
-			structure,
-		}),
-		presentationTool({
-			name: 'editor',
-			title: 'Editor',
-			previewUrl: {
-				previewMode: {
-					enable: '/api/draft-mode/enable',
-				},
-			},
-			resolve,
-		}),
+		structure,
+		presentation,
 		dashboardTool({
 			name: 'deployment',
 			title: 'Deployment',

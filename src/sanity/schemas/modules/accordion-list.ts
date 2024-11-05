@@ -68,6 +68,14 @@ export default defineType({
 			type: 'uid',
 			group: 'options',
 		}),
+		defineField({
+			name: 'generateSchema',
+			title: 'Generate schema.org schema',
+			type: 'boolean',
+			description: 'Recommended for FAQ content',
+			initialValue: false,
+			group: 'options',
+		}),
 	],
 	preview: {
 		select: {

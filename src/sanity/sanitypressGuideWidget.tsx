@@ -1,7 +1,7 @@
 'use client'
 
 import { Box, Card, Code, Flex, Heading, Label, Stack, Text } from '@sanity/ui'
-import pkg from '../../package.json'
+import pkg from '$/package.json'
 import { VscGithubInverted } from 'react-icons/vsc'
 import { RiTwitterXLine } from 'react-icons/ri'
 import type { DashboardWidget, LayoutConfig } from '@sanity/dashboard'

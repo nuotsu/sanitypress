@@ -6,6 +6,7 @@ export default function AccordionList({
 	intro,
 	items,
 	layout = 'vertical',
+	generateSchema,
 	...props
 }: Partial<{
 	intro: any
@@ -15,6 +16,7 @@ export default function AccordionList({
 		open?: boolean
 	}[]
 	layout: 'vertical' | 'horizontal'
+	generateSchema: boolean
 }> &
 	Sanity.Module) {
 	return (
@@ -23,8 +25,10 @@ export default function AccordionList({
 				'section',
 				layout === 'horizontal' ? 'grid gap-8 md:grid-cols-2' : 'space-y-8',
 			)}
-			itemScope
-			itemType="https://schema.org/FAQPage"
+			{...(generateSchema && {
+				itemScope: true,
+				itemType: 'https://schema.org/FAQPage',
+			})}
 			{...moduleProps(props)}
 		>
 			<header
@@ -43,20 +47,29 @@ export default function AccordionList({
 					<details
 						className="accordion border-b border-ink/10"
 						open={open}
-						itemScope
-						itemProp="mainEntity"
-						itemType="https://schema.org/Question"
+						{...(generateSchema && {
+							itemScope: true,
+							itemProp: 'mainEntity',
+							itemType: 'https://schema.org/Question',
+						})}
 						key={key}
 					>
-						<summary className="py-4 font-bold" itemProp="name">
+						<summary
+							className="py-4 font-bold"
+							{...(generateSchema && {
+								itemProp: 'name',
+							})}
+						>
 							{summary}
 						</summary>
 
 						<div
 							className="anim-fade-to-b pb-4"
-							itemScope
-							itemProp="acceptedAnswer"
-							itemType="https://schema.org/Answer"
+							{...(generateSchema && {
+								itemScope: true,
+								itemProp: 'acceptedAnswer',
+								itemType: 'https://schema.org/Answer',
+							})}
 						>
 							<div className="richtext" itemProp="text">
 								<PortableText value={content} />

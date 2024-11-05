@@ -1,42 +1,30 @@
 'use client'
 
-import {
-	defineLocations,
-	type PresentationPluginOptions,
-} from 'sanity/presentation'
+import { groq } from 'next-sanity'
+import { presentationTool } from 'sanity/presentation'
 
-export const resolve: PresentationPluginOptions['resolve'] = {
-	locations: {
-		page: defineLocations({
-			select: {
-				metadata: 'metadata',
-			},
-			resolve: (doc) => {
-				const slug = doc?.metadata?.slug?.current
-
-				return {
-					locations: [
-						{
-							title: doc?.metadata?.title,
-							href: slug === 'index' ? '/' : `/${slug}`,
-						},
-					],
-				}
-			},
-		}),
-
-		'blog.post': defineLocations({
-			select: {
-				metadata: 'metadata',
-			},
-			resolve: (doc) => ({
-				locations: [
-					{
-						title: doc?.metadata?.title,
-						href: `/blog/${doc?.metadata?.slug?.current}`,
-					},
-				],
-			}),
-		}),
+export const presentation = presentationTool({
+	name: 'editor',
+	title: 'Editor',
+	previewUrl: {
+		previewMode: {
+			enable: '/api/draft-mode/enable',
+		},
 	},
-}
+	resolve: {
+		mainDocuments: [
+			{
+				route: '/',
+				filter: groq`_type == 'page' && metadata.slug.current == 'index'`,
+			},
+			{
+				route: '/:slug',
+				filter: groq`_type == 'page' && metadata.slug.current == $slug`,
+			},
+			{
+				route: '/blog/:slug',
+				filter: groq`_type == 'blog.post' && metadata.slug.current == $slug`,
+			},
+		],
+	},
+})
