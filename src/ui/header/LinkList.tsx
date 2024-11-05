@@ -5,7 +5,11 @@ import { CgChevronRight } from 'react-icons/cg'
 
 export default function LinkList({ link, links }: Sanity.LinkList) {
 	return (
-		<InteractiveDetails className="group relative" closeAfterNavigate>
+		<InteractiveDetails
+			className="group relative"
+			name="header"
+			closeAfterNavigate
+		>
 			<summary className="flex items-center gap-1 md:px-3">
 				{link.label}
 				<CgChevronRight className="transition-transform group-open:rotate-90 md:rotate-90" />

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type ComponentProps } from 'react'
 import { isMobile } from 'react-device-detect'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
@@ -15,10 +15,10 @@ export default function InteractiveDetails({
 	closeAfterNavigate,
 	className,
 	...props
-}: React.DetailsHTMLAttributes<HTMLDetailsElement> & {
+}: {
 	safeAreaOnHover?: boolean
 	closeAfterNavigate?: boolean
-}) {
+} & ComponentProps<'details'>) {
 	const [$open, set$open] = useState(false)
 
 	const events = !isMobile
