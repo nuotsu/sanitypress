@@ -1,7 +1,7 @@
 'use client'
 
-import { groq } from 'next-sanity'
 import { presentationTool } from 'sanity/presentation'
+import { groq } from 'next-sanity'
 
 export const presentation = presentationTool({
 	name: 'editor',

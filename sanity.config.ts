@@ -3,7 +3,7 @@
 import { defineConfig } from 'sanity'
 import { projectId, dataset } from '@/sanity/lib/env'
 import { structure } from './src/sanity/structure'
-import { presentation } from './src/sanity/presentation/resolve'
+import { presentation } from './src/sanity/presentation'
 import {
 	dashboardTool,
 	projectInfoWidget,
