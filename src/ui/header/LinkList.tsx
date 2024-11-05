@@ -1,7 +1,7 @@
-import { cn } from '@/lib/utils'
 import InteractiveDetails from './InteractiveDetails'
 import CTA from '@/ui/CTA'
 import { CgChevronRight } from 'react-icons/cg'
+import { cn } from '@/lib/utils'
 
 export default function LinkList({ link, links }: Sanity.LinkList) {
 	return (

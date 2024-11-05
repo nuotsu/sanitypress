@@ -1,7 +1,7 @@
 'use client'
 
 import { Box, Card, Code, Flex, Heading, Label, Stack, Text } from '@sanity/ui'
-import pkg from '$/package.json'
+import { version } from '$/package.json'
 import { VscGithubInverted } from 'react-icons/vsc'
 import { RiTwitterXLine } from 'react-icons/ri'
 import type { DashboardWidget, LayoutConfig } from '@sanity/dashboard'
@@ -25,7 +25,7 @@ function Component() {
 						<Flex align="flex-end" justify="space-between" wrap="wrap" gap={4}>
 							<Flex align="center" gap={2}>
 								About SanityPress
-								<Code size={1}>v{pkg.version}</Code>
+								<Code size={1}>v{version}</Code>
 							</Flex>
 
 							<Flex align="center" gap={4}>
