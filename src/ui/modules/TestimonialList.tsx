@@ -34,15 +34,15 @@ export default function TestimonialList({
 						className="grid !basis-[min(450px,70vw)] place-content-center rounded border p-4"
 						key={key}
 					>
-						<blockquote className="space-y-6">
+						<blockquote className="flex flex-col items-center gap-4">
 							<div className="richtext text-balance">
 								<PortableText value={testimonial.content} />
 							</div>
 
 							{author && (
-								<div className="inline-flex items-center gap-2">
+								<div className="inline-flex max-w-[25ch] items-center gap-2">
 									<Img
-										className="size-[40px] rounded-full object-cover"
+										className="size-[40px] shrink-0 rounded-full object-cover"
 										image={author?.image}
 										imageWidth={80}
 										alt={
