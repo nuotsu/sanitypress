@@ -56,7 +56,7 @@ export default function TestimonialList({
 										<dt>{author?.name}</dt>
 
 										{author?.title && (
-											<dd className="text-sm">{author?.title}</dd>
+											<dd className="text-balance text-sm">{author?.title}</dd>
 										)}
 									</dl>
 								</div>
