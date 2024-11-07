@@ -23,78 +23,56 @@ Visit [here](https://sanitypress.dev/studio-screenshots) for more Studio screens
 
 ## Key Features
 
-- [x] ✨ Modern Frontend Development with Next.js 15 (App Router, RSC, Typescript) and Tailwind CSS.
-- [x] 📕 [Pre-configured Sanity schema](/sanity/schemas/index.ts) for rapid content structuring.
-- [x] 📘 [Pre-built frontend components](/next/src/ui/) for rapid website development.
-- [x] ✏️ [Visual editing](https://sanitypress.dev/blog/visual-editing) right inside the [Embedded Sanity Studio](https://sanitypress.dev/blog/why-you-should-embed-your-studio).
-- [x] 📜 Auto-generated Table of Contents component based on headings.
-- [x] ⌨️ Auto-generated [sitemap.xml](/next/src/app/sitemap.ts) and [blog rss.xml](/next/src/app/blog/rss.xml/route.ts).
+- [x] ✨ Next.js 15 (App Router, RSC, Typescript) with Tailwind CSS
+- [x] 📕 [Pre-configured Sanity schema](/src/sanity/schemas/index.ts)
+- [x] 📘 [Pre-built frontend components](/src/ui/)
+- [x] ✏️ [Visual editing](https://sanitypress.dev/blog/visual-editing) in [embedded Sanity Studio](https://sanitypress.dev/blog/why-you-should-embed-your-studio)
+- [x] ⌨️ Auto-generated [sitemap](https://sanitypress.dev/sitemap.xml) and [RSS feeds](https://sanitypress.dev/blog/rss.xml)
 
 ## Getting Started
 
-Directions are also found on the [docs](https://sanitypress.dev/docs).
+Full instructions on the [docs](https://sanitypress.dev/docs).
 
-### 1. New repo
-
-Clone or fork the template from [the GitHub template](https://github.com/nuotsu/sanitypress).
-
-### 2. Get a new Sanity project ID
-
-From the [Sanity.io Manage](https://sanity.io/manage) dashboard, create a new project _from scratch (blank schema) with CLI_.
-
-### 3. Update environment variables
+1. **New repo**: Clone or fork the [GitHub template](https://github.com/nuotsu/sanitypress).
+2. **Get Sanity project ID**: Create a new project on [Sanity.io](https://sanity.io/manage) _from scratch (blank schema) with CLI_.
+3. **Update environment variables**:
 
 ```sh
 # .env.local
-NEXT_PUBLIC_BASE_URL = ... # https://sanitypress.dev
+PUBLIC_BASE_URL = ... # https://sanitypress.dev
+
 NEXT_PUBLIC_SANITY_PROJECT_ID = ... # abcdefgh
 NEXT_PUBLIC_SANITY_DATASET = ... # production
 
 SANITY_API_READ_TOKEN = ... # "Viewer" token from https://sanity.io/manage
+
+NEXT_PUBLIC_GITHUB_TOKEN = # used for Reputation blocks
 ```
 
-### 4. Populate the Studio with your content
+4. **Add content**: Publish the required `site` and `page` documents.
 
-Open your new Sanity Studio (`‌https://localhost:3000/admin`) and publish the following documents:
+| Document | Slug     | Use            | Required? |
+| -------- | -------- | -------------- | --------- |
+| `site`   | `index`  | Homepage       | Required  |
+| `site`   | `404`    | Page not found | Optional  |
+| `page`   | `blog`   | Blog listing   | Optional  |
+| `page`   | `blog/*` | Blog post      | Optional  |
 
-1. a **Site** document with a `title` field.
-2. a **Page** document with slug: `index` to use as the _Home_ page.
-
-For websites with a blog, additionally publish the following documents:
-
-1. a **Page** document with slug: `blog` to use as the _Blog listing_ page.
-2. a **Page** document with slug: `blog/*` to use as the _Blog post_ template page.
-
-Optionally, you can publish the following documents:
-
-- a **Page** document with slug: `404` to use as the _Page not found_ page.
-
-#### Import a demo dataset
-
-You can run a CLI command to import demo content to get SanityPress up and running in seconds.
+- Or import a demo dataset
 
 ```sh
-sanity dataset import sanity/demo.tar.gz
+sanity dataset import src/sanity/demo.tar.gz
 ```
 
-This will import a Site document and a Page document with slug: index, the minimum requirements for SanityPress to deploy successfully.
+5. **Set up deployments**: Add a [`Vercel`](https://www.sanity.io/plugins/vercel-dashboard-widget) or [`Netlify`](https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-netlify) widget for deployments from the Studio.
 
-### 5. Set up deployments
-
-Install either of the following plugins to add a widget to your Studio Dashboard:
-
-- Vercel: [`sanity-plugin-dashboard-widget-vercel`](https://www.sanity.io/plugins/vercel-dashboard-widget)
-- Netlify: [`sanity-plugin-dashboard-widget-netlify`](https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-netlify)
-
-### 6. Customize
-
-Adjust frontend styles, edit/add Sanity schema and modules, and more.
+6. **Customize**: Adjust frontend styles, edit/add Sanity schema and modules, and more.
 
 ## External References
 
-- [The official Sanity toolkit for Next.js](https://www.sanity.io/plugins/next-sanity)
-- [`sanity-io/next-sanity` README](https://github.com/sanity-io/next-sanity#readme)
-- [Visual Editing with Next.js App Router and Sanity Studio](https://www.sanity.io/guides/nextjs-app-router-live-preview)
+- [Sanity toolkit for Next.js](https://www.sanity.io/plugins/next-sanity)
+- [`next-sanity` README](https://github.com/sanity-io/next-sanity#readme)
+- [Visual Editing with Next.js and Sanity](https://www.sanity.io/guides/nextjs-app-router-live-preview)
 
 ## How to Support
 
