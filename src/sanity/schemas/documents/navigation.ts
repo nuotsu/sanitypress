@@ -1,11 +1,16 @@
 import { defineField, defineType } from 'sanity'
-import { VscSymbolClass } from 'react-icons/vsc'
+import {
+	VscMilestone,
+	VscLayoutMenubar,
+	VscLayoutPanelLeft,
+} from 'react-icons/vsc'
+import { IoShareSocialOutline } from 'react-icons/io5'
 import { count } from '@/sanity/lib/utils'
 
 export default defineType({
 	name: 'navigation',
 	title: 'Navigation',
-	icon: VscSymbolClass,
+	icon: VscMilestone,
 	type: 'document',
 	fields: [
 		defineField({
@@ -24,9 +29,20 @@ export default defineType({
 			title: 'title',
 			items: 'items',
 		},
-		prepare: ({ title, items }) => ({
-			title,
-			subtitle: count(items),
-		}),
+		prepare: ({ title, items }) => {
+			const t = title.toLowerCase()
+
+			return {
+				title,
+				subtitle: count(items),
+				media: t.includes('social')
+					? IoShareSocialOutline
+					: t.includes('header')
+						? VscLayoutMenubar
+						: t.includes('footer')
+							? VscLayoutPanelLeft
+							: null,
+			}
+		},
 	},
 })

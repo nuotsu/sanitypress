@@ -11,6 +11,7 @@ export const structure = structureTool({
 			.title('Content')
 			.items([
 				singleton(S, 'site', 'Site settings').icon(VscServerProcess),
+				S.documentTypeListItem('navigation'),
 				S.divider(),
 
 				S.documentTypeListItem('page').title('Pages').icon(VscMultipleWindows),
@@ -19,7 +20,6 @@ export const structure = structureTool({
 				S.divider(),
 
 				S.documentTypeListItem('announcement').title('Announcements'),
-				S.documentTypeListItem('navigation'),
 				S.documentTypeListItem('redirect').title('Redirects'),
 				S.divider(),
 
