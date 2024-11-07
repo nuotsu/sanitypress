@@ -13,32 +13,44 @@ import css from './InteractiveDetails.module.css'
 export default function InteractiveDetails({
 	safeAreaOnHover,
 	closeAfterNavigate,
+	delay,
 	className,
 	...props
 }: {
 	safeAreaOnHover?: boolean
 	closeAfterNavigate?: boolean
+	delay?: number
 } & ComponentProps<'details'>) {
-	const [$open, set$open] = useState(false)
+	const [open, setOpen] = useState(false)
+	let timeout: NodeJS.Timeout
 
 	const events = !isMobile
 		? {
-				onMouseEnter: () => set$open(true),
-				onMouseLeave: () => set$open(false),
+				onMouseEnter: () => {
+					if (delay) {
+						timeout = setTimeout(() => setOpen(true), delay)
+					} else {
+						setOpen(true)
+					}
+				},
+				onMouseLeave: () => {
+					if (delay) clearTimeout(timeout)
+					setOpen(false)
+				},
 			}
 		: {}
 
 	// Close after navigation
 	const pathname = usePathname()
 	useEffect(() => {
-		if (closeAfterNavigate) set$open(false)
+		if (closeAfterNavigate) setOpen(false)
 	}, [pathname])
 
 	return (
 		<details
 			className={cn(safeAreaOnHover && css.safearea, className)}
-			open={$open}
-			key={String($open)}
+			open={open}
+			key={String(open)}
 			{...events}
 			{...props}
 		/>
