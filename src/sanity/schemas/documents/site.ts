@@ -4,10 +4,7 @@ export default defineType({
 	name: 'site',
 	title: 'Site settings',
 	type: 'document',
-	groups: [
-		{ name: 'general', title: 'General', default: true },
-		{ name: 'navigation', title: 'Navigation' },
-	],
+	groups: [{ name: 'general', default: true }, { name: 'navigation' }],
 	fields: [
 		defineField({
 			name: 'title',

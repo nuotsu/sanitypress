@@ -1,6 +1,7 @@
 import AccordionList from './AccordionList'
 import BlogFrontpage from './blog/BlogFrontpage'
 import BlogList from './blog/BlogList'
+import BlogPostContent from './blog/PostContent'
 import Breadcrumbs from './Breadcrumbs'
 import Callout from './Callout'
 import CardList from './CardList'
@@ -11,7 +12,6 @@ import Hero from './Hero'
 import HeroSplit from './HeroSplit'
 import HeroSaaS from './HeroSaaS'
 import LogoList from './LogoList'
-import PostContent from './blog/PostContent'
 import PricingList from './PricingList'
 import RichtextModule from './RichtextModule'
 import StatList from './StatList'
@@ -40,7 +40,7 @@ export default function Modules({
 					case 'blog-list':
 						return <BlogList {...module} key={module._key} />
 					case 'blog-post-content':
-						return <PostContent {...module} post={post} key={module._key} />
+						return <BlogPostContent {...module} post={post} key={module._key} />
 					case 'breadcrumbs':
 						return (
 							<Breadcrumbs

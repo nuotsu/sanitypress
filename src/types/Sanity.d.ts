@@ -128,7 +128,7 @@ declare global {
 
 		type LinkList = {
 			readonly _type: 'link.list'
-			link: Link
+			link?: Link
 			links?: Link[]
 		}
 

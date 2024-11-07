@@ -16,7 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 					0.5
 				),
 			},
-			'posts': *[_type == 'blog.post' && metadata.noIndex != true]|order(name){
+			'blog': *[_type == 'blog.post' && metadata.noIndex != true]|order(name){
 				'url': $baseUrl + 'blog/' + metadata.slug.current,
 				'lastModified': _updatedAt,
 				'priority': 0.4

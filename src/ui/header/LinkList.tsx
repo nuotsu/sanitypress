@@ -1,6 +1,6 @@
 import InteractiveDetails from './InteractiveDetails'
-import CTA from '@/ui/CTA'
 import { CgChevronRight } from 'react-icons/cg'
+import CTA from '@/ui/CTA'
 import { cn } from '@/lib/utils'
 
 export default function LinkList({ link, links }: Sanity.LinkList) {
@@ -11,7 +11,7 @@ export default function LinkList({ link, links }: Sanity.LinkList) {
 			closeAfterNavigate
 		>
 			<summary className="flex items-center gap-1 md:px-3">
-				{link.label}
+				{link?.label}
 				<CgChevronRight className="transition-transform group-open:rotate-90 md:rotate-90" />
 			</summary>
 

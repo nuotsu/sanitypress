@@ -2,6 +2,7 @@ import Link from 'next/link'
 import processUrl from '@/lib/processUrl'
 import { cn } from '@/lib/utils'
 import { stegaClean } from 'next-sanity'
+import type { ComponentProps } from 'react'
 
 export default function CTA({
 	link,
@@ -11,7 +12,7 @@ export default function CTA({
 	_type,
 	_key,
 	...rest
-}: Sanity.CTA & React.ComponentProps<'a'>) {
+}: Sanity.CTA & ComponentProps<'a'>) {
 	const props = {
 		className: cn(style, className) || undefined,
 		children:
@@ -33,5 +34,5 @@ export default function CTA({
 	if (link?.type === 'external' && link.external)
 		return <a href={stegaClean(link.external)} {...props} />
 
-	return props.children
+	return <div {...(props as ComponentProps<'div'>)} />
 }

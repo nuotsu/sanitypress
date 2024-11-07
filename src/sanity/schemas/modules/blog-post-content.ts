@@ -14,8 +14,12 @@ export default defineType({
 		}),
 	],
 	preview: {
-		prepare: () => ({
+		select: {
+			uid: 'uid',
+		},
+		prepare: ({ uid }) => ({
 			title: 'Blog post content',
+			subtitle: uid && `#${uid}`,
 		}),
 	},
 })
