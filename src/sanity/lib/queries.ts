@@ -33,7 +33,7 @@ export async function getSite() {
 		`,
 	})
 
-	if (!data) throw new Error("Missing 'site' document in Sanity Studio")
+	if (!data) throw Error('No `site` document found in the Studio')
 
 	return data
 }

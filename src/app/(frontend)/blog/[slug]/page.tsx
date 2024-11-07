@@ -8,7 +8,12 @@ import processMetadata from '@/lib/processMetadata'
 export default async function Page({ params }: Props) {
 	const page = await getPageTemplate()
 	const post = await getPost(await params)
-	if (!page || !post) notFound()
+
+	if (!page)
+		throw Error('No `page` document with slug "blog/*" found in the Studio')
+
+	if (!post) notFound()
+
 	return <Modules modules={page?.modules} page={page} post={post} />
 }
 

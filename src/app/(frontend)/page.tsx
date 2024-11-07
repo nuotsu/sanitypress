@@ -26,9 +26,7 @@ async function getPage() {
 	})
 
 	if (!data)
-		throw new Error(
-			"Missing 'page' document with metadata.slug 'index' in Sanity Studio",
-		)
+		throw Error('No `page` document with slug "index" found in the Studio')
 
 	return data
 }
