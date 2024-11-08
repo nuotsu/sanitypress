@@ -45,7 +45,14 @@ export default defineType({
 			],
 			options: {
 				insertMenu: {
-					views: [{ name: 'list' }, { name: 'grid' }],
+					views: [
+						{
+							name: 'grid',
+							previewImageUrl: (schemaType) =>
+								`/admin/thumbnails/${schemaType}.webp`,
+						},
+						{ name: 'list' },
+					],
 					groups: [
 						{ name: 'blog', of: ['blog-list', 'blog-post-content'] },
 						{ name: 'hero', of: ['hero', 'hero.saas', 'hero.split'] },
