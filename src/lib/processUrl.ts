@@ -1,7 +1,7 @@
 import { stegaClean } from 'next-sanity'
 
 export default function (
-	page: Sanity.PageBase,
+	page?: Sanity.PageBase,
 	{
 		base = true,
 		params,
@@ -10,9 +10,9 @@ export default function (
 		params?: string
 	} = {},
 ) {
-	const segment = page._type === 'blog.post' ? 'blog' : null
+	const segment = page?._type === 'blog.post' ? 'blog' : null
 
-	const slug = page.metadata?.slug?.current
+	const slug = page?.metadata?.slug?.current
 	const path = slug === 'index' ? null : slug
 
 	return (

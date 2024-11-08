@@ -6,6 +6,8 @@ import Categories from './Categories'
 import Authors from './Authors'
 
 export default function PostPreviewLarge({ post }: { post: Sanity.BlogPost }) {
+	if (!post) return null
+
 	return (
 		<Link
 			className="group grid items-center gap-x-8 gap-y-4 md:grid-cols-2"

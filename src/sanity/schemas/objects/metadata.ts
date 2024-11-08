@@ -9,7 +9,7 @@ export default defineType({
 		defineField({
 			name: 'slug',
 			type: 'slug',
-			description: 'URL path / permalink. Use "index" for the homepage.',
+			description: 'URL path or permalink',
 			options: {
 				source: (doc: any) => doc.title || doc.metadata.title,
 			},
