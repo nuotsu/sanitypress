@@ -9,6 +9,7 @@ import RichtextSubModule, {
 	type RichtextSubModuleType,
 } from './RichtextSubModule'
 import { cn } from '@/lib/utils'
+import moduleProps from '@/lib/moduleProps'
 
 export default function CreativeModule({
 	intro,
@@ -17,6 +18,7 @@ export default function CreativeModule({
 	bordered,
 	textAlign,
 	alignItems,
+	...props
 }: Partial<{
 	intro: any
 	modules: Partial<{
@@ -37,7 +39,7 @@ export default function CreativeModule({
 	const imageWidth = Math.round((1200 / (modules?.length || 1)) * 1.5)
 
 	return (
-		<section>
+		<section {...moduleProps(props)}>
 			<div className="section space-y-8">
 				{intro && (
 					<header className="richtext mx-auto max-w-xl text-balance text-center">

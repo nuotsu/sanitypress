@@ -20,6 +20,12 @@ export default defineType({
 	fieldsets: [alignmentFieldset],
 	fields: [
 		defineField({
+			name: 'uid',
+			title: 'Unique Identifier',
+			type: 'uid',
+			group: 'options',
+		}),
+		defineField({
 			name: 'intro',
 			type: 'array',
 			of: [{ type: 'block' }],
