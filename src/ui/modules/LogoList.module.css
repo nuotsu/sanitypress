@@ -1,6 +1,4 @@
 .track {
-	--dur: 8s;
-
 	& > * {
 		--ox: calc((var(--count) - var(--index)) * 100%);
 		--dx: calc((var(--index) + 1) * -100%);

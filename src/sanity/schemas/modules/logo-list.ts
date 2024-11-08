@@ -43,6 +43,14 @@ export default defineType({
 			initialValue: false,
 			group: 'options',
 		}),
+		defineField({
+			name: 'duration',
+			type: 'number',
+			description: 'Duration in seconds for a complete cycle',
+			initialValue: 8,
+			hidden: ({ parent }) => !parent?.autoScroll,
+			group: 'options',
+		}),
 	],
 	preview: {
 		select: {

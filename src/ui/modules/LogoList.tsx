@@ -11,12 +11,14 @@ export default async function LogoList({
 	logos,
 	logoType = 'default',
 	autoScroll,
+	duration = 8,
 }: Partial<{
 	pretitle: string
 	intro: any
 	logos: Sanity.Logo[]
 	logoType: 'default' | 'light' | 'dark'
 	autoScroll?: boolean
+	duration?: number
 }>) {
 	const allLogos =
 		logos ||
@@ -40,7 +42,12 @@ export default async function LogoList({
 						? `${css.track} overflow-fade max-w-max overflow-hidden`
 						: 'flex-wrap justify-center gap-x-4',
 				)}
-				style={{ '--count': allLogos?.length } as React.CSSProperties}
+				style={
+					{
+						'--count': allLogos?.length,
+						'--dur': `${duration}s`,
+					} as React.CSSProperties
+				}
 			>
 				{allLogos.map((logo, key) => (
 					<Img
