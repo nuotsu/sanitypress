@@ -104,12 +104,16 @@ const linkGroups: Array<{
 		title: 'Guides',
 		links: [
 			{
-				label: 'Sanity Schema',
-				url: 'https://sanitypress.dev/docs/schema-and-modules',
+				label: 'How SanityPress Works',
+				url: 'https://sanitypress.dev/docs/how-sanitypress-works',
 			},
 			{
 				label: 'Built-in Modules',
-				url: 'https://sanitypress.dev/docs/schema-and-modules#builtin-modules',
+				url: 'https://sanitypress.dev/docs/modules',
+			},
+			{
+				label: 'Customization Guides',
+				url: 'https://sanitypress.dev/blog/the-developers-guide-to-customizing-sanitypress',
 			},
 			{
 				label: 'Adding New Modules',
@@ -122,10 +126,6 @@ const linkGroups: Array<{
 			{
 				label: 'A Guide for Nested Routes',
 				url: 'https://sanitypress.dev/blog/a-guide-for-nested-routes',
-			},
-			{
-				label: 'Time-based revalidation',
-				url: 'https://sanitypress.dev/docs/time-based-revalidation',
 			},
 		],
 	},
