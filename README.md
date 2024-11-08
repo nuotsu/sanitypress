@@ -51,14 +51,15 @@ NEXT_PUBLIC_GITHUB_TOKEN = # used for Reputation blocks
 
 4. **Add content**: Publish the required `site` and `page` documents.
 
-| Document | Slug     | Use            | Required? |
-| -------- | -------- | -------------- | --------- |
-| `site`   | `index`  | Homepage       | Required  |
-| `site`   | `404`    | Page not found | Optional  |
-| `page`   | `blog`   | Blog listing   | Optional  |
-| `page`   | `blog/*` | Blog post      | Optional  |
+| Document | Slug     | Use             | Required? |
+| -------- | -------- | --------------- | --------- |
+| `site`   |          | Global settings | ✅        |
+| `page`   | `index`  | Homepage        | ✅        |
+| `page`   | `404`    | Page not found  |           |
+| `page`   | `blog`   | Blog listing    |           |
+| `page`   | `blog/*` | Blog post       |           |
 
-- Or import a demo dataset
+- Or import a demo dataset:
 
 ```sh
 sanity dataset import src/sanity/demo.tar.gz

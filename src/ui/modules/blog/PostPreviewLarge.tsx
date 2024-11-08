@@ -17,6 +17,7 @@ export default function PostPreviewLarge({ post }: { post: Sanity.BlogPost }) {
 					image={post.metadata.image}
 					imageWidth={800}
 					alt={post.metadata.title}
+					loading="eager"
 				/>
 
 				{post.featured && (
