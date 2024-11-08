@@ -96,7 +96,7 @@ export default defineType({
 	preview: {
 		select: {
 			content: 'content',
-			media: 'bgImage',
+			media: 'bgImage.asset',
 		},
 		prepare: ({ content, media }) => ({
 			title: getBlockText(content),

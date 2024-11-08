@@ -8,6 +8,7 @@ export default function LinkList({ link, links }: Sanity.LinkList) {
 		<InteractiveDetails
 			className="group relative"
 			name="header"
+			delay={10}
 			closeAfterNavigate
 		>
 			<summary className="flex items-center gap-1 md:px-3">
