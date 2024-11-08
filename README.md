@@ -34,7 +34,7 @@ Visit [here](https://sanitypress.dev/studio-screenshots) for more Studio screens
 Full instructions on the [docs](https://sanitypress.dev/docs).
 
 1. **New repo**: Clone or fork the [GitHub template](https://github.com/nuotsu/sanitypress).
-2. **Get Sanity project ID**: Create a new project on [Sanity.io](https://sanity.io/manage) _from scratch (blank schema) with CLI_.
+2. **Get Sanity project ID**: Create a new project on [Sanity.io](https://sanity.io/manage) _from scratch (blank schema) with CLI_ and retrieve the `projectId`.
 3. **Update environment variables**:
 
 ```sh
@@ -49,23 +49,23 @@ SANITY_API_READ_TOKEN = ... # "Viewer" token from https://sanity.io/manage
 NEXT_PUBLIC_GITHUB_TOKEN = # used for Reputation blocks
 ```
 
-4. **Add content**: Publish the required `site` and `page` documents.
+4. **Add content**: Publish the **required** `site` and `page` documents.
 
-| Document | Slug     | Use             | Required? |
-| -------- | -------- | --------------- | --------- |
-| `site`   |          | Global settings | ✅        |
-| `page`   | `index`  | Homepage        | ✅        |
-| `page`   | `404`    | Page not found  |           |
-| `page`   | `blog`   | Blog listing    |           |
-| `page`   | `blog/*` | Blog post       |           |
+| Document | Slug     | Use             | Required? | Notes                                |
+| -------- | -------- | --------------- | --------- | ------------------------------------ |
+| `site`   |          | Global settings | ✅        |                                      |
+| `page`   | `index`  | Homepage        | ✅        |                                      |
+| `page`   | `404`    | Page not found  |           |                                      |
+| `page`   | `blog`   | Blog listing    |           | Add the **Blog frontpage** module    |
+| `page`   | `blog/*` | Blog post       |           | Add the **Blog post content** module |
 
-- Or import a demo dataset:
+Alternatively, you can import a demo dataset:
 
 ```sh
 sanity dataset import src/sanity/demo.tar.gz
 ```
 
-5. **Set up deployments**: Add a [`Vercel`](https://www.sanity.io/plugins/vercel-dashboard-widget) or [`Netlify`](https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-netlify) widget for deployments from the Studio.
+5. **Set up deployments**: Add a [Vercel](https://www.sanity.io/plugins/vercel-dashboard-widget) or [Netlify](https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-netlify) widget to enable deployments from the Studio.
 
 6. **Customize**: Adjust frontend styles, edit/add Sanity schema and modules, and more.
 
