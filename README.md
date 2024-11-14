@@ -27,7 +27,7 @@ Visit [here](https://sanitypress.dev/studio-screenshots) for more Studio screens
 - [x] 📕 [Pre-configured Sanity schema](/src/sanity/schemas/index.ts)
 - [x] 📘 [Pre-built frontend components](/src/ui/)
 - [x] ✏️ [Visual editing](https://sanitypress.dev/blog/visual-editing) in [embedded Sanity Studio](https://sanitypress.dev/blog/why-you-should-embed-your-studio)
-- [x] ⌨️ Auto-generated [sitemap](https://sanitypress.dev/sitemap.xml) and [RSS feeds](https://sanitypress.dev/blog/rss.xml)
+- [x] ⌨️ Auto-generated [sitemap](https://sanitypress.dev/sitemap.xml) and [RSS feed](https://sanitypress.dev/blog/rss.xml)
 
 ## Getting Started
 
@@ -59,7 +59,7 @@ NEXT_PUBLIC_GITHUB_TOKEN = # used for Reputation blocks
 | `page`   | `blog`   | Blog listing    |           | Add the [**Blog frontpage**](https://sanitypress.dev/docs/modules/blog-frontpage) module       |
 | `page`   | `blog/*` | Blog post       |           | Add the [**Blog post content**](https://sanitypress.dev/docs/modules/blog-post-content) module |
 
-Alternatively, you can import a demo dataset:
+Alternatively, you can import the [demo site](https://demo.sanitypress.dev) dataset:
 
 ```sh
 sanity dataset import src/sanity/demo.tar.gz
