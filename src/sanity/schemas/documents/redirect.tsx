@@ -1,6 +1,8 @@
 import { defineField, defineType } from 'sanity'
 import { PiFlowArrow } from 'react-icons/pi'
 
+const regex = /^(\/|https?:\/\/)/
+
 export default defineType({
 	name: 'redirect',
 	title: 'Redirect',
@@ -12,14 +14,14 @@ export default defineType({
 			title: 'Redirect from',
 			placeholder: 'e.g. /old-path, /old-blog/:slug',
 			type: 'string',
-			validation: (Rule) => Rule.custom(validateRedirect),
+			validation: (Rule) => Rule.required().regex(regex),
 		}),
 		defineField({
 			name: 'destination',
 			title: 'Redirect to',
 			placeholder: 'e.g. /new-path, /blog/:slug',
 			type: 'string',
-			validation: (Rule) => Rule.custom(validateRedirect),
+			validation: (Rule) => Rule.required().regex(regex),
 		}),
 		defineField({
 			name: 'permanent',
@@ -56,12 +58,3 @@ export default defineType({
 		}),
 	},
 })
-
-function validateRedirect(source?: string) {
-	if (!source) return 'Required'
-
-	// starts with either / or http
-	const regex = /^(\/|https?:\/\/)/
-
-	return regex.test(source) ? true : 'Must start with / or http:// or https://'
-}
