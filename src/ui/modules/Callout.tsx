@@ -9,13 +9,12 @@ export default function Callout({
 	ctas: Sanity.CTA[]
 }>) {
 	return (
-		<section className="section">
-			<div className="section grid max-w-screen-lg items-center gap-12 gap-y-6 rounded bg-accent/5 md:grid-cols-[2fr,1fr]">
-				<div className="richtext">
+		<section className="section text-center">
+			<div className="section max-w-screen-lg rounded bg-accent/5">
+				<div className="richtext mx-auto max-w-screen-sm text-balance">
 					<PortableText value={content} />
+					<CTAList className="!mt-8 justify-center" ctas={ctas} />
 				</div>
-
-				<CTAList className="m-auto" ctas={ctas} />
 			</div>
 		</section>
 	)

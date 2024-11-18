@@ -13,9 +13,12 @@
 		display: none !important;
 	}
 
-	:target:is(h1, h2, h3, h4, h5, h6) {
+	:target {
 		scroll-margin-top: var(--header-height);
-		animation: target 2s ease-in-out forwards;
+
+		&:is(h1, h2, h3, h4, h5, h6) {
+			animation: target 2s ease-in-out forwards;
+		}
 	}
 
 	@keyframes target {
@@ -201,7 +204,7 @@
 
 			& tbody {
 				& tr:nth-child(odd) {
-					@apply bg-neutral-100;
+					@apply bg-neutral-50;
 				}
 
 				& tr th:first-child {
@@ -225,7 +228,6 @@
 				display: inline-block;
 				font-family: monospace;
 				font-size: 1.5em;
-				transition: rotate 0.2s;
 			}
 		}
 
@@ -234,7 +236,7 @@
 		}
 
 		&[open] summary::after {
-			rotate: 135deg;
+			content: '-';
 		}
 	}
 
