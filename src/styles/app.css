@@ -52,23 +52,23 @@
 	}
 
 	.h1 {
-		@apply _h text-3xl;
+		@apply _h text-4xl;
 	}
 
 	.h2 {
-		@apply _h text-2xl;
+		@apply _h text-3xl;
 	}
 
 	.h3 {
-		@apply _h text-xl;
+		@apply _h text-2xl;
 	}
 
 	.h4 {
-		@apply _h text-lg;
+		@apply _h text-xl;
 	}
 
 	.h5 {
-		@apply _h;
+		@apply _h text-lg;
 	}
 
 	.h6 {
