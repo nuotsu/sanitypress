@@ -15,7 +15,7 @@ export default function CreativeModule({
 	intro,
 	modules,
 	columns,
-	bordered,
+	visualSeparation,
 	textAlign,
 	alignItems,
 	...props
@@ -32,7 +32,7 @@ export default function CreativeModule({
 		colSpan: number
 	}>[]
 	columns: number
-	bordered: boolean
+	visualSeparation: boolean
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }>) {
@@ -50,13 +50,13 @@ export default function CreativeModule({
 				<div
 					className={cn(
 						'grid items-center md:grid-cols-[repeat(var(--col,1),minmax(0px,1fr))]',
-						bordered ? 'gap-4' : 'gap-x-12 gap-y-8',
+						visualSeparation ? 'gap-4' : 'gap-x-12 gap-y-8',
 					)}
 					style={
 						{
 							'--col': columns || modules?.length,
 							textAlign: stegaClean(textAlign),
-							alignItems: bordered ? 'stretch' : stegaClean(alignItems),
+							alignItems: visualSeparation ? 'stretch' : stegaClean(alignItems),
 						} as React.CSSProperties
 					}
 				>
@@ -65,7 +65,7 @@ export default function CreativeModule({
 							className={cn(
 								'space-y-4',
 								colSpan > 1 && 'md:col-[var(--col-span,1)]',
-								bordered && 'rounded border p-4',
+								visualSeparation && 'rounded bg-neutral-50 p-6',
 							)}
 							style={
 								{

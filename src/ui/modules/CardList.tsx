@@ -10,6 +10,7 @@ export default function CardList({
 	intro,
 	cards,
 	layout,
+	visualSeparation,
 	...props
 }: Partial<{
 	pretitle: string
@@ -20,6 +21,7 @@ export default function CardList({
 		ctas: Sanity.CTA[]
 	}>[]
 	layout: 'grid' | 'carousel'
+	visualSeparation: boolean
 }> &
 	Sanity.Module) {
 	const isCarousel = stegaClean(layout) === 'carousel'
@@ -42,7 +44,13 @@ export default function CardList({
 				)}
 			>
 				{cards?.map((card, key) => (
-					<article className="flex flex-col gap-2 border p-4" key={key}>
+					<article
+						className={cn(
+							'flex flex-col gap-2',
+							visualSeparation && 'border p-4',
+						)}
+						key={key}
+					>
 						{card.image && (
 							<figure>
 								<Img

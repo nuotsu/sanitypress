@@ -83,12 +83,10 @@ export default defineType({
 			group: 'options',
 		}),
 		defineField({
-			name: 'bordered',
+			name: 'visualSeparation',
 			type: 'boolean',
 			initialValue: false,
 			group: 'options',
-			description:
-				'When enabled, vertical alignment will be set to "stretched"',
 		}),
 		defineField({
 			...textAlign,

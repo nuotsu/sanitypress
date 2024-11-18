@@ -66,6 +66,12 @@ export default defineType({
 			group: 'options',
 			initialValue: 'carousel',
 		}),
+		defineField({
+			name: 'visualSeparation',
+			type: 'boolean',
+			initialValue: true,
+			group: 'options',
+		}),
 	],
 	preview: {
 		select: {
