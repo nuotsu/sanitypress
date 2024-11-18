@@ -6,10 +6,10 @@ const config: Config = {
 	theme: {
 		extend: {
 			colors: {
-				ink: '#000',
+				ink: '#1d1d1f',
 				canvas: '#fff',
 
-				accent: '#000',
+				accent: '#1d1d1f',
 			},
 			maxHeight: {
 				fold: 'calc(100svh - var(--header-height))',

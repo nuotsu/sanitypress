@@ -16,7 +16,7 @@ export default function Image({
 			style={{ float: stegaClean(value.float) }}
 		>
 			<Img
-				className="mx-auto max-h-svh w-auto bg-neutral-100 text-[0px]"
+				className="mx-auto max-h-svh w-auto bg-neutral-50 text-[0px]"
 				image={value}
 				imageWidth={1500}
 			/>
