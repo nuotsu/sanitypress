@@ -1,14 +1,20 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
-import { VscQuestion } from 'react-icons/vsc'
+import { TfiLayoutAccordionMerged } from 'react-icons/tfi'
 import { getBlockText } from '@/sanity/lib/utils'
 
 export default defineType({
 	name: 'accordion-list',
 	title: 'Accordion list',
 	type: 'object',
-	icon: VscQuestion,
+	icon: TfiLayoutAccordionMerged,
 	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fields: [
+		defineField({
+			name: 'uid',
+			title: 'Unique Identifier',
+			type: 'uid',
+			group: 'options',
+		}),
 		defineField({
 			name: 'intro',
 			type: 'array',
@@ -21,7 +27,7 @@ export default defineType({
 			of: [
 				defineArrayMember({
 					type: 'object',
-					icon: VscQuestion,
+					icon: TfiLayoutAccordionMerged,
 					fields: [
 						defineField({
 							name: 'summary',
@@ -60,12 +66,6 @@ export default defineType({
 				list: ['vertical', 'horizontal'],
 			},
 			initialValue: 'vertical',
-			group: 'options',
-		}),
-		defineField({
-			name: 'uid',
-			title: 'Unique Identifier',
-			type: 'uid',
 			group: 'options',
 		}),
 		defineField({
