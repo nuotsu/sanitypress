@@ -16,33 +16,37 @@ export default async function Reputation({
 		'aspect-square h-8 w-auto rounded-full border-2 border-canvas bg-canvas object-cover -mr-2 last:mr-0',
 	)
 
+	const { limit = 5 } = reputation
+
 	return (
 		<div
 			className={cn('flex flex-wrap items-center gap-x-6 gap-y-2', className)}
 		>
-			<figure className="flex empty:hidden">
+			<figure className="flex *:relative empty:hidden">
 				{!!avatars?.length
 					? avatars.map(
 							(avatar, key) =>
 								!!avatar && (
 									<img
 										className={imgClassname}
+										style={{ zIndex: avatars.length - key }}
 										src={avatar.avatar_url + '&s=48'}
 										alt={avatar.login}
 										key={key}
 									/>
 								),
 						)
-					: reputation.avatars
-							?.slice(0, reputation.limit || 5)
-							?.map((avatar, key) => (
-								<Img
-									className={imgClassname}
-									image={avatar}
-									imageWidth={96}
-									key={key}
-								/>
-							))}
+					: reputation.avatars?.slice(0, limit)?.map((avatar, key) => (
+							<Img
+								className={imgClassname}
+								style={{
+									zIndex: (reputation.avatars?.length || limit) - key,
+								}}
+								image={avatar}
+								imageWidth={96}
+								key={key}
+							/>
+						))}
 			</figure>
 
 			<div className="grid text-left [figure:empty+&]:text-center">
