@@ -1,7 +1,7 @@
 import plugin from 'tailwindcss/plugin'
 import type { Config } from 'tailwindcss'
 
-const config: Config = {
+export default {
 	content: ['./src/{app,ui}/**/*.{ts,tsx}'],
 	theme: {
 		extend: {
@@ -23,6 +23,4 @@ const config: Config = {
 		}),
 	],
 	safelist: [{ pattern: /action.*/ }, 'ghost'],
-}
-
-export default config
+} satisfies Config

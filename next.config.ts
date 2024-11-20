@@ -10,7 +10,7 @@ const client = createClient({
 	useCdn: true,
 })
 
-const nextConfig: NextConfig = {
+export default {
 	images: {
 		remotePatterns: [
 			{
@@ -37,6 +37,4 @@ const nextConfig: NextConfig = {
 	// 		fullUrl: true,
 	// 	},
 	// },
-}
-
-export default nextConfig
+} satisfies NextConfig
