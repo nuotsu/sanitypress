@@ -22,7 +22,8 @@ export async function GET() {
 				body,
 				publishDate,
 				authors[]->,
-				metadata
+				metadata,
+				'image': metadata.image.asset->url
 			},
 			'copyright': pt::text(*[_type == 'site'][0].copyright)
 		}`,
@@ -43,7 +44,7 @@ export async function GET() {
 		link: url,
 		id: url,
 		copyright,
-		favicon: process.env.NEXT_PUBLIC_BASE_URL + 'favicon.ico',
+		favicon: process.env.NEXT_PUBLIC_BASE_URL + '/favicon.ico',
 		language: 'en',
 		generator: 'https://sanitypress.dev',
 	})
@@ -54,21 +55,19 @@ export async function GET() {
 			description: post.metadata.description,
 			id: processUrl(post),
 			link: processUrl(post),
+			published: new Date(post.publishDate),
 			date: new Date(post.publishDate),
-			author: post.authors?.map((author) => ({
-				name: author.name,
-			})),
+			author: post.authors?.map((author) => ({ name: author.name })),
 			content: toHTML(post.body, {
 				components: {
 					types: {
-						image: ({ value }) => {
-							const img = `<img src="${urlFor(value).url()}" alt="${value.alt}" />`
+						image: ({ value: { alt, caption, source, ...value } }) => {
+							const img = `<img src="${urlFor(value).url()}" alt="${alt}" />`
 							const figcaption =
-								value.caption && `<figcaption>${value.caption}</figcaption>`
-							const source =
-								value.source && `<a href="${value.source}">(Source)</a>`
+								caption && `<figcaption>${caption}</figcaption>`
+							const aSource = source && `<a href="${source}">(Source)</a>`
 
-							return `<figure>${[img, figcaption, source].filter(Boolean).join(' ')}</figure>`
+							return `<figure>${[img, figcaption, aSource].filter(Boolean).join(' ')}</figure>`
 						},
 						code: ({ value }) =>
 							`<pre><code>${escapeHTML(value.code)}</code></pre>`,
