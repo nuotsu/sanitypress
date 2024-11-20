@@ -12,7 +12,7 @@ export default function StepList({
 	return (
 		<section className="section space-y-8">
 			{intro && (
-				<header className="richtext text-center">
+				<header className="richtext text-balance text-center">
 					<PortableText value={intro} />
 				</header>
 			)}

@@ -1,5 +1,9 @@
 @screen lg {
+	.root[open] > summary::after {
+		visibility: hidden;
+	}
+
 	.inView:not(.inView ~ .inView) {
-		@apply border-accent border-l-4;
+		@apply border-l-4 border-accent;
 	}
 }
