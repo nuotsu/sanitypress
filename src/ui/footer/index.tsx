@@ -12,34 +12,31 @@ export default async function Footer() {
 
 	return (
 		<footer className="bg-accent text-center text-canvas">
-			<div className="section border-b border-canvas/20">
-				<div className="mx-auto max-w-screen-xl space-y-8">
-					<div className="flex flex-wrap justify-between gap-x-12 gap-y-8 max-sm:flex-col">
-						<div className="flex flex-col gap-3 self-start max-sm:mx-auto max-sm:items-center">
-							<Link className="h3 md:h2 max-w-max" href="/">
-								{logoImage ? (
-									<Img
-										className="max-h-[1.5em] w-auto"
-										image={logoImage}
-										alt={logo?.name || title}
-									/>
-								) : (
-									title
-								)}
-							</Link>
+			<div className="section flex flex-wrap justify-between gap-x-12 gap-y-8 max-sm:flex-col">
+				<div className="flex flex-col gap-3 self-start max-sm:mx-auto max-sm:items-center">
+					<Link className="h3 md:h2 max-w-max" href="/">
+						{logoImage ? (
+							<Img
+								className="max-h-[1.5em] w-auto"
+								image={logoImage}
+								alt={logo?.name || title}
+							/>
+						) : (
+							title
+						)}
+					</Link>
 
-							<Social />
-						</div>
-
-						<Navigation />
-					</div>
+					<Social />
 				</div>
+
+				<Navigation />
 			</div>
 
-			<div className="flex flex-wrap justify-center gap-x-6 gap-y-2 p-4 text-sm">
-				&copy; {new Date().getFullYear()}{' '}
-				{copyright ? <PortableText value={copyright} /> : title}
-			</div>
+			{copyright && (
+				<div className="mx-auto flex max-w-screen-xl flex-wrap justify-center gap-x-6 gap-y-2 border-t border-canvas/20 p-4 text-sm">
+					<PortableText value={copyright} />
+				</div>
+			)}
 		</footer>
 	)
 }
