@@ -2,6 +2,7 @@ import Img, { Source } from '@/ui/Img'
 import { PortableText, stegaClean } from 'next-sanity'
 import CTAList from '@/ui/CTAList'
 import Pretitle from '@/ui/Pretitle'
+import CustomHTML from './CustomHTML'
 import Reputation from '@/ui/Reputation'
 import { cn } from '@/lib/utils'
 
@@ -70,6 +71,7 @@ export default function Hero({
 							value={content}
 							components={{
 								types: {
+									'custom-html': ({ value }) => <CustomHTML {...value} />,
 									'reputation-block': ({ value }) => (
 										<Reputation
 											className={cn(

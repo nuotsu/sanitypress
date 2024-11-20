@@ -1,5 +1,6 @@
 import { PortableText } from 'next-sanity'
 import Pretitle from '@/ui/Pretitle'
+import CustomHTML from './CustomHTML'
 import Reputation from '@/ui/Reputation'
 import CTAList from '@/ui/CTAList'
 import Img from '@/ui/Img'
@@ -37,6 +38,7 @@ export default function HeroSplit({
 					value={content}
 					components={{
 						types: {
+							'custom-html': ({ value }) => <CustomHTML {...value} />,
 							'reputation-block': ({ value }) => (
 								<Reputation className="!mt-4" reputation={value.reputation} />
 							),

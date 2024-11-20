@@ -28,7 +28,7 @@ export default defineType({
 		defineField({
 			name: 'content',
 			type: 'array',
-			of: [{ type: 'block' }, reputationBlock],
+			of: [{ type: 'block' }, { type: 'custom-html' }, reputationBlock],
 			group: 'content',
 		}),
 		defineField({
