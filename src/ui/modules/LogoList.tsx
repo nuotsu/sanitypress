@@ -1,4 +1,4 @@
-import { fetchSanityLive, groq } from '@/sanity/lib/fetch'
+import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import { PortableText } from 'next-sanity'
 import Pretitle from '@/ui/Pretitle'
 import Img from '@/ui/Img'
@@ -22,7 +22,7 @@ export default async function LogoList({
 }>) {
 	const allLogos =
 		logos ||
-		(await fetchSanityLive<Sanity.Logo[]>({
+		(await fetchSanity<Sanity.Logo[]>({
 			query: groq`*[_type == 'logo']|order(name)`,
 		}))
 

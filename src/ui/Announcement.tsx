@@ -1,10 +1,10 @@
 import { PortableText, groq } from 'next-sanity'
-import { fetchSanityLive } from '@/sanity/lib/fetch'
+import { fetchSanity } from '@/sanity/lib/fetch'
 import { linkQuery } from '@/sanity/lib/queries'
 import CTA from '@/ui/CTA'
 
 export default async function Announcement() {
-	const announcements = await fetchSanityLive<Sanity.Announcement[]>({
+	const announcements = await fetchSanity<Sanity.Announcement[]>({
 		query: groq`*[_type == 'site'][0].announcements[]->{
 			...,
 			cta{ ${linkQuery} },

@@ -1,11 +1,11 @@
-import { fetchSanityLive, groq } from '@/sanity/lib/fetch'
+import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import processUrl from '@/lib/processUrl'
 import { Feed } from 'feed'
 import { escapeHTML, toHTML } from '@portabletext/to-html'
 import { urlFor } from '@/sanity/lib/image'
 
 export async function GET() {
-	const { blog, posts, copyright } = await fetchSanityLive<{
+	const { blog, posts, copyright } = await fetchSanity<{
 		blog: Sanity.Page
 		posts: Array<Sanity.BlogPost & { image?: string }>
 		copyright: string

@@ -15,7 +15,7 @@ export const { sanityFetch, SanityLive } = defineLive({
 	},
 })
 
-export async function fetchSanityLive<T = any>(
+export async function fetchSanity<T = any>(
 	args: Parameters<typeof sanityFetch>[0],
 ) {
 	const preview = dev || (await draftMode()).isEnabled

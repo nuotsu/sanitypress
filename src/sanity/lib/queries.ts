@@ -1,4 +1,4 @@
-import { fetchSanityLive, groq } from './fetch'
+import { fetchSanity, groq } from './fetch'
 
 export const linkQuery = groq`
 	...,
@@ -20,7 +20,7 @@ export const ctaQuery = groq`
 `
 
 export async function getSite() {
-	const data = await fetchSanityLive<Sanity.Site>({
+	const data = await fetchSanity<Sanity.Site>({
 		query: groq`
 			*[_type == 'site'][0]{
 				...,

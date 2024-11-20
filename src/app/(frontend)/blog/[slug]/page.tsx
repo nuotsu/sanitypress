@@ -1,5 +1,5 @@
 import client from '@/sanity/client'
-import { fetchSanityLive, groq } from '@/sanity/lib/fetch'
+import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import { modulesQuery } from '@/sanity/lib/queries'
 import { notFound } from 'next/navigation'
 import Modules from '@/ui/modules'
@@ -32,7 +32,7 @@ export async function generateStaticParams() {
 }
 
 async function getPost(params: { slug?: string }) {
-	return await fetchSanityLive<Sanity.BlogPost>({
+	return await fetchSanity<Sanity.BlogPost>({
 		query: groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{
 			...,
 			'body': select(_type == 'image' => asset->, body),
@@ -53,7 +53,7 @@ async function getPost(params: { slug?: string }) {
 }
 
 async function getPageTemplate() {
-	return await fetchSanityLive<Sanity.Page>({
+	return await fetchSanity<Sanity.Page>({
 		query: groq`*[_type == 'page' && metadata.slug.current == 'blog/*'][0]{
 			...,
 			modules[]{ ${modulesQuery} },
