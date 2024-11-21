@@ -14,7 +14,7 @@ export default function Authors({
 					<dd className="grid aspect-square w-[1.7em] place-content-center overflow-hidden rounded-full bg-ink/5">
 						{author.image ? (
 							<Img
-								className="aspect-[inherit]"
+								className="aspect-square"
 								image={author.image}
 								imageWidth={60}
 								alt={author.name}
