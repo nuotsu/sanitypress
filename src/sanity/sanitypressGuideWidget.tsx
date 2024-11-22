@@ -24,7 +24,7 @@ function Component() {
 					<Heading size={1} as="h2">
 						<Flex align="flex-end" justify="space-between" wrap="wrap" gap={4}>
 							<Flex align="center" gap={2}>
-								About SanityPress
+								SanityPress
 								<Code size={1}>v{pkg.version}</Code>
 							</Flex>
 
@@ -80,7 +80,7 @@ const social: Array<{
 	},
 	{
 		icon: RiTwitterXLine,
-		url: 'https://x.com/nuotsu',
+		url: 'https://x.com/sanitypress',
 		label: 'X',
 	},
 ]

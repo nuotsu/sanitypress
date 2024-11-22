@@ -14,7 +14,7 @@ export default function CTA({
 	...rest
 }: Sanity.CTA & ComponentProps<'a'>) {
 	const props = {
-		className: cn(style, className) || undefined,
+		className: cn(stegaClean(style), className) || undefined,
 		children:
 			children || link?.label || link?.internal?.title || link?.external,
 		...rest,

@@ -25,13 +25,11 @@ export default async function Code({
 				characters: stegaClean(splitLines(value.code)[row - 1]?.[0])?.length,
 			}))
 			?.filter(({ characters }) => characters > 0)
-			?.map(({ row, characters }) => {
-				return {
-					start: { line: row - 1, character: 0 },
-					end: { line: row - 1, character: characters },
-					properties: { class: 'highlight' },
-				}
-			}),
+			?.map(({ row, characters }) => ({
+				start: { line: row - 1, character: 0 },
+				end: { line: row - 1, character: characters },
+				properties: { class: 'highlight' },
+			})),
 	})
 
 	return (

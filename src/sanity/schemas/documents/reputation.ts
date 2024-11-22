@@ -1,5 +1,5 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
-import { VscStarFull } from 'react-icons/vsc'
+import { VscStarFull, VscGithub } from 'react-icons/vsc'
 
 const reputation = defineType({
 	name: 'reputation',
@@ -34,7 +34,14 @@ const reputation = defineType({
 		defineField({
 			name: 'avatars',
 			type: 'array',
-			of: [{ type: 'image' }],
+			of: [
+				{
+					type: 'image',
+					options: {
+						hotspot: true,
+					},
+				},
+			],
 			options: {
 				layout: 'grid',
 			},
@@ -46,10 +53,12 @@ const reputation = defineType({
 			title: 'title',
 			subtitle: 'subtitle',
 			repo: 'repo',
+			avatar: 'avatars.0.asset',
 		},
-		prepare: ({ title, subtitle, repo }) => ({
+		prepare: ({ title, subtitle, repo, avatar }) => ({
 			title: title || repo || '★★★★★',
 			subtitle: subtitle || repo,
+			media: repo ? VscGithub : avatar,
 		}),
 	},
 })

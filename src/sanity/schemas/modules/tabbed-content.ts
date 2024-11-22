@@ -24,25 +24,30 @@ export default defineType({
 			of: [
 				defineArrayMember({
 					type: 'object',
+					groups: [{ name: 'content', default: true }, { name: 'image' }],
 					fields: [
 						defineField({
 							name: 'label',
 							type: 'string',
+							group: 'content',
 						}),
 						defineField({
 							name: 'pretitle',
 							type: 'string',
+							group: 'content',
 						}),
 						defineField({
 							name: 'content',
 							type: 'array',
 							of: [{ type: 'block' }],
+							group: 'content',
 						}),
 						defineField({
 							name: 'ctas',
 							title: 'Call-to-actions',
 							type: 'array',
 							of: [{ type: 'cta' }],
+							group: 'content',
 						}),
 						defineField({
 							name: 'image',
@@ -50,6 +55,7 @@ export default defineType({
 							options: {
 								hotspot: true,
 							},
+							group: 'image',
 							fields: [
 								defineField({
 									name: 'alt',
