@@ -1,6 +1,7 @@
 import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import { PortableText, stegaClean } from 'next-sanity'
 import FilterList from '@/ui/modules/blog/BlogList/FilterList'
+import { Suspense } from 'react'
 import List from './List'
 import { cn } from '@/lib/utils'
 
@@ -51,15 +52,17 @@ export default async function BlogList({
 
 			{displayFilters && !filteredCategory && <FilterList />}
 
-			<List
-				posts={posts}
-				className={cn(
-					'items-stretch gap-x-8 gap-y-12',
-					stegaClean(layout) === 'grid'
-						? 'grid md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]'
-						: 'carousel max-xl:full-bleed md:overflow-fade-r pb-4 [--size:320px] max-xl:px-4',
-				)}
-			/>
+			<Suspense>
+				<List
+					posts={posts}
+					className={cn(
+						'items-stretch gap-x-8 gap-y-12',
+						stegaClean(layout) === 'grid'
+							? 'grid md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]'
+							: 'carousel max-xl:full-bleed md:overflow-fade-r pb-4 [--size:320px] max-xl:px-4',
+					)}
+				/>
+			</Suspense>
 		</section>
 	)
 }

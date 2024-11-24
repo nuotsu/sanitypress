@@ -1,6 +1,7 @@
 import { fetchSanity, groq } from '@/sanity/lib/fetch'
-import FilterList from '../BlogList/FilterList'
 import PostPreviewLarge from '../PostPreviewLarge'
+import FilterList from '../BlogList/FilterList'
+import { Suspense } from 'react'
 import Paginated from './Paginated'
 import sortFeaturedPosts from './sortFeaturedPosts'
 import { stegaClean } from 'next-sanity'
@@ -16,15 +17,14 @@ export default async function BlogFrontpage({
 }>) {
 	const posts = await fetchSanity<Sanity.BlogPost[]>({
 		query: groq`*[_type == 'blog.post']|order(publishDate desc){
-				_type,
-				_id,
-				featured,
-				metadata,
-				categories[]->,
-				authors[]->,
-				publishDate,
-			}
-		`,
+			_type,
+			_id,
+			featured,
+			metadata,
+			categories[]->,
+			authors[]->,
+			publishDate,
+		}`,
 	})
 
 	const [firstPost, ...otherPosts] =
@@ -35,10 +35,12 @@ export default async function BlogFrontpage({
 			<PostPreviewLarge post={firstPost} />
 			<hr />
 			<FilterList />
-			<Paginated
-				posts={sortFeaturedPosts(otherPosts, showFeaturedPostsFirst)}
-				itemsPerPage={itemsPerPage}
-			/>
+			<Suspense>
+				<Paginated
+					posts={sortFeaturedPosts(otherPosts, showFeaturedPostsFirst)}
+					itemsPerPage={itemsPerPage}
+				/>
+			</Suspense>
 		</section>
 	)
 }

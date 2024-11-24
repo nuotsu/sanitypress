@@ -1,4 +1,5 @@
 import { fetchSanity, groq } from '@/sanity/lib/fetch'
+import { Suspense } from 'react'
 import Filter from './Filter'
 import css from './FilterList.module.css'
 import { cn } from '@/lib/utils'
@@ -11,6 +12,8 @@ export default async function FilterList() {
 		]|order(title)`,
 	})
 
+	if (!categories) return null
+
 	return (
 		<fieldset>
 			<legend className="sr-only">Filter by category</legend>
@@ -21,15 +24,17 @@ export default async function FilterList() {
 					'filtering group flex flex-wrap gap-1 max-sm:justify-center',
 				)}
 			>
-				<Filter label="All" />
+				<Suspense>
+					<Filter label="All" />
 
-				{categories?.map((category, key) => (
-					<Filter
-						label={category.title}
-						value={category.slug?.current}
-						key={key}
-					/>
-				))}
+					{categories?.map((category, key) => (
+						<Filter
+							label={category.title}
+							value={category.slug?.current}
+							key={key}
+						/>
+					))}
+				</Suspense>
 			</div>
 		</fieldset>
 	)
