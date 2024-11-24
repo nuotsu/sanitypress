@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, type ComponentProps } from 'react'
+import { useQueryState, parseAsInteger } from 'nuqs'
 
-type PaginationProps = ComponentProps<'div'> &
+type PaginationProps = React.ComponentProps<'div'> &
 	Partial<{
 		buttonClassName: string
 		prevClassName: string
@@ -18,36 +18,34 @@ type UsePaginationReturnProps<T> = {
 	atEnd: boolean
 	onPrev: () => void
 	onNext: () => void
-	resetPage: () => void
 	paginatedItems: T[]
 	Pagination: (props: PaginationProps) => React.ReactNode
 	currentPage: number
 	totalPages: number
 }
 
-export default function usePagination<T>({
+export function usePagination<T>({
 	items = [],
 	itemsPerPage = 3,
 }: {
 	items: T[]
 	itemsPerPage?: number
-}): UsePaginationReturnProps<T> {
-	const [$page, set$page] = useState(0)
+}) {
+	const { page, setPage } = usePageState()
 
-	const atStart = $page === 0
-	const atEnd = $page === Math.ceil(items.length / itemsPerPage) - 1
+	const atStart = page === 1
+	const atEnd = page === Math.ceil(items.length / itemsPerPage)
 
-	const onPrev = () => set$page(Math.max(0, $page - 1))
+	const onPrev = () => setPage(Math.max(1, page - 1))
 	const onNext = () =>
-		set$page(Math.min(Math.ceil(items.length / itemsPerPage) - 1, $page + 1))
-	const resetPage = () => set$page(0)
+		setPage(Math.min(Math.ceil(items.length / itemsPerPage), page + 1))
 
 	const paginatedItems = items.slice(
-		itemsPerPage * $page,
-		itemsPerPage * ($page + 1),
+		itemsPerPage * (page - 1),
+		itemsPerPage * page,
 	)
 
-	const currentPage = $page + 1
+	const currentPage = page
 	const totalPages = Math.ceil(items.length / itemsPerPage)
 
 	const Pagination = ({
@@ -100,10 +98,14 @@ export default function usePagination<T>({
 		atEnd,
 		onPrev,
 		onNext,
-		resetPage,
 		paginatedItems,
 		Pagination,
 		currentPage,
 		totalPages,
-	}
+	} satisfies UsePaginationReturnProps<T>
+}
+
+export function usePageState() {
+	const [page, setPage] = useQueryState('page', parseAsInteger.withDefault(1))
+	return { page, setPage }
 }
