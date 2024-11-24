@@ -1,6 +1,6 @@
 {
 	"name": "sanitypress",
-	"version": "5.1.11",
+	"version": "5.1.12",
 	"description": "A Next.js + Sanity.io Starter Template",
 	"author": "nuotsu <mitchell@nuotsu.dev> (https://nuotsu.dev)",
 	"license": "ISC",
@@ -27,6 +27,7 @@
 		"next": "^15.0.3",
 		"next-sanity": "^9.8.16",
 		"next-sanity-image": "^6.1.1",
+		"nuqs": "^2.2.3",
 		"octokit": "^4.0.2",
 		"react": "^18",
 		"react-device-detect": "^2.2.3",

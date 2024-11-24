@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect } from 'react'
+import { useCategory } from '../store'
 import usePagination from '@/lib/usePagination'
-import { categoryStore } from '../store'
 import List, { filterPosts } from '../BlogList/List'
 
 export default function Paginated({
@@ -18,9 +18,9 @@ export default function Paginated({
 			itemsPerPage,
 		})
 
-	const { selected } = categoryStore()
+	const { category } = useCategory()
 
-	useEffect(resetPage, [selected])
+	useEffect(resetPage, [category])
 
 	return (
 		<div className="relative space-y-12">

@@ -24,7 +24,11 @@ export default async function FilterList() {
 				<Filter label="All" />
 
 				{categories?.map((category, key) => (
-					<Filter label={category.title} value={category._id} key={key} />
+					<Filter
+						label={category.title}
+						value={category.slug?.current}
+						key={key}
+					/>
 				))}
 			</div>
 		</fieldset>

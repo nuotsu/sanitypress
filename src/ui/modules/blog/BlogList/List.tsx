@@ -1,9 +1,7 @@
 'use client'
 
-import { useEffect } from 'react'
-import { usePathname } from 'next/navigation'
-import { categoryStore } from '../store'
 import PostPreview from '../PostPreview'
+import { useCategory } from '../store'
 
 export default function List({
 	posts,
@@ -11,10 +9,6 @@ export default function List({
 }: {
 	posts: Sanity.BlogPost[]
 } & React.ComponentProps<'ul'>) {
-	const { reset } = categoryStore()
-
-	useEffect(reset, [usePathname()])
-
 	const filtered = filterPosts(posts)
 
 	if (!filtered.length) {
@@ -33,11 +27,11 @@ export default function List({
 }
 
 export function filterPosts(posts: Sanity.BlogPost[]) {
-	const { selected } = categoryStore()
+	const { category } = useCategory()
 
 	return posts.filter(
 		(post) =>
-			selected === 'All' ||
-			post.categories?.some((category) => category._id === selected),
+			category === 'All' ||
+			post.categories?.some(({ slug }) => slug?.current === category),
 	)
 }

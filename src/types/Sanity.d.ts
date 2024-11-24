@@ -55,6 +55,7 @@ declare global {
 
 		type BlogCategory = SanityDocument<{
 			title: string
+			slug: { current: string }
 		}>
 
 		// miscellaneous

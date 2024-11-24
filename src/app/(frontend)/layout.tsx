@@ -1,4 +1,5 @@
 // import { GoogleTagManager } from '@next/third-parties/google'
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import SkipToContent from '@/ui/SkipToContent'
 import Announcement from '@/ui/Announcement'
 import Header from '@/ui/header'
@@ -18,15 +19,18 @@ export default async function RootLayout({
 			{/* <GoogleTagManager gtmId='' /> */}
 
 			<body className="bg-canvas text-ink">
-				<SkipToContent />
-				<Announcement />
-				<Header />
-				<main id="main-content" tabIndex={-1}>
-					{children}
-				</main>
-				<Footer />
+				<NuqsAdapter>
+					<SkipToContent />
+					<Announcement />
+					<Header />
+					<main id="main-content" tabIndex={-1}>
+						{children}
+					</main>
+					<Footer />
 
-				<VisualEditingControls />
+					<VisualEditingControls />
+				</NuqsAdapter>
+
 				<Analytics />
 				<SpeedInsights />
 			</body>
