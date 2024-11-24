@@ -10,7 +10,7 @@ export default function Paginated({
 	posts: Sanity.BlogPost[]
 	itemsPerPage?: number
 }) {
-	const { paginatedItems, Pagination } = usePagination<Sanity.BlogPost>({
+	const { paginatedItems, Pagination } = usePagination({
 		items: filterPosts(posts),
 		itemsPerPage,
 	})

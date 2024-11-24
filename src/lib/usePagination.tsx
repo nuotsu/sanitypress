@@ -13,18 +13,7 @@ type PaginationProps = React.ComponentProps<'div'> &
 		onClick: () => void
 	}>
 
-type UsePaginationReturnProps<T> = {
-	atStart: boolean
-	atEnd: boolean
-	onPrev: () => void
-	onNext: () => void
-	paginatedItems: T[]
-	Pagination: (props: PaginationProps) => React.ReactNode
-	currentPage: number
-	totalPages: number
-}
-
-export function usePagination<T>({
+export function usePagination<T extends unknown>({
 	items = [],
 	itemsPerPage = 3,
 }: {
@@ -102,7 +91,7 @@ export function usePagination<T>({
 		Pagination,
 		currentPage,
 		totalPages,
-	} satisfies UsePaginationReturnProps<T>
+	}
 }
 
 export function usePageState() {
