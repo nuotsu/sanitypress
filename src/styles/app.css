@@ -170,6 +170,10 @@
 		& :is(ul, ol) {
 			list-style: revert;
 			padding-left: 1.5em;
+
+			& > li > ol {
+				list-style: lower-alpha;
+			}
 		}
 
 		& a:not(:is(.action, .action-outline, .ghost)) {

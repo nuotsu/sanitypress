@@ -21,6 +21,8 @@ export default function CustomHTML({
 
 	if (!html?.code) return null
 
+	// if no <script> tag, render as is
+
 	if (!html.code.includes('<script'))
 		return (
 			<section
