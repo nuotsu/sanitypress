@@ -15,11 +15,29 @@ export default {
 				fold: 'calc(100svh - var(--header-height))',
 			},
 		},
+
+		lh: {
+			DEFAULT: '1lh',
+			2: '2lh',
+			3: '3lh',
+		},
 	},
 	plugins: [
-		plugin(function ({ addVariant }) {
+		plugin(function ({ addVariant, matchUtilities, theme }) {
 			addVariant('header-open', 'body:has(#header-open:checked) &')
 			addVariant('header-closed', 'body:has(#header-open:not(:checked)) &')
+
+			matchUtilities(
+				{
+					skeleton: (value) => ({
+						height: value,
+						backgroundColor: theme('colors.neutral.50'),
+					}),
+				},
+				{
+					values: theme('lh'),
+				},
+			)
 		}),
 	],
 	safelist: [{ pattern: /action.*/ }, 'ghost'],

@@ -27,7 +27,7 @@ export default function Paginated({
 			<List
 				id="blog-list"
 				posts={paginatedItems}
-				className="grid scroll-mt-[var(--header-height)] gap-x-8 gap-y-12 md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]"
+				className="grid scroll-mt-[calc(var(--header-height)+1rem)] gap-x-8 gap-y-12 sm:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]"
 			/>
 
 			<Pagination

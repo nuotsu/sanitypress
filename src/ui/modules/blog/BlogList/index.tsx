@@ -1,9 +1,10 @@
+import { Suspense, type ComponentProps } from 'react'
 import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import { PortableText, stegaClean } from 'next-sanity'
 import FilterList from '@/ui/modules/blog/BlogList/FilterList'
-import { Suspense } from 'react'
 import List from './List'
 import { cn } from '@/lib/utils'
+import PostPreview from '../PostPreview'
 
 export default async function BlogList({
 	intro,
@@ -42,6 +43,13 @@ export default async function BlogList({
 		},
 	})
 
+	const listClassName = cn(
+		'items-stretch gap-x-8 gap-y-12',
+		stegaClean(layout) === 'grid'
+			? 'grid md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]'
+			: 'carousel max-xl:full-bleed md:overflow-fade-r pb-4 [--size:320px] max-xl:px-4',
+	)
+
 	return (
 		<section className="section space-y-8">
 			{intro && (
@@ -52,16 +60,18 @@ export default async function BlogList({
 
 			{displayFilters && !filteredCategory && <FilterList />}
 
-			<Suspense>
-				<List
-					posts={posts}
-					className={cn(
-						'items-stretch gap-x-8 gap-y-12',
-						stegaClean(layout) === 'grid'
-							? 'grid md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]'
-							: 'carousel max-xl:full-bleed md:overflow-fade-r pb-4 [--size:320px] max-xl:px-4',
-					)}
-				/>
+			<Suspense
+				fallback={
+					<ul className={listClassName}>
+						{Array.from({ length: limit ?? 6 }).map((_, i) => (
+							<li key={i}>
+								<PostPreview skeleton />
+							</li>
+						))}
+					</ul>
+				}
+			>
+				<List posts={posts} className={listClassName} />
 			</Suspense>
 		</section>
 	)
