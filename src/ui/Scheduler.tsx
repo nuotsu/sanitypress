@@ -11,6 +11,8 @@ export default function Scheduler({
 	end: string
 	children: React.ReactNode
 }>) {
+	if (!start && !end) return children
+
 	function checkActive() {
 		const now = new Date()
 		return (!start || new Date(start) < now) && (!end || new Date(end) > now)

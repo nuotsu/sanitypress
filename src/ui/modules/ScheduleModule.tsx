@@ -1,5 +1,5 @@
-import Scheduler from './Scheduler'
-import Modules from '..'
+import Scheduler from '@/ui/Scheduler'
+import Modules from '.'
 
 export default function ScheduleModule({
 	start,
