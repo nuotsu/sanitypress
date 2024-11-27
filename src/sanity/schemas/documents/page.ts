@@ -37,6 +37,7 @@ export default defineType({
 				{ type: 'logo-list' },
 				{ type: 'pricing-list' },
 				{ type: 'richtext-module' },
+				{ type: 'schedule-module' },
 				{ type: 'stat-list' },
 				{ type: 'step-list' },
 				{ type: 'tabbed-content' },

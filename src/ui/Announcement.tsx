@@ -14,22 +14,22 @@ export default async function Announcement() {
 
 	if (!announcements) return null
 
-	const active = announcements.find(({ start, end }) => {
+	const isActive = announcements.find(({ start, end }) => {
 		return (
 			(!start || new Date(start) < new Date()) &&
 			(!end || new Date(end) > new Date())
 		)
 	})
 
-	if (!active) return null
+	if (!isActive) return null
 
 	return (
 		<aside className="flex items-center justify-center gap-x-4 text-balance bg-accent p-2 text-center text-canvas max-md:text-sm md:gap-x-6">
 			<div className="anim-fade-to-r [&_a]:link">
-				<PortableText value={active.content} />
+				<PortableText value={isActive.content} />
 			</div>
 
-			<CTA className="link anim-fade-to-l shrink" link={active.cta} />
+			<CTA className="link anim-fade-to-l shrink" link={isActive.cta} />
 		</aside>
 	)
 }

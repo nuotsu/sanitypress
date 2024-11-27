@@ -36,6 +36,7 @@ import heroSplit from './modules/hero.split'
 import logoList from './modules/logo-list'
 import pricingList from './modules/pricing-list'
 import richtextModule from './modules/richtext-module'
+import scheduleModule from './modules/schedule-module'
 import statList from './modules/stat-list'
 import stepList from './modules/step-list'
 import tabbedContent from './modules/tabbed-content'
@@ -81,6 +82,7 @@ export const schemaTypes = [
 	logoList,
 	pricingList,
 	richtextModule,
+	scheduleModule,
 	statList,
 	stepList,
 	tabbedContent,
