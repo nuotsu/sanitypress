@@ -1,11 +1,11 @@
-import { fetchSanity } from '@/sanity/lib/fetch'
+import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { linkQuery } from '@/sanity/lib/queries'
 import Scheduler from './Scheduler'
 import { PortableText, groq } from 'next-sanity'
 import CTA from '@/ui/CTA'
 
 export default async function Announcement() {
-	const announcements = await fetchSanity<
+	const announcements = await fetchSanityLive<
 		(Sanity.Announcement & Sanity.Module)[]
 	>({
 		query: groq`*[_type == 'site'][0].announcements[]->{

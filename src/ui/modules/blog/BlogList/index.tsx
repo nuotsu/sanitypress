@@ -1,4 +1,4 @@
-import { Suspense, type ComponentProps } from 'react'
+import { Suspense } from 'react'
 import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import { PortableText, stegaClean } from 'next-sanity'
 import FilterList from '@/ui/modules/blog/BlogList/FilterList'
@@ -9,14 +9,14 @@ import PostPreview from '../PostPreview'
 export default async function BlogList({
 	intro,
 	layout,
-	limit = null,
+	limit,
 	showFeaturedPostsFirst,
 	displayFilters,
 	filteredCategory,
 }: Partial<{
 	intro: any
 	layout: 'grid' | 'carousel'
-	limit: number | null
+	limit: number
 	showFeaturedPostsFirst: boolean
 	displayFilters: boolean
 	filteredCategory: Sanity.BlogCategory
@@ -38,7 +38,7 @@ export default async function BlogList({
 			}
 		`,
 		params: {
-			filteredCategory: filteredCategory?._id || null,
+			filteredCategory: filteredCategory?._id,
 			limit,
 		},
 	})
