@@ -25,7 +25,7 @@ export default async function BlogList({
 		query: groq`
 			*[
 				_type == 'blog.post'
-				${filteredCategory ? `&& $filteredCategory in categories[]->._id` : ''}
+				${!!filteredCategory ? `&& $filteredCategory in categories[]->._id` : ''}
 			]|order(
 				${showFeaturedPostsFirst ? 'featured desc, ' : ''}
 				publishDate desc
@@ -38,7 +38,7 @@ export default async function BlogList({
 			}
 		`,
 		params: {
-			filteredCategory: filteredCategory?._id,
+			filteredCategory: filteredCategory?._id || '',
 			limit,
 		},
 	})
