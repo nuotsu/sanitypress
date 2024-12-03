@@ -3,6 +3,7 @@ import CTA from './CTA'
 import { cn } from '@/lib/utils'
 
 import {
+	FaBluesky,
 	FaFacebookF,
 	FaGithub,
 	FaInstagram,
@@ -49,7 +50,9 @@ function Icon({
 }: { url?: string } & React.ComponentProps<'svg'>) {
 	if (!url) return null
 
-	return url?.includes('facebook.com') ? (
+	return url?.includes('bsky.app') ? (
+		<FaBluesky {...props} />
+	) : url?.includes('facebook.com') ? (
 		<FaFacebookF {...props} />
 	) : url?.includes('github.com') ? (
 		<FaGithub {...props} />
