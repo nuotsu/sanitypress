@@ -1,12 +1,13 @@
 import { createClient, groq } from 'next-sanity'
+import { projectId, dataset, apiVersion } from '@/sanity/lib/env'
 // import { token } from '@/lib/sanity/token'
 import type { NextConfig } from 'next'
 
 const client = createClient({
-	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+	projectId,
+	dataset,
 	// token, // for private datasets
-	apiVersion: '2024-11-01',
+	apiVersion,
 	useCdn: true,
 })
 
@@ -23,7 +24,14 @@ export default {
 	async redirects() {
 		return await client.fetch(groq`*[_type == 'redirect']{
 			source,
-			destination,
+			'destination': select(
+				destination.type == 'internal' =>
+					select(
+						destination.internal->._type == 'blog.post' => '/blog/',
+						'/'
+					) + destination.internal->.metadata.slug.current,
+				destination.external
+			),
 			permanent
 		}`)
 	},

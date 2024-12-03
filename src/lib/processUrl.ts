@@ -11,7 +11,6 @@ export default function (
 	} = {},
 ) {
 	const segment = page?._type === 'blog.post' ? 'blog' : null
-
 	const slug = page?.metadata?.slug?.current
 	const path = slug === 'index' ? null : slug
 

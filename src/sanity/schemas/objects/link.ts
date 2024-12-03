@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { VscLink } from 'react-icons/vsc'
+import processSlug from '@/sanity/lib/processSlug'
 
 export default defineType({
 	name: 'link',
@@ -55,19 +56,13 @@ export default defineType({
 			label: 'label',
 			_type: 'internal._type',
 			title: 'internal.title',
-			slug: 'internal.metadata.slug.current',
-			external: 'external',
+			internal: 'internal.metadata.slug.current',
 			params: 'params',
+			external: 'external',
 		},
-		prepare: ({ label, _type, title, slug, external, params }) => ({
+		prepare: ({ label, title, _type, internal, params, external }) => ({
 			title: label || title,
-			subtitle: [
-				_type === 'blog.post' ? '/blog' : null,
-				external || (slug && (slug === 'index' ? '/' : `/${slug}`)),
-				params,
-			]
-				.filter(Boolean)
-				.join(''),
+			subtitle: processSlug({ _type, internal, params, external }),
 		}),
 	},
 })
