@@ -22,7 +22,7 @@ export default async function processMetadata(
 			images: ogimage || site.ogimage,
 		},
 		robots: {
-			index: !noIndex,
+			index: noIndex ? false : undefined,
 		},
 		alternates: {
 			canonical: url,
