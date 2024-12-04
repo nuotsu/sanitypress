@@ -1,5 +1,6 @@
 import { getSite } from '@/sanity/lib/queries'
 import processUrl from './processUrl'
+import { vercelPreview } from './env'
 import type { Metadata } from 'next'
 
 export default async function processMetadata(
@@ -22,7 +23,7 @@ export default async function processMetadata(
 			images: ogimage || site.ogimage,
 		},
 		robots: {
-			index: noIndex ? false : undefined,
+			index: noIndex || vercelPreview ? false : undefined,
 		},
 		alternates: {
 			canonical: url,
