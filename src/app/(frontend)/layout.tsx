@@ -1,4 +1,5 @@
 // import { GoogleTagManager } from '@next/third-parties/google'
+import { dev } from '@/lib/env'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import SkipToContent from '@/ui/SkipToContent'
 import Announcement from '@/ui/Announcement'
@@ -8,6 +9,10 @@ import VisualEditingControls from '@/ui/VisualEditingControls'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import '@/styles/app.css'
+
+export const metadata = {
+	robots: dev ? 'noindex' : undefined,
+}
 
 export default async function RootLayout({
 	children,
