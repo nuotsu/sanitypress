@@ -35,7 +35,7 @@ export default function Wrapper({
 	}, [pathname])
 
 	return (
-		<header ref={ref} className={className}>
+		<header ref={ref} className={className} role="banner">
 			{children}
 		</header>
 	)

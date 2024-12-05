@@ -23,7 +23,7 @@ export default async function RootLayout({
 					<SkipToContent />
 					<Announcement />
 					<Header />
-					<main id="main-content" tabIndex={-1}>
+					<main id="main-content" role="main" tabIndex={-1}>
 						{children}
 					</main>
 					<Footer />

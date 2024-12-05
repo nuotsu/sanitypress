@@ -11,7 +11,7 @@ export default async function Footer() {
 	const logoImage = logo?.image?.light || logo?.image?.default
 
 	return (
-		<footer className="bg-accent text-center text-canvas">
+		<footer className="bg-accent text-center text-canvas" role="contentinfo">
 			<div className="section flex flex-wrap justify-between gap-x-12 gap-y-8 max-sm:flex-col">
 				<div className="flex flex-col gap-3 self-start max-sm:mx-auto max-sm:items-center">
 					<Link className="h3 md:h2 max-w-max" href="/">
