@@ -1,8 +1,6 @@
 @import './fonts.css';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
 @layer base {
 	* {
@@ -89,7 +87,7 @@
 	}
 
 	.text-gradient {
-		@apply bg-gradient-to-br from-accent/5 to-accent bg-clip-text text-transparent;
+		@apply from-accent/5 to-accent bg-gradient-to-br bg-clip-text text-transparent;
 	}
 
 	/* ctas, links */
@@ -104,15 +102,15 @@
 	}
 
 	.action {
-		@apply _btn text-balance rounded border border-transparent bg-accent text-white;
+		@apply _btn bg-accent rounded border border-transparent text-balance text-white;
 	}
 
 	.action-outline {
-		@apply _btn text-balance rounded border border-accent/10 bg-canvas/50 to-canvas text-accent;
+		@apply _btn border-accent/10 bg-canvas/50 to-canvas text-accent rounded border text-balance;
 	}
 
 	.ghost {
-		@apply _btn frosted-glass rounded hover:bg-accent/5;
+		@apply _btn frosted-glass hover:bg-accent/5 rounded;
 	}
 
 	.link {
@@ -185,7 +183,7 @@
 		}
 
 		& :not(pre) > code {
-			@apply rounded bg-ink/5 px-1;
+			@apply bg-ink/5 rounded px-1;
 		}
 
 		& pre {
