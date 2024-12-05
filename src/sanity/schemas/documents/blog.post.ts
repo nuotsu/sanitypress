@@ -20,6 +20,7 @@ export default defineType({
 				{ type: 'block' },
 				imageBlock,
 				defineArrayMember({
+					title: 'Code block',
 					type: 'code',
 					options: {
 						withFilename: true,

@@ -2,21 +2,20 @@
 
 import { Box, Card, Code, Flex, Heading, Label, Stack, Text } from '@sanity/ui'
 import pkg from '$/package.json'
-import { VscGithubInverted } from 'react-icons/vsc'
-import { RiTwitterXLine } from 'react-icons/ri'
+import { FaGithub, FaBluesky, FaXTwitter } from 'react-icons/fa6'
 import type { DashboardWidget, LayoutConfig } from '@sanity/dashboard'
 
-export function sanitypressGuideWidget(
+export function infoWidget(
 	config: { layout?: LayoutConfig } = {},
 ): DashboardWidget {
 	return {
 		name: 'Guide',
-		component: Component,
+		component: Widget,
 		layout: config.layout ?? { width: 'medium' },
 	}
 }
 
-function Component() {
+function Widget() {
 	return (
 		<Card paddingY={4}>
 			<Stack space={4}>
@@ -74,14 +73,19 @@ const social: Array<{
 	label: string
 }> = [
 	{
-		icon: VscGithubInverted,
+		icon: FaGithub,
 		url: 'https://github.com/nuotsu/sanitypress',
 		label: 'GitHub',
 	},
 	{
-		icon: RiTwitterXLine,
+		icon: FaXTwitter,
 		url: 'https://x.com/sanitypress',
 		label: 'X',
+	},
+	{
+		icon: FaBluesky,
+		url: 'https://bsky.app/profile/sanitypress.dev',
+		label: 'Bluesky',
 	},
 ]
 
@@ -110,6 +114,10 @@ const linkGroups: Array<{
 			{
 				label: 'Built-in Modules',
 				url: 'https://sanitypress.dev/docs/modules',
+			},
+			{
+				label: 'Scheduling Content',
+				url: 'https://sanitypress.dev/blog/introducing-the-schedule-module',
 			},
 			{
 				label: 'Customization Guides',
