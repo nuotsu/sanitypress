@@ -24,7 +24,7 @@
 		"@vercel/speed-insights": "^1.1.0",
 		"clsx": "^2.1.1",
 		"feed": "^4.2.2",
-		"next": "^15.0.3",
+		"next": "^15.0.4",
 		"next-sanity": "^9.8.24",
 		"next-sanity-image": "^6.1.1",
 		"nuqs": "^2.2.3",
