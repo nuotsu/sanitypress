@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import { cn, slug } from '@/lib/utils'
+import { stegaClean } from 'next-sanity'
 import css from './TableOfContents.module.css'
 
 export default function TableOfContents({
@@ -65,11 +66,11 @@ export default function TableOfContents({
 						<a
 							className={cn(
 								'block py-1 hover:underline',
-								style == 'h2' && 'pl-4',
-								style == 'h3' && 'pl-6',
-								style == 'h4' && 'pl-8',
-								style == 'h5' && 'pl-10',
-								style == 'h6' && 'pl-12',
+								stegaClean(style) == 'h2' && 'pl-4',
+								stegaClean(style) == 'h3' && 'pl-6',
+								stegaClean(style) == 'h4' && 'pl-8',
+								stegaClean(style) == 'h5' && 'pl-10',
+								stegaClean(style) == 'h6' && 'pl-12',
 							)}
 							href={`#${slug(text)}`}
 						>
