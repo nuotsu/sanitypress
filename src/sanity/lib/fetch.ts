@@ -2,8 +2,7 @@ import client from '@/sanity/client'
 import { token } from '@/sanity/lib/token'
 import { dev } from '@/lib/env'
 import { draftMode } from 'next/headers'
-import { defineLive, type QueryOptions } from 'next-sanity'
-import type { QueryParams } from 'sanity'
+import { defineLive, type QueryOptions, type QueryParams } from 'next-sanity'
 
 export { groq } from 'next-sanity'
 

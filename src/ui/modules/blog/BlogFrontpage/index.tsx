@@ -1,9 +1,9 @@
 import { fetchSanity, groq } from '@/sanity/lib/fetch'
+import sortFeaturedPosts from './sortFeaturedPosts'
 import PostPreviewLarge from '../PostPreviewLarge'
 import FilterList from '../BlogList/FilterList'
 import { Suspense } from 'react'
 import Paginated from './Paginated'
-import sortFeaturedPosts from './sortFeaturedPosts'
 import { stegaClean } from 'next-sanity'
 import PostPreview from '../PostPreview'
 
