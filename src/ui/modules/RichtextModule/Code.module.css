@@ -1,3 +1,5 @@
+@import '../../../styles/theme.css' theme(reference);
+
 .code {
 	counter-reset: step;
 	counter-increment: step 0;
