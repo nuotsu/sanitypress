@@ -5,12 +5,12 @@ import { stegaClean } from 'next-sanity'
 import type { ComponentProps } from 'react'
 
 export default function CTA({
+	_type,
+	_key,
 	link,
 	style,
 	className,
 	children,
-	_type,
-	_key,
 	...rest
 }: Sanity.CTA & ComponentProps<'a'>) {
 	const props = {
