@@ -7,7 +7,7 @@ export default function AnchoredHeading({
 	children,
 	value,
 }: {
-	as: keyof JSX.IntrinsicElements
+	as: React.ElementType
 } & PortableTextComponentProps<PortableTextBlock>) {
 	const id = slug(value.children.reduce((acc, { text }) => acc + text, ''))
 

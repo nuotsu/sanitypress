@@ -39,7 +39,7 @@ export default async function BlogList({
 		`,
 		params: {
 			filteredCategory: filteredCategory?._id || '',
-			limit,
+			limit: limit ?? 0,
 		},
 	})
 
