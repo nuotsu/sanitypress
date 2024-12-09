@@ -5,7 +5,7 @@ declare global {
 	namespace Sanity {
 		// documents
 
-		type Site = SanityDocument<{
+		interface Site extends SanityDocument {
 			title: string
 			logo?: Logo
 			announcements?: Announcement[]
@@ -15,33 +15,33 @@ declare global {
 			social?: Navigation
 			copyright?: any
 			ogimage?: string
-		}>
+		}
 
-		type Navigation = SanityDocument<{
+		interface Navigation extends SanityDocument {
 			title: string
 			items?: (Link | LinkList)[]
-		}>
+		}
 
-		type Announcement = SanityDocument<{
+		interface Announcement extends SanityDocument {
 			content: any
 			cta?: Link
 			start?: string
 			end?: string
-		}>
+		}
 
 		// pages
 
-		type PageBase = SanityDocument<{
+		interface PageBase extends SanityDocument {
 			title?: string
 			metadata: Metadata
-		}>
+		}
 
-		type Page = PageBase & {
+		interface Page extends PageBase {
 			readonly _type: 'page'
 			modules?: Module[]
 		}
 
-		type BlogPost = PageBase & {
+		interface BlogPost extends PageBase {
 			readonly _type: 'blog.post'
 			body: any
 			readTime: number
@@ -53,28 +53,28 @@ declare global {
 			publishDate: string
 		}
 
-		type BlogCategory = SanityDocument<{
+		interface BlogCategory extends SanityDocument {
 			title: string
 			slug: { current: string }
-		}>
+		}
 
 		// miscellaneous
 
-		type Logo = SanityDocument<{
+		interface Logo extends SanityDocument {
 			name: string
 			image?: Partial<{
 				default: Image
 				light: Image
 				dark: Image
 			}>
-		}>
+		}
 
-		type Person = SanityDocument<{
+		interface Person extends SanityDocument {
 			name: string
 			image?: Image
-		}>
+		}
 
-		type Pricing = SanityDocument<{
+		interface Pricing extends SanityDocument {
 			title: string
 			highlight?: string
 			price: {
@@ -84,41 +84,40 @@ declare global {
 			}
 			ctas?: CTA[]
 			content?: any
-		}>
+		}
 
-		type Reputation = SanityDocument<{
+		interface Reputation extends SanityDocument {
 			title?: string
 			subtitle?: string
 			repo?: string
 			limit?: number
 			avatars?: Image[]
-		}>
+		}
 
-		type Testimonial = SanityDocument<{
+		interface Testimonial extends SanityDocument {
 			content: any
 			author?: {
 				name: string
 				title?: string
 				image?: Image
 			}
-		}>
+		}
 
 		// objects
 
-		type CTA = Partial<{
-			readonly _type: 'cta'
-			_key: string
-			link: Link
-			style: string
-		}>
+		interface CTA {
+			readonly _type?: 'cta'
+			_key?: string
+			link?: Link
+			style?: string
+		}
 
-		type Image = SanityImageObject &
-			Partial<{
-				alt: string
-				loading: 'lazy' | 'eager'
-			}>
+		interface Image extends SanityImageObject {
+			alt: string
+			loading: 'lazy' | 'eager'
+		}
 
-		type Link = {
+		interface Link {
 			readonly _type: 'link'
 			label: string
 			type: 'internal' | 'external'
@@ -127,13 +126,13 @@ declare global {
 			params?: string
 		}
 
-		type LinkList = {
+		interface LinkList {
 			readonly _type: 'link.list'
 			link?: Link
 			links?: Link[]
 		}
 
-		type Metadata = {
+		interface Metadata {
 			slug: { current: string }
 			title: string
 			description: string
@@ -142,7 +141,7 @@ declare global {
 			noIndex: boolean
 		}
 
-		type Module<T = string> = {
+		interface Module<T = string> {
 			_type: T
 			_key: string
 			uid?: string
