@@ -20,6 +20,7 @@
 		"@sanity/preview-url-secret": "^2.0.5",
 		"@sanity/vision": "^3.66.0",
 		"@tailwindcss/postcss": "^4.0.0-beta.5",
+		"@tailwindcss/vite": "^4.0.0-beta.6",
 		"@vercel/analytics": "^1.4.1",
 		"@vercel/speed-insights": "^1.1.0",
 		"clsx": "^2.1.1",
@@ -49,7 +50,7 @@
 		"postcss": "^8.4.49",
 		"prettier": "^3.4.2",
 		"prettier-plugin-tailwindcss": "^0.6.9",
-		"tailwindcss": "^4.0.0-beta.5",
+		"tailwindcss": "^4.0.0-beta.6",
 		"typescript": "^5.7.2"
 	}
 }
