@@ -2,9 +2,9 @@ import { Suspense } from 'react'
 import { fetchSanity, groq } from '@/sanity/lib/fetch'
 import { PortableText, stegaClean } from 'next-sanity'
 import FilterList from '@/ui/modules/blog/BlogList/FilterList'
+import PostPreview from '../PostPreview'
 import List from './List'
 import { cn } from '@/lib/utils'
-import PostPreview from '../PostPreview'
 
 export default async function BlogList({
 	intro,
