@@ -1,7 +1,7 @@
 'use client'
 
 import { defineConfig } from 'sanity'
-import { projectId, dataset } from '@/sanity/lib/env'
+import { projectId, dataset, apiVersion } from '@/sanity/lib/env'
 import { structure } from './src/sanity/structure'
 import { presentation } from './src/sanity/presentation'
 import {
@@ -9,11 +9,11 @@ import {
 	projectInfoWidget,
 	projectUsersWidget,
 } from '@sanity/dashboard'
-import { infoWidget } from './src/sanity/InfoWidget'
+import { infoWidget } from './src/sanity/infoWidget'
 import { vercelWidget } from 'sanity-plugin-dashboard-widget-vercel'
 import { visionTool } from '@sanity/vision'
 import { codeInput } from '@sanity/code-input'
-import { schemaTypes } from './src/sanity/schemas'
+import { schemaTypes } from './src/sanity/schemaTypes'
 
 const singletonTypes = ['site']
 
@@ -35,7 +35,7 @@ export default defineConfig({
 			title: 'Info',
 			widgets: [projectInfoWidget(), projectUsersWidget(), infoWidget()],
 		}),
-		visionTool(),
+		visionTool({ defaultApiVersion: apiVersion }),
 		codeInput(),
 	],
 

@@ -40,5 +40,5 @@ export default {
 			)
 		}),
 	],
-	safelist: [{ pattern: /action.*/ }, 'ghost'],
+	// safelist: [{ pattern: /action.*/ }, 'ghost'],
 } satisfies Config
