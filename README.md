@@ -26,7 +26,7 @@ Full instructions on the [docs](https://sanitypress.dev/docs).
 2. **Get Sanity project ID**: Create a new project on [Sanity.io](https://sanity.io/manage) _from scratch (blank schema) with CLI_ and retrieve the `projectId`.
 3. **Update environment variables**:
 
-```sh
+```ini
 # .env.local
 PUBLIC_BASE_URL = ... # https://sanitypress.dev
 
