@@ -40,7 +40,7 @@ export default function PostContent({
 			<div
 				className={cn(
 					'section grid gap-8',
-					showTOC && 'lg:grid-cols-[1fr,auto]',
+					showTOC && 'lg:grid-cols-[1fr_auto]',
 				)}
 			>
 				{showTOC && (

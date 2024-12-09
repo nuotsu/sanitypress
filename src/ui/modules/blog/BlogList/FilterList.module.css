@@ -9,7 +9,10 @@
 			top: anchor(--filter top);
 			width: anchor-size(--filter width);
 			height: anchor-size(--filter height);
-			@apply rounded bg-ink/5 transition-all;
+			border-radius: 0.25rem;
+			background-color: color-mix(in oklab, var(--color-ink) 5%, transparent);
+			transition: all var(--default-transition-duration)
+				var(--default-transition-timing-function);
 		}
 
 		&:not(:hover)::before {

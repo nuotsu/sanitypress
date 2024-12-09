@@ -4,7 +4,7 @@
 		'nav nav' auto
 		'ctas ctas' auto / 1fr auto;
 
-	@screen md {
+	@media (width >= 48rem) {
 		grid-template: 'logo nav ctas' auto / auto 1fr auto;
 	}
 }

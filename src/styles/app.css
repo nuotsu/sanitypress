@@ -1,9 +1,69 @@
-@import './theme.css';
+@import 'tailwindcss';
 @import './fonts.css';
-@import './base.css' layer(base);
+
+@theme {
+	--color-ink: #1d1d1f;
+	--color-canvas: #fff;
+	--color-accent: #1d1d1f;
+
+	--max-height-fold: calc(100svh - var(--header-height));
+
+	--lh-default: 1lh;
+	--lh-2: 2lh;
+	--lh-3: 3lh;
+}
 
 @variant header-open (body:has(#header-toggle:checked) &);
 @variant header-closed (body:has(#header-toggle:not(:checked)) &);
+
+@layer base {
+	* {
+		min-width: 0;
+	}
+
+	[hidden] {
+		display: none !important;
+	}
+
+	:target {
+		scroll-margin-top: var(--header-height);
+
+		&:is(h1, h2, h3, h4, h5, h6) {
+			animation: target var(--default-transition-duration) ease-in-out forwards;
+		}
+	}
+
+	@keyframes target {
+		0%,
+		50% {
+			background-color: color-mix(
+				in oklab,
+				var(--color-amber-400) 50%,
+				transparent
+			);
+		}
+	}
+
+	html {
+		accent-color: var(--color-accent);
+		caret-color: var(--color-accent);
+		scroll-behavior: smooth;
+	}
+
+	summary,
+	label,
+	input[type='submit'] {
+		cursor: pointer;
+	}
+
+	::-webkit-details-marker {
+		display: none;
+	}
+
+	hr {
+		@apply border-neutral-200;
+	}
+}
 
 /* animations */
 
@@ -118,7 +178,8 @@
 }
 
 @utility frosted-glass {
-	@apply bg-opacity-90 backdrop-blur-lg backdrop-saturate-200;
+	--tw-bg-opacity: 0.9;
+	@apply backdrop-blur-lg backdrop-saturate-200;
 }
 
 @utility full-bleed {

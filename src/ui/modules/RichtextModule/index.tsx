@@ -29,7 +29,7 @@ export default function RichtextModule({
 			className={cn(
 				'section grid gap-8',
 				tableOfContents &&
-					(tocRight ? 'lg:grid-cols-[1fr,auto]' : 'lg:grid-cols-[auto,1fr]'),
+					(tocRight ? 'lg:grid-cols-[1fr_auto]' : 'lg:grid-cols-[auto_1fr]'),
 			)}
 			{...moduleProps(props)}
 		>

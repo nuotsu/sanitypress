@@ -33,7 +33,7 @@ export default function FlagList({
 					<article
 						className={cn(
 							'grid gap-4',
-							stegaClean(iconPosition) === 'left' && 'grid-cols-[auto,1fr]',
+							stegaClean(iconPosition) === 'left' && 'grid-cols-[auto_1fr]',
 						)}
 						key={key}
 					>
