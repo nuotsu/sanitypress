@@ -42,7 +42,7 @@ export default function CreativeModule({
 		<section {...moduleProps(props)}>
 			<div className="section space-y-8">
 				{intro && (
-					<header className="richtext mx-auto max-w-xl text-balance text-center">
+					<header className="richtext mx-auto max-w-xl text-center text-balance">
 						<PortableText value={intro} />
 					</header>
 				)}
@@ -64,7 +64,7 @@ export default function CreativeModule({
 						<article
 							className={cn(
 								'space-y-4',
-								colSpan > 1 && 'md:col-[var(--col-span,1)]',
+								colSpan > 1 && 'md:col-(--col-span,1)',
 								visualSeparation && 'rounded bg-neutral-50 p-6',
 							)}
 							style={

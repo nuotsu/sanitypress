@@ -26,14 +26,14 @@ export default function StatList({
 
 			<dl className="mx-auto flex items-start justify-center gap-x-12 gap-y-6 max-md:max-w-max max-md:flex-col">
 				{stats?.map((stat, key) => (
-					<div className="w-full max-w-[250px] space-y-2" key={key}>
+					<div className="w-full max-w-3xs space-y-2" key={key}>
 						<dt className="font-bold">
 							<span className="text-gradient text-6xl">{stat.value}</span>
 							{stat.subValue && (
-								<small className="text-xl text-ink/50">{stat.subValue}</small>
+								<small className="text-ink/50 text-xl">{stat.subValue}</small>
 							)}
 						</dt>
-						<dd className="text-balance font-bold">{stat.text}</dd>
+						<dd className="font-bold text-balance">{stat.text}</dd>
 					</div>
 				))}
 			</dl>

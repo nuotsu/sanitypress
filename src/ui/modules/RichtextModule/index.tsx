@@ -36,7 +36,7 @@ export default function RichtextModule({
 			{tableOfContents && (
 				<aside
 					className={cn(
-						'lg:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] lg:w-[250px]',
+						'lg:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] lg:w-3xs',
 						tocRight && 'lg:order-last',
 					)}
 				>

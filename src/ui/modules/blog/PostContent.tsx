@@ -44,7 +44,7 @@ export default function PostContent({
 				)}
 			>
 				{showTOC && (
-					<aside className="lg:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] lg:order-1 lg:w-[250px]">
+					<aside className="lg:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] lg:order-1 lg:w-3xs">
 						<TableOfContents headings={post.headings} />
 					</aside>
 				)}
