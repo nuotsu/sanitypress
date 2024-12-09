@@ -1,3 +1,5 @@
+import { type SchemaTypeDefinition } from 'sanity'
+
 // documents
 import site from './documents/site'
 import page from './documents/page'
@@ -43,7 +45,7 @@ import tabbedContent from './modules/tabbed-content'
 import testimonialFeatured from './modules/testimonial.featured'
 import testimonialList from './modules/testimonial-list'
 
-export const schemaTypes = [
+export const schemaTypes: SchemaTypeDefinition[] = [
 	// documents
 	site,
 	page,
