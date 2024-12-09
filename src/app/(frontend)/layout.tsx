@@ -7,7 +7,7 @@ import Footer from '@/ui/footer'
 import VisualEditingControls from '@/ui/VisualEditingControls'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import '@/styles/app.css'
+import '@/styles/globals.css'
 
 export default async function RootLayout({
 	children,
