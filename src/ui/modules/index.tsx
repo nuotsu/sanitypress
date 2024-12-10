@@ -15,6 +15,7 @@ import LogoList from './LogoList'
 import PricingList from './PricingList'
 import RichtextModule from './RichtextModule'
 import ScheduleModule from './ScheduleModule'
+import SearchModule from './search'
 import StatList from './StatList'
 import StepList from './StepList'
 import TabbedContent from './TabbedContent'
@@ -74,6 +75,8 @@ export default function Modules({
 						return <RichtextModule {...module} key={module._key} />
 					case 'schedule-module':
 						return <ScheduleModule {...module} key={module._key} />
+					case 'search-module':
+						return <SearchModule {...module} key={module._key} />
 					case 'stat-list':
 						return <StatList {...module} key={module._key} />
 					case 'step-list':

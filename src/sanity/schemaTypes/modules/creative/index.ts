@@ -8,7 +8,8 @@ import {
 	alignItems,
 	alignmentFieldset,
 } from '../../fragments/fields/alignment'
-import { count, getBlockText } from '@/sanity/lib/utils'
+import { getBlockText } from '@/sanity/lib/utils'
+import { count } from '@/lib/utils'
 import { VscExtensions } from 'react-icons/vsc'
 
 export default defineType({

@@ -13,7 +13,7 @@ import { infoWidget } from './src/sanity/InfoWidget'
 import { vercelWidget } from 'sanity-plugin-dashboard-widget-vercel'
 import { visionTool } from '@sanity/vision'
 import { codeInput } from '@sanity/code-input'
-import { schemaTypes } from './src/sanity/schemas'
+import { schemaTypes } from './src/sanity/schemaTypes'
 
 const singletonTypes = ['site']
 

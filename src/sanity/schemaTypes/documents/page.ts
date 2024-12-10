@@ -38,6 +38,7 @@ export default defineType({
 				{ type: 'pricing-list' },
 				{ type: 'richtext-module' },
 				{ type: 'schedule-module' },
+				{ type: 'search-module' },
 				{ type: 'stat-list' },
 				{ type: 'step-list' },
 				{ type: 'tabbed-content' },
