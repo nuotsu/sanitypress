@@ -61,8 +61,10 @@ sanity dataset import src/sanity/demo.tar.gz
 ## Resources
 
 - [The SanityPress Blog](https://sanitypress.dev/blog)
-- [`next-sanity`](https://www.sanity.io/plugins/next-sanity) — Sanity toolkit for Next.js
 - [Visual Editing with Next.js and Sanity](https://www.sanity.io/guides/nextjs-app-router-live-preview)
+- [`next-sanity`](https://www.sanity.io/plugins/next-sanity) — Sanity toolkit for Next.js
+- [nuqs](https://nuqs.47ng.com/) — Type-safe search params state manager for React
+- [zustand](https://github.com/pmndrs/zustand) — State management for React
 
 ## How to Support
 
