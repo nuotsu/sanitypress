@@ -1,4 +1,5 @@
 import { PortableText } from 'next-sanity'
+import { Suspense } from 'react'
 import SearchForm from './SearchForm'
 import type { SearchScope } from './store'
 
@@ -17,7 +18,11 @@ export default function SearchModule({
 				</header>
 			)}
 
-			<SearchForm className="mx-auto max-w-screen-sm" scope={scope} />
+			<div className="mx-auto max-w-screen-sm">
+				<Suspense fallback={<div className="skeleton-[calc(1lh+.5rem+2px)]" />}>
+					<SearchForm scope={scope} />
+				</Suspense>
+			</div>
 		</section>
 	)
 }

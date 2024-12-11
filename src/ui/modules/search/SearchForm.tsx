@@ -8,6 +8,9 @@ import Link from 'next/link'
 import processUrl from '@/lib/processUrl'
 import css from './SearchForm.module.css'
 
+/**
+ * @note Remember to wrap this component in a Suspense
+ */
 export default function SearchForm({
 	className,
 	scope,
