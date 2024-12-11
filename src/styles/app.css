@@ -42,6 +42,10 @@
 		cursor: pointer;
 	}
 
+	input {
+		background-color: transparent;
+	}
+
 	::-webkit-details-marker {
 		display: none;
 	}
