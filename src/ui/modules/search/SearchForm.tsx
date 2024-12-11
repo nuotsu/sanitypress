@@ -4,7 +4,6 @@ import { useQuery, searchStore, handleSearch, type SearchScope } from './store'
 import { cn, debounce, count } from '@/lib/utils'
 import { stegaClean } from 'next-sanity'
 import { VscSearch } from 'react-icons/vsc'
-import Link from 'next/link'
 import processUrl from '@/lib/processUrl'
 import css from './SearchForm.module.css'
 
@@ -59,16 +58,12 @@ export default function SearchForm({
 							<ul className="px-3 pb-2">
 								{results.map((result) => (
 									<li key={result._id}>
-										<Link
+										<a
 											className="group flex gap-2 py-px"
-											// href={
-											// 	processUrl(result, { base: false }) +
-											// 	`#:~:text=${encodeURIComponent(query)}`
-											// }
-											href={{
-												pathname: processUrl(result, { base: false }),
-												hash: `:~:text=${query}`,
-											}}
+											href={
+												processUrl(result, { base: false }) +
+												`#:~:text=${encodeURIComponent(query)}`
+											}
 										>
 											<span className="line-clamp-1 grow group-hover:underline">
 												{result.metadata.title}
@@ -77,7 +72,7 @@ export default function SearchForm({
 											<small className="technical shrink-0 text-xs text-accent/50">
 												{result._type === 'blog.post' ? 'Blog' : 'Page'}
 											</small>
-										</Link>
+										</a>
 									</li>
 								))}
 							</ul>
