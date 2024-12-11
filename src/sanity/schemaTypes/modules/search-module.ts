@@ -13,13 +13,23 @@ export default defineType({
 			type: 'array',
 			of: [{ type: 'block' }],
 		}),
+		defineField({
+			name: 'scope',
+			type: 'string',
+			options: {
+				list: ['all', 'pages', 'blog posts'],
+				layout: 'radio',
+			},
+			initialValue: 'all',
+		}),
 	],
 	preview: {
 		select: {
 			content: 'content',
+			scope: 'scope',
 		},
-		prepare: ({ content }) => ({
-			title: getBlockText(content),
+		prepare: ({ content, scope }) => ({
+			title: getBlockText(content) || (scope && `Search ${scope}`),
 			subtitle: 'Search module',
 		}),
 	},

@@ -1,5 +1,11 @@
 import { defineField, defineType } from 'sanity'
-import { VscHome, VscEyeClosed, VscQuestion, VscEdit } from 'react-icons/vsc'
+import {
+	VscHome,
+	VscQuestion,
+	VscEyeClosed,
+	VscSearch,
+	VscEdit,
+} from 'react-icons/vsc'
 
 export default defineType({
 	name: 'page',
@@ -100,6 +106,7 @@ export default defineType({
 				media ||
 				(slug === 'index' && VscHome) ||
 				(slug === '404' && VscQuestion) ||
+				(slug === 'search' && VscSearch) ||
 				(['blog', 'blog/*'].includes(slug) && VscEdit) ||
 				(noindex && VscEyeClosed),
 		}),

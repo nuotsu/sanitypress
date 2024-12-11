@@ -1,7 +1,8 @@
 import { fetchSanityLive } from '@/sanity/lib/fetch'
+import { groq } from 'next-sanity'
 import { linkQuery } from '@/sanity/lib/queries'
 import Scheduler from './Scheduler'
-import { PortableText, groq } from 'next-sanity'
+import { PortableText } from 'next-sanity'
 import CTA from '@/ui/CTA'
 
 export default async function Announcement() {

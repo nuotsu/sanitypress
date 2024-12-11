@@ -1,4 +1,5 @@
-import { fetchSanity, groq } from './fetch'
+import { fetchSanity } from './fetch'
+import { groq } from 'next-sanity'
 
 export const linkQuery = groq`
 	...,

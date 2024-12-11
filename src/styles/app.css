@@ -115,6 +115,10 @@
 		@apply _btn frosted-glass rounded hover:bg-accent/5;
 	}
 
+	.input {
+		@apply border p-[.25em] text-left;
+	}
+
 	.link {
 		text-decoration: underline;
 

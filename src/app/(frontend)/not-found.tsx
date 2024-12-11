@@ -1,4 +1,5 @@
-import { fetchSanity, groq } from '@/sanity/lib/fetch'
+import { fetchSanity } from '@/sanity/lib/fetch'
+import { groq } from 'next-sanity'
 import { modulesQuery } from '@/sanity/lib/queries'
 import Modules from '@/ui/modules'
 
