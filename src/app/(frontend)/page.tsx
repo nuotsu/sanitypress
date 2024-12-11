@@ -1,4 +1,5 @@
-import { groq, fetchSanityLive } from '@/sanity/lib/fetch'
+import { fetchSanityLive } from '@/sanity/lib/fetch'
+import { groq } from 'next-sanity'
 import { modulesQuery } from '@/sanity/lib/queries'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'

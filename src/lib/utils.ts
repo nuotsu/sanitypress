@@ -5,9 +5,29 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))
 }
 
-export function nl2br(str?: string) {
-	if (!str) return ''
-	return str.split('\n').join('<br>')
+export function count(
+	arr: Array<any>,
+	singular: string = 'item',
+	plural?: string,
+) {
+	return `${arr?.length || 0} ${arr?.length === 1 ? singular : plural || singular + 's'}`
+}
+
+export function debounce<T extends (...args: any[]) => void>(
+	func: T,
+	delay: number = 1000, // 1 sec
+): (...args: Parameters<T>) => void {
+	let timeoutId: NodeJS.Timeout | null = null
+
+	return function (this: any, ...args: Parameters<T>) {
+		if (timeoutId) {
+			clearTimeout(timeoutId)
+		}
+
+		timeoutId = setTimeout(() => {
+			func.apply(this, args)
+		}, delay)
+	}
 }
 
 export function slug(str: string) {

@@ -4,30 +4,19 @@
 
 An opinionated, fully customizable Next.js (App Router) and Sanity starter template with Tailwind CSS and pre-built schema for rapid website development.
 
+[Demo](https://sanitypress.dev) | [Docs](https://sanitypress.dev/docs) | [Blog](https://sanitypress.dev/blog) | [Studio screenshots](https://sanitypress.dev/studio-screenshots) | [Sanity.io](https://www.sanity.io/templates/sanitypress)
+
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnuotsu%2Fsanitypress&env=NEXT_PUBLIC_BASE_URL,NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_DATASET,SANITY_API_READ_TOKEN&envDescription=Values%20needed%20to%20connect%20a%20Sanity%20CMS&envLink=https%3A%2F%2Fsanitypress.dev%2Fdocs%2Fgetting-started&demo-title=SanityPress&demo-description=Official%20website%20and%20blog%20for%20SanityPress%2C%20built%20with%20SanityPress&demo-url=https%3A%2F%2Fsanitypress.dev&demo-image=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Felyfelq1%2Fproduction%2F7fb61a2b110f509582f0f43cb1e397f8fa9e5c07-2814x1798.png%3Fw%3D1600)
 
 ![](https://cdn.sanity.io/images/elyfelq1/production/61657e3b9cd03b3c7333221c153f8640ac6f13e0-1934x1209.png)
 
-Visit [here](https://sanitypress.dev/studio-screenshots) for more Studio screenshots.
-
-- [x] 🖋️ Published on [Sanity.io](https://www.sanity.io/templates/sanitypress)
-- [x] ⚡ [Perfect Lighthouse scores](https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fsanitypress.dev%2F) on desktop and 99/100 on mobile.
-- [x] 🚀 Checkout the [demo site](https://sanitypress.dev), [documentation](https://sanitypress.dev/docs) and [blog](https://sanitypress.dev/blog).
-
-## Table of Contents
-
-- [Key Features](#key-features)
-- [Getting Started](#getting-started)
-- [Helpful Resources (The SanityPress Blog)](https://sanitypress.dev/blog)
-- [External References](#external-references)
-
 ## Key Features
 
 - [x] ✨ Next.js 15 (App Router, RSC, Typescript) with Tailwind CSS
-- [x] 📕 [Pre-configured Sanity schema](/src/sanity/schemas/index.ts)
-- [x] 📘 [Pre-built frontend components](/src/ui/)
-- [x] ✏️ [Visual editing](https://sanitypress.dev/blog/visual-editing) in [embedded Sanity Studio](https://sanitypress.dev/blog/why-you-should-embed-your-studio)
-- [x] ⌨️ Auto-generated [sitemap](https://sanitypress.dev/sitemap.xml) and [RSS feed](https://sanitypress.dev/blog/rss.xml)
+- [x] 📕 [Pre-configured Sanity schema](/src/sanity/schemas/index.ts) & [frontend components](/src/ui/)
+- [x] ✏️ [Visual editing](https://sanitypress.dev/blog/visual-editing) in [an embedded Sanity Studio](https://sanitypress.dev/blog/why-you-should-embed-your-studio)
+- [x] ⌨️ Auto-generated [sitemap](https://sanitypress.dev/sitemap.xml) + [Blog RSS feed](https://sanitypress.dev/blog/rss.xml)
+- [x] ⚡ [Perfect Lighthouse scores](https://sanitypress.dev/blog/how-fast-is-sanitypress) on desktop and 99/100 on mobile.
 
 ## Getting Started
 
@@ -69,10 +58,10 @@ sanity dataset import src/sanity/demo.tar.gz
 
 6. **Customize**: Adjust frontend styles, edit/add Sanity schema and modules, and more.
 
-## External References
+## Resources
 
-- [Sanity toolkit for Next.js](https://www.sanity.io/plugins/next-sanity)
-- [`next-sanity` README](https://github.com/sanity-io/next-sanity#readme)
+- [The SanityPress Blog](https://sanitypress.dev/blog)
+- [`next-sanity`](https://www.sanity.io/plugins/next-sanity) — Sanity toolkit for Next.js
 - [Visual Editing with Next.js and Sanity](https://www.sanity.io/guides/nextjs-app-router-live-preview)
 
 ## How to Support

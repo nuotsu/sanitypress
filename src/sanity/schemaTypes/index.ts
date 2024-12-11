@@ -1,3 +1,5 @@
+import { type SchemaTypeDefinition } from 'sanity'
+
 // documents
 import site from './documents/site'
 import page from './documents/page'
@@ -37,13 +39,14 @@ import logoList from './modules/logo-list'
 import pricingList from './modules/pricing-list'
 import richtextModule from './modules/richtext-module'
 import scheduleModule from './modules/schedule-module'
+import searchModule from './modules/search-module'
 import statList from './modules/stat-list'
 import stepList from './modules/step-list'
 import tabbedContent from './modules/tabbed-content'
 import testimonialFeatured from './modules/testimonial.featured'
 import testimonialList from './modules/testimonial-list'
 
-export const schemaTypes = [
+export const schemaTypes: SchemaTypeDefinition[] = [
 	// documents
 	site,
 	page,
@@ -83,6 +86,7 @@ export const schemaTypes = [
 	pricingList,
 	richtextModule,
 	scheduleModule,
+	searchModule,
 	statList,
 	stepList,
 	tabbedContent,

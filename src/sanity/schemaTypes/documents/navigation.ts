@@ -5,7 +5,7 @@ import {
 	VscLayoutPanelLeft,
 } from 'react-icons/vsc'
 import { IoShareSocialOutline } from 'react-icons/io5'
-import { count } from '@/sanity/lib/utils'
+import { count } from '@/lib/utils'
 
 export default defineType({
 	name: 'navigation',

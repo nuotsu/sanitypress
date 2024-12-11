@@ -13,14 +13,14 @@ export default defineArrayMember({
 	],
 	fields: [
 		defineField({
-			name: 'caption',
-			type: 'text',
-			rows: 2,
+			name: 'alt',
+			type: 'string',
 			fieldset: 'info',
 		}),
 		defineField({
-			name: 'alt',
-			type: 'string',
+			name: 'caption',
+			type: 'text',
+			rows: 2,
 			fieldset: 'info',
 		}),
 		defineField({

@@ -31,7 +31,7 @@ export default function Paginated({
 			/>
 
 			<Pagination
-				className="frosted-glass sticky bottom-0 flex items-center justify-center gap-4 bg-canvas p-2 pb-[max(env(safe-area-inset-bottom),0.5rem)] [&_span]:tabular-nums"
+				className="frosted-glass sticky bottom-0 flex items-center justify-center gap-4 bg-canvas p-2 pb-[max(env(safe-area-inset-bottom),0.5rem)] tabular-nums"
 				buttonClassName="hover:underline disabled:opacity-20"
 				onClick={scrollToList}
 			/>
