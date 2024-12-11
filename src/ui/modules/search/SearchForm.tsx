@@ -62,7 +62,7 @@ export default function SearchForm({
 											className="group flex gap-2 py-px"
 											href={
 												processUrl(result, { base: false }) +
-												`#:~:text=${encodeURIComponent(query)}`
+												`#:~:text=${query}`
 											}
 										>
 											<span className="line-clamp-1 grow group-hover:underline">
