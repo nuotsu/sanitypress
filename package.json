@@ -15,7 +15,7 @@
 	"dependencies": {
 		"@portabletext/to-html": "^2.0.13",
 		"@sanity/code-input": "^5.0.0",
-		"@sanity/dashboard": "^4.1.0",
+		"@sanity/dashboard": "^4.1.2",
 		"@sanity/image-url": "^1.1.0",
 		"@sanity/preview-url-secret": "^2.0.5",
 		"@sanity/vision": "^3.67.1",
@@ -24,7 +24,7 @@
 		"clsx": "^2.1.1",
 		"feed": "^4.2.2",
 		"next": "^15.1.0",
-		"next-sanity": "^9.8.25",
+		"next-sanity": "^9.8.27",
 		"next-sanity-image": "^6.1.1",
 		"nuqs": "^2.2.3",
 		"octokit": "^4.0.2",
