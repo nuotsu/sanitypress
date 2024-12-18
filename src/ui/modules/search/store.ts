@@ -85,7 +85,8 @@ export async function handleSearch({
 			title,
 			metadata
 		}`,
-		params: { query: query as any },
+		params: { query: `*${query}*` as any },
+		next: { tags: [query] },
 	})
 
 	setResults(results)

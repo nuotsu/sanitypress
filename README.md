@@ -58,7 +58,7 @@ sanity dataset import src/sanity/demo.tar.gz
 
 6. **Customize**: Adjust frontend styles, edit/add Sanity schema and modules, and more.
 
-## Resources
+## Resources & Dependencies
 
 - [The SanityPress Blog](https://sanitypress.dev/blog)
 - [Visual Editing with Next.js and Sanity](https://www.sanity.io/guides/nextjs-app-router-live-preview)

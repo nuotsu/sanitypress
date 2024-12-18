@@ -13,13 +13,13 @@ export default async function (reputation?: Sanity.Reputation) {
 
 	try {
 		// get stargazers total count
-		const { data: { stargazers_count: count = 0 } = {} } =
+		const { data: { stargazers_count = 0, forks_count = 0 } = {} } =
 			await octokit.rest.repos
 				.get({ owner, repo })
-				.catch(() => ({ data: { stargazers_count: 0 } }))
+				.catch(() => ({ data: { stargazers_count: 0, forks_count: 0 } }))
 
 		// get stargazers avatars
-		let page = Math.ceil(count / limit)
+		let page = Math.ceil(stargazers_count / limit)
 		let avatars: any[] = []
 
 		while (avatars.length < limit && page > 0) {
@@ -37,7 +37,8 @@ export default async function (reputation?: Sanity.Reputation) {
 		}
 
 		return {
-			count,
+			stargazers_count,
+			forks_count,
 			avatars: avatars
 				.reverse()
 				.slice(0, limit)
