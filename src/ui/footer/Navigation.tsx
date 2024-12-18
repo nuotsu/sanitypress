@@ -1,6 +1,5 @@
 import { getSite } from '@/sanity/lib/queries'
 import CTA from '@/ui/CTA'
-import { cn } from '@/lib/utils'
 import { stegaClean } from 'next-sanity'
 
 export default async function Menu() {
@@ -26,10 +25,7 @@ export default async function Menu() {
 									{item.links?.map((link, key) => (
 										<li key={key}>
 											<CTA
-												className={cn(
-													'inline-block py-px hover:underline',
-													link.external?.startsWith('http') && 'is-external',
-												)}
+												className="inline-block py-px hover:underline"
 												link={link}
 											/>
 										</li>
