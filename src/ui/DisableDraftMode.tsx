@@ -9,7 +9,7 @@ export default function DisableDraftMode() {
 
 	return (
 		<a
-			className="action fixed bottom-0 right-4 rounded-b-none text-xs opacity-50 hover:opacity-100"
+			className="action fixed! right-4 bottom-0 rounded-b-none text-xs opacity-50 hover:opacity-100"
 			href="/api/draft-mode/disable"
 		>
 			Disable Draft Mode
