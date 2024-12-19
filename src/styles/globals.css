@@ -61,6 +61,10 @@
 		cursor: pointer;
 	}
 
+	input {
+		background-color: transparent;
+	}
+
 	::-webkit-details-marker {
 		display: none;
 	}
@@ -168,13 +172,6 @@
 	@apply underline hover:decoration-2;
 }
 
-@utility is-external {
-	&::after {
-		content: ' ↗';
-		font-size: 0.7em;
-	}
-}
-
 /* utilities */
 
 @utility sticky-below-header {
@@ -272,10 +269,6 @@
 
 	& a:not(:is(.action, .action-outline, .ghost)) {
 		@apply link;
-
-		&[href^='http'] {
-			@apply is-external;
-		}
 	}
 
 	& :not(pre) > code {
