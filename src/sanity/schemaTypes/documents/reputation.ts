@@ -6,11 +6,17 @@ const reputation = defineType({
 	title: 'Reputation',
 	icon: VscStarFull,
 	type: 'document',
+	fieldsets: [
+		{ name: 'github', title: 'GitHub', options: { columns: 2 } },
+		{ name: 'avatars' },
+	],
 	fields: [
 		defineField({
 			name: 'title',
 			type: 'string',
-			description: 'Defaults to "★★★★★"',
+			description:
+				'Defaults to "★★★★★". Leave empty to show repo stargazers count (if set).',
+			placeholder: '★★★★★',
 		}),
 		defineField({
 			name: 'subtitle',
@@ -20,8 +26,18 @@ const reputation = defineType({
 			name: 'repo',
 			title: 'GitHub Repo',
 			type: 'string',
-			description: 'Retrieves stargazer count and avatar images from GitHub',
-			placeholder: 'e.g. nuotsu/sanitypress',
+			description: 'Retrieves stargazers/forks and avatars from GitHub',
+			placeholder: 'owner/repo',
+			validation: (Rule) => Rule.regex(/^[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+$/),
+			fieldset: 'github',
+		}),
+		defineField({
+			name: 'showForks',
+			title: 'Show forks count',
+			type: 'boolean',
+			initialValue: false,
+			hidden: ({ parent }) => !parent?.repo,
+			fieldset: 'github',
 		}),
 		defineField({
 			name: 'limit',
@@ -30,6 +46,7 @@ const reputation = defineType({
 			description: 'Defaults to 5',
 			initialValue: 5,
 			validation: (Rule) => Rule.min(1).max(10),
+			fieldset: 'avatars',
 		}),
 		defineField({
 			name: 'avatars',
@@ -46,6 +63,7 @@ const reputation = defineType({
 				layout: 'grid',
 			},
 			validation: (Rule) => Rule.max(10),
+			fieldset: 'avatars',
 		}),
 	],
 	preview: {

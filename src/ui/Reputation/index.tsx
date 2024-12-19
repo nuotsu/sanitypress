@@ -1,6 +1,7 @@
-import getStargazers from './getStargazers'
+import getRepoData from './getRepoData'
 import Img from '@/ui/Img'
-import { cn } from '@/lib/utils'
+import { VscStarFull, VscRepoForked } from 'react-icons/vsc'
+import { cn, count } from '@/lib/utils'
 
 export default async function Reputation({
 	reputation,
@@ -10,13 +11,15 @@ export default async function Reputation({
 } & React.ComponentProps<'div'>) {
 	if (!reputation) return null
 
-	const { count, avatars } = await getStargazers(reputation)
+	const { stargazers_count, forks_count, avatars } =
+		await getRepoData(reputation)
 
 	const imgClassname = cn(
 		'aspect-square h-8 w-auto rounded-full border-2 border-canvas bg-canvas object-cover -mr-2 last:mr-0',
 	)
 
 	const { limit = 5 } = reputation
+	const hasForks = !!reputation.showForks && !!forks_count
 
 	return (
 		<div
@@ -49,13 +52,46 @@ export default async function Reputation({
 						))}
 			</figure>
 
-			<div className="grid text-left [figure:empty+&]:text-center">
-				<strong className="text-yellow-700">
-					{reputation.title || (!!count ? `⭐ ${count} stars` : '★★★★★')}
-				</strong>
+			<dl className="flex flex-col text-left [figure:empty+&]:text-center">
+				<dt>
+					{reputation.repo ? (
+						<a
+							className="inline-flex items-center gap-x-2 font-bold text-yellow-700 !no-underline"
+							href={`https://github.com/${reputation.repo}`}
+						>
+							{reputation.title ||
+								(!!stargazers_count && (
+									<span
+										className="flex items-center gap-x-px"
+										title={count(stargazers_count, 'star')}
+									>
+										<VscStarFull className="inline-block" />
+										{hasForks
+											? stargazers_count
+											: count(stargazers_count, 'star')}
+									</span>
+								))}
+							{hasForks && (
+								<span
+									className="flex items-center gap-x-px"
+									title={count(forks_count, 'fork')}
+								>
+									<VscRepoForked className="inline-block" />
+									{!!stargazers_count
+										? forks_count
+										: count(forks_count, 'fork')}
+								</span>
+							)}
+						</a>
+					) : (
+						<strong>{reputation.title || '★★★★★'}</strong>
+					)}
+				</dt>
 
-				{reputation.subtitle && <small>{reputation.subtitle}</small>}
-			</div>
+				{reputation.subtitle && (
+					<dd className="text-sm max-sm:mx-auto">{reputation.subtitle}</dd>
+				)}
+			</dl>
 		</div>
 	)
 }

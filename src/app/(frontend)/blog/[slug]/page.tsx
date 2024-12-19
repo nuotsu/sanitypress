@@ -1,5 +1,6 @@
 import { client } from '@/sanity/lib/client'
-import { fetchSanity, groq } from '@/sanity/lib/fetch'
+import { fetchSanity } from '@/sanity/lib/fetch'
+import { groq } from 'next-sanity'
 import { modulesQuery } from '@/sanity/lib/queries'
 import { notFound } from 'next/navigation'
 import Modules from '@/ui/modules'
@@ -37,7 +38,10 @@ async function getPost(params: { slug?: string }) {
 	return await fetchSanity<Sanity.BlogPost>({
 		query: groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{
 			...,
-			'body': select(_type == 'image' => asset->, body),
+			body[]{
+				...,
+				_type == 'image' => { asset-> }
+			},
 			'readTime': length(string::split(pt::text(body), ' ')) / 200,
 			'headings': body[style in ['h2', 'h3']]{
 				style,

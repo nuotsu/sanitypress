@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { VscCalendar } from 'react-icons/vsc'
-import { count } from '@/sanity/lib/utils'
+import { count } from '@/lib/utils'
 
 export default defineType({
 	name: 'schedule-module',

@@ -1,4 +1,5 @@
-import { fetchSanity, groq } from '@/sanity/lib/fetch'
+import { fetchSanity } from '@/sanity/lib/fetch'
+import { groq } from 'next-sanity'
 import processUrl from '@/lib/processUrl'
 import { Feed } from 'feed'
 import { escapeHTML, toHTML } from '@portabletext/to-html'

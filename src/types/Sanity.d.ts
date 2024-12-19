@@ -90,6 +90,7 @@ declare global {
 			title?: string
 			subtitle?: string
 			repo?: string
+			showForks?: boolean
 			limit?: number
 			avatars?: Image[]
 		}

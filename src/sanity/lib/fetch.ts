@@ -1,11 +1,10 @@
+'use server'
+
 import { client } from '@/sanity/lib/client'
 import { token } from '@/sanity/lib/token'
 import { dev } from '@/lib/env'
 import { draftMode } from 'next/headers'
-import { defineLive, type QueryOptions } from 'next-sanity'
-import type { QueryParams } from 'sanity'
-
-export { groq } from 'next-sanity'
+import { defineLive, type QueryOptions, type QueryParams } from 'next-sanity'
 
 export async function fetchSanity<T = any>({
 	query,

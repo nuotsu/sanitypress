@@ -1,7 +1,8 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { GoNumber } from 'react-icons/go'
 import { textAlign } from '../fragments/fields/alignment'
-import { count, getBlockText } from '@/sanity/lib/utils'
+import { getBlockText } from '@/sanity/lib/utils'
+import { count } from '@/lib/utils'
 
 export default defineType({
 	name: 'stat-list',
