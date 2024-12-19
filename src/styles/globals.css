@@ -172,6 +172,10 @@
 	@apply underline hover:decoration-2;
 }
 
+@utility input {
+	@apply border border-neutral-200 p-[.25em] text-left;
+}
+
 /* utilities */
 
 @utility sticky-below-header {
