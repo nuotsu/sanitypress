@@ -131,11 +131,6 @@
 		}
 	}
 
-	.is-external::after {
-		content: ' ↗';
-		font-size: 0.7em;
-	}
-
 	/* layout */
 
 	.section {
@@ -186,10 +181,6 @@
 
 		& a:not(:is(.action, .action-outline, .ghost)) {
 			@apply link;
-
-			&[href^='http'] {
-				@apply is-external;
-			}
 		}
 
 		& :not(pre) > code {

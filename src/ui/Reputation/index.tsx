@@ -56,7 +56,7 @@ export default async function Reputation({
 				<dt>
 					{reputation.repo ? (
 						<a
-							className="inline-flex items-center gap-x-2 font-bold text-yellow-700 !no-underline after:!content-none"
+							className="inline-flex items-center gap-x-2 font-bold text-yellow-700 !no-underline"
 							href={`https://github.com/${reputation.repo}`}
 						>
 							{reputation.title ||
