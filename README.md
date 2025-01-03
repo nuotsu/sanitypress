@@ -28,7 +28,7 @@ Full instructions on the [docs](https://sanitypress.dev/docs).
 
 ```sh
 # .env.local
-PUBLIC_BASE_URL = ... # https://sanitypress.dev
+NEXT_PUBLIC_BASE_URL = ... # https://sanitypress.dev
 
 NEXT_PUBLIC_SANITY_PROJECT_ID = ... # abcdefgh
 NEXT_PUBLIC_SANITY_DATASET = ... # production
