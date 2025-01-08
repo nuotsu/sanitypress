@@ -20,7 +20,7 @@ export default function SearchForm({
 
 	return (
 		<search className={cn(css.root, 'relative', className)} {...props}>
-			<label className="input relative z-[2] flex items-center gap-2 rounded focus-within:border-accent/50">
+			<label className="input relative z-[2] flex items-center gap-2 rounded focus-within:border-accent/50 dark:focus-within:border-accent-dark/50">
 				<VscSearch />
 
 				<input
@@ -50,7 +50,7 @@ export default function SearchForm({
 					)}
 				>
 					<div className="frosted-glass mt-1 max-h-[20em] overflow-y-auto rounded border bg-canvas shadow-md">
-						<p className="line-clamp-1 p-2 text-center text-sm text-ink/50">
+						<p className="line-clamp-1 p-2 text-center text-sm text-ink/50 dark:text-ink-dark/50">
 							{count(results, 'result')} found for <output>"{query}"</output>
 						</p>
 
@@ -69,7 +69,7 @@ export default function SearchForm({
 												{result.metadata.title}
 											</span>
 
-											<small className="technical shrink-0 text-xs text-accent/50">
+											<small className="technical shrink-0 text-xs text-accent/50 dark:text-accent-dark/50">
 												{result._type === 'blog.post' ? 'Blog' : 'Page'}
 											</small>
 										</a>

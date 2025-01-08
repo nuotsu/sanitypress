@@ -30,7 +30,9 @@ export default function StatList({
 						<dt className="font-bold">
 							<span className="text-gradient text-6xl">{stat.value}</span>
 							{stat.subValue && (
-								<small className="text-xl text-ink/50">{stat.subValue}</small>
+								<small className="text-xl text-ink/50 dark:text-ink-dark/50">
+									{stat.subValue}
+								</small>
 							)}
 						</dt>
 						<dd className="text-balance font-bold">{stat.text}</dd>

@@ -45,7 +45,7 @@ export default function AccordionList({
 			<div className="mx-auto w-full max-w-screen-md">
 				{items?.map(({ summary, content, open }, key) => (
 					<details
-						className="accordion border-b border-ink/10"
+						className="accordion border-b border-ink/10 dark:border-ink-dark/10"
 						open={open}
 						{...(generateSchema && {
 							itemScope: true,

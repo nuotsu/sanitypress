@@ -32,7 +32,7 @@ function Author({ author }: { author?: Sanity.Person }) {
 						alt={author.name}
 					/>
 				) : (
-					<GoPerson className="text-xl text-accent/20" />
+					<GoPerson className="text-xl text-accent/20 dark:text-accent-dark/20" />
 				)}
 			</dd>
 

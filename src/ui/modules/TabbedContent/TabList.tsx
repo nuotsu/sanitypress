@@ -16,8 +16,8 @@ export default function TabList({
 					className={cn(
 						'shrink-0 grow basis-[min(150px,80vw)] rounded-t border-b p-2 transition-all',
 						key === active
-							? 'border-b-2 border-accent'
-							: 'text-ink/50 hover:text-ink',
+							? 'border-b-2 border-accent dark:border-accent-dark'
+							: 'text-ink/50 hover:text-ink dark:text-ink-dark/50 dark:hover:text-ink-dark',
 					)}
 					key={key}
 					onClick={() => setActive(key)}

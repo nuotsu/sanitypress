@@ -11,7 +11,10 @@ export default async function Footer() {
 	const logoImage = logo?.image?.light || logo?.image?.default
 
 	return (
-		<footer className="bg-accent text-center text-canvas" role="contentinfo">
+		<footer
+			className="bg-accent text-center text-canvas dark:bg-accent-dark dark:text-canvas-dark"
+			role="contentinfo"
+		>
 			<div className="section flex flex-wrap justify-between gap-x-12 gap-y-8 max-sm:flex-col">
 				<div className="flex flex-col gap-3 self-start max-sm:mx-auto max-sm:items-center">
 					<Link className="h3 md:h2 max-w-max" href="/">
@@ -33,7 +36,7 @@ export default async function Footer() {
 			</div>
 
 			{copyright && (
-				<div className="mx-auto flex max-w-screen-xl flex-wrap justify-center gap-x-6 gap-y-2 border-t border-canvas/20 p-4 text-sm">
+				<div className="mx-auto flex max-w-screen-xl flex-wrap justify-center gap-x-6 gap-y-2 border-t border-canvas/20 p-4 text-sm dark:border-canvas-dark/20">
 					<PortableText value={copyright} />
 				</div>
 			)}
