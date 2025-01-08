@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+:root {
+	--font-sans: 'Outfit', system-ui, -apple-system, sans-serif;
+	--font-mono: 'JetBrains Mono', Menlo, monospace;
+	--font-display: 'Permanent Marker', cursive;
+}

@@ -15,10 +15,25 @@ export default async function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning>
+			<head>
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `
+							try {
+								if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+									document.documentElement.classList.add('dark')
+								} else {
+									document.documentElement.classList.remove('dark')
+								}
+							} catch (_) {}
+						`,
+					}}
+				/>
+			</head>
 			{/* <GoogleTagManager gtmId='' /> */}
 
-			<body className="bg-canvas text-ink">
+			<body className="bg-canvas text-ink dark:bg-canvas-dark dark:text-ink-dark">
 				<NuqsAdapter>
 					<SkipToContent />
 					<Announcement />

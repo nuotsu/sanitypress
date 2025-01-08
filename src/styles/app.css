@@ -29,8 +29,8 @@
 	}
 
 	html {
-		accent-color: theme('colors.accent');
-		caret-color: theme('colors.accent');
+		accent-color: theme('colors.accent.DEFAULT');
+		caret-color: theme('colors.accent.DEFAULT');
 		scroll-behavior: smooth;
 	}
 
@@ -93,7 +93,8 @@
 	}
 
 	.text-gradient {
-		@apply bg-gradient-to-br from-accent/5 to-accent bg-clip-text text-transparent;
+		@apply font-display dark:from-accent-dark/5 dark:to-accent-dark bg-gradient-to-br from-accent/5 to-accent bg-clip-text text-[1.15em] tracking-wide text-transparent;
+		transform: rotate(-1deg);
 	}
 
 	/* ctas, links */
@@ -108,15 +109,15 @@
 	}
 
 	.action {
-		@apply _btn text-balance rounded border border-transparent bg-accent text-white;
+		@apply _btn dark:bg-accent-dark text-balance rounded border border-transparent bg-accent text-white;
 	}
 
 	.action-outline {
-		@apply _btn text-balance rounded border border-accent/10 bg-canvas/50 to-canvas text-accent;
+		@apply _btn dark:border-accent-dark/20 dark:text-accent-dark dark:hover:border-accent-dark/40 text-balance rounded border border-accent/10 bg-canvas/50 text-accent hover:border-accent/20 dark:bg-canvas-dark/50;
 	}
 
 	.ghost {
-		@apply _btn frosted-glass rounded hover:bg-accent/5;
+		@apply _btn frosted-glass dark:hover:bg-accent-dark/5 rounded hover:bg-accent/5;
 	}
 
 	.input {
