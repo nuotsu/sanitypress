@@ -16,10 +16,10 @@ import testimonial from './documents/testimonial'
 
 // objects
 import cta from './objects/cta'
-import uid from './objects/uid'
 import link from './objects/link'
 import linkList from './objects/link.list'
 import metadata from './objects/metadata'
+import moduleOptions from './objects/module-options'
 
 // modules
 import accordionList from './modules/accordion-list'
@@ -63,11 +63,10 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 
 	// objects
 	cta,
-	uid,
 	link,
 	linkList,
 	metadata,
-
+	moduleOptions,
 	// modules
 	accordionList,
 	blogFrontpage,

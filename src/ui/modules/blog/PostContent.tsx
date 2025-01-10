@@ -25,6 +25,7 @@ export default function PostContent({
 					<Categories
 						className="flex flex-wrap gap-x-2"
 						categories={post.categories}
+						isLink
 					/>
 					<ReadTime value={post.readTime} />
 				</div>
