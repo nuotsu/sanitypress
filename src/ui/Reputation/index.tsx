@@ -1,4 +1,5 @@
 import getRepoData from './getRepoData'
+import Image from 'next/image'
 import Img from '@/ui/Img'
 import { VscStarFull, VscRepoForked } from 'react-icons/vsc'
 import { cn, count } from '@/lib/utils'
@@ -30,11 +31,13 @@ export default async function Reputation({
 					? avatars.map(
 							(avatar, key) =>
 								!!avatar && (
-									<img
+									<Image
 										className={imgClassname}
 										style={{ zIndex: avatars.length - key }}
 										src={avatar.avatar_url + '&s=48'}
 										alt={avatar.login}
+										width={48}
+										height={48}
 										key={key}
 									/>
 								),
