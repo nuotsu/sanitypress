@@ -32,12 +32,12 @@ export default function DarkModeToggle() {
 	return (
 		<button
 			onClick={toggleDarkMode}
-			className="dark:hover:bg-ink-dark/5 flex h-10 w-10 items-center justify-center rounded-full hover:bg-ink/5"
+			className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-ink/5 dark:hover:bg-ink-dark/5"
 			aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
 		>
 			{isDark ? (
 				<svg
-					className="text-ink-dark h-5 w-5"
+					className="h-5 w-5 text-ink-dark"
 					fill="none"
 					viewBox="0 0 24 24"
 					stroke="currentColor"

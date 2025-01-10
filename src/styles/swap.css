@@ -1,0 +1,51 @@
+/* Swap base class */
+.swap {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+
+/* Swap content states */
+.swap > * {
+	transition:
+		opacity 0.3s ease,
+		transform 0.3s ease;
+}
+
+.swap-on {
+	opacity: 1;
+	transform: scale(1);
+}
+
+.swap-off {
+	opacity: 0;
+	transform: scale(0);
+}
+
+/* Rotate variant */
+.swap-rotate .swap-on {
+	transform: rotate(0deg);
+}
+
+.swap-rotate .swap-off {
+	transform: rotate(-180deg);
+}
+
+/* Active state */
+.swap-active .swap-on {
+	opacity: 0;
+	transform: scale(0);
+}
+
+.swap-active .swap-off {
+	opacity: 1;
+	transform: scale(1);
+}
+
+.swap-active.swap-rotate .swap-on {
+	transform: rotate(180deg);
+}
+
+.swap-active.swap-rotate .swap-off {
+	transform: rotate(0deg);
+}

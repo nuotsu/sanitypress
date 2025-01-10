@@ -1,4 +1,5 @@
 @import './fonts.css';
+@import './swap.css';
 
 @tailwind base;
 @tailwind components;
@@ -93,7 +94,7 @@
 	}
 
 	.text-gradient {
-		@apply font-display dark:from-accent-dark/5 dark:to-accent-dark bg-gradient-to-br from-accent/5 to-accent bg-clip-text text-[1.15em] tracking-wide text-transparent;
+		@apply bg-gradient-to-br from-accent/5 to-accent bg-clip-text font-display text-[1.15em] tracking-wide text-transparent dark:from-accent-dark/5 dark:to-accent-dark;
 		transform: rotate(-1deg);
 	}
 
@@ -109,15 +110,15 @@
 	}
 
 	.action {
-		@apply _btn dark:bg-accent-dark text-balance rounded border border-transparent bg-accent text-white;
+		@apply _btn text-balance rounded border border-transparent bg-accent text-white dark:bg-accent-dark;
 	}
 
 	.action-outline {
-		@apply _btn dark:border-accent-dark/20 dark:text-accent-dark dark:hover:border-accent-dark/40 text-balance rounded border border-accent/10 bg-canvas/50 text-accent hover:border-accent/20 dark:bg-canvas-dark/50;
+		@apply _btn text-balance rounded border border-accent/10 bg-canvas/50 text-accent hover:border-accent/20 dark:border-accent-dark/20 dark:bg-canvas-dark/50 dark:text-accent-dark dark:hover:border-accent-dark/40;
 	}
 
 	.ghost {
-		@apply _btn frosted-glass dark:hover:bg-accent-dark/5 rounded hover:bg-accent/5;
+		@apply _btn frosted-glass rounded hover:bg-accent/5 dark:hover:bg-accent-dark/5;
 	}
 
 	.input {
