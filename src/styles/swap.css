@@ -1,51 +1,43 @@
 /* Swap base class */
 .swap {
-	position: relative;
-	display: inline-block;
-	cursor: pointer;
+	@apply relative inline-block cursor-pointer;
 }
 
 /* Swap content states */
 .swap > * {
-	transition:
-		opacity 0.3s ease,
-		transform 0.3s ease;
+	@apply transition-opacity transition-transform duration-300 ease-in-out;
 }
 
 .swap-on {
-	opacity: 1;
-	transform: scale(1);
+	@apply scale-100 opacity-100;
 }
 
 .swap-off {
-	opacity: 0;
-	transform: scale(0);
+	@apply scale-0 opacity-0;
 }
 
 /* Rotate variant */
 .swap-rotate .swap-on {
-	transform: rotate(0deg);
+	@apply rotate-0;
 }
 
 .swap-rotate .swap-off {
-	transform: rotate(-180deg);
+	@apply -rotate-180;
 }
 
 /* Active state */
 .swap-active .swap-on {
-	opacity: 0;
-	transform: scale(0);
+	@apply scale-0 opacity-0;
 }
 
 .swap-active .swap-off {
-	opacity: 1;
-	transform: scale(1);
+	@apply scale-100 opacity-100;
 }
 
 .swap-active.swap-rotate .swap-on {
-	transform: rotate(180deg);
+	@apply rotate-180;
 }
 
 .swap-active.swap-rotate .swap-off {
-	transform: rotate(0deg);
+	@apply rotate-0;
 }
