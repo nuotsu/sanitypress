@@ -21,9 +21,8 @@ export default defineType({
 	fieldsets: [alignmentFieldset],
 	fields: [
 		defineField({
-			name: 'uid',
-			title: 'Unique Identifier',
-			type: 'uid',
+			name: 'options',
+			type: 'module-options',
 			group: 'options',
 		}),
 		defineField({

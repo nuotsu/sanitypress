@@ -145,7 +145,10 @@ declare global {
 		interface Module<T = string> {
 			_type: T
 			_key: string
-			uid?: string
+			options?: {
+				hidden?: boolean
+				uid?: string
+			}
 		}
 	}
 }
