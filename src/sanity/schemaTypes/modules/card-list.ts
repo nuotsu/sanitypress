@@ -80,7 +80,7 @@ export default defineType({
 		},
 		prepare: ({ intro, cards }) => ({
 			title: getBlockText(intro) || count(cards, 'card'),
-			subtitle: 'Cards list',
+			subtitle: 'Card list',
 		}),
 	},
 })
