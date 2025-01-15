@@ -25,9 +25,12 @@ export default function StatList({
 				</header>
 			)}
 
-			<dl className="mx-auto flex items-start justify-center gap-x-12 gap-y-6 max-md:max-w-max max-md:flex-col">
+			<dl className="mx-auto grid items-start justify-center gap-x-12 gap-y-6 max-md:max-w-max sm:grid-cols-2 md:flex">
 				{stats?.map(({ prefix, value, suffix, text }, key) => (
-					<div className="w-full max-w-[250px] space-y-2" key={key}>
+					<div
+						className="w-full max-w-[250px] space-y-2 max-md:mx-auto"
+						key={key}
+					>
 						<dt className="text-xl font-bold">
 							{prefix && <small className="text-ink/50">{prefix}</small>}
 
