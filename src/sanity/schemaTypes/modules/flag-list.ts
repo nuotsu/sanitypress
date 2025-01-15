@@ -8,10 +8,7 @@ export default defineType({
 	title: 'Flag list',
 	icon: TfiLayoutGrid2Thumb,
 	type: 'object',
-	groups: [
-		{ name: 'content', title: 'Content', default: true },
-		{ name: 'options', title: 'Options' },
-	],
+	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fields: [
 		defineField({
 			name: 'pretitle',

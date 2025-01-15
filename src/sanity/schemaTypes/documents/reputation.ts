@@ -52,12 +52,12 @@ const reputation = defineType({
 			name: 'avatars',
 			type: 'array',
 			of: [
-				{
+				defineArrayMember({
 					type: 'image',
 					options: {
 						hotspot: true,
 					},
-				},
+				}),
 			],
 			options: {
 				layout: 'grid',
