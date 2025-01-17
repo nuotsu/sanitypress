@@ -13,7 +13,7 @@ An opinionated, fully customizable Next.js (App Router) and Sanity starter templ
 ## Key Features
 
 - [x] ✨ Next.js 15 (App Router, RSC, Typescript) with Tailwind CSS
-- [x] 📕 [Pre-configured Sanity schema](/src/sanity/schemas/index.ts) & [frontend components](/src/ui/) with [VSCode snippets](/.vscode/sanitypress.code-snippets) for rapid development.
+- [x] 📕 [Pre-configured Sanity schema](/src/sanity/schemaTypes/index.ts) & [frontend components](/src/ui/) with [VSCode snippets](/.vscode/sanitypress.code-snippets) for rapid development.
 - [x] ✏️ [Visual editing](https://sanitypress.dev/blog/visual-editing) in [an embedded Sanity Studio](https://sanitypress.dev/blog/why-you-should-embed-your-studio) for a seamless editing experience.
 - [x] ⌨️ Auto-generated [sitemap](https://sanitypress.dev/sitemap.xml) + [Blog RSS feed](https://sanitypress.dev/blog/rss.xml) for SEO.
 - [x] ⚡ [Perfect Lighthouse scores](https://sanitypress.dev/blog/how-fast-is-sanitypress) on desktop and 99/100 on mobile.
