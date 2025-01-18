@@ -1,4 +1,4 @@
-.code {
+.code:has(:global(.line + .line)) {
 	counter-reset: step;
 	counter-increment: step 0;
 

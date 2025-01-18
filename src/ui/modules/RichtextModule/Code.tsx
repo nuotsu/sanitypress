@@ -1,4 +1,4 @@
-import { codeToHtml, splitLines } from 'shiki'
+import { codeToHtml, splitLines, bundledThemes } from 'shiki'
 import ClickToCopy from '@/ui/ClickToCopy'
 import css from './Code.module.css'
 import { cn } from '@/lib/utils'
@@ -18,7 +18,7 @@ export default async function Code({
 
 	const html = await codeToHtml(stegaClean(value.code), {
 		lang: value.language,
-		theme: 'dark-plus',
+		theme: 'dark-plus' as keyof typeof bundledThemes,
 		decorations: value.highlightedLines
 			?.map((row) => ({
 				row,
