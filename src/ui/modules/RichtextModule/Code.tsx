@@ -33,7 +33,10 @@ export default async function Code({
 	})
 
 	return (
-		<article className="group relative !mb-2 !mt-6 rounded bg-ink/5">
+		<article
+			className="group relative !mb-2 !mt-6 rounded bg-ink/5"
+			data-module="code"
+		>
 			{value.filename && (
 				<div className="-mb-1 rounded-t bg-[#1E1E1E]/90 px-2 py-1 font-mono text-xs text-canvas">
 					<span className="inline-block rounded-t border-b border-blue-400 bg-[#1E1E1E] px-3 py-2">
