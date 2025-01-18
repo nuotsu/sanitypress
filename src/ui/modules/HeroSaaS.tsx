@@ -31,7 +31,9 @@ export default function HeroSaaS({
 					value={content}
 					components={{
 						types: {
-							code: Code,
+							code: ({ value }) => (
+								<Code className="mx-auto max-w-max" value={value} />
+							),
 							'custom-html': ({ value }) => <CustomHTML {...value} />,
 							'reputation-block': ({ value }) => (
 								<Reputation

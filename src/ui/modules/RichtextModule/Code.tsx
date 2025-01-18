@@ -3,9 +3,11 @@ import ClickToCopy from '@/ui/ClickToCopy'
 import css from './Code.module.css'
 import { cn } from '@/lib/utils'
 import { stegaClean } from 'next-sanity'
+import type { ComponentProps } from 'react'
 
 export default async function Code({
 	value,
+	className,
 }: {
 	value?: {
 		language: string
@@ -13,7 +15,7 @@ export default async function Code({
 		filename?: string
 		highlightedLines?: number[]
 	}
-}) {
+} & ComponentProps<'article'>) {
 	if (!value?.code) return null
 
 	const html = await codeToHtml(stegaClean(value.code), {
@@ -34,7 +36,7 @@ export default async function Code({
 
 	return (
 		<article
-			className="group relative !mb-2 !mt-6 rounded bg-ink/5"
+			className={cn('group relative !mb-2 !mt-6 rounded bg-ink/5', className)}
 			data-module="code"
 		>
 			{value.filename && (
