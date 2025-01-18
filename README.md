@@ -26,11 +26,13 @@ npm create sanity@latest -- --template nuotsu/sanitypress
 
 Full instructions on the [docs](https://sanitypress.dev/docs).
 
-1. **Create a new project** from the template with the following command:
+1. **Run the install command**:
 
 ```sh
 npm create sanity@latest -- --template nuotsu/sanitypress
 ```
+
+You can also clone or fork [the GitHub template](https://github.com/nuotsu/sanitypress) to set up manually.
 
 2. **Add content**: In your new Sanity Studio, publish the **required** `site` and `page` documents.
 
