@@ -1,7 +1,7 @@
 {
 	"name": "sanitypress",
 	"version": "5.6.0",
-	"description": "A Next.js + Sanity.io starter template",
+	"description": "An impressive Next.js + Sanity.io starter template",
 	"author": "nuotsu <mitchell@nuotsu.dev> (https://nuotsu.dev)",
 	"license": "ISC",
 	"scripts": {
