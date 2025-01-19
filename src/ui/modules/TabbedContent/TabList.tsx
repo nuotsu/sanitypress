@@ -19,8 +19,8 @@ export default function TabList({
 							? 'border-b-2 border-accent dark:border-accent-dark'
 							: 'text-ink/50 hover:text-ink dark:text-ink-dark/50 dark:hover:text-ink-dark',
 					)}
-					key={key}
 					onClick={() => setActive(key)}
+					key={key}
 				>
 					{tab.label}
 				</button>

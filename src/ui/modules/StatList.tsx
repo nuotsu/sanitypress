@@ -6,11 +6,12 @@ export default function StatList({
 	textAlign = 'center',
 }: Partial<{
 	intro: any
-	stats: {
+	stats: Partial<{
+		prefix: string
 		value: string
-		subValue?: string
+		suffix: string
 		text: string
-	}[]
+	}>[]
 	textAlign: React.CSSProperties['textAlign']
 }>) {
 	return (
@@ -25,17 +26,17 @@ export default function StatList({
 			)}
 
 			<dl className="mx-auto flex items-start justify-center gap-x-12 gap-y-6 max-md:max-w-max max-md:flex-col">
-				{stats?.map((stat, key) => (
+				{stats?.map(({ prefix, value, suffix, text }, key) => (
 					<div className="w-full max-w-[250px] space-y-2" key={key}>
-						<dt className="font-bold">
-							<span className="text-gradient text-6xl">{stat.value}</span>
-							{stat.subValue && (
-								<small className="text-xl text-ink/50 dark:text-ink-dark/50">
-									{stat.subValue}
-								</small>
-							)}
+						<dt className="text-xl font-bold">
+							{prefix && <small className="text-ink/50">{prefix}</small>}
+
+							<span className="text-gradient text-6xl">{value}</span>
+
+							{suffix && <small className="text-ink/50">{suffix}</small>}
 						</dt>
-						<dd className="text-balance font-bold">{stat.text}</dd>
+
+						{text && <dd className="text-balance font-bold">{text}</dd>}
 					</div>
 				))}
 			</dl>
