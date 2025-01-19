@@ -29,11 +29,19 @@ export default function StatList({
 				{stats?.map(({ prefix, value, suffix, text }, key) => (
 					<div className="w-full max-w-[250px] space-y-2" key={key}>
 						<dt className="text-xl font-bold">
-							{prefix && <small className="text-ink/50">{prefix}</small>}
+							{prefix && (
+								<small className="text-ink/50 dark:text-ink-dark/50">
+									{prefix}
+								</small>
+							)}
 
 							<span className="text-gradient text-6xl">{value}</span>
 
-							{suffix && <small className="text-ink/50">{suffix}</small>}
+							{suffix && (
+								<small className="text-ink/50 dark:text-ink-dark/50">
+									{suffix}
+								</small>
+							)}
 						</dt>
 
 						{text && <dd className="text-balance font-bold">{text}</dd>}
