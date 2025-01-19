@@ -22,7 +22,7 @@ export default async function Announcement() {
 		<>
 			{announcements?.map(({ start, end, content, cta, _id }) => (
 				<Scheduler start={start} end={end} key={_id}>
-					<aside className="flex items-center justify-center gap-x-4 text-balance bg-accent p-2 text-center text-canvas max-md:text-sm md:gap-x-6">
+					<aside className="flex items-center justify-center gap-x-4 text-balance bg-accent p-2 text-center text-canvas dark:bg-accent-dark dark:text-canvas-dark max-md:text-sm md:gap-x-6">
 						<div className="anim-fade-to-r [&_a]:link">
 							<PortableText value={content} />
 						</div>

@@ -29,7 +29,7 @@ export default function Hero({
 		<section
 			className={cn(
 				hasImage &&
-					'grid overflow-hidden bg-ink text-canvas *:col-span-full *:row-span-full',
+					'grid overflow-hidden bg-ink text-canvas *:col-span-full *:row-span-full dark:bg-ink-dark dark:text-canvas-dark',
 			)}
 		>
 			{hasImage && (
@@ -63,7 +63,11 @@ export default function Hero({
 						)}
 						style={{ textAlign: stegaClean(textAlign) }}
 					>
-						<Pretitle className={cn(hasImage && 'text-canvas/70')}>
+						<Pretitle
+							className={cn(
+								hasImage && 'text-canvas/70 dark:text-canvas-dark/70',
+							)}
+						>
 							{pretitle}
 						</Pretitle>
 

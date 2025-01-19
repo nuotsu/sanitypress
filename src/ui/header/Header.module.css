@@ -1,10 +1,10 @@
 .header {
 	grid-template:
-		'logo toggle' auto
+		'logo controls' auto
 		'nav nav' auto
 		'ctas ctas' auto / 1fr auto;
 
 	@screen md {
-		grid-template: 'logo nav ctas' auto / auto 1fr auto;
+		grid-template: 'logo nav controls ctas' auto / auto 1fr auto auto;
 	}
 }

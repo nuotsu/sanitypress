@@ -15,7 +15,7 @@ export default function TestimonialFeatured({
 		<section className="section">
 			<div className="section flex max-w-screen-md items-center gap-x-12 gap-y-6 rounded bg-neutral-50 max-sm:flex-col">
 				<div className="space-y-2">
-					<ImQuotesLeft className="inline-block shrink-0 text-4xl text-accent" />
+					<ImQuotesLeft className="inline-block shrink-0 text-4xl text-accent dark:text-accent-dark" />
 
 					<div className="self-center text-balance text-xl">
 						<PortableText value={testimonial.content} />

@@ -9,7 +9,7 @@
 			top: anchor(--filter top);
 			width: anchor-size(--filter width);
 			height: anchor-size(--filter height);
-			@apply rounded bg-ink/5 transition-all;
+			@apply rounded bg-ink/5 transition-all dark:bg-ink-dark/5;
 		}
 
 		&:not(:hover)::before {

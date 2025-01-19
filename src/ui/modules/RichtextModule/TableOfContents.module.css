@@ -4,6 +4,6 @@
 	}
 
 	.inView:not(.inView ~ .inView) {
-		@apply border-l-4 border-accent;
+		@apply border-l-4 border-accent dark:border-accent-dark;
 	}
 }

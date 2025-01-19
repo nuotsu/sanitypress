@@ -6,6 +6,7 @@ import Navigation from './Navigation'
 import CTAList from '@/ui/CTAList'
 import Toggle from './Toggle'
 import { cn } from '@/lib/utils'
+import DarkModeToggle from './DarkModeToggle'
 import css from './Header.module.css'
 
 export default async function Header() {
@@ -14,7 +15,7 @@ export default async function Header() {
 	const logoImage = logo?.image?.dark || logo?.image?.default
 
 	return (
-		<Wrapper className="frosted-glass sticky top-0 z-10 border-b border-ink/10 bg-canvas max-md:header-open:shadow-lg">
+		<Wrapper className="frosted-glass sticky top-0 z-10 border-b border-ink/10 bg-canvas dark:border-ink-dark/10 dark:bg-canvas-dark max-md:header-open:shadow-lg">
 			<div
 				className={cn(
 					css.header,
@@ -36,7 +37,7 @@ export default async function Header() {
 								alt={logo?.name || title}
 							/>
 						) : (
-							<span className="text-gradient">{title}</span>
+							<span className="text-gradient dark:text-ink-dark">{title}</span>
 						)}
 					</Link>
 				</div>
@@ -48,7 +49,14 @@ export default async function Header() {
 					className="[grid-area:ctas] max-md:*:w-full max-md:header-closed:hidden md:ml-auto"
 				/>
 
-				<Toggle />
+				<div className="flex items-center gap-4 [grid-area:controls]">
+					<div className="flex items-center">
+						<DarkModeToggle />
+					</div>
+					<div className="flex items-center">
+						<Toggle />
+					</div>
+				</div>
 			</div>
 		</Wrapper>
 	)
