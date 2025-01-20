@@ -1,5 +1,5 @@
-import { cn } from '@/lib/utils'
 import CTA from './CTA'
+import { cn } from '@/lib/utils'
 
 export default function CTAList({
 	ctas,

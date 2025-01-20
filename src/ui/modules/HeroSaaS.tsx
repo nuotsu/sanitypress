@@ -1,6 +1,7 @@
 import moduleProps from '@/lib/moduleProps'
 import { PortableText } from 'next-sanity'
 import Pretitle from '@/ui/Pretitle'
+import Code from './RichtextModule/Code'
 import CustomHTML from './CustomHTML'
 import Reputation from '@/ui/Reputation'
 import CTAList from '@/ui/CTAList'
@@ -30,6 +31,9 @@ export default function HeroSaaS({
 					value={content}
 					components={{
 						types: {
+							code: ({ value }) => (
+								<Code className="mx-auto max-w-max" value={value} />
+							),
 							'custom-html': ({ value }) => <CustomHTML {...value} />,
 							'reputation-block': ({ value }) => (
 								<Reputation

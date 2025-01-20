@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
 import { reputationBlock } from '../documents/reputation'
 import { getBlockText } from '@/sanity/lib/utils'
@@ -27,7 +27,18 @@ export default defineType({
 		defineField({
 			name: 'content',
 			type: 'array',
-			of: [{ type: 'block' }, { type: 'custom-html' }, reputationBlock],
+			of: [
+				{ type: 'block' },
+				defineArrayMember({
+					title: 'Code block',
+					type: 'code',
+					options: {
+						withFilename: true,
+					},
+				}),
+				{ type: 'custom-html' },
+				reputationBlock,
+			],
 			group: 'content',
 		}),
 		defineField({

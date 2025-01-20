@@ -1,12 +1,15 @@
+import Pretitle from '@/ui/Pretitle'
 import { PortableText } from 'next-sanity'
 import { Suspense } from 'react'
 import SearchForm from './SearchForm'
 import type { SearchScope } from './store'
 
 export default function SearchModule({
+	pretitle,
 	content,
 	scope,
 }: Partial<{
+	pretitle: string
 	content: any
 	scope: SearchScope
 }>) {
@@ -14,6 +17,7 @@ export default function SearchModule({
 		<section className="section space-y-8">
 			{content && (
 				<header className="richtext text-center">
+					<Pretitle>{pretitle}</Pretitle>
 					<PortableText value={content} />
 				</header>
 			)}

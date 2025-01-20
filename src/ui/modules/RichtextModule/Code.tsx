@@ -1,11 +1,13 @@
-import { codeToHtml, splitLines } from 'shiki'
+import { codeToHtml, splitLines, bundledThemes } from 'shiki'
 import ClickToCopy from '@/ui/ClickToCopy'
 import css from './Code.module.css'
 import { cn } from '@/lib/utils'
 import { stegaClean } from 'next-sanity'
+import type { ComponentProps } from 'react'
 
 export default async function Code({
 	value,
+	className,
 }: {
 	value?: {
 		language: string
@@ -13,12 +15,12 @@ export default async function Code({
 		filename?: string
 		highlightedLines?: number[]
 	}
-}) {
+} & ComponentProps<'article'>) {
 	if (!value?.code) return null
 
 	const html = await codeToHtml(stegaClean(value.code), {
 		lang: value.language,
-		theme: 'dark-plus',
+		theme: 'dark-plus' as keyof typeof bundledThemes,
 		decorations: value.highlightedLines
 			?.map((row) => ({
 				row,
@@ -33,7 +35,10 @@ export default async function Code({
 	})
 
 	return (
-		<article className="group bg-ink/5 relative mt-6! mb-2! rounded">
+		<article
+			className={cn('group bg-ink/5 relative !mt-6 !mb-2 rounded', className)}
+			data-module="code"
+		>
 			{value.filename && (
 				<div className="text-canvas -mb-1 rounded-t bg-[#1E1E1E]/90 px-2 py-1 font-mono text-xs">
 					<span className="inline-block rounded-t border-b border-blue-400 bg-[#1E1E1E] px-3 py-2">

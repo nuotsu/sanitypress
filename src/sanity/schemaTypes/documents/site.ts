@@ -29,7 +29,7 @@ export default defineType({
 		}),
 		defineField({
 			name: 'ctas',
-			title: 'Call-to-action (Site-wide)',
+			title: 'Call-to-action (global)',
 			description: 'Typically used in the header and/or footer.',
 			type: 'array',
 			of: [{ type: 'cta' }],

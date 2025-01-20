@@ -56,17 +56,15 @@ export default defineType({
 			title: 'title',
 			price: 'price',
 		},
-		prepare: ({ title, price }) => {
-			return {
-				title,
-				subtitle: [
-					price?.base || 'Free',
-					price?.strikethrough && `(${price.strikethrough})`,
-					price?.suffix,
-				]
-					.filter(Boolean)
-					.join(' '),
-			}
-		},
+		prepare: ({ title, price }) => ({
+			title,
+			subtitle: [
+				price?.base || 'Free',
+				price?.strikethrough && `(${price.strikethrough})`,
+				price?.suffix,
+			]
+				.filter(Boolean)
+				.join(' '),
+		}),
 	},
 })
