@@ -17,7 +17,11 @@ export default function CustomHTML({
 	if (!html?.code) return null
 
 	return html.code.includes('<script') ? (
-		<WithScript code={stegaClean(html.code)} {...props} />
+		<WithScript
+			code={stegaClean(html.code)}
+			className={stegaClean(className)}
+			{...props}
+		/>
 	) : (
 		<section
 			className={stegaClean(className)}

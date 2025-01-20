@@ -25,5 +25,5 @@ export default function WithScript({
 		}
 	}, [ref.current, code])
 
-	return <section ref={ref} {...moduleProps(props)} />
+	return <section ref={ref} className={className} {...moduleProps(props)} />
 }
