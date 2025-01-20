@@ -78,14 +78,14 @@ const social: Array<{
 		label: 'GitHub',
 	},
 	{
-		icon: FaXTwitter,
-		url: 'https://x.com/sanitypress',
-		label: 'X',
-	},
-	{
 		icon: FaBluesky,
 		url: 'https://bsky.app/profile/sanitypress.dev',
 		label: 'Bluesky',
+	},
+	{
+		icon: FaXTwitter,
+		url: 'https://x.com/sanitypress',
+		label: 'X',
 	},
 ]
 
@@ -97,7 +97,10 @@ const linkGroups: Array<{
 		title: 'Resources',
 		links: [
 			{ label: 'Documentation', url: 'https://sanitypress.dev/docs' },
-			{ label: 'The SanityPress Blog', url: 'https://sanitypress.dev/blog' },
+			{
+				label: 'The Styled Heart — SanityPress Blog',
+				url: 'https://sanitypress.dev/blog',
+			},
 			{
 				label: 'Sanity.io Articles',
 				url: 'https://www.sanity.io/exchange/community/nuotsu',
