@@ -1,15 +1,16 @@
 {
 	"name": "sanitypress",
-	"version": "5.6.1",
+	"version": "5.6.2",
 	"description": "An impressive Next.js + Sanity.io starter template",
 	"author": "nuotsu <mitchell@nuotsu.dev> (https://nuotsu.dev)",
 	"license": "ISC",
 	"scripts": {
 		"dev": "next dev",
 		"dev:turbopack": "next dev --turbopack",
-		"build": "next build",
+		"build": "npm run manifest && next build",
 		"start": "next start",
 		"lint": "next lint",
+		"manifest": "sanity manifest extract --path public/admin/static",
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
