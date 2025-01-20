@@ -1,9 +1,12 @@
+import Pretitle from '@/ui/Pretitle'
 import { PortableText } from 'next-sanity'
 
 export default function StepList({
+	pretitle,
 	intro,
 	steps,
 }: Partial<{
+	pretitle: string
 	intro: any
 	steps: {
 		content: any
@@ -13,6 +16,7 @@ export default function StepList({
 		<section className="section space-y-8">
 			{intro && (
 				<header className="richtext text-balance text-center">
+					<Pretitle>{pretitle}</Pretitle>
 					<PortableText value={intro} />
 				</header>
 			)}

@@ -1,12 +1,15 @@
+import Pretitle from '@/ui/Pretitle'
 import { PortableText, stegaClean } from 'next-sanity'
 import Img from '@/ui/Img'
 import { cn } from '@/lib/utils'
 
 export default function TestimonialList({
+	pretitle,
 	intro,
 	testimonials,
 	layout,
 }: Partial<{
+	pretitle: string
 	intro: any
 	testimonials: Sanity.Testimonial[]
 	layout: 'grid' | 'carousel'
@@ -17,6 +20,7 @@ export default function TestimonialList({
 		<section className="section space-y-8 text-center">
 			{intro && (
 				<header className="richtext">
+					<Pretitle>{pretitle}</Pretitle>
 					<PortableText value={intro} />
 				</header>
 			)}

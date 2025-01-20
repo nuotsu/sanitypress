@@ -1,14 +1,17 @@
 import moduleProps from '@/lib/moduleProps'
+import Pretitle from '@/ui/Pretitle'
 import { PortableText } from 'next-sanity'
 import { cn } from '@/lib/utils'
 
 export default function AccordionList({
+	pretitle,
 	intro,
 	items,
 	layout = 'vertical',
 	generateSchema,
 	...props
 }: Partial<{
+	pretitle: string
 	intro: any
 	items: {
 		summary: string
@@ -39,6 +42,7 @@ export default function AccordionList({
 						: 'text-center',
 				)}
 			>
+				<Pretitle>{pretitle}</Pretitle>
 				<PortableText value={intro} />
 			</header>
 
