@@ -50,7 +50,7 @@ In your new Sanity Studio, publish the **required** `site` and `page` documents.
 | `page`   | `blog`   | Blog listing    |           | Add the [**Blog frontpage**](https://sanitypress.dev/docs/modules/blog-frontpage) module       |
 | `page`   | `blog/*` | Blog post       |           | Add the [**Blog post content**](https://sanitypress.dev/docs/modules/blog-post-content) module |
 
-Read the [docs](https://sanitypress.dev/docs/getting-started) for more information.
+Read the [Getting Started docs](https://sanitypress.dev/docs/getting-started) for more information.
 
 Alternatively, you can import the [demo site](https://demo.sanitypress.dev) dataset:
 
