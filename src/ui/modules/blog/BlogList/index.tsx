@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 import { fetchSanity } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
+import Pretitle from '@/ui/Pretitle'
 import { PortableText, stegaClean } from 'next-sanity'
 import FilterList from '@/ui/modules/blog/BlogList/FilterList'
 import PostPreview from '../PostPreview'
@@ -8,6 +9,7 @@ import List from './List'
 import { cn } from '@/lib/utils'
 
 export default async function BlogList({
+	pretitle,
 	intro,
 	layout,
 	limit,
@@ -15,6 +17,7 @@ export default async function BlogList({
 	displayFilters,
 	filteredCategory,
 }: Partial<{
+	pretitle: string
 	intro: any
 	layout: 'grid' | 'carousel'
 	limit: number
@@ -55,6 +58,7 @@ export default async function BlogList({
 		<section className="section space-y-8">
 			{intro && (
 				<header className="richtext">
+					<Pretitle>{pretitle}</Pretitle>
 					<PortableText value={intro} />
 				</header>
 			)}

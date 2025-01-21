@@ -14,6 +14,11 @@ export default defineType({
 	],
 	fields: [
 		defineField({
+			name: 'pretitle',
+			type: 'string',
+			group: 'content',
+		}),
+		defineField({
 			name: 'intro',
 			type: 'array',
 			of: [{ type: 'block' }],
@@ -49,6 +54,7 @@ export default defineType({
 			title: 'Number of posts to show',
 			description: 'Leave empty to show all posts',
 			type: 'number',
+			initialValue: 6,
 			validation: (Rule) => Rule.min(1).integer(),
 			group: 'filtering',
 		}),
