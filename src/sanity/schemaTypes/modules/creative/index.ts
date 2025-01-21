@@ -1,8 +1,8 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
-import creativeCtas from './creativeCtas'
-import creativeIcon from './creativeIcon'
-import creativeImage from './creativeImage'
-import creativeRichtext from './creativeRichtext'
+import creativeCtas from './ctas.creative'
+import creativeIcon from './icon.creative'
+import creativeImage from './image.creative'
+import creativeRichtext from './richtext.creative'
 import {
 	textAlign,
 	alignItems,

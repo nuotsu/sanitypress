@@ -26,7 +26,11 @@ npm create sanity@latest -- --template nuotsu/sanitypress
 
 Full instructions on the [docs](https://sanitypress.dev/docs).
 
-1. **Run the install command**:
+### 1. **Install with the Sanity CLI**
+
+Run the following command to initialize this template on your local computer.
+
+See the documentation if you are [having issues with the CLI](https://www.sanity.io/help/cli-errors).
 
 ```ini
 # .env.local
@@ -42,7 +46,9 @@ NEXT_PUBLIC_GITHUB_TOKEN = # used for Reputation blocks
 
 You can also clone or fork [the GitHub template](https://github.com/nuotsu/sanitypress) to set up manually.
 
-2. **Add content**: In your new Sanity Studio, publish the **required** `site` and `page` documents.
+### 2. **Add content**
+
+In your new Sanity Studio, publish the **required** `site` and `page` documents.
 
 | Document | Slug     | Use             | Required? | Notes                                                                                          |
 | -------- | -------- | --------------- | :-------: | ---------------------------------------------------------------------------------------------- |
@@ -52,19 +58,25 @@ You can also clone or fork [the GitHub template](https://github.com/nuotsu/sanit
 | `page`   | `blog`   | Blog listing    |           | Add the [**Blog frontpage**](https://sanitypress.dev/docs/modules/blog-frontpage) module       |
 | `page`   | `blog/*` | Blog post       |           | Add the [**Blog post content**](https://sanitypress.dev/docs/modules/blog-post-content) module |
 
+Read the [Getting Started docs](https://sanitypress.dev/docs/getting-started) for more information.
+
 Alternatively, you can import the [demo site](https://demo.sanitypress.dev) dataset:
 
 ```sh
 sanity dataset import src/sanity/demo.tar.gz
 ```
 
-3. **Set up deployments**: Add a [Vercel](https://www.sanity.io/plugins/vercel-dashboard-widget) or [Netlify](https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-netlify) widget to enable deployments from the Studio.
+### 3. **Set up deployments**
 
-4. **Customize**: Adjust frontend styles, edit/add Sanity schema and modules, and more.
+Add a [Vercel](https://www.sanity.io/plugins/vercel-dashboard-widget) or [Netlify](https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-netlify) widget to enable deployments from the Studio.
+
+### 4. **Customize**
+
+Adjust frontend styles, edit/add Sanity schema and modules, and [more](https://sanitypress.dev/blog/the-developers-guide-to-customizing-sanitypress).
 
 ## Resources
 
-- [The _Impressive_ Blog](https://sanitypress.dev/blog)
+- [_The Styled Heart_](https://sanitypress.dev/blog) — SanityPress Blog
 - [Visual Editing with Next.js and Sanity](https://www.sanity.io/guides/nextjs-app-router-live-preview)
 - [`next-sanity`](https://www.sanity.io/plugins/next-sanity) — Sanity toolkit for Next.js
 - [nuqs](https://nuqs.47ng.com/) — Type-safe search params state manager for React

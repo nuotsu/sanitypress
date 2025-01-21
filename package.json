@@ -7,9 +7,10 @@
 	"scripts": {
 		"dev": "next dev",
 		"dev:turbopack": "next dev --turbopack",
-		"build": "next build",
+		"build": "npm run manifest && next build",
 		"start": "next start",
 		"lint": "next lint",
+		"manifest": "sanity manifest extract --path public/admin/static",
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {

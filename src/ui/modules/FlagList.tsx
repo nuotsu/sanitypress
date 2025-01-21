@@ -1,7 +1,7 @@
+import Pretitle from '@/ui/Pretitle'
 import { PortableText, stegaClean } from 'next-sanity'
 import Img from '@/ui/Img'
 import { cn } from '@/lib/utils'
-import Pretitle from '../Pretitle'
 
 export default function FlagList({
 	pretitle,

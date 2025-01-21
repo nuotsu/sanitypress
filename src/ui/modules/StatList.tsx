@@ -1,10 +1,13 @@
+import Pretitle from '@/ui/Pretitle'
 import { PortableText, stegaClean } from 'next-sanity'
 
 export default function StatList({
+	pretitle,
 	intro,
 	stats,
 	textAlign = 'center',
 }: Partial<{
+	pretitle: string
 	intro: any
 	stats: Partial<{
 		prefix: string
@@ -21,6 +24,7 @@ export default function StatList({
 		>
 			{intro && (
 				<header className="richtext text-center">
+					<Pretitle>{pretitle}</Pretitle>
 					<PortableText value={intro} />
 				</header>
 			)}
