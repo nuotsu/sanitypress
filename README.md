@@ -26,7 +26,7 @@ npm create sanity@latest -- --template nuotsu/sanitypress
 
 Full instructions on the [docs](https://sanitypress.dev/docs).
 
-### 1. **Initialize template with Sanity CLI**
+### 1. **Install with the Sanity CLI**
 
 Run the following command to initialize this template on your local computer.
 
@@ -68,7 +68,7 @@ Adjust frontend styles, edit/add Sanity schema and modules, and [more](https://s
 
 ## Resources & Dependencies
 
-- [The _Impressive_ Blog](https://sanitypress.dev/blog)
+- [_The Styled Heart_](https://sanitypress.dev/blog) — SanityPress Blog
 - [Visual Editing with Next.js and Sanity](https://www.sanity.io/guides/nextjs-app-router-live-preview)
 - [`next-sanity`](https://www.sanity.io/plugins/next-sanity) — Sanity toolkit for Next.js
 - [nuqs](https://nuqs.47ng.com/) — Type-safe search params state manager for React
