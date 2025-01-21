@@ -26,19 +26,19 @@ npm create sanity@latest -- --template nuotsu/sanitypress
 
 Full instructions on the [docs](https://sanitypress.dev/docs).
 
-### 1. **Install with the Sanity CLI**
+### 1. Install with the Sanity CLI
 
 Run the following command to initialize this template on your local computer.
-
-See the documentation if you are [having issues with the CLI](https://www.sanity.io/help/cli-errors).
 
 ```sh
 npm create sanity@latest -- --template nuotsu/sanitypress
 ```
 
-You can also clone or fork [the GitHub template](https://github.com/nuotsu/sanitypress) to set up manually.
+See the documentation if you are [having issues with the CLI](https://www.sanity.io/help/cli-errors).
 
-### 2. **Add content**
+Alternatively, you can also clone or fork [the GitHub template](https://github.com/nuotsu/sanitypress) to set up manually.
+
+### 2. Add content
 
 In your new Sanity Studio, publish the **required** `site` and `page` documents.
 
@@ -58,13 +58,36 @@ Alternatively, you can import the [demo site](https://demo.sanitypress.dev) data
 sanity dataset import src/sanity/demo.tar.gz
 ```
 
-### 3. **Set up deployments**
+### 3. Set up deployments
 
-Add a [Vercel](https://www.sanity.io/plugins/vercel-dashboard-widget) or [Netlify](https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-netlify) widget to enable deployments from the Studio.
+#### 1. Create a GitHub repository
 
-### 4. **Customize**
+Create a GitHub repository from this project. [Learn more](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github).
+
+#### 2. Set up deployments
+
+Create a new [Vercel](https://vercel.com) / [Netlify](https://www.netlify.com) / etc project and connect it to your Github repository.
+
+#### 3. Configure deployment settings
+
+Set the **Root Directory** to your Next
+
+#### 4. Set environment variables
+
+Configure your Environment Variables in Vercel / Netlify / etc.
+
+#### 5. Add a deployment widget to enable deployments directly from the Studio.
+
+- Vercel: [vercel-dashboard-widget](https://www.sanity.io/plugins/vercel-dashboard-widget)
+- Netlify: [sanity-plugin-dashboard-widget-netlify](https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-netlify)
+
+### 4. Customize
 
 Adjust frontend styles, edit/add Sanity schema and modules, and [more](https://sanitypress.dev/blog/the-developers-guide-to-customizing-sanitypress).
+
+### 5. Inviting collaborators (Optional)
+
+Invite team members via [Sanity Manage](https://www.sanity.io/manage) to collaborate on content in your Studio.
 
 ## Resources & Dependencies
 
