@@ -1,14 +1,12 @@
-.track {
-	& > * {
-		--ox: calc((var(--count) - var(--index)) * 100%);
-		--dx: calc((var(--index) + 1) * -100%);
+.track > * {
+	--ox: calc((var(--count) - var(--index)) * 100%);
+	--dx: calc((var(--index) + 1) * -100%);
 
-		translate: var(--ox) 0;
-		animation: scroll var(--dur) linear infinite;
-		animation-delay: calc(
-			var(--dur) / var(--count) * var(--index) - var(--count) * 2s
-		);
-	}
+	translate: var(--ox) 0;
+	animation: scroll var(--dur) linear infinite;
+	animation-delay: calc(
+		var(--dur) / var(--count) * var(--index) - var(--count) * 2s
+	);
 }
 
 @keyframes scroll {
