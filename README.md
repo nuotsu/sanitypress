@@ -66,20 +66,29 @@ Create a GitHub repository from this project. [Learn more](https://docs.github.c
 
 #### 2. Set up deployments
 
-Create a new [Vercel](https://vercel.com) / [Netlify](https://www.netlify.com) / etc project and connect it to your Github repository.
+Create a new [Vercel](https://vercel.com) / [Netlify](https://www.netlify.com) / etc project, connecting it to your Github repository
 
-#### 3. Configure deployment settings
+Set up your deployment settings, such as the **Root Directory** to your Next.js app.
 
-Set the **Root Directory** to your Next
-
-#### 4. Set environment variables
+#### 3. Set environment variables
 
 Configure your Environment Variables in Vercel / Netlify / etc.
 
-#### 5. Add a deployment widget to enable deployments directly from the Studio.
+```sh
+NEXT_PUBLIC_BASE_URL="" # https://sanitypress.dev
 
-- Vercel: [vercel-dashboard-widget](https://www.sanity.io/plugins/vercel-dashboard-widget)
-- Netlify: [sanity-plugin-dashboard-widget-netlify](https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-netlify)
+NEXT_PUBLIC_SANITY_PROJECT_ID="" # abcdefgh
+NEXT_PUBLIC_SANITY_DATASET="" # production
+
+SANITY_API_READ_TOKEN="" # "Viewer" token from https://sanity.io/manage
+
+NEXT_PUBLIC_GITHUB_TOKEN="" # recommended to add to display GitHub stars & forks
+```
+
+#### 4. Add a deployment widget to enable deployments directly from the Studio.
+
+- Vercel: [`vercel-dashboard-widget`](https://www.sanity.io/plugins/vercel-dashboard-widget)
+- Netlify: [`sanity-plugin-dashboard-widget-netlify`](https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-netlify)
 
 ### 4. Customize
 
