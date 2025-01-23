@@ -12,10 +12,11 @@ import Hero from './Hero'
 import HeroSplit from './HeroSplit'
 import HeroSaaS from './HeroSaaS'
 import LogoList from './LogoList'
+import PersonList from './PersonList'
 import PricingList from './PricingList'
 import RichtextModule from './RichtextModule'
 import ScheduleModule from './ScheduleModule'
-import SearchModule from './search'
+import SearchModule from './Search'
 import StatList from './StatList'
 import StepList from './StepList'
 import TabbedContent from './TabbedContent'
@@ -69,6 +70,8 @@ export default function Modules({
 						return <HeroSaaS {...module} key={module._key} />
 					case 'logo-list':
 						return <LogoList {...module} key={module._key} />
+					case 'person-list':
+						return <PersonList {...module} key={module._key} />
 					case 'pricing-list':
 						return <PricingList {...module} key={module._key} />
 					case 'richtext-module':

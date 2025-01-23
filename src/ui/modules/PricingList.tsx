@@ -1,19 +1,22 @@
-import { PortableText } from 'next-sanity'
 import Pretitle from '@/ui/Pretitle'
+import { PortableText } from 'next-sanity'
 import CTAList from '@/ui/CTAList'
 import { cn } from '@/lib/utils'
 
 export default function PricingList({
+	pretitle,
 	intro,
 	tiers,
 }: Partial<{
+	pretitle: string
 	intro: any
 	tiers: Sanity.Pricing[]
 }>) {
 	return (
 		<section className="section space-y-8">
-			{intro && (
+			{(pretitle || intro) && (
 				<header className="richtext text-center">
+					<Pretitle>{pretitle}</Pretitle>
 					<PortableText value={intro} />
 				</header>
 			)}

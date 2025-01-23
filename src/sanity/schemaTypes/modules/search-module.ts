@@ -13,7 +13,7 @@ export default defineType({
 			type: 'string',
 		}),
 		defineField({
-			name: 'content',
+			name: 'intro',
 			type: 'array',
 			of: [{ type: 'block' }],
 		}),
@@ -29,11 +29,11 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			content: 'content',
+			intro: 'intro',
 			scope: 'scope',
 		},
-		prepare: ({ content, scope }) => ({
-			title: getBlockText(content) || (scope && `Search ${scope}`),
+		prepare: ({ intro, scope }) => ({
+			title: getBlockText(intro) || (scope && `Search ${scope}`),
 			subtitle: 'Search module',
 		}),
 	},

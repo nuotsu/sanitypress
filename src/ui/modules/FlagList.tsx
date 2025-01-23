@@ -21,7 +21,7 @@ export default function FlagList({
 }>) {
 	return (
 		<section className="section space-y-8">
-			{intro && (
+			{(pretitle || intro) && (
 				<header className="richtext text-center">
 					<Pretitle>{pretitle}</Pretitle>
 					<PortableText value={intro} />

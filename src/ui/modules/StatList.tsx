@@ -22,7 +22,7 @@ export default function StatList({
 			className="section space-y-8"
 			style={{ textAlign: stegaClean(textAlign) }}
 		>
-			{intro && (
+			{(pretitle || intro) && (
 				<header className="richtext text-center">
 					<Pretitle>{pretitle}</Pretitle>
 					<PortableText value={intro} />

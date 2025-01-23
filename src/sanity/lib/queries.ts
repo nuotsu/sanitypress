@@ -85,6 +85,7 @@ export const modulesQuery = groq`
 		}
 	},
 	_type == 'logo-list' => { logos[]-> },
+	_type == 'person-list' => { people[]-> },
 	_type == 'pricing-list' => {
 		tiers[]->{
 			...,

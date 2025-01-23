@@ -36,6 +36,7 @@ import hero from './modules/hero'
 import heroSaas from './modules/hero.saas'
 import heroSplit from './modules/hero.split'
 import logoList from './modules/logo-list'
+import personList from './modules/person-list'
 import pricingList from './modules/pricing-list'
 import richtextModule from './modules/richtext-module'
 import scheduleModule from './modules/schedule-module'
@@ -82,6 +83,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 	heroSaas,
 	heroSplit,
 	logoList,
+	personList,
 	pricingList,
 	richtextModule,
 	scheduleModule,
