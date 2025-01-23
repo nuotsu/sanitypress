@@ -19,7 +19,7 @@ export default function TableOfContents({
 		const headerHeight =
 			document.querySelector('body > header')?.clientHeight || 0
 
-		headings?.forEach(({ text, style }) => {
+		headings?.forEach(({ text }) => {
 			const target = document.getElementById(slug(text))
 
 			if (!target) return
@@ -59,7 +59,7 @@ export default function TableOfContents({
 			<ol className="anim-fade-to-b mt-2 leading-tight">
 				{headings?.map(({ text, style }, key) => (
 					<li
-						className="border-l transition-all"
+						className="border-l border-neutral-200 transition-all"
 						data-toc-item={slug(text)}
 						key={key}
 					>

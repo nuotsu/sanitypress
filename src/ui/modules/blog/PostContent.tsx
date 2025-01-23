@@ -41,11 +41,11 @@ export default function PostContent({
 			<div
 				className={cn(
 					'section grid gap-8',
-					showTOC && 'lg:grid-cols-[1fr,auto]',
+					showTOC && 'lg:grid-cols-[1fr_auto]',
 				)}
 			>
 				{showTOC && (
-					<aside className="lg:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] lg:order-1 lg:w-[250px]">
+					<aside className="lg:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] lg:order-1 lg:w-3xs">
 						<TableOfContents headings={post.headings} />
 					</aside>
 				)}

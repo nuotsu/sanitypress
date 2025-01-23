@@ -14,7 +14,7 @@ export default async function Header() {
 	const logoImage = logo?.image?.dark || logo?.image?.default
 
 	return (
-		<Wrapper className="frosted-glass sticky top-0 z-10 border-b border-ink/10 bg-canvas max-md:header-open:shadow-lg">
+		<Wrapper className="frosted-glass border-ink/10 bg-canvas max-md:header-open:shadow-lg sticky top-0 z-10 border-b">
 			<div
 				className={cn(
 					css.header,
@@ -23,10 +23,7 @@ export default async function Header() {
 			>
 				<div className="[grid-area:logo]">
 					<Link
-						className={cn(
-							'h4 md:h3 inline-block',
-							logo?.image && 'max-w-[250px]',
-						)}
+						className={cn('h4 md:h3 inline-block', logo?.image && 'max-w-3xs')}
 						href="/"
 					>
 						{logoImage ? (
@@ -45,7 +42,7 @@ export default async function Header() {
 
 				<CTAList
 					ctas={ctas}
-					className="[grid-area:ctas] max-md:*:w-full max-md:header-closed:hidden md:ml-auto"
+					className="max-md:header-closed:hidden [grid-area:ctas] max-md:*:w-full md:ml-auto"
 				/>
 
 				<Toggle />

@@ -1,4 +1,4 @@
-import client from '@/sanity/client'
+import { client } from '@/sanity/lib/client'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import { modulesQuery } from '@/sanity/lib/queries'

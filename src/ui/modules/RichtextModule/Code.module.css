@@ -15,7 +15,12 @@
 }
 
 .code :global(.highlight) {
-	@apply relative *:relative *:z-[1];
+	position: relative;
+
+	& > * {
+		position: relative;
+		z-index: 1;
+	}
 
 	&:not(:empty)::after {
 		content: '';
@@ -23,6 +28,12 @@
 		z-index: 0;
 		inset-block: -2px;
 		inset-inline: -1.6ch -0.5ch;
-		@apply rounded-r border-l-4 border-green-400 bg-green-400/20;
+		border-radius: 0 0.25rem 0.25rem 0;
+		border-left: 4px solid var(--color-green-400);
+		background-color: color-mix(
+			in oklab,
+			var(--color-green-400) 20%,
+			transparent
+		);
 	}
 }

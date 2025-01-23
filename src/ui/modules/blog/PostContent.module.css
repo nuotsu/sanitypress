@@ -1,8 +1,11 @@
 .body {
-	@screen md {
-		grid-template-columns: [bleed-start] 1fr [content-start] min(100%, 65ch) [content-end] 1fr [bleed-end];
+	@media (width >= 48rem) {
+		grid-template-columns: [bleed-start] 1fr [content-start] min(
+				100%,
+				65ch
+			) [content-end] 1fr [bleed-end];
 
-		&>* {
+		& > * {
 			grid-column: content;
 		}
 	}

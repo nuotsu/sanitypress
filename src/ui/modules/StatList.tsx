@@ -43,7 +43,7 @@ export default function StatList({
 							{suffix && <small className="text-ink/50">{suffix}</small>}
 						</dt>
 
-						{text && <dd className="text-balance font-bold">{text}</dd>}
+						{text && <dd className="font-bold text-balance">{text}</dd>}
 					</div>
 				))}
 			</dl>

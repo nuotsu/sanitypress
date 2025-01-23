@@ -27,7 +27,7 @@ export default function Content({
 						h5: (node) => <AnchoredHeading as="h5" {...node} />,
 						h6: (node) => <AnchoredHeading as="h6" {...node} />,
 						blockquote: ({ children }) => (
-							<blockquote className="border-l-2 pl-4">
+							<blockquote className="border-l-2 border-neutral-200 pl-4">
 								<p>{children}</p>
 							</blockquote>
 						),
@@ -37,7 +37,7 @@ export default function Content({
 						code: Code,
 						'custom-html': ({ value }) => (
 							<CustomHTML
-								className="has-[table]:md:mx-auto has-[table]:md:[grid-column:bleed]"
+								className="has-[table]:md:[grid-column:bleed] has-[table]:md:mx-auto"
 								{...value}
 							/>
 						),

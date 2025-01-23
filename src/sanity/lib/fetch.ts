@@ -1,6 +1,6 @@
 'use server'
 
-import client from '@/sanity/client'
+import { client } from '@/sanity/lib/client'
 import { token } from '@/sanity/lib/token'
 import { dev } from '@/lib/env'
 import { draftMode } from 'next/headers'

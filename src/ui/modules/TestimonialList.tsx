@@ -35,7 +35,7 @@ export default function TestimonialList({
 			>
 				{testimonials?.map(({ author, ...testimonial }, key) => (
 					<article
-						className="grid !basis-[min(450px,70vw)] place-content-center rounded border p-4"
+						className="grid basis-[min(450px,70vw)]! place-content-center rounded border border-neutral-200 p-4"
 						key={key}
 					>
 						<blockquote className="flex flex-col items-center gap-4">
@@ -60,7 +60,7 @@ export default function TestimonialList({
 										<dt>{author?.name}</dt>
 
 										{author?.title && (
-											<dd className="text-balance text-xs">{author?.title}</dd>
+											<dd className="text-xs text-balance">{author?.title}</dd>
 										)}
 									</dl>
 								</div>

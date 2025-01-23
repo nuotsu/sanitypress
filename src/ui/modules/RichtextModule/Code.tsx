@@ -36,11 +36,11 @@ export default async function Code({
 
 	return (
 		<article
-			className={cn('group relative !mb-2 !mt-6 rounded bg-ink/5', className)}
+			className={cn('group bg-ink/5 relative !mt-6 !mb-2 rounded', className)}
 			data-module="code"
 		>
 			{value.filename && (
-				<div className="-mb-1 rounded-t bg-[#1E1E1E]/90 px-2 py-1 font-mono text-xs text-canvas">
+				<div className="text-canvas -mb-1 rounded-t bg-[#1E1E1E]/90 px-2 py-1 font-mono text-xs">
 					<span className="inline-block rounded-t border-b border-blue-400 bg-[#1E1E1E] px-3 py-2">
 						📁 {value.filename}
 					</span>
@@ -53,8 +53,8 @@ export default async function Code({
 				<ClickToCopy
 					value={stegaClean(value.code)}
 					className={cn(
-						'anim-fade-to-l absolute right-0 top-0 m-1 hidden rounded p-[.3em] text-lg text-white',
-						'hover:bg-white/10 active:scale-95 active:bg-white/20 group-hover:block',
+						'anim-fade-to-l absolute top-0 right-0 m-1 hidden rounded p-[.3em] text-lg text-white',
+						'group-hover:block hover:bg-white/10 active:scale-95 active:bg-white/20',
 					)}
 				/>
 			</div>

@@ -52,7 +52,7 @@ export default function Hero({
 				<div className="section flex w-full flex-col">
 					<div
 						className={cn(
-							'richtext relative isolate max-w-xl [&_:is(h1,h2)]:text-balance',
+							'richtext headings:text-balance relative isolate max-w-xl',
 							hasImage && 'text-shadow',
 							{
 								'mb-8': stegaClean(alignItems) === 'start',

@@ -2,7 +2,7 @@ import {
 	useNextSanityImage,
 	type UseNextSanityImageOptions,
 } from 'next-sanity-image'
-import client from '@/sanity/client'
+import { client } from '@/sanity/lib/client'
 import { urlFor } from '@/sanity/lib/image'
 import { preload } from 'react-dom'
 import { stegaClean } from 'next-sanity'

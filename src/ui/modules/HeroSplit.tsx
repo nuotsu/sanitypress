@@ -32,7 +32,7 @@ export default function HeroSplit({
 				<Img image={image} imageWidth={1200} />
 			</figure>
 
-			<div className="richtext mx-auto w-full max-w-lg [&_:is(h1,h2)]:text-balance">
+			<div className="richtext headings:text-balance mx-auto w-full max-w-lg">
 				<Pretitle>{pretitle}</Pretitle>
 				<PortableText
 					value={content}

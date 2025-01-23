@@ -1,9 +1,9 @@
-@screen lg {
+@media (width >= 64rem) {
 	.root[open] > summary::after {
 		visibility: hidden;
 	}
 
 	.inView:not(.inView ~ .inView) {
-		@apply border-l-4 border-accent;
+		border-left: 4px solid var(--color-accent);
 	}
 }
