@@ -1,3 +1,4 @@
+import moduleProps from '@/lib/moduleProps'
 import Img, { Source } from '@/ui/Img'
 import { PortableText, stegaClean } from 'next-sanity'
 import CTAList from '@/ui/CTAList'
@@ -14,6 +15,7 @@ export default function Hero({
 	bgImageMobile,
 	textAlign = 'center',
 	alignItems,
+	...props
 }: Partial<{
 	pretitle: string
 	content: any
@@ -22,21 +24,23 @@ export default function Hero({
 	bgImageMobile: Sanity.Image
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
-}>) {
+}> &
+	Sanity.Module) {
 	const hasImage = !!bgImage?.asset
 
 	return (
 		<section
 			className={cn(
 				hasImage &&
-					'grid overflow-hidden bg-ink text-canvas *:col-span-full *:row-span-full',
+					'bg-ink text-canvas grid overflow-hidden *:col-span-full *:row-span-full',
 			)}
+			{...moduleProps(props)}
 		>
 			{hasImage && (
 				<picture>
 					<Source image={bgImageMobile} imageWidth={1200} />
 					<Img
-						className="size-full max-h-fold object-cover"
+						className="max-h-fold size-full object-cover"
 						image={bgImage}
 						imageWidth={1800}
 						draggable={false}

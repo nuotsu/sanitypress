@@ -63,7 +63,10 @@ export default defineType({
 						{ name: 'list' },
 					],
 					groups: [
-						{ name: 'blog', of: ['blog-list', 'blog-post-content'] },
+						{
+							name: 'blog',
+							of: ['blog-frontpage', 'blog-list', 'blog-post-content'],
+						},
 						{ name: 'hero', of: ['hero', 'hero.saas', 'hero.split'] },
 						{
 							name: 'lists',

@@ -21,6 +21,11 @@ export default defineType({
 	fieldsets: [alignmentFieldset, { name: 'image', options: { columns: 2 } }],
 	fields: [
 		defineField({
+			name: 'options',
+			type: 'module-options',
+			group: 'options',
+		}),
+		defineField({
 			name: 'pretitle',
 			type: 'string',
 			group: 'content',
