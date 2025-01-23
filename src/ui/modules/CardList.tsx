@@ -16,7 +16,7 @@ export default function CardList({
 	pretitle: string
 	intro: any
 	cards: Partial<{
-		image: any
+		image: Sanity.Image
 		content: any
 		ctas: Sanity.CTA[]
 	}>[]

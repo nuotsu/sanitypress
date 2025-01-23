@@ -16,7 +16,7 @@ export default async function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			{/* <GoogleTagManager gtmId='' /> */}
+			{/* <GoogleTagManager gtmId="" /> */}
 
 			<body className="bg-canvas text-ink">
 				<NuqsAdapter>
