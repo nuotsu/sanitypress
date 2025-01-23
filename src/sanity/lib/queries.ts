@@ -1,4 +1,4 @@
-import { fetchSanity } from './fetch'
+import { fetchSanityLive } from './fetch'
 import { groq } from 'next-sanity'
 
 export const linkQuery = groq`
@@ -21,7 +21,7 @@ export const ctaQuery = groq`
 `
 
 export async function getSite() {
-	const data = await fetchSanity<Sanity.Site>({
+	const data = await fetchSanityLive<Sanity.Site>({
 		query: groq`
 			*[_type == 'site'][0]{
 				...,

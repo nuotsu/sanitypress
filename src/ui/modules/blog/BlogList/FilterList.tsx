@@ -1,4 +1,4 @@
-import { fetchSanity } from '@/sanity/lib/fetch'
+import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import { Suspense } from 'react'
 import Filter from './Filter'
@@ -6,7 +6,7 @@ import css from './FilterList.module.css'
 import { cn } from '@/lib/utils'
 
 export default async function FilterList() {
-	const categories = await fetchSanity<Sanity.BlogCategory[]>({
+	const categories = await fetchSanityLive<Sanity.BlogCategory[]>({
 		query: groq`*[
 			_type == 'blog.category' &&
 			count(*[_type == 'blog.post' && references(^._id)]) > 0

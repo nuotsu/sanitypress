@@ -1,7 +1,7 @@
 import { useQueryState } from 'nuqs'
 import { create } from 'zustand'
 import { groq } from 'next-sanity'
-import { fetchSanity } from '@/sanity/lib/fetch'
+import { fetchSanityLive } from '@/sanity/lib/fetch'
 
 export type SearchScope = 'all' | 'pages' | 'blog posts' | undefined
 
@@ -78,7 +78,7 @@ export async function handleSearch({
 		}
 	}
 
-	const results = await fetchSanity<SearchResults>({
+	const results = await fetchSanityLive<SearchResults>({
 		query: groq`*[${processScope()}]{
 			_id,
 			_type,
@@ -86,7 +86,6 @@ export async function handleSearch({
 			metadata
 		}`,
 		params: { query: `*${query}*` as any },
-		next: { tags: [query] },
 	})
 
 	setResults(results)

@@ -1,9 +1,9 @@
-import { fetchSanity } from '@/sanity/lib/fetch'
+import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import type { MetadataRoute } from 'next'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-	const data = await fetchSanity<Record<string, MetadataRoute.Sitemap>>({
+	const data = await fetchSanityLive<Record<string, MetadataRoute.Sitemap>>({
 		query: groq`{
 			'pages': *[
 				_type == 'page' &&

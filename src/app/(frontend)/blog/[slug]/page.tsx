@@ -1,5 +1,5 @@
 import { client } from '@/sanity/lib/client'
-import { fetchSanity } from '@/sanity/lib/fetch'
+import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import { modulesQuery } from '@/sanity/lib/queries'
 import { notFound } from 'next/navigation'
@@ -35,7 +35,7 @@ export async function generateStaticParams() {
 }
 
 async function getPost(params: { slug?: string }) {
-	return await fetchSanity<Sanity.BlogPost>({
+	return await fetchSanityLive<Sanity.BlogPost>({
 		query: groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{
 			...,
 			body[]{
@@ -59,7 +59,7 @@ async function getPost(params: { slug?: string }) {
 }
 
 async function getPageTemplate() {
-	return await fetchSanity<Sanity.Page>({
+	return await fetchSanityLive<Sanity.Page>({
 		query: groq`*[_type == 'page' && metadata.slug.current == 'blog/*'][0]{
 			...,
 			modules[]{ ${modulesQuery} },

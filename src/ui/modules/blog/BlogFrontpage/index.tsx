@@ -1,4 +1,4 @@
-import { fetchSanity } from '@/sanity/lib/fetch'
+import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import sortFeaturedPosts from './sortFeaturedPosts'
 import PostPreviewLarge from '../PostPreviewLarge'
@@ -17,7 +17,7 @@ export default async function BlogFrontpage({
 	showFeaturedPostsFirst: boolean
 	itemsPerPage: number
 }>) {
-	const posts = await fetchSanity<Sanity.BlogPost[]>({
+	const posts = await fetchSanityLive<Sanity.BlogPost[]>({
 		query: groq`*[_type == 'blog.post']|order(publishDate desc){
 			_type,
 			_id,

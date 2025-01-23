@@ -1,5 +1,5 @@
 import { Suspense } from 'react'
-import { fetchSanity } from '@/sanity/lib/fetch'
+import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import Pretitle from '@/ui/Pretitle'
 import { PortableText, stegaClean } from 'next-sanity'
@@ -25,7 +25,7 @@ export default async function BlogList({
 	displayFilters: boolean
 	filteredCategory: Sanity.BlogCategory
 }>) {
-	const posts = await fetchSanity<Sanity.BlogPost[]>({
+	const posts = await fetchSanityLive<Sanity.BlogPost[]>({
 		query: groq`
 			*[
 				_type == 'blog.post'
