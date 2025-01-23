@@ -20,7 +20,7 @@
 
 	"module schema": {
 		"prefix": ["schema-module", "module-schema"],
-		"scope": "typescript",
+		"scope": "typescript,typescriptreact",
 		"body": [
 			"import { defineField, defineType } from 'sanity'",
 			"import { getBlockText } from '@/sanity/lib/utils'\n",
@@ -52,7 +52,7 @@
 
 	"schema field": {
 		"prefix": ["field", "schema-field", "df"],
-		"scope": "typescript",
+		"scope": "typescript,typescriptreact",
 		"body": [
 			"defineField({",
 			"\tname: '${1:string}',",
@@ -63,7 +63,7 @@
 
 	"module options field": {
 		"prefix": ["field-module-options", "module-options-field"],
-		"scope": "typescript",
+		"scope": "typescript,typescriptreact",
 		"body": [
 			"defineField({",
 			"\tname: 'options',",
@@ -75,7 +75,7 @@
 
 	"PortableText field": {
 		"prefix": ["field-portable-text", "portable-text-field", "pt", "content"],
-		"scope": "typescript",
+		"scope": "typescript,typescriptreact",
 		"body": [
 			"defineField({",
 			"\tname: '${1:content}',",
@@ -87,7 +87,7 @@
 
 	"CTA field": {
 		"prefix": ["field-cta", "cta-field"],
-		"scope": "typescript",
+		"scope": "typescript,typescriptreact",
 		"body": [
 			"defineField({",
 			"\tname: 'ctas',",
@@ -100,7 +100,7 @@
 
 	"image field": {
 		"prefix": ["field-image", "image-field"],
-		"scope": "typescript",
+		"scope": "typescript,typescriptreact",
 		"body": [
 			"defineField({",
 			"\tname: 'image',",
@@ -129,7 +129,7 @@
 
 	"items array field": {
 		"prefix": ["field-items-array", "items-array-field"],
-		"scope": "typescript",
+		"scope": "typescript,typescriptreact",
 		"body": [
 			"defineField({",
 			"\tname: 'items',",
@@ -161,7 +161,7 @@
 
 	"schema groups": {
 		"prefix": ["schema-groups", "groups-schema"],
-		"scope": "typescript",
+		"scope": "typescript,typescriptreact",
 		"body": [
 			"groups: [",
 			"\t{ name: 'content', default: true },",
@@ -172,7 +172,7 @@
 
 	"schema fieldsets": {
 		"prefix": ["schema-fieldsets", "fieldsets-schema"],
-		"scope": "typescript",
+		"scope": "typescript,typescriptreact",
 		"body": [
 			"fieldsets: [",
 			"\t{ name: '${1:options}', options: { columns: 2 } },",
@@ -182,7 +182,7 @@
 
 	"schema preview": {
 		"prefix": ["schema-preview", "preview-schema"],
-		"scope": "typescript",
+		"scope": "typescript,typescriptreact",
 		"body": [
 			"preview: {",
 			"\tselect: {",
