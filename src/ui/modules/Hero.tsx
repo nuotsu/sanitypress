@@ -29,14 +29,14 @@ export default function Hero({
 		<section
 			className={cn(
 				hasImage &&
-					'grid overflow-hidden bg-ink text-canvas *:col-span-full *:row-span-full',
+					'bg-ink text-canvas grid overflow-hidden *:col-span-full *:row-span-full',
 			)}
 		>
 			{hasImage && (
 				<picture>
 					<Source image={bgImageMobile} imageWidth={1200} />
 					<Img
-						className="size-full max-h-fold object-cover"
+						className="max-h-fold size-full object-cover"
 						image={bgImage}
 						imageWidth={1800}
 						draggable={false}
@@ -48,7 +48,7 @@ export default function Hero({
 				<div className="section flex w-full flex-col">
 					<div
 						className={cn(
-							'richtext relative isolate max-w-xl [&_:is(h1,h2)]:text-balance',
+							'richtext headings:text-balance relative isolate max-w-xl',
 							hasImage && 'text-shadow',
 							{
 								'mb-8': stegaClean(alignItems) === 'start',

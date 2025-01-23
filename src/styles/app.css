@@ -7,19 +7,12 @@
 	--color-accent: #1d1d1f;
 
 	--max-height-fold: calc(100svh - var(--header-height));
-
-	--lh-default: 1lh;
-	--lh-2: 2lh;
-	--lh-3: 3lh;
 }
 
 @variant header-open (body:has(#header-toggle:checked) &);
 @variant header-closed (body:has(#header-toggle:not(:checked)) &);
 
-/* TODO */
-@utility skeleton {
-	@apply bg-neutral-50;
-}
+@variant headings (& :is(h1, h2, h3, h4, h5, h6));
 
 @layer base {
 	* {
@@ -311,6 +304,18 @@
 	& video {
 		width: 100%;
 	}
+}
+
+/* skeleton */
+
+@utility skeleton {
+	@apply h-[1lh] bg-neutral-50;
+}
+@utility skeleton-2 {
+	@apply h-[2lh] bg-neutral-50;
+}
+@utility skeleton-3 {
+	@apply h-[3lh] bg-neutral-50;
 }
 
 /* components */
