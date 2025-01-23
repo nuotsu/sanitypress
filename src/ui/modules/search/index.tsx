@@ -6,19 +6,19 @@ import type { SearchScope } from './store'
 
 export default function SearchModule({
 	pretitle,
-	content,
+	intro,
 	scope,
 }: Partial<{
 	pretitle: string
-	content: any
+	intro: any
 	scope: SearchScope
 }>) {
 	return (
 		<section className="section space-y-8">
-			{content && (
+			{(pretitle || intro) && (
 				<header className="richtext text-center">
 					<Pretitle>{pretitle}</Pretitle>
-					<PortableText value={content} />
+					<PortableText value={intro} />
 				</header>
 			)}
 

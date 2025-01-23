@@ -14,7 +14,7 @@ export default function StepList({
 }>) {
 	return (
 		<section className="section space-y-8">
-			{intro && (
+			{(pretitle || intro) && (
 				<header className="richtext text-balance text-center">
 					<Pretitle>{pretitle}</Pretitle>
 					<PortableText value={intro} />

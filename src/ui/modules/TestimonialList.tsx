@@ -18,7 +18,7 @@ export default function TestimonialList({
 
 	return (
 		<section className="section space-y-8 text-center">
-			{intro && (
+			{(pretitle || intro) && (
 				<header className="richtext">
 					<Pretitle>{pretitle}</Pretitle>
 					<PortableText value={intro} />
