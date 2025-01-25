@@ -3,6 +3,7 @@
 import pkg from '$/package.json'
 import { Box, Card, Code, Flex, Heading, Label, Stack, Text } from '@sanity/ui'
 import { FaGithub, FaBluesky, FaXTwitter } from 'react-icons/fa6'
+import { SiSanity } from 'react-icons/si'
 import type { DashboardWidget, LayoutConfig } from '@sanity/dashboard'
 
 export function infoWidget(
@@ -23,7 +24,7 @@ function Widget() {
 					<Heading size={1} as="h2">
 						<Flex align="flex-end" justify="space-between" wrap="wrap" gap={4}>
 							<Flex align="center" gap={2}>
-								SanityPress
+								🖤 SanityPress
 								<Code size={1}>v{pkg.version}</Code>
 							</Flex>
 
@@ -78,6 +79,11 @@ const social: Array<{
 		label: 'GitHub',
 	},
 	{
+		icon: SiSanity,
+		url: 'https://sanity.io/templates/sanitypress',
+		label: 'Sanity.io',
+	},
+	{
 		icon: FaBluesky,
 		url: 'https://bsky.app/profile/sanitypress.dev',
 		label: 'Bluesky',
@@ -101,17 +107,13 @@ const linkGroups: Array<{
 				label: 'The Styled Heart — SanityPress Blog',
 				url: 'https://sanitypress.dev/blog',
 			},
-			{
-				label: 'Sanity.io Articles',
-				url: 'https://www.sanity.io/exchange/community/nuotsu',
-			},
 		],
 	},
 	{
 		title: 'Guides',
 		links: [
 			{
-				label: 'How SanityPress Works',
+				label: 'File Structure',
 				url: 'https://sanitypress.dev/docs/how-sanitypress-works',
 			},
 			{
@@ -119,20 +121,16 @@ const linkGroups: Array<{
 				url: 'https://sanitypress.dev/docs/modules',
 			},
 			{
-				label: 'Scheduling Content',
-				url: 'https://sanitypress.dev/blog/introducing-the-schedule-module',
-			},
-			{
 				label: 'Customization Guides',
 				url: 'https://sanitypress.dev/blog/the-developers-guide-to-customizing-sanitypress',
 			},
 			{
-				label: 'Adding New Modules',
-				url: 'https://sanitypress.dev/blog/adding-new-modules',
+				label: 'Scheduling Content',
+				url: 'https://sanitypress.dev/blog/introducing-the-schedule-module',
 			},
 			{
-				label: 'Useful GROQ Queries',
-				url: 'https://sanitypress.dev/blog/get-ridiculously-organized-quickly-with-groq',
+				label: 'Adding New Modules',
+				url: 'https://sanitypress.dev/blog/adding-new-modules',
 			},
 			{
 				label: 'A Guide for Nested Routes',
@@ -150,6 +148,10 @@ const linkGroups: Array<{
 			{
 				label: 'Discussions',
 				url: 'https://github.com/nuotsu/sanitypress/discussions',
+			},
+			{
+				label: 'Report an issue',
+				url: 'https://github.com/nuotsu/sanitypress/issues',
 			},
 		],
 	},

@@ -2,7 +2,7 @@
 
 import { defineConfig } from 'sanity'
 import { projectId, dataset, apiVersion } from '@/sanity/lib/env'
-import { structure } from './src/sanity/structure'
+import { icon, structure } from './src/sanity/structure'
 import { presentation } from './src/sanity/presentation'
 import {
 	dashboardTool,
@@ -18,6 +18,8 @@ import { schemaTypes } from './src/sanity/schemaTypes'
 const singletonTypes = ['site']
 
 export default defineConfig({
+	title: 'SanityPress',
+	icon,
 	projectId,
 	dataset,
 	basePath: '/admin',
