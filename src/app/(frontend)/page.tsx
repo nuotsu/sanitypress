@@ -1,6 +1,6 @@
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
-import { modulesQuery } from '@/sanity/lib/queries'
+import { MODULES_QUERY } from '@/sanity/lib/queries'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
 
@@ -18,7 +18,7 @@ async function getPage() {
 	const data = await fetchSanityLive<Sanity.Page>({
 		query: groq`*[_type == 'page' && metadata.slug.current == 'index'][0]{
 			...,
-			modules[]{ ${modulesQuery} },
+			modules[]{ ${MODULES_QUERY} },
 			metadata {
 				...,
 				'ogimage': image.asset->url + '?w=1200',

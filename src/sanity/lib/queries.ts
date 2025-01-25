@@ -1,23 +1,23 @@
 import { fetchSanityLive } from './fetch'
 import { groq } from 'next-sanity'
 
-export const linkQuery = groq`
+export const LINK_QUERY = groq`
 	...,
 	internal->{ _type, title, metadata }
 `
 
-const navigationQuery = groq`
+const NAVIGATION_QUERY = groq`
 	title,
 	items[]{
-		${linkQuery},
-		link{ ${linkQuery} },
-		links[]{ ${linkQuery} }
+		${LINK_QUERY},
+		link{ ${LINK_QUERY} },
+		links[]{ ${LINK_QUERY} }
 	}
 `
 
-export const ctaQuery = groq`
+export const CTA_QUERY = groq`
 	...,
-	link{ ${linkQuery} }
+	link{ ${LINK_QUERY} }
 `
 
 export async function getSite() {
@@ -25,10 +25,10 @@ export async function getSite() {
 		query: groq`
 			*[_type == 'site'][0]{
 				...,
-				ctas[]{ ${ctaQuery} },
-				headerMenu->{ ${navigationQuery} },
-				footerMenu->{ ${navigationQuery} },
-				social->{ ${navigationQuery} },
+				ctas[]{ ${CTA_QUERY} },
+				headerMenu->{ ${NAVIGATION_QUERY} },
+				footerMenu->{ ${NAVIGATION_QUERY} },
+				social->{ ${NAVIGATION_QUERY} },
 				'ogimage': ogimage.asset->url
 			}
 		`,
@@ -39,22 +39,22 @@ export async function getSite() {
 	return data
 }
 
-export const reputationBlockQuery = groq`
+export const REPUTATION_QUERY = groq`
 	_type == 'reputation-block' => { reputation-> }
 `
 
-export const modulesQuery = groq`
+export const MODULES_QUERY = groq`
 	...,
 	ctas[]{
 		...,
-		link{ ${linkQuery} }
+		link{ ${LINK_QUERY} }
 	},
 	_type == 'blog-list' => { filteredCategory-> },
-	_type == 'breadcrumbs' => { crumbs[]{ ${linkQuery} } },
+	_type == 'breadcrumbs' => { crumbs[]{ ${LINK_QUERY} } },
 	_type == 'card-list' => {
 		cards[]{
 			...,
-			ctas[]{ ${ctaQuery} }
+			ctas[]{ ${CTA_QUERY} }
 		}
 	},
 	_type == 'creative-module' => {
@@ -62,26 +62,26 @@ export const modulesQuery = groq`
 			...,
 			subModules[]{
 				...,
-				ctas[]{ ${ctaQuery} }
+				ctas[]{ ${CTA_QUERY} }
 			}
 		}
 	},
 	_type == 'hero' => {
 		content[]{
 			...,
-			${reputationBlockQuery}
+			${REPUTATION_QUERY}
 		}
 	},
 	_type == 'hero.saas' => {
 		content[]{
 			...,
-			${reputationBlockQuery}
+			${REPUTATION_QUERY}
 		}
 	},
 	_type == 'hero.split' => {
 		content[]{
 			...,
-			${reputationBlockQuery}
+			${REPUTATION_QUERY}
 		}
 	},
 	_type == 'logo-list' => { logos[]-> },
@@ -89,7 +89,7 @@ export const modulesQuery = groq`
 	_type == 'pricing-list' => {
 		tiers[]->{
 			...,
-			ctas[]{ ${ctaQuery} }
+			ctas[]{ ${CTA_QUERY} }
 		}
 	},
 	_type == 'richtext-module' => {
@@ -103,7 +103,7 @@ export const modulesQuery = groq`
 	_type == 'tabbed-content' => {
 		tabs[]{
 			...,
-			ctas[]{ ${ctaQuery} }
+			ctas[]{ ${CTA_QUERY} }
 		}
 	},
 	_type == 'testimonial.featured' => { testimonial-> },

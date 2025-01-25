@@ -1,6 +1,6 @@
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
-import { linkQuery } from '@/sanity/lib/queries'
+import { LINK_QUERY } from '@/sanity/lib/queries'
 import Scheduler from './Scheduler'
 import { PortableText } from 'next-sanity'
 import CTA from '@/ui/CTA'
@@ -11,7 +11,7 @@ export default async function Announcement() {
 	>({
 		query: groq`*[_type == 'site'][0].announcements[]->{
 			...,
-			cta{ ${linkQuery} },
+			cta{ ${LINK_QUERY} },
 		}`,
 		tag: 'announcements',
 	})
@@ -24,7 +24,7 @@ export default async function Announcement() {
 				<Scheduler start={start} end={end} key={_id}>
 					<aside
 						id="announcement"
-						className="flex items-center justify-center gap-x-4 text-balance bg-accent p-2 text-center text-canvas max-md:text-sm md:gap-x-6"
+						className="bg-accent text-canvas flex items-center justify-center gap-x-4 p-2 text-center text-balance max-md:text-sm md:gap-x-6"
 					>
 						<div className="anim-fade-to-r [&_a]:link">
 							<PortableText value={content} />

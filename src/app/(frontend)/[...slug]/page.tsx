@@ -1,7 +1,7 @@
 import { client } from '@/sanity/lib/client'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
-import { modulesQuery } from '@/sanity/lib/queries'
+import { MODULES_QUERY } from '@/sanity/lib/queries'
 import { notFound } from 'next/navigation'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
@@ -38,7 +38,7 @@ async function getPage(params: { slug?: string[] }) {
 			!(metadata.slug.current in ['index', 'blog/*'])
 		][0]{
 			...,
-			modules[]{ ${modulesQuery} },
+			modules[]{ ${MODULES_QUERY} },
 			metadata {
 				...,
 				'ogimage': image.asset->url + '?w=1200'
