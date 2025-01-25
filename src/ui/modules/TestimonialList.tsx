@@ -48,7 +48,7 @@ export default function TestimonialList({
 									<Img
 										className="size-[40px] shrink-0 rounded-full object-cover"
 										image={author?.image}
-										imageWidth={80}
+										width={80}
 										alt={
 											[author?.name, author?.title]
 												.filter(Boolean)

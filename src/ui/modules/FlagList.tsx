@@ -40,7 +40,7 @@ export default function FlagList({
 						<figure>
 							<Img
 								image={item.icon}
-								imageWidth={iconSize}
+								width={iconSize}
 								style={{ maxHeight: iconSize }}
 							/>
 						</figure>

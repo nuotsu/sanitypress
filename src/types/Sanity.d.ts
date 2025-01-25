@@ -1,5 +1,5 @@
 import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
-import type { SanityDocument } from 'next-sanity'
+import type { SanityAssetDocument, SanityDocument } from 'next-sanity'
 
 declare global {
 	namespace Sanity {
@@ -113,7 +113,7 @@ declare global {
 			style?: string
 		}
 
-		interface Image extends SanityImageObject {
+		interface Image extends SanityAssetDocument {
 			alt: string
 			loading: 'lazy' | 'eager'
 		}

@@ -38,11 +38,11 @@ export default function Hero({
 		>
 			{hasImage && (
 				<picture>
-					<Source image={bgImageMobile} imageWidth={1200} />
+					<Source image={bgImageMobile} width={1200} />
 					<Img
 						className="max-h-fold size-full object-cover"
 						image={bgImage}
-						imageWidth={1800}
+						width={2400}
 						draggable={false}
 					/>
 				</picture>

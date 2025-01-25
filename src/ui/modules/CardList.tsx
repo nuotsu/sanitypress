@@ -56,7 +56,7 @@ export default function CardList({
 								<Img
 									className="aspect-video w-full object-cover"
 									image={card.image}
-									imageWidth={600}
+									width={600}
 								/>
 							</figure>
 						)}

@@ -18,7 +18,7 @@ export default function IconSubModule({
 				className="w-auto"
 				image={module.icon}
 				style={{ maxHeight: module.size }}
-				imageWidth={module.size}
+				width={module.size}
 			/>
 		</figure>
 	)

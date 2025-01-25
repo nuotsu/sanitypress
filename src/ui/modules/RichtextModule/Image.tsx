@@ -18,7 +18,7 @@ export default function Image({
 			<Img
 				className="mx-auto max-h-svh w-auto bg-neutral-50 text-[0px]"
 				image={value}
-				imageWidth={1500}
+				width={1500}
 			/>
 
 			{value.caption && (

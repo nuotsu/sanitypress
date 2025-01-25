@@ -25,7 +25,7 @@ export default function PostPreview({
 				<Img
 					className="aspect-video w-full object-cover transition-all group-hover:scale-105 group-hover:brightness-110"
 					image={post?.metadata.image}
-					imageWidth={700}
+					width={700}
 					alt={post?.metadata.title}
 				/>
 

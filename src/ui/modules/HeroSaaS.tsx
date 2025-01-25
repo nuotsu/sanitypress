@@ -32,7 +32,11 @@ export default function HeroSaaS({
 					components={{
 						types: {
 							code: ({ value }) => (
-								<Code className="mx-auto max-w-max" value={value} />
+								<Code
+									value={value}
+									className="mx-auto max-w-max"
+									theme="snazzy-light"
+								/>
 							),
 							'custom-html': ({ value }) => <CustomHTML {...value} />,
 							'reputation-block': ({ value }) => (
@@ -49,9 +53,9 @@ export default function HeroSaaS({
 
 			<Img
 				image={image}
-				imageWidth={1800}
+				width={2400}
 				className={cn(
-					'anim-fade-to-t [animation-duration:1s]',
+					'anim-fade-to-t w-full [animation-duration:1s]',
 					image?.faded &&
 						'[mask-image:linear-gradient(to_bottom,#000_50%,transparent)]',
 				)}

@@ -13,6 +13,7 @@ const client = createClient({
 
 export default {
 	images: {
+		dangerouslyAllowSVG: true,
 		remotePatterns: [
 			{
 				protocol: 'https',

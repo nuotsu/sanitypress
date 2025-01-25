@@ -39,7 +39,7 @@ export default function PersonList({
 							<Img
 								className="aspect-square w-full object-cover"
 								image={person.image}
-								imageWidth={600}
+								width={600}
 							/>
 						</figure>
 

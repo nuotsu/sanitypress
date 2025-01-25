@@ -55,7 +55,7 @@ export default async function LogoList({
 						className="h-[2.5em] w-[200px] shrink-0 object-contain px-4 max-sm:w-[150px]"
 						style={{ '--index': key } as React.CSSProperties}
 						image={logo.image?.[logoType] || logo.image?.default}
-						imageWidth={400}
+						width={400}
 						alt={logo.name}
 						key={key}
 					/>

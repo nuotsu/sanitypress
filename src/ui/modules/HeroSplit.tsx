@@ -29,7 +29,7 @@ export default function HeroSplit({
 					image?.onBottom && 'max-md:order-last',
 				)}
 			>
-				<Img image={image} imageWidth={1200} />
+				<Img className="w-full" image={image} width={1200} />
 			</figure>
 
 			<div className="richtext headings:text-balance mx-auto w-full max-w-lg">

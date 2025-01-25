@@ -28,11 +28,11 @@ function Author({ author }: { author?: Sanity.Person }) {
 					<Img
 						className="aspect-square"
 						image={author.image}
-						imageWidth={60}
+						width={60}
 						alt={author.name}
 					/>
 				) : (
-					<GoPerson className="text-xl text-accent/20" />
+					<GoPerson className="text-accent/20 text-xl" />
 				)}
 			</dd>
 
