@@ -7,8 +7,10 @@ import type { ComponentProps } from 'react'
 
 export default async function Code({
 	value,
+	theme = 'dark-plus',
 	className,
 }: {
+	theme?: keyof typeof bundledThemes
 	value?: {
 		language: string
 		code: string
@@ -20,7 +22,7 @@ export default async function Code({
 
 	const html = await codeToHtml(stegaClean(value.code), {
 		lang: value.language,
-		theme: 'dark-plus' as keyof typeof bundledThemes,
+		theme,
 		decorations: value.highlightedLines
 			?.map((row) => ({
 				row,
@@ -53,8 +55,9 @@ export default async function Code({
 				<ClickToCopy
 					value={stegaClean(value.code)}
 					className={cn(
-						'anim-fade-to-l absolute top-0 right-0 m-1 hidden rounded p-[.3em] text-lg text-white',
+						'anim-fade-to-l absolute top-0 right-0 m-1 hidden rounded p-[.3em] text-lg',
 						'group-hover:block hover:bg-white/10 active:scale-95 active:bg-white/20',
+						!theme.includes('light') && 'text-white',
 					)}
 				/>
 			</div>
