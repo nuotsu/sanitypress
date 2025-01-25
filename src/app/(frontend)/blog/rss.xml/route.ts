@@ -1,4 +1,4 @@
-import { fetchSanityLive } from '@/sanity/lib/fetch'
+import { fetchSanity } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import processUrl from '@/lib/processUrl'
 import { Feed } from 'feed'
@@ -6,7 +6,7 @@ import { escapeHTML, toHTML } from '@portabletext/to-html'
 import { urlFor } from '@/sanity/lib/image'
 
 export async function GET() {
-	const { blog, posts, copyright } = await fetchSanityLive<{
+	const { blog, posts, copyright } = await fetchSanity<{
 		blog: Sanity.Page
 		posts: Array<Sanity.BlogPost & { image?: string }>
 		copyright: string
@@ -62,10 +62,10 @@ export async function GET() {
 			content: toHTML(post.body, {
 				components: {
 					types: {
-						image: ({ value: { alt, caption, source, ...value } }) => {
-							const img = `<img src="${urlFor(value).url()}" alt="${alt}" />`
+						image: ({ value: { alt = '', caption, source, ...value } }) => {
+							const img = `<img src="${urlFor(value).url()}" alt="${escapeHTML(alt)}" />`
 							const figcaption =
-								caption && `<figcaption>${caption}</figcaption>`
+								caption && `<figcaption>${escapeHTML(caption)}</figcaption>`
 							const aSource = source && `<a href="${source}">(Source)</a>`
 
 							return `<figure>${[img, figcaption, aSource].filter(Boolean).join(' ')}</figure>`
