@@ -3,6 +3,11 @@ import Image from 'next/image'
 import Img from '@/ui/Img'
 import { VscStarFull, VscRepoForked } from 'react-icons/vsc'
 import { cn, count } from '@/lib/utils'
+import { unstable_cache } from 'next/cache'
+
+const getCachedRepoData = unstable_cache(getRepoData, ['repo-data'], {
+	revalidate: 3600, // 1 hour
+})
 
 export default async function Reputation({
 	reputation,
@@ -13,7 +18,7 @@ export default async function Reputation({
 	if (!reputation) return null
 
 	const { stargazers_count, forks_count, avatars } =
-		await getRepoData(reputation)
+		await getCachedRepoData(reputation)
 
 	const imgClassname = cn(
 		'aspect-square h-8 w-auto rounded-full border-2 border-canvas bg-canvas object-cover -mr-2 last:mr-0',
@@ -49,7 +54,7 @@ export default async function Reputation({
 									zIndex: (reputation.avatars?.length || limit) - key,
 								}}
 								image={avatar}
-								imageWidth={96}
+								width={96}
 								key={key}
 							/>
 						))}
