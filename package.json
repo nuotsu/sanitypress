@@ -20,7 +20,7 @@
 		"@sanity/image-url": "^1.1.0",
 		"@sanity/preview-url-secret": "^2.1.4",
 		"@sanity/vision": "^3.72.1",
-		"@tailwindcss/postcss": "^4.0.1",
+		"@tailwindcss/postcss": "^4.0.2",
 		"@vercel/analytics": "^1.4.1",
 		"@vercel/speed-insights": "^1.1.0",
 		"clsx": "^2.1.1",
@@ -43,14 +43,14 @@
 	},
 	"devDependencies": {
 		"@sanity/eslint-config-studio": "^5.0.1",
-		"@types/node": "^22.12.0",
+		"@types/node": "^22.13.0",
 		"@types/react": "^19.0.8",
 		"@types/react-dom": "^19.0.3",
 		"eslint": "^9.19.0",
 		"postcss": "^8.5.1",
 		"prettier": "^3.4.2",
 		"prettier-plugin-tailwindcss": "^0.6.11",
-		"tailwindcss": "^4.0.1",
+		"tailwindcss": "^4.0.2",
 		"typescript": "^5.7.3"
 	}
 }
