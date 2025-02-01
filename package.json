@@ -20,7 +20,7 @@
 		"@sanity/image-url": "^1.1.0",
 		"@sanity/preview-url-secret": "^2.1.4",
 		"@sanity/vision": "^3.72.1",
-		"@tailwindcss/postcss": "^4.0.2",
+		"@tailwindcss/postcss": "^4.0.3",
 		"@vercel/analytics": "^1.4.1",
 		"@vercel/speed-insights": "^1.1.0",
 		"clsx": "^2.1.1",
@@ -28,7 +28,7 @@
 		"next": "^15.1.6",
 		"next-sanity": "^9.8.47",
 		"next-sanity-image": "^6.1.1",
-		"nuqs": "^2.3.1",
+		"nuqs": "^2.3.2",
 		"octokit": "^4.1.0",
 		"react": "^19.0.0",
 		"react-device-detect": "^2.2.3",
@@ -50,7 +50,7 @@
 		"postcss": "^8.5.1",
 		"prettier": "^3.4.2",
 		"prettier-plugin-tailwindcss": "^0.6.11",
-		"tailwindcss": "^4.0.2",
+		"tailwindcss": "^4.0.3",
 		"typescript": "^5.7.3"
 	}
 }
