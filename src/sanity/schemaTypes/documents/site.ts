@@ -4,28 +4,56 @@ export default defineType({
 	name: 'site',
 	title: 'Site settings',
 	type: 'document',
-	groups: [{ name: 'general', default: true }, { name: 'navigation' }],
+	groups: [
+		{ name: 'branding', default: true },
+		{ name: 'info' },
+		{ name: 'navigation' },
+	],
 	fields: [
 		defineField({
 			name: 'title',
 			type: 'string',
-			group: 'general',
 			validation: (Rule) => Rule.required(),
+			group: 'branding',
+		}),
+		defineField({
+			name: 'tagline',
+			type: 'array',
+			of: [{ type: 'block' }],
+			group: 'branding',
 		}),
 		defineField({
 			name: 'logo',
 			type: 'logo',
-			options: {
-				collapsable: true,
-				collapsed: true,
-			},
-			group: 'general',
+			group: 'branding',
 		}),
 		defineField({
 			name: 'announcements',
 			type: 'array',
 			of: [{ type: 'reference', to: [{ type: 'announcement' }] }],
-			group: 'general',
+			group: 'info',
+		}),
+		defineField({
+			name: 'copyright',
+			type: 'array',
+			of: [
+				{
+					type: 'block',
+					styles: [{ title: 'Normal', value: 'normal' }],
+				},
+			],
+			group: 'info',
+		}),
+		defineField({
+			name: 'ogimage',
+			title: 'Open Graph image (global)',
+			description:
+				'Used for social sharing previews. Set page-specific images in Page documents.',
+			type: 'image',
+			options: {
+				hotspot: true,
+			},
+			group: 'info',
 		}),
 		defineField({
 			name: 'ctas',
@@ -33,7 +61,7 @@ export default defineType({
 			description: 'Typically used in the header and/or footer.',
 			type: 'array',
 			of: [{ type: 'cta' }],
-			group: 'general',
+			group: 'navigation',
 		}),
 		defineField({
 			name: 'headerMenu',
@@ -52,28 +80,6 @@ export default defineType({
 			type: 'reference',
 			to: [{ type: 'navigation' }],
 			group: 'navigation',
-		}),
-		defineField({
-			name: 'copyright',
-			type: 'array',
-			of: [
-				{
-					type: 'block',
-					styles: [{ title: 'Normal', value: 'normal' }],
-				},
-			],
-			group: 'general',
-		}),
-		defineField({
-			name: 'ogimage',
-			title: 'Open Graph image (global)',
-			description:
-				'Used for social sharing previews. Set page-specific images in Page documents.',
-			type: 'image',
-			options: {
-				hotspot: true,
-			},
-			group: 'general',
 		}),
 	],
 	preview: {

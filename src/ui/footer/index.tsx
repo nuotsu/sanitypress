@@ -6,14 +6,14 @@ import Link from 'next/link'
 import Img from '@/ui/Img'
 
 export default async function Footer() {
-	const { title, logo, copyright } = await getSite()
+	const { title, tagline, logo, copyright } = await getSite()
 
 	const logoImage = logo?.image?.light || logo?.image?.default
 
 	return (
-		<footer className="bg-accent text-center text-canvas" role="contentinfo">
+		<footer className="bg-accent text-canvas" role="contentinfo">
 			<div className="section flex flex-wrap justify-between gap-x-12 gap-y-8 max-sm:flex-col">
-				<div className="flex flex-col gap-3 self-start max-sm:mx-auto max-sm:items-center">
+				<div className="flex flex-col gap-3 self-start">
 					<Link className="h3 md:h2 max-w-max" href="/">
 						{logoImage ? (
 							<Img
@@ -26,6 +26,12 @@ export default async function Footer() {
 						)}
 					</Link>
 
+					{tagline && (
+						<div className="max-w-sm text-sm text-balance">
+							<PortableText value={tagline} />
+						</div>
+					)}
+
 					<Social />
 				</div>
 
@@ -33,7 +39,7 @@ export default async function Footer() {
 			</div>
 
 			{copyright && (
-				<div className="mx-auto flex max-w-screen-xl flex-wrap justify-center gap-x-6 gap-y-2 border-t border-canvas/20 p-4 text-sm">
+				<div className="border-canvas/20 mx-auto flex max-w-screen-xl flex-wrap justify-center gap-x-6 gap-y-2 border-t p-4 text-sm">
 					<PortableText value={copyright} />
 				</div>
 			)}
