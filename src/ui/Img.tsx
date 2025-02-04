@@ -14,7 +14,7 @@ export default function Img({
 	image?: Sanity.Image
 	alt?: string
 } & Omit<ImageProps, 'src' | 'alt'>) {
-	if (!image) return null
+	if (!image?.assetId) return null
 
 	const { src, width, height } = generateSrc(image, w, h)
 
@@ -43,7 +43,7 @@ export function Source({
 }: {
 	image?: Sanity.Image
 } & Omit<ComponentProps<'source'>, ''>) {
-	if (!image) return null
+	if (!image?.assetId) return null
 
 	const { src, width, height } = generateSrc(image, w, h)
 
