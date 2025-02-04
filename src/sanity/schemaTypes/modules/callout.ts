@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { VscInspect } from 'react-icons/vsc'
+import { reputationBlock } from '../documents/reputation'
 import { getBlockText } from '@/sanity/lib/utils'
 
 export default defineType({
@@ -11,7 +12,7 @@ export default defineType({
 		defineField({
 			name: 'content',
 			type: 'array',
-			of: [{ type: 'block' }],
+			of: [{ type: 'block' }, { type: 'code' }, reputationBlock],
 		}),
 		defineField({
 			name: 'ctas',

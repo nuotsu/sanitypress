@@ -90,11 +90,11 @@ export default defineType({
 			fieldset: 'image',
 		}),
 		defineField({
-			...textAlign,
+			...alignItems,
 			fieldset: 'alignment',
 		}),
 		defineField({
-			...alignItems,
+			...textAlign,
 			fieldset: 'alignment',
 		}),
 	],

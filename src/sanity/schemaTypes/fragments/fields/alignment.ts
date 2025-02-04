@@ -6,17 +6,6 @@ export const alignmentFieldset: FieldsetDefinition = {
 	options: { columns: 2 },
 }
 
-export const textAlign = {
-	name: 'textAlign',
-	type: 'string',
-	options: {
-		layout: 'radio',
-		list: ['left', 'center', 'right'],
-	},
-	initialValue: 'center',
-	group: 'options',
-} satisfies FieldDefinition
-
 export const alignItems = {
 	name: 'alignItems',
 	title: 'Vertical alignment',
@@ -28,6 +17,17 @@ export const alignItems = {
 			'center',
 			{ title: 'Bottom', value: 'end' },
 		],
+	},
+	initialValue: 'center',
+	group: 'options',
+} satisfies FieldDefinition
+
+export const textAlign = {
+	name: 'textAlign',
+	type: 'string',
+	options: {
+		layout: 'radio',
+		list: ['left', 'center', 'right'],
 	},
 	initialValue: 'center',
 	group: 'options',

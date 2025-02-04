@@ -277,6 +277,10 @@
 		@apply overflow-x-auto rounded bg-transparent p-3 text-xs/relaxed;
 	}
 
+	& blockquote {
+		@apply border-l-2 border-neutral-200 pl-4;
+	}
+
 	& table {
 		display: block;
 		overflow-x: auto;

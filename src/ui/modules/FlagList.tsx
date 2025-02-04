@@ -22,25 +22,34 @@ export default function FlagList({
 	return (
 		<section className="section space-y-8">
 			{(pretitle || intro) && (
-				<header className="richtext text-center">
+				<header className="richtext mx-auto max-w-xl text-center text-balance">
 					<Pretitle>{pretitle}</Pretitle>
 					<PortableText value={intro} />
 				</header>
 			)}
 
-			<div className="grid items-start gap-x-8 gap-y-6 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">
+			<div
+				className="grid items-start gap-x-8 gap-y-6 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]"
+				style={
+					{
+						'--size': `${iconSize}px`,
+					} as React.CSSProperties
+				}
+			>
 				{items?.map((item, key) => (
 					<article
 						className={cn(
 							'grid gap-4',
-							stegaClean(iconPosition) === 'left' && 'grid-cols-[auto_1fr]',
+							stegaClean(iconPosition) === 'left' &&
+								'grid-cols-[var(--size)_1fr]',
 						)}
 						key={key}
 					>
 						<figure>
 							<Img
+								className="aspect-square object-contain"
 								image={item.icon}
-								width={iconSize}
+								height={iconSize * 2}
 								style={{ maxHeight: iconSize }}
 							/>
 						</figure>

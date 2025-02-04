@@ -1,5 +1,7 @@
 import { PortableText } from 'next-sanity'
 import CTAList from '@/ui/CTAList'
+import Code from './RichtextModule/Code'
+import Reputation from '@/ui/Reputation'
 
 export default function Callout({
 	content,
@@ -10,9 +12,28 @@ export default function Callout({
 }>) {
 	return (
 		<section className="section text-center">
-			<div className="section max-w-screen-lg rounded bg-accent/5">
+			<div className="section bg-accent/5 max-w-screen-lg rounded">
 				<div className="richtext mx-auto max-w-screen-sm text-balance">
-					<PortableText value={content} />
+					<PortableText
+						value={content}
+						components={{
+							types: {
+								code: ({ value }) => (
+									<Code
+										value={value}
+										className="mx-auto max-w-max"
+										theme="snazzy-light"
+									/>
+								),
+								'reputation-block': ({ value }) => (
+									<Reputation
+										className="!mt-4 justify-center"
+										reputation={value.reputation}
+									/>
+								),
+							},
+						}}
+					/>
 					<CTAList className="!mt-8 justify-center" ctas={ctas} />
 				</div>
 			</div>

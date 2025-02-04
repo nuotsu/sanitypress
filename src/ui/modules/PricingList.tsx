@@ -25,48 +25,52 @@ export default function PricingList({
 				className="max-md:carousel max-md:full-bleed grid grid-cols-[repeat(var(--col,1),1fr)] items-stretch gap-6 max-md:px-4"
 				style={{ '--col': tiers?.length } as React.CSSProperties}
 			>
-				{tiers?.map((tier) => (
-					<div
-						className="space-y-6 rounded border border-neutral-200 p-4"
-						key={tier._id}
-					>
-						<div className="space-y-3">
-							<dt className="h3 flex flex-wrap items-center gap-x-4">
-								{tier.title}
+				{tiers?.map(
+					(tier) =>
+						!!tier && (
+							<div
+								className="space-y-6 rounded border border-neutral-200 p-4"
+								key={tier._id}
+							>
+								<div className="space-y-3">
+									<dt className="h3 flex flex-wrap items-center gap-x-4">
+										{tier.title}
 
-								<Pretitle className="ml-auto text-xs">
-									{tier.highlight}
-								</Pretitle>
-							</dt>
+										<Pretitle className="ml-auto text-xs">
+											{tier.highlight}
+										</Pretitle>
+									</dt>
 
-							{tier.price?.base !== undefined && (
-								<dt className="flex flex-wrap items-end gap-x-2">
-									{tier.price.base !== undefined && !isNaN(tier.price.base) && (
-										<b className="h1">{formatPrice(tier.price.base)}</b>
+									{tier.price?.base !== undefined && (
+										<dt className="flex flex-wrap items-end gap-x-1">
+											{tier.price.base !== undefined &&
+												!isNaN(tier.price.base) && (
+													<b className="h1">{formatPrice(tier.price.base)}</b>
+												)}
+											{tier.price.suffix && (
+												<span className={cn(isNaN(tier.price.base) && 'h1')}>
+													{tier.price.suffix}
+												</span>
+											)}
+											{tier.price.strikethrough && (
+												<s className="font-bold decoration-red-500">
+													{formatPrice(tier.price?.strikethrough)}
+												</s>
+											)}
+										</dt>
 									)}
-									{tier.price.suffix && (
-										<span className={cn(isNaN(tier.price.base) && 'h1')}>
-											{tier.price.suffix}
-										</span>
-									)}
-									{tier.price.strikethrough && (
-										<s className="font-bold decoration-red-500">
-											{formatPrice(tier.price?.strikethrough)}
-										</s>
-									)}
-								</dt>
-							)}
-						</div>
+								</div>
 
-						<dd>
-							<CTAList className="grid" ctas={tier.ctas} />
-						</dd>
+								<dd>
+									<CTAList className="grid" ctas={tier.ctas} />
+								</dd>
 
-						<dd className="richtext">
-							<PortableText value={tier.content} />
-						</dd>
-					</div>
-				))}
+								<dd className="richtext">
+									<PortableText value={tier.content} />
+								</dd>
+							</div>
+						),
+				)}
 			</dl>
 		</section>
 	)

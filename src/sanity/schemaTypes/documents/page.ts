@@ -76,6 +76,8 @@ export default defineType({
 								'card-list',
 								'flag-list',
 								'logo-list',
+								'person-list',
+								'pricing-list',
 								'stat-list',
 								'step-list',
 								'testimonial-list',
