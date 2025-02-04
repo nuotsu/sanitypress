@@ -8,15 +8,23 @@ export default defineType({
 	title: 'Pricing list',
 	icon: LuDollarSign,
 	type: 'object',
+	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fields: [
+		defineField({
+			name: 'options',
+			type: 'module-options',
+			group: 'options',
+		}),
 		defineField({
 			name: 'pretitle',
 			type: 'string',
+			group: 'content',
 		}),
 		defineField({
 			name: 'intro',
 			type: 'array',
 			of: [{ type: 'block' }],
+			group: 'content',
 		}),
 		defineField({
 			name: 'tiers',
@@ -27,6 +35,7 @@ export default defineType({
 					to: [{ type: 'pricing' }],
 				},
 			],
+			group: 'content',
 		}),
 	],
 	preview: {

@@ -1,3 +1,4 @@
+import moduleProps from '@/lib/moduleProps'
 import Pretitle from '@/ui/Pretitle'
 import { PortableText } from 'next-sanity'
 import CTAList from '@/ui/CTAList'
@@ -7,13 +8,15 @@ export default function PricingList({
 	pretitle,
 	intro,
 	tiers,
+	...props
 }: Partial<{
 	pretitle: string
 	intro: any
 	tiers: Sanity.Pricing[]
-}>) {
+}> &
+	Sanity.Module) {
 	return (
-		<section className="section space-y-8">
+		<section className="section space-y-8" {...moduleProps(props)}>
 			{(pretitle || intro) && (
 				<header className="richtext text-center">
 					<Pretitle>{pretitle}</Pretitle>
