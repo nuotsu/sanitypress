@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import CharacterCount from '@/sanity/ui/CharacterCount'
 
 export default defineType({
 	name: 'metadata',
@@ -19,12 +20,18 @@ export default defineType({
 			name: 'title',
 			type: 'string',
 			validation: (Rule) => Rule.max(60).warning(),
+			components: {
+				input: (props) => <CharacterCount max={60} {...props} />,
+			},
 		}),
 		defineField({
 			name: 'description',
 			type: 'text',
 			rows: 3,
 			validation: (Rule) => Rule.max(160).warning(),
+			components: {
+				input: (props) => <CharacterCount as="textarea" max={160} {...props} />,
+			},
 		}),
 		defineField({
 			name: 'image',

@@ -36,11 +36,7 @@ export default defineType({
 							<Text muted>#</Text>
 
 							<Box flex={1}>
-								<TextInput
-									{...elementProps}
-									placeholder={moduleKey}
-									radius={2}
-								/>
+								<TextInput {...elementProps} placeholder={moduleKey} />
 							</Box>
 
 							<Button
