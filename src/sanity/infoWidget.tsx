@@ -74,14 +74,14 @@ const social: Array<{
 	label: string
 }> = [
 	{
-		icon: FaGithub,
-		url: 'https://github.com/nuotsu/sanitypress',
-		label: 'GitHub',
-	},
-	{
 		icon: SiSanity,
 		url: 'https://sanity.io/templates/sanitypress',
 		label: 'Sanity.io',
+	},
+	{
+		icon: FaGithub,
+		url: 'https://github.com/nuotsu/sanitypress',
+		label: 'GitHub',
 	},
 	{
 		icon: FaBluesky,

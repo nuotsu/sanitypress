@@ -3,6 +3,7 @@ import { getImageDimensions } from '@sanity/asset-utils'
 import { urlFor } from '@/sanity/lib/image'
 import Image, { type ImageProps } from 'next/image'
 import type { ComponentProps } from 'react'
+import { stegaClean } from 'next-sanity'
 
 export default function Img({
 	image,
@@ -17,7 +18,7 @@ export default function Img({
 
 	const { src, width, height } = generateSrc(image, w, h)
 
-	if (image.loading === 'eager') {
+	if (stegaClean(image.loading) === 'eager') {
 		preload(src, { as: 'image' })
 	}
 
@@ -27,7 +28,7 @@ export default function Img({
 			width={width}
 			height={height}
 			alt={props.alt || image.alt || ''}
-			loading={image.loading}
+			loading={stegaClean(image.loading)}
 			{...props}
 		/>
 	)
@@ -46,7 +47,7 @@ export function Source({
 
 	const { src, width, height } = generateSrc(image, w, h)
 
-	if (image.loading === 'eager') {
+	if (stegaClean(image.loading) === 'eager') {
 		preload(src, { as: 'image' })
 	}
 
