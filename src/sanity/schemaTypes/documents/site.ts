@@ -45,17 +45,6 @@ export default defineType({
 			group: 'info',
 		}),
 		defineField({
-			name: 'ogimage',
-			title: 'Open Graph image (global)',
-			description:
-				'Used for social sharing previews. Set page-specific images in Page documents.',
-			type: 'image',
-			options: {
-				hotspot: true,
-			},
-			group: 'info',
-		}),
-		defineField({
 			name: 'ctas',
 			title: 'Call-to-action (global)',
 			description: 'Typically used in the header and/or footer.',

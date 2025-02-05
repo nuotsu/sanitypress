@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import CharacterCount from '@/sanity/ui/CharacterCount'
+import PreviewOG from '@/sanity/ui/PreviewOG'
 
 export default defineType({
 	name: 'metadata',
@@ -21,7 +22,11 @@ export default defineType({
 			type: 'string',
 			validation: (Rule) => Rule.max(60).warning(),
 			components: {
-				input: (props) => <CharacterCount max={60} {...props} />,
+				input: (props) => (
+					<CharacterCount max={60} {...props}>
+						<PreviewOG title={props.elementProps.value} />
+					</CharacterCount>
+				),
 			},
 		}),
 		defineField({
