@@ -12,7 +12,7 @@ export default async function LogoList({
 	logos,
 	logoType = 'default',
 	autoScroll,
-	duration = 8,
+	duration = 12,
 }: Partial<{
 	pretitle: string
 	intro: any

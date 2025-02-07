@@ -47,7 +47,7 @@ export default defineType({
 			name: 'duration',
 			type: 'number',
 			description: 'Duration in seconds for a complete cycle',
-			initialValue: 8,
+			initialValue: 12,
 			hidden: ({ parent }) => !parent?.autoScroll,
 			group: 'options',
 		}),
