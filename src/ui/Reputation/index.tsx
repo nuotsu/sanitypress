@@ -1,13 +1,8 @@
-import getRepoData from './getRepoData'
+import { getCachedRepoData } from './getRepoData'
 import Image from 'next/image'
 import Img from '@/ui/Img'
 import { VscStarFull, VscRepoForked } from 'react-icons/vsc'
 import { cn, count } from '@/lib/utils'
-import { unstable_cache } from 'next/cache'
-
-const getCachedRepoData = unstable_cache(getRepoData, ['repo-data'], {
-	revalidate: 3600, // 1 hour
-})
 
 export default async function Reputation({
 	reputation,

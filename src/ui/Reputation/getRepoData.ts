@@ -1,11 +1,12 @@
 import { Octokit } from 'octokit'
 import { stegaClean } from 'next-sanity'
+import { unstable_cache } from 'next/cache'
 
 const octokit = new Octokit({
 	auth: process.env.NEXT_PUBLIC_GITHUB_TOKEN!,
 })
 
-export default async function (reputation?: Sanity.Reputation) {
+export async function getRepoData(reputation?: Sanity.Reputation) {
 	if (!reputation) return {}
 
 	const [owner, repo] = stegaClean(reputation.repo)?.split('/') ?? []
@@ -52,3 +53,7 @@ export default async function (reputation?: Sanity.Reputation) {
 		return {}
 	}
 }
+
+export const getCachedRepoData = unstable_cache(getRepoData, ['repo-data'], {
+	revalidate: 3600, // 1 hour
+})
