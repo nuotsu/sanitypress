@@ -56,7 +56,7 @@ export default async function Code({
 					value={stegaClean(value.code)}
 					className={cn(
 						'anim-fade-to-l absolute top-0 right-0 m-1 hidden rounded p-[.3em] text-lg',
-						'group-hover:block hover:bg-white/10 active:scale-95 active:bg-white/20',
+						'group-hover:block hover:bg-white/10 active:scale-95 active:bg-white/20 [&.pointer-events-none]:block',
 						!theme.includes('light') && 'text-white',
 					)}
 				/>
