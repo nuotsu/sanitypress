@@ -7,22 +7,14 @@ import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
 
 export default async function Page({ params }: Props) {
-	const page = await getPageTemplate()
 	const post = await getPost(await params)
-
-	if (!page)
-		throw Error('No `page` document with slug "blog/*" found in the Studio')
-
 	if (!post) notFound()
-
-	return <Modules modules={page?.modules} page={page} post={post} />
+	return <Modules modules={post.modules} post={post} />
 }
 
 export async function generateMetadata({ params }: Props) {
 	const post = await getPost(await params)
-
 	if (!post) notFound()
-
 	return processMetadata(post)
 }
 
@@ -35,7 +27,16 @@ export async function generateStaticParams() {
 }
 
 async function getPost(params: { slug?: string }) {
-	return await fetchSanityLive<Sanity.BlogPost>({
+	const blogTemplateExists = await fetchSanityLive<boolean>({
+		query: groq`count(*[_type == 'global-module' && path.current == 'blog/*']) > 0`,
+	})
+
+	if (!blogTemplateExists)
+		throw Error(
+			'No `global-module` document with path "blog/*" found in the Studio',
+		)
+
+	return await fetchSanityLive<Sanity.BlogPost & { modules: Sanity.Module[] }>({
 		query: groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{
 			...,
 			body[]{
@@ -52,19 +53,19 @@ async function getPost(params: { slug?: string }) {
 			metadata {
 				...,
 				'ogimage': image.asset->url + '?w=1200'
-			}
+			},
+			'modules': (
+				// path modules
+				*[_type == 'global-module' && path.current == 'blog/*'].modules[]{
+					${MODULES_QUERY}
+				}
+				// global modules
+				+ *[_type == 'global-module' && path.current == '*'].modules[]{
+					${MODULES_QUERY}
+				}
+			)
 		}`,
 		params,
-	})
-}
-
-async function getPageTemplate() {
-	return await fetchSanityLive<Sanity.Page>({
-		query: groq`*[_type == 'page' && metadata.slug.current == 'blog/*'][0]{
-			...,
-			modules[]{ ${MODULES_QUERY} },
-			metadata { slug }
-		}`,
 	})
 }
 
