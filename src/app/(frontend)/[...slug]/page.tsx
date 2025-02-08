@@ -41,16 +41,16 @@ async function getPage(params: { slug?: string[] }) {
 		][0]{
 			...,
 			'modules': (
+				// global modules (before)
+				*[_type == 'global-module' && path == '*'].before[]{ ${MODULES_QUERY} }
+				// path modules (before)
+				+ *[_type == 'global-module' && path != '*' && ($slug + '/*' != path && $slug match path)].before[]{ ${MODULES_QUERY} }
 				// page modules
-				modules[]{ ${MODULES_QUERY} }
-				// path modules
-				+ *[_type == 'global-module' && path != '*' && ($slug + '/*' != path && $slug match path)].modules[]{
-					${MODULES_QUERY}
-				}
-				// global modules
-				+ *[_type == 'global-module' && path == '*'].modules[]{
-					${MODULES_QUERY}
-				}
+				+ modules[]{ ${MODULES_QUERY} }
+				// path modules (after)
+				+ *[_type == 'global-module' && path != '*' && ($slug + '/*' != path && $slug match path)].after[]{ ${MODULES_QUERY} }
+				// global modules (after)
+				+ *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
 			),
 			metadata {
 				...,

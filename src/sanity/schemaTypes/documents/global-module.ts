@@ -19,16 +19,23 @@ export default defineType({
 		}),
 		defineField({
 			...modules,
-			description: 'Modules to add at the bottom of the pages',
+			name: 'before',
+			description: 'Modules to add before the page content',
+		}),
+		defineField({
+			...modules,
+			name: 'after',
+			description: 'Modules to add after the page content',
 		}),
 	],
 	preview: {
 		select: {
 			path: 'path',
-			modules: 'modules',
+			before: 'before',
+			after: 'after',
 		},
-		prepare: ({ path, modules }) => ({
-			title: count(modules, 'module'),
+		prepare: ({ path, before = [], after = [] }) => ({
+			title: count([...before, ...after], 'module'),
 			subtitle: path === '*' ? 'All pages' : path && `/${path}`,
 		}),
 	},

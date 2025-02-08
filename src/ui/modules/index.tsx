@@ -35,6 +35,8 @@ export default function Modules({
 	return (
 		<>
 			{modules?.map((module) => {
+				if (!module) return null
+
 				switch (module._type) {
 					case 'accordion-list':
 						return <AccordionList {...module} key={module._key} />

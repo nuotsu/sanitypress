@@ -19,10 +19,12 @@ async function getPage() {
 		query: groq`*[_type == 'page' && metadata.slug.current == 'index'][0]{
 			...,
 			'modules': (
+				// global modules (before)
+				*[_type == 'global-module' && path == '*'].before[]{ ${MODULES_QUERY} }
 				// page modules
-				modules[]{ ${MODULES_QUERY} }
-				// global modules
-				+ *[_type == 'global-module' && path == '*'].modules[]{ ${MODULES_QUERY} }
+				+ modules[]{ ${MODULES_QUERY} }
+				// global modules (after)
+				+ *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
 			),
 			metadata {
 				...,

@@ -55,14 +55,14 @@ async function getPost(params: { slug?: string }) {
 				'ogimage': image.asset->url + '?w=1200'
 			},
 			'modules': (
-				// path modules
-				*[_type == 'global-module' && path == 'blog/*'].modules[]{
-					${MODULES_QUERY}
-				}
-				// global modules
-				+ *[_type == 'global-module' && path == '*'].modules[]{
-					${MODULES_QUERY}
-				}
+				// global modules (before)
+				*[_type == 'global-module' && path == '*'].before[]{ ${MODULES_QUERY} }
+				// path modules (before)
+				+ *[_type == 'global-module' && path == 'blog/*'].before[]{ ${MODULES_QUERY} }
+				// path modules (after)
+				+ *[_type == 'global-module' && path == 'blog/*'].after[]{ ${MODULES_QUERY} }
+				// global modules (after)
+				+ *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
 			)
 		}`,
 		params,
