@@ -32,7 +32,11 @@ export default function SearchForm({
 					className="grow outline-none"
 					name="query"
 					type="search"
-					placeholder={scope !== 'all' ? `Search ${scope}` : 'Search'}
+					placeholder={
+						scope !== 'all'
+							? `Search ${scope === 'path' ? 'pages' : scope}`
+							: 'Search'
+					}
 					defaultValue={query}
 					onChange={debounce((e) =>
 						handleSearch({
