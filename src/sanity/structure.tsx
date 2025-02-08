@@ -1,6 +1,6 @@
 import { structureTool } from 'sanity/structure'
 import { group, singleton } from './lib/utils'
-import { VscMultipleWindows, VscServerProcess } from 'react-icons/vsc'
+import { VscFiles, VscServerProcess } from 'react-icons/vsc'
 import { BsDatabaseAdd } from 'react-icons/bs'
 
 export const structure = structureTool({
@@ -13,7 +13,10 @@ export const structure = structureTool({
 				singleton(S, 'site', 'Site settings').icon(VscServerProcess),
 				S.divider(),
 
-				S.documentTypeListItem('page').title('Pages').icon(VscMultipleWindows),
+				S.documentTypeListItem('page').title('Pages').icon(VscFiles),
+				S.documentTypeListItem('global-module').title('Global modules'),
+				S.divider(),
+
 				S.documentTypeListItem('blog.post').title('Blog posts'),
 				S.documentTypeListItem('blog.category').title('Blog categories'),
 				S.divider(),
