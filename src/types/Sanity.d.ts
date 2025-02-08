@@ -46,7 +46,7 @@ declare global {
 		}
 
 		interface GlobalModule extends SanityDocument {
-			path?: { current: string }
+			path: string
 			modules?: Module[]
 		}
 

@@ -22,7 +22,7 @@ async function getPage() {
 				// page modules
 				modules[]{ ${MODULES_QUERY} }
 				// global modules
-				+ *[_type == 'global-module' && path.current == '*'].modules[]{ ${MODULES_QUERY} }
+				+ *[_type == 'global-module' && path == '*'].modules[]{ ${MODULES_QUERY} }
 			),
 			metadata {
 				...,

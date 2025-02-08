@@ -11,9 +11,11 @@ export default defineType({
 	fields: [
 		defineField({
 			name: 'path',
-			type: 'slug',
-			description: 'The path to add modules. eg. * (all pages), docs/*, etc.',
-			validation: (Rule) => Rule.required(),
+			type: 'string',
+			description: 'The path to add modules',
+			placeholder: 'e.g. * (all pages), docs/*, etc.',
+			validation: (Rule) =>
+				Rule.required().regex(/\*$/).error('Must end with a *'),
 		}),
 		defineField({
 			...modules,
@@ -22,7 +24,7 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			path: 'path.current',
+			path: 'path',
 			modules: 'modules',
 		},
 		prepare: ({ path, modules }) => ({

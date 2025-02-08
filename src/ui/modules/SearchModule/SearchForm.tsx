@@ -2,9 +2,9 @@
 
 import { useQuery, searchStore, handleSearch, type SearchScope } from './store'
 import { cn, debounce, count } from '@/lib/utils'
-import { stegaClean } from 'next-sanity'
 import { VscSearch } from 'react-icons/vsc'
 import resolveUrl from '@/lib/resolveUrl'
+import SearchGoogle from './SearchGoogle'
 import css from './SearchForm.module.css'
 
 /**
@@ -13,8 +13,13 @@ import css from './SearchForm.module.css'
 export default function SearchForm({
 	className,
 	scope,
+	path,
 	...props
-}: { scope?: SearchScope } & React.ComponentProps<'search'>) {
+}: Partial<{
+	scope: SearchScope
+	path: string
+}> &
+	React.ComponentProps<'search'>) {
 	const { query, setQuery } = useQuery()
 	const { results, setResults } = searchStore()
 
@@ -27,14 +32,13 @@ export default function SearchForm({
 					className="grow outline-none"
 					name="query"
 					type="search"
-					placeholder={
-						stegaClean(scope) !== 'all' ? `Search ${scope}` : 'Search'
-					}
+					placeholder={scope !== 'all' ? `Search ${scope}` : 'Search'}
 					defaultValue={query}
 					onChange={debounce((e) =>
 						handleSearch({
 							query: e.target.value,
 							scope,
+							path,
 							setQuery,
 							setResults,
 						}),
@@ -80,22 +84,7 @@ export default function SearchForm({
 							</ul>
 						)}
 
-						<p className="text-ink/50 text-center text-sm">
-							<a
-								className="line-clamp-1 hover:underline"
-								href={[
-									`https://www.google.com/search?q=`,
-									query + ' ',
-									`site:${process.env.NEXT_PUBLIC_BASE_URL?.replace(/https?:\/\//, '')}`,
-									stegaClean(scope) === 'blog posts' ? '/blog' : '',
-								]
-									.filter(Boolean)
-									.join('')}
-								target="_blank"
-							>
-								Search "{query}" on Google
-							</a>
-						</p>
+						<SearchGoogle query={query} scope={scope} path={path} />
 					</div>
 				</div>
 			)}

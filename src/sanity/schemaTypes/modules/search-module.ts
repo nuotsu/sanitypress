@@ -7,24 +7,44 @@ export default defineType({
 	title: 'Search module',
 	icon: VscSearch,
 	type: 'object',
+	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fields: [
 		defineField({
 			name: 'pretitle',
 			type: 'string',
+			group: 'content',
 		}),
 		defineField({
 			name: 'intro',
 			type: 'array',
 			of: [{ type: 'block' }],
+			group: 'content',
+		}),
+		defineField({
+			name: 'ctas',
+			title: 'Call-to-actions',
+			type: 'array',
+			of: [{ type: 'cta' }],
+			group: 'content',
 		}),
 		defineField({
 			name: 'scope',
 			type: 'string',
 			options: {
-				list: ['all', 'pages', 'blog posts'],
+				list: ['all', 'pages', 'path', 'blog posts'],
 				layout: 'radio',
 			},
 			initialValue: 'all',
+			group: 'options',
+		}),
+		defineField({
+			name: 'path',
+			type: 'string',
+			description: 'Filter results to a specific path',
+			placeholder: 'e.g. docs/*',
+			hidden: ({ parent }) => parent?.scope !== 'path',
+			validation: (Rule) => Rule.regex(/\*$/).error('Must end with a *'),
+			group: 'options',
 		}),
 	],
 	preview: {

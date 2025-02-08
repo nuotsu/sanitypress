@@ -3,7 +3,7 @@ import { create } from 'zustand'
 import { groq } from 'next-sanity'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 
-export type SearchScope = 'all' | 'pages' | 'blog posts' | undefined
+export type SearchScope = 'all' | 'pages' | 'path' | 'blog posts' | undefined
 
 type SearchResults = Sanity.PageBase[]
 
@@ -26,11 +26,13 @@ export const searchStore = create<{
 export async function handleSearch({
 	query,
 	scope,
+	path,
 	setQuery,
 	setResults,
 }: {
 	query: string
 	scope: SearchScope
+	path?: string
 	setQuery: (query: string) => void
 	setResults: (results: SearchResults) => void
 }) {
@@ -41,51 +43,47 @@ export async function handleSearch({
 	const processScope = () => {
 		switch (scope) {
 			case 'pages':
+				return groq`_type == 'page'`
+
+			case 'path':
 				return groq`
 					_type == 'page' &&
-					[
-						modules[].content[].children[].text,
-						modules[].intro[].children[].text,
-						title,
-						metadata.title,
-						metadata.description
-					] match $query
+					metadata.slug.current match $path &&
+					!(metadata.slug.current in ['404'])
 				`
 
 			case 'blog posts':
-				return groq`
-					_type == 'blog.post' &&
-					[
-						body[].children[].text,
-						metadata.title,
-						metadata.description
-					] match $query
-				`
+				return groq`_type == 'blog.post'`
 
 			default:
 				return groq`
 					_type in ['page', 'blog.post'] &&
-					!(metadata.slug.current in ['404']) &&
-					[
-						body[].children[].text,
-						modules[].content[].children[].text,
-						modules[].intro[].children[].text,
-						title,
-						metadata.title,
-						metadata.description
-					] match $query
+					!(metadata.slug.current in ['404'])
 				`
 		}
 	}
 
 	const results = await fetchSanityLive<SearchResults>({
-		query: groq`*[${processScope()}]{
+		query: groq`*[
+				${processScope()} &&
+				[
+					body[].children[].text,
+					modules[].content[].children[].text,
+					modules[].intro[].children[].text,
+					title,
+					metadata.title,
+					metadata.description
+				] match $query
+			]{
 			_id,
 			_type,
 			title,
 			metadata
 		}`,
-		params: { query: `*${query}*` as any },
+		params: {
+			query: `*${query}*` as any,
+			path,
+		},
 	})
 
 	setResults(results)

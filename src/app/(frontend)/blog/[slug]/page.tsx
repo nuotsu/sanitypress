@@ -28,7 +28,7 @@ export async function generateStaticParams() {
 
 async function getPost(params: { slug?: string }) {
 	const blogTemplateExists = await fetchSanityLive<boolean>({
-		query: groq`count(*[_type == 'global-module' && path.current == 'blog/*']) > 0`,
+		query: groq`count(*[_type == 'global-module' && path == 'blog/*']) > 0`,
 	})
 
 	if (!blogTemplateExists)
@@ -56,11 +56,11 @@ async function getPost(params: { slug?: string }) {
 			},
 			'modules': (
 				// path modules
-				*[_type == 'global-module' && path.current == 'blog/*'].modules[]{
+				*[_type == 'global-module' && path == 'blog/*'].modules[]{
 					${MODULES_QUERY}
 				}
 				// global modules
-				+ *[_type == 'global-module' && path.current == '*'].modules[]{
+				+ *[_type == 'global-module' && path == '*'].modules[]{
 					${MODULES_QUERY}
 				}
 			)
