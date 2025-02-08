@@ -7,7 +7,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		query: groq`{
 			'pages': *[
 				_type == 'page' &&
-				!(metadata.slug.current in ['404', 'blog/*']) &&
+				!(metadata.slug.current in ['404']) &&
 				metadata.noIndex != true
 			]|order(metadata.slug.current){
 				'url': $baseUrl + select(metadata.slug.current == 'index' => '', metadata.slug.current),

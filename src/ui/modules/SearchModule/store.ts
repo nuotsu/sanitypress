@@ -65,7 +65,7 @@ export async function handleSearch({
 			default:
 				return groq`
 					_type in ['page', 'blog.post'] &&
-					!(metadata.slug.current in ['404', 'blog/*']) &&
+					!(metadata.slug.current in ['404']) &&
 					[
 						body[].children[].text,
 						modules[].content[].children[].text,

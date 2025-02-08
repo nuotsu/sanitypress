@@ -48,7 +48,7 @@ export default defineType({
 				(slug === 'index' && VscHome) ||
 				(slug === '404' && VscQuestion) ||
 				(slug === 'search' && VscSearch) ||
-				(['blog', 'blog/*'].includes(slug) && VscEdit) ||
+				(slug === 'blog' && VscEdit) ||
 				(noindex && VscEyeClosed),
 		}),
 	},
