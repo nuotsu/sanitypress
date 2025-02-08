@@ -1,6 +1,6 @@
 import { stegaClean } from 'next-sanity'
 
-export default function (
+export default function resolveUrl(
 	page?: Sanity.PageBase,
 	{
 		base = true,
@@ -10,12 +10,16 @@ export default function (
 		params?: string
 	} = {},
 ) {
-	const segment = page?._type === 'blog.post' ? 'blog' : null
+	const segment = page?._type === 'blog.post' ? '/blog/' : '/'
 	const slug = page?.metadata?.slug?.current
 	const path = slug === 'index' ? null : slug
 
-	return (
-		(base ? process.env.NEXT_PUBLIC_BASE_URL + '/' : '/') +
-		[segment, path, stegaClean(params)].filter(Boolean).join('/')
-	)
+	return [
+		base && process.env.NEXT_PUBLIC_BASE_URL,
+		segment,
+		path,
+		stegaClean(params),
+	]
+		.filter(Boolean)
+		.join('')
 }

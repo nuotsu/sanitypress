@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import processUrl from '@/lib/processUrl'
+import resolveUrl from '@/lib/resolveUrl'
 import { cn } from '@/lib/utils'
 import { stegaClean } from 'next-sanity'
 import type { ComponentProps } from 'react'
@@ -23,7 +23,7 @@ export default function CTA({
 	if (link?.type === 'internal' && link.internal)
 		return (
 			<Link
-				href={processUrl(link.internal, {
+				href={resolveUrl(link.internal, {
 					base: false,
 					params: link.params,
 				})}

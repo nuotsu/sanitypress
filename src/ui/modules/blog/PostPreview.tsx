@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import processUrl from '@/lib/processUrl'
+import resolveUrl from '@/lib/resolveUrl'
 import Img from '@/ui/Img'
 import Date from '@/ui/Date'
 import Categories from './Categories'
@@ -19,7 +19,7 @@ export default function PostPreview({
 	return (
 		<Root
 			className="group flex h-full flex-col space-y-2"
-			href={processUrl(post, { base: false })}
+			href={resolveUrl(post, { base: false })}
 		>
 			<figure className="relative aspect-video overflow-hidden bg-neutral-50">
 				<Img

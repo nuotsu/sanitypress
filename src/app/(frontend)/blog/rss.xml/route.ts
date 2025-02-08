@@ -1,6 +1,6 @@
 import { fetchSanity } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
-import processUrl from '@/lib/processUrl'
+import resolveUrl from '@/lib/resolveUrl'
 import { Feed } from 'feed'
 import { escapeHTML, toHTML } from '@portabletext/to-html'
 import { urlFor } from '@/sanity/lib/image'
@@ -37,7 +37,7 @@ export async function GET() {
 		)
 	}
 
-	const url = processUrl(blog)
+	const url = resolveUrl(blog)
 
 	const feed = new Feed({
 		title: blog?.title || blog.metadata.title,
@@ -54,8 +54,8 @@ export async function GET() {
 		feed.addItem({
 			title: escapeHTML(post.metadata.title),
 			description: post.metadata.description,
-			id: processUrl(post),
-			link: processUrl(post),
+			id: resolveUrl(post),
+			link: resolveUrl(post),
 			published: new Date(post.publishDate),
 			date: new Date(post.publishDate),
 			author: post.authors?.map((author) => ({ name: author.name })),

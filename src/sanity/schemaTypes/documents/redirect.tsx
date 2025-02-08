@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { PiFlowArrow } from 'react-icons/pi'
-import processSlug from '@/sanity/lib/processSlug'
+import resolveSlug from '@/sanity/lib/resolveSlug'
 
 const regex = /^(\/|https?:\/\/)/
 
@@ -59,7 +59,7 @@ export default defineType({
 			title,
 			subtitle:
 				(external || internal) &&
-				`to ${external || processSlug({ _type, internal, params })}`,
+				`to ${external || resolveSlug({ _type, internal, params })}`,
 		}),
 	},
 })

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import processUrl from '@/lib/processUrl'
+import resolveUrl from '@/lib/resolveUrl'
 import Img from '@/ui/Img'
 import Date from '@/ui/Date'
 import Categories from './Categories'
@@ -11,7 +11,7 @@ export default function PostPreviewLarge({ post }: { post: Sanity.BlogPost }) {
 	return (
 		<Link
 			className="group grid items-center gap-x-8 gap-y-4 md:grid-cols-2"
-			href={processUrl(post, { base: false })}
+			href={resolveUrl(post, { base: false })}
 		>
 			<figure className="max-md:full-bleed bg-ink/5 relative aspect-video overflow-hidden md:self-start">
 				<Img

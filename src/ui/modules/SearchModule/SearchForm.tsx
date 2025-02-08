@@ -4,7 +4,7 @@ import { useQuery, searchStore, handleSearch, type SearchScope } from './store'
 import { cn, debounce, count } from '@/lib/utils'
 import { stegaClean } from 'next-sanity'
 import { VscSearch } from 'react-icons/vsc'
-import processUrl from '@/lib/processUrl'
+import resolveUrl from '@/lib/resolveUrl'
 import css from './SearchForm.module.css'
 
 /**
@@ -61,7 +61,7 @@ export default function SearchForm({
 										<a
 											className="group flex gap-2 py-px"
 											href={
-												processUrl(result, { base: false }) +
+												resolveUrl(result, { base: false }) +
 												`#:~:text=${query}`
 											}
 										>
