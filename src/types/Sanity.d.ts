@@ -45,6 +45,11 @@ declare global {
 			modules?: Module[]
 		}
 
+		interface GlobalModule extends SanityDocument {
+			path?: { current: string }
+			modules?: Module[]
+		}
+
 		interface BlogPost extends PageBase {
 			readonly _type: 'blog.post'
 			body: any

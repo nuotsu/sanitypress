@@ -9,7 +9,7 @@ import processMetadata from '@/lib/processMetadata'
 export default async function Page({ params }: Props) {
 	const page = await getPage(await params)
 	if (!page) notFound()
-	return <Modules modules={page?.modules} page={page} />
+	return <Modules modules={page.modules} page={page} />
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -31,6 +31,8 @@ export async function generateStaticParams() {
 }
 
 async function getPage(params: { slug?: string[] }) {
+	const slug = params.slug?.join('/')
+
 	return await fetchSanityLive<Sanity.Page>({
 		query: groq`*[
 			_type == 'page' &&
@@ -38,13 +40,24 @@ async function getPage(params: { slug?: string[] }) {
 			!(metadata.slug.current in ['index', 'blog/*'])
 		][0]{
 			...,
-			modules[]{ ${MODULES_QUERY} },
+			'modules': (
+				// page modules
+				modules[]{ ${MODULES_QUERY} }
+				// path modules
+				+ *[_type == 'global-module' && path.current != '*' && ($slug + '/*' != path.current && $slug match path.current)].modules[]{
+					${MODULES_QUERY}
+				}
+				// global modules
+				+ *[_type == 'global-module' && path.current == '*'].modules[]{
+					${MODULES_QUERY}
+				}
+			),
 			metadata {
 				...,
 				'ogimage': image.asset->url + '?w=1200'
 			}
 		}`,
-		params: { slug: params.slug?.join('/') },
+		params: { slug },
 	})
 }
 

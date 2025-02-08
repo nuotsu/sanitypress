@@ -15,10 +15,15 @@ export async function generateMetadata() {
 }
 
 async function getPage() {
-	const data = await fetchSanityLive<Sanity.Page>({
+	const page = await fetchSanityLive<Sanity.Page>({
 		query: groq`*[_type == 'page' && metadata.slug.current == 'index'][0]{
 			...,
-			modules[]{ ${MODULES_QUERY} },
+			'modules': (
+				// page modules
+				modules[]{ ${MODULES_QUERY} }
+				// global modules
+				+ *[_type == 'global-module' && path.current == '*'].modules[]{ ${MODULES_QUERY} }
+			),
 			metadata {
 				...,
 				'ogimage': image.asset->url + '?w=1200',
@@ -26,8 +31,8 @@ async function getPage() {
 		}`,
 	})
 
-	if (!data)
+	if (!page)
 		throw Error('No `page` document with slug "index" found in the Studio')
 
-	return data
+	return page
 }

@@ -12,7 +12,8 @@ export default defineType({
 		defineField({
 			name: 'path',
 			type: 'slug',
-			description: 'The path to add modules. Leave blank for all pages.',
+			description: 'The path to add modules. eg. * (all pages), docs/*, etc.',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			...modules,
@@ -26,7 +27,7 @@ export default defineType({
 		},
 		prepare: ({ path, modules }) => ({
 			title: count(modules, 'module'),
-			subtitle: path ? `/${path}` : 'All pages',
+			subtitle: path === '*' ? 'All pages' : path && `/${path}`,
 		}),
 	},
 })
