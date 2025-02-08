@@ -42,13 +42,13 @@ Alternatively, you can also clone or fork [the GitHub template](https://github.c
 
 In your new Sanity Studio, publish the **required** `site` and `page` documents.
 
-| Document | Slug     | Use             | Required? | Notes                                                                                          |
-| -------- | -------- | --------------- | :-------: | ---------------------------------------------------------------------------------------------- |
-| `site`   |          | Global settings |    ✅     |                                                                                                |
-| `page`   | `index`  | Homepage        |    ✅     |                                                                                                |
-| `page`   | `404`    | Page not found  |           |                                                                                                |
-| `page`   | `blog`   | Blog listing    |           | Add the [**Blog frontpage**](https://sanitypress.dev/docs/modules/blog-frontpage) module       |
-| `page`   | `blog/*` | Blog post       |           | Add the [**Blog post content**](https://sanitypress.dev/docs/modules/blog-post-content) module |
+| Document        | Slug            | Use             | Required? | Notes                                                                                          |
+| --------------- | --------------- | --------------- | :-------: | ---------------------------------------------------------------------------------------------- |
+| `site`          |                 | Global settings |    ✅     |                                                                                                |
+| `page`          | `index`         | Homepage        |    ✅     |                                                                                                |
+| `page`          | `404`           | Page not found  |           |                                                                                                |
+| `page`          | `blog`          | Blog listing    |           | Add the [**Blog frontpage**](https://sanitypress.dev/docs/modules/blog-frontpage) module       |
+| `global-module` | `blog/*` (path) | Blog post       |           | Add the [**Blog post content**](https://sanitypress.dev/docs/modules/blog-post-content) module |
 
 Read the [Getting Started docs](https://sanitypress.dev/docs/getting-started) for more information.
 
