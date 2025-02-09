@@ -65,7 +65,7 @@ export default function CreativeModule({
 							className={cn(
 								'space-y-4',
 								colSpan > 1 && 'md:col-(--col-span,1)',
-								visualSeparation && 'rounded bg-neutral-50 p-6',
+								visualSeparation && 'bg-accent/3 rounded p-6',
 							)}
 							style={
 								{

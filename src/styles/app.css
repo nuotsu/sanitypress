@@ -50,7 +50,8 @@
 
 	summary,
 	label,
-	input[type='submit'] {
+	input[type='submit'],
+	button {
 		cursor: pointer;
 	}
 
@@ -135,7 +136,7 @@
 }
 
 @utility text-gradient {
-	@apply from-accent/5 to-accent bg-linear-to-br bg-clip-text text-transparent;
+	@apply from-accent/3 to-accent bg-linear-to-br bg-clip-text text-transparent;
 }
 
 /* ctas, links */
@@ -158,7 +159,7 @@
 }
 
 @utility ghost {
-	@apply action-base frosted-glass hover:bg-accent/5 rounded;
+	@apply action-base frosted-glass hover:bg-accent/3 rounded;
 }
 
 @utility link {
@@ -296,7 +297,7 @@
 
 		& tbody {
 			& tr:nth-child(odd) {
-				@apply bg-neutral-50;
+				@apply bg-accent/3;
 			}
 
 			& tr th:first-child {
@@ -313,13 +314,13 @@
 /* skeleton */
 
 @utility skeleton {
-	@apply h-[1lh] bg-neutral-50;
+	@apply bg-accent/3 h-[1lh];
 }
 @utility skeleton-2 {
-	@apply h-[2lh] bg-neutral-50;
+	@apply bg-accent/3 h-[2lh];
 }
 @utility skeleton-3 {
-	@apply h-[3lh] bg-neutral-50;
+	@apply bg-accent/3 h-[3lh];
 }
 
 /* components */

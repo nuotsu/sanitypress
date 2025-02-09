@@ -23,7 +23,7 @@ export default function Authors({
 function Author({ author }: { author?: Sanity.Person }) {
 	return (
 		<div className="flex items-center gap-[.5ch]">
-			<dd className="grid aspect-square w-[1.7em] shrink-0 place-content-center overflow-hidden rounded-full bg-neutral-50">
+			<dd className="bg-accent/3 grid aspect-square w-[1.7em] shrink-0 place-content-center overflow-hidden rounded-full">
 				{author?.image ? (
 					<Img
 						className="aspect-square"
