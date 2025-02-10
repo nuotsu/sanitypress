@@ -27,6 +27,7 @@ export default defineType({
 					},
 				}),
 				{ type: 'custom-html' },
+				{ type: 'digital-asset.checkout' },
 			],
 			group: 'content',
 		}),

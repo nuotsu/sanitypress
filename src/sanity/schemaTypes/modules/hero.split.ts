@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { TfiLayoutMediaLeft } from 'react-icons/tfi'
-import { reputationBlock } from '../documents/reputation'
+import { reputationBlock } from '../misc/reputation'
 import { getBlockText } from '@/sanity/lib/utils'
 
 export default defineType({

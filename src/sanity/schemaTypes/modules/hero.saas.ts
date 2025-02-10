@@ -1,6 +1,6 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
-import { reputationBlock } from '../documents/reputation'
+import { reputationBlock } from '../misc/reputation'
 import { getBlockText } from '@/sanity/lib/utils'
 
 export default defineType({

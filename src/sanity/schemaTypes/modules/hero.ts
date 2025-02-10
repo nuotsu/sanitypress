@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
-import { reputationBlock } from '../documents/reputation'
+import { reputationBlock } from '../misc/reputation'
 import {
 	textAlign,
 	alignItems,

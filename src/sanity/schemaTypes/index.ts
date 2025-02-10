@@ -7,13 +7,16 @@ import globalModule from './documents/global-module'
 import blogPost from './documents/blog.post'
 import blogCategory from './documents/blog.category'
 import navigation from './documents/navigation'
-import announcement from './documents/announcement'
 import redirect from './documents/redirect'
-import logo from './documents/logo'
-import person from './documents/person'
-import pricing from './documents/pricing'
-import reputation from './documents/reputation'
-import testimonial from './documents/testimonial'
+
+// miscellaneous
+import announcement from './misc/announcement'
+import digitalAsset from './misc/digital-asset'
+import logo from './misc/logo'
+import person from './misc/person'
+import pricing from './misc/pricing'
+import reputation from './misc/reputation'
+import testimonial from './misc/testimonial'
 
 // objects
 import cta from './objects/cta'
@@ -56,6 +59,8 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 	blogPost,
 	blogCategory,
 	navigation,
+
+	// miscellaneous
 	announcement,
 	redirect,
 	logo,
