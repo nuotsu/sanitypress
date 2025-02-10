@@ -33,7 +33,10 @@ async function getPost(params: { slug?: string }) {
 
 	if (!blogTemplateExists)
 		throw Error(
-			'No `global-module` document with path "blog/*" found in the Studio',
+			'Missing blog template: 👻 Oof, your blog posts are ghosting...\n\n' +
+				'Solution: Add a new Global module document in your Sanity Studio with the path "blog/*".\n' +
+				'Also add the Blog post content module to display blog post content.\n\n' +
+				'💁‍♂️ https://sanitypress.dev/docs/errors#missing-blog-template',
 		)
 
 	return await fetchSanityLive<Sanity.BlogPost & { modules: Sanity.Module[] }>({

@@ -21,7 +21,7 @@ export const CTA_QUERY = groq`
 `
 
 export async function getSite() {
-	const data = await fetchSanityLive<Sanity.Site>({
+	const site = await fetchSanityLive<Sanity.Site>({
 		query: groq`
 			*[_type == 'site'][0]{
 				...,
@@ -34,9 +34,14 @@ export async function getSite() {
 		`,
 	})
 
-	if (!data) throw Error('No `site` document found in the Studio')
+	if (!site)
+		throw Error(
+			'Missing Site settings: 🫠 Your website might be having an identity crisis...\n\n' +
+				'Solution: Publish the Site document in your Sanity Studio.\n\n' +
+				'💁‍♂️ https://sanitypress.dev/docs/errors#missing-site-settings',
+		)
 
-	return data
+	return site
 }
 
 export const REPUTATION_QUERY = groq`
