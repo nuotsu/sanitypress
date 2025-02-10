@@ -25,7 +25,7 @@ export default function SearchForm({
 
 	return (
 		<search className={cn(css.root, 'relative', className)} {...props}>
-			<label className="input focus-within:border-accent/50 relative z-[2] flex items-center gap-2 rounded">
+			<label className="input focus-within:border-ink/50 relative z-[2] flex items-center gap-2 rounded">
 				<VscSearch />
 
 				<input
@@ -57,7 +57,7 @@ export default function SearchForm({
 						'anim-fade-to-b absolute inset-x-0 top-full z-[1]',
 					)}
 				>
-					<div className="frosted-glass bg-canvas mt-1 max-h-[20em] space-y-2 overflow-y-auto rounded border border-neutral-200 py-2 shadow-md *:px-3">
+					<div className="frosted-glass bg-canvas border-ink/10 mt-1 max-h-[20em] space-y-2 overflow-y-auto rounded border py-2 shadow-md *:px-3">
 						<p className="text-ink/50 text-center text-sm">
 							<span className="line-clamp-1">
 								{count(results, 'result')} found for <output>"{query}"</output>

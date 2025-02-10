@@ -38,7 +38,7 @@ export default async function Code({
 
 	return (
 		<article
-			className={cn('group bg-ink/5 relative !mt-6 !mb-2 rounded', className)}
+			className={cn('group bg-ink/5 relative rounded', className)}
 			data-module="code"
 		>
 			{value.filename && (

@@ -51,10 +51,7 @@ export default function TableOfContents({
 
 	return (
 		<details
-			className={cn(
-				css.root,
-				'group accordion max-lg:bg-neutral-100 max-lg:p-3',
-			)}
+			className={cn(css.root, 'group accordion max-lg:bg-ink/10 max-lg:p-3')}
 			open
 		>
 			<summary className="font-bold lg:group-open:after:invisible">
@@ -64,7 +61,7 @@ export default function TableOfContents({
 			<ol className="anim-fade-to-b mt-2 leading-tight">
 				{headings?.map(({ text, style }, key) => (
 					<li
-						className="border-l border-neutral-200 transition-all"
+						className="border-ink/10 border-l transition-all"
 						data-toc-item={slug(text)}
 						key={key}
 					>

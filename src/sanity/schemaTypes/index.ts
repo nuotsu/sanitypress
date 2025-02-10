@@ -11,7 +11,6 @@ import redirect from './documents/redirect'
 
 // miscellaneous
 import announcement from './misc/announcement'
-import digitalAsset from './misc/digital-asset'
 import logo from './misc/logo'
 import person from './misc/person'
 import pricing from './misc/pricing'
@@ -75,6 +74,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 	linkList,
 	metadata,
 	moduleOptions,
+
 	// modules
 	accordionList,
 	blogFrontpage,

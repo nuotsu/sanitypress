@@ -56,7 +56,7 @@ export default async function Reputation({
 			</figure>
 
 			<dl className="flex flex-col text-left [figure:empty+&]:text-center">
-				<dt>
+				<dt className="max-[25rem]:text-center">
 					{reputation.repo ? (
 						<a
 							className="inline-flex items-center gap-x-2 font-bold text-yellow-700 no-underline!"

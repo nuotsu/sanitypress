@@ -12,7 +12,7 @@ export default function Image({
 }) {
 	return (
 		<figure
-			className="max-lg:full-bleed mt-8! mb-4! space-y-2 text-center md:[grid-column:bleed]!"
+			className="max-lg:full-bleed space-y-2 text-center md:[grid-column:bleed]!"
 			style={{ float: stegaClean(value.float) }}
 		>
 			<Img
@@ -22,7 +22,7 @@ export default function Image({
 			/>
 
 			{value.caption && (
-				<figcaption className="px-4 text-sm text-balance text-neutral-500 italic">
+				<figcaption className="text-ink/50 px-4 text-sm text-balance italic">
 					{value.caption}
 
 					{value.source && (

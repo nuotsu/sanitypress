@@ -2,9 +2,9 @@
 @import './fonts.css';
 
 @theme {
-	--color-ink: #1d1d1f;
 	--color-canvas: #fff;
-	--color-accent: #1d1d1f;
+	--color-ink: #000;
+	--color-accent: #000;
 
 	--max-height-fold: calc(100svh - var(--header-height));
 }
@@ -64,7 +64,7 @@
 	}
 
 	hr {
-		@apply border-neutral-200;
+		@apply border-ink/10;
 	}
 }
 
@@ -148,6 +148,7 @@
 	padding: 0.5em 1em;
 	text-align: center;
 	text-shadow: none;
+	color: var(--color-ink);
 }
 
 @utility action {
@@ -155,7 +156,7 @@
 }
 
 @utility action-outline {
-	@apply action-base border-accent/10 bg-canvas/50 to-canvas text-accent rounded border text-balance;
+	@apply action-base border-accent/10 bg-canvas/50 to-canvas rounded border text-balance;
 }
 
 @utility ghost {
@@ -167,7 +168,7 @@
 }
 
 @utility input {
-	@apply border border-neutral-200 p-[.25em] text-left;
+	@apply border-ink/10 border p-[.25em] text-left;
 }
 
 /* utilities */
@@ -279,7 +280,7 @@
 	}
 
 	& blockquote {
-		@apply border-l-2 border-neutral-200 pl-4;
+		@apply border-accent/10 border-l-2 pl-4;
 	}
 
 	& table {
@@ -314,13 +315,13 @@
 /* skeleton */
 
 @utility skeleton {
-	@apply bg-accent/3 h-[1lh];
+	@apply bg-ink/3 h-[1lh];
 }
 @utility skeleton-2 {
-	@apply bg-accent/3 h-[2lh];
+	@apply bg-ink/3 h-[2lh];
 }
 @utility skeleton-3 {
-	@apply bg-accent/3 h-[3lh];
+	@apply bg-ink/3 h-[3lh];
 }
 
 /* components */

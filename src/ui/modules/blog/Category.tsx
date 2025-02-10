@@ -18,14 +18,14 @@ export default function Category({
 					query: { category: value?.slug.current },
 				}}
 			>
-				<span className="text-accent/40">#</span>
+				<span className="text-ink/50">#</span>
 				{label || value?.title}
 			</Link>
 		)
 
 	return (
 		<>
-			<span className="text-accent/40">#</span>
+			<span className="text-ink/50">#</span>
 			{label || value?.title}
 		</>
 	)

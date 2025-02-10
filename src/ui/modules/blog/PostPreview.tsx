@@ -21,7 +21,7 @@ export default function PostPreview({
 			className="group flex h-full flex-col space-y-2"
 			href={resolveUrl(post, { base: false })}
 		>
-			<figure className="bg-accent/3 relative aspect-video overflow-hidden">
+			<figure className="bg-ink/3 relative aspect-video overflow-hidden">
 				<Img
 					className="aspect-video w-full object-cover transition-all group-hover:scale-105 group-hover:brightness-110"
 					image={post?.metadata.image}

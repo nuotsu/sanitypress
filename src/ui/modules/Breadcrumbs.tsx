@@ -23,7 +23,7 @@ export default async function Breadcrumbs({
 						<Crumb link={crumb} position={key + 1} />
 
 						{(key < crumbs.length - 1 || !hideCurrent) && (
-							<li className="opacity-20" role="presentation">
+							<li className="text-ink/20" role="presentation">
 								/
 							</li>
 						)}

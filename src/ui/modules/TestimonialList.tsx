@@ -35,7 +35,7 @@ export default function TestimonialList({
 			>
 				{testimonials?.map(({ author, ...testimonial }, key) => (
 					<article
-						className="grid basis-[min(450px,70vw)]! place-content-center rounded border border-neutral-200 p-4"
+						className="border-ink/10 grid basis-[min(450px,70vw)]! place-content-center rounded border p-4"
 						key={key}
 					>
 						<blockquote className="flex flex-col items-center gap-4">
