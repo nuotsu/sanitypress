@@ -26,13 +26,6 @@ declare global {
 			items?: (Link | LinkList)[]
 		}
 
-		interface Announcement extends SanityDocument {
-			content: any
-			cta?: Link
-			start?: string
-			end?: string
-		}
-
 		// pages
 
 		interface PageBase extends SanityDocument {
@@ -68,6 +61,13 @@ declare global {
 		}
 
 		// miscellaneous
+
+		interface Announcement extends SanityDocument {
+			content: any
+			cta?: Link
+			start?: string
+			end?: string
+		}
 
 		interface Logo extends SanityDocument {
 			name: string
