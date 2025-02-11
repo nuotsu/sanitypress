@@ -17,6 +17,8 @@ export function infoWidget(
 }
 
 function Widget() {
+	const version = `v${pkg.version}`
+
 	return (
 		<Card paddingY={4}>
 			<Stack space={4}>
@@ -25,7 +27,7 @@ function Widget() {
 						<Flex align="flex-end" justify="space-between" wrap="wrap" gap={4}>
 							<Flex align="center" gap={2}>
 								🖤 SanityPress
-								<Code size={1}>v{pkg.version}</Code>
+								<Code size={1}>{version}</Code>
 							</Flex>
 
 							<Flex align="center" gap={4}>
