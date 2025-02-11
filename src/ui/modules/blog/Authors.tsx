@@ -33,28 +33,33 @@ function Author({
 	author?: Sanity.Person
 	linked?: boolean
 }) {
-	return (
-		<Link
-			href={`/blog?author=${author?.slug?.current}`}
-			className={cn(
-				'flex items-center gap-[.5ch] hover:underline',
-				!linked && 'pointer-events-none',
-			)}
-		>
-			<dd className="bg-accent/3 grid aspect-square w-[1.7em] shrink-0 place-content-center overflow-hidden rounded-full">
-				{author?.image ? (
-					<Img
-						className="aspect-square"
-						image={author.image}
-						width={60}
-						alt={author.name}
-					/>
-				) : (
-					<GoPerson className="text-accent/20 text-xl" />
-				)}
-			</dd>
+	const props = {
+		className: cn(
+			'flex items-center gap-[.5ch] hover:underline',
+			!linked && 'pointer-events-none',
+		),
+		children: (
+			<>
+				<dd className="bg-accent/3 grid aspect-square w-[1.7em] shrink-0 place-content-center overflow-hidden rounded-full">
+					{author?.image ? (
+						<Img
+							className="aspect-square"
+							image={author.image}
+							width={60}
+							alt={author.name}
+						/>
+					) : (
+						<GoPerson className="text-accent/20 text-xl" />
+					)}
+				</dd>
 
-			<dt>{author?.name}</dt>
-		</Link>
+				<dt>{author?.name}</dt>
+			</>
+		),
+	}
+	return linked ? (
+		<Link href={`/blog?author=${author?.slug?.current}`} {...props} />
+	) : (
+		<div {...props} />
 	)
 }

@@ -10,18 +10,23 @@ export default function Category({
 	label?: string
 	linked?: boolean
 }) {
-	return (
+	const props = {
+		className: cn(
+			"before:text-current/50 before:content-['#'] hover:*:underline",
+			!linked && 'pointer-events-none',
+		),
+		children: <span>{label || value?.title}</span>,
+	}
+
+	return linked ? (
 		<Link
-			className={cn(
-				"before:text-current/50 before:content-['#'] hover:*:underline",
-				!linked && 'pointer-events-none',
-			)}
 			href={{
 				pathname: '/blog',
 				query: { category: value?.slug.current },
 			}}
-		>
-			<span>{label || value?.title}</span>
-		</Link>
+			{...props}
+		/>
+	) : (
+		<div {...props} />
 	)
 }
