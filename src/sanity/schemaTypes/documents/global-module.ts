@@ -13,14 +13,14 @@ export default defineType({
 			name: 'path',
 			type: 'string',
 			description:
-				'URL path to add modules. Use * for all pages. Add a trailing slash (/) to exclude the parent path.',
+				'URL path to add modules. Use * for all pages. A trailing slash (/) excludes the parent path.',
 			placeholder: 'e.g. *, blog/, foo/bar/, etc.',
 		}),
 		defineField({
 			name: 'excludePaths',
 			type: 'array',
 			description:
-				'URL paths to exclude from modules being added. Add a trailing slash (/) to exclude the parent path.',
+				'URL paths to exclude modules from being added. A trailing slash (/) excludes the parent path.',
 			of: [
 				defineArrayMember({
 					type: 'string',
