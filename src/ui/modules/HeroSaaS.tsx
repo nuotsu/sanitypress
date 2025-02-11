@@ -34,7 +34,7 @@ export default function HeroSaaS({
 							code: ({ value }) => (
 								<Code
 									value={value}
-									className="mx-auto max-w-max"
+									className="mx-auto mt-6! max-w-max"
 									theme="snazzy-light"
 								/>
 							),
@@ -52,13 +52,12 @@ export default function HeroSaaS({
 			</div>
 
 			<Img
-				image={image}
-				width={2400}
 				className={cn(
 					'anim-fade-to-t w-full [animation-duration:1s]',
-					image?.faded &&
-						'[mask-image:linear-gradient(to_bottom,#000_50%,transparent)]',
+					image?.faded && '[mask:linear-gradient(to_top,transparent,#000_50%)]',
 				)}
+				image={image}
+				width={2400}
 				draggable={false}
 			/>
 		</section>

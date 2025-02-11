@@ -4,7 +4,7 @@ import type { NextRequest } from 'next/server'
 
 const domain = process.env.NEXT_PUBLIC_BASE_URL?.replace(/https?:\/\//, '')
 
-const color = '#1d1d1f'
+const color = '#13141b'
 
 export async function GET(request: NextRequest) {
 	const { searchParams } = new URL(request.url)
@@ -74,7 +74,7 @@ export async function GET(request: NextRequest) {
 			fonts: [
 				{
 					name: 'serif',
-					data: await loadGoogleFont('Geist'),
+					data: await loadGoogleFont('Inter'),
 				},
 			],
 		},

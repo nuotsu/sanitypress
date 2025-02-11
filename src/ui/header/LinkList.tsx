@@ -10,9 +10,9 @@ export default function LinkList({ link, links }: Sanity.LinkList) {
 			delay={10}
 			closeAfterNavigate
 		>
-			<summary className="flex items-center gap-1 md:px-3">
+			<summary className="flex h-full items-center gap-1 text-center md:px-3 md:leading-tight">
 				{link?.label}
-				<CgChevronRight className="transition-transform group-open:rotate-90 md:rotate-90" />
+				<CgChevronRight className="shrink-0 transition-transform group-open:rotate-90 md:rotate-90" />
 			</summary>
 
 			<ul className="anim-fade-to-b md:frosted-glass md:bg-canvas border-ink/10 top-full left-0 px-3 py-2 max-md:border-l md:absolute md:min-w-max md:rounded md:border md:shadow-md">
