@@ -1,7 +1,7 @@
 import { client } from '@/sanity/lib/client'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
-import { MODULES_QUERY } from '@/sanity/lib/queries'
+import { MODULES_QUERY, GLOBAL_MODULE_QUERY } from '@/sanity/lib/queries'
 import { notFound } from 'next/navigation'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
@@ -44,11 +44,11 @@ async function getPage(params: { slug?: string[] }) {
 				// global modules (before)
 				*[_type == 'global-module' && path == '*'].before[]{ ${MODULES_QUERY} }
 				// path modules (before)
-				+ *[_type == 'global-module' && path != '*' && ($slug + '/*' != path && $slug match path) && !($slug in excludePaths)].before[]{ ${MODULES_QUERY} }
+				+ *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_QUERY}].before[]{ ${MODULES_QUERY} }
 				// page modules
 				+ modules[]{ ${MODULES_QUERY} }
 				// path modules (after)
-				+ *[_type == 'global-module' && path != '*' && ($slug + '/*' != path && $slug match path) && !($slug in excludePaths)].after[]{ ${MODULES_QUERY} }
+				+ *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_QUERY}].after[]{ ${MODULES_QUERY} }
 				// global modules (after)
 				+ *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
 			),

@@ -12,19 +12,19 @@ export default defineType({
 		defineField({
 			name: 'path',
 			type: 'string',
-			description: 'The path to add modules',
-			placeholder: 'e.g. * (all pages), docs/*, etc.',
-			validation: (Rule) =>
-				Rule.required().regex(/\*$/).error('Must end with a *'),
+			description:
+				'URL path to add modules. Use * for all pages. Add a trailing slash (/) to exclude the parent path.',
+			placeholder: 'e.g. *, blog/, foo/bar/, etc.',
 		}),
 		defineField({
 			name: 'excludePaths',
 			type: 'array',
-			description: 'The paths to exclude from modules being added',
+			description:
+				'URL paths to exclude from modules being added. Add a trailing slash (/) to exclude the parent path.',
 			of: [
 				defineArrayMember({
 					type: 'string',
-					placeholder: 'e.g. * (all pages), docs/*, etc.',
+					placeholder: 'e.g. blog/, foo/bar/, etc.',
 					validation: (Rule) => Rule.required(),
 				}),
 			],
@@ -48,7 +48,7 @@ export default defineType({
 		},
 		prepare: ({ path, before = [], after = [] }) => ({
 			title: count([...before, ...after], 'module'),
-			subtitle: path === '*' ? 'All pages' : path && `/${path}`,
+			subtitle: path === '*' ? 'All pages' : path && `/${path}*`,
 		}),
 	},
 })

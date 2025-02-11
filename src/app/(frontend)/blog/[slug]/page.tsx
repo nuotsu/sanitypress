@@ -28,13 +28,13 @@ export async function generateStaticParams() {
 
 async function getPost(params: { slug?: string }) {
 	const blogTemplateExists = await fetchSanityLive<boolean>({
-		query: groq`count(*[_type == 'global-module' && path == 'blog/*']) > 0`,
+		query: groq`count(*[_type == 'global-module' && path == 'blog/']) > 0`,
 	})
 
 	if (!blogTemplateExists)
 		throw Error(
 			'Missing blog template: 👻 Oof, your blog posts are ghosting...\n\n' +
-				'Solution: Add a new Global module document in your Sanity Studio with the path "blog/*".\n' +
+				'Solution: Add a new Global module document in your Sanity Studio with the path "blog/".\n' +
 				'Also add the Blog post content module to display blog post content.\n\n' +
 				'💁‍♂️ https://sanitypress.dev/docs/errors#missing-blog-template',
 		)
@@ -61,9 +61,9 @@ async function getPost(params: { slug?: string }) {
 				// global modules (before)
 				*[_type == 'global-module' && path == '*'].before[]{ ${MODULES_QUERY} }
 				// path modules (before)
-				+ *[_type == 'global-module' && path == 'blog/*'].before[]{ ${MODULES_QUERY} }
+				+ *[_type == 'global-module' && path == 'blog/'].before[]{ ${MODULES_QUERY} }
 				// path modules (after)
-				+ *[_type == 'global-module' && path == 'blog/*'].after[]{ ${MODULES_QUERY} }
+				+ *[_type == 'global-module' && path == 'blog/'].after[]{ ${MODULES_QUERY} }
 				// global modules (after)
 				+ *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
 			)

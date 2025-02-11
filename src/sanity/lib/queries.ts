@@ -120,3 +120,11 @@ export const MODULES_QUERY = groq`
 	_type == 'testimonial.featured' => { testimonial-> },
 	_type == 'testimonial-list' => { testimonials[]-> },
 `
+
+export const GLOBAL_MODULE_QUERY = groq`
+	string::startsWith($slug, path)
+	&& select(
+		defined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,
+		true
+	)
+`
