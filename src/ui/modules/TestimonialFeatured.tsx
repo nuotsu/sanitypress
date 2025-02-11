@@ -1,5 +1,5 @@
 import { PortableText } from 'next-sanity'
-import { ImQuotesLeft } from 'react-icons/im'
+import { VscQuote, VscSurroundWith } from 'react-icons/vsc'
 import Img from '@/ui/Img'
 
 export default function TestimonialFeatured({
@@ -15,14 +15,29 @@ export default function TestimonialFeatured({
 		<section className="section">
 			<div className="section bg-accent/3 flex max-w-screen-md items-center gap-x-12 gap-y-6 rounded max-sm:flex-col">
 				<div className="space-y-2">
-					<ImQuotesLeft className="text-accent inline-block shrink-0 text-4xl" />
+					<VscQuote className="text-accent inline-block shrink-0 text-4xl" />
 
 					<div className="self-center text-xl text-balance">
 						<PortableText value={testimonial.content} />
 					</div>
 
 					<dl className="text-left">
-						<dt>{author?.name}</dt>
+						<dt className="flex flex-wrap items-center gap-1">
+							{author?.name}
+
+							{testimonial?.source && (
+								<cite>
+									<a
+										className="text-ink/50"
+										href={testimonial.source}
+										target="_blank"
+										title="Source"
+									>
+										<VscSurroundWith />
+									</a>
+								</cite>
+							)}
+						</dt>
 
 						{author?.title && (
 							<dd className="text-sm text-balance">{author?.title}</dd>

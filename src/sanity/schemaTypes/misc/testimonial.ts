@@ -14,6 +14,10 @@ export default defineType({
 			of: [{ type: 'block' }],
 		}),
 		defineField({
+			name: 'source',
+			type: 'url',
+		}),
+		defineField({
 			name: 'author',
 			type: 'object',
 			fields: [

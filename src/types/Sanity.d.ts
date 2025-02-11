@@ -107,6 +107,7 @@ declare global {
 
 		interface Testimonial extends SanityDocument {
 			content: any
+			source?: string
 			author?: {
 				name: string
 				title?: string
