@@ -44,11 +44,11 @@ async function getPage(params: { slug?: string[] }) {
 				// global modules (before)
 				*[_type == 'global-module' && path == '*'].before[]{ ${MODULES_QUERY} }
 				// path modules (before)
-				+ *[_type == 'global-module' && path != '*' && ($slug + '/*' != path && $slug match path)].before[]{ ${MODULES_QUERY} }
+				+ *[_type == 'global-module' && path != '*' && ($slug + '/*' != path && $slug match path) && !($slug in excludePaths)].before[]{ ${MODULES_QUERY} }
 				// page modules
 				+ modules[]{ ${MODULES_QUERY} }
 				// path modules (after)
-				+ *[_type == 'global-module' && path != '*' && ($slug + '/*' != path && $slug match path)].after[]{ ${MODULES_QUERY} }
+				+ *[_type == 'global-module' && path != '*' && ($slug + '/*' != path && $slug match path) && !($slug in excludePaths)].after[]{ ${MODULES_QUERY} }
 				// global modules (after)
 				+ *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
 			),

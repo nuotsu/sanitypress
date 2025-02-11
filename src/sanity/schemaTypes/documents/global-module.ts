@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 import { VscSymbolField } from 'react-icons/vsc'
 import modules from '../fragments/modules'
 import { count } from '@/lib/utils'
@@ -16,6 +16,18 @@ export default defineType({
 			placeholder: 'e.g. * (all pages), docs/*, etc.',
 			validation: (Rule) =>
 				Rule.required().regex(/\*$/).error('Must end with a *'),
+		}),
+		defineField({
+			name: 'excludePaths',
+			type: 'array',
+			description: 'The paths to exclude from modules being added',
+			of: [
+				defineArrayMember({
+					type: 'string',
+					placeholder: 'e.g. * (all pages), docs/*, etc.',
+					validation: (Rule) => Rule.required(),
+				}),
+			],
 		}),
 		defineField({
 			...modules,

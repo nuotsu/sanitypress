@@ -79,7 +79,6 @@ NEXT_PUBLIC_BASE_URL="" # https://sanitypress.dev
 
 NEXT_PUBLIC_SANITY_PROJECT_ID="" # abcdefgh
 NEXT_PUBLIC_SANITY_DATASET="" # production
-
 SANITY_API_READ_TOKEN="" # "Viewer" token from https://sanity.io/manage
 
 NEXT_PUBLIC_GITHUB_TOKEN="" # recommended to add to display GitHub stars & forks

@@ -27,7 +27,7 @@
 		scroll-margin-top: var(--header-height);
 
 		&:is(h1, h2, h3, h4, h5, h6) {
-			animation: target var(--default-transition-duration) ease-in-out forwards;
+			animation: target 2s ease-in-out forwards;
 		}
 	}
 
