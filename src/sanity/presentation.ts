@@ -2,7 +2,6 @@
 
 import { defineLocations, presentationTool } from 'sanity/presentation'
 import { groq } from 'next-sanity'
-import { count } from '@/lib/utils'
 
 export const presentation = presentationTool({
 	name: 'editor',
@@ -21,6 +20,10 @@ export const presentation = presentationTool({
 			{
 				route: '/:slug',
 				filter: groq`_type == 'page' && metadata.slug.current == $slug`,
+			},
+			{
+				route: '/blog',
+				type: 'blog.post',
 			},
 			{
 				route: '/blog/:slug',
