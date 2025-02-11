@@ -31,6 +31,11 @@ export function debounce<T extends (...args: any[]) => void>(
 	}
 }
 
+export const { format: formatCurrency } = new Intl.NumberFormat('en-US', {
+	style: 'currency',
+	currency: 'USD',
+})
+
 export function slug(str: string) {
 	return str
 		.toLowerCase()

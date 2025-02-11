@@ -2,7 +2,7 @@ import moduleProps from '@/lib/moduleProps'
 import Pretitle from '@/ui/Pretitle'
 import { PortableText } from 'next-sanity'
 import CTAList from '@/ui/CTAList'
-import { cn } from '@/lib/utils'
+import { cn, formatCurrency } from '@/lib/utils'
 
 export default function PricingList({
 	pretitle,
@@ -79,12 +79,7 @@ export default function PricingList({
 	)
 }
 
-const { format } = new Intl.NumberFormat('en-US', {
-	style: 'currency',
-	currency: 'USD',
-})
-
 function formatPrice(value: number) {
 	if (value === 0) return 'Free'
-	return format(value).replace(/\.00$/, '')
+	return formatCurrency(value).replace(/\.00$/, '')
 }
