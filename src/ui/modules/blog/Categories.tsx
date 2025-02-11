@@ -2,11 +2,11 @@ import Category from './Category'
 
 export default function Categories({
 	categories,
-	isLink,
+	linked,
 	...props
 }: {
 	categories?: Sanity.BlogCategory[]
-	isLink?: boolean
+	linked?: boolean
 } & React.ComponentProps<'ul'>) {
 	if (!categories?.length) return null
 
@@ -14,7 +14,7 @@ export default function Categories({
 		<ul {...props}>
 			{categories.map((category, key) => (
 				<li key={key}>
-					<Category value={category} isLink={isLink} />
+					<Category value={category} linked={linked} />
 				</li>
 			))}
 		</ul>

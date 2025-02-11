@@ -1,6 +1,6 @@
 'use client'
 
-import { useCategory } from '../store'
+import { useBlogFilters } from '../store'
 import { usePageState } from '@/lib/usePagination'
 import Category from '../Category'
 import { cn } from '@/lib/utils'
@@ -13,7 +13,7 @@ export default function Filter({
 	label: string
 	value?: 'All' | string
 }) {
-	const { category, setCategory } = useCategory()
+	const { category, setCategory } = useBlogFilters()
 	const { setPage } = usePageState()
 
 	return (
@@ -21,9 +21,7 @@ export default function Filter({
 			className={cn(
 				css.filter,
 				'!py-1',
-				category === value
-					? 'action *:text-white/50'
-					: 'ghost border border-transparent',
+				category === value ? 'action' : 'ghost border border-transparent',
 			)}
 			onClick={() => {
 				setCategory(value)

@@ -1,7 +1,7 @@
 'use client'
 
 import PostPreview from '../PostPreview'
-import { useCategory } from '../store'
+import { useBlogFilters } from '../store'
 
 export default function List({
 	posts,
@@ -27,11 +27,21 @@ export default function List({
 }
 
 export function filterPosts(posts: Sanity.BlogPost[]) {
-	const { category } = useCategory()
+	const { category, author } = useBlogFilters()
 
-	return posts.filter(
-		(post) =>
-			category === 'All' ||
-			post.categories?.some(({ slug }) => slug?.current === category),
-	)
+	return posts.filter((post) => {
+		if (category !== 'All' && author)
+			return (
+				post.authors?.some(({ slug }) => slug?.current === author) &&
+				post.categories?.some(({ slug }) => slug?.current === category)
+			)
+
+		if (category !== 'All')
+			return post.categories?.some(({ slug }) => slug?.current === category)
+
+		if (author)
+			return post.authors?.some(({ slug }) => slug?.current === author)
+
+		return true
+	})
 }

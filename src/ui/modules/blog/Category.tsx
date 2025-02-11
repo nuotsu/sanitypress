@@ -1,32 +1,27 @@
 import Link from 'next/link'
+import { cn } from '@/lib/utils'
 
 export default function Category({
 	value,
 	label,
-	isLink,
+	linked,
 }: {
 	value?: Sanity.BlogCategory
 	label?: string
-	isLink?: boolean
+	linked?: boolean
 }) {
-	if (isLink)
-		return (
-			<Link
-				className="hover:underline"
-				href={{
-					pathname: '/blog',
-					query: { category: value?.slug.current },
-				}}
-			>
-				<span className="text-ink/50">#</span>
-				{label || value?.title}
-			</Link>
-		)
-
 	return (
-		<>
-			<span className="text-ink/50">#</span>
-			{label || value?.title}
-		</>
+		<Link
+			className={cn(
+				"before:text-current/50 before:content-['#'] hover:*:underline",
+				!linked && 'pointer-events-none',
+			)}
+			href={{
+				pathname: '/blog',
+				query: { category: value?.slug.current },
+			}}
+		>
+			<span>{label || value?.title}</span>
+		</Link>
 	)
 }
