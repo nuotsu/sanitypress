@@ -35,7 +35,7 @@ export async function getSite() {
 	})
 
 	if (!site)
-		throw Error(
+		throw new Error(
 			'Missing Site settings: 🫠 Your website might be having an identity crisis...\n\n' +
 				'Solution: Publish the Site document in your Sanity Studio.\n\n' +
 				'💁‍♂️ https://sanitypress.dev/docs/errors#missing-site-settings',

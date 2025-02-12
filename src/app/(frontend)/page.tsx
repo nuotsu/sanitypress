@@ -34,7 +34,7 @@ async function getPage() {
 	})
 
 	if (!page)
-		throw Error(
+		throw new Error(
 			"Missing homepage: 🏚️ There's no place like... index?\n\n" +
 				'Solution: Add a new Page document in your Sanity Studio with the slug "index".\n\n' +
 				'💁‍♂️ https://sanitypress.dev/docs/errors#missing-homepage',

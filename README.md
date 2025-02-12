@@ -38,7 +38,18 @@ See the documentation if you are [having issues with the CLI](https://www.sanity
 
 Alternatively, you can also clone or fork [the GitHub template](https://github.com/nuotsu/sanitypress) to set up manually.
 
-### 2. Add content
+### 2. Start local server
+
+Run the following command to start the development server:
+
+- Website: http://localhost:3000
+- Sanity Studio: http://localhost:3000/admin
+
+```sh
+npm run dev
+```
+
+### 3. Add content
 
 In your new Sanity Studio, publish the **required** `site` and `page` documents.
 
@@ -58,7 +69,7 @@ Alternatively, you can import the [demo site](https://demo.sanitypress.dev) data
 sanity dataset import src/sanity/demo.tar.gz
 ```
 
-### 3. Set up deployments
+### 4. Set up deployments
 
 #### 1. Create a GitHub repository
 
@@ -89,13 +100,9 @@ NEXT_PUBLIC_GITHUB_TOKEN="" # recommended to add to display GitHub stars & forks
 - Vercel: [`vercel-dashboard-widget`](https://www.sanity.io/plugins/vercel-dashboard-widget)
 - Netlify: [`sanity-plugin-dashboard-widget-netlify`](https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-netlify)
 
-### 4. Customize
+### 5. Customize
 
 Adjust frontend styles, edit/add Sanity schema and modules, and [more](https://sanitypress.dev/blog/the-developers-guide-to-customizing-sanitypress).
-
-### 5. Inviting collaborators (Optional)
-
-Invite team members via [Sanity Manage](https://www.sanity.io/manage) to collaborate on content in your Studio.
 
 ## Resources & Dependencies
 

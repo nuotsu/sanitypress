@@ -11,7 +11,7 @@ export default function SearchGoogle({
 }) {
 	const href = [
 		`https://www.google.com/search?q=${query} `,
-		`site:${process.env.NEXT_PUBLIC_BASE_URL?.replace(/https?:\/\//, '')}`,
+		`site:${process.env.NEXT_PUBLIC_BASE_URL}`,
 		scope === 'path' && path
 			? `/${path.replace(/\/?\*$/, '')}`
 			: scope === 'blog posts'
