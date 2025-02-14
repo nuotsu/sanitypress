@@ -36,7 +36,7 @@ export default function CreativeModule({
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }>) {
-	const width = Math.round((1200 / (modules?.length || 1)) * 1.5)
+	const width = Math.round((1200 / (columns || modules?.length || 1)) * 1.5)
 
 	return (
 		<section {...moduleProps(props)}>
