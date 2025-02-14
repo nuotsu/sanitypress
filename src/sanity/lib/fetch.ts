@@ -23,7 +23,7 @@ export async function fetchSanity<T = any>({
 		preview
 			? {
 					stega: true,
-					perspective: 'previewDrafts',
+					perspective: 'drafts',
 					useCdn: false,
 					token,
 					next: {
@@ -55,7 +55,7 @@ export async function fetchSanityLive<T = any>(
 
 	const { data } = await sanityFetch({
 		...args,
-		perspective: preview ? 'previewDrafts' : 'published',
+		perspective: preview ? 'drafts' : 'published',
 	})
 
 	return data as T
