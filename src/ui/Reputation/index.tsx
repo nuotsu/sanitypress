@@ -27,32 +27,36 @@ export default async function Reputation({
 			className={cn('flex flex-wrap items-center gap-x-6 gap-y-2', className)}
 		>
 			<figure className="flex *:relative empty:hidden">
-				{!!avatars?.length
-					? avatars.map(
-							(avatar, key) =>
-								!!avatar && (
-									<Image
-										className={imgClassname}
-										style={{ zIndex: avatars.length - key }}
-										src={avatar.avatar_url + '&s=48'}
-										alt={avatar.login}
-										width={48}
-										height={48}
-										key={key}
-									/>
-								),
-						)
-					: reputation.avatars?.slice(0, limit)?.map((avatar, key) => (
-							<Img
-								className={imgClassname}
-								style={{
-									zIndex: (reputation.avatars?.length || limit) - key,
-								}}
-								image={avatar}
-								width={96}
-								key={key}
-							/>
-						))}
+				{avatars
+					?.slice(0, limit - (reputation.avatars?.length ?? 0))
+					.map(
+						(avatar, key) =>
+							!!avatar && (
+								<Image
+									className={imgClassname}
+									style={{ zIndex: avatars.length - key }}
+									src={avatar.avatar_url + '&s=48'}
+									alt={'@' + avatar.login}
+									title={'@' + avatar.login}
+									width={48}
+									height={48}
+									key={key}
+								/>
+							),
+					)}
+
+				{reputation.avatars?.slice(0, limit)?.map((avatar, key) => (
+					<Img
+						className={imgClassname}
+						style={{
+							zIndex: (reputation.avatars?.length || limit) - key,
+						}}
+						image={avatar}
+						title={avatar.alt}
+						width={96}
+						key={key}
+					/>
+				))}
 			</figure>
 
 			<dl className="flex flex-col text-left [figure:empty+&]:text-center">

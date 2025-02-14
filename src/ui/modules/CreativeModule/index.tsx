@@ -1,3 +1,4 @@
+import moduleProps from '@/lib/moduleProps'
 import { PortableText, stegaClean } from 'next-sanity'
 import CTAsSubModule, { type CTAsSubModuleType } from './CTAsSubModule'
 import CustomHTMLSubmodule, {
@@ -9,7 +10,6 @@ import RichtextSubModule, {
 	type RichtextSubModuleType,
 } from './RichtextSubModule'
 import { cn } from '@/lib/utils'
-import moduleProps from '@/lib/moduleProps'
 
 export default function CreativeModule({
 	intro,
