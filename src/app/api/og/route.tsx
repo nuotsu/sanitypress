@@ -54,7 +54,7 @@ export async function GET(request: NextRequest) {
 							height: '2rem',
 							marginRight: '0.5rem',
 						}}
-						src={`https://icons.sanitypress.dev/vsc/VscHeartFilled?hex=${color.slice(1)}`}
+						src={`https://ic0n.dev/vsc/VscHeartFilled?hex=${color.slice(1)}`}
 					/>
 
 					<span
