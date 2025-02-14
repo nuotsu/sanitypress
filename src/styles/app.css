@@ -9,6 +9,8 @@
 	--max-height-fold: calc(100svh - var(--header-height));
 }
 
+@custom-variant hover (&:hover);
+
 @variant header-open (body:has(#header-toggle:checked) &);
 @variant header-closed (body:has(#header-toggle:not(:checked)) &);
 
