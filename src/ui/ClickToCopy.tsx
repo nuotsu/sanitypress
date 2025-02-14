@@ -1,17 +1,21 @@
 'use client'
 
-import { VscCheck, VscCopy } from 'react-icons/vsc'
 import { useState, type ComponentProps } from 'react'
+import { VscCheck, VscCopy } from 'react-icons/vsc'
 import { cn } from '@/lib/utils'
 
 export default function ClickToCopy({
 	value,
 	className,
+	children = <VscCopy />,
+	childrenWhenCopied = <VscCheck />,
 	...props
 }: {
 	value?: string
-} & React.ComponentProps<'button'>) {
+	childrenWhenCopied?: React.ReactNode
+} & ComponentProps<'button'>) {
 	const [copied, setCopied] = useState(false)
+
 	return (
 		<button
 			className={cn('cursor-copy', copied && 'pointer-events-none', className)}
@@ -26,7 +30,7 @@ export default function ClickToCopy({
 			title="Click to copy"
 			{...props}
 		>
-			{copied ? <VscCheck /> : <VscCopy />}
+			{copied ? childrenWhenCopied : children}
 		</button>
 	)
 }
