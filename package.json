@@ -1,6 +1,6 @@
 {
 	"name": "sanitypress",
-	"version": "6.2.16",
+	"version": "6.2.17",
 	"description": "An impressive Next.js + Sanity.io starter template",
 	"author": "nuotsu <mitchell@nuotsu.dev> (https://nuotsu.dev)",
 	"license": "ISC",
@@ -43,7 +43,7 @@
 	},
 	"devDependencies": {
 		"@sanity/eslint-config-studio": "^5.0.1",
-		"@types/node": "^22.13.3",
+		"@types/node": "^22.13.4",
 		"@types/react": "^19.0.8",
 		"@types/react-dom": "^19.0.3",
 		"eslint": "^9.20.1",
