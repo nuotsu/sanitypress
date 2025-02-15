@@ -21,7 +21,7 @@ export function ResponsiveImg({
 	)
 }
 
-export default function Img({
+export function Img({
 	image,
 	width: w,
 	height: h,

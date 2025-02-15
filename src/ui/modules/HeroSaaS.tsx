@@ -5,7 +5,7 @@ import Code from './RichtextModule/Code'
 import CustomHTML from './CustomHTML'
 import Reputation from '@/ui/Reputation'
 import CTAList from '@/ui/CTAList'
-import Img from '@/ui/Img'
+import { Img } from '@/ui/Img'
 import { cn } from '@/lib/utils'
 
 export default function HeroSaaS({

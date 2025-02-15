@@ -1,5 +1,5 @@
 import moduleProps from '@/lib/moduleProps'
-import Img, { Source } from '@/ui/Img'
+import { Img, Source } from '@/ui/Img'
 import { PortableText, stegaClean } from 'next-sanity'
 import CTAList from '@/ui/CTAList'
 import Pretitle from '@/ui/Pretitle'

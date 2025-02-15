@@ -2,7 +2,7 @@ import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import { PortableText } from 'next-sanity'
 import Pretitle from '@/ui/Pretitle'
-import Img from '@/ui/Img'
+import { Img } from '@/ui/Img'
 import { cn } from '@/lib/utils'
 import css from './LogoList.module.css'
 

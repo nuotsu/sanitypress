@@ -1,6 +1,6 @@
 import { getCachedRepoData } from './getRepoData'
 import Image from 'next/image'
-import Img from '@/ui/Img'
+import { Img } from '@/ui/Img'
 import { VscStarFull, VscRepoForked } from 'react-icons/vsc'
 import { cn, count } from '@/lib/utils'
 

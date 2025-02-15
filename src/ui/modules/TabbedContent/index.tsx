@@ -3,7 +3,7 @@ import { PortableText } from 'next-sanity'
 import TabList from './TabList'
 import Wrapper from './Wrapper'
 import CTAList from '@/ui/CTAList'
-import Img from '@/ui/Img'
+import { Img } from '@/ui/Img'
 import { cn } from '@/lib/utils'
 
 export default function TabbedContent({

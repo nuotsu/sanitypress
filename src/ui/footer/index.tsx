@@ -3,7 +3,7 @@ import Navigation from './Navigation'
 import Social from '@/ui/Social'
 import { PortableText } from 'next-sanity'
 import Link from 'next/link'
-import Img from '@/ui/Img'
+import { Img } from '@/ui/Img'
 
 export default async function Footer() {
 	const { title, tagline, logo, copyright } = await getSite()

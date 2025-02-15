@@ -1,4 +1,4 @@
-import Img from '@/ui/Img'
+import { Img } from '@/ui/Img'
 
 export type IconSubModuleType = Sanity.Module<'icon'> &
 	Partial<{
