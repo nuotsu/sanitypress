@@ -6,7 +6,7 @@ import TextInputWithPresets, {
 } from '@/sanity/ui/TextInputWithPresets'
 import { count } from '@/lib/utils'
 
-const mediaQueryPresets: Preset[] = [
+const presets: Preset[] = [
 	{ label: 'Tablet and below', value: '(width < 48rem)' },
 	{ label: 'Mobile only', value: '(width < 24rem)' },
 	{ label: 'Dark mode', value: '(prefers-color-scheme: dark)' },
@@ -44,16 +44,17 @@ export default defineType({
 							validation: (Rule) => Rule.required(),
 						}),
 						defineField({
-							name: 'mediaQuery',
+							name: 'media',
+							title: 'Media query',
 							type: 'string',
-							placeholder: `e.g. ${mediaQueryPresets.map((p) => getPreset(p)).join(', ')}`,
+							placeholder: `e.g. ${presets.map((p) => getPreset(p)).join(', ')}`,
 							validation: (Rule) => Rule.required(),
-							initialValue: getPreset(mediaQueryPresets[0]),
+							initialValue: getPreset(presets[0]),
 							components: {
 								input: (props) => (
 									<TextInputWithPresets
 										prefix="@media"
-										presets={mediaQueryPresets}
+										presets={presets}
 										{...props}
 									/>
 								),
@@ -62,12 +63,18 @@ export default defineType({
 					],
 					preview: {
 						select: {
-							title: 'mediaQuery',
+							title: 'media',
 							media: 'image',
 						},
 					},
 				}),
 			],
+		}),
+		defineField({
+			name: 'alt',
+			title: 'Alt text',
+			type: 'string',
+			fieldset: 'options',
 		}),
 		defineField({
 			name: 'loading',
@@ -77,12 +84,6 @@ export default defineType({
 				layout: 'radio',
 			},
 			initialValue: 'lazy',
-			fieldset: 'options',
-		}),
-		defineField({
-			name: 'alt',
-			title: 'Alt text',
-			type: 'string',
 			fieldset: 'options',
 		}),
 	],

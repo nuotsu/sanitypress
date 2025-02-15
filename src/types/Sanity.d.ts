@@ -124,6 +124,17 @@ declare global {
 			style?: string
 		}
 
+		interface Img {
+			readonly _type: 'img'
+			image: Image
+			responsive?: {
+				image: Image
+				media: string
+			}[]
+			alt?: string
+			loading?: 'lazy' | 'eager'
+		}
+
 		interface Image extends SanityAssetDocument {
 			alt: string
 			loading: 'lazy' | 'eager'

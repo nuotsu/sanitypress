@@ -29,8 +29,8 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
-			name: 'asset',
-			title: 'Asset',
+			name: 'assets',
+			title: 'Assets',
 			type: 'array',
 			of: [{ type: 'img' }],
 			validation: (Rule) => Rule.max(1),
@@ -54,7 +54,7 @@ export default defineType({
 	preview: {
 		select: {
 			content: 'content',
-			media: 'asset.0.image',
+			media: 'assets.0.image',
 		},
 		prepare: ({ content, media }) => ({
 			title: getBlockText(content),

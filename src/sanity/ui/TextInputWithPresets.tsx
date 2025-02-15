@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useCallback, type FormEvent } from 'react'
 import { Badge, Card, Flex, Stack, Text, TextInput } from '@sanity/ui'
 import type { StringInputProps, StringSchemaType } from 'sanity'
 
@@ -15,11 +15,7 @@ export function getPreset(
 	preset: Preset,
 	property: 'label' | 'value' = 'value',
 ) {
-	if (typeof preset === 'string') {
-		return preset
-	}
-
-	return preset[property]
+	return typeof preset === 'string' ? preset : preset[property]
 }
 
 export default function TextInputWithPresets({
@@ -32,7 +28,14 @@ export default function TextInputWithPresets({
 	suffix?: string
 	presets?: Preset[]
 } & StringInputProps<StringSchemaType>) {
-	const [value, setValue] = useState(elementProps.value)
+	const handleChange = useCallback(
+		(value: string) => {
+			elementProps.onChange({
+				currentTarget: { value },
+			} as FormEvent<HTMLInputElement>)
+		},
+		[elementProps.onChange],
+	)
 
 	return (
 		<Stack space={2}>
@@ -44,7 +47,10 @@ export default function TextInputWithPresets({
 				)}
 
 				<Card flex={1}>
-					<TextInput {...elementProps} value={value} />
+					<TextInput
+						{...elementProps}
+						onChange={(e) => handleChange(e.currentTarget.value)}
+					/>
 				</Card>
 
 				{suffix && (
@@ -64,8 +70,10 @@ export default function TextInputWithPresets({
 							<Badge
 								style={{ cursor: 'pointer' }}
 								padding={2}
-								tone={presetValue === value ? 'primary' : 'default'}
-								onClick={() => setValue(presetValue)}
+								tone={
+									presetValue === elementProps.value ? 'primary' : 'default'
+								}
+								onClick={() => handleChange(presetValue)}
 								key={presetValue}
 							>
 								{label}
