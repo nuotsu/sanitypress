@@ -15,7 +15,7 @@ export default defineType({
 	type: 'object',
 	groups: [
 		{ name: 'content', default: true },
-		{ name: 'image' },
+		{ name: 'asset' },
 		{ name: 'options' },
 	],
 	fieldsets: [alignmentFieldset, { name: 'image', options: { columns: 2 } }],
@@ -44,50 +44,12 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
-			name: 'bgImage',
-			title: 'Background image',
-			type: 'image',
-			options: {
-				hotspot: true,
-			},
-			fields: [
-				defineField({
-					name: 'alt',
-					type: 'string',
-				}),
-				defineField({
-					name: 'loading',
-					type: 'string',
-					options: {
-						list: ['lazy', 'eager'],
-						layout: 'radio',
-					},
-					initialValue: 'lazy',
-				}),
-			],
-			group: 'image',
-			fieldset: 'image',
-		}),
-		defineField({
-			name: 'bgImageMobile',
-			title: 'Background image (mobile)',
-			type: 'image',
-			options: {
-				hotspot: true,
-			},
-			fields: [
-				defineField({
-					name: 'loading',
-					type: 'string',
-					options: {
-						list: ['lazy', 'eager'],
-						layout: 'radio',
-					},
-					initialValue: 'lazy',
-				}),
-			],
-			group: 'image',
-			fieldset: 'image',
+			name: 'assets',
+			title: 'Assets',
+			type: 'array',
+			of: [{ type: 'img' }],
+			validation: (Rule) => Rule.max(1),
+			group: 'asset',
 		}),
 		defineField({
 			...alignItems,
@@ -101,7 +63,7 @@ export default defineType({
 	preview: {
 		select: {
 			content: 'content',
-			media: 'bgImage.asset',
+			media: 'assets.0.image',
 		},
 		prepare: ({ content, media }) => ({
 			title: getBlockText(content),

@@ -5,24 +5,26 @@ import Code from './RichtextModule/Code'
 import CustomHTML from './CustomHTML'
 import Reputation from '@/ui/Reputation'
 import CTAList from '@/ui/CTAList'
-import { Img } from '@/ui/Img'
+import { ResponsiveImg } from '@/ui/Img'
 import { cn } from '@/lib/utils'
 
 export default function HeroSaaS({
 	pretitle,
 	content,
 	ctas,
-	image,
+	assets,
+	assetFaded,
 	...props
 }: Partial<{
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
-	image: Sanity.Image & {
-		faded?: boolean
-	}
+	assets: Sanity.Img[]
+	assetFaded?: boolean
 }> &
 	Sanity.Module) {
+	const asset = assets?.[0]
+
 	return (
 		<section className="section space-y-8 text-center" {...moduleProps(props)}>
 			<div className="richtext mx-auto max-w-2xl text-balance">
@@ -51,15 +53,25 @@ export default function HeroSaaS({
 				<CTAList ctas={ctas} className="!mt-8 justify-center" />
 			</div>
 
-			<Img
-				className={cn(
-					'anim-fade-to-t w-full [animation-duration:1s]',
-					image?.faded && '[mask:linear-gradient(to_top,transparent,#000_50%)]',
-				)}
-				image={image}
-				width={2400}
-				draggable={false}
-			/>
+			{(() => {
+				switch (asset?._type) {
+					case 'img':
+						return (
+							<ResponsiveImg
+								img={asset}
+								className={cn(
+									'anim-fade-to-t w-full [animation-duration:1s]',
+									assetFaded &&
+										'[mask:linear-gradient(to_top,transparent,#000_50%)]',
+								)}
+								width={2400}
+								draggable={false}
+							/>
+						)
+					default:
+						return null
+				}
+			})()}
 		</section>
 	)
 }

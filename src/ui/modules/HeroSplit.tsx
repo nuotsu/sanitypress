@@ -36,7 +36,7 @@ export default function HeroSplit({
 					switch (asset?._type) {
 						case 'img':
 							return (
-								<ResponsiveImg img={asset} className="w-full" width={1200} />
+								<ResponsiveImg img={asset} imgClassName="w-full" width={1200} />
 							)
 						default:
 							return null

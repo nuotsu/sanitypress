@@ -1,5 +1,5 @@
 import moduleProps from '@/lib/moduleProps'
-import { Img, Source } from '@/ui/Img'
+import { ResponsiveImg } from '@/ui/Img'
 import { PortableText, stegaClean } from 'next-sanity'
 import CTAList from '@/ui/CTAList'
 import Pretitle from '@/ui/Pretitle'
@@ -11,8 +11,7 @@ export default function Hero({
 	pretitle,
 	content,
 	ctas,
-	bgImage,
-	bgImageMobile,
+	assets,
 	textAlign = 'center',
 	alignItems,
 	...props
@@ -20,13 +19,13 @@ export default function Hero({
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
-	bgImage: Sanity.Image
-	bgImageMobile: Sanity.Image
+	assets: Sanity.Img[]
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }> &
 	Sanity.Module) {
-	const hasImage = !!bgImage?.asset
+	const hasImage = !!assets?.[0]
+	const asset = assets?.[0]
 
 	return (
 		<section
@@ -37,15 +36,12 @@ export default function Hero({
 			{...moduleProps(props)}
 		>
 			{hasImage && (
-				<picture>
-					<Source image={bgImageMobile} width={1200} />
-					<Img
-						className="max-h-fold size-full object-cover"
-						image={bgImage}
-						width={2400}
-						draggable={false}
-					/>
-				</picture>
+				<ResponsiveImg
+					img={asset}
+					imgClassName="max-h-fold size-full object-cover"
+					width={2400}
+					draggable={false}
+				/>
 			)}
 
 			{content && (
