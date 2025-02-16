@@ -59,11 +59,13 @@ export default function HeroSaaS({
 						return (
 							<ResponsiveImg
 								img={asset}
-								className={cn(
-									'anim-fade-to-t w-full [animation-duration:1s]',
-									assetFaded &&
-										'[mask:linear-gradient(to_top,transparent,#000_50%)]',
-								)}
+								pictureProps={{
+									className: cn(
+										'anim-fade-to-t w-full block [animation-duration:1s]',
+										assetFaded &&
+											'[mask:linear-gradient(to_top,transparent,#000_50%)]',
+									),
+								}}
 								width={2400}
 								draggable={false}
 							/>

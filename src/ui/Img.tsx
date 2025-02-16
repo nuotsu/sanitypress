@@ -9,16 +9,18 @@ type ImgProps = { alt?: string } & Omit<ImageProps, 'src' | 'alt'>
 
 export function ResponsiveImg({
 	img,
-	className,
-	imgClassName,
+	pictureProps,
 	...props
-}: { img?: Sanity.Img; imgClassName?: string } & ImgProps) {
+}: {
+	img?: Sanity.Img
+	pictureProps?: ComponentProps<'picture'>
+} & ImgProps) {
 	if (!img) return null
 
 	return (
-		<picture className={className}>
+		<picture {...pictureProps}>
 			{img.responsive?.map((r, key) => <Source {...r} key={key} />)}
-			<Img image={img.image} {...props} className={imgClassName} />
+			<Img image={img.image} {...props} />
 		</picture>
 	)
 }

@@ -38,7 +38,7 @@ export default function Hero({
 			{hasImage && (
 				<ResponsiveImg
 					img={asset}
-					imgClassName="max-h-fold size-full object-cover"
+					className="max-h-fold size-full object-cover"
 					width={2400}
 					draggable={false}
 				/>
