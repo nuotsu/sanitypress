@@ -117,11 +117,26 @@ declare global {
 
 		// objects
 
+		interface Code {
+			readonly _type: 'code'
+			language: string
+			code: string
+			filename?: string
+			highlightedLines?: number[]
+		}
+
 		interface CTA {
 			readonly _type?: 'cta'
 			_key?: string
 			link?: Link
 			style?: string
+		}
+
+		interface CustomHTML extends Module<'custom-html'> {
+			className?: string
+			html?: {
+				code: string
+			}
 		}
 
 		interface Img {

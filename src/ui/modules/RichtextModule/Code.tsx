@@ -11,12 +11,7 @@ export default async function Code({
 	className,
 }: {
 	theme?: keyof typeof bundledThemes
-	value?: {
-		language: string
-		code: string
-		filename?: string
-		highlightedLines?: number[]
-	}
+	value?: Sanity.Code
 } & ComponentProps<'article'>) {
 	if (!value?.code) return null
 
@@ -42,23 +37,29 @@ export default async function Code({
 			data-module="code"
 		>
 			{value.filename && (
-				<div className="text-canvas -mb-1 rounded-t bg-[#1E1E1E]/90 px-2 py-1 font-mono text-xs">
+				<div className="text-canvas sticky top-0 z-1 -mb-1 rounded-t bg-[#323232] p-1 pb-0 font-mono text-xs">
 					<span className="inline-block rounded-t border-b border-blue-400 bg-[#1E1E1E] px-3 py-2">
 						📁 {value.filename}
 					</span>
 				</div>
 			)}
 
-			<div className="relative">
-				<div className={css.code} dangerouslySetInnerHTML={{ __html: html }} />
+			<div className="inner relative">
+				<div className="sticky top-1 z-1">
+					<menu className="absolute top-0 right-0 flex items-center justify-end">
+						<li>
+							<ClickToCopy
+								value={stegaClean(value.code)}
+								className={cn(
+									'anim-fade-to-l m-1 hidden rounded p-[.3em] text-lg backdrop-blur group-hover:block hover:bg-white/10 active:scale-95 active:bg-white/20 [&.pointer-events-none]:block',
+									!theme.includes('light') && 'text-white',
+								)}
+							/>
+						</li>
+					</menu>
+				</div>
 
-				<ClickToCopy
-					value={stegaClean(value.code)}
-					className={cn(
-						'anim-fade-to-l absolute top-0 right-0 m-1 hidden rounded p-[.3em] text-lg backdrop-blur group-hover:block hover:bg-white/10 active:scale-95 active:bg-white/20 [&.pointer-events-none]:block',
-						!theme.includes('light') && 'text-white',
-					)}
-				/>
+				<div className={css.code} dangerouslySetInnerHTML={{ __html: html }} />
 			</div>
 		</article>
 	)

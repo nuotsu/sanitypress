@@ -61,7 +61,12 @@ export default function Modules({
 					case 'creative-module':
 						return <CreativeModule {...module} key={module._key} />
 					case 'custom-html':
-						return <CustomHTML {...module} key={module._key} />
+						return (
+							<CustomHTML
+								{...(module as Sanity.CustomHTML)}
+								key={module._key}
+							/>
+						)
 					case 'flag-list':
 						return <FlagList {...module} key={module._key} />
 					case 'hero':

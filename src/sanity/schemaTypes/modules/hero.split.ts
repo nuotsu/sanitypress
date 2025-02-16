@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 import { TfiLayoutMediaLeft } from 'react-icons/tfi'
 import { reputationBlock } from '../misc/reputation'
 import { getBlockText } from '@/sanity/lib/utils'
@@ -32,7 +32,17 @@ export default defineType({
 			name: 'assets',
 			title: 'Assets',
 			type: 'array',
-			of: [{ type: 'img' }],
+			of: [
+				{ type: 'img' },
+				defineArrayMember({
+					title: 'Code block',
+					type: 'code',
+					options: {
+						withFilename: true,
+					},
+				}),
+				{ type: 'custom-html' },
+			],
 			validation: (Rule) => Rule.max(1),
 			group: 'asset',
 		}),

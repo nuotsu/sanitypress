@@ -1,9 +1,10 @@
 import { PortableText } from 'next-sanity'
 import Pretitle from '@/ui/Pretitle'
-import CustomHTML from './CustomHTML'
-import Reputation from '@/ui/Reputation'
 import CTAList from '@/ui/CTAList'
 import { ResponsiveImg } from '@/ui/Img'
+import Code from './RichtextModule/Code'
+import CustomHTML from './CustomHTML'
+import Reputation from '@/ui/Reputation'
 import { cn } from '@/lib/utils'
 
 export default function HeroSplit({
@@ -17,7 +18,7 @@ export default function HeroSplit({
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
-	assets: Sanity.Img[]
+	assets: Array<Sanity.Img | Sanity.Code | Sanity.CustomHTML>
 	assetOnRight: boolean
 	assetBelowContent: boolean
 }>) {
@@ -27,7 +28,7 @@ export default function HeroSplit({
 		<section className="section grid items-center gap-8 md:grid-cols-2 md:gap-x-12">
 			<figure
 				className={cn(
-					'max-md:full-bleed',
+					asset?._type === 'img' && 'max-md:full-bleed',
 					assetOnRight && 'md:order-1',
 					assetBelowContent && 'max-md:order-last',
 				)}
@@ -38,6 +39,18 @@ export default function HeroSplit({
 							return (
 								<ResponsiveImg img={asset} imgClassName="w-full" width={1200} />
 							)
+
+						case 'code':
+							return (
+								<Code
+									className="richtext [&_.inner]:max-h-[20lh] [&_.inner]:overflow-auto"
+									value={asset}
+								/>
+							)
+
+						case 'custom-html':
+							return <CustomHTML {...asset} />
+
 						default:
 							return null
 					}
