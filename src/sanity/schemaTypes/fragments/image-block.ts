@@ -8,25 +8,14 @@ export default defineArrayMember({
 		hotspot: true,
 	},
 	fieldsets: [
-		{ name: 'info', options: { collapsible: true, collapsed: true } },
-		{ name: 'options', options: { collapsible: true, collapsed: true } },
+		{ name: 'attributes', options: { columns: 2 } },
+		{ name: 'options' },
 	],
 	fields: [
 		defineField({
 			name: 'alt',
 			type: 'string',
-			fieldset: 'info',
-		}),
-		defineField({
-			name: 'caption',
-			type: 'text',
-			rows: 2,
-			fieldset: 'info',
-		}),
-		defineField({
-			name: 'source',
-			type: 'url',
-			fieldset: 'info',
+			fieldset: 'attributes',
 		}),
 		defineField({
 			name: 'loading',
@@ -36,6 +25,17 @@ export default defineArrayMember({
 				layout: 'radio',
 			},
 			initialValue: 'lazy',
+			fieldset: 'attributes',
+		}),
+		defineField({
+			name: 'caption',
+			type: 'text',
+			rows: 2,
+			fieldset: 'options',
+		}),
+		defineField({
+			name: 'source',
+			type: 'url',
 			fieldset: 'options',
 		}),
 	],

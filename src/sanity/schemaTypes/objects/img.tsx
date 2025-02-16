@@ -72,7 +72,6 @@ export default defineType({
 		}),
 		defineField({
 			name: 'alt',
-			title: 'Alt text',
 			type: 'string',
 			fieldset: 'options',
 		}),

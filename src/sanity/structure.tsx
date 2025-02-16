@@ -4,8 +4,6 @@ import { VscFiles, VscServerProcess } from 'react-icons/vsc'
 import { BsDatabaseAdd } from 'react-icons/bs'
 
 export const structure = structureTool({
-	name: 'content',
-	title: 'Content',
 	structure: (S) =>
 		S.list()
 			.title('Content')
