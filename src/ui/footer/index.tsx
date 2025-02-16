@@ -39,7 +39,7 @@ export default async function Footer() {
 			</div>
 
 			{copyright && (
-				<div className="border-canvas/20 mx-auto flex max-w-screen-xl flex-wrap justify-center gap-x-6 gap-y-2 border-t p-4 text-sm">
+				<div className="border-canvas/20 mx-auto flex max-w-screen-xl flex-wrap justify-center gap-x-6 gap-y-2 border-t p-4 pb-[max(1rem,env(safe-area-inset-bottom))] text-sm">
 					<PortableText value={copyright} />
 				</div>
 			)}
