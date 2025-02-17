@@ -23,11 +23,11 @@ export default function CreativeModule({
 	intro: any
 	modules: Partial<{
 		subModules: Array<
+			| ImageSubModuleType
+			| Sanity.Icon
+			| RichtextSubModuleType
 			| CTAsSubModuleType
 			| CustomHTMLSubmoduleType
-			| Sanity.Icon
-			| ImageSubModuleType
-			| RichtextSubModuleType
 		>
 		colSpan: number
 	}>[]
@@ -76,6 +76,31 @@ export default function CreativeModule({
 						>
 							{subModules?.map((subModule, ii) => {
 								switch (subModule._type) {
+									case 'image':
+										return (
+											<ImageSubModule
+												module={subModule}
+												width={width * colSpan}
+												key={ii}
+											/>
+										)
+
+									case 'icon':
+										return (
+											<figure
+												className={cn(
+													stegaClean(textAlign) === 'center' &&
+														'[&_img]:mx-auto',
+												)}
+												style={{ height: getPixels(subModule?.size) }}
+											>
+												<Icon icon={subModule} key={ii} />
+											</figure>
+										)
+
+									case 'richtext':
+										return <RichtextSubModule module={subModule} key={ii} />
+
 									case 'ctas':
 										return (
 											<CTAsSubModule
@@ -91,31 +116,8 @@ export default function CreativeModule({
 									case 'custom-html':
 										return <CustomHTMLSubmodule module={subModule} />
 
-									case 'icon':
-										return (
-											<figure style={{ height: getPixels(subModule?.size) }}>
-												<Icon
-													icon={subModule}
-													className={cn(
-														stegaClean(textAlign) === 'center' &&
-															'[&_img]:mx-auto',
-													)}
-													key={ii}
-												/>
-											</figure>
-										)
-
-									case 'image':
-										return (
-											<ImageSubModule
-												module={subModule}
-												width={width * colSpan}
-												key={ii}
-											/>
-										)
-
-									case 'richtext':
-										return <RichtextSubModule module={subModule} key={ii} />
+									default:
+										return null
 								}
 							})}
 						</article>

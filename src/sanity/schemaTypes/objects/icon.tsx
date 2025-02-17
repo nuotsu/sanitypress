@@ -2,6 +2,7 @@ import { defineField, defineType } from 'sanity'
 import TextInputWithPresets, {
 	getPreset,
 } from '@/sanity/ui/TextInputWithPresets'
+import { VscSymbolMisc } from 'react-icons/vsc'
 
 const sizePresets = ['2.5rem', '80px', '1.5lh']
 
@@ -16,6 +17,7 @@ const ic0nPresets =
 export default defineType({
 	name: 'icon',
 	title: 'Icon',
+	icon: VscSymbolMisc,
 	type: 'object',
 	options: {
 		columns: 2,
