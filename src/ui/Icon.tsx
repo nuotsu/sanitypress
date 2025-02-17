@@ -32,11 +32,11 @@ export default function Icon({
 export function getPixels(size?: string) {
 	if (!size) return undefined
 
-	if (size.endsWith('px')) {
+	if (size?.endsWith('px')) {
 		return parseFloat(size)
 	}
 
-	if (size.endsWith('em') || size.endsWith('lh')) {
+	if (size?.endsWith('em') || size?.endsWith('lh')) {
 		return parseFloat(size) * 16
 	}
 
