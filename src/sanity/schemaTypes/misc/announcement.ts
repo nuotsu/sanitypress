@@ -1,11 +1,11 @@
 import { defineField, defineType } from 'sanity'
-import { VscMegaphone, VscCalendar } from 'react-icons/vsc'
+import { VscPin, VscCalendar } from 'react-icons/vsc'
 import { getBlockText } from '@/sanity/lib/utils'
 
 export default defineType({
 	name: 'announcement',
 	title: 'Announcement',
-	icon: VscMegaphone,
+	icon: VscPin,
 	type: 'document',
 	fieldsets: [{ name: 'schedule', options: { columns: 2 } }],
 	fields: [

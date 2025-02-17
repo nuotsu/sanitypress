@@ -6,6 +6,7 @@ import {
 	VscEyeClosed,
 	VscSearch,
 	VscEdit,
+	VscMortarBoard,
 } from 'react-icons/vsc'
 
 export default defineType({
@@ -49,6 +50,7 @@ export default defineType({
 				(slug === '404' && VscQuestion) ||
 				(slug === 'search' && VscSearch) ||
 				(slug === 'blog' && VscEdit) ||
+				(slug.startsWith('docs') && VscMortarBoard) ||
 				(noindex && VscEyeClosed),
 		}),
 	},
