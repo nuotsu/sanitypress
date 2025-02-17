@@ -43,7 +43,7 @@ export default function FlagList({
 						key={key}
 					>
 						{icon && (
-							<figure style={{ height: getPixels(icon.size) }}>
+							<figure style={{ height: getPixels(icon?.size) }}>
 								<Icon icon={icon} />
 							</figure>
 						)}

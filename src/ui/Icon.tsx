@@ -30,7 +30,7 @@ export default function Icon({
 }
 
 export function getPixels(size?: string) {
-	if (!size) return undefined
+	if (!size || typeof size !== 'string') return undefined
 
 	if (size?.endsWith('px')) {
 		return parseFloat(size)
