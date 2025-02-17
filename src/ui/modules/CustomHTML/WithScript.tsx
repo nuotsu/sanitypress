@@ -10,7 +10,7 @@ export default function WithScript({
 	code,
 	className,
 	...props
-}: Partial<{ code: string } & Sanity.Module> & ComponentProps<'section'>) {
+}: Sanity.CustomHTML['html'] & Sanity.Module & ComponentProps<'section'>) {
 	if (!code) return null
 
 	const ref = useRef<HTMLElement>(null)

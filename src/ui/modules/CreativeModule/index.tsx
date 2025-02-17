@@ -1,15 +1,15 @@
+import moduleProps from '@/lib/moduleProps'
 import { PortableText, stegaClean } from 'next-sanity'
 import CTAsSubModule, { type CTAsSubModuleType } from './CTAsSubModule'
 import CustomHTMLSubmodule, {
 	type CustomHTMLSubmoduleType,
 } from './CustomHTMLSubmodule'
-import IconSubModule, { type IconSubModuleType } from './IconSubModule'
+import Icon, { getPixels } from '@/ui/Icon'
 import ImageSubModule, { type ImageSubModuleType } from './ImageSubModule'
 import RichtextSubModule, {
 	type RichtextSubModuleType,
 } from './RichtextSubModule'
 import { cn } from '@/lib/utils'
-import moduleProps from '@/lib/moduleProps'
 
 export default function CreativeModule({
 	intro,
@@ -23,11 +23,11 @@ export default function CreativeModule({
 	intro: any
 	modules: Partial<{
 		subModules: Array<
+			| ImageSubModuleType
+			| Sanity.Icon
+			| RichtextSubModuleType
 			| CTAsSubModuleType
 			| CustomHTMLSubmoduleType
-			| IconSubModuleType
-			| ImageSubModuleType
-			| RichtextSubModuleType
 		>
 		colSpan: number
 	}>[]
@@ -36,7 +36,7 @@ export default function CreativeModule({
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }>) {
-	const width = Math.round((1200 / (modules?.length || 1)) * 1.5)
+	const width = Math.round((1200 / (columns || modules?.length || 1)) * 1.5)
 
 	return (
 		<section {...moduleProps(props)}>
@@ -76,6 +76,31 @@ export default function CreativeModule({
 						>
 							{subModules?.map((subModule, ii) => {
 								switch (subModule._type) {
+									case 'image':
+										return (
+											<ImageSubModule
+												module={subModule}
+												width={width * colSpan}
+												key={ii}
+											/>
+										)
+
+									case 'icon':
+										return (
+											<figure
+												className={cn(
+													stegaClean(textAlign) === 'center' &&
+														'[&_img]:mx-auto',
+												)}
+												style={{ height: getPixels(subModule?.size) }}
+											>
+												<Icon icon={subModule} key={ii} />
+											</figure>
+										)
+
+									case 'richtext':
+										return <RichtextSubModule module={subModule} key={ii} />
+
 									case 'ctas':
 										return (
 											<CTAsSubModule
@@ -91,29 +116,8 @@ export default function CreativeModule({
 									case 'custom-html':
 										return <CustomHTMLSubmodule module={subModule} />
 
-									case 'icon':
-										return (
-											<IconSubModule
-												module={subModule}
-												className={cn(
-													stegaClean(textAlign) === 'center' &&
-														'[&_img]:mx-auto',
-												)}
-												key={ii}
-											/>
-										)
-
-									case 'image':
-										return (
-											<ImageSubModule
-												module={subModule}
-												width={width * colSpan}
-												key={ii}
-											/>
-										)
-
-									case 'richtext':
-										return <RichtextSubModule module={subModule} key={ii} />
+									default:
+										return null
 								}
 							})}
 						</article>

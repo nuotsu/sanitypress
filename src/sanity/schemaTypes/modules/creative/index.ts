@@ -1,8 +1,7 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
-import creativeCtas from './ctas.creative'
-import creativeIcon from './icon.creative'
 import creativeImage from './image.creative'
 import creativeRichtext from './richtext.creative'
+import creativeCtas from './ctas.creative'
 import {
 	textAlign,
 	alignItems,
@@ -43,10 +42,10 @@ export default defineType({
 							name: 'subModules',
 							type: 'array',
 							of: [
-								creativeCtas,
-								creativeIcon,
 								creativeImage,
+								{ type: 'icon' },
 								creativeRichtext,
+								creativeCtas,
 								{ type: 'custom-html' },
 							],
 						}),

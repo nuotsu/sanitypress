@@ -54,6 +54,12 @@ const reputation = defineType({
 			of: [
 				defineArrayMember({
 					type: 'image',
+					fields: [
+						defineField({
+							name: 'alt',
+							type: 'string',
+						}),
+					],
 					options: {
 						hotspot: true,
 					},

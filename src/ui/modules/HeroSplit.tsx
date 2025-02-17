@@ -1,35 +1,38 @@
 import { PortableText } from 'next-sanity'
 import Pretitle from '@/ui/Pretitle'
+import CTAList from '@/ui/CTAList'
+import Asset from './Asset'
 import CustomHTML from './CustomHTML'
 import Reputation from '@/ui/Reputation'
-import CTAList from '@/ui/CTAList'
-import Img from '@/ui/Img'
 import { cn } from '@/lib/utils'
 
 export default function HeroSplit({
 	pretitle,
 	content,
 	ctas,
-	image,
+	assets,
+	assetOnRight,
+	assetBelowContent,
 }: Partial<{
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
-	image: Sanity.Image & {
-		onRight?: boolean
-		onBottom?: boolean
-	}
+	assets: Array<Sanity.Img | Sanity.Code | Sanity.CustomHTML>
+	assetOnRight: boolean
+	assetBelowContent: boolean
 }>) {
+	const asset = assets?.[0]
+
 	return (
 		<section className="section grid items-center gap-8 md:grid-cols-2 md:gap-x-12">
 			<figure
 				className={cn(
-					'max-md:full-bleed',
-					image?.onRight && 'md:order-1',
-					image?.onBottom && 'max-md:order-last',
+					asset?._type === 'img' && 'max-md:full-bleed',
+					assetOnRight && 'md:order-1',
+					assetBelowContent && 'max-md:order-last',
 				)}
 			>
-				<Img className="w-full" image={image} width={1200} />
+				<Asset asset={asset} />
 			</figure>
 
 			<div className="richtext headings:text-balance mx-auto w-full max-w-lg">

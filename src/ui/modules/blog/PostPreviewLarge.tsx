@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import resolveUrl from '@/lib/resolveUrl'
-import Img from '@/ui/Img'
+import { Img } from '@/ui/Img'
 import Date from '@/ui/Date'
 import Categories from './Categories'
 import Authors from './Authors'

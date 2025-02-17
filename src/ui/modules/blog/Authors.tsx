@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Img from '@/ui/Img'
+import { Img } from '@/ui/Img'
 import { GoPerson } from 'react-icons/go'
 import { cn } from '@/lib/utils'
 

@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 import { TfiLayoutMediaLeft } from 'react-icons/tfi'
 import { reputationBlock } from '../misc/reputation'
 import { getBlockText } from '@/sanity/lib/utils'
@@ -8,7 +8,7 @@ export default defineType({
 	title: 'Hero (split)',
 	icon: TfiLayoutMediaLeft,
 	type: 'object',
-	groups: [{ name: 'content', default: true }, { name: 'image' }],
+	groups: [{ name: 'content', default: true }, { name: 'asset' }],
 	fields: [
 		defineField({
 			name: 'pretitle',
@@ -29,45 +29,42 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
-			name: 'image',
-			type: 'image',
-			options: {
-				hotspot: true,
-			},
-			fields: [
-				defineField({
-					name: 'alt',
-					type: 'string',
-				}),
-				defineField({
-					name: 'onRight',
-					type: 'boolean',
-					description: 'Display to the right of the content on desktop',
-					initialValue: false,
-				}),
-				defineField({
-					name: 'onBottom',
-					type: 'boolean',
-					description: 'Display below the content on mobile',
-					initialValue: false,
-				}),
-				defineField({
-					name: 'loading',
-					type: 'string',
+			name: 'assets',
+			title: 'Assets',
+			type: 'array',
+			of: [
+				{ type: 'img' },
+				defineArrayMember({
+					title: 'Code block',
+					type: 'code',
 					options: {
-						list: ['lazy', 'eager'],
-						layout: 'radio',
+						withFilename: true,
 					},
-					initialValue: 'lazy',
 				}),
+				{ type: 'custom-html' },
 			],
-			group: 'image',
+			validation: (Rule) => Rule.max(1),
+			group: 'asset',
+		}),
+		defineField({
+			name: 'assetOnRight',
+			type: 'boolean',
+			description: 'Display the asset to the right of the content on desktop',
+			initialValue: false,
+			group: 'asset',
+		}),
+		defineField({
+			name: 'assetBelowContent',
+			type: 'boolean',
+			description: 'Display the asset below the content on mobile',
+			initialValue: false,
+			group: 'asset',
 		}),
 	],
 	preview: {
 		select: {
 			content: 'content',
-			media: 'image.asset',
+			media: 'assets.0.image',
 		},
 		prepare: ({ content, media }) => ({
 			title: getBlockText(content),

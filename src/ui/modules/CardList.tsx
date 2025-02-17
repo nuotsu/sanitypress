@@ -1,7 +1,7 @@
 import moduleProps from '@/lib/moduleProps'
 import Pretitle from '@/ui/Pretitle'
 import { PortableText, stegaClean } from 'next-sanity'
-import Img from '@/ui/Img'
+import { Img } from '@/ui/Img'
 import CTAList from '@/ui/CTAList'
 import { cn } from '@/lib/utils'
 

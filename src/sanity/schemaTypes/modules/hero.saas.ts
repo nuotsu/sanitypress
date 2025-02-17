@@ -10,7 +10,7 @@ export default defineType({
 	type: 'object',
 	groups: [
 		{ name: 'content', default: true },
-		{ name: 'image' },
+		{ name: 'asset' },
 		{ name: 'options' },
 	],
 	fields: [
@@ -49,38 +49,24 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
-			name: 'image',
-			type: 'image',
-			options: {
-				hotspot: true,
-			},
-			group: 'image',
-			fields: [
-				defineField({
-					name: 'alt',
-					type: 'string',
-				}),
-				defineField({
-					name: 'faded',
-					type: 'boolean',
-					initialValue: true,
-				}),
-				defineField({
-					name: 'loading',
-					type: 'string',
-					options: {
-						list: ['lazy', 'eager'],
-						layout: 'radio',
-					},
-					initialValue: 'lazy',
-				}),
-			],
+			name: 'assets',
+			title: 'Assets',
+			type: 'array',
+			of: [{ type: 'img' }],
+			validation: (Rule) => Rule.max(1),
+			group: 'asset',
+		}),
+		defineField({
+			name: 'assetFaded',
+			type: 'boolean',
+			initialValue: true,
+			group: 'asset',
 		}),
 	],
 	preview: {
 		select: {
 			content: 'content',
-			media: 'image',
+			media: 'assets.0.image',
 		},
 		prepare: ({ content, media }) => ({
 			title: getBlockText(content),

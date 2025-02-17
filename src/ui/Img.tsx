@@ -1,19 +1,36 @@
 import { preload } from 'react-dom'
 import { getImageDimensions } from '@sanity/asset-utils'
 import { urlFor } from '@/sanity/lib/image'
-import Image, { type ImageProps } from 'next/image'
+import NextImage, { type ImageProps } from 'next/image'
 import type { ComponentProps } from 'react'
 import { stegaClean } from 'next-sanity'
 
-export default function Img({
+type ImgProps = { alt?: string } & Omit<ImageProps, 'src' | 'alt'>
+
+export function ResponsiveImg({
+	img,
+	pictureProps,
+	...props
+}: {
+	img?: Sanity.Img
+	pictureProps?: ComponentProps<'picture'>
+} & ImgProps) {
+	if (!img) return null
+
+	return (
+		<picture {...pictureProps}>
+			{img.responsive?.map((r, key) => <Source {...r} key={key} />)}
+			<Img image={img.image} {...props} />
+		</picture>
+	)
+}
+
+export function Img({
 	image,
 	width: w,
 	height: h,
 	...props
-}: {
-	image?: Sanity.Image
-	alt?: string
-} & Omit<ImageProps, 'src' | 'alt'>) {
+}: { image?: Sanity.Image } & ImgProps) {
 	if (!image?.asset) return null
 
 	const { src, width, height } = generateSrc(image, w, h)
@@ -23,7 +40,7 @@ export default function Img({
 	}
 
 	return (
-		<Image
+		<NextImage
 			src={src}
 			width={width}
 			height={height}
@@ -42,7 +59,7 @@ export function Source({
 	...props
 }: {
 	image?: Sanity.Image
-} & Omit<ComponentProps<'source'>, ''>) {
+} & ComponentProps<'source'>) {
 	if (!image?.asset) return null
 
 	const { src, width, height } = generateSrc(image, w, h)

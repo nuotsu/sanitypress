@@ -32,7 +32,7 @@ export default defineType({
 					const [checked, setChecked] = useState(false)
 
 					return (
-						<Flex gap={1} align="center">
+						<Flex align="center" gap={1}>
 							<Text muted>#</Text>
 
 							<Box flex={1}>

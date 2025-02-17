@@ -117,11 +117,44 @@ declare global {
 
 		// objects
 
+		interface Code {
+			readonly _type: 'code'
+			language: string
+			code: string
+			filename?: string
+			highlightedLines?: number[]
+		}
+
 		interface CTA {
 			readonly _type?: 'cta'
 			_key?: string
 			link?: Link
 			style?: string
+		}
+
+		interface CustomHTML extends Module<'custom-html'> {
+			className?: string
+			html?: {
+				code: string
+			}
+		}
+
+		interface Icon {
+			readonly _type: 'icon'
+			image?: Image
+			ic0n?: string
+			size?: string
+		}
+
+		interface Img {
+			readonly _type: 'img'
+			image: Image
+			responsive?: {
+				image: Image
+				media: string
+			}[]
+			alt?: string
+			loading?: 'lazy' | 'eager'
 		}
 
 		interface Image extends SanityAssetDocument {

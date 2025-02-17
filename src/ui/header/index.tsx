@@ -1,7 +1,7 @@
 import { getSite } from '@/sanity/lib/queries'
 import Wrapper from './Wrapper'
 import Link from 'next/link'
-import Img from '@/ui/Img'
+import { Img } from '@/ui/Img'
 import Navigation from './Navigation'
 import CTAList from '@/ui/CTAList'
 import Toggle from './Toggle'

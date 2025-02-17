@@ -1,6 +1,6 @@
 {
 	"name": "sanitypress",
-	"version": "6.2.15",
+	"version": "6.3.6",
 	"description": "An impressive Next.js + Sanity.io starter template",
 	"author": "nuotsu <mitchell@nuotsu.dev> (https://nuotsu.dev)",
 	"license": "ISC",
@@ -26,7 +26,7 @@
 		"clsx": "^2.1.1",
 		"feed": "^4.2.2",
 		"next": "^15.1.7",
-		"next-sanity": "^9.8.55",
+		"next-sanity": "^9.8.57",
 		"next-sanity-image": "^6.1.1",
 		"nuqs": "^2.3.2",
 		"octokit": "^4.1.1",
@@ -43,12 +43,12 @@
 	},
 	"devDependencies": {
 		"@sanity/eslint-config-studio": "^5.0.1",
-		"@types/node": "^22.13.1",
+		"@types/node": "^22.13.4",
 		"@types/react": "^19.0.8",
 		"@types/react-dom": "^19.0.3",
 		"eslint": "^9.20.1",
 		"postcss": "^8.5.2",
-		"prettier": "^3.5.0",
+		"prettier": "^3.5.1",
 		"prettier-plugin-tailwindcss": "^0.6.11",
 		"tailwindcss": "^4.0.6",
 		"typescript": "^5.7.3"
