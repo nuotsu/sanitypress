@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { VscInspect } from 'react-icons/vsc'
+import resolveSlug from '@/sanity/lib/resolveSlug'
 
 export default defineType({
 	name: 'cta',
@@ -27,14 +28,15 @@ export default defineType({
 	preview: {
 		select: {
 			label: 'link.label',
+			_type: 'link.internal._type',
 			pageTitle: 'link.internal.title',
 			internal: 'link.internal.metadata.slug.current',
+			params: 'link.params',
 			external: 'link.external',
 		},
-		prepare: ({ label, pageTitle, internal, external }) => ({
+		prepare: ({ label, pageTitle, ...props }) => ({
 			title: label || pageTitle,
-			subtitle:
-				external || (internal && (internal === 'index' ? '/' : `/${internal}`)),
+			subtitle: resolveSlug(props),
 		}),
 	},
 })
