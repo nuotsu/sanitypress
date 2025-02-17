@@ -104,14 +104,6 @@ NEXT_PUBLIC_GITHUB_TOKEN="" # recommended to add to display GitHub stars & forks
 
 Adjust frontend styles, edit/add Sanity schema and modules, and [more](https://sanitypress.dev/blog/the-developers-guide-to-customizing-sanitypress).
 
-## Resources & Dependencies
-
-- [_The Styled Heart_](https://sanitypress.dev/blog) — SanityPress Blog
-- [Visual Editing with Next.js and Sanity](https://www.sanity.io/guides/nextjs-app-router-live-preview)
-- [`next-sanity`](https://www.sanity.io/plugins/next-sanity) — Sanity toolkit for Next.js
-- [nuqs](https://nuqs.47ng.com/) — Type-safe search params state manager for React
-- [zustand](https://github.com/pmndrs/zustand) — State management for React
-
 ## How to Support
 
 - [🧡 Donations](https://sanitypress.dev/how-to-support)
