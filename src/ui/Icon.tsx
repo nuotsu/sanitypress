@@ -1,4 +1,5 @@
 import { Img } from '@/ui/Img'
+import { stegaClean } from 'next-sanity'
 import type { ComponentProps } from 'react'
 
 export default function Icon({
@@ -11,7 +12,7 @@ export default function Icon({
 
 	return icon.ic0n ? (
 		<img
-			src={`https://ic0n.dev/${icon.ic0n}`}
+			src={`https://ic0n.dev/${stegaClean(icon.ic0n)}`}
 			width={px}
 			height={px}
 			alt=""
@@ -20,24 +21,26 @@ export default function Icon({
 		/>
 	) : (
 		<Img
-			className="aspect-square object-contain"
+			className="aspect-square w-auto object-contain"
 			image={icon?.image}
-			style={{ maxHeight: icon?.size ?? '40px' }}
-			height={px}
+			style={{ maxHeight: stegaClean(icon?.size) ?? '40px' }}
 			{...props}
+			height={Number(px) * 2}
 		/>
 	)
 }
 
 export function getPixels(size?: string) {
-	if (!size || typeof size !== 'string') return undefined
+	const s = stegaClean(size)
 
-	if (size?.endsWith('px')) {
-		return parseFloat(size)
+	if (!s || typeof s !== 'string') return undefined
+
+	if (s.endsWith('px')) {
+		return parseFloat(s)
 	}
 
-	if (size?.endsWith('em') || size?.endsWith('lh')) {
-		return parseFloat(size) * 16
+	if (s.endsWith('em') || s.endsWith('lh')) {
+		return parseFloat(s) * 16
 	}
 
 	return undefined
