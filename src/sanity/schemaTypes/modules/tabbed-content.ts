@@ -24,7 +24,7 @@ export default defineType({
 			of: [
 				defineArrayMember({
 					type: 'object',
-					groups: [{ name: 'content', default: true }, { name: 'image' }],
+					groups: [{ name: 'content', default: true }, { name: 'asset' }],
 					fields: [
 						defineField({
 							name: 'label',
@@ -50,51 +50,49 @@ export default defineType({
 							group: 'content',
 						}),
 						defineField({
-							name: 'image',
-							type: 'image',
-							options: {
-								hotspot: true,
-							},
-							group: 'image',
-							fields: [
-								defineField({
-									name: 'alt',
-									type: 'string',
-								}),
-								defineField({
-									name: 'onRight',
-									type: 'boolean',
-									description: 'Display to the right of the content on desktop',
-									initialValue: false,
-								}),
-								defineField({
-									name: 'onBottom',
-									type: 'boolean',
-									description: 'Display below the content on mobile',
-									initialValue: false,
-								}),
-								defineField({
-									name: 'loading',
-									type: 'string',
+							name: 'assets',
+							title: 'Assets',
+							type: 'array',
+							of: [
+								{ type: 'img' },
+								defineArrayMember({
+									title: 'Code block',
+									type: 'code',
 									options: {
-										list: ['lazy', 'eager'],
-										layout: 'radio',
+										withFilename: true,
 									},
-									initialValue: 'lazy',
 								}),
+								{ type: 'custom-html' },
 							],
+							validation: (Rule) => Rule.max(1),
+							group: 'asset',
+						}),
+						defineField({
+							name: 'assetOnRight',
+							type: 'boolean',
+							description:
+								'Display the asset to the right of the content on desktop',
+							initialValue: false,
+							group: 'asset',
+						}),
+						defineField({
+							name: 'assetBelowContent',
+							type: 'boolean',
+							description: 'Display the asset below the content on mobile',
+							initialValue: false,
+							group: 'asset',
 						}),
 					],
 					preview: {
 						select: {
 							content: 'content',
 							label: 'label',
-							image: 'image',
+							asset: 'assets.0.image',
 						},
-						prepare: ({ content, label, image }) => ({
+						prepare: ({ content, label, asset }) => ({
 							title: getBlockText(content),
 							subtitle: label,
-							media: image,
+							media: asset,
 						}),
 					},
 				}),

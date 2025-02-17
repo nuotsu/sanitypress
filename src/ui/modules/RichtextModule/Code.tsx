@@ -31,6 +31,10 @@ export default async function Code({
 			})),
 	})
 
+	const [path, filename] = value.filename?.includes('/')
+		? value.filename.split(/(.*)\/(.*)$/).filter(Boolean)
+		: [, value.filename]
+
 	return (
 		<article
 			className={cn('group bg-ink/5 relative rounded', className)}
@@ -39,7 +43,8 @@ export default async function Code({
 			{value.filename && (
 				<div className="text-canvas sticky top-0 z-1 -mb-1 rounded-t bg-[#323232] p-1 pb-0 font-mono text-xs">
 					<span className="inline-block rounded-t border-b border-blue-400 bg-[#1E1E1E] px-3 py-2">
-						📁 {value.filename}
+						{path && <span className="text-canvas/50">{path}/</span>}
+						<span>{filename}</span>
 					</span>
 				</div>
 			)}

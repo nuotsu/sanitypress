@@ -1,8 +1,7 @@
 import { PortableText } from 'next-sanity'
 import Pretitle from '@/ui/Pretitle'
 import CTAList from '@/ui/CTAList'
-import { ResponsiveImg } from '@/ui/Img'
-import Code from './RichtextModule/Code'
+import Asset from './Asset'
 import CustomHTML from './CustomHTML'
 import Reputation from '@/ui/Reputation'
 import { cn } from '@/lib/utils'
@@ -33,28 +32,7 @@ export default function HeroSplit({
 					assetBelowContent && 'max-md:order-last',
 				)}
 			>
-				{(() => {
-					switch (asset?._type) {
-						case 'img':
-							return (
-								<ResponsiveImg img={asset} className="w-full" width={1200} />
-							)
-
-						case 'code':
-							return (
-								<Code
-									className="richtext [&_.inner]:max-h-[20lh] [&_.inner]:overflow-auto"
-									value={asset}
-								/>
-							)
-
-						case 'custom-html':
-							return <CustomHTML {...asset} />
-
-						default:
-							return null
-					}
-				})()}
+				<Asset asset={asset} />
 			</figure>
 
 			<div className="richtext headings:text-balance mx-auto w-full max-w-lg">
