@@ -61,7 +61,11 @@ export default function TextInputWithPresets({
 			</Flex>
 
 			{presets && (
-				<Flex gap={1} paddingLeft={prefix ? prefix.length : undefined}>
+				<Flex
+					gap={1}
+					style={{ marginLeft: prefix ? prefix.length : undefined }}
+					wrap="wrap"
+				>
 					{presets?.map((preset) => {
 						const presetValue = getPreset(preset)
 						const label = getPreset(preset, 'label')

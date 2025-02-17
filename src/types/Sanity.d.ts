@@ -139,6 +139,13 @@ declare global {
 			}
 		}
 
+		interface Icon {
+			readonly _type: 'icon'
+			image?: Image
+			ic0n?: string
+			size?: string
+		}
+
 		interface Img {
 			readonly _type: 'img'
 			image: Image

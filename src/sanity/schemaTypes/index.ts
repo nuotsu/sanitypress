@@ -19,6 +19,7 @@ import testimonial from './misc/testimonial'
 
 // objects
 import cta from './objects/cta'
+import icon from './objects/icon'
 import img from './objects/img'
 import link from './objects/link'
 import linkList from './objects/link.list'
@@ -71,6 +72,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 
 	// objects
 	cta,
+	icon,
 	img,
 	link,
 	linkList,

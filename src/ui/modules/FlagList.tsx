@@ -1,22 +1,20 @@
 import Pretitle from '@/ui/Pretitle'
 import { PortableText, stegaClean } from 'next-sanity'
-import { Img } from '@/ui/Img'
+import Icon, { getPixels } from '@/ui/Icon'
 import { cn } from '@/lib/utils'
 
 export default function FlagList({
 	pretitle,
 	intro,
 	items,
-	iconSize = 40,
 	iconPosition,
 }: Partial<{
 	pretitle: string
 	intro: any
 	items: {
-		icon: Sanity.Image
+		icon: Sanity.Icon
 		content: any
 	}[]
-	iconSize: number
 	iconPosition: 'top' | 'left'
 }>) {
 	return (
@@ -28,34 +26,30 @@ export default function FlagList({
 				</header>
 			)}
 
-			<div
-				className="grid items-start gap-x-8 gap-y-6 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]"
-				style={
-					{
-						'--size': `${iconSize}px`,
-					} as React.CSSProperties
-				}
-			>
-				{items?.map((item, key) => (
+			<div className="grid items-start gap-x-8 gap-y-6 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">
+				{items?.map(({ icon, content }, key) => (
 					<article
 						className={cn(
 							'grid gap-4',
 							stegaClean(iconPosition) === 'left' &&
+								icon &&
 								'grid-cols-[var(--size)_1fr]',
 						)}
+						style={
+							{
+								'--size': icon?.size ?? '40px',
+							} as React.CSSProperties
+						}
 						key={key}
 					>
-						<figure>
-							<Img
-								className="aspect-square object-contain"
-								image={item.icon}
-								height={iconSize * 2}
-								style={{ maxHeight: iconSize }}
-							/>
-						</figure>
+						{icon && (
+							<figure style={{ height: getPixels(icon.size) }}>
+								<Icon icon={icon} />
+							</figure>
+						)}
 
 						<div className="richtext">
-							<PortableText value={item.content} />
+							<PortableText value={content} />
 						</div>
 					</article>
 				))}

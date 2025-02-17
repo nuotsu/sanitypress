@@ -30,10 +30,7 @@ export default defineType({
 					fields: [
 						defineField({
 							name: 'icon',
-							type: 'image',
-							options: {
-								hotspot: true,
-							},
+							type: 'icon',
 						}),
 						defineField({
 							name: 'content',
@@ -44,23 +41,17 @@ export default defineType({
 					preview: {
 						select: {
 							content: 'content',
-							media: 'icon',
+							ic0n: 'icon.ic0n',
+							image: 'icon.image',
 						},
-						prepare: ({ content, media }) => ({
+						prepare: ({ content, image, ic0n }) => ({
 							title: getBlockText(content),
-							media,
+							media: ic0n ? <img src={`https://ic0n.dev/${ic0n}`} /> : image,
 						}),
 					},
 				}),
 			],
 			group: 'content',
-		}),
-		defineField({
-			name: 'iconSize',
-			type: 'number',
-			validation: (Rule) => Rule.min(0).max(100),
-			initialValue: 40,
-			group: 'options',
 		}),
 		defineField({
 			name: 'iconPosition',

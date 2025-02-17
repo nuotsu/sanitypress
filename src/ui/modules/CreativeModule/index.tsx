@@ -4,7 +4,7 @@ import CTAsSubModule, { type CTAsSubModuleType } from './CTAsSubModule'
 import CustomHTMLSubmodule, {
 	type CustomHTMLSubmoduleType,
 } from './CustomHTMLSubmodule'
-import IconSubModule, { type IconSubModuleType } from './IconSubModule'
+import Icon, { getPixels } from '@/ui/Icon'
 import ImageSubModule, { type ImageSubModuleType } from './ImageSubModule'
 import RichtextSubModule, {
 	type RichtextSubModuleType,
@@ -25,7 +25,7 @@ export default function CreativeModule({
 		subModules: Array<
 			| CTAsSubModuleType
 			| CustomHTMLSubmoduleType
-			| IconSubModuleType
+			| Sanity.Icon
 			| ImageSubModuleType
 			| RichtextSubModuleType
 		>
@@ -93,14 +93,16 @@ export default function CreativeModule({
 
 									case 'icon':
 										return (
-											<IconSubModule
-												module={subModule}
-												className={cn(
-													stegaClean(textAlign) === 'center' &&
-														'[&_img]:mx-auto',
-												)}
-												key={ii}
-											/>
+											<figure style={{ height: getPixels(subModule?.size) }}>
+												<Icon
+													icon={subModule}
+													className={cn(
+														stegaClean(textAlign) === 'center' &&
+															'[&_img]:mx-auto',
+													)}
+													key={ii}
+												/>
+											</figure>
 										)
 
 									case 'image':
