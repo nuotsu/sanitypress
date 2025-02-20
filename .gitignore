@@ -8,6 +8,8 @@
 
 # testing
 /coverage
+.yalc/
+yalc.lock
 
 # next.js
 /.next/
