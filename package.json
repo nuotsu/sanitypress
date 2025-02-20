@@ -53,5 +53,8 @@
 		"prettier-plugin-tailwindcss": "^0.6.11",
 		"tailwindcss": "^4.0.7",
 		"typescript": "^5.7.3"
+	},
+	"optionalDependencies": {
+		"@tailwindcss/oxide-linux-x64-gnu": "^4.0.7"
 	}
 }
