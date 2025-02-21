@@ -13,7 +13,6 @@ import processMetadata from '@/lib/processMetadata'
 export default async function Page({ params }: Props) {
 	const page = await getPage(await params)
 	if (!page) notFound()
-	console.log({ page })
 	return <Modules modules={page.modules} page={page} />
 }
 
