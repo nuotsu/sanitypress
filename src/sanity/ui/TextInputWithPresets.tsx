@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, type FormEvent } from 'react'
+import { useCallback, useEffect, useRef, useState, type FormEvent } from 'react'
 import { Badge, Card, Flex, Stack, Text, TextInput } from '@sanity/ui'
 import type { StringInputProps, StringSchemaType } from 'sanity'
 
@@ -37,11 +37,19 @@ export default function TextInputWithPresets({
 		[elementProps.onChange],
 	)
 
+	const [prefixWidth, setPrefixWidth] = useState(0)
+	const prefixRef = useRef<HTMLDivElement>(null)
+
+	useEffect(() => {
+		if (!prefixRef.current) return
+		setPrefixWidth(prefixRef.current.offsetWidth + 4)
+	}, [])
+
 	return (
 		<Stack space={2}>
 			<Flex align="center" gap={1}>
 				{prefix && (
-					<Text size={1} muted>
+					<Text ref={prefixRef} size={1} muted>
 						{prefix}
 					</Text>
 				)}
@@ -61,11 +69,7 @@ export default function TextInputWithPresets({
 			</Flex>
 
 			{presets && (
-				<Flex
-					gap={1}
-					style={{ marginLeft: prefix ? prefix.length : undefined }}
-					wrap="wrap"
-				>
+				<Flex gap={1} style={{ marginLeft: prefixWidth }} wrap="wrap">
 					{presets?.map((preset) => {
 						const presetValue = getPreset(preset)
 						const label = getPreset(preset, 'label')

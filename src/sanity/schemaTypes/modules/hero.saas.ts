@@ -58,6 +58,8 @@ export default defineType({
 		}),
 		defineField({
 			name: 'assetFaded',
+			title: 'Faded',
+			description: 'Add bottom fade to the asset',
 			type: 'boolean',
 			initialValue: true,
 			group: 'asset',
