@@ -13,10 +13,7 @@ export default defineType({
 	name: 'page',
 	title: 'Page',
 	type: 'document',
-	groups: [
-		{ name: 'content', default: true },
-		{ name: 'seo', title: 'SEO' },
-	],
+	groups: [{ name: 'content', default: true }, { name: 'metadata' }],
 	fields: [
 		defineField({
 			name: 'title',
@@ -29,21 +26,35 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
+			name: 'parent',
+			type: 'array',
+			of: [{ type: 'reference', to: [{ type: 'page' }] }],
+			group: 'metadata',
+		}),
+		defineField({
 			name: 'metadata',
 			type: 'metadata',
-			group: 'seo',
+			group: 'metadata',
 		}),
 	],
 	preview: {
 		select: {
 			title: 'title',
+			parent1: 'parent.0.metadata.slug.current',
+			parent2: 'parent.1.metadata.slug.current',
+			parent3: 'parent.2.metadata.slug.current',
 			slug: 'metadata.slug.current',
 			media: 'metadata.image',
 			noindex: 'metadata.noIndex',
 		},
-		prepare: ({ title, slug, media, noindex }) => ({
+		prepare: ({ title, parent1, parent2, parent3, slug, media, noindex }) => ({
 			title,
-			subtitle: slug && (slug === 'index' ? '/' : `/${slug}`),
+			subtitle: [
+				parent1 && `/${[parent1, parent2, parent3].filter(Boolean).join('/')}`,
+				slug && (slug === 'index' ? '/' : `/${slug}`),
+			]
+				.filter(Boolean)
+				.join(''),
 			media:
 				media ||
 				(slug === 'index' && VscHome) ||

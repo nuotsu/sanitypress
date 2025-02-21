@@ -36,6 +36,7 @@ declare global {
 		interface Page extends PageBase {
 			readonly _type: 'page'
 			modules?: Module[]
+			parent?: Page[]
 		}
 
 		interface GlobalModule extends SanityDocument {

@@ -2,6 +2,7 @@
 
 import { defineLocations, presentationTool } from 'sanity/presentation'
 import { groq } from 'next-sanity'
+import { SLUG_QUERY } from './lib/queries'
 
 export const presentation = presentationTool({
 	name: 'editor',
@@ -19,7 +20,10 @@ export const presentation = presentationTool({
 			},
 			{
 				route: '/:slug',
-				filter: groq`_type == 'page' && metadata.slug.current == $slug`,
+				filter: groq`
+					_type == 'page' &&
+					${SLUG_QUERY} == $slug
+				`,
 			},
 			{
 				route: '/blog/:slug',
@@ -39,6 +43,9 @@ export const presentation = presentationTool({
 			page: defineLocations({
 				select: {
 					title: 'title',
+					parent1: 'parent.0.metadata.slug.current',
+					parent2: 'parent.1.metadata.slug.current',
+					parent3: 'parent.2.metadata.slug.current',
 					metaTitle: 'metadata.title',
 					slug: 'metadata.slug.current',
 				},
@@ -46,11 +53,13 @@ export const presentation = presentationTool({
 					locations: [
 						{
 							title: doc?.title || doc?.metaTitle || 'Untitled',
-							href: doc?.slug
-								? doc.slug !== 'index'
-									? `/${doc.slug}`
-									: '/'
-								: '/',
+							href: [
+								doc?.parent1 &&
+									`/${[doc.parent1, doc.parent2, doc.parent3].filter(Boolean).join('/')}`,
+								doc?.slug ? (doc.slug !== 'index' ? `/${doc.slug}` : '/') : '/',
+							]
+								.filter(Boolean)
+								.join(''),
 						},
 					],
 				}),

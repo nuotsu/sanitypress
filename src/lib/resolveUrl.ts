@@ -17,7 +17,16 @@ export default function resolveUrl(
 	return [
 		base && process.env.NEXT_PUBLIC_BASE_URL,
 		segment,
-		path,
+		page?.parent
+			? [
+					...(page.parent as Sanity.Page[]).map(
+						(p) => p?.metadata?.slug?.current,
+					),
+					path,
+				]
+					.filter(Boolean)
+					.join('/')
+			: path,
 		stegaClean(params),
 	]
 		.filter(Boolean)
