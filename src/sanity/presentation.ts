@@ -2,7 +2,6 @@
 
 import { defineLocations, presentationTool } from 'sanity/presentation'
 import { groq } from 'next-sanity'
-import { SLUG_QUERY } from './lib/queries'
 
 export const presentation = presentationTool({
 	name: 'editor',
@@ -22,7 +21,7 @@ export const presentation = presentationTool({
 				route: '/:slug',
 				filter: groq`
 					_type == 'page' &&
-					${SLUG_QUERY} == $slug
+					array::join([...parent[]->metadata.slug.current, metadata.slug.current], '/') == $slug
 				`,
 			},
 			{
