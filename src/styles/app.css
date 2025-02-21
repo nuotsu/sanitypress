@@ -50,6 +50,29 @@
 		scroll-behavior: smooth;
 	}
 
+	@supports (interpolate-size: allow-keywords) {
+		:root {
+			interpolate-size: allow-keywords;
+		}
+
+		:open::details-content {
+			height: auto;
+		}
+	}
+
+	details {
+		&::details-content {
+			overflow: clip;
+			transition-duration: var(--default-transition-duration);
+			transition-property: content-visibility, block-size;
+			transition-behavior: allow-discrete;
+		}
+
+		&:not(:open)::details-content {
+			block-size: 0;
+		}
+	}
+
 	summary,
 	label,
 	input[type='submit'],
@@ -347,7 +370,7 @@
 		display: none;
 	}
 
-	&[open] summary::after {
+	&:open summary::after {
 		content: '-';
 	}
 }
