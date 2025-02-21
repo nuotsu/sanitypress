@@ -28,12 +28,12 @@ export default function TestimonialList({
 
 			<div
 				className={cn(
-					'gap-4 max-md:px-4',
+					'gap-4',
 					stegaClean(layout) === 'carousel'
-						? 'carousel max-xl:full-bleed md:overflow-fade pb-4 md:gap-8 md:before:m-auto md:after:m-auto'
-						: 'grid md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]',
+						? 'carousel max-xl:full-bleed md:overflow-fade pb-4 max-md:px-4 md:gap-8 md:before:m-auto md:after:m-auto'
+						: 'grid sm:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]',
 					stegaClean(layoutMobile) === 'carousel' &&
-						'max-md:carousel max-md:full-bleed max-md:pb-4',
+						'max-md:carousel max-md:full-bleed max-md:px-4 max-md:pb-4',
 				)}
 			>
 				{testimonials?.map(
