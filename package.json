@@ -1,6 +1,6 @@
 {
 	"name": "sanitypress",
-	"version": "6.3.13",
+	"version": "6.3.14",
 	"description": "An impressive Next.js + Sanity.io starter template",
 	"author": "nuotsu <mitchell@nuotsu.dev> (https://nuotsu.dev)",
 	"license": "ISC",
@@ -20,7 +20,7 @@
 		"@sanity/image-url": "^1.1.0",
 		"@sanity/preview-url-secret": "^2.1.4",
 		"@sanity/vision": "^3.76.3",
-		"@tailwindcss/postcss": "^4.0.7",
+		"@tailwindcss/postcss": "^4.0.8",
 		"@vercel/analytics": "^1.5.0",
 		"@vercel/speed-insights": "^1.2.0",
 		"clsx": "^2.1.1",
@@ -44,18 +44,14 @@
 	},
 	"devDependencies": {
 		"@sanity/eslint-config-studio": "^5.0.1",
-		"@types/node": "^22.13.4",
+		"@types/node": "^22.13.5",
 		"@types/react": "^19.0.10",
 		"@types/react-dom": "^19.0.4",
-		"eslint": "^9.20.1",
+		"eslint": "^9.21.0",
 		"postcss": "^8.5.3",
 		"prettier": "^3.5.1",
 		"prettier-plugin-tailwindcss": "^0.6.11",
-		"tailwindcss": "^4.0.7",
+		"tailwindcss": "^4.0.8",
 		"typescript": "^5.7.3"
-	},
-	"optionalDependencies": {
-		"@tailwindcss/oxide-linux-x64-gnu": "^4.0.7",
-		"lightningcss-linux-x64-gnu": "^1.29.1"
 	}
 }
