@@ -46,8 +46,8 @@ export default defineType({
 			before: 'before',
 			after: 'after',
 		},
-		prepare: ({ path, before = [], after = [] }) => ({
-			title: count([...before, ...after], 'module'),
+		prepare: ({ path, before, after }) => ({
+			title: count([...(before ?? []), ...(after ?? [])], 'module'),
 			subtitle: path === '*' ? 'All pages' : path && `/${path}*`,
 		}),
 	},

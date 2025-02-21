@@ -55,7 +55,7 @@ export const presentation = presentationTool({
 							href: [
 								doc?.parent1 &&
 									`/${[doc.parent1, doc.parent2, doc.parent3].filter(Boolean).join('/')}`,
-								doc?.slug ? (doc.slug !== 'index' ? `/${doc.slug}` : '/') : '/',
+								doc?.slug ? (doc.slug === 'index' ? '/' : `/${doc.slug}`) : '/',
 							]
 								.filter(Boolean)
 								.join(''),
