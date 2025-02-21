@@ -1,21 +1,31 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState, type FormEvent } from 'react'
+import {
+	useCallback,
+	useEffect,
+	useRef,
+	useState,
+	type ComponentType,
+	type FormEvent,
+} from 'react'
 import { Badge, Card, Flex, Stack, Text, TextInput } from '@sanity/ui'
 import type { StringInputProps, StringSchemaType } from 'sanity'
 
-export type Preset =
-	| string
+export type Preset<T = string> =
+	| T
 	| {
-			label: string
-			value: string
+			title?: string
+			value: T
+			icon?: ComponentType
 	  }
 
 export function getPreset(
 	preset: Preset,
-	property: 'label' | 'value' = 'value',
+	property: 'title' | 'value' = 'value',
 ) {
-	return typeof preset === 'string' ? preset : preset[property]
+	return typeof preset === 'string'
+		? preset
+		: (preset?.[property] ?? preset.value)
 }
 
 export default function TextInputWithPresets({
@@ -72,7 +82,7 @@ export default function TextInputWithPresets({
 				<Flex gap={1} style={{ marginLeft: prefixWidth }} wrap="wrap">
 					{presets?.map((preset) => {
 						const presetValue = getPreset(preset)
-						const label = getPreset(preset, 'label')
+						const label = getPreset(preset, 'title')
 
 						return (
 							<Badge
@@ -84,7 +94,10 @@ export default function TextInputWithPresets({
 								onClick={() => handleChange(presetValue)}
 								key={presetValue}
 							>
-								{label}
+								<Flex align="center" gap={1}>
+									{typeof preset === 'object' && preset.icon && <preset.icon />}
+									{label}
+								</Flex>
 							</Badge>
 						)
 					})}

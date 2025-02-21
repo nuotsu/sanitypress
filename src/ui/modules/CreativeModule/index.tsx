@@ -56,7 +56,7 @@ export default function CreativeModule({
 						{
 							'--col': columns || modules?.length,
 							textAlign: stegaClean(textAlign),
-							alignItems: visualSeparation ? 'stretch' : stegaClean(alignItems),
+							alignItems: stegaClean(alignItems),
 						} as React.CSSProperties
 					}
 				>
@@ -66,6 +66,8 @@ export default function CreativeModule({
 								'space-y-4',
 								colSpan > 1 && 'md:col-(--col-span,1)',
 								visualSeparation && 'bg-accent/3 rounded p-6',
+								stegaClean(alignItems) === 'stretch' &&
+									'flex flex-col justify-center',
 							)}
 							style={
 								{

@@ -7,9 +7,9 @@ import TextInputWithPresets, {
 import { count } from '@/lib/utils'
 
 const presets: Preset[] = [
-	{ label: 'Tablet and below', value: '(width < 48rem)' },
-	{ label: 'Mobile only', value: '(width < 24rem)' },
-	{ label: 'Dark mode', value: '(prefers-color-scheme: dark)' },
+	{ title: 'Tablet and below', value: '(width < 48rem)' },
+	{ title: 'Mobile only', value: '(width < 24rem)' },
+	{ title: 'Dark mode', value: '(prefers-color-scheme: dark)' },
 ]
 
 export default defineType({

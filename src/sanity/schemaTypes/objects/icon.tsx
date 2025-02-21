@@ -4,8 +4,6 @@ import TextInputWithPresets, {
 } from '@/sanity/ui/TextInputWithPresets'
 import { VscSymbolMisc } from 'react-icons/vsc'
 
-const sizePresets = ['2.5rem', '80px', '1.5lh']
-
 const ic0nPresets =
 	'ai,bi,bs,cg,ci,di,fa,fa6,fc,fi,gi,go,gr,hi,hi2,im,io,io5,lia,lu,md,pi,ri,rx,si,sl,tb,tfi,ti,vsc,wi'
 		.split(',')
@@ -13,6 +11,8 @@ const ic0nPresets =
 			label: p,
 			value: `${p}/`,
 		}))
+
+const sizePresets = ['2.5rem', '80px', '1.5lh']
 
 export default defineType({
 	name: 'icon',

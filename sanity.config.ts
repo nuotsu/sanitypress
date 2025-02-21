@@ -1,6 +1,6 @@
 'use client'
 
-import pkg from '$/package.json'
+import pkg from './package.json'
 import { defineConfig } from 'sanity'
 import { projectId, dataset, apiVersion } from '@/sanity/lib/env'
 import { structure } from './src/sanity/structure'
