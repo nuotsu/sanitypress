@@ -1,9 +1,18 @@
 import { fetchSanityLive } from './fetch'
 import { groq } from 'next-sanity'
 
+export const SLUG_QUERY = groq`
+	array::join([...parent[]->metadata.slug.current, metadata.slug.current], '/')
+`
+
 export const LINK_QUERY = groq`
 	...,
-	internal->{ _type, title, metadata }
+	internal->{
+		_type,
+		title,
+		parent[]->{ metadata { slug } },
+		metadata
+	}
 `
 
 const NAVIGATION_QUERY = groq`

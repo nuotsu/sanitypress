@@ -1,7 +1,11 @@
 import { client } from '@/sanity/lib/client'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
-import { MODULES_QUERY, GLOBAL_MODULE_QUERY } from '@/sanity/lib/queries'
+import {
+	MODULES_QUERY,
+	GLOBAL_MODULE_QUERY,
+	SLUG_QUERY,
+} from '@/sanity/lib/queries'
 import { notFound } from 'next/navigation'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
@@ -9,6 +13,7 @@ import processMetadata from '@/lib/processMetadata'
 export default async function Page({ params }: Props) {
 	const page = await getPage(await params)
 	if (!page) notFound()
+	console.log({ page })
 	return <Modules modules={page.modules} page={page} />
 }
 
@@ -19,15 +24,17 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-	const slugs = await client.fetch<string[]>(
+	const slugs = await client.fetch<{ slug: string }[]>(
 		groq`*[
 			_type == 'page' &&
 			defined(metadata.slug.current) &&
 			!(metadata.slug.current in ['index'])
-		].metadata.slug.current`,
+		]{
+			'slug': ${SLUG_QUERY}
+		}`,
 	)
 
-	return slugs.map((slug) => ({ slug: slug.split('/') }))
+	return slugs.map(({ slug }) => ({ slug: slug.split('/') }))
 }
 
 async function getPage(params: { slug?: string[] }) {
@@ -36,7 +43,7 @@ async function getPage(params: { slug?: string[] }) {
 	return await fetchSanityLive<Sanity.Page>({
 		query: groq`*[
 			_type == 'page' &&
-			metadata.slug.current == $slug &&
+			${SLUG_QUERY} == $slug &&
 			!(metadata.slug.current in ['index'])
 		][0]{
 			...,
@@ -52,6 +59,7 @@ async function getPage(params: { slug?: string[] }) {
 				// global modules (after)
 				+ *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
 			),
+			parent[]->{ metadata { slug } },
 			metadata {
 				...,
 				'ogimage': image.asset->url + '?w=1200'
