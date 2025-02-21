@@ -65,15 +65,15 @@ export default defineField({
 					name: 'testimonials',
 					of: ['testimonial-list', 'testimonial.featured'],
 				},
-				{
-					name: '💎 Pro',
-					of: [
-						'creative-module',
-						'pricing-list',
-						'schedule-module',
-						'search-module',
-					],
-				},
+				// {
+				// 	name: '💎 Pro',
+				// 	of: [
+				// 		'creative-module',
+				// 		'pricing-list',
+				// 		'schedule-module',
+				// 		'search-module',
+				// 	],
+				// },
 			],
 		},
 	},
