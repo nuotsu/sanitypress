@@ -9,6 +9,7 @@ export default defineType({
 	icon: GrBlockQuote,
 	type: 'object',
 	groups: [{ name: 'content', default: true }, { name: 'options' }],
+	fieldsets: [{ name: 'layout', options: { columns: 2 } }],
 	fields: [
 		defineField({
 			name: 'pretitle',
@@ -34,8 +35,20 @@ export default defineType({
 				list: ['grid', 'carousel'],
 				layout: 'radio',
 			},
-			group: 'options',
 			initialValue: 'carousel',
+			group: 'options',
+			fieldset: 'layout',
+		}),
+		defineField({
+			name: 'layoutMobile',
+			type: 'string',
+			options: {
+				list: ['grid', 'carousel'],
+				layout: 'radio',
+			},
+			initialValue: 'carousel',
+			group: 'options',
+			fieldset: 'layout',
 		}),
 	],
 	preview: {
