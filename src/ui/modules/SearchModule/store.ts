@@ -16,9 +16,13 @@ export const useQuery = () => {
 }
 
 export const searchStore = create<{
+	loading: boolean
+	setLoading: (loading: boolean) => void
 	results: SearchResults
 	setResults: (results: SearchResults) => void
 }>((set) => ({
+	loading: false,
+	setLoading: (loading) => set({ loading }),
 	results: [],
 	setResults: (results) => set({ results }),
 }))
@@ -28,19 +32,23 @@ export async function handleSearch({
 	scope,
 	path,
 	setQuery,
+	setLoading,
 	setResults,
 }: {
 	query: string
 	scope: SearchScope
 	path?: string
 	setQuery: (query: string) => void
+	setLoading: (loading: boolean) => void
 	setResults: (results: SearchResults) => void
 }) {
 	if (!query) setResults([])
 
 	setQuery(query)
+	setLoading(true)
+	setResults([])
 
-	const processScope = () => {
+	function processScope() {
 		switch (scope) {
 			case 'pages':
 				return groq`_type == 'page'`
@@ -65,16 +73,16 @@ export async function handleSearch({
 
 	const results = await fetchSanityLive<SearchResults>({
 		query: groq`*[
-				${processScope()} &&
-				[
-					body[].children[].text,
-					modules[].content[].children[].text,
-					modules[].intro[].children[].text,
-					title,
-					metadata.title,
-					metadata.description
-				] match $query
-			]{
+			${processScope()} &&
+			[
+				body[].children[].text,
+				modules[].content[].children[].text,
+				modules[].intro[].children[].text,
+				title,
+				metadata.title,
+				metadata.description
+			] match $query
+		]{
 			_id,
 			_type,
 			title,
@@ -86,5 +94,6 @@ export async function handleSearch({
 		},
 	})
 
+	setLoading(false)
 	setResults(results)
 }

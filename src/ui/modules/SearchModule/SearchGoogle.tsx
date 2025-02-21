@@ -21,8 +21,8 @@ export default function SearchGoogle({
 
 	return (
 		<p className="text-ink/50 text-center text-sm">
-			<a className="line-clamp-1 hover:underline" href={href} target="_blank">
-				Search "{query}" on Google
+			<a className="hover:underline" href={href} target="_blank">
+				Search on Google
 			</a>
 		</p>
 	)
