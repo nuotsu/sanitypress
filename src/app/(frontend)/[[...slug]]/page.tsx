@@ -1,14 +1,14 @@
-import { client } from '@/sanity/lib/client'
-import { fetchSanityLive } from '@/sanity/lib/fetch'
-import { groq } from 'next-sanity'
-import {
-	MODULES_QUERY,
-	GLOBAL_MODULE_QUERY,
-	SLUG_QUERY,
-} from '@/sanity/lib/queries'
 import { notFound } from 'next/navigation'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
+import { client } from '@/sanity/lib/client'
+import { groq } from 'next-sanity'
+import { fetchSanityLive } from '@/sanity/lib/fetch'
+import {
+	SLUG_QUERY,
+	MODULES_QUERY,
+	GLOBAL_MODULE_PATH_QUERY,
+} from '@/sanity/lib/queries'
 import { languages, type Lang } from '@/sanity/languages'
 
 export default async function Page({ params }: Props) {
@@ -38,12 +38,7 @@ export async function generateStaticParams() {
 }
 
 async function getPage(params: Params) {
-	const lang =
-		params.slug && languages.includes(params.slug[0] as Lang)
-			? params.slug[0]
-			: undefined
-
-	const slug = processSlug(params.slug, lang)
+	const { slug, lang } = processSlug(params)
 
 	return await fetchSanityLive<Sanity.Page>({
 		query: groq`*[
@@ -56,11 +51,11 @@ async function getPage(params: Params) {
 				// global modules (before)
 				*[_type == 'global-module' && path == '*'].before[]{ ${MODULES_QUERY} }
 				// path modules (before)
-				+ *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_QUERY}].before[]{ ${MODULES_QUERY} }
+				+ *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_PATH_QUERY}].before[]{ ${MODULES_QUERY} }
 				// page modules
 				+ modules[]{ ${MODULES_QUERY} }
 				// path modules (after)
-				+ *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_QUERY}].after[]{ ${MODULES_QUERY} }
+				+ *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_PATH_QUERY}].after[]{ ${MODULES_QUERY} }
 				// global modules (after)
 				+ *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
 			),
@@ -83,13 +78,31 @@ type Props = {
 	params: Promise<Params>
 }
 
-function processSlug(slug: string[] | undefined, lang: string | undefined) {
-	if (slug === undefined) return 'index'
+function processSlug(params: Params) {
+	const lang =
+		params.slug && languages.includes(params.slug[0] as Lang)
+			? params.slug[0]
+			: undefined
+
+	if (params.slug === undefined)
+		return {
+			slug: 'index',
+			lang,
+		}
 
 	if (lang) {
-		const processed = slug.join('/').replace(new RegExp(`^${lang}/?`), '')
-		return processed === '' ? 'index' : processed
+		const processed = params.slug
+			.join('/')
+			.replace(new RegExp(`^${lang}/?`), '')
+
+		return {
+			slug: processed === '' ? 'index' : processed,
+			lang,
+		}
 	}
 
-	return slug.join('/')
+	return {
+		slug: params.slug.join('/'),
+		lang,
+	}
 }
