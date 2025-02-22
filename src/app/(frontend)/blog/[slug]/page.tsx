@@ -5,6 +5,7 @@ import { MODULES_QUERY } from '@/sanity/lib/queries'
 import { notFound } from 'next/navigation'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
+import errors from '@/lib/errors'
 
 export default async function Page({ params }: Props) {
 	const post = await getPost(await params)
@@ -31,13 +32,7 @@ async function getPost(params: { slug?: string }) {
 		query: groq`count(*[_type == 'global-module' && path == 'blog/']) > 0`,
 	})
 
-	if (!blogTemplateExists)
-		throw new Error(
-			'Missing blog template: 👻 Oof, your blog posts are ghosting...\n\n' +
-				'Solution: Add a new Global module document in your Sanity Studio with the path "blog/".\n' +
-				'Also add the Blog post content module to display blog post content.\n\n' +
-				'💁‍♂️ https://sanitypress.dev/docs/errors#missing-blog-template',
-		)
+	if (!blogTemplateExists) throw new Error(errors.missingBlogTemplate)
 
 	return await fetchSanityLive<Sanity.BlogPost & { modules: Sanity.Module[] }>({
 		query: groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{

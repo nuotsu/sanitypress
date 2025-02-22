@@ -3,6 +3,7 @@ import { groq } from 'next-sanity'
 import { MODULES_QUERY } from '@/sanity/lib/queries'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
+import errors from '@/lib/errors'
 
 export default async function Page() {
 	const page = await getPage()
@@ -33,12 +34,7 @@ async function getPage() {
 		}`,
 	})
 
-	if (!page)
-		throw new Error(
-			"Missing homepage: 🏚️ There's no place like... index?\n\n" +
-				'Solution: Add a new Page document in your Sanity Studio with the slug "index".\n\n' +
-				'💁‍♂️ https://sanitypress.dev/docs/errors#missing-homepage',
-		)
+	if (!page) throw new Error(errors.missingHomepage)
 
 	return page
 }
