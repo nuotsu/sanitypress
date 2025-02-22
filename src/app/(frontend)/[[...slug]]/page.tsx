@@ -9,7 +9,7 @@ import {
 import { notFound } from 'next/navigation'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
-import type { Lang } from '@/sanity/languages'
+import { languages, type Lang } from '@/sanity/languages'
 
 export default async function Page({ params }: Props) {
 	const page = await getPage(await params)
@@ -37,13 +37,19 @@ export async function generateStaticParams() {
 	return slugs.map(({ slug }) => ({ slug: slug.split('/') }))
 }
 
-async function getPage({ slug, lang }: Params) {
+async function getPage(params: Params) {
+	const lang =
+		params.slug && languages.includes(params.slug[0] as Lang)
+			? params.slug[0]
+			: undefined
+
+	const slug = processSlug(params.slug, lang)
+
 	return await fetchSanityLive<Sanity.Page>({
 		query: groq`*[
 			_type == 'page' &&
-			${SLUG_QUERY} == $slug &&
-			!(metadata.slug.current in ['index']) &&
-			language == $lang
+			${SLUG_QUERY} == $slug
+			${lang ? `&& language == '${lang}'` : ''}
 		][0]{
 			...,
 			'modules': (
@@ -65,17 +71,25 @@ async function getPage({ slug, lang }: Params) {
 			}
 		}`,
 		params: {
-			slug: slug?.join('/'),
+			slug: slug,
 			lang,
 		},
 	})
 }
 
-type Params = {
-	lang: Lang
-	slug?: string[]
-}
+type Params = { slug?: string[] }
 
 type Props = {
 	params: Promise<Params>
+}
+
+function processSlug(slug: string[] | undefined, lang: string | undefined) {
+	if (slug === undefined) return 'index'
+
+	if (lang) {
+		const processed = slug.join('/').replace(new RegExp(`^${lang}/?`), '')
+		return processed === '' ? 'index' : processed
+	}
+
+	return slug.join('/')
 }
