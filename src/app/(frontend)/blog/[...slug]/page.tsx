@@ -1,10 +1,11 @@
+import { notFound } from 'next/navigation'
+import Modules from '@/ui/modules'
+import processMetadata from '@/lib/processMetadata'
 import { client } from '@/sanity/lib/client'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import { MODULES_QUERY } from '@/sanity/lib/queries'
-import { notFound } from 'next/navigation'
-import Modules from '@/ui/modules'
-import processMetadata from '@/lib/processMetadata'
+import { languages, type Lang } from '@/sanity/languages'
 import errors from '@/lib/errors'
 
 export default async function Page({ params }: Props) {
@@ -24,7 +25,7 @@ export async function generateStaticParams() {
 		groq`*[_type == 'blog.post' && defined(metadata.slug.current)].metadata.slug.current`,
 	)
 
-	return slugs.map((slug) => ({ slug }))
+	return slugs.map((slug) => ({ slug: slug.split('/') }))
 }
 
 async function getPost(params: Params) {
@@ -34,8 +35,14 @@ async function getPost(params: Params) {
 
 	if (!blogTemplateExists) throw new Error(errors.missingBlogTemplate)
 
+	const { slug, lang } = processSlug(params)
+
 	return await fetchSanityLive<Sanity.BlogPost & { modules: Sanity.Module[] }>({
-		query: groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{
+		query: groq`*[
+			_type == 'blog.post' &&
+			metadata.slug.current == $slug
+			${lang ? `&& language == '${lang}'` : ''}
+		][0]{
 			...,
 			body[]{
 				...,
@@ -63,12 +70,25 @@ async function getPost(params: Params) {
 				+ *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
 			)
 		}`,
-		params,
+		params: { slug, lang },
 	})
 }
 
-type Params = { slug?: string }
+type Params = { slug: string[] }
 
 type Props = {
 	params: Promise<Params>
+}
+
+function processSlug(params: Params) {
+	const lang = languages.includes(params.slug[0] as Lang)
+		? params.slug[0]
+		: undefined
+
+	const slug = params.slug.join('/')
+
+	return {
+		slug: lang ? slug.replace(new RegExp(`^${lang}/`), '') : slug,
+		lang,
+	}
 }

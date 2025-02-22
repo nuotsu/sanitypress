@@ -75,18 +75,27 @@ export default defineType({
 			type: 'metadata',
 			group: 'seo',
 		}),
+		defineField({
+			name: 'language',
+			type: 'string',
+			readOnly: true,
+			hidden: true,
+		}),
 	],
 	preview: {
 		select: {
 			featured: 'featured',
 			title: 'metadata.title',
 			publishDate: 'publishDate',
-			media: 'metadata.image',
+			language: 'language',
+			image: 'metadata.image',
 		},
-		prepare: ({ title, publishDate, media, featured }) => ({
+		prepare: ({ featured, title, publishDate, image, language }) => ({
 			title: [featured && '★', title].filter(Boolean).join(' '),
-			subtitle: publishDate,
-			media,
+			subtitle: [language && `[${language}] `, publishDate]
+				.filter(Boolean)
+				.join(''),
+			media: image,
 		}),
 	},
 	orderings: [
