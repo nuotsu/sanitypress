@@ -7,7 +7,7 @@ const domain = process.env.NEXT_PUBLIC_BASE_URL?.replace(/https?:\/\//, '')
 const color = '#13141b'
 
 export async function GET(request: NextRequest) {
-	const { searchParams } = new URL(request.url)
+	const { searchParams } = request.nextUrl
 	const site = await getSite()
 
 	// remove divider and site.title in metadata.title

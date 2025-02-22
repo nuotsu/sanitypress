@@ -9,6 +9,7 @@ import {
 import { notFound } from 'next/navigation'
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
+import type { Lang } from '@/sanity/languages'
 
 export default async function Page({ params }: Props) {
 	const page = await getPage(await params)
@@ -36,12 +37,13 @@ export async function generateStaticParams() {
 	return slugs.map(({ slug }) => ({ slug: slug.split('/') }))
 }
 
-async function getPage({ slug }: Params) {
+async function getPage({ slug, lang }: Params) {
 	return await fetchSanityLive<Sanity.Page>({
 		query: groq`*[
 			_type == 'page' &&
 			${SLUG_QUERY} == $slug &&
-			!(metadata.slug.current in ['index'])
+			!(metadata.slug.current in ['index']) &&
+			language == $lang
 		][0]{
 			...,
 			'modules': (
@@ -64,11 +66,15 @@ async function getPage({ slug }: Params) {
 		}`,
 		params: {
 			slug: slug?.join('/'),
+			lang,
 		},
 	})
 }
 
-type Params = { slug?: string[] }
+type Params = {
+	lang: Lang
+	slug?: string[]
+}
 
 type Props = {
 	params: Promise<Params>

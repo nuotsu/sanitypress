@@ -14,6 +14,8 @@ import {
 import { vercelWidget } from 'sanity-plugin-dashboard-widget-vercel'
 import { visionTool } from '@sanity/vision'
 import { codeInput } from '@sanity/code-input'
+import { supportedLanguages } from './src/sanity/languages'
+import { documentInternationalization } from '@sanity/document-internationalization'
 import { schemaTypes } from './src/sanity/schemaTypes'
 import resolveUrl from '@/lib/resolveUrl'
 
@@ -46,6 +48,10 @@ export default defineConfig({
 		}),
 		visionTool({ defaultApiVersion: apiVersion }),
 		codeInput(),
+		documentInternationalization({
+			supportedLanguages,
+			schemaTypes: ['page', 'blog.post'],
+		}),
 	],
 
 	schema: {

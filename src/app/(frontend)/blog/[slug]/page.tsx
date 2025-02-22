@@ -27,7 +27,7 @@ export async function generateStaticParams() {
 	return slugs.map((slug) => ({ slug }))
 }
 
-async function getPost(params: { slug?: string }) {
+async function getPost(params: Params) {
 	const blogTemplateExists = await fetchSanityLive<boolean>({
 		query: groq`count(*[_type == 'global-module' && path == 'blog/']) > 0`,
 	})
@@ -67,6 +67,8 @@ async function getPost(params: { slug?: string }) {
 	})
 }
 
+type Params = { slug?: string }
+
 type Props = {
-	params: Promise<{ slug?: string }>
+	params: Promise<Params>
 }

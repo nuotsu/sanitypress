@@ -30,11 +30,22 @@ export default defineType({
 			type: 'array',
 			of: [{ type: 'reference', to: [{ type: 'page' }] }],
 			group: 'metadata',
+			options: {
+				documentInternationalization: {
+					exclude: true,
+				},
+			},
 		}),
 		defineField({
 			name: 'metadata',
 			type: 'metadata',
 			group: 'metadata',
+		}),
+		defineField({
+			name: 'language',
+			type: 'string',
+			readOnly: true,
+			hidden: true,
 		}),
 	],
 	preview: {
@@ -46,10 +57,21 @@ export default defineType({
 			slug: 'metadata.slug.current',
 			media: 'metadata.image',
 			noindex: 'metadata.noIndex',
+			language: 'language',
 		},
-		prepare: ({ title, parent1, parent2, parent3, slug, media, noindex }) => ({
+		prepare: ({
+			title,
+			parent1,
+			parent2,
+			parent3,
+			slug,
+			media,
+			noindex,
+			language,
+		}) => ({
 			title,
 			subtitle: [
+				language && `[${language}] `,
 				parent1 && `/${[parent1, parent2, parent3].filter(Boolean).join('/')}`,
 				slug && (slug === 'index' ? '/' : `/${slug}`),
 			]
