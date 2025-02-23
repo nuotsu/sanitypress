@@ -18,11 +18,13 @@ export default async function BlogFrontpage({
 	showFeaturedPostsFirst: boolean
 	itemsPerPage: number
 }>) {
+	const lang = (await cookies()).get('lang')?.value
+
 	const posts = await fetchSanityLive<Sanity.BlogPost[]>({
 		query: groq`
 			*[
-				_type == 'blog.post' &&
-				select(defined(language) => language == $lang, true)
+				_type == 'blog.post'
+				${!!lang ? `&& select(defined(language) => language == $lang, true)` : ''}
 			]|order(publishDate desc){
 				_type,
 				_id,
@@ -34,9 +36,7 @@ export default async function BlogFrontpage({
 				language
 			}
 		`,
-		params: {
-			lang: (await cookies()).get('lang')?.value,
-		},
+		params: { lang },
 	})
 
 	const [firstPost, ...otherPosts] =

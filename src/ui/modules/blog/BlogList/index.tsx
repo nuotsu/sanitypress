@@ -26,11 +26,13 @@ export default async function BlogList({
 	displayFilters: boolean
 	filteredCategory: Sanity.BlogCategory
 }>) {
+	const lang = (await cookies()).get('lang')?.value
+
 	const posts = await fetchSanityLive<Sanity.BlogPost[]>({
 		query: groq`
 			*[
-				_type == 'blog.post' &&
-				select(defined(language) => language == $lang, true)
+				_type == 'blog.post'
+				${!!lang ? `&& select(defined(language) => language == $lang, true)` : ''}
 				${!!filteredCategory ? `&& $filteredCategory in categories[]->._id` : ''}
 			]|order(
 				${showFeaturedPostsFirst ? 'featured desc, ' : ''}
@@ -44,7 +46,7 @@ export default async function BlogList({
 			}
 		`,
 		params: {
-			lang: (await cookies()).get('lang')?.value,
+			lang,
 			filteredCategory: filteredCategory?._id || '',
 			limit: limit ?? 0,
 		},
