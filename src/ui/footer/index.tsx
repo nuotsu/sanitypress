@@ -14,7 +14,7 @@ export default async function Footer() {
 	return (
 		<footer className="bg-ink text-canvas" role="contentinfo">
 			<div className="section flex flex-wrap justify-between gap-x-12 gap-y-8 max-sm:flex-col">
-				<div className="flex flex-col gap-3 self-start">
+				<div className="flex flex-col gap-3 self-stretch">
 					<Link className="h3 md:h2 max-w-max" href="/">
 						{logoImage ? (
 							<Img
@@ -33,11 +33,9 @@ export default async function Footer() {
 						</div>
 					)}
 
-					<Social className="-ml-2" />
+					<Social className="mb-auto -ml-2" />
 
-					<label className="max-w-max">
-						<LanguageSwitcher className="input border-canvas/10 focus:border-canvas/30 px-[.5em] outline-none" />
-					</label>
+					<LanguageSwitcher className="mt-4 max-w-max" />
 				</div>
 
 				<Navigation />

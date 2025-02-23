@@ -1,13 +1,10 @@
-import {
-	languages,
-	supportedLanguages,
-	type TranslatableSchemaType,
-} from '@/lib/i18n'
+import { DEFAULT_LANG, supportedLanguages } from '@/lib/i18n'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
-import Switcher, { type SwitcherProps } from './Switcher'
+import Switcher from './Switcher'
+import type { ComponentProps } from 'react'
 
-export default async function LanguageSwitcher(props: SwitcherProps) {
+export default async function LanguageSwitcher(props: ComponentProps<'label'>) {
 	if (supportedLanguages.length < 2) return null
 
 	const translations = await getTranslations()
@@ -18,7 +15,7 @@ export default async function LanguageSwitcher(props: SwitcherProps) {
 
 export type Translation = {
 	slug: string
-	language: TranslatableSchemaType
+	language: string
 	translated: string
 }
 
@@ -41,7 +38,7 @@ export async function getTranslations() {
 				)
 		}`,
 		params: {
-			defaultLang: languages[0],
+			defaultLang: DEFAULT_LANG,
 		},
 	})
 }
