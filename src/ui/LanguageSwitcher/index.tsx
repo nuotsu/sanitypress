@@ -7,17 +7,28 @@ import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import Switcher, { type SwitcherProps } from './Switcher'
 
+export default async function LanguageSwitcher(props: SwitcherProps) {
+	if (supportedLanguages.length < 2) return null
+
+	const translations = await getTranslations()
+	if (!translations) return null
+
+	return <Switcher translations={translations} {...props} />
+}
+
+export type Translation = {
+	slug: string
+	language: TranslatableSchemaType
+	translated: string
+}
+
 const SLUG_QUERY = groq`'/' + select(
 	metadata.slug.current == 'index' => '',
 	metadata.slug.current
 )`
 
-export default async function LanguageSwitcher(props: SwitcherProps) {
-	if (supportedLanguages.length < 2) {
-		return null
-	}
-
-	const translations = await fetchSanityLive<Translations[]>({
+export async function getTranslations() {
+	return await fetchSanityLive<Translation[]>({
 		query: groq`*[_type in ['page', 'blog.post'] && defined(language)]{
 			'slug': ${SLUG_QUERY},
 			language,
@@ -33,16 +44,4 @@ export default async function LanguageSwitcher(props: SwitcherProps) {
 			defaultLang: languages[0],
 		},
 	})
-
-	if (!translations) {
-		return null
-	}
-
-	return <Switcher translations={translations} {...props} />
-}
-
-export type Translations = {
-	slug: string
-	language: TranslatableSchemaType
-	translated: string
 }

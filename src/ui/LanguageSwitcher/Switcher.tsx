@@ -3,7 +3,8 @@
 import { redirect, usePathname } from 'next/navigation'
 import { languages, supportedLanguages } from '@/lib/i18n'
 import type { ComponentProps } from 'react'
-import type { Translations } from '.'
+import type { Translation } from '.'
+import { setLangCookie } from './actions'
 
 export type SwitcherProps = Omit<ComponentProps<'select'>, 'value' | 'onChange'>
 
@@ -11,7 +12,7 @@ export default function Switcher({
 	translations,
 	...props
 }: {
-	translations?: Translations[]
+	translations?: Translation[]
 } & SwitcherProps) {
 	const pathname = usePathname()
 
@@ -35,14 +36,19 @@ export default function Switcher({
 	return (
 		<select
 			value={pathname}
-			onChange={(e) => redirect(e.target.value)}
+			onChange={(e) => {
+				setLangCookie(
+					(e.target as HTMLSelectElement).selectedOptions[0].dataset.lang,
+				)
+				redirect(e.target.value)
+			}}
 			{...props}
 		>
 			{supportedLanguages.map(({ id, title }) => {
 				const value = getTranslationValue(id)
 
 				return (
-					<option key={id} value={value} disabled={!value}>
+					<option value={value} data-lang={id} disabled={!value} key={id}>
 						{title}
 					</option>
 				)

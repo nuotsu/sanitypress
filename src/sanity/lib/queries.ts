@@ -33,25 +33,6 @@ export const CTA_QUERY = groq`
 	link{ ${LINK_QUERY} }
 `
 
-export async function getSite() {
-	const site = await fetchSanityLive<Sanity.Site>({
-		query: groq`
-			*[_type == 'site'][0]{
-				...,
-				ctas[]{ ${CTA_QUERY} },
-				headerMenu->{ ${NAVIGATION_QUERY} },
-				footerMenu->{ ${NAVIGATION_QUERY} },
-				social->{ ${NAVIGATION_QUERY} },
-				'ogimage': ogimage.asset->url
-			}
-		`,
-	})
-
-	if (!site) throw new Error(errors.missingSiteSettings)
-
-	return site
-}
-
 export const REPUTATION_QUERY = groq`
 	_type == 'reputation-block' => { reputation-> }
 `
@@ -136,3 +117,22 @@ export const GLOBAL_MODULE_PATH_QUERY = groq`
 		true
 	)
 `
+
+export async function getSite() {
+	const site = await fetchSanityLive<Sanity.Site>({
+		query: groq`
+			*[_type == 'site'][0]{
+				...,
+				ctas[]{ ${CTA_QUERY} },
+				headerMenu->{ ${NAVIGATION_QUERY} },
+				footerMenu->{ ${NAVIGATION_QUERY} },
+				social->{ ${NAVIGATION_QUERY} },
+				'ogimage': ogimage.asset->url
+			}
+		`,
+	})
+
+	if (!site) throw new Error(errors.missingSiteSettings)
+
+	return site
+}
