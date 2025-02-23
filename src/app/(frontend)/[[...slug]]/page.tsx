@@ -68,7 +68,7 @@ async function getPage(params: Params) {
 			},
 			${TRANSLATIONS_QUERY},
 		}`,
-		params: { slug, lang },
+		params: { slug },
 	})
 
 	if (slug === 'index' && !page) throw new Error(errors.missingHomepage)

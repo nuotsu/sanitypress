@@ -71,7 +71,7 @@ async function getPost(params: Params) {
 			),
 			${TRANSLATIONS_QUERY},
 		}`,
-		params: { slug, lang },
+		params: { slug },
 	})
 }
 
