@@ -1,15 +1,10 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
-import { languages } from '@/lib/i18n'
+import getLang from '@/lib/getLang'
 import type { ComponentProps } from 'react'
 
 export default function Root(props: ComponentProps<'html'>) {
-	const pathname = usePathname()
-
-	const { lang } =
-		pathname.match(new RegExp(`^\/(blog\/)?(?<lang>[${languages.join('|')}]+)`))
-			?.groups ?? {}
+	const lang = getLang()
 
 	return <html lang={lang} {...props} />
 }

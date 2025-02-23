@@ -76,6 +76,7 @@
 	summary,
 	label,
 	input[type='submit'],
+	select,
 	button {
 		cursor: pointer;
 	}
@@ -193,7 +194,7 @@
 }
 
 @utility input {
-	@apply border-ink/10 border p-[.25em] text-left;
+	@apply border-ink/10 rounded border p-[.25em];
 }
 
 /* utilities */

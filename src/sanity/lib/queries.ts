@@ -2,8 +2,11 @@ import { fetchSanityLive } from './fetch'
 import { groq } from 'next-sanity'
 import errors from '@/lib/errors'
 
-export const SLUG_QUERY = groq`
-	array::join([...parent[]->metadata.slug.current, metadata.slug.current], '/')
+export const PAGE_SLUG_QUERY = groq`
+	array::join([
+		...parent[]->metadata.slug.current,
+		metadata.slug.current
+	], '/')
 `
 
 export const LINK_QUERY = groq`

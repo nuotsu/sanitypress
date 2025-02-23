@@ -31,6 +31,7 @@ declare global {
 		interface PageBase extends SanityDocument {
 			title?: string
 			metadata: Metadata
+			readonly language?: string
 		}
 
 		interface Page extends PageBase {

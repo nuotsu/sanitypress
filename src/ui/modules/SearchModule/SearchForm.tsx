@@ -26,7 +26,7 @@ export default function SearchForm({
 
 	return (
 		<search className={cn(css.root, 'relative', className)} {...props}>
-			<label className="input focus-within:border-ink/50 relative z-[2] flex items-center gap-2 rounded">
+			<label className="input focus-within:border-ink/50 relative z-[2] flex items-center gap-2">
 				<VscSearch />
 
 				<input

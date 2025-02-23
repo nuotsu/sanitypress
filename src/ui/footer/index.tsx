@@ -1,6 +1,7 @@
 import { getSite } from '@/sanity/lib/queries'
 import Navigation from './Navigation'
 import Social from '@/ui/Social'
+import LanguageSwitcher from '@/ui/LanguageSwitcher'
 import { PortableText } from 'next-sanity'
 import Link from 'next/link'
 import { Img } from '@/ui/Img'
@@ -32,7 +33,11 @@ export default async function Footer() {
 						</div>
 					)}
 
-					<Social />
+					<Social className="-ml-2" />
+
+					<label className="max-w-max">
+						<LanguageSwitcher className="input border-canvas/10 focus:border-canvas/30 px-[.5em] outline-none" />
+					</label>
 				</div>
 
 				<Navigation />

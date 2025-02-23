@@ -5,7 +5,7 @@ import { client } from '@/sanity/lib/client'
 import { groq } from 'next-sanity'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import {
-	SLUG_QUERY,
+	PAGE_SLUG_QUERY,
 	MODULES_QUERY,
 	GLOBAL_MODULE_PATH_QUERY,
 } from '@/sanity/lib/queries'
@@ -31,7 +31,7 @@ export async function generateStaticParams() {
 			defined(metadata.slug.current) &&
 			!(metadata.slug.current in ['index'])
 		]{
-			'slug': ${SLUG_QUERY}
+			'slug': ${PAGE_SLUG_QUERY}
 		}`,
 	)
 
@@ -44,7 +44,7 @@ async function getPage(params: Params) {
 	const page = await fetchSanityLive<Sanity.Page>({
 		query: groq`*[
 			_type == 'page' &&
-			${SLUG_QUERY} == $slug
+			${PAGE_SLUG_QUERY} == $slug
 			${lang ? `&& language == '${lang}'` : ''}
 		][0]{
 			...,

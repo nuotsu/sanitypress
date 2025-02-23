@@ -1,7 +1,6 @@
 import { getSite } from '@/sanity/lib/queries'
 import CTA from './CTA'
 import { cn } from '@/lib/utils'
-
 import {
 	FaBluesky,
 	FaFacebookF,
@@ -13,10 +12,9 @@ import {
 	FaYoutube,
 } from 'react-icons/fa6'
 import { IoIosLink } from 'react-icons/io'
+import type { ComponentProps } from 'react'
 
-export default async function Social({
-	className,
-}: React.ComponentProps<'div'>) {
+export default async function Social({ className }: ComponentProps<'div'>) {
 	const { social } = await getSite()
 
 	if (!social?.items?.length) return null
@@ -28,7 +26,7 @@ export default async function Social({
 					case 'link':
 						return (
 							<CTA
-								className="px-2 py-1 hover:!opacity-100 group-has-[a:hover]:opacity-50"
+								className="px-2 py-1 group-has-[a:hover]:opacity-50 hover:!opacity-100"
 								link={item}
 								key={key}
 							>
