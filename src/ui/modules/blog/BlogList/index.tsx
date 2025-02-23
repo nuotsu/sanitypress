@@ -1,9 +1,10 @@
-import { Suspense } from 'react'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
+import { cookies } from 'next/headers'
 import Pretitle from '@/ui/Pretitle'
 import { PortableText, stegaClean } from 'next-sanity'
 import FilterList from '@/ui/modules/blog/BlogList/FilterList'
+import { Suspense } from 'react'
 import PostPreview from '../PostPreview'
 import List from './List'
 import { cn } from '@/lib/utils'
@@ -28,7 +29,8 @@ export default async function BlogList({
 	const posts = await fetchSanityLive<Sanity.BlogPost[]>({
 		query: groq`
 			*[
-				_type == 'blog.post'
+				_type == 'blog.post' &&
+				select(defined(language) => language == $lang, true)
 				${!!filteredCategory ? `&& $filteredCategory in categories[]->._id` : ''}
 			]|order(
 				${showFeaturedPostsFirst ? 'featured desc, ' : ''}
@@ -42,6 +44,7 @@ export default async function BlogList({
 			}
 		`,
 		params: {
+			lang: (await cookies()).get('lang')?.value,
 			filteredCategory: filteredCategory?._id || '',
 			limit: limit ?? 0,
 		},

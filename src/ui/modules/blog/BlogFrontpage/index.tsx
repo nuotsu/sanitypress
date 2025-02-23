@@ -1,12 +1,13 @@
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
+import { cookies } from 'next/headers'
+import { stegaClean } from 'next-sanity'
 import sortFeaturedPosts from './sortFeaturedPosts'
+import { Suspense } from 'react'
 import PostPreviewLarge from '../PostPreviewLarge'
 import FilterList from '../BlogList/FilterList'
-import { Suspense } from 'react'
-import Paginated from './Paginated'
-import { stegaClean } from 'next-sanity'
 import PostPreview from '../PostPreview'
+import Paginated from './Paginated'
 
 export default async function BlogFrontpage({
 	mainPost,
@@ -18,15 +19,24 @@ export default async function BlogFrontpage({
 	itemsPerPage: number
 }>) {
 	const posts = await fetchSanityLive<Sanity.BlogPost[]>({
-		query: groq`*[_type == 'blog.post']|order(publishDate desc){
-			_type,
-			_id,
-			featured,
-			metadata,
-			categories[]->,
-			authors[]->,
-			publishDate,
-		}`,
+		query: groq`
+			*[
+				_type == 'blog.post' &&
+				select(defined(language) => language == $lang, true)
+			]|order(publishDate desc){
+				_type,
+				_id,
+				featured,
+				metadata,
+				categories[]->,
+				authors[]->,
+				publishDate,
+				language
+			}
+		`,
+		params: {
+			lang: (await cookies()).get('lang')?.value,
+		},
 	})
 
 	const [firstPost, ...otherPosts] =
