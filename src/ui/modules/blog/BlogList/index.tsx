@@ -32,7 +32,7 @@ export default async function BlogList({
 		query: groq`
 			*[
 				_type == 'blog.post'
-				${!!lang ? `&& select(defined(language) => language == $lang, true)` : ''}
+				${!!lang ? `&& select(defined(language) => language == '${lang}', true)` : ''}
 				${!!filteredCategory ? `&& $filteredCategory in categories[]->._id` : ''}
 			]|order(
 				${showFeaturedPostsFirst ? 'featured desc, ' : ''}
@@ -46,7 +46,6 @@ export default async function BlogList({
 			}
 		`,
 		params: {
-			lang,
 			filteredCategory: filteredCategory?._id || '',
 			limit: limit ?? 0,
 		},

@@ -24,7 +24,7 @@ export default async function BlogFrontpage({
 		query: groq`
 			*[
 				_type == 'blog.post'
-				${!!lang ? `&& select(defined(language) => language == $lang, true)` : ''}
+				${!!lang ? `&& select(defined(language) => language == '${lang}', true)` : ''}
 			]|order(publishDate desc){
 				_type,
 				_id,
@@ -36,7 +36,6 @@ export default async function BlogFrontpage({
 				language
 			}
 		`,
-		params: { lang },
 	})
 
 	const [firstPost, ...otherPosts] =
