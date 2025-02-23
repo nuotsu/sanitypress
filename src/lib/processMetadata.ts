@@ -27,12 +27,14 @@ export default async function processMetadata(
 		alternates: {
 			canonical: url,
 			languages: Object.fromEntries(
-				page.translations?.map((t) => [
-					t?.language,
-					[BASE_URL, t?.language !== DEFAULT_LANG && t?.language, t?.slug]
-						.filter(Boolean)
-						.join('/'),
-				]) || [],
+				page.translations
+					?.filter((t) => !!t.language)
+					?.map((t) => [
+						t?.language,
+						[BASE_URL, t?.language !== DEFAULT_LANG && t?.language, t?.slug]
+							.filter(Boolean)
+							.join('/'),
+					]) || [],
 			),
 			types: {
 				'application/rss+xml': '/blog/rss.xml',
