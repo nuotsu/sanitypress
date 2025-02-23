@@ -1,12 +1,16 @@
 import moduleProps from '@/lib/moduleProps'
 import WithScript from './WithScript'
 import { stegaClean } from 'next-sanity'
+import type { ComponentProps } from 'react'
 
 export default function CustomHTML({
 	className,
 	html,
 	...props
-}: Sanity.CustomHTML & Sanity.Module) {
+}: {
+	html?: { code: string }
+} & Sanity.Module &
+	ComponentProps<'section' | 'script'>) {
 	if (!html?.code) return null
 
 	return html.code.includes('<script') ? (
