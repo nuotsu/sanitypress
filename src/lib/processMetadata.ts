@@ -27,9 +27,9 @@ export default async function processMetadata(
 		alternates: {
 			canonical: url,
 			languages: Object.fromEntries(
-				page.translations?.map(({ language, slug }) => [
-					language,
-					[BASE_URL, language !== DEFAULT_LANG && language, slug]
+				page.translations?.map((t) => [
+					t?.language,
+					[BASE_URL, t?.language !== DEFAULT_LANG && t?.language, t?.slug]
 						.filter(Boolean)
 						.join('/'),
 				]) || [],

@@ -34,7 +34,7 @@ declare global {
 			readonly language?: string
 			translations?: {
 				slug: string
-				language: string
+				language?: string
 			}[]
 		}
 
