@@ -9,7 +9,7 @@ import {
 	MODULES_QUERY,
 	GLOBAL_MODULE_PATH_QUERY,
 } from '@/sanity/lib/queries'
-import { languages, type Lang } from '@/sanity/languages'
+import { languages, type Lang } from '@/lib/i18n'
 import errors from '@/lib/errors'
 
 export default async function Page({ params }: Props) {

@@ -5,7 +5,7 @@ import { client } from '@/sanity/lib/client'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import { MODULES_QUERY } from '@/sanity/lib/queries'
-import { languages, type Lang } from '@/sanity/languages'
+import { languages, type Lang } from '@/lib/i18n'
 import errors from '@/lib/errors'
 
 export default async function Page({ params }: Props) {
