@@ -118,6 +118,13 @@ export const GLOBAL_MODULE_PATH_QUERY = groq`
 	)
 `
 
+export const TRANSLATIONS_QUERY = groq`
+	'translations': *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+		'slug': metadata.slug.current,
+		language
+	}
+`
+
 export async function getSite() {
 	const site = await fetchSanityLive<Sanity.Site>({
 		query: groq`

@@ -8,6 +8,7 @@ import {
 	PAGE_SLUG_QUERY,
 	MODULES_QUERY,
 	GLOBAL_MODULE_PATH_QUERY,
+	TRANSLATIONS_QUERY,
 } from '@/sanity/lib/queries'
 import { languages, type Lang } from '@/lib/i18n'
 import errors from '@/lib/errors'
@@ -64,7 +65,8 @@ async function getPage(params: Params) {
 			metadata {
 				...,
 				'ogimage': image.asset->url + '?w=1200'
-			}
+			},
+			${TRANSLATIONS_QUERY},
 		}`,
 		params: { slug, lang },
 	})
