@@ -14,6 +14,11 @@ export default defineType({
 	],
 	fields: [
 		defineField({
+			name: 'options',
+			type: 'module-options',
+			group: 'options',
+		}),
+		defineField({
 			name: 'pretitle',
 			type: 'string',
 			group: 'content',

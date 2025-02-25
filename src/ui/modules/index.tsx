@@ -21,6 +21,7 @@ import TestimonialList from './TestimonialList'
 import TestimonialFeatured from './TestimonialFeatured'
 
 import dynamic from 'next/dynamic'
+import { createDataAttribute } from 'next-sanity'
 
 const MODULE_MAP = {
 	'accordion-list': AccordionList,
@@ -82,6 +83,11 @@ export default function Modules({
 					<Component
 						{...module}
 						{...getAdditionalProps(module)}
+						data-sanity={createDataAttribute({
+							id: page?._id,
+							type: page?._type,
+							path: `page[_key == "${module._key}"]`,
+						}).toString()}
 						key={module._key}
 					/>
 				)
