@@ -2,13 +2,6 @@ import { fetchSanityLive } from './fetch'
 import { groq } from 'next-sanity'
 import errors from '@/lib/errors'
 
-export const PAGE_SLUG_QUERY = groq`
-	array::join([
-		...parent[]->metadata.slug.current,
-		metadata.slug.current
-	], '/')
-`
-
 export const LINK_QUERY = groq`
 	...,
 	internal->{
@@ -143,3 +136,31 @@ export async function getSite() {
 
 	return site
 }
+
+export async function getTranslations() {
+	return await fetchSanityLive<Translation[]>({
+		query: groq`*[_type in ['page', 'blog.post'] && defined(language)]{
+			'slug': '/' + select(
+				_type == 'blog.post' => 'blog/' + metadata.slug.current,
+				metadata.slug.current != 'index' => metadata.slug.current,
+				''
+			),
+			'translations': *[_type == 'translation.metadata' && references(^._id)].translations[].value->{
+				'slug': '/' + select(
+					_type == 'blog.post' => 'blog/' + language + '/' + metadata.slug.current,
+					metadata.slug.current != 'index' => language + '/' + metadata.slug.current,
+					language
+				),
+				language
+			}
+		}`,
+	})
+}
+
+export type Translation = Partial<{
+	slug: string
+	translations: {
+		slug: string
+		language: string
+	}[]
+}>

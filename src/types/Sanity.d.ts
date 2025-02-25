@@ -32,16 +32,11 @@ declare global {
 			title?: string
 			metadata: Metadata
 			readonly language?: string
-			translations?: {
-				slug: string
-				language?: string
-			}[]
 		}
 
 		interface Page extends PageBase {
 			readonly _type: 'page'
 			modules?: Module[]
-			parent?: Page[]
 		}
 
 		interface GlobalModule extends SanityDocument {

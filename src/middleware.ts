@@ -3,7 +3,7 @@ import {
 	type NextRequest,
 	type MiddlewareConfig,
 } from 'next/server'
-import { getTranslations } from './ui/LanguageSwitcher'
+import { getTranslations } from './sanity/lib/queries'
 import { DEFAULT_LANG } from './lib/i18n'
 
 export default async function (request: NextRequest) {

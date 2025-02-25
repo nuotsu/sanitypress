@@ -26,17 +26,6 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
-			name: 'parent',
-			type: 'array',
-			of: [{ type: 'reference', to: [{ type: 'page' }] }],
-			group: 'metadata',
-			options: {
-				documentInternationalization: {
-					exclude: true,
-				},
-			},
-		}),
-		defineField({
 			name: 'metadata',
 			type: 'metadata',
 			group: 'metadata',
@@ -51,28 +40,15 @@ export default defineType({
 	preview: {
 		select: {
 			title: 'title',
-			parent1: 'parent.0.metadata.slug.current',
-			parent2: 'parent.1.metadata.slug.current',
-			parent3: 'parent.2.metadata.slug.current',
 			slug: 'metadata.slug.current',
 			media: 'metadata.image',
 			noindex: 'metadata.noIndex',
 			language: 'language',
 		},
-		prepare: ({
-			title,
-			parent1,
-			parent2,
-			parent3,
-			slug,
-			media,
-			noindex,
-			language,
-		}) => ({
+		prepare: ({ title, slug, media, noindex, language }) => ({
 			title,
 			subtitle: [
 				language && `[${language}] `,
-				parent1 && `/${[parent1, parent2, parent3].filter(Boolean).join('/')}`,
 				slug && (slug === 'index' ? '/' : `/${slug}`),
 			]
 				.filter(Boolean)

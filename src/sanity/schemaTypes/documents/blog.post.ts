@@ -10,7 +10,7 @@ export default defineType({
 	groups: [
 		{ name: 'content', default: true },
 		{ name: 'options' },
-		{ name: 'seo', title: 'SEO' },
+		{ name: 'metadata' },
 	],
 	fields: [
 		defineField({
@@ -73,7 +73,7 @@ export default defineType({
 		defineField({
 			name: 'metadata',
 			type: 'metadata',
-			group: 'seo',
+			group: 'metadata',
 		}),
 		defineField({
 			name: 'language',

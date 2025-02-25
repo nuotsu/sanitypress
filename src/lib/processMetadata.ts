@@ -4,7 +4,12 @@ import type { Metadata } from 'next'
 import { DEFAULT_LANG } from './i18n'
 
 export default async function processMetadata(
-	page: Sanity.Page | Sanity.BlogPost,
+	page: (Sanity.Page | Sanity.BlogPost) & {
+		translations?: {
+			slug: string
+			language?: string
+		}[]
+	},
 ): Promise<Metadata> {
 	const url = resolveUrl(page)
 	const { title, description, ogimage, noIndex } = page.metadata

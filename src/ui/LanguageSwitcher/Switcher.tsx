@@ -6,7 +6,7 @@ import { DEFAULT_LANG, supportedLanguages } from '@/lib/i18n'
 import { setLangCookie } from './actions'
 import { VscGlobe, VscLoading } from 'react-icons/vsc'
 import { cn } from '@/lib/utils'
-import type { Translation } from '.'
+import type { Translation } from '@/sanity/lib/queries'
 
 export default function Switcher({
 	translations: T,

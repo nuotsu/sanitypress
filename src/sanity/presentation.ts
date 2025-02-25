@@ -42,9 +42,6 @@ export const presentation = presentationTool({
 			page: defineLocations({
 				select: {
 					title: 'title',
-					parent1: 'parent.0.metadata.slug.current',
-					parent2: 'parent.1.metadata.slug.current',
-					parent3: 'parent.2.metadata.slug.current',
 					metaTitle: 'metadata.title',
 					slug: 'metadata.slug.current',
 				},
@@ -52,13 +49,11 @@ export const presentation = presentationTool({
 					locations: [
 						{
 							title: doc?.title || doc?.metaTitle || 'Untitled',
-							href: [
-								doc?.parent1 &&
-									`/${[doc.parent1, doc.parent2, doc.parent3].filter(Boolean).join('/')}`,
-								doc?.slug ? (doc.slug === 'index' ? '/' : `/${doc.slug}`) : '/',
-							]
-								.filter(Boolean)
-								.join(''),
+							href: doc?.slug
+								? doc.slug === 'index'
+									? '/'
+									: `/${doc.slug}`
+								: '/',
 						},
 					],
 				}),
