@@ -49,7 +49,7 @@ export default function Switcher({
 					redirect(e.target.value)
 				}}
 			>
-				{available.translations?.map(({ slug, language }) => (
+				{/* {available.translations?.map(({ slug, language }) => (
 					<option
 						value={language === DEFAULT_LANG ? available.slug : slug}
 						data-lang={language}
@@ -57,7 +57,24 @@ export default function Switcher({
 					>
 						{supportedLanguages.find((l) => l.id === language)?.title}
 					</option>
-				))}
+				))} */}
+
+				{supportedLanguages.map((s) => {
+					const { slug, language } =
+						available.translations?.find((t) => t.language === s.id) ?? {}
+
+					const value = language === DEFAULT_LANG ? available.slug : slug
+					return (
+						<option
+							value={value}
+							data-lang={language}
+							disabled={!value}
+							key={s.id}
+						>
+							{s.title}
+						</option>
+					)
+				})}
 			</select>
 		</label>
 	)
