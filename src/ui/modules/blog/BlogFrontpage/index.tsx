@@ -1,6 +1,7 @@
+import { cookies } from 'next/headers'
+import { DEFAULT_LANG } from '@/lib/i18n'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
-import { cookies } from 'next/headers'
 import { stegaClean } from 'next-sanity'
 import sortFeaturedPosts from './sortFeaturedPosts'
 import { Suspense } from 'react'
@@ -18,7 +19,7 @@ export default async function BlogFrontpage({
 	showFeaturedPostsFirst: boolean
 	itemsPerPage: number
 }>) {
-	const lang = (await cookies()).get('lang')?.value
+	const lang = (await cookies()).get('lang')?.value ?? DEFAULT_LANG
 
 	const posts = await fetchSanityLive<Sanity.BlogPost[]>({
 		query: groq`

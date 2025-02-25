@@ -1,6 +1,7 @@
+import { cookies } from 'next/headers'
+import { DEFAULT_LANG } from '@/lib/i18n'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
-import { cookies } from 'next/headers'
 import Pretitle from '@/ui/Pretitle'
 import { PortableText, stegaClean } from 'next-sanity'
 import FilterList from '@/ui/modules/blog/BlogList/FilterList'
@@ -26,7 +27,7 @@ export default async function BlogList({
 	displayFilters: boolean
 	filteredCategory: Sanity.BlogCategory
 }>) {
-	const lang = (await cookies()).get('lang')?.value
+	const lang = (await cookies()).get('lang')?.value ?? DEFAULT_LANG
 
 	const posts = await fetchSanityLive<Sanity.BlogPost[]>({
 		query: groq`
