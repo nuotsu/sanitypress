@@ -6,7 +6,11 @@ export default defineType({
 	title: 'Custom HTML',
 	icon: VscCode,
 	type: 'object',
-	groups: [{ name: 'content', default: true }, { name: 'options' }],
+	groups: [
+		{ name: 'html', title: 'HTML', default: true },
+		{ name: 'css', title: 'CSS' },
+		{ name: 'options' },
+	],
 	fields: [
 		defineField({
 			name: 'options',
@@ -26,16 +30,27 @@ export default defineType({
 				language: 'html',
 				languageAlternatives: [{ title: 'HTML', value: 'html' }],
 			},
-			group: 'content',
+			group: 'html',
+		}),
+		defineField({
+			name: 'css',
+			title: 'CSS',
+			type: 'code',
+			options: {
+				language: 'css',
+				languageAlternatives: [{ title: 'CSS', value: 'css' }],
+			},
+			group: 'css',
 		}),
 	],
 	preview: {
 		select: {
-			code: 'html.code',
+			html: 'html.code',
+			css: 'css.code',
 		},
-		prepare: ({ code }) => ({
-			title: code,
-			subtitle: 'Custom HTML',
+		prepare: ({ html, css }) => ({
+			title: html || css,
+			subtitle: html || !css ? 'Custom HTML' : 'Custom CSS',
 		}),
 	},
 })
