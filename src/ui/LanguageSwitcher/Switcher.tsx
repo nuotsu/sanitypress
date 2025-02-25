@@ -3,39 +3,30 @@
 import { useEffect, useState, type ComponentProps } from 'react'
 import { redirect, usePathname } from 'next/navigation'
 import { DEFAULT_LANG, supportedLanguages } from '@/lib/i18n'
-import type { Translation } from '.'
 import { setLangCookie } from './actions'
-import { cn } from '@/lib/utils'
 import { VscGlobe, VscLoading } from 'react-icons/vsc'
+import { cn } from '@/lib/utils'
+import type { Translation } from '.'
 
 export default function Switcher({
-	translations,
+	translations: T,
 	className,
 	...props
 }: {
-	translations?: Translation[]
+	translations: Translation[]
 } & ComponentProps<'label'>) {
 	const [loading, setLoading] = useState(false)
 	const pathname = usePathname()
 
 	useEffect(() => setLoading(false), [pathname])
 
-	const originalSlug = translations?.find((t) =>
-		[t.slug, t.translated].includes(pathname),
-	)?.slug
+	const available = T.find((t) =>
+		[t.slug, ...(t.translations?.map(({ slug }) => slug) ?? [])].includes(
+			pathname,
+		),
+	)
 
-	const available = translations?.filter((t) => originalSlug === t.slug) ?? []
-
-	const getTranslationValue = (id: string) => {
-		const t = available?.find((t) => t.language === id)
-		const isDefault = id === DEFAULT_LANG
-
-		if (!t) {
-			return isDefault ? pathname : undefined
-		}
-
-		return isDefault ? t.slug : t.translated
-	}
+	if (!available?.translations) return null
 
 	return (
 		<label
@@ -49,7 +40,7 @@ export default function Switcher({
 
 			<select
 				className="input border-canvas/10 focus:border-canvas/30 px-[.5em] outline-none"
-				value={pathname}
+				value={pathname === available.slug ? available.slug : pathname}
 				onChange={(e) => {
 					setLoading(true)
 					setLangCookie(
@@ -58,14 +49,15 @@ export default function Switcher({
 					redirect(e.target.value)
 				}}
 			>
-				{supportedLanguages.map(({ id, title }) => {
-					const value = getTranslationValue(id)
-					return (
-						<option value={value} data-lang={id} disabled={!value} key={id}>
-							{title}
-						</option>
-					)
-				})}
+				{available.translations?.map(({ slug, language }) => (
+					<option
+						value={language === DEFAULT_LANG ? available.slug : slug}
+						data-lang={language}
+						key={language}
+					>
+						{supportedLanguages.find((l) => l.id === language)?.title}
+					</option>
+				))}
 			</select>
 		</label>
 	)

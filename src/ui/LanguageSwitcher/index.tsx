@@ -13,32 +13,30 @@ export default async function LanguageSwitcher(props: ComponentProps<'label'>) {
 	return <Switcher translations={translations} {...props} />
 }
 
-export type Translation = {
-	slug: string
-	language: string
-	translated: string
-}
-
-const SLUG_QUERY = groq`'/' + select(
-	metadata.slug.current == 'index' => '',
-	metadata.slug.current
-)`
-
 export async function getTranslations() {
 	return await fetchSanityLive<Translation[]>({
 		query: groq`*[_type in ['page', 'blog.post'] && defined(language)]{
-			'slug': ${SLUG_QUERY},
-			language,
-			'translated': select(
-					_type == 'page' => '/' + language + select(
-						metadata.slug.current == 'index' => '',
-						'/' + metadata.slug.current
-					),
-					_type == 'blog.post' => '/blog/' + language + ${SLUG_QUERY}
-				)
+			'slug': '/' + select(
+				_type == 'blog.post' => 'blog/' + metadata.slug.current,
+				metadata.slug.current != 'index' => metadata.slug.current,
+				''
+			),
+			'translations': *[_type == 'translation.metadata' && references(^._id)].translations[].value->{
+				'slug': '/' + select(
+					_type == 'blog.post' => 'blog/' + language + '/' + metadata.slug.current,
+					metadata.slug.current != 'index' => language + '/' + metadata.slug.current,
+					language
+				),
+				language
+			}
 		}`,
-		params: {
-			defaultLang: DEFAULT_LANG,
-		},
 	})
 }
+
+export type Translation = Partial<{
+	slug: string
+	translations: {
+		slug: string
+		language: string
+	}[]
+}>
