@@ -112,7 +112,7 @@ export const GLOBAL_MODULE_PATH_QUERY = groq`
 `
 
 export const TRANSLATIONS_QUERY = groq`
-	'translations': *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+	'translations': *[_type == 'translation.metadata' && references(^._id)].translations[].value->{
 		'slug': metadata.slug.current,
 		language
 	}

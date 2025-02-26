@@ -17,7 +17,7 @@ export async function GET() {
 				_type,
 				title,
 				metadata,
-				'image': metadata.image.asset->url
+				'image': metadata.image.asset->url,
 			},
 			'posts': *[_type == 'blog.post']{
 				_type,
@@ -25,7 +25,8 @@ export async function GET() {
 				publishDate,
 				authors[]->,
 				metadata,
-				'image': metadata.image.asset->url
+				'image': metadata.image.asset->url,
+				language,
 			},
 			'copyright': pt::text(*[_type == 'site'][0].copyright)
 		}`,
@@ -51,12 +52,14 @@ export async function GET() {
 		generator: 'https://sanitypress.dev',
 	})
 
-	posts.map((post) =>
-		feed.addItem({
+	posts.map((post) => {
+		const url = resolveUrl(post, { language: post.language })
+
+		return feed.addItem({
 			title: escapeHTML(post.metadata.title),
 			description: post.metadata.description,
-			id: resolveUrl(post),
-			link: resolveUrl(post),
+			id: url,
+			link: url,
 			published: new Date(post.publishDate),
 			date: new Date(post.publishDate),
 			author: post.authors?.map((author) => ({ name: author.name })),
@@ -77,8 +80,8 @@ export async function GET() {
 				},
 			}),
 			image: post.image,
-		}),
-	)
+		})
+	})
 
 	return new Response(feed.atom1(), {
 		headers: {
