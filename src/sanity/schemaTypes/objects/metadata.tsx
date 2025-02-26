@@ -32,7 +32,6 @@ export default defineType({
 		defineField({
 			name: 'description',
 			type: 'text',
-			rows: 3,
 			validation: (Rule) => Rule.max(160).warning(),
 			components: {
 				input: (props) => <CharacterCount as="textarea" max={160} {...props} />,
