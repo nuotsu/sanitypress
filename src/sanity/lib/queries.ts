@@ -138,7 +138,7 @@ export async function getSite() {
 }
 
 export async function getTranslations() {
-	return await fetchSanityLive<Translation[]>({
+	return await fetchSanityLive<Sanity.Translation[]>({
 		query: groq`*[_type in ['page', 'blog.post'] && defined(language)]{
 			'slug': '/' + select(
 				_type == 'blog.post' => 'blog/' + metadata.slug.current,
@@ -151,16 +151,11 @@ export async function getTranslations() {
 					metadata.slug.current != 'index' => language + '/' + metadata.slug.current,
 					language
 				),
+				_type == 'blog.post' => {
+					'slugBlogAlt': '/' + language + '/blog/' + metadata.slug.current
+				},
 				language
 			}
 		}`,
 	})
 }
-
-export type Translation = Partial<{
-	slug: string
-	translations: {
-		slug: string
-		language: string
-	}[]
-}>

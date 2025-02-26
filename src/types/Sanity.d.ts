@@ -39,6 +39,15 @@ declare global {
 			modules?: Module[]
 		}
 
+		interface Translation {
+			slug: string
+			translations?: {
+				slug: string
+				slugBlogAlt?: string
+				language: string
+			}[]
+		}
+
 		interface GlobalModule extends SanityDocument {
 			path: string
 			excludePaths?: string[]

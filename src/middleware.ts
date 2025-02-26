@@ -28,7 +28,9 @@ export default async function (request: NextRequest) {
 	const cookieMatchesCurrentPrefix =
 		// cookie matches current prefix
 		lang ===
-			available.translations?.find((t) => t.slug === pathname)?.language ||
+			available.translations?.find((t) =>
+				[t.slugBlogAlt, t.slug].includes(pathname),
+			)?.language ||
 		// default language and current path is the base path
 		(lang === DEFAULT_LANG && pathname === available.slug)
 
@@ -36,9 +38,11 @@ export default async function (request: NextRequest) {
 		const target = available.translations?.find((t) => t.language === lang)
 		// use base path for default language
 		const url =
-			target?.language === DEFAULT_LANG ? available.slug : target?.slug
-
+			target?.language === DEFAULT_LANG
+				? available.slug
+				: (target?.slugBlogAlt ?? target?.slug)
 		if (!url) return NextResponse.next()
+
 		return NextResponse.redirect(new URL(url, request.url))
 	}
 
