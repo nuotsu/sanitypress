@@ -1,14 +1,15 @@
 import moduleProps from '@/lib/moduleProps'
 import Pretitle from '@/ui/Pretitle'
 import { PortableText, stegaClean } from 'next-sanity'
-import { Img } from '@/ui/Img'
 import CTAList from '@/ui/CTAList'
+import { Img } from '@/ui/Img'
 import { cn } from '@/lib/utils'
 
 export default function CardList({
 	pretitle,
 	intro,
 	cards,
+	ctas,
 	layout,
 	columns = 3,
 	visualSeparation,
@@ -16,6 +17,7 @@ export default function CardList({
 }: Partial<{
 	pretitle: string
 	intro: any
+	ctas: Sanity.CTA[]
 	cards: Partial<{
 		image: Sanity.Image
 		content: any
@@ -34,6 +36,7 @@ export default function CardList({
 				<header className="richtext text-center">
 					<Pretitle>{pretitle}</Pretitle>
 					<PortableText value={intro} />
+					<CTAList className="justify-center" ctas={ctas} />
 				</header>
 			)}
 

@@ -28,6 +28,13 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
+			name: 'ctas',
+			title: 'Call-to-actions',
+			type: 'array',
+			of: [{ type: 'cta' }],
+			group: 'content',
+		}),
+		defineField({
 			name: 'cards',
 			type: 'array',
 			of: [
@@ -53,6 +60,16 @@ export default defineType({
 							of: [{ type: 'cta' }],
 						}),
 					],
+					preview: {
+						select: {
+							image: 'image',
+							content: 'content',
+						},
+						prepare: ({ image, content }) => ({
+							title: getBlockText(content),
+							media: image,
+						}),
+					},
 				}),
 			],
 			group: 'content',
