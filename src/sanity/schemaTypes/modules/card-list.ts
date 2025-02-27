@@ -67,6 +67,13 @@ export default defineType({
 			initialValue: 'carousel',
 		}),
 		defineField({
+			name: 'columns',
+			type: 'number',
+			description: 'Set a fixed number of columns (Tablet and desktop only)',
+			validation: (Rule) => Rule.min(1).max(12),
+			group: 'options',
+		}),
+		defineField({
 			name: 'visualSeparation',
 			type: 'boolean',
 			initialValue: true,
