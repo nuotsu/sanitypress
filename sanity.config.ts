@@ -14,7 +14,7 @@ import {
 import { vercelWidget } from 'sanity-plugin-dashboard-widget-vercel'
 import { visionTool } from '@sanity/vision'
 import { codeInput } from '@sanity/code-input'
-import { supportedLanguages } from '@/lib/i18n'
+import { DEFAULT_LANG, supportedLanguages } from '@/lib/i18n'
 import { documentInternationalization } from '@sanity/document-internationalization'
 import { schemaTypes } from './src/sanity/schemaTypes'
 import resolveUrl from '@/lib/resolveUrl'
@@ -30,7 +30,9 @@ export default defineConfig({
 		structure,
 		presentation,
 		sanitypress({
+			// licenseKey: process.env.NEXT_PUBLIC_SANITYPRESS_PRO_LICENSE_KEY!,
 			singletonTypes: ['site'],
+			defaultLang: DEFAULT_LANG,
 		}),
 		dashboardTool({
 			name: 'deployment',
