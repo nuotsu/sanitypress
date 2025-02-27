@@ -1,6 +1,9 @@
 import moduleProps from '@/lib/moduleProps'
 import Pretitle from '@/ui/Pretitle'
 import { PortableText } from 'next-sanity'
+import Image from './RichtextModule/Image'
+import Code from './RichtextModule/Code'
+import CustomHTML from './CustomHTML'
 import { cn } from '@/lib/utils'
 
 export default function AccordionList({
@@ -8,6 +11,7 @@ export default function AccordionList({
 	intro,
 	items,
 	layout = 'vertical',
+	connect,
 	generateSchema,
 	...props
 }: Partial<{
@@ -19,6 +23,7 @@ export default function AccordionList({
 		open?: boolean
 	}[]
 	layout: 'vertical' | 'horizontal'
+	connect: boolean
 	generateSchema: boolean
 }> &
 	Sanity.Module) {
@@ -49,7 +54,8 @@ export default function AccordionList({
 			<div className="mx-auto w-full max-w-screen-md">
 				{items?.map(({ summary, content, open }, key) => (
 					<details
-						className="accordion border-b border-ink/10"
+						className="accordion border-ink/10 border-b"
+						name={connect ? props._key : undefined}
 						open={open}
 						{...(generateSchema && {
 							itemScope: true,
@@ -76,7 +82,21 @@ export default function AccordionList({
 							})}
 						>
 							<div className="richtext" itemProp="text">
-								<PortableText value={content} />
+								<PortableText
+									value={content}
+									components={{
+										types: {
+											image: Image,
+											code: Code,
+											'custom-html': ({ value }) => (
+												<CustomHTML
+													className="has-[table]:md:[grid-column:bleed] has-[table]:md:mx-auto"
+													{...value}
+												/>
+											),
+										},
+									}}
+								/>
 							</div>
 						</div>
 					</details>
