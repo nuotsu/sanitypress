@@ -14,6 +14,7 @@ export default defineType({
 	fields: [
 		defineField({
 			name: 'options',
+			title: 'Module options',
 			type: 'module-options',
 			group: 'options',
 		}),
