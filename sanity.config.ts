@@ -32,7 +32,7 @@ export default defineConfig({
 		sanitypress({
 			// licenseKey: process.env.NEXT_PUBLIC_SANITYPRESS_PRO_LICENSE_KEY!,
 			singletonTypes: ['site'],
-			defaultLang: DEFAULT_LANG,
+			// defaultLang: DEFAULT_LANG,
 		}),
 		dashboardTool({
 			name: 'deployment',
