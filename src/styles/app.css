@@ -17,10 +17,6 @@
 @variant headings (& :is(h1, h2, h3, h4, h5, h6));
 
 @layer base {
-	[lang='en'] {
-		direction: rtl;
-	}
-
 	* {
 		min-width: 0;
 	}
@@ -182,11 +178,11 @@
 }
 
 @utility action {
-	@apply action-base bg-accent text-balance rounded border border-transparent text-white;
+	@apply action-base bg-accent rounded border border-transparent text-balance text-white;
 }
 
 @utility action-outline {
-	@apply action-base border-accent/10 bg-canvas/50 to-canvas text-balance rounded border;
+	@apply action-base border-accent/10 bg-canvas/50 to-canvas rounded border text-balance;
 }
 
 @utility ghost {
