@@ -23,7 +23,7 @@ export default function CharacterCount({
 			<Flex>
 				{children}
 
-				<Text style={{ flexGrow: 1, textAlign: 'right' }} size={1} muted>
+				<Text style={{ flexGrow: 1, textAlign: 'end' }} size={1} muted>
 					<span
 						style={{
 							color:

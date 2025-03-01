@@ -21,7 +21,7 @@ export default function TestimonialFeatured({
 						<PortableText value={testimonial.content} />
 					</div>
 
-					<dl className="text-left">
+					<dl className="text-start">
 						<dt className="flex flex-wrap items-center gap-1">
 							{author?.name}
 

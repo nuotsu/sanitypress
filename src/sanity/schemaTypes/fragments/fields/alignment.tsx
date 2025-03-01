@@ -46,9 +46,9 @@ export const textAlign = defineField({
 		input: (props) => (
 			<TextInputWithPresets
 				presets={[
-					{ value: 'left', icon: MdFormatAlignLeft },
+					{ value: 'start', icon: MdFormatAlignLeft },
 					{ value: 'center', icon: MdFormatAlignCenter },
-					{ value: 'right', icon: MdFormatAlignRight },
+					{ value: 'end', icon: MdFormatAlignRight },
 					{ value: 'justify', icon: MdFormatAlignJustify },
 				]}
 				{...props}

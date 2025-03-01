@@ -29,7 +29,7 @@
 		inset-block: -2px;
 		inset-inline: -1.6ch -0.5ch;
 		border-radius: 0 0.25rem 0.25rem 0;
-		border-left: 4px solid var(--color-green-400);
+		border-inline-start: 4px solid var(--color-green-400);
 		background-color: color-mix(
 			in oklab,
 			var(--color-green-400) 20%,

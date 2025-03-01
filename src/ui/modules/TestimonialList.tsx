@@ -61,7 +61,7 @@ export default function TestimonialList({
 												}
 											/>
 
-											<dl className="text-left">
+											<dl className="text-start">
 												<dt className="flex flex-wrap items-center gap-1">
 													{testimonial.author.name}
 

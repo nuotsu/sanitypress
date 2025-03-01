@@ -42,7 +42,7 @@ export default async function Header() {
 
 				<CTAList
 					ctas={ctas}
-					className="max-md:header-closed:hidden [grid-area:ctas] max-md:*:w-full md:ml-auto"
+					className="max-md:header-closed:hidden [grid-area:ctas] max-md:*:w-full md:ms-auto"
 				/>
 
 				<Toggle />

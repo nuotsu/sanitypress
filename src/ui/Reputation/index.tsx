@@ -16,7 +16,7 @@ export default async function Reputation({
 		await getCachedRepoData(reputation)
 
 	const imgClassname = cn(
-		'border-canvas bg-canvas -mr-2 aspect-square h-8 w-auto overflow-hidden rounded-full border-2 object-cover last:mr-0',
+		'border-canvas bg-canvas -me-2 aspect-square h-8 w-auto overflow-hidden rounded-full border-2 object-cover last:me-0',
 	)
 
 	const { limit = 5 } = reputation
@@ -59,7 +59,7 @@ export default async function Reputation({
 				))}
 			</figure>
 
-			<dl className="flex flex-col text-left [figure:empty+&]:text-center">
+			<dl className="flex flex-col text-start [figure:empty+&]:text-center">
 				<dt className="max-[25rem]:text-center">
 					{reputation.repo ? (
 						<a

@@ -34,7 +34,7 @@ export default function PricingList({
 								<div className="h3 flex flex-wrap items-center gap-x-4">
 									{tier.title}
 
-									<Pretitle className="ml-auto text-xs">
+									<Pretitle className="ms-auto text-xs">
 										{tier.highlight}
 									</Pretitle>
 								</div>
