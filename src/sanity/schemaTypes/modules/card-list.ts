@@ -12,6 +12,7 @@ export default defineType({
 	fields: [
 		defineField({
 			name: 'options',
+			title: 'Module options',
 			type: 'module-options',
 			group: 'options',
 		}),
@@ -24,6 +25,13 @@ export default defineType({
 			name: 'intro',
 			type: 'array',
 			of: [{ type: 'block' }],
+			group: 'content',
+		}),
+		defineField({
+			name: 'ctas',
+			title: 'Call-to-actions',
+			type: 'array',
+			of: [{ type: 'cta' }],
 			group: 'content',
 		}),
 		defineField({
@@ -52,6 +60,16 @@ export default defineType({
 							of: [{ type: 'cta' }],
 						}),
 					],
+					preview: {
+						select: {
+							image: 'image',
+							content: 'content',
+						},
+						prepare: ({ image, content }) => ({
+							title: getBlockText(content),
+							media: image,
+						}),
+					},
 				}),
 			],
 			group: 'content',
@@ -65,6 +83,13 @@ export default defineType({
 			},
 			group: 'options',
 			initialValue: 'carousel',
+		}),
+		defineField({
+			name: 'columns',
+			type: 'number',
+			description: 'Set a fixed number of columns (Tablet and desktop only)',
+			validation: (Rule) => Rule.min(1).max(12),
+			group: 'options',
 		}),
 		defineField({
 			name: 'visualSeparation',

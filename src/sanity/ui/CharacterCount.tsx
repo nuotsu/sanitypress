@@ -16,11 +16,14 @@ export default function CharacterCount({
 
 	return (
 		<Stack space={2}>
-			<Input {...elementProps} />
+			<Input
+				style={as === 'textarea' ? { resize: 'block', height: '4lh' } : {}}
+				{...elementProps}
+			/>
 			<Flex>
 				{children}
 
-				<Text style={{ flexGrow: 1, textAlign: 'right' }} size={1} muted>
+				<Text style={{ flexGrow: 1, textAlign: 'end' }} size={1} muted>
 					<span
 						style={{
 							color:

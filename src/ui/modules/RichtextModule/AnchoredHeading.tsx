@@ -15,10 +15,10 @@ export default function AnchoredHeading({
 			{children}
 
 			<a
-				className="anim-fade-to-r ml-2 no-underline! group-target:inline-block md:hidden md:group-hover:inline-block"
+				className="anim-fade-to-r ms-2 no-underline! group-target:inline-block md:hidden md:group-hover:inline-block"
 				href={`#${id}`}
 			>
-				<span className="inline-block text-ink/25">¶</span>
+				<span className="text-ink/25 inline-block">¶</span>
 			</a>
 		</Tag>
 	)

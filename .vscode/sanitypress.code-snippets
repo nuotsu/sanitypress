@@ -67,6 +67,7 @@
 		"body": [
 			"defineField({",
 			"\tname: 'options',",
+			"\ttitle: 'Module options',",
 			"\ttype: 'module-options',",
 			"\tgroup: 'options',",
 			"}),",

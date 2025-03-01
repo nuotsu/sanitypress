@@ -17,6 +17,10 @@
 @variant headings (& :is(h1, h2, h3, h4, h5, h6));
 
 @layer base {
+	[lang='en'] {
+		direction: rtl;
+	}
+
 	* {
 		min-width: 0;
 	}
@@ -178,11 +182,11 @@
 }
 
 @utility action {
-	@apply action-base bg-accent rounded border border-transparent text-balance text-white;
+	@apply action-base bg-accent text-balance rounded border border-transparent text-white;
 }
 
 @utility action-outline {
-	@apply action-base border-accent/10 bg-canvas/50 to-canvas rounded border text-balance;
+	@apply action-base border-accent/10 bg-canvas/50 to-canvas text-balance rounded border;
 }
 
 @utility ghost {
@@ -194,7 +198,7 @@
 }
 
 @utility input {
-	@apply border-ink/10 rounded border p-[.25em];
+	@apply border-ink/10 rounded border p-[.25em] text-start;
 }
 
 /* utilities */
@@ -306,7 +310,7 @@
 	}
 
 	& blockquote {
-		@apply border-accent/10 border-l-2 pl-4;
+		@apply border-accent/10 border-s-2 ps-4;
 	}
 
 	& table {

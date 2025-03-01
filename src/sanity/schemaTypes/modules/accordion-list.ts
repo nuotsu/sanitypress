@@ -1,6 +1,7 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { TfiLayoutAccordionMerged } from 'react-icons/tfi'
 import { getBlockText } from '@/sanity/lib/utils'
+import imageBlock from '../fragments/image-block'
 
 export default defineType({
 	name: 'accordion-list',
@@ -11,6 +12,7 @@ export default defineType({
 	fields: [
 		defineField({
 			name: 'options',
+			title: 'Module options',
 			type: 'module-options',
 			group: 'options',
 		}),
@@ -40,7 +42,18 @@ export default defineType({
 						defineField({
 							name: 'content',
 							type: 'array',
-							of: [{ type: 'block' }],
+							of: [
+								{ type: 'block' },
+								imageBlock,
+								defineArrayMember({
+									title: 'Code block',
+									type: 'code',
+									options: {
+										withFilename: true,
+									},
+								}),
+								{ type: 'custom-html' },
+							],
 						}),
 						defineField({
 							name: 'open',
@@ -70,6 +83,14 @@ export default defineType({
 				list: ['vertical', 'horizontal'],
 			},
 			initialValue: 'vertical',
+			group: 'options',
+		}),
+		defineField({
+			name: 'connect',
+			title: 'Connect accordions',
+			description: 'Allows only one accordion to be expanded at a time',
+			type: 'boolean',
+			initialValue: false,
 			group: 'options',
 		}),
 		defineField({

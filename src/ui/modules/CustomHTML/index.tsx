@@ -14,7 +14,7 @@ export default function CustomHTML({
 	css?: { code: string }
 } & Sanity.Module &
 	ComponentProps<'section' | 'script'>) {
-	if (!html?.code && !css?.code) return null
+	if ((!html?.code && !css?.code) || props?.options?.hidden) return null
 
 	return (
 		<>

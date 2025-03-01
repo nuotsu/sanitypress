@@ -56,9 +56,9 @@ export default function Hero({
 								'mt-auto': stegaClean(alignItems) === 'end',
 							},
 							{
-								'mr-auto': stegaClean(textAlign) === 'left',
+								'me-auto': ['left', 'start'].includes(stegaClean(textAlign)),
 								'mx-auto': stegaClean(textAlign) === 'center',
-								'ml-auto': stegaClean(textAlign) === 'right',
+								'ms-auto': ['right', 'end'].includes(stegaClean(textAlign)),
 							},
 						)}
 						style={{ textAlign: stegaClean(textAlign) }}
@@ -78,9 +78,13 @@ export default function Hero({
 												'!mt-4',
 												hasImage && '[&_strong]:text-amber-400',
 												{
-													'justify-start': stegaClean(textAlign) === 'left',
+													'justify-start': ['left', 'start'].includes(
+														stegaClean(textAlign),
+													),
 													'justify-center': stegaClean(textAlign) === 'center',
-													'justify-end': stegaClean(textAlign) === 'right',
+													'justify-end': ['right', 'end'].includes(
+														stegaClean(textAlign),
+													),
 												},
 											)}
 											reputation={value.reputation}

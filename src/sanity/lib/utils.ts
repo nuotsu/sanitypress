@@ -29,6 +29,19 @@ export const group = (
 	S.listItem().title(title).child(S.list().title(title).items(items))
 
 /**
+ * @example directory(S, 'docs/modules')
+ */
+export const directory = (S: StructureBuilder, path: string) =>
+	S.listItem()
+		.title(`/${path}`)
+		.schemaType('page')
+		.child(
+			S.documentList()
+				.id(`page.${path.replace(/\//, '-')}`)
+				.filter(`string::startsWith(metadata.slug.current, '${path}/')`),
+		)
+
+/**
  * Return the text of a block type as a single string. Use in schema previews.
  */
 export function getBlockText(

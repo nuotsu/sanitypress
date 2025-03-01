@@ -61,18 +61,18 @@ export default function TableOfContents({
 			<ol className="anim-fade-to-b mt-2 leading-tight">
 				{headings?.map(({ text, style }, key) => (
 					<li
-						className="border-ink/10 border-l transition-all"
+						className="border-ink/10 border-s transition-all"
 						data-toc-item={slug(text)}
 						key={key}
 					>
 						<a
 							className={cn(
 								'block py-1 hover:underline',
-								stegaClean(style) == 'h2' && 'pl-4',
-								stegaClean(style) == 'h3' && 'pl-6',
-								stegaClean(style) == 'h4' && 'pl-8',
-								stegaClean(style) == 'h5' && 'pl-10',
-								stegaClean(style) == 'h6' && 'pl-12',
+								stegaClean(style) == 'h2' && 'ps-4',
+								stegaClean(style) == 'h3' && 'ps-6',
+								stegaClean(style) == 'h4' && 'ps-8',
+								stegaClean(style) == 'h5' && 'ps-10',
+								stegaClean(style) == 'h6' && 'ps-12',
 							)}
 							href={`#${slug(text)}`}
 						>
