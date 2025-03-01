@@ -1,7 +1,6 @@
 import { structureTool } from 'sanity/structure'
-import { group, singleton } from './lib/utils'
+import { singleton, group, directory } from './lib/utils'
 import { VscFiles, VscServerProcess } from 'react-icons/vsc'
-import { BsDatabaseAdd } from 'react-icons/bs'
 
 export const structure = structureTool({
 	structure: (S) =>
@@ -11,7 +10,10 @@ export const structure = structureTool({
 				singleton(S, 'site', 'Site settings').icon(VscServerProcess),
 				S.divider(),
 
-				S.documentTypeListItem('page').title('Pages').icon(VscFiles),
+				S.documentTypeListItem('page').title('All pages').icon(VscFiles),
+				// customize page directories
+				directory(S, 'docs'),
+
 				S.documentTypeListItem('global-module').title('Global modules'),
 				S.divider(),
 
@@ -29,6 +31,6 @@ export const structure = structureTool({
 					S.documentTypeListItem('pricing').title('Pricing tiers'),
 					S.documentTypeListItem('reputation'),
 					S.documentTypeListItem('testimonial').title('Testimonials'),
-				]).icon(BsDatabaseAdd),
+				]),
 			]),
 })
