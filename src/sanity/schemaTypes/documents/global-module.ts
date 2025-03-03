@@ -1,5 +1,5 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
-import { VscSymbolField } from 'react-icons/vsc'
+import { VscSymbolField, VscSymbolVariable } from 'react-icons/vsc'
 import modules from '../fragments/modules'
 import { count } from '@/lib/utils'
 
@@ -13,14 +13,15 @@ export default defineType({
 			name: 'path',
 			type: 'string',
 			description:
-				'URL path to add modules. Use * for all pages. A trailing slash (/) excludes the parent path.',
+				'URL path to add modules. Set to "*" for all pages. A trailing slash "/" excludes the parent path.',
 			placeholder: 'e.g. *, blog/, foo/bar/, etc.',
+			validation: (Rule) => Rule.regex(/^(\*|[a-z0-9-_/]+\/?)$/),
 		}),
 		defineField({
 			name: 'excludePaths',
 			type: 'array',
 			description:
-				'URL paths to exclude modules from being added. A trailing slash (/) excludes the parent path.',
+				'URL paths to exclude modules from being added. A trailing slash "/" excludes the parent path.',
 			of: [
 				defineArrayMember({
 					type: 'string',
@@ -48,7 +49,8 @@ export default defineType({
 		},
 		prepare: ({ path, before, after }) => ({
 			title: count([...(before ?? []), ...(after ?? [])], 'module'),
-			subtitle: path === '*' ? 'All pages' : path && `/${path}*`,
+			subtitle: path === '*' ? '* (All pages)' : path,
+			media: path === '*' ? VscSymbolVariable : VscSymbolField,
 		}),
 	},
 })
