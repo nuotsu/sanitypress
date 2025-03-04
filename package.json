@@ -1,6 +1,6 @@
 {
 	"name": "sanitypress",
-	"version": "6.3.23",
+	"version": "6.3.24",
 	"description": "An impressive Next.js + Sanity.io starter template",
 	"author": "nuotsu <mitchell@nuotsu.dev> (https://nuotsu.dev)",
 	"license": "ISC",
@@ -25,7 +25,7 @@
 		"@vercel/speed-insights": "^1.2.0",
 		"clsx": "^2.1.1",
 		"feed": "^4.2.2",
-		"next": "^15.2.0",
+		"next": "^15.2.1",
 		"next-sanity": "^9.8.61",
 		"next-sanity-image": "^6.1.1",
 		"nuqs": "^2.4.0",
