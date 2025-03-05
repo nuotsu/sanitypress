@@ -12,7 +12,10 @@ export const structure = structureTool({
 
 				S.documentTypeListItem('page').title('All pages').icon(VscFiles),
 				// customize page directories
-				directory(S, 'docs'),
+				group(S, 'Directories', [
+					directory(S, 'docs', { maxLevel: 1 }).title('Docs'),
+					directory(S, 'docs/modules').title('Docs › Modules'),
+				]),
 
 				S.documentTypeListItem('global-module').title('Global modules'),
 				S.divider(),

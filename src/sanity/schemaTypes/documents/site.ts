@@ -19,7 +19,7 @@ export default defineType({
 		defineField({
 			name: 'tagline',
 			type: 'array',
-			of: [{ type: 'block' }],
+			of: [{ type: 'block', lists: [] }],
 			group: 'branding',
 		}),
 		defineField({
@@ -40,6 +40,7 @@ export default defineType({
 				{
 					type: 'block',
 					styles: [{ title: 'Normal', value: 'normal' }],
+					lists: [],
 				},
 			],
 			group: 'info',

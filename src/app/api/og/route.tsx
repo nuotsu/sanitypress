@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
 	const site = await getSite()
 
 	// remove divider and site.title in metadata.title
-	const regex = new RegExp(` [-—|] ${site.title}$`)
+	const regex = new RegExp(` [-—|]+ ${site.title}$`)
 	const title = searchParams.get('title')?.replace(regex, '')
 
 	return new ImageResponse(

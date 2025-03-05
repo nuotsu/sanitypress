@@ -64,7 +64,10 @@ export default async function Code({
 					</menu>
 				</div>
 
-				<div className={css.code} dangerouslySetInnerHTML={{ __html: html }} />
+				<div
+					className={cn(css.code, '[--highlight-color:var(--color-green-400)]')}
+					dangerouslySetInnerHTML={{ __html: html }}
+				/>
 			</div>
 		</article>
 	)
