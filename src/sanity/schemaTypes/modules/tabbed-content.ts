@@ -1,6 +1,6 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { PiTabs } from 'react-icons/pi'
-import { getBlockText } from '@/sanity/lib/utils'
+import { getBlockText } from 'sanitypress-utils'
 
 export default defineType({
 	name: 'tabbed-content',

@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import CharacterCount from '@/sanity/ui/CharacterCount'
+import { CharacterCount } from 'sanitypress-utils'
 import PreviewOG from '@/sanity/ui/PreviewOG'
 
 export default defineType({

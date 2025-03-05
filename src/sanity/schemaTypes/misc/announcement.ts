@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { VscPin, VscCalendar } from 'react-icons/vsc'
-import { getBlockText } from '@/sanity/lib/utils'
+import { getBlockText } from 'sanitypress-utils'
 
 export default defineType({
 	name: 'announcement',

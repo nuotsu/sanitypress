@@ -1,6 +1,6 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { TfiLayoutAccordionMerged } from 'react-icons/tfi'
-import { getBlockText } from '@/sanity/lib/utils'
+import { getBlockText } from 'sanitypress-utils'
 import imageBlock from '../fragments/image-block'
 
 export default defineType({

@@ -1,9 +1,6 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { VscFileMedia } from 'react-icons/vsc'
-import TextInputWithPresets, {
-	getPreset,
-	type Preset,
-} from '@/sanity/ui/TextInputWithPresets'
+import { getPreset, TextInputWithPresets, type Preset } from 'sanitypress-utils'
 import { count } from '@/lib/utils'
 
 const presets: Preset[] = [

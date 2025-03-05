@@ -1,12 +1,8 @@
 import { defineField, defineType } from 'sanity'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
 import { reputationBlock } from '../misc/reputation'
-import {
-	textAlign,
-	alignItems,
-	alignmentFieldset,
-} from '../fragments/fields/alignment'
-import { getBlockText } from '@/sanity/lib/utils'
+import { alignItems, textAlign } from 'sanitypress-utils'
+import { getBlockText } from 'sanitypress-utils'
 
 export default defineType({
 	name: 'hero',
@@ -18,7 +14,10 @@ export default defineType({
 		{ name: 'asset' },
 		{ name: 'options' },
 	],
-	fieldsets: [alignmentFieldset, { name: 'image', options: { columns: 2 } }],
+	fieldsets: [
+		{ name: 'alignment', options: { columns: 2 } },
+		{ name: 'image', options: { columns: 2 } },
+	],
 	fields: [
 		defineField({
 			name: 'options',
@@ -55,10 +54,12 @@ export default defineType({
 		defineField({
 			...alignItems,
 			fieldset: 'alignment',
+			group: 'options',
 		}),
 		defineField({
 			...textAlign,
 			fieldset: 'alignment',
+			group: 'options',
 		}),
 	],
 	preview: {

@@ -23,7 +23,7 @@
 		"scope": "typescript,typescriptreact",
 		"body": [
 			"import { defineField, defineType } from 'sanity'",
-			"import { getBlockText } from '@/sanity/lib/utils'\n",
+			"import { getBlockText } from 'sanitypress-utils'\n",
 			"export default defineType({",
 			"\tname: '${TM_FILENAME_BASE}',",
 			"\ttitle: '${TM_FILENAME_BASE/^([a-z])|-([a-z])|\\.([a-z]+)/${1:/upcase}${2:+ }${2:/downcase}${3:+ (}${3:/downcase}${3:+)}/g}',",

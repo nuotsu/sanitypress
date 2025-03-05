@@ -1,5 +1,5 @@
 import { structureTool } from 'sanity/structure'
-import { singleton, group, directory } from './lib/utils'
+import { singleton, group, directory } from 'sanitypress-utils'
 import { VscFiles, VscServerProcess } from 'react-icons/vsc'
 
 export const structure = structureTool({

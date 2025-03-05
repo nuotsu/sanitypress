@@ -2,12 +2,8 @@ import { defineArrayMember, defineField, defineType } from 'sanity'
 import creativeImage from './image.creative'
 import creativeRichtext from './richtext.creative'
 import creativeCtas from './ctas.creative'
-import {
-	textAlign,
-	alignItems,
-	alignmentFieldset,
-} from '../../fragments/fields/alignment'
-import { getBlockText } from '@/sanity/lib/utils'
+import { alignItems, textAlign } from 'sanitypress-utils'
+import { getBlockText } from 'sanitypress-utils'
 import { count } from '@/lib/utils'
 import { VscExtensions } from 'react-icons/vsc'
 
@@ -17,7 +13,7 @@ export default defineType({
 	icon: VscExtensions,
 	type: 'object',
 	groups: [{ name: 'content', default: true }, { name: 'options' }],
-	fieldsets: [alignmentFieldset],
+	fieldsets: [{ name: 'alignment', options: { columns: 2 } }],
 	fields: [
 		defineField({
 			name: 'options',
@@ -91,6 +87,7 @@ export default defineType({
 		defineField({
 			...alignItems,
 			fieldset: 'alignment',
+			group: 'options',
 			hidden: ({ parent }) => parent.bordered,
 		}),
 		defineField({

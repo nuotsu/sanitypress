@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { getBlockText } from '@/sanity/lib/utils'
+import { getBlockText } from 'sanitypress-utils'
 import { VscSymbolMisc } from 'react-icons/vsc'
 
 export default defineType({
