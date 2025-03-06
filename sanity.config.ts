@@ -5,7 +5,7 @@ import { defineConfig } from 'sanity'
 import { projectId, dataset, apiVersion } from '@/sanity/lib/env'
 import { structure } from './src/sanity/structure'
 import { presentation } from './src/sanity/presentation'
-import { sanitypress, icon, infoWidget } from 'sanity-plugin-sanitypress'
+import { sanitypress, icon, infoWidget } from 'sanitypress-utils'
 import {
 	dashboardTool,
 	projectInfoWidget,
@@ -30,7 +30,7 @@ export default defineConfig({
 		structure,
 		presentation,
 		sanitypress({
-			// licenseKey: process.env.NEXT_PUBLIC_SANITYPRESS_PRO_LICENSE_KEY!,
+			licenseKey: process.env.NEXT_PUBLIC_SANITYPRESS_PRO_LICENSE_KEY!,
 			singletonTypes: ['site'],
 			// defaultLang: DEFAULT_LANG,
 		}),
