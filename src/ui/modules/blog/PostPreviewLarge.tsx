@@ -9,10 +9,7 @@ export default function PostPreviewLarge({ post }: { post: Sanity.BlogPost }) {
 	if (!post) return null
 
 	return (
-		<Link
-			className="group grid items-center gap-x-8 gap-y-4 md:grid-cols-2"
-			href={resolveUrl(post, { base: false })}
-		>
+		<div className="group relative isolate grid items-center gap-x-8 gap-y-4 md:grid-cols-2">
 			<figure className="max-md:full-bleed bg-ink/5 relative aspect-video overflow-hidden md:self-start">
 				<Img
 					className="aspect-video w-full object-cover transition-all group-hover:scale-105 group-hover:brightness-110"
@@ -30,9 +27,15 @@ export default function PostPreviewLarge({ post }: { post: Sanity.BlogPost }) {
 			</figure>
 
 			<div className="mx-auto max-w-lg space-y-4">
-				<h2 className="h2 md:h1 group-hover:underline">
-					{post.metadata.title}
-				</h2>
+				<div className="h2 md:h1">
+					<Link
+						className="group-hover:underline"
+						href={resolveUrl(post, { base: false })}
+					>
+						<span className="absolute inset-0" />
+						{post.metadata.title}
+					</Link>
+				</div>
 
 				<p className="line-clamp-4 max-md:text-sm">
 					{post.metadata.description}
@@ -53,6 +56,6 @@ export default function PostPreviewLarge({ post }: { post: Sanity.BlogPost }) {
 					/>
 				)}
 			</div>
-		</Link>
+		</div>
 	)
 }

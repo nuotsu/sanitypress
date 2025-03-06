@@ -4,6 +4,7 @@ import { Img } from '@/ui/Img'
 import Date from '@/ui/Date'
 import Categories from './Categories'
 import Authors from './Authors'
+import { cn } from '@/lib/utils'
 
 export default function PostPreview({
 	post,
@@ -14,13 +15,8 @@ export default function PostPreview({
 }) {
 	if (!post && !skeleton) return null
 
-	const Root = skeleton ? 'div' : Link
-
 	return (
-		<Root
-			className="group flex h-full flex-col space-y-2"
-			href={resolveUrl(post, { base: false })}
-		>
+		<div className="group relative isolate flex h-full flex-col space-y-2">
 			<figure className="bg-ink/3 relative aspect-video overflow-hidden">
 				<Img
 					className="aspect-video w-full object-cover transition-all group-hover:scale-105 group-hover:brightness-110"
@@ -36,8 +32,14 @@ export default function PostPreview({
 				)}
 			</figure>
 
-			<div className="h4 empty:skeleton-2 group-hover:underline">
-				{post?.metadata.title}
+			<div className={cn('h4', skeleton && 'skeleton-2')}>
+				<Link
+					className="group-hover:underline"
+					href={resolveUrl(post, { base: false })}
+				>
+					<span className="absolute inset-0" />
+					{post?.metadata.title}
+				</Link>
 			</div>
 
 			<div className="grow">
@@ -63,6 +65,6 @@ export default function PostPreview({
 					categories={post?.categories}
 				/>
 			</div>
-		</Root>
+		</div>
 	)
 }
