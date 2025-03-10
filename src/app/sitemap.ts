@@ -1,6 +1,7 @@
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import { DEFAULT_LANG } from '@/lib/i18n'
+import { BLOG_DIR } from '@/lib/env'
 import type { MetadataRoute } from 'next'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -29,7 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 				'url': (
 					$baseUrl
 					+ select(defined(language) && language != $defaultLang => language + '/', '')
-					+ 'blog/'
+					+ '${BLOG_DIR}/'
 					+ metadata.slug.current
 				),
 				'lastModified': _updatedAt,

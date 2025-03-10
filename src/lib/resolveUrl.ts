@@ -1,3 +1,4 @@
+import { BLOG_DIR } from './env'
 import { DEFAULT_LANG } from './i18n'
 import { stegaClean } from 'next-sanity'
 
@@ -13,7 +14,7 @@ export default function resolveUrl(
 		language?: string
 	} = {},
 ) {
-	const segment = page?._type === 'blog.post' ? '/blog/' : '/'
+	const segment = page?._type === 'blog.post' ? `/${BLOG_DIR}/` : '/'
 	const lang = language && language !== DEFAULT_LANG ? `/${language}` : ''
 	const slug = page?.metadata?.slug?.current
 	const path = slug === 'index' ? null : slug
