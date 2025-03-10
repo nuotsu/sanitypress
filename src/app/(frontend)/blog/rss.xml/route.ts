@@ -1,5 +1,6 @@
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
+import { BLOG_DIR } from '@/lib/env'
 import resolveUrl from '@/lib/resolveUrl'
 import { Feed } from 'feed'
 import { escapeHTML, toHTML } from '@portabletext/to-html'
@@ -13,7 +14,7 @@ export async function GET() {
 		copyright: string
 	}>({
 		query: groq`{
-			'blog': *[_type == 'page' && metadata.slug.current == 'blog'][0]{
+			'blog': *[_type == 'page' && metadata.slug.current == '${BLOG_DIR}'][0]{
 				_type,
 				title,
 				metadata,

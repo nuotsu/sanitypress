@@ -1,3 +1,4 @@
+import { BLOG_DIR } from '@/lib/env'
 import type { SearchScope } from './store'
 
 export default function SearchGoogle({
@@ -15,7 +16,7 @@ export default function SearchGoogle({
 		scope === 'path' && path
 			? `/${path.replace(/\/?\*$/, '')}`
 			: scope === 'blog posts'
-				? '/blog'
+				? `/${BLOG_DIR}`
 				: '',
 	].join('')
 

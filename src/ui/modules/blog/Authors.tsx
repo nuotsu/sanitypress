@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Img } from '@/ui/Img'
 import { GoPerson } from 'react-icons/go'
+import { BLOG_DIR } from '@/lib/env'
 import { cn } from '@/lib/utils'
 
 export default function Authors({
@@ -58,7 +59,13 @@ function Author({
 		),
 	}
 	return linked ? (
-		<Link href={`/blog?author=${author?.slug?.current}`} {...props} />
+		<Link
+			href={{
+				pathname: `/${BLOG_DIR}`,
+				query: { author: author?.slug.current },
+			}}
+			{...props}
+		/>
 	) : (
 		<div {...props} />
 	)

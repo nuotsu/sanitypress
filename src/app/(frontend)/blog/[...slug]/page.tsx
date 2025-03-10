@@ -4,6 +4,7 @@ import processMetadata from '@/lib/processMetadata'
 import { client } from '@/sanity/lib/client'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
+import { BLOG_DIR } from '@/lib/env'
 import { MODULES_QUERY, TRANSLATIONS_QUERY } from '@/sanity/lib/queries'
 import { languages, type Lang } from '@/lib/i18n'
 import errors from '@/lib/errors'
@@ -30,7 +31,7 @@ export async function generateStaticParams() {
 
 async function getPost(params: Params) {
 	const blogTemplateExists = await fetchSanityLive<boolean>({
-		query: groq`count(*[_type == 'global-module' && path == 'blog/']) > 0`,
+		query: groq`count(*[_type == 'global-module' && path == '${BLOG_DIR}/']) > 0`,
 	})
 
 	if (!blogTemplateExists) throw new Error(errors.missingBlogTemplate)
@@ -63,9 +64,9 @@ async function getPost(params: Params) {
 				// global modules (before)
 				*[_type == 'global-module' && path == '*'].before[]{ ${MODULES_QUERY} }
 				// path modules (before)
-				+ *[_type == 'global-module' && path == 'blog/'].before[]{ ${MODULES_QUERY} }
+				+ *[_type == 'global-module' && path == '${BLOG_DIR}/'].before[]{ ${MODULES_QUERY} }
 				// path modules (after)
-				+ *[_type == 'global-module' && path == 'blog/'].after[]{ ${MODULES_QUERY} }
+				+ *[_type == 'global-module' && path == '${BLOG_DIR}/'].after[]{ ${MODULES_QUERY} }
 				// global modules (after)
 				+ *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
 			),
