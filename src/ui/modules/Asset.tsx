@@ -4,7 +4,7 @@ import CustomHTML from './CustomHTML'
 
 type AssetType = Sanity.Img | Sanity.Code | Sanity.CustomHTML
 
-export default function Asset({ asset }: { asset: AssetType }) {
+export default function Asset({ asset }: { asset?: AssetType }) {
 	if (!asset) return null
 
 	const Component = ASSET_MAP[asset._type] as
