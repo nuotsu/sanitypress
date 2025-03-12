@@ -4,11 +4,12 @@ import { stegaClean } from 'next-sanity'
 export default function Image({
 	value,
 }: {
-	value: Sanity.Image & {
-		caption?: string
-		source?: string
-		float?: 'left' | 'right'
-	}
+	value: Sanity.Image &
+		Partial<{
+			caption: string
+			source: string
+			float: 'left' | 'right'
+		}>
 }) {
 	return (
 		<figure

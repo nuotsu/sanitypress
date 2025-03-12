@@ -1,6 +1,6 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { VscEdit } from 'react-icons/vsc'
-import imageBlock from '../fragments/image-block'
+import { imageBlock, admonition } from '../fragments'
 
 export default defineType({
 	name: 'blog.post',
@@ -19,6 +19,7 @@ export default defineType({
 			of: [
 				{ type: 'block' },
 				imageBlock,
+				admonition,
 				defineArrayMember({
 					title: 'Code block',
 					type: 'code',
