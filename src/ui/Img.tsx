@@ -17,10 +17,12 @@ export function ResponsiveImg({
 } & ImgProps) {
 	if (!img) return null
 
+	const { responsive, ...imgProps } = img
+
 	return (
 		<picture {...pictureProps}>
-			{img.responsive?.map((r, key) => <Source {...r} key={key} />)}
-			<Img image={img.image} {...props} />
+			{responsive?.map((r, key) => <Source {...r} key={key} />)}
+			<Img {...imgProps} {...props} />
 		</picture>
 	)
 }
