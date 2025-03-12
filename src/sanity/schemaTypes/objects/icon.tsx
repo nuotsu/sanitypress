@@ -1,12 +1,12 @@
 import { defineField, defineType } from 'sanity'
-import { getPreset, TextInputWithPresets } from 'sanitypress-utils'
+import { getPreset, TextInputWithPresets, type Preset } from 'sanitypress-utils'
 import { VscSymbolMisc } from 'react-icons/vsc'
 
-const ic0nPresets =
+const ic0nPresets: Preset[] =
 	'ai,bi,bs,cg,ci,di,fa,fa6,fc,fi,gi,go,gr,hi,hi2,im,io,io5,lia,lu,md,pi,ri,rx,si,sl,tb,tfi,ti,vsc,wi'
 		.split(',')
 		.map((p) => ({
-			label: p,
+			title: p,
 			value: `${p}/`,
 		}))
 

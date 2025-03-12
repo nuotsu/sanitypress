@@ -1,9 +1,11 @@
 import { PortableText } from 'next-sanity'
 import AnchoredHeading from './AnchoredHeading'
+import { cn } from '@/lib/utils'
+
 import Image from './Image'
 import Code from './Code'
+import Admonition from './Admonition'
 import CustomHTML from '@/ui/modules/CustomHTML'
-import { cn } from '@/lib/utils'
 
 export default function Content({
 	value,
@@ -13,7 +15,7 @@ export default function Content({
 	return (
 		<div
 			className={cn(
-				'richtext headings:mt-[1em] mx-auto w-full space-y-4 [&>:first-child]:!mt-0',
+				'richtext mx-auto w-full space-y-6 [&>:first-child]:!mt-0',
 				className,
 			)}
 		>
@@ -29,6 +31,7 @@ export default function Content({
 					},
 					types: {
 						image: Image,
+						admonition: Admonition,
 						code: Code,
 						'custom-html': ({ value }) => (
 							<CustomHTML
