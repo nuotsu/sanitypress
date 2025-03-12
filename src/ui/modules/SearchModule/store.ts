@@ -27,6 +27,20 @@ export const searchStore = create<{
 	setResults: (results) => set({ results }),
 }))
 
+const SCOPE_MAP = {
+	pages: groq`_type == 'page'`,
+	path: groq`
+		_type == 'page' &&
+		metadata.slug.current match $path &&
+		!(metadata.slug.current in ['404'])
+	`,
+	'blog posts': groq`_type == 'blog.post'`,
+	all: groq`
+		_type in ['page', 'blog.post'] &&
+		!(metadata.slug.current in ['404'])
+	`,
+} as const
+
 export async function handleSearch({
 	query,
 	scope,
@@ -48,32 +62,11 @@ export async function handleSearch({
 	setLoading(true)
 	setResults([])
 
-	function processScope() {
-		switch (scope) {
-			case 'pages':
-				return groq`_type == 'page'`
-
-			case 'path':
-				return groq`
-					_type == 'page' &&
-					metadata.slug.current match $path &&
-					!(metadata.slug.current in ['404'])
-				`
-
-			case 'blog posts':
-				return groq`_type == 'blog.post'`
-
-			default:
-				return groq`
-					_type in ['page', 'blog.post'] &&
-					!(metadata.slug.current in ['404'])
-				`
-		}
-	}
+	const scopeQuery = SCOPE_MAP[scope as keyof typeof SCOPE_MAP] || SCOPE_MAP.all
 
 	const results = await fetchSanityLive<SearchResults>({
 		query: groq`*[
-			${processScope()} &&
+			${scopeQuery} &&
 			[
 				body[].children[].text,
 				modules[].content[].children[].text,
