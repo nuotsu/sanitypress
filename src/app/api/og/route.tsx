@@ -74,15 +74,15 @@ export async function GET(request: NextRequest) {
 			fonts: [
 				{
 					name: 'serif',
-					data: await loadGoogleFont('Inter'),
+					data: await loadGoogleFont(),
 				},
 			],
 		},
 	)
 }
 
-async function loadGoogleFont(fontFamily: string) {
-	const url = `https://fonts.googleapis.com/css2?family=${fontFamily}:wght@600`
+async function loadGoogleFont() {
+	const url = `https://fonts.googleapis.com/css2?family=Inter:wght@600`
 	const css = await (await fetch(url)).text()
 	const resource = css.match(/src: url\((.+)\) format\('(opentype|truetype)'\)/)
 
