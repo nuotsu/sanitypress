@@ -8,7 +8,7 @@ declare global {
 		interface Site extends SanityDocument {
 			// branding
 			title: string
-			tagline?: any
+			blurb?: any
 			logo?: Logo
 			// info
 			announcements?: Announcement[]

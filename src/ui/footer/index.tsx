@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { Img } from '@/ui/Img'
 
 export default async function Footer() {
-	const { title, tagline, logo, copyright } = await getSite()
+	const { title, blurb, logo, copyright } = await getSite()
 
 	const logoImage = logo?.image?.light || logo?.image?.default
 
@@ -27,9 +27,9 @@ export default async function Footer() {
 						)}
 					</Link>
 
-					{tagline && (
+					{blurb && (
 						<div className="max-w-sm text-sm text-balance">
-							<PortableText value={tagline} />
+							<PortableText value={blurb} />
 						</div>
 					)}
 

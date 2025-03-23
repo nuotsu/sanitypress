@@ -17,7 +17,8 @@ export default defineType({
 			group: 'branding',
 		}),
 		defineField({
-			name: 'tagline',
+			name: 'blurb',
+			description: 'Content displayed in the footer',
 			type: 'array',
 			of: [{ type: 'block', lists: [] }],
 			group: 'branding',
