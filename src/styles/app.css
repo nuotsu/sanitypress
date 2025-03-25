@@ -186,7 +186,7 @@
 }
 
 @utility action-outline {
-	@apply action-base border-accent/10 bg-canvas/50 to-canvas rounded border text-balance;
+	@apply action-base border-accent/10 bg-canvas/50 rounded border text-balance;
 }
 
 @utility ghost {
