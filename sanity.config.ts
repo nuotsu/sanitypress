@@ -5,7 +5,7 @@ import { defineConfig } from 'sanity'
 import { projectId, dataset, apiVersion } from '@/sanity/lib/env'
 import { structure } from './src/sanity/structure'
 import { presentation } from './src/sanity/presentation'
-import { sanitypress, icon, infoWidget } from 'sanitypress-utils'
+import { icon, infoWidget } from 'sanitypress-utils'
 import {
 	dashboardTool,
 	projectInfoWidget,
@@ -19,6 +19,8 @@ import { documentInternationalization } from '@sanity/document-internationalizat
 import { schemaTypes } from './src/sanity/schemaTypes'
 import resolveUrl from '@/lib/resolveUrl'
 
+const singletonTypes = ['site']
+
 export default defineConfig({
 	title: 'SanityPress',
 	icon,
@@ -29,11 +31,6 @@ export default defineConfig({
 	plugins: [
 		structure,
 		presentation,
-		sanitypress({
-			licenseKey: process.env.NEXT_PUBLIC_SANITYPRESS_PRO_LICENSE_KEY!,
-			singletonTypes: ['site'],
-			// defaultLang: DEFAULT_LANG,
-		}),
 		dashboardTool({
 			name: 'deployment',
 			title: 'Deployment',
@@ -58,6 +55,10 @@ export default defineConfig({
 
 	schema: {
 		types: schemaTypes,
+		templates: (templates) =>
+			templates.filter(
+				({ schemaType }) => !singletonTypes.includes(schemaType),
+			),
 	},
 	document: {
 		productionUrl: async (prev, { document }) => {
@@ -65,6 +66,17 @@ export default defineConfig({
 				return resolveUrl(document as Sanity.PageBase, { base: true })
 			}
 			return prev
+		},
+
+		actions: (input, { schemaType }) => {
+			if (singletonTypes.includes(schemaType)) {
+				return input.filter(
+					({ action }) =>
+						action && ['publish', 'discardChanges', 'restore'].includes(action),
+				)
+			}
+
+			return input
 		},
 	},
 })
