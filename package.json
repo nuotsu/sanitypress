@@ -1,6 +1,6 @@
 {
 	"name": "sanitypress",
-	"version": "7.0.11",
+	"version": "7.0.12",
 	"description": "An impressive Sanity.io starter template with Next.js 15 and Tailwind 4",
 	"author": "nuotsu <mitchell@nuotsu.dev> (https://nuotsu.dev)",
 	"license": "ISC",
@@ -21,13 +21,13 @@
 		"@sanity/image-url": "^1.1.0",
 		"@sanity/preview-url-secret": "^2.1.6",
 		"@sanity/vision": "^3.81.0",
-		"@tailwindcss/postcss": "^4.0.16",
+		"@tailwindcss/postcss": "^4.0.17",
 		"@vercel/analytics": "^1.5.0",
 		"@vercel/speed-insights": "^1.2.0",
 		"clsx": "^2.1.1",
 		"feed": "^4.2.2",
 		"next": "^15.2.4",
-		"next-sanity": "^9.9.5",
+		"next-sanity": "^9.9.6",
 		"next-sanity-image": "^6.1.1",
 		"nuqs": "^2.4.1",
 		"octokit": "^4.1.2",
@@ -52,7 +52,7 @@
 		"postcss": "^8.5.3",
 		"prettier": "^3.5.3",
 		"prettier-plugin-tailwindcss": "^0.6.11",
-		"tailwindcss": "^4.0.16",
+		"tailwindcss": "^4.0.17",
 		"typescript": "^5.8.2"
 	}
 }
