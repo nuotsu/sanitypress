@@ -11,3 +11,5 @@ export const languages = supportedLanguages.map((lang) => lang?.id)
 export const DEFAULT_LANG = languages[0] ?? 'en'
 
 export type Lang = (typeof languages)[number]
+
+export const langCookieName = `sanitypress-${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}-lang`

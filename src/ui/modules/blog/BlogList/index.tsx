@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers'
-import { DEFAULT_LANG } from '@/lib/i18n'
+import { DEFAULT_LANG, langCookieName } from '@/lib/i18n'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import moduleProps from '@/lib/moduleProps'
@@ -30,13 +30,13 @@ export default async function BlogList({
 	filteredCategory: Sanity.BlogCategory
 }> &
 	Sanity.Module) {
-	const lang = (await cookies()).get('lang')?.value ?? DEFAULT_LANG
+	const lang = (await cookies()).get(langCookieName)?.value ?? DEFAULT_LANG
 
 	const posts = await fetchSanityLive<Sanity.BlogPost[]>({
 		query: groq`
 			*[
 				_type == 'blog.post'
-				${!!lang ? `&& select(defined(language) => language == '${lang}', true)` : ''}
+				${!!lang ? `&& (!defined(language) || language == '${lang}')` : ''}
 				${!!filteredCategory ? `&& $filteredCategory in categories[]->._id` : ''}
 			]|order(
 				${showFeaturedPostsFirst ? 'featured desc, ' : ''}

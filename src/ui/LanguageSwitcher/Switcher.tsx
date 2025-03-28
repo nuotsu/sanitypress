@@ -26,8 +26,6 @@ export default function Switcher({
 		].includes(pathname),
 	)
 
-	if (!available?.translations) return null
-
 	return (
 		<label
 			className={cn('flex items-center gap-2', className)}
@@ -40,7 +38,7 @@ export default function Switcher({
 
 			<select
 				className="input border-canvas/10 focus:border-canvas/30 px-[.5em] outline-none"
-				value={pathname === available.slug ? available.slug : pathname}
+				value={pathname === available?.slug ? available.slug : pathname}
 				onChange={(e) => {
 					setLoading(true)
 					setLangCookie(
@@ -51,10 +49,10 @@ export default function Switcher({
 			>
 				{supportedLanguages.map((s) => {
 					const { slug, slugBlogAlt, language } =
-						available.translations?.find((t) => t.language === s.id) ?? {}
+						available?.translations?.find((t) => t.language === s.id) ?? {}
 
 					const value =
-						language === DEFAULT_LANG ? available.slug : (slugBlogAlt ?? slug)
+						language === DEFAULT_LANG ? available?.slug : (slugBlogAlt ?? slug)
 
 					return (
 						<option
