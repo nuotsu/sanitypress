@@ -5,7 +5,7 @@ export default function StatList({
 	pretitle,
 	intro,
 	stats,
-	textAlign = 'center',
+	textAlign: ta = 'center',
 }: Partial<{
 	pretitle: string
 	intro: any
@@ -17,11 +17,10 @@ export default function StatList({
 	}>[]
 	textAlign: React.CSSProperties['textAlign']
 }>) {
+	const textAlign = stegaClean(ta)
+
 	return (
-		<section
-			className="section space-y-8"
-			style={{ textAlign: stegaClean(textAlign) }}
-		>
+		<section className="section space-y-8" style={{ textAlign }}>
 			{(pretitle || intro) && (
 				<header className="richtext text-center">
 					<Pretitle>{pretitle}</Pretitle>

@@ -1,6 +1,6 @@
 import moduleProps from '@/lib/moduleProps'
-import { PortableText } from 'next-sanity'
 import Pretitle from '@/ui/Pretitle'
+import { PortableText } from 'next-sanity'
 import Code from './RichtextModule/Code'
 import CustomHTML from './CustomHTML'
 import Reputation from '@/ui/Reputation'

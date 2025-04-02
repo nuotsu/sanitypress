@@ -12,8 +12,8 @@ export default function Hero({
 	content,
 	ctas,
 	assets,
-	textAlign = 'center',
-	alignItems,
+	textAlign: ta = 'center',
+	alignItems: ai,
 	...props
 }: Partial<{
 	pretitle: string
@@ -26,6 +26,9 @@ export default function Hero({
 	Sanity.Module) {
 	const hasImage = !!assets?.[0]
 	const asset = assets?.[0]
+
+	const textAlign = stegaClean(ta)
+	const alignItems = stegaClean(ai)
 
 	return (
 		<section
@@ -51,17 +54,15 @@ export default function Hero({
 							'richtext headings:text-balance relative isolate max-w-xl',
 							hasImage && 'text-shadow',
 							{
-								'mb-8': stegaClean(alignItems) === 'start',
-								'my-auto': stegaClean(alignItems) === 'center',
-								'mt-auto': stegaClean(alignItems) === 'end',
-							},
-							{
-								'me-auto': ['left', 'start'].includes(stegaClean(textAlign)),
-								'mx-auto': stegaClean(textAlign) === 'center',
-								'ms-auto': ['right', 'end'].includes(stegaClean(textAlign)),
+								'mb-8': alignItems === 'start',
+								'my-auto': alignItems === 'center',
+								'mt-auto': alignItems === 'end',
+								'me-auto': ['left', 'start'].includes(textAlign),
+								'mx-auto': textAlign === 'center',
+								'ms-auto': ['right', 'end'].includes(textAlign),
 							},
 						)}
-						style={{ textAlign: stegaClean(textAlign) }}
+						style={{ textAlign }}
 					>
 						<Pretitle className={cn(hasImage && 'text-canvas/70')}>
 							{pretitle}
@@ -79,12 +80,10 @@ export default function Hero({
 												hasImage && '[&_strong]:text-amber-400',
 												{
 													'justify-start': ['left', 'start'].includes(
-														stegaClean(textAlign),
+														textAlign,
 													),
-													'justify-center': stegaClean(textAlign) === 'center',
-													'justify-end': ['right', 'end'].includes(
-														stegaClean(textAlign),
-													),
+													'justify-center': textAlign === 'center',
+													'justify-end': ['right', 'end'].includes(textAlign),
 												},
 											)}
 											reputation={value.reputation}
@@ -97,9 +96,9 @@ export default function Hero({
 						<CTAList
 							ctas={ctas}
 							className={cn('!mt-4', {
-								'justify-start': stegaClean(textAlign) === 'left',
-								'justify-center': stegaClean(textAlign) === 'center',
-								'justify-end': stegaClean(textAlign) === 'right',
+								'justify-start': textAlign === 'left',
+								'justify-center': textAlign === 'center',
+								'justify-end': textAlign === 'right',
 							})}
 						/>
 					</div>

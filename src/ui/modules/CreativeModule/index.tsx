@@ -16,8 +16,8 @@ export default function CreativeModule({
 	modules,
 	columns,
 	visualSeparation,
-	textAlign,
-	alignItems,
+	textAlign: ta,
+	alignItems: ai,
 	...props
 }: Partial<{
 	intro: any
@@ -38,6 +38,9 @@ export default function CreativeModule({
 }>) {
 	const width = Math.round((1200 / (columns || modules?.length || 1)) * 1.5)
 
+	const textAlign = stegaClean(ta)
+	const alignItems = stegaClean(ai)
+
 	return (
 		<section {...moduleProps(props)}>
 			<div className="section space-y-8">
@@ -55,20 +58,18 @@ export default function CreativeModule({
 					style={
 						{
 							'--col': columns || modules?.length,
-							textAlign: stegaClean(textAlign),
-							alignItems: stegaClean(alignItems),
+							textAlign,
+							alignItems,
 						} as React.CSSProperties
 					}
 				>
 					{modules?.map(({ subModules, colSpan = 1 }, i) => (
 						<article
-							className={cn(
-								'space-y-4',
-								colSpan > 1 && 'md:col-(--col-span,1)',
-								visualSeparation && 'bg-accent/3 rounded p-6',
-								stegaClean(alignItems) === 'stretch' &&
-									'flex flex-col justify-center',
-							)}
+							className={cn('space-y-4', {
+								'md:col-(--col-span,1)': colSpan > 1,
+								'bg-accent/3 rounded p-6': visualSeparation,
+								'flex flex-col justify-center': alignItems === 'stretch',
+							})}
 							style={
 								{
 									'--col-span': colSpan > 1 && `span ${colSpan}`,
@@ -91,8 +92,7 @@ export default function CreativeModule({
 										return (
 											<figure
 												className={cn(
-													stegaClean(textAlign) === 'center' &&
-														'[&_img]:mx-auto',
+													textAlign === 'center' && '[&_img]:mx-auto',
 												)}
 												style={{ height: getPixels(subModule?.size) }}
 											>
@@ -108,8 +108,7 @@ export default function CreativeModule({
 											<CTAsSubModule
 												module={subModule}
 												className={cn(
-													stegaClean(textAlign) === 'center' &&
-														'justify-center',
+													textAlign === 'center' && 'justify-center',
 												)}
 												key={ii}
 											/>
