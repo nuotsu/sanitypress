@@ -66,9 +66,7 @@ export default function AccordionList({
 					>
 						<summary
 							className="py-4 font-bold"
-							{...(generateSchema && {
-								itemProp: 'name',
-							})}
+							{...(generateSchema && { itemProp: 'name' })}
 						>
 							{summary}
 						</summary>

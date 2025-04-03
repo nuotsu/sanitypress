@@ -39,6 +39,7 @@ export default function TableOfContents({
 					})
 				},
 				{
+					threshold: 1,
 					rootMargin: `-${headerHeight}px 0px 0px 0px`,
 				},
 			)
