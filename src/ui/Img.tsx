@@ -1,11 +1,64 @@
+import type { ComponentProps } from 'react'
 import { preload } from 'react-dom'
 import { getImageDimensions } from '@sanity/asset-utils'
 import { urlFor } from '@/sanity/lib/image'
-import NextImage, { type ImageProps } from 'next/image'
-import type { ComponentProps } from 'react'
+import NextImage, { getImageProps, type ImageProps } from 'next/image'
 import { stegaClean } from 'next-sanity'
 
 type ImgProps = { alt?: string } & Omit<ImageProps, 'src' | 'alt'>
+
+export function Img({
+	image,
+	width: w,
+	height: h,
+	...props
+}: { image?: Sanity.Image } & ImgProps) {
+	if (!image?.asset) return null
+
+	const { src, width, height } = generateSrc(image, w, h)
+	const loading = stegaClean(image.loading)
+
+	return (
+		<NextImage
+			src={src}
+			width={width}
+			height={height}
+			alt={props.alt || image.alt || ''}
+			loading={loading}
+			priority={loading === 'eager'}
+			{...props}
+		/>
+	)
+}
+
+export function Source({
+	image,
+	media = '(width < 48rem)',
+	width: w,
+	height: h,
+	...props
+}: {
+	image?: Sanity.Image
+} & ComponentProps<'source'>) {
+	if (!image?.asset) return null
+
+	const { src, width, height } = generateSrc(image, w, h)
+	const { props: imageProps } = getImageProps({ src, width, height, alt: '' })
+
+	if (stegaClean(image.loading) === 'eager') {
+		preload(imageProps.src, { as: 'image' })
+	}
+
+	return (
+		<source
+			srcSet={imageProps.srcSet}
+			width={imageProps.width}
+			height={imageProps.height}
+			media={media}
+			{...props}
+		/>
+	)
+}
 
 export function ResponsiveImg({
 	img,
@@ -24,60 +77,6 @@ export function ResponsiveImg({
 			{responsive?.map((r, key) => <Source {...r} key={key} />)}
 			<Img {...imgProps} {...props} />
 		</picture>
-	)
-}
-
-export function Img({
-	image,
-	width: w,
-	height: h,
-	...props
-}: { image?: Sanity.Image } & ImgProps) {
-	if (!image?.asset) return null
-
-	const { src, width, height } = generateSrc(image, w, h)
-
-	if (stegaClean(image.loading) === 'eager') {
-		preload(src, { as: 'image' })
-	}
-
-	return (
-		<NextImage
-			src={src}
-			width={width}
-			height={height}
-			alt={props.alt || image.alt || ''}
-			loading={stegaClean(image.loading)}
-			{...props}
-		/>
-	)
-}
-
-export function Source({
-	image,
-	media = '(width < 48rem)',
-	width: w,
-	height: h,
-	...props
-}: {
-	image?: Sanity.Image
-} & ComponentProps<'source'>) {
-	if (!image?.asset) return null
-
-	const { src, width, height } = generateSrc(image, w, h)
-
-	if (stegaClean(image.loading) === 'eager') {
-		preload(src, { as: 'image' })
-	}
-
-	return (
-		<source
-			srcSet={src}
-			width={width}
-			height={height}
-			media={media}
-			{...props}
-		/>
 	)
 }
 

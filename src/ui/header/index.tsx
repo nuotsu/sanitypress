@@ -23,7 +23,7 @@ export default async function Header() {
 			>
 				<div className="[grid-area:logo]">
 					<Link
-						className={cn('h4 md:h3 inline-block', logo?.image && 'max-w-3xs')}
+						className={cn('h4 md:h3 grid', logo?.image && 'max-w-3xs')}
 						href="/"
 					>
 						{logoImage ? (
