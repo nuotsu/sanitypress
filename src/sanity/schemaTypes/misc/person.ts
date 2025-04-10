@@ -9,13 +9,11 @@ export default defineType({
 	fields: [
 		defineField({
 			name: 'name',
-			title: 'Name',
 			type: 'string',
 			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'slug',
-			title: 'Slug',
 			type: 'slug',
 			options: {
 				source: 'name',
