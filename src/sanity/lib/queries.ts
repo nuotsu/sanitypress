@@ -22,6 +22,16 @@ const NAVIGATION_QUERY = groq`
 	}
 `
 
+const IMAGE_QUERY = groq`
+	...,
+	'metadata': @.asset->metadata
+`
+
+const ASSET_IMG_QUERY = groq`
+	...,
+	image { ${IMAGE_QUERY} }
+`
+
 export const CTA_QUERY = groq`
 	...,
 	link{ ${LINK_QUERY} }
@@ -64,18 +74,30 @@ export const MODULES_QUERY = groq`
 		content[]{
 			...,
 			${REPUTATION_QUERY}
+		},
+		assets[]{
+			...,
+			_type == 'img' => { ${ASSET_IMG_QUERY} }
 		}
 	},
 	_type == 'hero.saas' => {
 		content[]{
 			...,
 			${REPUTATION_QUERY}
+		},
+		assets[]{
+			...,
+			_type == 'img' => { ${ASSET_IMG_QUERY} }
 		}
 	},
 	_type == 'hero.split' => {
 		content[]{
 			...,
 			${REPUTATION_QUERY}
+		},
+		assets[]{
+			...,
+			_type == 'img' => { ${ASSET_IMG_QUERY} }
 		}
 	},
 	_type == 'logo-list' => { logos[]-> },

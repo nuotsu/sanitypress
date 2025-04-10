@@ -16,7 +16,9 @@ export function Img({
 	if (!image?.asset) return null
 
 	const { src, width, height } = generateSrc(image, w, h)
+
 	const loading = stegaClean(image.loading)
+	const lqip = image.metadata?.lqip
 
 	return (
 		<NextImage
@@ -26,6 +28,8 @@ export function Img({
 			alt={props.alt || image.alt || ''}
 			loading={loading}
 			priority={loading === 'eager'}
+			placeholder={lqip ? 'blur' : undefined}
+			blurDataURL={lqip}
 			{...props}
 		/>
 	)
