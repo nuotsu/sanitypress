@@ -27,9 +27,9 @@ export default function PersonList({
 
 			<ul
 				className={cn(
-					'items-start gap-4',
+					'items-start gap-8',
 					isCarousel
-						? 'carousel max-xl:full-bleed md:overflow-fade pb-4 max-md:px-4 md:gap-8 md:before:m-auto md:after:m-auto'
+						? 'carousel max-md:full-bleed md:overflow-fade-r pb-4 max-md:px-4'
 						: 'grid *:h-full max-md:pb-4 md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]',
 				)}
 			>

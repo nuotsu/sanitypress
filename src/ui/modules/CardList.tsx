@@ -42,9 +42,9 @@ export default function CardList({
 
 			<div
 				className={cn(
-					'items-stretch gap-4',
+					'items-stretch gap-8',
 					isCarousel
-						? 'carousel max-xl:full-bleed md:overflow-fade pb-4 max-md:px-4 md:gap-8 md:before:m-auto md:after:m-auto'
+						? 'carousel max-md:full-bleed md:overflow-fade-r pb-4 max-md:px-4'
 						: [
 								'grid *:h-full max-md:pb-4',
 								columns

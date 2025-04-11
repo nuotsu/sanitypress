@@ -11,6 +11,8 @@ export default function PricingList({
 	...props
 }: Partial<{ pretitle: string; intro: any; tiers: Sanity.Pricing[] }> &
 	Sanity.Module) {
+	const count = tiers?.length ?? 0
+
 	return (
 		<section className="section space-y-8" {...moduleProps(props)}>
 			{(pretitle || intro) && (
@@ -21,8 +23,13 @@ export default function PricingList({
 			)}
 
 			<div
-				className="max-lg:carousel max-lg:full-bleed grid grid-cols-[repeat(var(--col,1),1fr)] items-stretch gap-6 max-lg:px-4"
-				style={{ '--col': tiers?.length } as React.CSSProperties}
+				className={cn(
+					'carousel max-lg:full-bleed items-stretch gap-6 max-lg:px-4',
+					count <= 3
+						? 'md:grid-cols-[repeat(var(--col,1),1fr)]'
+						: 'md:overflow-fade-r',
+				)}
+				style={{ '--col': count } as React.CSSProperties}
 			>
 				{tiers?.map(
 					(tier) =>

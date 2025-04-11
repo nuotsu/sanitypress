@@ -381,12 +381,13 @@
 }
 
 @utility carousel {
-	display: flex;
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: min(var(--size, 300px), 80vw);
 	overflow-x: auto;
 	scroll-snap-type: x mandatory;
 
 	& > * {
-		flex: 0 0 min(var(--size, 300px), 80vw);
 		scroll-snap-align: center;
 	}
 }

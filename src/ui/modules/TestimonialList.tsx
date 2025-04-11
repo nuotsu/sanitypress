@@ -8,8 +8,8 @@ export default function TestimonialList({
 	pretitle,
 	intro,
 	testimonials,
-	layout,
-	layoutMobile,
+	layout: l,
+	layoutMobile: lm,
 }: Partial<{
 	pretitle: string
 	intro: any
@@ -17,6 +17,9 @@ export default function TestimonialList({
 	layout: 'grid' | 'carousel'
 	layoutMobile: 'grid' | 'carousel'
 }>) {
+	const layout = stegaClean(l)
+	const layoutMobile = stegaClean(lm)
+
 	return (
 		<section className="section space-y-8 text-center">
 			{(pretitle || intro) && (
@@ -28,11 +31,11 @@ export default function TestimonialList({
 
 			<div
 				className={cn(
-					'gap-4',
-					stegaClean(layout) === 'carousel'
-						? 'carousel max-xl:full-bleed md:overflow-fade pb-4 max-md:px-4 md:gap-8 md:before:m-auto md:after:m-auto'
+					'gap-8',
+					layout === 'carousel'
+						? 'carousel max-md:full-bleed md:overflow-fade-r pb-4 max-md:px-4'
 						: 'grid sm:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]',
-					stegaClean(layoutMobile) === 'carousel' &&
+					layoutMobile === 'carousel' &&
 						'max-md:carousel max-md:full-bleed max-md:px-4 max-md:pb-4',
 				)}
 			>
