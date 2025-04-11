@@ -1,6 +1,6 @@
 {
 	"name": "sanitypress",
-	"version": "7.1.8",
+	"version": "7.1.9",
 	"description": "An impressive Sanity.io starter template with Next.js 15 and Tailwind 4",
 	"author": "nuotsu <mitchell@nuotsu.dev> (https://nuotsu.dev)",
 	"license": "ISC",
@@ -27,7 +27,7 @@
 		"clsx": "^2.1.1",
 		"feed": "^4.2.2",
 		"next": "^15.3.0",
-		"next-sanity": "^9.9.9",
+		"next-sanity": "^9.10.1",
 		"next-sanity-image": "^6.1.1",
 		"nuqs": "^2.4.1",
 		"octokit": "^4.1.3",
