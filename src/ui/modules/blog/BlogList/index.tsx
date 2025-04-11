@@ -2,6 +2,7 @@ import { cookies } from 'next/headers'
 import { DEFAULT_LANG, langCookieName } from '@/lib/i18n'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
+import { IMAGE_QUERY } from '@/sanity/lib/queries'
 import moduleProps from '@/lib/moduleProps'
 import Pretitle from '@/ui/Pretitle'
 import { PortableText, stegaClean } from 'next-sanity'
@@ -46,7 +47,11 @@ export default async function BlogList({
 			{
 				...,
 				categories[]->,
-				authors[]->
+				authors[]->,
+				metadata{
+					...,
+					image { ${IMAGE_QUERY} }
+				}
 			}
 		`,
 		params: {

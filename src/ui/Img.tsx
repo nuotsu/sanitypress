@@ -1,9 +1,9 @@
-import type { ComponentProps } from 'react'
 import { preload } from 'react-dom'
 import { getImageDimensions } from '@sanity/asset-utils'
 import { urlFor } from '@/sanity/lib/image'
 import NextImage, { getImageProps, type ImageProps } from 'next/image'
 import { stegaClean } from 'next-sanity'
+import type { ComponentProps } from 'react'
 
 type ImgProps = { alt?: string } & Omit<ImageProps, 'src' | 'alt'>
 
@@ -18,7 +18,6 @@ export function Img({
 	const { src, width, height } = generateSrc(image, w, h)
 
 	const loading = stegaClean(image.loading)
-	const lqip = image.metadata?.lqip
 
 	return (
 		<NextImage
@@ -28,8 +27,8 @@ export function Img({
 			alt={props.alt || image.alt || ''}
 			loading={loading}
 			priority={loading === 'eager'}
-			placeholder={lqip ? 'blur' : undefined}
-			blurDataURL={lqip}
+			placeholder={image.lqip ? 'blur' : undefined}
+			blurDataURL={image.lqip}
 			{...props}
 		/>
 	)

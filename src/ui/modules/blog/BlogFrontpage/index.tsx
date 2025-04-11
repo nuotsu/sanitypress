@@ -2,6 +2,7 @@ import { cookies } from 'next/headers'
 import { DEFAULT_LANG, langCookieName } from '@/lib/i18n'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
+import { IMAGE_QUERY } from '@/sanity/lib/queries'
 import { stegaClean } from 'next-sanity'
 import sortFeaturedPosts from './sortFeaturedPosts'
 import { Suspense } from 'react'
@@ -30,11 +31,14 @@ export default async function BlogFrontpage({
 				_type,
 				_id,
 				featured,
-				metadata,
 				categories[]->,
 				authors[]->,
 				publishDate,
-				language
+				language,
+				metadata {
+					...,
+					image { ${IMAGE_QUERY} }
+				},
 			}
 		`,
 	})

@@ -22,9 +22,9 @@ const NAVIGATION_QUERY = groq`
 	}
 `
 
-const IMAGE_QUERY = groq`
+export const IMAGE_QUERY = groq`
 	...,
-	'metadata': @.asset->metadata
+	'lqip': @.asset->metadata.lqip
 `
 
 const ASSET_IMG_QUERY = groq`

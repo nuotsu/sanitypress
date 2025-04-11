@@ -1,9 +1,9 @@
+import { Img } from '@/ui/Img'
 import Link from 'next/link'
 import resolveUrl from '@/lib/resolveUrl'
-import { Img } from '@/ui/Img'
+import Authors from './Authors'
 import Date from '@/ui/Date'
 import Categories from './Categories'
-import Authors from './Authors'
 import { cn } from '@/lib/utils'
 
 export default function PostPreview({
@@ -14,6 +14,8 @@ export default function PostPreview({
 	skeleton?: boolean
 }) {
 	if (!post && !skeleton) return null
+
+	console.log(post?.metadata.image)
 
 	return (
 		<div className="group relative isolate flex h-full flex-col space-y-2">
