@@ -6,6 +6,7 @@ export default defineArrayMember({
 	icon: IoIosImage,
 	options: {
 		hotspot: true,
+		metadata: ['lqip'],
 	},
 	fieldsets: [
 		{ name: 'attributes', options: { columns: 2 } },

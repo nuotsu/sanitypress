@@ -15,8 +15,6 @@ export default function PostPreview({
 }) {
 	if (!post && !skeleton) return null
 
-	console.log(post?.metadata.image)
-
 	return (
 		<div className="group relative isolate flex h-full flex-col space-y-2">
 			<figure className="bg-ink/3 relative aspect-video overflow-hidden">

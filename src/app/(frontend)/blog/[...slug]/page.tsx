@@ -5,7 +5,11 @@ import { client } from '@/sanity/lib/client'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
 import { BLOG_DIR } from '@/lib/env'
-import { MODULES_QUERY, TRANSLATIONS_QUERY } from '@/sanity/lib/queries'
+import {
+	IMAGE_QUERY,
+	MODULES_QUERY,
+	TRANSLATIONS_QUERY,
+} from '@/sanity/lib/queries'
 import { languages, type Lang } from '@/lib/i18n'
 import errors from '@/lib/errors'
 
@@ -47,7 +51,10 @@ async function getPost(params: Params) {
 			...,
 			body[]{
 				...,
-				_type == 'image' => { asset-> }
+				_type == 'image' => {
+					${IMAGE_QUERY},
+					asset->
+				}
 			},
 			'readTime': length(string::split(pt::text(body), ' ')) / 200,
 			'headings': body[style in ['h2', 'h3']]{
