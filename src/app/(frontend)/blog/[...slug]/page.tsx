@@ -44,8 +44,8 @@ async function getPost(params: Params) {
 
 	return await fetchSanityLive<Sanity.BlogPost & { modules: Sanity.Module[] }>({
 		query: groq`*[
-			_type == 'blog.post' &&
-			metadata.slug.current == $slug
+			_type == 'blog.post'
+			&& metadata.slug.current == $slug
 			${lang ? `&& language == '${lang}'` : ''}
 		][0]{
 			...,

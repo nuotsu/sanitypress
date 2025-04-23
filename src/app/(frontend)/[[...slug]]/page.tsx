@@ -27,9 +27,9 @@ export async function generateMetadata({ params }: Props) {
 export async function generateStaticParams() {
 	const slugs = await client.fetch<{ slug: string }[]>(
 		groq`*[
-			_type == 'page' &&
-			defined(metadata.slug.current) &&
-			!(metadata.slug.current in ['index'])
+			_type == 'page'
+			&& defined(metadata.slug.current)
+			&& !(metadata.slug.current in ['index'])
 		]{
 			'slug': metadata.slug.current
 		}`,
@@ -43,8 +43,8 @@ async function getPage(params: Params) {
 
 	const page = await fetchSanityLive<Sanity.Page>({
 		query: groq`*[
-			_type == 'page' &&
-			metadata.slug.current == $slug
+			_type == 'page'
+			&& metadata.slug.current == $slug
 			${lang ? `&& language == '${lang}'` : ''}
 		][0]{
 			...,
@@ -60,7 +60,6 @@ async function getPage(params: Params) {
 				// global modules (after)
 				+ *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
 			),
-			parent[]->{ metadata { slug } },
 			metadata {
 				...,
 				'ogimage': image.asset->url + '?w=1200'

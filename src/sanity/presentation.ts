@@ -20,10 +20,7 @@ export const presentation = presentationTool({
 			},
 			{
 				route: '/:slug',
-				filter: groq`
-					_type == 'page' &&
-					array::join([...parent[]->metadata.slug.current, metadata.slug.current], '/') == $slug
-				`,
+				filter: groq`_type == 'page' && metadata.slug.current == $slug`,
 			},
 			{
 				route: `/${BLOG_DIR}/:slug`,
