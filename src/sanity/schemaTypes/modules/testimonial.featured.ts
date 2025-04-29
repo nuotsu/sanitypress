@@ -17,11 +17,13 @@ export default defineType({
 	preview: {
 		select: {
 			testimonial: 'testimonial.content',
+			image: 'testimonial.author.image',
 		},
-		prepare: ({ testimonial }) => {
+		prepare: ({ testimonial, image }) => {
 			return {
 				title: getBlockText(testimonial),
 				subtitle: 'Testimonial (featured)',
+				media: image,
 			}
 		},
 	},
