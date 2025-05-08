@@ -79,7 +79,12 @@ export default function AccordionList({
 								itemType: 'https://schema.org/Answer',
 							})}
 						>
-							<div className="richtext" itemProp="text">
+							<div
+								className="richtext"
+								{...(generateSchema && {
+									itemProp: 'text',
+								})}
+							>
 								<PortableText
 									value={content}
 									components={{

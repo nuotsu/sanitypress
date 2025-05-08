@@ -74,10 +74,12 @@ export async function GET() {
 							const aSource = source && `<a href="${source}">(Source)</a>`
 							return `<figure>${[img, figcaption, aSource].filter(Boolean).join(' ')}</figure>`
 						},
-						admonition: ({ value: { title, content } }) =>
-							`<dl><dt>${title}</dt><dd>${escapeHTML(content)}</dd></dl>`,
+						admonition: ({ value: { title, content } }) => {
+							return `<dl><dt>${title}</dt><dd>${toHTML(content)}</dd></dl>`
+						},
 						code: ({ value }) =>
 							`<pre><code>${escapeHTML(value.code)}</code></pre>`,
+						'custom-html': () => '',
 					},
 				},
 			}),
