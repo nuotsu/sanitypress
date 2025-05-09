@@ -12,15 +12,15 @@ npm create sanity@latest -- --template nuotsu/sanitypress
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnuotsu%2Fsanitypress&env=NEXT_PUBLIC_BASE_URL,NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_DATASET,SANITY_API_READ_TOKEN&envDescription=Values%20needed%20to%20connect%20a%20Sanity%20CMS&envLink=https%3A%2F%2Fsanitypress.dev%2Fdocs%2Fgetting-started&demo-title=SanityPress&demo-description=Official%20website%20and%20blog%20for%20SanityPress%2C%20built%20with%20SanityPress&demo-url=https%3A%2F%2Fsanitypress.dev&demo-image=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Felyfelq1%2Fproduction%2F7fb61a2b110f509582f0f43cb1e397f8fa9e5c07-2814x1798.png%3Fw%3D1600)
 
-![](https://cdn.sanity.io/images/elyfelq1/production/17ec6fdce5bde2beebfb8c9b15078922e5fac6f3-3616x1808.png?w=2000)
+![](https://cdn.sanity.io/images/elyfelq1/production/a0fee34f50f6dadca1d8fed050431b60356f418c-2228x1114.png)
 
 ## Key Features
 
-- [x] ✨ Next.js 15 (App Router, RSC, Typescript) with Tailwind CSS
+- [x] ✨ Next.js 15 (App Router, RSC, Typescript) with Tailwind 4
 - [x] 📕 [Pre-configured Sanity schema](/src/sanity/schemaTypes/index.ts) & [frontend components](/src/ui/)
-- [x] ✏️ [Visual editing](https://sanitypress.dev/blog/visual-editing) in [an embedded Sanity Studio](https://sanitypress.dev/blog/why-you-should-embed-your-studio)
+- [x] ✏️ [Visual editing](https://sanitypress.dev/blog/visual-editing) in an [embedded Sanity Studio](https://sanitypress.dev/blog/why-you-should-embed-your-studio)
 - [x] ⌨️ Auto-generated [sitemap](https://sanitypress.dev/sitemap.xml) + [Blog RSS feed](https://sanitypress.dev/blog/rss.xml)
-- [x] ⚡ [Perfect Lighthouse scores](https://sanitypress.dev/blog/how-fast-is-sanitypress) on desktop and 99/100 on mobile.
+- [x] ⚡ [Perfect Lighthouse scores](https://sanitypress.dev/blog/how-fast-is-sanitypress) on desktop and mobile.
 
 ## Getting Started
 
