@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import { DEFAULT_LANG } from './i18n'
 
 export default async function processMetadata(
-	page: (Sanity.Page | Sanity.BlogPost) & {
+	page: Sanity.PageBase & {
 		translations?: {
 			slug: string
 			language?: string

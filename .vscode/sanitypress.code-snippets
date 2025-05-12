@@ -138,6 +138,7 @@
 			"\tof: [",
 			"\t\tdefineArrayMember({",
 			"\t\t\ttype: 'object',",
+			"\t\t\tname: '',",
 			"\t\t\tfields: [",
 			"\t\t\t\tdefineField({",
 			"\t\t\t\t\tname: '${0:content}',",
