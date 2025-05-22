@@ -27,6 +27,7 @@ export default defineType({
 			of: [
 				defineArrayMember({
 					type: 'object',
+					name: 'flag',
 					fields: [
 						defineField({
 							name: 'icon',

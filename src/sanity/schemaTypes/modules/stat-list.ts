@@ -28,6 +28,7 @@ export default defineType({
 			of: [
 				defineArrayMember({
 					type: 'object',
+					name: 'stat',
 					fieldsets: [{ name: 'stat', options: { columns: 3 } }],
 					fields: [
 						defineField({

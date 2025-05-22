@@ -40,6 +40,7 @@ export default defineType({
 			of: [
 				defineArrayMember({
 					type: 'object',
+					name: 'card',
 					fields: [
 						defineField({
 							name: 'image',

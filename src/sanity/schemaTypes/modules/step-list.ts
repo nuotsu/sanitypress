@@ -23,6 +23,7 @@ export default defineType({
 			of: [
 				defineArrayMember({
 					type: 'object',
+					name: 'step',
 					icon: VscListOrdered,
 					fields: [
 						defineField({

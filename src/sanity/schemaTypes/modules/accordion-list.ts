@@ -33,6 +33,7 @@ export default defineType({
 			of: [
 				defineArrayMember({
 					type: 'object',
+					name: 'accordion',
 					icon: TfiLayoutAccordionMerged,
 					fields: [
 						defineField({

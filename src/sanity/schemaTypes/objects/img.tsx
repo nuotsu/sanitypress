@@ -32,6 +32,7 @@ export default defineType({
 			of: [
 				defineArrayMember({
 					type: 'object',
+					name: 'responsive',
 					fields: [
 						defineField({
 							name: 'image',

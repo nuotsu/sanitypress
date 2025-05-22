@@ -33,6 +33,7 @@ export default defineType({
 			of: [
 				defineArrayMember({
 					title: 'module',
+					name: 'module',
 					type: 'object',
 					fields: [
 						defineField({

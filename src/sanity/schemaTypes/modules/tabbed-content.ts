@@ -24,6 +24,7 @@ export default defineType({
 			of: [
 				defineArrayMember({
 					type: 'object',
+					name: 'tab',
 					groups: [{ name: 'content', default: true }, { name: 'asset' }],
 					fields: [
 						defineField({
