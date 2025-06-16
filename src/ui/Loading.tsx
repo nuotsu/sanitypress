@@ -7,9 +7,9 @@ export default function Loading({
 	children,
 }: ComponentProps<'div'>) {
 	return (
-		<div className={cn('flex items-center gap-2', className)}>
+		<aside className={cn('flex items-center gap-2', className)}>
 			<VscLoading className="animate-spin" />
 			{children || 'Loading...'}
-		</div>
+		</aside>
 	)
 }
