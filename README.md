@@ -1,3 +1,5 @@
+🆕 Try the new [_SanityPress with TypeGen_](https://github.com/nuotsu/sanitypress-with-typegen)
+
 # 🖤 SanityPress
 
 > _Ready, Set, Impress._
