@@ -52,12 +52,12 @@ export default defineType({
 			group: 'asset',
 		}),
 		defineField({
-			...alignItems,
+			...(alignItems as any),
 			fieldset: 'alignment',
 			group: 'options',
 		}),
 		defineField({
-			...textAlign,
+			...(textAlign as any),
 			fieldset: 'alignment',
 			group: 'options',
 		}),

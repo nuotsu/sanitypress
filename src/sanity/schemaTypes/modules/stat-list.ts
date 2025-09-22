@@ -67,7 +67,7 @@ export default defineType({
 			],
 			group: 'content',
 		}),
-		defineField(textAlign),
+		defineField(textAlign as any),
 	],
 	preview: {
 		select: {

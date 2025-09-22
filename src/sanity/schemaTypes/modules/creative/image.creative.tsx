@@ -28,7 +28,7 @@ export default defineArrayMember({
 							{ title: '3:2', value: '1.5' },
 							{ title: '4:3', value: '4 / 3' },
 						]}
-						{...props}
+						{...(props as any)}
 					/>
 				),
 			},

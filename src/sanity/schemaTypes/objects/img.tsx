@@ -54,7 +54,7 @@ export default defineType({
 									<TextInputWithPresets
 										prefix="@media"
 										presets={presets}
-										{...props}
+										{...(props as any)}
 									/>
 								),
 							},

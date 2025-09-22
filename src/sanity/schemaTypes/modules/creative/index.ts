@@ -86,13 +86,13 @@ export default defineType({
 			group: 'options',
 		}),
 		defineField({
-			...alignItems,
+			...(alignItems as any),
 			fieldset: 'alignment',
 			group: 'options',
 			hidden: ({ parent }) => parent.bordered,
 		}),
 		defineField({
-			...textAlign,
+			...(textAlign as any),
 			fieldset: 'alignment',
 		}),
 	],

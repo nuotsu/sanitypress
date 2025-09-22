@@ -47,7 +47,7 @@ export default defineType({
 					<TextInputWithPresets
 						prefix="ic0n.dev/"
 						presets={ic0nPresets}
-						{...props}
+						{...(props as any)}
 					/>
 				),
 			},
@@ -59,7 +59,7 @@ export default defineType({
 			initialValue: sizePresets[0],
 			components: {
 				input: (props) => (
-					<TextInputWithPresets presets={sizePresets} {...props} />
+					<TextInputWithPresets presets={sizePresets} {...(props as any)} />
 				),
 			},
 		}),
