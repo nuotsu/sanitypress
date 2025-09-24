@@ -1,4 +1,5 @@
-🆕 Try the new [_SanityPress with TypeGen_](https://github.com/nuotsu/sanitypress-with-typegen)
+> [!NOTE]
+> 🆕 Try the new [_SanityPress with TypeGen_!](https://typed.sanitypress.dev) ♣️
 
 # 🖤 SanityPress
 
