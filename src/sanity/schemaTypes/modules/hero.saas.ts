@@ -1,7 +1,7 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
 import { reputationBlock } from '../misc/reputation'
-import { getBlockText } from 'sanitypress-utils'
+import { getBlockText } from '@/lib/utils'
 
 export default defineType({
 	name: 'hero.saas',

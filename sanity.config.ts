@@ -5,7 +5,8 @@ import { defineConfig } from 'sanity'
 import { projectId, dataset, apiVersion } from '@/sanity/lib/env'
 import { structure } from './src/sanity/structure'
 import { presentation } from './src/sanity/presentation'
-import { icon, infoWidget } from 'sanitypress-utils'
+import { icon } from '@/sanity/ui/Icon'
+import { InfoWidget } from '@/sanity/ui/InfoWidget'
 import {
 	dashboardTool,
 	projectInfoWidget,
@@ -42,7 +43,7 @@ export default defineConfig({
 			widgets: [
 				projectInfoWidget(),
 				projectUsersWidget(),
-				infoWidget({ version: pkg.version }),
+				InfoWidget({ version: pkg.version }),
 			],
 		}),
 		visionTool({ defaultApiVersion: apiVersion }),

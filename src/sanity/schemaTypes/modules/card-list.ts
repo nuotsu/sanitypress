@@ -1,6 +1,6 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { TfiLayoutMediaLeftAlt } from 'react-icons/tfi'
-import { getBlockText } from 'sanitypress-utils'
+import { getBlockText } from '@/lib/utils'
 import { count } from '@/lib/utils'
 
 export default defineType({

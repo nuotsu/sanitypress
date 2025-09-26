@@ -1,5 +1,9 @@
 import { defineField, defineType } from 'sanity'
-import { getPreset, TextInputWithPresets, type Preset } from 'sanitypress-utils'
+import {
+	getPreset,
+	TextInputWithPresets,
+	type Preset,
+} from '@/sanity/ui/TextInputWithPresets'
 import { VscSymbolMisc } from 'react-icons/vsc'
 
 const ic0nPresets: Preset[] =

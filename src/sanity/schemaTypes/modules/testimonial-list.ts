@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { GrBlockQuote } from 'react-icons/gr'
-import { getBlockText } from 'sanitypress-utils'
+import { getBlockText } from '@/lib/utils'
 import { count } from '@/lib/utils'
 
 export default defineType({

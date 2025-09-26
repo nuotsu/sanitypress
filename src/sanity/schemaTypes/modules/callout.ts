@@ -1,7 +1,7 @@
 import { defineField, defineType } from 'sanity'
 import { VscInspect } from 'react-icons/vsc'
 import { reputationBlock } from '../misc/reputation'
-import { getBlockText } from 'sanitypress-utils'
+import { getBlockText } from '@/lib/utils'
 
 export default defineType({
 	name: 'callout',

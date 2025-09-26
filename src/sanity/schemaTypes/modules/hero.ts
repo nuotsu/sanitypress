@@ -1,8 +1,8 @@
 import { defineField, defineType } from 'sanity'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
 import { reputationBlock } from '../misc/reputation'
-import { alignItems, textAlign } from 'sanitypress-utils'
-import { getBlockText } from 'sanitypress-utils'
+import { alignItems, textAlign } from '../fragments'
+import { getBlockText } from '@/lib/utils'
 
 export default defineType({
 	name: 'hero',
