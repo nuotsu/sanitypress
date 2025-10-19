@@ -95,8 +95,9 @@ export default function CreativeModule({
 													textAlign === 'center' && '[&_img]:mx-auto',
 												)}
 												style={{ height: getPixels(subModule?.size) }}
+												key={ii}
 											>
-												<Icon icon={subModule} key={ii} />
+												<Icon icon={subModule} />
 											</figure>
 										)
 
