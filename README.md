@@ -19,7 +19,7 @@ npm create sanity@latest -- --template nuotsu/sanitypress
 
 ## Key Features
 
-- [x] ✨ Next.js 15 (App Router, RSC, Typescript) with Tailwind 4
+- [x] ✨ Next.js 16 (App Router, RSC, Typescript) with Tailwind 4
 - [x] 📕 [Pre-configured Sanity schema](/src/sanity/schemaTypes/index.ts) & [frontend components](/src/ui/)
 - [x] ✏️ [Visual editing](https://sanitypress.dev/blog/visual-editing) in an [embedded Sanity Studio](https://sanitypress.dev/blog/why-you-should-embed-your-studio)
 - [x] ⌨️ Auto-generated [sitemap](https://sanitypress.dev/sitemap.xml) + [Blog RSS feed](https://sanitypress.dev/blog/rss.xml)
