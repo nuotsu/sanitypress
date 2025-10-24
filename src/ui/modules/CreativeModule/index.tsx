@@ -116,7 +116,7 @@ export default function CreativeModule({
 										)
 
 									case 'custom-html':
-										return <CustomHTMLSubmodule module={subModule} />
+										return <CustomHTMLSubmodule module={subModule} key={ii} />
 
 									default:
 										return null
