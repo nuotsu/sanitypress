@@ -154,5 +154,4 @@ Adjust frontend styles to your liking, edit or add new schema and modules, etc.
 ## \*Not included
 
 - Internationalization (i18n) and multi-lingual support
-- Turbopack support ([pending issue with lightningcss](https://github.com/parcel-bundler/lightningcss/issues/1072))
 - Next.js 16 Cache Components (not suitable for Sanity Live Content API's real-time updates)
