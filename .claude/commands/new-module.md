@@ -178,7 +178,7 @@ Top-level CTAs on the module itself are already covered by the top-level `ctas[]
 ## Step 5 — Run typegen
 
 ```bash
-npm run typegen
+bun run typegen
 ```
 
 This regenerates `src/sanity/types.ts`. The new module type will be exported as a named type in PascalCase matching the schema `name` (e.g. `my-module` → `MyModule`). Fix any errors before proceeding.
@@ -258,7 +258,7 @@ If **yes**: convert to the subdirectory layout so a sibling `client.tsx` with `'
 
 ## Verification checklist
 
-- [ ] `npm run typegen` exits with no errors
-- [ ] TypeScript compiles cleanly (no IDE errors, or `npm run build` passes)
+- [ ] `bun run typegen` exits with no errors
+- [ ] TypeScript compiles cleanly (no IDE errors, or `bun run build` passes)
 - [ ] Module appears as an option in Sanity Studio when adding modules to a page
 - [ ] Component renders (even if empty) when module is added to a page in preview
