@@ -5,7 +5,7 @@ import Img from '@/ui/img'
 export default function ({
 	author,
 	className,
-}: { author: Person } & React.ComponentProps<'div'>) {
+}: { author?: Person } & React.ComponentProps<'div'>) {
 	if (!author?.name) return null
 
 	return (
