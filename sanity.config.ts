@@ -1,7 +1,8 @@
 'use client'
 
 /**
- * This configuration is used to for the Sanity Studio that’s mounted on the `/app/admin/[[...tool]]/page.tsx` route
+ * This configuration is used for the Sanity Studio mounted under `src/app/(studio)/<segment>/[[...tool]]/page.tsx`.
+ * Keep `basePath` in sync with `ROUTES.studio` in `src/lib/env.ts` and the App Router folder name.
  */
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { defineConfig } from 'sanity'
@@ -15,6 +16,7 @@ import {
 import { visionTool } from '@sanity/vision'
 import { vercelWidget } from 'sanity-plugin-dashboard-widget-vercel'
 import { media } from 'sanity-plugin-media'
+import { ROUTES } from './src/lib/env'
 import { apiVersion, dataset, projectId } from './src/sanity/env'
 import icon from './src/sanity/icon'
 import presentation from './src/sanity/presentation'
@@ -23,7 +25,7 @@ import structure from './src/sanity/structure'
 
 export default defineConfig({
 	title: 'SanityPress',
-	basePath: '/admin',
+	basePath: `/${ROUTES.studio}`,
 	projectId,
 	dataset,
 	icon,

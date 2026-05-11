@@ -1,3 +1,4 @@
+import { ROUTES } from '@/lib/env'
 import { VisualEditing } from 'next-sanity/visual-editing'
 import { draftMode } from 'next/headers'
 import { SanityLive } from '@/sanity/lib/live'
@@ -22,7 +23,7 @@ export default async function () {
 								</a>
 							</li>
 							<li>
-								<a href="/admin" className="link">
+								<a href={`/${ROUTES.studio}`} className="link">
 									Open the Studio
 								</a>
 							</li>
