@@ -25,6 +25,14 @@ export default ({ of = [] }: { of?: Array<{ type: string }> } = {}) =>
 		],
 		options: {
 			insertMenu: {
+				filter: true,
+				views: [
+					{
+						name: 'grid',
+						previewImageUrl: (module) => `/module-thumbnails/${module}.png`,
+					},
+					{ name: 'list' },
+				],
 				groups: [
 					{
 						name: 'content',
