@@ -62,7 +62,7 @@ export default function ({
 								return (
 									<SanityLink
 										link={item as unknown as SanityLinkType}
-										className="md:text-foreground/50 py-1 text-current hover:underline"
+										className="py-1 text-current hover:underline"
 										key={item._key}
 									/>
 								)
