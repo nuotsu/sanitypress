@@ -12,12 +12,14 @@ export default function ({
 }: LinkList & React.ComponentProps<'li'> & Partial<{ _key: string }>) {
 	return (
 		<li className={cn('grid gap-1 text-left', className)} {...props}>
-			<div>
-				<SanityLink
-					className="text-foreground/50 [[href]]:hover:underline"
-					link={link as SanityLinkType}
-				/>
-			</div>
+			{link && (
+				<div>
+					<SanityLink
+						className="text-foreground/50 [[href]]:hover:underline"
+						link={link as SanityLinkType}
+					/>
+				</div>
+			)}
 
 			<ul className="leading-tight">
 				{links?.map((item) => (

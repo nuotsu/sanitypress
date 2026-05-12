@@ -31,7 +31,7 @@ export default function ({
 			</summary>
 
 			<ul
-				className="md:bg-background anim-fade-to-b border-stroke max-md:pl-ch mb-ch md:py-ch top-0 z-1 leading-tight max-md:border-l md:absolute md:-ml-[1.5ch] md:min-w-max md:border md:p-[1ch_1.5ch] md:shadow-lg"
+				className="md:bg-background anim-fade-to-b border-stroke max-md:pl-ch mb-ch md:py-ch top-0 z-1 leading-tight max-md:border-l md:absolute md:ml-[-1.5ch] md:min-w-max md:border md:p-[1ch_1.5ch] md:shadow-lg"
 				style={{
 					positionAnchor: anchorName,
 					positionArea: 'end span-end',

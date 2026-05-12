@@ -21,6 +21,7 @@ const LINK_QUERY = groq`
 
 // @sanity-typegen-ignore
 const NAVIGATION_QUERY = groq`
+	...,
 	items[]{
 		${LINK_QUERY},
 		defined(link) => { link{ ${LINK_QUERY} } },

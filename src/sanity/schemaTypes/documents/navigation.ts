@@ -15,6 +15,17 @@ export default defineType({
 			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
+			name: 'blurb',
+			type: 'array',
+			of: [
+				{
+					type: 'block',
+					styles: [{ title: 'Normal', value: 'normal' }],
+					lists: [],
+				},
+			],
+		}),
+		defineField({
 			name: 'items',
 			type: 'array',
 			of: [{ type: 'link' }, { type: 'link.list' }, { type: 'megamenu' }],

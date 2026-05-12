@@ -54,18 +54,6 @@ export default defineType({
 			group: 'navigation',
 		}),
 		defineField({
-			name: 'footerContent',
-			type: 'array',
-			of: [
-				{
-					type: 'block',
-					styles: [{ title: 'Normal', value: 'normal' }],
-					lists: [],
-				},
-			],
-			group: 'info',
-		}),
-		defineField({
 			name: 'copyright',
 			type: 'array',
 			of: [

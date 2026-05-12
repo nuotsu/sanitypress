@@ -13,7 +13,7 @@ export default async function () {
 
 	return (
 		<Wrapper className="bg-background/80 has-[.accordion:open]:bg-background max-md:header-open:shadow-xl sticky top-0 z-10 backdrop-blur transition-colors">
-			<div className={cn(css.root, 'section grid items-center gap-x-4 p-4')}>
+			<div className={cn(css.root, 'section grid items-center gap-x-4 py-4')}>
 				<div className="just between flex items-center gap-4 [grid-area:top]">
 					<Logo className="grow has-[img]:-my-2 has-[img]:h-[2lh]" />
 					<MobileToggle />
