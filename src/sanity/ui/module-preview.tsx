@@ -5,9 +5,11 @@ import { VscEyeClosed } from 'react-icons/vsc'
 export default function (
 	props: PreviewProps & { hidden?: boolean; uid?: string },
 ) {
+	const render = props.renderDefault(props)
+
 	return (
 		<Flex align="center">
-			<Box flex={1}>{props.renderDefault(props)}</Box>
+			<Box flex={1}>{render}</Box>
 
 			{props.hidden ? (
 				<Badge padding={2} marginRight={2}>
