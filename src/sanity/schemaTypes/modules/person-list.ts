@@ -8,16 +8,19 @@ export default defineModule({
 	title: 'Person list',
 	type: 'object',
 	icon: UsersIcon,
+	groups: [{ name: 'content', default: true }],
 	fields: [
 		defineField({
 			name: 'intro',
 			type: 'array',
 			of: [{ type: 'block' }],
+			group: 'content',
 		}),
 		defineField({
 			name: 'people',
 			type: 'array',
 			of: [{ type: 'person' }, { type: 'reference', to: [{ type: 'person' }] }],
+			group: 'content',
 		}),
 	],
 	preview: {

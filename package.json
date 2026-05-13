@@ -1,6 +1,6 @@
 {
 	"name": "typed-sanitypress",
-	"version": "0.0.90",
+	"version": "0.0.91",
 	"private": true,
 	"scripts": {
 		"dev": "next dev --webpack",
@@ -15,7 +15,7 @@
 	"dependencies": {
 		"@portabletext/to-html": "^5.0.2",
 		"@sanity/assist": "^6.0.5",
-		"@sanity/cli": "^6.5.1",
+		"@sanity/cli": "^6.5.3",
 		"@sanity/code-input": "^7.1.0",
 		"@sanity/dashboard": "^5.0.1",
 		"@sanity/image-url": "^2.1.1",
@@ -30,7 +30,7 @@
 		"react-icons": "^5.6.0",
 		"sanity": "^5.25.0",
 		"sanity-plugin-dashboard-widget-vercel": "^3.1.6",
-		"sanity-plugin-media": "^4.2.0",
+		"sanity-plugin-media": "^4.3.0",
 		"shiki": "^4.0.2",
 		"styled-components": "^6.4.1",
 		"tailwind-merge": "^3.6.0",

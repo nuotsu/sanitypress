@@ -2,16 +2,16 @@
 	.safearea {
 		--safearea-x: 4rem;
 
-		& > summary {
+		&>summary {
 			position: relative;
 		}
 
-		&[open] > summary:hover::before {
+		&[open]>summary:hover::before {
 			content: '';
 			position: absolute;
 			z-index: 1;
 			inset: 0.25lh calc(var(--safearea-x) * -1) -2rem;
-			translate: -1em 0;
+			translate: -1em 18%;
 			clip-path: polygon(50% 0, 100% 100%, 0 100%);
 		}
 	}

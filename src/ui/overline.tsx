@@ -4,6 +4,6 @@ export default function ({ value }: { value?: string }) {
 	if (!value) return null
 
 	return (
-		<p className="technical text-foreground/50 text-sm">{stegaClean(value)}</p>
+		<p className="technical text-sm text-current/50">{stegaClean(value)}</p>
 	)
 }
