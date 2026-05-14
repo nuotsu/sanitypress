@@ -6733,7 +6733,7 @@ export type CATEGORIES_QUERY_RESULT = Array<{
 
 // Source: src/ui/modules/search/store.ts
 // Variable: SEARCH_QUERY
-// Query: *[	_type in $scope	&& defined(metadata.slug.current)	&& metadata.noIndex != true	&& !(metadata.slug.current in ['404'])	&& [		modules[].intro[].children[].text,		modules[].content[].children[].text,		content[].children[].text,		title,		metadata.title,		metadata.description	] match $queryMatch]{	_id,	_type,	title,	'slug': select(		_type == 'blog.post' => $blogDir + metadata.slug.current,		metadata.slug.current == 'index' => '/',		'/' + metadata.slug.current	)}
+// Query: *[	_type in $scope	&& defined(metadata.slug.current)	&& metadata.noIndex != true	&& !(metadata.slug.current in ['404'])	&& @ match text::query($queryMatch)]{	_id,	_type,	title,	'slug': select(		_type == 'blog.post' => $blogDir + metadata.slug.current,		metadata.slug.current == 'index' => '/',		'/' + metadata.slug.current	)}
 export type SEARCH_QUERY_RESULT = Array<
 	| {
 			_id: string
@@ -6761,6 +6761,6 @@ declare module '@sanity/client' {
 		"\n\t*[_type == 'blog.post']|order(publishDate desc){\n\t\t...,\n\t\tcategories[]->,\n\t\tauthor->{\n\t\t\tname,\n\t\t\timage{\n\t\t\t\t...,\n\t\t\t\tasset->\n\t\t\t}\n\t\t},\n\t\tmetadata{\n\t\t\t...,\n\t\t\timage{\n\t\t\t\t...,\n\t\t\t\tasset->\n\t\t\t}\n\t\t},\n\t\t'slug': $blogDir + metadata.slug.current,\n\t}\n": BLOG_INDEX_QUERY_RESULT
 		"\n\t*[_type == 'blog.post']|order(publishDate desc)[0...$limit]{\n\t\t...,\n\t\tcategories[]->{\n\t\t\ttitle,\n\t\t\tslug\n\t\t},\n\t\tauthor->{\n\t\t\tname,\n\t\t\timage{\n\t\t\t\t...,\n\t\t\t\tasset->\n\t\t\t}\n\t\t},\n\t\tmetadata{\n\t\t\t...,\n\t\t\timage{\n\t\t\t\t...,\n\t\t\t\tasset->\n\t\t\t}\n\t\t},\n\t\t'slug': $blogDir + metadata.slug.current,\n\t}\n": BLOG_POST_LIST_QUERY_RESULT
 		"\n\t*[\n\t\t_type == 'blog.category'\n\t\t&& count(*[_type == 'blog.post' && references(^._id)]) > 0\n\t]|order(title)\n": CATEGORIES_QUERY_RESULT
-		"*[\n\t_type in $scope\n\t&& defined(metadata.slug.current)\n\t&& metadata.noIndex != true\n\t&& !(metadata.slug.current in ['404'])\n\t&& [\n\t\tmodules[].intro[].children[].text,\n\t\tmodules[].content[].children[].text,\n\t\tcontent[].children[].text,\n\t\ttitle,\n\t\tmetadata.title,\n\t\tmetadata.description\n\t] match $queryMatch\n]{\n\t_id,\n\t_type,\n\ttitle,\n\t'slug': select(\n\t\t_type == 'blog.post' => $blogDir + metadata.slug.current,\n\t\tmetadata.slug.current == 'index' => '/',\n\t\t'/' + metadata.slug.current\n\t)\n}": SEARCH_QUERY_RESULT
+		"*[\n\t_type in $scope\n\t&& defined(metadata.slug.current)\n\t&& metadata.noIndex != true\n\t&& !(metadata.slug.current in ['404'])\n\t&& @ match text::query($queryMatch)\n]{\n\t_id,\n\t_type,\n\ttitle,\n\t'slug': select(\n\t\t_type == 'blog.post' => $blogDir + metadata.slug.current,\n\t\tmetadata.slug.current == 'index' => '/',\n\t\t'/' + metadata.slug.current\n\t)\n}": SEARCH_QUERY_RESULT
 	}
 }

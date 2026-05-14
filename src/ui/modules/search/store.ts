@@ -45,7 +45,7 @@ export async function handleSearch({
 	const results = await sanityFetchLive<SEARCH_QUERY_RESULT>({
 		query: SEARCH_QUERY,
 		params: {
-			queryMatch: `*${query}*`,
+			queryMatch: query,
 			scope: scope === 'all' ? Object.values(SCOPE_MAP) : [scopeValue],
 			blogDir: `/${ROUTES.blog}/`,
 		},
@@ -60,14 +60,7 @@ const SEARCH_QUERY = groq`*[
 	&& defined(metadata.slug.current)
 	&& metadata.noIndex != true
 	&& !(metadata.slug.current in ['404'])
-	&& [
-		modules[].intro[].children[].text,
-		modules[].content[].children[].text,
-		content[].children[].text,
-		title,
-		metadata.title,
-		metadata.description
-	] match $queryMatch
+	&& @ match text::query($queryMatch)
 ]{
 	_id,
 	_type,
