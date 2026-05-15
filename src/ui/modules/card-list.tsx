@@ -17,7 +17,7 @@ export default function ({
 	return (
 		<section className="section space-y-8" {...moduleAttributes(props)}>
 			{(overline || intro) && (
-				<header className="prose text-center">
+				<header className="prose mx-auto max-w-3xl text-center">
 					<Overline value={overline} />
 					<PortableText value={intro ?? []} />
 				</header>

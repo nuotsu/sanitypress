@@ -8,10 +8,7 @@ export default defineModule({
 	title: 'Hero (split)',
 	type: 'object',
 	icon: TfiLayoutMediaLeft,
-	groups: [
-		{ name: 'content', default: true },
-		{ name: 'image' },
-	],
+	groups: [{ name: 'content', default: true }, { name: 'image' }],
 	fields: [
 		defineField({
 			name: 'overline',
@@ -38,10 +35,12 @@ export default defineModule({
 				hotspot: true,
 				metadata: ['lqip'],
 			},
+			fieldsets: [{ name: 'options', options: { columns: 2 } }],
 			fields: [
 				defineField({
 					name: 'alt',
 					type: 'string',
+					fieldset: 'options',
 				}),
 				defineField({
 					name: 'loading',
@@ -51,16 +50,19 @@ export default defineModule({
 						layout: 'radio',
 					},
 					initialValue: 'lazy',
+					fieldset: 'options',
 				}),
 				defineField({
 					name: 'onRight',
 					description: 'Desktop',
 					type: 'boolean',
+					fieldset: 'options',
 				}),
 				defineField({
 					name: 'afterContent',
 					description: 'Mobile',
 					type: 'boolean',
+					fieldset: 'options',
 				}),
 			],
 			group: 'image',

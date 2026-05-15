@@ -1,5 +1,5 @@
 import { defineField } from 'sanity'
-import { CodeIcon, JsonIcon, LogoJsIcon } from '@sanity/icons'
+import { CodeIcon } from '@sanity/icons'
 import defineModule from '@/sanity/schemaTypes/fragments/define-module'
 
 export default defineModule({
@@ -47,20 +47,7 @@ export default defineModule({
 		prepare: ({ html, css }) => {
 			return {
 				title: html || css,
-				...(html?.includes('<script')
-					? {
-							subtitle: 'Custom JavaScript',
-							media: LogoJsIcon,
-						}
-					: css
-						? {
-								subtitle: 'Custom CSS',
-								media: JsonIcon,
-							}
-						: {
-								subtitle: 'Custom HTML',
-								media: CodeIcon,
-							}),
+				subtitle: `Custom ${[html && 'HTML', html?.includes('<script') && 'JS', css && 'CSS'].filter(Boolean).join(' / ')}`,
 			}
 		},
 	},
