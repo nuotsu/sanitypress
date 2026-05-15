@@ -41,6 +41,9 @@ export default defineModule({
 						defineField({
 							name: 'icon',
 							type: 'image',
+							options: {
+								hotspot: true,
+							},
 							fieldset: 'asset',
 						}),
 						defineField({
