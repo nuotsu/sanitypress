@@ -1,6 +1,6 @@
-import { ROUTES } from '@/lib/env'
 import { VisualEditing } from 'next-sanity/visual-editing'
 import { draftMode } from 'next/headers'
+import { ROUTES } from '@/lib/env'
 import { SanityLive } from '@/sanity/lib/live'
 import HoverDetails from '@/ui/hover-details'
 

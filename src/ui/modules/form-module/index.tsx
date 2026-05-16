@@ -1,8 +1,8 @@
 import { PortableText } from 'next-sanity'
 import type { Form, FormModule } from '@/sanity/types'
+import Overline from '@/ui/overline'
 import { moduleAttributes } from '..'
 import Resolver from './resolver'
-import Overline from '@/ui/overline'
 
 export default function ({ overline, intro, form, ...props }: FormModule) {
 	return (
