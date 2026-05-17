@@ -7,9 +7,4 @@
 			grid-column: content;
 		}
 	}
-
-	&>p:first-of-type::first-letter {
-		float: left;
-		font: var(--text-7xl) var(--font-serif);
-	}
 }
