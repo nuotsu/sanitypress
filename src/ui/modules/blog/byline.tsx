@@ -19,7 +19,10 @@ export default function ({
 				/>
 			</figure>
 
-			<div>{author.name}</div>
+			<div>
+				<span className="sr-only">By </span>
+				{author.name}
+			</div>
 		</div>
 	)
 }

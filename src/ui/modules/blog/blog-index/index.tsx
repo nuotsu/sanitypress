@@ -5,19 +5,27 @@ import { cn } from '@/lib/utils'
 import { sanityFetchLive } from '@/sanity/lib/live'
 import type { BlogIndex } from '@/sanity/types'
 import Loading from '@/ui/loading'
+import { moduleAttributes, type ModuleProps } from '@/ui/modules'
 import FilterList from '@/ui/modules/blog/filter-list'
 import PaginatedPosts from './paginated-posts'
 import Skeleton from './skeleton'
 import SortBy from './sort-by'
 
-export default async function ({ intro, postsPerPage = 6 }: BlogIndex) {
+export default async function ({
+	intro,
+	postsPerPage = 6,
+	...props
+}: BlogIndex & ModuleProps) {
 	const posts = await sanityFetchLive<any>({
 		query: BLOG_INDEX_QUERY,
 		params: { blogDir: `/${ROUTES.blog}/` },
 	})
 
 	return (
-		<section className={cn('section space-y-8', intro && 'pt-4')}>
+		<section
+			className={cn('section space-y-8', intro && 'pt-4')}
+			{...moduleAttributes(props)}
+		>
 			{intro && (
 				<header className="prose">
 					<PortableText value={intro} />

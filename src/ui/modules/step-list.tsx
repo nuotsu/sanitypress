@@ -16,12 +16,10 @@ export default function ({
 				itemType: 'https://schema.org/HowTo',
 			})}
 		>
-			<header className="prose md:sticky-below-header [--offset:1rem]">
-				{enableSchema && intro && (
-					<div itemProp="name" className="sr-only">
-						<PortableText value={intro} />
-					</div>
-				)}
+			<header
+				className="prose md:sticky-below-header [--offset:1rem]"
+				{...(enableSchema && intro && { itemProp: 'name' })}
+			>
 				<PortableText value={intro} />
 				<CTAList ctas={ctas} className="max-md:*:w-full" />
 			</header>

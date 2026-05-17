@@ -11,6 +11,13 @@ const nextConfig: NextConfig = {
 		remotePatterns: [{ protocol: 'https', hostname: 'cdn.sanity.io' }],
 	},
 
+	async rewrites() {
+		return [
+			{ source: '/:slug.md', destination: '/api/md/:slug' },
+			{ source: '/:path*/:slug.md', destination: '/api/md/:path*/:slug' },
+		]
+	},
+
 	async redirects() {
 		return await client.fetch(
 			groq`*[_type == 'redirect']{
