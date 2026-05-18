@@ -21,7 +21,7 @@ An improved successor to the acclaimed Next.js + Sanity.io starter template—no
 ## File Structure
 
 ```
-♣️ 📁 sanitypress/
+♣️ sanitypress/
 ├─ 📁 src/
 │ ├─ 📁 app/              # Next.js App Router
 │ │ ├─ 📁 (frontend)/     # Public-facing site
