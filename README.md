@@ -67,7 +67,7 @@ An improved successor to the acclaimed Next.js + Sanity.io starter template—no
 
 ### 1. Initialize the project
 
-Click the [Sanity template link](https://www.sanity.io/get-started?template=sanitypress-with-typegen&ref=templates-sanitypress-with-typegen) -- OR -- install with the Sanity CLI:
+Click the [Sanity template link](https://www.sanity.io/get-started?template=sanitypress) -- OR -- install with the Sanity CLI:
 
 ```sh
 npm create sanity@latest -- --template=nuotsu/sanitypress-with-typegen
