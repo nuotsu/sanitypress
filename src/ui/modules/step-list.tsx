@@ -35,7 +35,7 @@ export default function ({
 						})}
 						key={step._key}
 					>
-						<span className="h3 bg-foreground text-background size-lh grid shrink-0 place-content-center rounded-full text-center before:content-[counter(step)]" />
+						<span className="h3 bg-foreground text-background size-lh grid shrink-0 place-content-center text-center before:content-[counter(step)]" />
 
 						<div className="prose" {...(enableSchema && { itemProp: 'text' })}>
 							<PortableText value={step.content ?? []} />

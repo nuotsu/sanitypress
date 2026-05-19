@@ -145,7 +145,7 @@
 }
 
 @utility ghost {
-	@apply action-base bg-background text-foreground hover:bg-foreground/5;
+	@apply action-base bg-foreground/2 text-foreground hover:bg-foreground/5;
 }
 
 @utility link {
