@@ -37,7 +37,7 @@ export default async function ({
 				))}
 			</ul>
 
-			<CTAList ctas={ctas} className="justify-center max-md:*:w-full" />
+			<CTAList ctas={ctas} className="justify-center max-sm:*:w-full" />
 		</section>
 	)
 }

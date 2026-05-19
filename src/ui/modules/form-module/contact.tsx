@@ -37,7 +37,7 @@ export default function ({ form }: { form: Form }) {
 			</label>
 
 			<div>
-				<button className="action max-md:w-full" type="submit">
+				<button className="action max-sm:w-full" type="submit">
 					Submit
 				</button>
 			</div>

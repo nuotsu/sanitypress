@@ -23,7 +23,7 @@ export default async function () {
 
 				<CTAList
 					ctas={site?.ctas as Cta[]}
-					className="max-md:header-not-open:hidden [grid-area:ctas] *:max-md:w-full"
+					className="max-md:header-not-open:hidden [grid-area:ctas] max-sm:*:w-full"
 				/>
 			</div>
 		</Wrapper>

@@ -38,7 +38,7 @@ export default function ({
 					)}
 				>
 					<PortableText value={intro} />
-					<CTAList ctas={ctas} className="max-md:*:w-full" />
+					<CTAList ctas={ctas} className="max-sm:*:w-full" />
 				</header>
 			)}
 

@@ -35,7 +35,7 @@ export default function ({
 			<header className="prose">
 				<Overline value={overline} />
 				<PortableText value={content} />
-				<CTAList ctas={ctas} className="max-md:*:w-full" />
+				<CTAList ctas={ctas} className="max-sm:*:w-full" />
 			</header>
 		</section>
 	)
