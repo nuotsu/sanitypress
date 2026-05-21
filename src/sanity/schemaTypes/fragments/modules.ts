@@ -41,7 +41,7 @@ export default ({ of = [] }: { of?: Array<{ type: string }> } = {}) =>
 							'callout',
 							'card-list',
 							'form-module',
-							'hero-split',
+							'hero.split',
 							'logo-list',
 							'person-list',
 							'prose',
