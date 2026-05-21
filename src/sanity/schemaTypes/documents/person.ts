@@ -12,6 +12,10 @@ export default defineType({
 			type: 'string',
 		}),
 		defineField({
+			name: 'title',
+			type: 'string',
+		}),
+		defineField({
 			name: 'image',
 			type: 'image',
 			options: {
@@ -22,6 +26,7 @@ export default defineType({
 	preview: {
 		select: {
 			title: 'name',
+			subtitle: 'title',
 			media: 'image',
 		},
 	},

@@ -22,6 +22,14 @@ export default defineModule({
 			of: [{ type: 'person' }, { type: 'reference', to: [{ type: 'person' }] }],
 			group: 'content',
 		}),
+		defineField({
+			name: 'columns',
+			description:
+				'Overrides the default dynamic columns (~256px). Desktop only.',
+			validation: (Rule) => Rule.min(1),
+			type: 'number',
+			group: 'options',
+		}),
 	],
 	preview: {
 		select: {

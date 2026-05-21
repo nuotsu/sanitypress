@@ -2663,6 +2663,13 @@
                       },
                       "optional": true
                     },
+                    "title": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      },
+                      "optional": true
+                    },
                     "image": {
                       "type": "objectAttribute",
                       "value": {
@@ -2747,6 +2754,13 @@
                 }
               ]
             }
+          },
+          "optional": true
+        },
+        "columns": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "number"
           },
           "optional": true
         }
@@ -6804,6 +6818,13 @@
         }
       },
       "name": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "title": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
