@@ -1,10 +1,13 @@
 import { PortableText } from 'next-sanity'
+import { draftMode } from 'next/headers'
 import { getSite } from '@/sanity/lib/queries'
 import Logo from '@/ui/logo'
 import SocialNavigation from '@/ui/social-navigation'
 import Navigation from './navigation'
 
-export default async function () {
+export default async function Footer() {
+	'use cache'
+	await draftMode()
 	const site = await getSite()
 
 	return (

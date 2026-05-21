@@ -1,5 +1,5 @@
 import type { Get } from '@sanity/codegen'
-import { createDataAttribute, stegaClean } from 'next-sanity'
+import { stegaClean } from 'next-sanity'
 import type {
 	BLOG_POST_QUERY_RESULT,
 	ModuleAttributes,

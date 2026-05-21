@@ -6,8 +6,6 @@ import type {
 	LLMS_PAGES_QUERY_RESULT,
 } from '@/sanity/types'
 
-export const dynamic = 'force-dynamic'
-
 export async function GET() {
 	const baseUrl = (process.env.NEXT_PUBLIC_BASE_URL ?? '').replace(/\/$/, '')
 

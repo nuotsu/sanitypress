@@ -2,9 +2,9 @@ import { groq } from 'next-sanity'
 import { ImageResponse } from 'next/og'
 import { ROUTES } from '@/lib/env'
 import { cn } from '@/lib/utils'
-import { sanityFetchLive } from '@/sanity/lib/live'
+import { sanityFetch } from '@/sanity/lib/live'
 import { getSite } from '@/sanity/lib/queries'
-import type { OG_QUERY_RESULT } from '@/sanity/types'
+import type { OG_QUERY_RESULT, SITE_QUERY_RESULT } from '@/sanity/types'
 
 const { hostname } = new URL(process.env.NEXT_PUBLIC_BASE_URL!)
 const blogDir = `${ROUTES.blog}/`
@@ -13,6 +13,20 @@ const OG_QUERY = groq`*[_type == $type && metadata.slug.current == $slug][0]{
 	'title': coalesce(metadata.title, title),
 }`
 
+async function fetchOgData(type: string, slug: string) {
+	'use cache'
+	const [{ data: page }, site] = await Promise.all([
+		sanityFetch({
+			query: OG_QUERY,
+			params: { type, slug },
+			perspective: 'published',
+			stega: false,
+		}),
+		getSite(),
+	])
+	return { page: page as OG_QUERY_RESULT, site }
+}
+
 export async function GET(request: Request) {
 	const { searchParams } = new URL(request.url)
 	const slug = searchParams.get('slug') ?? 'index'
@@ -20,16 +34,10 @@ export async function GET(request: Request) {
 
 	const type = slug.startsWith(blogDir) ? 'blog.post' : 'page'
 
-	const [page, site] = await Promise.all([
-		sanityFetchLive<OG_QUERY_RESULT>({
-			query: OG_QUERY,
-			params: {
-				type,
-				slug: type === 'blog.post' ? slug.replace(blogDir, '') : slug,
-			},
-		}),
-		getSite(),
-	])
+	const { page, site } = await fetchOgData(
+		type,
+		type === 'blog.post' ? slug.replace(blogDir, '') : slug,
+	)
 
 	const [h1 = '', h2 = ''] =
 		(page?.title || site?.title)?.split(/(?:\s*[|-—]\s*)/) ?? []

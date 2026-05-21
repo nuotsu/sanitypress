@@ -1,33 +1,66 @@
-'use server'
-
-// Querying with "sanityFetch" will keep content automatically updated
-// Before using it, import and render "<SanityLive />" in your layout, see
-// https://github.com/sanity-io/next-sanity#live-content-api for more information.
-import { defineLive } from 'next-sanity/live'
-import { draftMode } from 'next/headers'
-import { dev } from '@/lib/env'
+import { type QueryParams } from 'next-sanity'
+import {
+	defineLive,
+	resolvePerspectiveFromCookies,
+	type LivePerspective,
+} from 'next-sanity/live'
+import { cookies, draftMode } from 'next/headers'
+import { apiVersion } from '@/sanity/env'
 import { client } from './client'
 import { token } from './token'
 
-export const { sanityFetch, SanityLive } = defineLive({
-	client: client.withConfig({
-		// Live content is currently only available on the experimental API
-		// https://www.sanity.io/docs/api-versioning
-		apiVersion: '2026-05-14',
-	}),
+export const { SanityLive, sanityFetch } = defineLive({
+	client: client.withConfig({ apiVersion }),
 	serverToken: token,
 	browserToken: token,
+	strict: true,
 })
 
-export async function sanityFetchLive<T>(
-	args: Parameters<typeof sanityFetch>[0],
-) {
-	const preview = dev || (await draftMode()).isEnabled
+export interface DynamicFetchOptions {
+	perspective: LivePerspective
+	stega: boolean
+}
 
+export async function getDynamicFetchOptions(): Promise<DynamicFetchOptions> {
+	const { isEnabled: isDraftMode } = await draftMode()
+	if (!isDraftMode) return { perspective: 'published', stega: false }
+	const jar = await cookies()
+	const perspective = await resolvePerspectiveFromCookies({ cookies: jar })
+	return { perspective: perspective ?? 'drafts', stega: true }
+}
+
+export async function sanityFetchStaticParams<const Q extends string>({
+	query,
+	params = {},
+}: {
+	query: Q
+	params?: QueryParams
+}) {
+	'use cache'
 	const { data } = await sanityFetch({
-		perspective: preview ? 'drafts' : 'published',
-		...args,
+		query,
+		params,
+		perspective: 'published',
+		stega: false,
 	})
+	return { data }
+}
 
-	return data as T
+export async function sanityFetchMetadata<const Q extends string>({
+	query,
+	params = {},
+	perspective,
+}: {
+	query: Q
+	params?: QueryParams
+	perspective: LivePerspective
+}) {
+	'use cache'
+	const { data } = await sanityFetch({
+		query,
+		params,
+		perspective,
+		stega: false,
+	})
+	return { data }
 }

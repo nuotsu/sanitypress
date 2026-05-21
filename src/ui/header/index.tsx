@@ -1,3 +1,4 @@
+import { draftMode } from 'next/headers'
 import { cn } from '@/lib/utils'
 import { getSite } from '@/sanity/lib/queries'
 import type { Cta } from '@/sanity/types'
@@ -8,7 +9,9 @@ import MobileToggle from './mobile-toggle'
 import Navigation from './navigation'
 import Wrapper from './wrapper'
 
-export default async function () {
+export default async function Header() {
+	'use cache'
+	await draftMode()
 	const site = await getSite()
 
 	return (

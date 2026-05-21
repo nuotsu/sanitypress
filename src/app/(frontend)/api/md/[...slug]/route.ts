@@ -53,10 +53,12 @@ export async function GET(
 
 	const blogSection = main.querySelector('[data-module="blog-index"]')
 	if (blogSection) {
-		const posts = await client.fetch<BLOG_POSTS_MD_QUERY_RESULT>(BLOG_POSTS_MD_QUERY, {
-			blogDir: `/${ROUTES.blog}/`,
-		})
-		const container = blogSection.querySelector('fieldset')?.parentNode ?? blogSection
+		const posts = await client.fetch<BLOG_POSTS_MD_QUERY_RESULT>(
+			BLOG_POSTS_MD_QUERY,
+			{ blogDir: `/${ROUTES.blog}/` },
+		)
+		const container =
+			blogSection.querySelector('fieldset')?.parentNode ?? blogSection
 		container.innerHTML = posts
 			.map(
 				(post) => `<article>
