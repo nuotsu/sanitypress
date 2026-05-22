@@ -1530,6 +1530,13 @@
           },
           "optional": true
         },
+        "overline": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
         "intro": {
           "type": "objectAttribute",
           "value": {

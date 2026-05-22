@@ -1,16 +1,19 @@
 import { PortableText } from 'next-sanity'
 import type { QuoteList } from '@/sanity/types'
 import Img from '@/ui/img'
+import Overline from '@/ui/overline'
 
 export default function ({
+	overline,
 	intro = [],
 	testimonials,
 	_key,
 }: QuoteList & { _key: string }) {
 	return (
 		<section className="section space-y-8">
-			{intro && (
+			{(overline || intro) && (
 				<header className="prose text-center">
+					<Overline value={overline} />
 					<PortableText value={intro} />
 				</header>
 			)}

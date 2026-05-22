@@ -218,6 +218,7 @@ export type QuoteReference = {
 export type QuoteList = {
 	_type: 'quote-list'
 	attributes?: ModuleAttributes
+	overline?: string
 	intro?: Array<{
 		children?: Array<{
 			marks?: Array<string>
@@ -2354,6 +2355,7 @@ export type PAGE_QUERY_RESULT = {
 				_key: string
 				_type: 'quote-list'
 				attributes?: ModuleAttributes
+				overline?: string
 				intro?: Array<{
 					children?: Array<{
 						marks?: Array<string>
@@ -3592,6 +3594,7 @@ export type BLOG_POST_QUERY_RESULT = {
 				_key: string
 				_type: 'quote-list'
 				attributes?: ModuleAttributes
+				overline?: string
 				intro?: Array<{
 					children?: Array<{
 						marks?: Array<string>
@@ -4727,6 +4730,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 				_key: string
 				_type: 'quote-list'
 				attributes?: ModuleAttributes
+				overline?: string
 				intro?: Array<{
 					children?: Array<{
 						marks?: Array<string>

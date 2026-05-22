@@ -11,6 +11,11 @@ export default defineModule({
 	groups: [{ name: 'content', default: true }],
 	fields: [
 		defineField({
+			name: 'overline',
+			type: 'string',
+			group: 'content',
+		}),
+		defineField({
 			name: 'intro',
 			type: 'array',
 			of: [{ type: 'block' }],
