@@ -1,4 +1,4 @@
-# ♣️ SanityPress with TypeGen
+# ♣️ SanityPress (with TypeGen)
 
 > Zero setup stress. 100% type-safe.
 
