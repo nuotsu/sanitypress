@@ -1,10 +1,15 @@
 import { stegaClean } from 'next-sanity'
 import type { CustomHtml } from '@/sanity/types'
-import { moduleAttributes } from '..'
+import { moduleAttributes, ModuleProps } from '..'
 import CSS from './css'
 import WithScript from './with-script'
 
-export default function ({ className, html, css, ...props }: CustomHtml) {
+export default function ({
+	className,
+	html,
+	css,
+	...props
+}: CustomHtml & ModuleProps) {
 	if (!html?.code && !css?.code) return null
 
 	const attributes = {
@@ -14,7 +19,7 @@ export default function ({ className, html, css, ...props }: CustomHtml) {
 
 	return (
 		<>
-			<CSS code={stegaClean(css?.code)} />
+			<CSS code={stegaClean(css?.code)} {...props} />
 
 			{html?.code &&
 				(html.code.includes('<script') ? (

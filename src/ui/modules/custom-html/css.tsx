@@ -1,10 +1,27 @@
 'use client'
 
-export default function ({ code }: { code?: string }) {
+import { useLayoutEffect, useRef } from 'react'
+import { ModuleProps } from '..'
+
+export default function ({
+	code,
+	_key = '',
+}: {
+	code?: string
+} & ModuleProps) {
+	const ref = useRef<HTMLStyleElement>(null)
+
+	useLayoutEffect(() => {
+		if (ref.current) ref.current.media = ''
+		return () => {
+			if (ref.current) ref.current.media = 'not all'
+		}
+	}, [])
+
 	if (!code) return null
 
 	return (
-		<style href={`custom-html-${encodeURIComponent(code)}`}>{`
+		<style ref={ref} href={`custom-html-${_key}-${encodeURIComponent(code)}`}>{`
 			${code}
 		`}</style>
 	)
