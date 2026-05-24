@@ -1,10 +1,9 @@
 import { groq, PortableText } from 'next-sanity'
-import { draftMode } from 'next/headers'
 import { Suspense } from 'react'
 import { ROUTES } from '@/lib/env'
 import { cn } from '@/lib/utils'
-import { sanityFetch } from '@/sanity/lib/live'
-import type { BLOG_INDEX_QUERY_RESULT, BlogIndex } from '@/sanity/types'
+import { sanityFetchLive } from '@/sanity/lib/live'
+import type { BlogIndex } from '@/sanity/types'
 import Loading from '@/ui/loading'
 import { moduleAttributes, type ModuleProps } from '@/ui/modules'
 import FilterList from '@/ui/modules/blog/filter-list'
@@ -12,19 +11,15 @@ import PaginatedPosts from './paginated-posts'
 import Skeleton from './skeleton'
 import SortBy from './sort-by'
 
-export default async function BlogIndexModule({
+export default async function ({
 	intro,
 	postsPerPage = 6,
 	...props
 }: BlogIndex & ModuleProps) {
-	'use cache'
-	const { isEnabled: isDraftMode } = await draftMode()
-	const { data: posts } = (await sanityFetch({
+	const posts = await sanityFetchLive<any>({
 		query: BLOG_INDEX_QUERY,
 		params: { blogDir: `/${ROUTES.blog}/` },
-		perspective: isDraftMode ? 'drafts' : 'published',
-		stega: isDraftMode,
-	})) as { data: BLOG_INDEX_QUERY_RESULT }
+	})
 
 	return (
 		<section

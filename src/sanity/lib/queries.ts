@@ -1,7 +1,6 @@
 import { groq } from 'next-sanity'
-import { draftMode } from 'next/headers'
 import type { SITE_QUERY_RESULT } from '@/sanity/types'
-import { sanityFetch } from './live'
+import { sanityFetchLive } from './live'
 
 /* fragments */
 
@@ -121,12 +120,7 @@ export const MODULES_QUERY = groq`
 /* queries */
 
 export async function getSite() {
-	'use cache'
-	const { isEnabled: isDraftMode } = await draftMode()
-	const { data } = await sanityFetch({
+	return await sanityFetchLive<SITE_QUERY_RESULT>({
 		query: SITE_QUERY,
-		perspective: isDraftMode ? 'drafts' : 'published',
-		stega: isDraftMode,
 	})
-	return data as SITE_QUERY_RESULT
 }

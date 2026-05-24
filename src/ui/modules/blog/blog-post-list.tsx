@@ -1,12 +1,7 @@
 import { groq, PortableText } from 'next-sanity'
-import { draftMode } from 'next/headers'
 import { ROUTES } from '@/lib/env'
-import { sanityFetch } from '@/sanity/lib/live'
-import type {
-	BLOG_POST_LIST_QUERY_RESULT,
-	BlogPost,
-	BlogPostList,
-} from '@/sanity/types'
+import { sanityFetchLive } from '@/sanity/lib/live'
+import type { BlogPost, BlogPostList } from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
 import PostPreview from './post-preview'
 
@@ -16,14 +11,10 @@ export default async function ({
 	limit = 6,
 	_key,
 }: BlogPostList & { _key: string }) {
-	'use cache'
-	const { isEnabled: isDraftMode } = await draftMode()
-	const { data: posts } = (await sanityFetch({
+	const posts = await sanityFetchLive<any>({
 		query: BLOG_POST_LIST_QUERY,
 		params: { limit, blogDir: `/${ROUTES.blog}/` },
-		perspective: isDraftMode ? 'drafts' : 'published',
-		stega: isDraftMode,
-	})) as { data: BLOG_POST_LIST_QUERY_RESULT }
+	})
 
 	return (
 		<section className="section space-y-8">

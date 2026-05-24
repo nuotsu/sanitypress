@@ -1,14 +1,10 @@
 import type { Metadata } from 'next'
 import { groq } from 'next-sanity'
-import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { ROUTES } from '@/lib/env'
+import { client } from '@/sanity/lib/client'
 import { urlFor } from '@/sanity/lib/image'
-import {
-	sanityFetch,
-	sanityFetchMetadata,
-	sanityFetchStaticParams,
-} from '@/sanity/lib/live'
+import { sanityFetchLive } from '@/sanity/lib/live'
 import { MODULES_QUERY } from '@/sanity/lib/queries'
 import type { BLOG_POST_QUERY_RESULT } from '@/sanity/types'
 import ModulesResolver from '@/ui/modules'
@@ -17,45 +13,25 @@ type Props = {
 	params: Promise<{ slug: string }>
 }
 
-export default async function BlogPostPage({ params }: Props) {
+export default async function ({ params }: Props) {
 	const { slug } = await params
-	return <CachedBlogPost slug={slug} />
-}
-
-async function CachedBlogPost({ slug }: { slug: string }) {
-	'use cache'
-	const { isEnabled: isDraftMode } = await draftMode()
-	const { data: post } = (await sanityFetch({
-		query: BLOG_POST_QUERY,
-		params: { slug, blogDir: `${ROUTES.blog}/` },
-		perspective: isDraftMode ? 'drafts' : 'published',
-		stega: isDraftMode,
-	})) as { data: BLOG_POST_QUERY_RESULT }
-
+	const post = await getPost(slug)
 	if (!post) notFound()
+
 	return <ModulesResolver post={post} />
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-	const [{ slug }, { isEnabled: isDraftMode }] = await Promise.all([
-		params,
-		draftMode(),
-	])
-	const perspective = isDraftMode ? 'drafts' : 'published'
-
-	const { data: post } = (await sanityFetchMetadata({
-		query: BLOG_POST_QUERY,
-		params: { slug, blogDir: `${ROUTES.blog}/` },
-		perspective,
-	})) as { data: BLOG_POST_QUERY_RESULT }
+	const { slug } = await params
+	const post = await getPost(slug)
 	const { title, description, image, noIndex } = post?.metadata ?? {}
 
 	return {
 		title,
-		description,
+		description: description,
 		openGraph: {
-			title,
-			description,
+			title: title,
+			description: description,
 			url: `${process.env.NEXT_PUBLIC_BASE_URL}/${ROUTES.blog}/${slug}`,
 			images: [
 				image
@@ -75,12 +51,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-	const { data } = await sanityFetchStaticParams({
-		query: groq`*[_type == 'blog.post' && defined(metadata.slug.current)]{
+	return await client.fetch<{ slug: string }[]>(
+		groq`*[_type == 'blog.post' && defined(metadata.slug.current)]{
 			'slug': '/' + metadata.slug.current
 		}`,
+	)
+}
+
+async function getPost(slug: string) {
+	return await sanityFetchLive<BLOG_POST_QUERY_RESULT>({
+		query: BLOG_POST_QUERY,
+		params: { slug, blogDir: `${ROUTES.blog}/` },
 	})
-	return data as { slug: string }[]
 }
 
 const BLOG_POST_QUERY = groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{

@@ -5,13 +5,11 @@ import { SanityLive } from '@/sanity/lib/live'
 import HoverDetails from '@/ui/hover-details'
 
 export default async function () {
-	const { isEnabled: isDraftMode } = await draftMode()
-
 	return (
 		<>
-			<SanityLive includeDrafts={isDraftMode} />
+			<SanityLive />
 
-			{isDraftMode && (
+			{(await draftMode()).isEnabled && (
 				<>
 					<VisualEditing />
 

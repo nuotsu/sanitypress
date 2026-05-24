@@ -1,15 +1,11 @@
 import pkg from '@@/package.json'
 import type { Metadata } from 'next'
 import { groq } from 'next-sanity'
-import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { ROUTES } from '@/lib/env'
+import { client } from '@/sanity/lib/client'
 import { urlFor } from '@/sanity/lib/image'
-import {
-	sanityFetch,
-	sanityFetchMetadata,
-	sanityFetchStaticParams,
-} from '@/sanity/lib/live'
+import { sanityFetchLive } from '@/sanity/lib/live'
 import {
 	getSite,
 	GLOBAL_MODULE_PATH_QUERY,
@@ -24,40 +20,15 @@ type Props = {
 
 export default async function Page({ params }: Props) {
 	const { slug } = await params
-	return <CachedPage slug={slug ? slug.join('/') : 'index'} />
-}
-
-async function CachedPage({ slug }: { slug: string }) {
-	'use cache'
-	const { isEnabled: isDraftMode } = await draftMode()
-	const { data: page } = (await sanityFetch({
-		query: PAGE_QUERY,
-		params: { slug },
-		perspective: isDraftMode ? 'drafts' : 'published',
-		stega: isDraftMode,
-	})) as { data: PAGE_QUERY_RESULT }
-
+	const page = await getPage(slug)
 	if (!page) notFound()
+
 	return <ModulesResolver page={page} />
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-	const [{ slug }, { isEnabled: isDraftMode }] = await Promise.all([
-		params,
-		draftMode(),
-	])
-	const resolvedSlug = slug ? slug.join('/') : 'index'
-	const perspective = isDraftMode ? 'drafts' : 'published'
-
-	const [{ data: page }, site] = await Promise.all([
-		sanityFetchMetadata({
-			query: PAGE_QUERY,
-			params: { slug: resolvedSlug },
-			perspective,
-		}) as Promise<{ data: PAGE_QUERY_RESULT }>,
-		getSite(),
-	])
-
+	const { slug } = await params
+	const [page, site] = await Promise.all([getPage(slug), getSite()])
 	const { title, description, image, noIndex } = page?.metadata ?? {}
 
 	return {
@@ -90,19 +61,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-	const { data: slugs } = await sanityFetchStaticParams({
-		query: groq`
+	const slugs = await client.fetch<string[]>(
+		groq`
 			*[
 				_type == 'page'
 				&& defined(metadata.slug.current)
 				&& !(metadata.slug.current in ['404'])
 			].metadata.slug.current
 		`,
-	})
+	)
 
-	return (slugs as string[]).map((slug) => ({
+	return slugs.map((slug) => ({
 		slug: slug === 'index' ? undefined : slug.split('/'),
 	}))
+}
+
+async function getPage(slug?: string[]) {
+	return await sanityFetchLive<PAGE_QUERY_RESULT>({
+		query: PAGE_QUERY,
+		params: {
+			slug: slug ? slug.join('/') : 'index',
+		},
+	})
 }
 
 const PAGE_QUERY = groq`
