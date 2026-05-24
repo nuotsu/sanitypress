@@ -82,16 +82,10 @@ export const MODULES_QUERY = groq`
 		}
 	},
 	_type == 'logo-list' => {
-		logos[]{
-			...,
-			_type == 'reference' => @->
-		}
+		logos[]->
 	},
 	_type == 'person-list' => {
-		people[]{
-			...,
-			_type == 'reference' => @->
-		}
+		people[]->
 	},
 	_type == 'prose' => {
 		content[]{
@@ -110,10 +104,7 @@ export const MODULES_QUERY = groq`
 		}
 	},
 	_type == 'quote-list' => {
-		testimonials[]{
-			...,
-			_type == 'reference' => @->
-		}
+		testimonials[]->
 	},
 `
 

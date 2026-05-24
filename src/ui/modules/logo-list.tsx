@@ -40,7 +40,7 @@ export default function ({
 				}}
 				key={logos?.length}
 			>
-				{(logos as Partial<Logo>[])?.map((logo, key) => {
+				{(logos as unknown as Logo[])?.map((logo, key) => {
 					if (!logo.image) return null
 
 					return (

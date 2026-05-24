@@ -19,7 +19,7 @@ export default function ({ intro = [], people, columns }: PersonList) {
 				)}
 				style={{ '--columns': columns }}
 			>
-				{(people as Partial<Person>[])?.map(({ name, title, image }, key) => (
+				{(people as unknown as Person[])?.map(({ name, title, image }, key) => (
 					<li key={key}>
 						<article className="space-y-4">
 							<Img

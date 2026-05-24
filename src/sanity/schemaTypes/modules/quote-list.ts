@@ -24,7 +24,7 @@ export default defineModule({
 		defineField({
 			name: 'testimonials',
 			type: 'array',
-			of: [{ type: 'quote' }, { type: 'reference', to: [{ type: 'quote' }] }],
+			of: [{ type: 'reference', to: [{ type: 'quote' }] }],
 			group: 'content',
 		}),
 	],

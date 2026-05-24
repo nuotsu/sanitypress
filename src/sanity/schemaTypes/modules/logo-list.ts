@@ -24,7 +24,7 @@ export default defineModule({
 		defineField({
 			name: 'logos',
 			type: 'array',
-			of: [{ type: 'logo' }, { type: 'reference', to: [{ type: 'logo' }] }],
+			of: [{ type: 'reference', to: [{ type: 'logo' }] }],
 			group: 'content',
 		}),
 		defineField({

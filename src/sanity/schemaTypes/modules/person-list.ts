@@ -19,7 +19,7 @@ export default defineModule({
 		defineField({
 			name: 'people',
 			type: 'array',
-			of: [{ type: 'person' }, { type: 'reference', to: [{ type: 'person' }] }],
+			of: [{ type: 'reference', to: [{ type: 'person' }] }],
 			group: 'content',
 		}),
 		defineField({

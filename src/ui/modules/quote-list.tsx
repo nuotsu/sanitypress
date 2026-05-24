@@ -1,5 +1,5 @@
 import { PortableText } from 'next-sanity'
-import type { QuoteList } from '@/sanity/types'
+import type { Quote, QuoteList } from '@/sanity/types'
 import Img from '@/ui/img'
 import Overline from '@/ui/overline'
 
@@ -22,10 +22,10 @@ export default function ({
 				className="carousel carousel-scroll-buttons carousel-scroll-marker max-md:full-bleed items-stretch gap-8 pb-2 max-md:px-4 md:mask-r-from-[calc(100%-2rem)] md:pr-4"
 				data-anchor-name={`--quote-list-${_key}`}
 			>
-				{testimonials?.map((testimonial: any) => (
+				{(testimonials as unknown as Quote[])?.map((testimonial) => (
 					<li
 						className="flex flex-col gap-4 md:snap-start"
-						key={testimonial._key}
+						key={testimonial._id}
 					>
 						<blockquote className="prose grow">
 							<PortableText value={testimonial.quote} />
