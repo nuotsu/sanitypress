@@ -3,11 +3,11 @@ import { cn } from '@/lib/utils'
 import type { HeroSplit } from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
 import Img from '@/ui/img'
-import Overline from '@/ui/overline'
+import Eyebrow from '@/ui/eyebrow'
 import { moduleAttributes } from '.'
 
 export default function ({
-	overline,
+	eyebrow,
 	content = [],
 	ctas,
 	image,
@@ -33,7 +33,7 @@ export default function ({
 			</figure>
 
 			<header className="prose">
-				<Overline value={overline} />
+				<Eyebrow value={eyebrow} />
 				<PortableText value={content} />
 				<CTAList ctas={ctas} className="max-sm:*:w-full" />
 			</header>

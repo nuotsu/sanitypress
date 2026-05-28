@@ -11,7 +11,7 @@ export default defineModule({
 	groups: [{ name: 'content', default: true }],
 	fields: [
 		defineField({
-			name: 'overline',
+			name: 'eyebrow',
 			type: 'string',
 			group: 'content',
 		}),

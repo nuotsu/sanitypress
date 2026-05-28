@@ -2,16 +2,16 @@ import { PortableText, stegaClean } from 'next-sanity'
 import { Suspense } from 'react'
 import type { SearchModule } from '@/sanity/types'
 import Loading from '@/ui/loading'
-import Overline from '@/ui/overline'
+import Eyebrow from '@/ui/eyebrow'
 import SearchForm from './search-form'
 
-export default function ({ overline, intro = [], scope }: SearchModule) {
+export default function ({ eyebrow, intro = [], scope }: SearchModule) {
 	return (
 		<section className="section">
 			<div className="mx-auto max-w-2xl space-y-8">
-				{(overline || intro) && (
+				{(eyebrow || intro) && (
 					<header className="prose text-center">
-						<Overline value={overline} />
+						<Eyebrow value={eyebrow} />
 						<PortableText value={intro ?? []} />
 					</header>
 				)}

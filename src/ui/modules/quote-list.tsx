@@ -1,11 +1,11 @@
 import { PortableText } from 'next-sanity'
 import type { Quote, QuoteList } from '@/sanity/types'
 import Img from '@/ui/img'
-import Overline from '@/ui/overline'
+import Eyebrow from '@/ui/eyebrow'
 import { moduleAttributes } from '.'
 
 export default function ({
-	overline,
+	eyebrow,
 	intro = [],
 	testimonials,
 	_key,
@@ -13,9 +13,9 @@ export default function ({
 }: QuoteList & { _key: string }) {
 	return (
 		<section className="section space-y-8" {...moduleAttributes(props)}>
-			{(overline || intro) && (
+			{(eyebrow || intro) && (
 				<header className="prose text-center">
-					<Overline value={overline} />
+					<Eyebrow value={eyebrow} />
 					<PortableText value={intro} />
 				</header>
 			)}

@@ -3,11 +3,11 @@ import { cn } from '@/lib/utils'
 import type { CardList } from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
 import Img from '@/ui/img'
-import Overline from '@/ui/overline'
+import Eyebrow from '@/ui/eyebrow'
 import { moduleAttributes } from '.'
 
 export default function ({
-	overline,
+	eyebrow,
 	intro,
 	cards,
 	ctas,
@@ -16,9 +16,9 @@ export default function ({
 }: CardList) {
 	return (
 		<section className="section space-y-8" {...moduleAttributes(props)}>
-			{(overline || intro) && (
+			{(eyebrow || intro) && (
 				<header className="prose mx-auto max-w-3xl text-center">
-					<Overline value={overline} />
+					<Eyebrow value={eyebrow} />
 					<PortableText value={intro ?? []} />
 				</header>
 			)}

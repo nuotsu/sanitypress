@@ -2,12 +2,12 @@ import { PortableText } from 'next-sanity'
 import { cn } from '@/lib/utils'
 import type { Logo, LogoList } from '@/sanity/types'
 import Img from '@/ui/img'
-import Overline from '@/ui/overline'
+import Eyebrow from '@/ui/eyebrow'
 import { moduleAttributes } from '.'
 import css from './logo-list.module.css'
 
 export default function ({
-	overline,
+	eyebrow,
 	intro,
 	logos,
 	logoType = 'default',
@@ -20,9 +20,9 @@ export default function ({
 			className="section space-y-8 text-center"
 			{...moduleAttributes(props)}
 		>
-			{(overline || intro) && (
+			{(eyebrow || intro) && (
 				<header className="prose">
-					<Overline value={overline} />
+					<Eyebrow value={eyebrow} />
 					<PortableText value={intro ?? []} />
 				</header>
 			)}

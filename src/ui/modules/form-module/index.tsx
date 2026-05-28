@@ -1,16 +1,16 @@
 import { PortableText } from 'next-sanity'
 import type { Form, FormModule } from '@/sanity/types'
-import Overline from '@/ui/overline'
+import Eyebrow from '@/ui/eyebrow'
 import { moduleAttributes } from '..'
 import Resolver from './resolver'
 
-export default function ({ overline, intro, form, ...props }: FormModule) {
+export default function ({ eyebrow, intro, form, ...props }: FormModule) {
 	return (
 		<section {...moduleAttributes(props)}>
 			<div className="section grid items-start gap-8 md:grid-cols-2">
 				{intro && (
 					<header className="prose md:sticky-below-header [--offset:1rem]">
-						<Overline value={overline} />
+						<Eyebrow value={eyebrow} />
 						<PortableText value={intro} />
 					</header>
 				)}
