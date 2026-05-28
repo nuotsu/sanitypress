@@ -10,7 +10,7 @@ export default function ({ intro = [], people, columns }: PersonList) {
 				<PortableText value={intro} />
 			</header>
 
-			<ul
+			<div
 				className={cn(
 					'grid items-start gap-8 md:grid-cols-2',
 					columns
@@ -20,7 +20,7 @@ export default function ({ intro = [], people, columns }: PersonList) {
 				style={{ '--columns': columns }}
 			>
 				{(people as unknown as Person[])?.map(({ name, title, image }, key) => (
-					<li key={key}>
+					<article key={key}>
 						<article className="space-y-4">
 							<Img
 								className="aspect-square w-full object-cover"
@@ -34,9 +34,9 @@ export default function ({ intro = [], people, columns }: PersonList) {
 								{title && <dd>{title}</dd>}
 							</dl>
 						</article>
-					</li>
+					</article>
 				))}
-			</ul>
+			</div>
 		</section>
 	)
 }
