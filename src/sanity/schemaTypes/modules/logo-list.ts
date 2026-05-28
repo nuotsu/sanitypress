@@ -8,7 +8,7 @@ export default defineModule({
 	title: 'Logo list',
 	type: 'object',
 	icon: ComponentIcon,
-	groups: [{ name: 'content', default: true }],
+	groups: [{ name: 'content', default: true }, { name: 'logos' }],
 	fields: [
 		defineField({
 			name: 'overline',
@@ -25,7 +25,7 @@ export default defineModule({
 			name: 'logos',
 			type: 'array',
 			of: [{ type: 'reference', to: [{ type: 'logo' }] }],
-			group: 'content',
+			group: 'logos',
 		}),
 		defineField({
 			name: 'logoType',
@@ -33,7 +33,7 @@ export default defineModule({
 			options: {
 				list: ['default', 'dark', 'light'],
 			},
-			group: 'content',
+			group: 'logos',
 		}),
 		defineField({
 			name: 'autoScroll',

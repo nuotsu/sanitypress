@@ -1,3 +1,4 @@
+import { stegaClean } from 'next-sanity'
 import NextLink, { type LinkProps } from 'next/link'
 import type { Link, Page } from '@/sanity/types'
 
@@ -19,7 +20,11 @@ export default function ({
 
 	const linkProps: Omit<LinkProps, 'href'> | React.ComponentProps<'a'> = {
 		...props,
-		children: children || label || internal?.title || external,
+		children:
+			children ||
+			stegaClean(label) ||
+			stegaClean(internal?.title) ||
+			stegaClean(external),
 	}
 
 	if (type === 'internal' && internal?.slug)
@@ -31,7 +36,7 @@ export default function ({
 		)
 
 	if (type === 'external' && external)
-		return <NextLink href={external} {...linkProps} />
+		return <NextLink href={stegaClean(external)} {...linkProps} />
 
 	return <span {...linkProps} />
 }

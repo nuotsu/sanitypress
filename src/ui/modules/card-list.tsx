@@ -24,7 +24,7 @@ export default function ({
 			)}
 
 			{!!cards?.length && (
-				<ul
+				<div
 					className={cn(
 						'grid gap-8 md:grid-cols-2',
 						columns
@@ -34,7 +34,7 @@ export default function ({
 					style={{ '--columns': columns }}
 				>
 					{cards.map((item) => (
-						<li key={item._key} className="prose">
+						<article key={item._key} className="prose">
 							<Img
 								className="aspect-video w-full object-cover"
 								image={item.image}
@@ -52,9 +52,9 @@ export default function ({
 							<PortableText value={item.content ?? []} />
 
 							<CTAList ctas={item.ctas} className="max-sm:*:w-full" />
-						</li>
+						</article>
 					))}
-				</ul>
+				</div>
 			)}
 
 			<CTAList ctas={ctas} className="justify-center max-sm:*:w-full" />

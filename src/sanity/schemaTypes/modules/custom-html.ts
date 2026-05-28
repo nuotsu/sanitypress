@@ -16,6 +16,7 @@ export default defineModule({
 			name: 'className',
 			description: 'Optional class name to apply to the root HTML element',
 			type: 'string',
+			placeholder: 'e.g. section prose text-center, etc.',
 			group: 'options',
 		}),
 		defineField({
