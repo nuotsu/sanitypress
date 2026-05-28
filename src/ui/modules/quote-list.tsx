@@ -2,15 +2,17 @@ import { PortableText } from 'next-sanity'
 import type { Quote, QuoteList } from '@/sanity/types'
 import Img from '@/ui/img'
 import Overline from '@/ui/overline'
+import { moduleAttributes } from '.'
 
 export default function ({
 	overline,
 	intro = [],
 	testimonials,
 	_key,
+	...props
 }: QuoteList & { _key: string }) {
 	return (
-		<section className="section space-y-8">
+		<section className="section space-y-8" {...moduleAttributes(props)}>
 			{(overline || intro) && (
 				<header className="prose text-center">
 					<Overline value={overline} />
