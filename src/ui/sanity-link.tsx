@@ -30,7 +30,7 @@ export default function ({
 	if (type === 'internal' && internal?.slug)
 		return (
 			<NextLink
-				href={[internal.slug, params].filter(Boolean).join('')}
+				href={[internal.slug, stegaClean(params)].filter(Boolean).join('')}
 				{...linkProps}
 			/>
 		)
