@@ -1,9 +1,9 @@
 import { PortableText } from 'next-sanity'
 import { cn } from '@/lib/utils'
 import type { Logo, LogoList } from '@/sanity/types'
-import Img from '@/ui/img'
 import Eyebrow from '@/ui/eyebrow'
-import { moduleAttributes } from '.'
+import Img from '@/ui/img'
+import { Module } from '.'
 import css from './logo-list.module.css'
 
 export default function ({
@@ -16,10 +16,7 @@ export default function ({
 	...props
 }: LogoList) {
 	return (
-		<section
-			className="section space-y-8 text-center"
-			{...moduleAttributes(props)}
-		>
+		<Module className="section space-y-8 text-center" {...props}>
 			{(eyebrow || intro) && (
 				<header className="prose">
 					<Eyebrow value={eyebrow} />
@@ -55,6 +52,6 @@ export default function ({
 					)
 				})}
 			</figure>
-		</section>
+		</Module>
 	)
 }

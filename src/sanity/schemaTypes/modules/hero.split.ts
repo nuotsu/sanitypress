@@ -8,7 +8,11 @@ export default defineModule({
 	title: 'Hero (split)',
 	type: 'object',
 	icon: TfiLayoutMediaLeft,
-	groups: [{ name: 'content', default: true }, { name: 'image' }],
+	groups: [
+		{ name: 'content', default: true },
+		{ name: 'image' },
+		{ name: 'options' },
+	],
 	fields: [
 		defineField({
 			name: 'eyebrow',

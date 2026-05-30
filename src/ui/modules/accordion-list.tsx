@@ -2,7 +2,7 @@ import { PortableText, stegaClean } from 'next-sanity'
 import { cn } from '@/lib/utils'
 import type { AccordionList } from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
-import { moduleAttributes } from '.'
+import { Module } from '.'
 
 export default function ({
 	_key: _module_key,
@@ -17,7 +17,8 @@ export default function ({
 	const layout = stegaClean(l)
 
 	return (
-		<section
+		<Module
+			_key={_module_key}
 			className={cn(
 				'section grid gap-8',
 				layout === 'horizontal' && 'items-start md:grid-cols-2',
@@ -26,7 +27,7 @@ export default function ({
 				itemScope: true,
 				itemType: 'https://schema.org/FAQPage',
 			})}
-			{...moduleAttributes(props)}
+			{...props}
 		>
 			{intro && (
 				<header
@@ -80,6 +81,6 @@ export default function ({
 					</details>
 				))}
 			</div>
-		</section>
+		</Module>
 	)
 }

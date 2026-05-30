@@ -42,14 +42,16 @@ Every page section is a **module**: a Sanity schema object + a React component. 
 
 **Schema:** Use `defineModule` (not `defineType`) from `src/sanity/schemaTypes/fragments/define-module.ts`. It auto-injects the `attributes` field, `options` group, and Studio preview component — never add these manually.
 
-**Component:** Always spread `...props` and pass it to `moduleAttributes(props)` on the root `<section>`. This wires up `id`, `data-module`, and `hidden` for Visual Editing.
+**Component:** Always spread `...props` into `<Module>` (default `as="section"`). This wires up `id`, `data-module`, `hidden`, and scoped CSS for Visual Editing.
 
 ```tsx
-export default function MyModule({ intro, ...props }: MyModule) {
+import { Module } from '.'
+
+export default function ({ intro, ...props }: MyModule) {
 	return (
-		<section {...moduleAttributes(props)}>
-			<div className="section">...</div>
-		</section>
+		<Module className="section" {...props}>
+			<div>...</div>
+		</Module>
 	)
 }
 ```

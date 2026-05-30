@@ -1,12 +1,12 @@
 import { PortableText } from 'next-sanity'
 import type { Form, FormModule } from '@/sanity/types'
 import Eyebrow from '@/ui/eyebrow'
-import { moduleAttributes } from '..'
+import { Module } from '..'
 import Resolver from './resolver'
 
 export default function ({ eyebrow, intro, form, ...props }: FormModule) {
 	return (
-		<section {...moduleAttributes(props)}>
+		<Module {...props}>
 			<div className="section grid items-start gap-8 md:grid-cols-2">
 				{intro && (
 					<header className="prose md:sticky-below-header [--offset:1rem]">
@@ -17,6 +17,6 @@ export default function ({ eyebrow, intro, form, ...props }: FormModule) {
 
 				<Resolver form={form as unknown as Form} />
 			</div>
-		</section>
+		</Module>
 	)
 }

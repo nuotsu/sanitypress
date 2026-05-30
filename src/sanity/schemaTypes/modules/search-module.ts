@@ -8,7 +8,7 @@ export default defineModule({
 	title: 'Search',
 	type: 'object',
 	icon: SearchIcon,
-	groups: [{ name: 'content', default: true }],
+	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fields: [
 		defineField({
 			name: 'eyebrow',

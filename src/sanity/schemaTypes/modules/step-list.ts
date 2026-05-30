@@ -8,7 +8,7 @@ export default defineModule({
 	title: 'Step list',
 	type: 'object',
 	icon: OlistIcon,
-	groups: [{ name: 'content', default: true }],
+	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fields: [
 		defineField({
 			name: 'intro',

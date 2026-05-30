@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 import type { Prose } from '@/sanity/types'
 import CustomHTML from '@/ui/modules/custom-html'
 import TableOfContents from '@/ui/table-of-contents'
-import { moduleAttributes } from '..'
+import { Module } from '..'
 import AnchoredHeading from './anchored-heading'
 import Code from './code'
 import Image from './image'
@@ -17,12 +17,12 @@ export default function ({
 	const toc = stegaClean(tableOfContents)
 
 	return (
-		<section
+		<Module
 			className={cn(
 				'section',
 				toc && 'flex gap-4 max-md:flex-col md:items-start',
 			)}
-			{...moduleAttributes(props)}
+			{...props}
 		>
 			{(toc === 'left' || toc === 'right') && (
 				<TableOfContents
@@ -55,6 +55,6 @@ export default function ({
 					}}
 				/>
 			</article>
-		</section>
+		</Module>
 	)
 }

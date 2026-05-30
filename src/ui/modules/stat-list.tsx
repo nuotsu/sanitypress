@@ -1,9 +1,10 @@
 import { PortableText } from 'next-sanity'
 import type { StatList } from '@/sanity/types'
+import { Module } from '.'
 
-export default function ({ intro, stats }: StatList) {
+export default function ({ intro, stats, ...props }: StatList) {
 	return (
-		<section className="section space-y-8">
+		<Module className="section space-y-8" {...props}>
 			{intro && (
 				<header className="prose text-center">
 					<PortableText value={intro} />
@@ -25,6 +26,6 @@ export default function ({ intro, stats }: StatList) {
 					</div>
 				))}
 			</dl>
-		</section>
+		</Module>
 	)
 }

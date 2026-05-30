@@ -8,7 +8,11 @@ export default defineModule({
 	title: 'Logo list',
 	type: 'object',
 	icon: ComponentIcon,
-	groups: [{ name: 'content', default: true }, { name: 'logos' }],
+	groups: [
+		{ name: 'content', default: true },
+		{ name: 'logos' },
+		{ name: 'options' },
+	],
 	fields: [
 		defineField({
 			name: 'eyebrow',

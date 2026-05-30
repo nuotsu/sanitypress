@@ -2,9 +2,9 @@ import { PortableText } from 'next-sanity'
 import { cn } from '@/lib/utils'
 import type { HeroSplit } from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
-import Img from '@/ui/img'
 import Eyebrow from '@/ui/eyebrow'
-import { moduleAttributes } from '.'
+import Img from '@/ui/img'
+import { Module } from '.'
 
 export default function ({
 	eyebrow,
@@ -14,9 +14,9 @@ export default function ({
 	...props
 }: HeroSplit) {
 	return (
-		<section
+		<Module
 			className="section grid items-center gap-8 md:grid-cols-2"
-			{...moduleAttributes(props)}
+			{...props}
 		>
 			<figure
 				className={cn(
@@ -37,6 +37,6 @@ export default function ({
 				<PortableText value={content} />
 				<CTAList ctas={ctas} className="max-sm:*:w-full" />
 			</header>
-		</section>
+		</Module>
 	)
 }

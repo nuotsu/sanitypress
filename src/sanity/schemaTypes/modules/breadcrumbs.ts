@@ -8,7 +8,7 @@ export default defineModule({
 	title: 'Breadcrumbs',
 	icon: BsBarChartSteps,
 	type: 'object',
-	groups: [{ name: 'content', default: true }],
+	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fields: [
 		defineField({
 			name: 'structuredDataOnly',

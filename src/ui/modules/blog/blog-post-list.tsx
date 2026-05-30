@@ -3,6 +3,7 @@ import { ROUTES } from '@/lib/env'
 import { sanityFetchLive } from '@/sanity/lib/live'
 import type { BlogPost, BlogPostList } from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
+import { Module } from '@/ui/modules'
 import PostPreview from './post-preview'
 
 export default async function ({
@@ -10,6 +11,7 @@ export default async function ({
 	ctas,
 	limit = 6,
 	_key,
+	...props
 }: BlogPostList & { _key: string }) {
 	const posts = await sanityFetchLive<any>({
 		query: BLOG_POST_LIST_QUERY,
@@ -17,7 +19,7 @@ export default async function ({
 	})
 
 	return (
-		<section className="section space-y-8">
+		<Module _key={_key} className="section space-y-8" {...props}>
 			{intro && (
 				<header className="prose text-center">
 					<PortableText value={intro} />
@@ -38,7 +40,7 @@ export default async function ({
 			</ul>
 
 			<CTAList ctas={ctas} className="justify-center max-sm:*:w-full" />
-		</section>
+		</Module>
 	)
 }
 

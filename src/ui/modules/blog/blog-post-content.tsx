@@ -12,7 +12,7 @@ import AnchoredHeading from '@/ui/modules/prose/anchored-heading'
 import Code from '@/ui/modules/prose/code'
 import Image from '@/ui/modules/prose/image'
 import TableOfContents from '@/ui/table-of-contents'
-import { moduleAttributes } from '..'
+import { Module } from '..'
 import css from './blog-post-content.module.css'
 import Byline from './byline'
 import Categories from './categories'
@@ -30,7 +30,7 @@ export default function ({
 
 	return (
 		<>
-			<article {...moduleAttributes(props)}>
+			<Module as="article" {...props}>
 				<header className="section relative text-center">
 					<Img
 						image={post.metadata?.image}
@@ -95,7 +95,7 @@ export default function ({
 						/>
 					</div>
 				</section>
-			</article>
+			</Module>
 
 			<Schema post={post} />
 		</>

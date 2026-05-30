@@ -1,8 +1,8 @@
 import { PortableText } from 'next-sanity'
 import type { Quote, QuoteList } from '@/sanity/types'
-import Img from '@/ui/img'
 import Eyebrow from '@/ui/eyebrow'
-import { moduleAttributes } from '.'
+import Img from '@/ui/img'
+import { Module } from '.'
 
 export default function ({
 	eyebrow,
@@ -12,7 +12,7 @@ export default function ({
 	...props
 }: QuoteList & { _key: string }) {
 	return (
-		<section className="section space-y-8" {...moduleAttributes(props)}>
+		<Module _key={_key} className="section space-y-8" {...props}>
 			{(eyebrow || intro) && (
 				<header className="prose text-center">
 					<Eyebrow value={eyebrow} />
@@ -53,6 +53,6 @@ export default function ({
 					</article>
 				))}
 			</div>
-		</section>
+		</Module>
 	)
 }

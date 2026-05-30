@@ -3097,13 +3097,6 @@
           },
           "optional": true
         },
-        "className": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
         "html": {
           "type": "objectAttribute",
           "value": {
@@ -3117,6 +3110,13 @@
           "value": {
             "type": "inline",
             "name": "code"
+          },
+          "optional": true
+        },
+        "className": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
           },
           "optional": true
         }
@@ -4880,6 +4880,14 @@
           "type": "objectAttribute",
           "value": {
             "type": "boolean"
+          },
+          "optional": true
+        },
+        "scopedCss": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "code"
           },
           "optional": true
         }

@@ -3,11 +3,12 @@ import { Suspense } from 'react'
 import type { SearchModule } from '@/sanity/types'
 import Loading from '@/ui/loading'
 import Eyebrow from '@/ui/eyebrow'
+import { Module } from '..'
 import SearchForm from './search-form'
 
-export default function ({ eyebrow, intro = [], scope }: SearchModule) {
+export default function ({ eyebrow, intro = [], scope, ...props }: SearchModule) {
 	return (
-		<section className="section">
+		<Module className="section" {...props}>
 			<div className="mx-auto max-w-2xl space-y-8">
 				{(eyebrow || intro) && (
 					<header className="prose text-center">
@@ -20,6 +21,6 @@ export default function ({ eyebrow, intro = [], scope }: SearchModule) {
 					<SearchForm scope={stegaClean(scope)} />
 				</Suspense>
 			</div>
-		</section>
+		</Module>
 	)
 }

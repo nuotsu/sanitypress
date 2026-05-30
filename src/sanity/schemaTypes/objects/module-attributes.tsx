@@ -13,7 +13,7 @@ export default defineType({
 		defineField({
 			name: 'uid',
 			title: 'Unique identifier',
-			description: 'Used for anchor/jump links (HTML `id` attribute)',
+			description: 'Useful for deep links (i.e. HTML `id` attribute)',
 			type: 'string',
 			validation: (Rule) =>
 				Rule.regex(/^[a-zA-Z0-9-]+$/g).error(
@@ -59,6 +59,16 @@ export default defineType({
 			type: 'boolean',
 			description: 'Hide the module from the page',
 			initialValue: false,
+		}),
+		defineField({
+			name: 'scopedCss',
+			title: 'Scoped CSS',
+			type: 'code',
+			description: "Use `:scope` to select the module's root element",
+			options: {
+				language: 'css',
+				languageAlternatives: [{ title: 'CSS', value: 'css' }],
+			},
 		}),
 	],
 })

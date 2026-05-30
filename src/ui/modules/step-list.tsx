@@ -1,20 +1,23 @@
 import { PortableText } from 'next-sanity'
 import type { StepList } from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
+import { Module } from '.'
 
 export default function ({
 	intro = [],
 	ctas,
 	steps,
 	enableSchema = true,
+	...props
 }: StepList) {
 	return (
-		<section
+		<Module
 			className="section grid items-start gap-8 md:grid-cols-2"
 			{...(enableSchema && {
 				itemScope: true,
 				itemType: 'https://schema.org/HowTo',
 			})}
+			{...props}
 		>
 			<header
 				className="prose md:sticky-below-header [--offset:1rem]"
@@ -47,6 +50,6 @@ export default function ({
 					</li>
 				))}
 			</ol>
-		</section>
+		</Module>
 	)
 }

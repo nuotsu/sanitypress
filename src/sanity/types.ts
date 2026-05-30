@@ -417,9 +417,9 @@ export type FormModule = {
 export type CustomHtml = {
 	_type: 'custom-html'
 	attributes?: ModuleAttributes
-	className?: string
 	html?: Code
 	css?: Code
+	className?: string
 }
 
 export type CardList = {
@@ -639,6 +639,7 @@ export type ModuleAttributes = {
 	_type: 'module-attributes'
 	uid?: string
 	hidden?: boolean
+	scopedCss?: Code
 }
 
 export type Metadata = {
@@ -1953,9 +1954,9 @@ export type PAGE_QUERY_RESULT = {
 				_key: string
 				_type: 'custom-html'
 				attributes?: ModuleAttributes
-				className?: string
 				html?: Code
 				css?: Code
+				className?: string
 				ctas: null
 		  }
 		| {
@@ -2229,9 +2230,9 @@ export type PAGE_QUERY_RESULT = {
 							_key: string
 							_type: 'custom-html'
 							attributes?: ModuleAttributes
-							className?: string
 							html?: Code
 							css?: Code
+							className?: string
 					  }
 					| {
 							asset: {
@@ -2648,9 +2649,9 @@ export type BLOG_POST_QUERY_RESULT = {
 				_key: string
 				_type: 'custom-html'
 				attributes?: ModuleAttributes
-				className?: string
 				html?: Code
 				css?: Code
+				className?: string
 		  }
 		| {
 				asset: {
@@ -3159,9 +3160,9 @@ export type BLOG_POST_QUERY_RESULT = {
 				_key: string
 				_type: 'custom-html'
 				attributes?: ModuleAttributes
-				className?: string
 				html?: Code
 				css?: Code
+				className?: string
 				ctas: null
 		  }
 		| {
@@ -3435,9 +3436,9 @@ export type BLOG_POST_QUERY_RESULT = {
 							_key: string
 							_type: 'custom-html'
 							attributes?: ModuleAttributes
-							className?: string
 							html?: Code
 							css?: Code
+							className?: string
 					  }
 					| {
 							asset: {
@@ -4262,9 +4263,9 @@ export type NOT_FOUND_QUERY_RESULT = {
 				_key: string
 				_type: 'custom-html'
 				attributes?: ModuleAttributes
-				className?: string
 				html?: Code
 				css?: Code
+				className?: string
 				ctas: null
 		  }
 		| {
@@ -4538,9 +4539,9 @@ export type NOT_FOUND_QUERY_RESULT = {
 							_key: string
 							_type: 'custom-html'
 							attributes?: ModuleAttributes
-							className?: string
 							html?: Code
 							css?: Code
+							className?: string
 					  }
 					| {
 							asset: {

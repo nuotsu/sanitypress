@@ -8,7 +8,7 @@ export default defineModule({
 	title: 'Card list',
 	type: 'object',
 	icon: TfiLayoutGrid2Thumb,
-	groups: [{ name: 'content', default: true }],
+	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fields: [
 		defineField({
 			name: 'eyebrow',

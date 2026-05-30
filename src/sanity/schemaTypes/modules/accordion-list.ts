@@ -8,7 +8,7 @@ export default defineModule({
 	title: 'Accordion list',
 	type: 'object',
 	icon: TfiLayoutAccordionMerged,
-	groups: [{ name: 'content', default: true }],
+	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fields: [
 		defineField({
 			name: 'intro',

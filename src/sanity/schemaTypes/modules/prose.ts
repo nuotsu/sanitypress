@@ -8,7 +8,7 @@ export default defineModule({
 	title: 'Prose',
 	type: 'object',
 	icon: BlockContentIcon,
-	groups: [{ name: 'content', default: true }],
+	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fields: [
 		defineField({
 			name: 'content',

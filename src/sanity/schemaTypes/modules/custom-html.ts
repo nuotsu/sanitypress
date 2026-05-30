@@ -13,13 +13,6 @@ export default defineModule({
 	],
 	fields: [
 		defineField({
-			name: 'className',
-			description: 'Optional class name to apply to the root HTML element',
-			type: 'string',
-			placeholder: 'e.g. section prose text-center, etc.',
-			group: 'options',
-		}),
-		defineField({
 			name: 'html',
 			title: 'HTML',
 			type: 'code',
@@ -38,6 +31,13 @@ export default defineModule({
 				languageAlternatives: [{ title: 'CSS', value: 'css' }],
 			},
 			group: 'css',
+		}),
+		defineField({
+			name: 'className',
+			description: 'Optional class name to apply to the root HTML element',
+			type: 'string',
+			placeholder: 'e.g. section prose text-center, etc.',
+			group: 'attributes',
 		}),
 	],
 	preview: {

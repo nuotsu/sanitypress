@@ -13,12 +13,12 @@ export default function defineModule(
 ) {
 	return defineType({
 		...props,
-		groups: [...(props.groups || []), { name: 'options' }],
+		groups: [...(props.groups || []), { name: 'attributes' }],
 		fields: [
 			defineField({
 				name: 'attributes',
 				type: 'module-attributes',
-				group: 'options',
+				group: 'attributes',
 			}),
 			...props.fields,
 		],

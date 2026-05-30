@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 import { sanityFetchLive } from '@/sanity/lib/live'
 import type { BlogIndex } from '@/sanity/types'
 import Loading from '@/ui/loading'
-import { moduleAttributes, type ModuleProps } from '@/ui/modules'
+import { Module, type ModuleProps } from '@/ui/modules'
 import FilterList from '@/ui/modules/blog/filter-list'
 import PaginatedPosts from './paginated-posts'
 import Skeleton from './skeleton'
@@ -22,10 +22,7 @@ export default async function ({
 	})
 
 	return (
-		<section
-			className={cn('section space-y-8', intro && 'pt-4')}
-			{...moduleAttributes(props)}
-		>
+		<Module className={cn('section space-y-8', intro && 'pt-4')} {...props}>
 			{intro && (
 				<header className="prose">
 					<PortableText value={intro} />
@@ -50,7 +47,7 @@ export default async function ({
 					<PaginatedPosts posts={posts} postsPerPage={postsPerPage} />
 				</Suspense>
 			</div>
-		</section>
+		</Module>
 	)
 }
 

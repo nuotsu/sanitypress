@@ -2,10 +2,11 @@ import { PortableText } from 'next-sanity'
 import { cn } from '@/lib/utils'
 import type { Person, PersonList } from '@/sanity/types'
 import Img from '@/ui/img'
+import { Module } from '.'
 
-export default function ({ intro = [], people, columns }: PersonList) {
+export default function ({ intro = [], people, columns, ...props }: PersonList) {
 	return (
-		<section className="section space-y-8">
+		<Module className="section space-y-8" {...props}>
 			<header className="prose">
 				<PortableText value={intro} />
 			</header>
@@ -37,6 +38,6 @@ export default function ({ intro = [], people, columns }: PersonList) {
 					</article>
 				))}
 			</div>
-		</section>
+		</Module>
 	)
 }

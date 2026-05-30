@@ -150,13 +150,13 @@ Only add an entry here if the module has nested CTAs with links, reference field
 
 ```groq
 _type == 'my-module' => {
-  items[]{
-    ...,
-    ctas[]{
-      ...,
-      link{ ${LINK_QUERY} }
-    }
-  }
+	items[]{
+		...,
+		ctas[]{
+			...,
+			link{ ${LINK_QUERY} }
+		}
+	}
 },
 ```
 
@@ -164,10 +164,10 @@ Reference field pattern (e.g. logo, person, testimonial):
 
 ```groq
 _type == 'my-module' => {
-  items[]{
-    ...,
-    _type == 'reference' => @->
-  }
+	items[]{
+		...,
+		_type == 'reference' => @->
+	}
 },
 ```
 
@@ -199,21 +199,19 @@ Create the file at `src/ui/modules/<module-name>.tsx`:
 ```tsx
 import { PortableText, stegaClean } from 'next-sanity'
 import type { MyModule } from '@/sanity/types'
-import { moduleAttributes } from '.'
+import { Module } from '.'
 
 export default function ({ intro, items, ctas, ...props }: MyModule) {
 	return (
-		<section {...moduleAttributes(props)}>
-			<div className="section space-y-8">
-				{intro && (
-					<header className="prose mx-auto max-w-4xl text-center">
-						<PortableText value={intro} />
-					</header>
-				)}
+		<Module className="section space-y-8" {...props}>
+			{intro && (
+				<header className="prose mx-auto max-w-4xl text-center">
+					<PortableText value={intro} />
+				</header>
+			)}
 
-				{/* content area */}
-			</div>
-		</section>
+			{/* content area */}
+		</Module>
 	)
 }
 ```
@@ -225,13 +223,13 @@ After creating the file, ask:
 If **yes**: convert to the subdirectory layout so a sibling `client.tsx` with `'use client'` can live alongside it:
 
 1. Move `src/ui/modules/<module-name>.tsx` → `src/ui/modules/<module-name>/index.tsx`
-2. Update the `moduleAttributes` import from `'.'` to `'..'`
+2. Update the `Module` import from `'.'` to `'..'`
 
 **Notes:**
 
 - Import the type from `@/sanity/types` using the PascalCase name from typegen
-- Always spread `...props` — it carries `_key`, `_type`, and `attributes` for `moduleAttributes()`
-- `moduleAttributes(props)` sets `id`, `data-module`, and `hidden` on the root `<section>`
+- Always spread `...props` — it carries `_key`, `_type`, and `attributes` for `<Module>`
+- `<Module>` sets `id`, `data-module`, `hidden`, and injects scoped CSS on the root element (default `<section>`; use `as="nav"` etc. when needed)
 - Wrap `stegaClean()` around any string field used in conditional logic (e.g. `theme`, `layout`)
 - Use `PortableText` from `next-sanity` for `array of block` fields
 
@@ -243,16 +241,17 @@ If **yes**: convert to the subdirectory layout so a sibling `client.tsx` with `'
 
 1. Import at the top (alphabetical with other imports):
 
-   ```tsx
-   import MyModule from './my-module' // single-file layout
+```tsx
+import MyModule from './my-module' // single-file layout
 
-   // import MyModule from './my-module/index' // subdirectory layout (equivalent, explicit)
-   ```
+// import MyModule from './my-module/index' // subdirectory layout (equivalent, explicit)
+```
 
 2. Add to `MODULES_MAP` (alphabetical order):
-   ```ts
-   'my-module': MyModule,
-   ```
+
+```ts
+'my-module': MyModule,
+```
 
 ---
 

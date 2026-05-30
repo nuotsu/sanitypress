@@ -8,7 +8,7 @@ export default defineModule({
 	title: 'Person list',
 	type: 'object',
 	icon: UsersIcon,
-	groups: [{ name: 'content', default: true }],
+	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fields: [
 		defineField({
 			name: 'intro',

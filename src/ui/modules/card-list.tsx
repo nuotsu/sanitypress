@@ -2,9 +2,9 @@ import { PortableText } from 'next-sanity'
 import { cn } from '@/lib/utils'
 import type { CardList } from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
-import Img from '@/ui/img'
 import Eyebrow from '@/ui/eyebrow'
-import { moduleAttributes } from '.'
+import Img from '@/ui/img'
+import { Module } from '.'
 
 export default function ({
 	eyebrow,
@@ -15,7 +15,7 @@ export default function ({
 	...props
 }: CardList) {
 	return (
-		<section className="section space-y-8" {...moduleAttributes(props)}>
+		<Module className="section space-y-8" {...props}>
 			{(eyebrow || intro) && (
 				<header className="prose mx-auto max-w-3xl text-center">
 					<Eyebrow value={eyebrow} />
@@ -58,6 +58,6 @@ export default function ({
 			)}
 
 			<CTAList ctas={ctas} className="justify-center max-sm:*:w-full" />
-		</section>
+		</Module>
 	)
 }
