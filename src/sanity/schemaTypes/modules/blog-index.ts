@@ -8,17 +8,20 @@ export default defineModule({
 	title: 'Blog index',
 	type: 'object',
 	icon: EditIcon,
+	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fields: [
 		defineField({
 			name: 'intro',
 			type: 'array',
 			of: [{ type: 'block' }],
+			group: 'content',
 		}),
 		defineField({
 			name: 'postsPerPage',
 			type: 'number',
 			initialValue: 6,
 			validation: (Rule) => Rule.min(1),
+			group: 'options',
 		}),
 	],
 	preview: {
