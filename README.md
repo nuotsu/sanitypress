@@ -4,7 +4,7 @@
 
 An improved successor to the acclaimed Next.js + Sanity.io starter template—now with auto-generated TypeScript types from your Sanity schema and GROQ queries.
 
-[Get started](https://www.sanity.io/get-started?template=sanitypress) | [Read more about TypeGen](https://typed.sanitypress.dev/blog/introducing-sanitypress-with-typegen) | [View on Sanity.io](https://www.sanity.io/templates/sanitypress)
+[Get started](https://www.sanity.io/get-started?template=sanitypress) | [Read more about TypeGen](https://sanitypress.dev/blog/introducing-sanitypress-with-typegen) | [View on Sanity.io](https://www.sanity.io/templates/sanitypress)
 
 ![](https://cdn.sanity.io/images/cyu7k2r0/production/24aee273834491b8706ab262d25dcda73b5a856b-2178x1085.png)
 
@@ -70,7 +70,7 @@ An improved successor to the acclaimed Next.js + Sanity.io starter template—no
 Click the [Sanity template link](https://www.sanity.io/get-started?template=sanitypress) -- OR -- install with the Sanity CLI:
 
 ```sh
-npm create sanity@latest -- --template=nuotsu/sanitypress-with-typegen
+npm create sanity@latest -- --template=nuotsu/sanitypress
 ```
 
 ### 2. Set environment variables
@@ -130,7 +130,7 @@ Alternatively, you can run the following command to import a demo dataset with t
 sanity dataset import demo.tar.gz
 ```
 
-> 📸 See what the Sanity Studio backend looks like on the [Screenshots page](https://typed.sanitypress.dev/docs/sanity-studio-screenshots).
+> 📸 See what the Sanity Studio backend looks like on the [Screenshots page](https://sanitypress.dev/docs/sanity-studio-screenshots).
 
 ### 5. Set up deployments
 
