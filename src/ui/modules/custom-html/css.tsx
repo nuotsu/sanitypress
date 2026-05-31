@@ -21,7 +21,10 @@ export default function ({
 	if (!code) return null
 
 	return (
-		<style ref={ref} href={`custom-html-${_key}-${encodeURIComponent(code)}`}>{`
+		<style
+			ref={ref}
+			href={`custom-html-${_key}-${encodeURIComponent(code).slice(0, 32)}`}
+		>{`
 			${code}
 		`}</style>
 	)
