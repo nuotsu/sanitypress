@@ -154,4 +154,3 @@ Adjust frontend styles to your liking, edit or add new schema and modules, etc.
 ## \*Not included
 
 - Internationalization (i18n) and multi-lingual support
-- Next.js 16 Cache Components (not suitable for Sanity Live Content API's real-time updates)

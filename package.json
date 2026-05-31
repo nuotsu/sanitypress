@@ -3,8 +3,7 @@
 	"version": "0.0.100",
 	"private": true,
 	"scripts": {
-		"dev": "next dev --webpack",
-		"dev:turbopack": "next dev",
+		"dev": "next dev",
 		"build": "next build --webpack",
 		"start": "next start",
 		"lint": "next lint",
