@@ -1,3 +1,4 @@
+import { VscChevronDown } from 'react-icons/vsc'
 import { cn } from '@/lib/utils'
 import type { Megamenu, Page } from '@/sanity/types'
 import HoverDetails from '@/ui/hover-details'
@@ -24,6 +25,7 @@ export default function ({
 				)}
 			>
 				{link?.label || (link?.internal as unknown as Page)?.title}
+				<VscChevronDown />
 			</summary>
 
 			<div className="anim-fade-to-b md:bg-background border-stroke inset-x-0 top-full md:absolute md:max-h-[calc(100vh-var(--header-height))] md:overflow-y-auto md:border-b md:shadow-lg">
@@ -33,14 +35,16 @@ export default function ({
 							case 'link.list':
 								return (
 									<MobileOnlyDetails
-										className="max-md:accordion group/megamenu-linklist break-inside-avoid md:details-content:h-[initial]"
+										className="accordion group/megamenu-linklist break-inside-avoid md:details-content:h-[initial]"
 										name="megamenu-linklist"
 										key={item._key}
 									>
-										<summary className="text-foreground/50 inline-block py-1 md:cursor-default">
+										<summary className="text-foreground/50 relative py-1 md:cursor-default">
 											<SanityLink
+												className="after:absolute after:inset-0"
 												link={item.link as unknown as SanityLinkType}
 											/>
+											<VscChevronDown className="md:hidden" />
 										</summary>
 
 										<ul className="border-stroke max-md:pl-ch max-md:anim-fade-to-b mb-ch leading-tight max-md:border-l">

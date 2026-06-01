@@ -319,15 +319,13 @@
 		justify-content: space-between;
 		gap: 0.5em;
 
-		&::after {
-			content: '+';
-			flex-shrink: 0;
-			font-family: var(--font-mono);
+		& svg {
+			@apply transition-[rotate];
 		}
 	}
 
-	&[open] > summary::after {
-		content: '-';
+	&:open > summary svg {
+		rotate: .5turn;
 	}
 }
 

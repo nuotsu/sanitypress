@@ -1,4 +1,5 @@
 import { PortableText, stegaClean } from 'next-sanity'
+import { VscChevronDown } from 'react-icons/vsc'
 import { cn } from '@/lib/utils'
 import type { AccordionList } from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
@@ -61,6 +62,7 @@ export default function ({
 							{...(enableSchema && { itemProp: 'name' })}
 						>
 							{summary}
+							<VscChevronDown />
 						</summary>
 
 						<div

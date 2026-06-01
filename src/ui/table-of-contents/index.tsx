@@ -1,3 +1,4 @@
+import { VscChevronDown } from 'react-icons/vsc'
 import { cn } from '@/lib/utils'
 import ToCItem from './toc-item'
 import css from './toc.module.css'
@@ -26,6 +27,7 @@ export default function ({
 		>
 			<summary className="md:bg-background sticky top-0 font-bold md:after:content-['']!">
 				{summary}
+				<VscChevronDown />
 			</summary>
 
 			<ol className={cn(css.list, 'leading-tight')}>

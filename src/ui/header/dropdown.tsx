@@ -2,6 +2,7 @@ import { cn } from '@/lib/utils'
 import type { LinkList, Page } from '@/sanity/types'
 import HoverDetails from '@/ui/hover-details'
 import SanityLink, { type SanityLinkType } from '@/ui/sanity-link'
+import { VscChevronDown } from 'react-icons/vsc'
 
 export default function ({
 	link: summary,
@@ -28,6 +29,7 @@ export default function ({
 				style={{ anchorName }}
 			>
 				{summary?.label || (summary?.internal as unknown as Page)?.title}
+				<VscChevronDown />
 			</summary>
 
 			<ul
