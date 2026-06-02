@@ -2,7 +2,7 @@ import { groq } from 'next-sanity'
 import { notFound } from 'next/navigation'
 import { NextResponse, type NextRequest } from 'next/server'
 import { NodeHtmlMarkdown } from 'node-html-markdown'
-import { parse } from 'node-html-parser'
+import { parse, type HTMLElement } from 'node-html-parser'
 import { ROUTES } from '@/lib/env'
 import { client } from '@/sanity/lib/client'
 import type { BLOG_POSTS_MD_QUERY_RESULT } from '@/sanity/types'
@@ -71,10 +71,21 @@ export async function GET(
 	}
 
 	const base = `${proto}://${host}`
+
+	// Unwrap next/image optimizer URLs to canonical src for markdown export
 	main.querySelectorAll('img[src]').forEach((img) => {
 		const src = img.getAttribute('src')
-		if (src?.startsWith('/')) img.setAttribute('src', `${base}${src}`)
+		if (!src) return
+		const parsed = URL.canParse(src, base) ? new URL(src, base) : undefined
+		let resolved =
+			(parsed?.pathname.endsWith('/_next/image') &&
+				decodeURIComponent(parsed.searchParams.get('url') ?? '')) ||
+			src
+		if (resolved.startsWith('/')) resolved = `${base}${resolved}`
+		img.setAttribute('src', resolved)
+		img.removeAttribute('srcset')
 	})
+
 	main.querySelectorAll('a[href]').forEach((a) => {
 		const href = a.getAttribute('href')
 		if (href?.startsWith('/')) a.setAttribute('href', `${base}${href}`)
@@ -109,8 +120,4 @@ const BLOG_POSTS_MD_QUERY = groq`*[_type == 'blog.post'] | order(publishDate des
 	'slug': $blogDir + metadata.slug.current,
 	publishDate,
 	'description': metadata.description,
-}`
-
-const BLOG_POST_AUTHOR_QUERY = groq`*[_type == 'blog.post' && metadata.slug.current == $postSlug][0]{
-	'author': author->name
 }`

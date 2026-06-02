@@ -271,17 +271,20 @@
 			background-color: currentColor;
 		}
 
+		/* react-icons/io5: IoChevronBackCircleSharp */
 		&::scroll-button(left) {
 			content: '' / 'Scroll left';
 			position-area: center start;
-			mask: url('https://ic0n.dev/io5/IoChevronBackCircleSharp') center / cover;
+			mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23fff' d='M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48zm62.63 304L296 374.63 177.37 256 296 137.37 318.63 160l-96 96z'/%3E%3C/svg%3E")
+				center / cover;
 		}
 
+		/* react-icons/io5: IoChevronForwardCircleSharp */
 		&::scroll-button(right) {
 			content: '' / 'Scroll right';
 			position-area: center end;
-			mask: url('https://ic0n.dev/io5/IoChevronForwardCircleSharp') center /
-				cover;
+			mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23fff' d='M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48zm-40 326.63L193.37 352l96-96-96-96L216 137.37 334.63 256z'/%3E%3C/svg%3E")
+				center / cover;
 		}
 	}
 }
