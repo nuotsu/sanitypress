@@ -1481,6 +1481,30 @@
             }
           },
           "optional": true
+        },
+        "layout": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "grid"
+              },
+              {
+                "type": "string",
+                "value": "carousel"
+              }
+            ]
+          },
+          "optional": true
+        },
+        "columns": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "number"
+          },
+          "optional": true
         }
       }
     }

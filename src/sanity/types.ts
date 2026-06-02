@@ -198,6 +198,8 @@ export type QuoteList = {
 			_key: string
 		} & QuoteReference
 	>
+	layout?: 'grid' | 'carousel'
+	columns?: number
 }
 
 export type Prose = {
@@ -2374,6 +2376,8 @@ export type PAGE_QUERY_RESULT = {
 						}
 					}
 				}> | null
+				layout?: 'carousel' | 'grid'
+				columns?: number
 				ctas: null
 		  }
 		| {
@@ -3580,6 +3584,8 @@ export type BLOG_POST_QUERY_RESULT = {
 						}
 					}
 				}> | null
+				layout?: 'carousel' | 'grid'
+				columns?: number
 				ctas: null
 		  }
 		| {
@@ -4683,6 +4689,8 @@ export type NOT_FOUND_QUERY_RESULT = {
 						}
 					}
 				}> | null
+				layout?: 'carousel' | 'grid'
+				columns?: number
 				ctas: null
 		  }
 		| {
