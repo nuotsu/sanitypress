@@ -45,6 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 		alternates: {
 			types: {
 				'application/rss+xml': `/${ROUTES.blog}/rss.xml`,
+				'text/markdown': `/${ROUTES.blog}/${slug}.md`,
 			},
 		},
 	}
