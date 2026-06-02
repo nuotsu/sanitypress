@@ -84,10 +84,10 @@ export default defineModule({
 		}),
 		defineField({
 			name: 'columns',
+			type: 'number',
 			description:
 				'Overrides the default dynamic columns (~256px). Desktop only.',
 			validation: (Rule) => Rule.min(1),
-			type: 'number',
 			group: 'options',
 		}),
 	],

@@ -27,11 +27,11 @@ export default function ({
 
 			<div
 				className={cn(
-					'gap-lh auto-rows-fr',
+					'gap-lh',
 					layout === 'carousel'
-						? 'carousel carousel-scroll-buttons carousel-scroll-marker max-md:full-bleed pb-2 max-md:px-4 md:mask-r-from-[calc(100%-2rem)] md:pr-4'
+						? 'carousel carousel-scroll-buttons carousel-scroll-marker max-md:full-bleed auto-rows-fr pb-2 max-md:px-4 md:mask-r-from-[calc(100%-2rem)] md:pr-4'
 						: [
-								'grid',
+								'grid md:auto-rows-fr',
 								columns
 									? `md:grid-cols-[repeat(var(--columns,1),minmax(0px,1fr))]`
 									: 'md:grid-cols-[repeat(auto-fit,minmax(var(--container-2xs),1fr))]',
@@ -42,7 +42,7 @@ export default function ({
 			>
 				{(testimonials as unknown as Quote[])?.map((testimonial) => (
 					<article
-						className="border-stroke flex flex-col gap-4 border p-4 md:snap-start"
+						className="border-stroke bg-background flex flex-col gap-4 border p-4 md:snap-start"
 						key={testimonial._id}
 					>
 						<blockquote className="prose grow">
@@ -58,7 +58,7 @@ export default function ({
 									alt={testimonial.author?.name}
 								/>
 
-								<dl className="">
+								<dl>
 									<dt>{testimonial.author.name}</dt>
 									{testimonial.author?.title && (
 										<dd className="text-sm">{testimonial.author?.title}</dd>

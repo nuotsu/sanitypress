@@ -49,7 +49,7 @@ export default function ({
 				</>
 			)}
 
-			<ul className="grid items-start gap-x-4 gap-y-8 sm:grid-cols-[repeat(auto-fill,minmax(var(--container-xs),1fr))]">
+			<ul className="gap-x-lh grid items-start gap-y-[2lh] sm:grid-cols-[repeat(auto-fill,minmax(var(--container-xs),1fr))]">
 				{paginatedItems?.map((post) => (
 					<PostPreview
 						post={post as unknown as BlogPost}

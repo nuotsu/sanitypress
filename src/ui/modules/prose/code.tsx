@@ -52,7 +52,7 @@ export default async function ({
 					<ClickToCopy
 						value={stegaClean(value.code)}
 						className={cn(
-							'p-2 text-lg not-hover:opacity-50 [&.copied]:opacity-100',
+							'p-2 text-lg transition-transform not-hover:opacity-50 active:scale-90 [&.copied]:opacity-100',
 							!theme.includes('light') && 'text-white',
 						)}
 					/>

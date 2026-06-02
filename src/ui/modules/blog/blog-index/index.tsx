@@ -22,14 +22,14 @@ export default async function ({
 	})
 
 	return (
-		<Module className={cn('section space-y-8', intro && 'pt-4')} {...props}>
+		<Module className={cn('section space-y-lh', intro && 'pt-4')} {...props}>
 			{intro && (
 				<header className="prose">
 					<PortableText value={intro} />
 				</header>
 			)}
 
-			<div className="grid gap-4">
+			<div className="gap-lh grid">
 				<fieldset className="flex flex-wrap items-end justify-between gap-4">
 					<Suspense
 						fallback={

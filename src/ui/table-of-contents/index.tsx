@@ -25,9 +25,9 @@ export default function ({
 			)}
 			{...props}
 		>
-			<summary className="md:bg-background sticky top-0 font-bold md:after:content-['']!">
+			<summary className="md:bg-background sticky top-0 font-bold">
 				{summary}
-				<VscChevronDown />
+				<VscChevronDown className="md:hidden" />
 			</summary>
 
 			<ol className={cn(css.list, 'leading-tight')}>

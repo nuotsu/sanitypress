@@ -40,13 +40,12 @@
 	}
 
 	@keyframes anchored-heading {
+
 		0%,
 		50% {
-			background-color: color-mix(
-				in oklab,
-				var(--color-amber-400) 50%,
-				transparent
-			);
+			background-color: color-mix(in oklab,
+					var(--color-amber-400) 50%,
+					transparent);
 		}
 	}
 
@@ -93,7 +92,7 @@
 }
 
 @utility h0 {
-	@apply h-base text-4xl;
+	@apply h-base text-5xl;
 }
 
 @utility h1 {
@@ -134,6 +133,7 @@
 	text-align: center;
 	gap: 0.5em;
 	padding: 0.25em 0.5em;
+	@apply active:scale-98 transition-all;
 }
 
 @utility action {
@@ -194,7 +194,7 @@
 		list-style: revert;
 		padding-left: 1.5em;
 
-		& > li > ol {
+		&>li>ol {
 			list-style: lower-alpha;
 		}
 	}
@@ -211,7 +211,7 @@
 		@apply border-stroke border-l-4 pl-4;
 	}
 
-	& :not(pre) > code {
+	& :not(pre)>code {
 		padding-inline: 0.25em;
 		font-size: 0.875em;
 		@apply bg-foreground/5 rounded-sm;
@@ -245,14 +245,12 @@
 	anchor-name: var(--anchor-name);
 	display: grid;
 	grid-auto-flow: column;
-	grid-auto-columns: min(var(--container-sm), 80vw);
+	grid-auto-columns: min(var(--container-xs), 80vw);
 	overflow-x: auto;
 	scroll-behavior: smooth;
 	scroll-snap-type: x mandatory;
 
-	& > * {
-		scroll-snap-align: center;
-	}
+	@apply *:md:snap-start *:snap-center;
 }
 
 @utility carousel-scroll-buttons {
@@ -271,20 +269,16 @@
 			background-color: currentColor;
 		}
 
-		/* react-icons/io5: IoChevronBackCircleSharp */
 		&::scroll-button(left) {
 			content: '' / 'Scroll left';
 			position-area: center start;
-			mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23fff' d='M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48zm62.63 304L296 374.63 177.37 256 296 137.37 318.63 160l-96 96z'/%3E%3C/svg%3E")
-				center / cover;
+			mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23fff' d='M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48zm62.63 304L296 374.63 177.37 256 296 137.37 318.63 160l-96 96z'/%3E%3C/svg%3E") center / cover;
 		}
 
-		/* react-icons/io5: IoChevronForwardCircleSharp */
 		&::scroll-button(right) {
 			content: '' / 'Scroll right';
 			position-area: center end;
-			mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23fff' d='M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48zm-40 326.63L193.37 352l96-96-96-96L216 137.37 334.63 256z'/%3E%3C/svg%3E")
-				center / cover;
+			mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23fff' d='M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48zm-40 326.63L193.37 352l96-96-96-96L216 137.37 334.63 256z'/%3E%3C/svg%3E") center / cover;
 		}
 	}
 }
@@ -303,7 +297,7 @@
 		gap: 0.5ch;
 	}
 
-	& > * {
+	&>* {
 		&::scroll-marker {
 			content: '';
 			@apply bg-foreground/25 block size-1 rounded-full;
@@ -316,7 +310,7 @@
 }
 
 @utility accordion {
-	& > summary {
+	&>summary {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -327,7 +321,7 @@
 		}
 	}
 
-	&:open > summary svg {
+	&:open>summary svg {
 		rotate: .5turn;
 	}
 }
@@ -360,9 +354,8 @@
 /* anims */
 
 @utility anim-fade {
-	transition: var(--default-transition-duration)
-		var(--default-transition-timing-function);
-	transition-property: opacity, translate;
+	transition: var(--default-transition-duration) var(--default-transition-timing-function);
+	transition-property: opacity, translate, scale;
 	@apply starting:opacity-0;
 }
 

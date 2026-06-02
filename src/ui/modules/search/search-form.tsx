@@ -39,7 +39,7 @@ export default function ({ scope }: Partial<SearchModule>) {
 			{query && (
 				<output
 					htmlFor="query"
-					className="anim-fade-to-b group-not-hover/search:group-not-has-[:is(:focus,.results:hover)]/search:hidden absolute inset-x-0 top-full z-1"
+					className="anim-fade group-not-hover/search:group-not-has-[:is(:focus,.results:hover)]/search:hidden border-stroke absolute inset-x-0 top-full z-1 origin-top border-x border-b starting:-translate-y-1 starting:scale-95"
 				>
 					<div className="bg-background grid max-h-[10lh] gap-4 overflow-y-auto p-4 shadow-lg">
 						{loading ? (

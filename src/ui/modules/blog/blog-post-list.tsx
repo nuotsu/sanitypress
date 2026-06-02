@@ -27,7 +27,7 @@ export default async function ({
 			)}
 
 			<ul
-				className="carousel carousel-scroll-buttons carousel-scroll-marker max-md:full-bleed items-start gap-4 pb-2 max-md:px-4 md:mask-r-from-[calc(100%-2rem)] md:pr-4"
+				className="carousel carousel-scroll-buttons carousel-scroll-marker max-md:full-bleed gap-lh items-start pb-2 max-md:px-4 md:mask-r-from-[calc(100%-2rem)] md:pr-4"
 				data-anchor-name={`--blog-post-list-${_key}`}
 			>
 				{posts?.map((post: any) => (
