@@ -8,6 +8,7 @@ import { urlFor } from '@/sanity/lib/image'
 import { sanityFetchLive } from '@/sanity/lib/live'
 import {
 	getSite,
+	GLOBAL_MODULE_EXCLUDE_QUERY,
 	GLOBAL_MODULE_PATH_QUERY,
 	MODULES_QUERY,
 } from '@/sanity/lib/queries'
@@ -91,7 +92,7 @@ const PAGE_QUERY = groq`
 		...,
 		'modules': (
 			// global moddules (before)
-			*[_type == 'global-module' && path == '*'].before[]{ ${MODULES_QUERY} }
+			*[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}].before[]{ ${MODULES_QUERY} }
 			// path modules (before)
 			+ *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_PATH_QUERY}].before[]{ ${MODULES_QUERY} }
 			// page modules
@@ -99,7 +100,7 @@ const PAGE_QUERY = groq`
 			// path modules (after)
 			+ *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_PATH_QUERY}].after[]{ ${MODULES_QUERY} }
 			// global moddules (after)
-			+ *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
+			+ *[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}].after[]{ ${MODULES_QUERY} }
 		)
 	}
 `

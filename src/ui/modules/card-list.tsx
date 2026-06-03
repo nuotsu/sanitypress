@@ -36,9 +36,9 @@ export default function ({
 					{cards.map((item) => (
 						<article key={item._key} className="prose">
 							<Img
-								className="aspect-video w-full object-cover"
+								className="w-full object-cover"
 								image={item.image}
-								width={400}
+								width={1000}
 								alt=""
 							/>
 

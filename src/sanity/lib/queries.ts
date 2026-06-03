@@ -51,12 +51,16 @@ const SITE_QUERY = groq`*[_type == 'site'][0]{
 	social->{ ${NAVIGATION_QUERY} },
 }`
 
-export const GLOBAL_MODULE_PATH_QUERY = groq`
-	string::startsWith($slug, path)
-	&& select(
+export const GLOBAL_MODULE_EXCLUDE_QUERY = groq`
+	select(
 		defined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,
 		true
 	)
+`
+
+export const GLOBAL_MODULE_PATH_QUERY = groq`
+	string::startsWith($slug, path)
+	&& ${GLOBAL_MODULE_EXCLUDE_QUERY}
 `
 
 // @sanity-typegen-ignore

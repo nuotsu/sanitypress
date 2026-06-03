@@ -5,7 +5,10 @@ import { ROUTES } from '@/lib/env'
 import { client } from '@/sanity/lib/client'
 import { urlFor } from '@/sanity/lib/image'
 import { sanityFetchLive } from '@/sanity/lib/live'
-import { MODULES_QUERY } from '@/sanity/lib/queries'
+import {
+	GLOBAL_MODULE_EXCLUDE_QUERY,
+	MODULES_QUERY,
+} from '@/sanity/lib/queries'
 import type { BLOG_POST_QUERY_RESULT } from '@/sanity/types'
 import ModulesResolver from '@/ui/modules'
 
@@ -94,12 +97,12 @@ const BLOG_POST_QUERY = groq`*[_type == 'blog.post' && metadata.slug.current == 
 	},
 	'modules': (
 		// global modules (before)
-		*[_type == 'global-module' && path == '*'].before[]{ ${MODULES_QUERY} }
+		*[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}].before[]{ ${MODULES_QUERY} }
 		// path modules (before)
 		+ *[_type == 'global-module' && path == $blogDir].before[]{ ${MODULES_QUERY} }
 		// path modules (after)
 		+ *[_type == 'global-module' && path == $blogDir].after[]{ ${MODULES_QUERY} }
 		// global modules (after)
-		+ *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
+		+ *[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}].after[]{ ${MODULES_QUERY} }
 	)
 }`
