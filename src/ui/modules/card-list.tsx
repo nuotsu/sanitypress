@@ -5,6 +5,7 @@ import CTAList from '@/ui/cta-list'
 import Eyebrow from '@/ui/eyebrow'
 import Img from '@/ui/img'
 import { Module } from '.'
+import Image from './prose/image'
 
 export default function ({
 	eyebrow,
@@ -35,21 +36,27 @@ export default function ({
 				>
 					{cards.map((item) => (
 						<article key={item._key} className="prose">
-							<Img
-								className="w-full object-cover"
-								image={item.image}
-								width={1000}
-								alt=""
-							/>
+							{(item.image || item.icon) && (
+								<figure>
+									<Img
+										className="w-full object-cover"
+										image={item.image}
+										width={1000}
+										alt=""
+									/>
+									<Img
+										className="h-12 w-auto object-cover"
+										image={item.icon}
+										width={120}
+										alt=""
+									/>
+								</figure>
+							)}
 
-							<Img
-								className="h-12 w-auto object-cover"
-								image={item.icon}
-								width={120}
-								alt=""
+							<PortableText
+								value={item.content ?? []}
+								components={{ types: { image: Image } }}
 							/>
-
-							<PortableText value={item.content ?? []} />
 
 							<CTAList ctas={item.ctas} className="max-sm:*:w-full" />
 						</article>

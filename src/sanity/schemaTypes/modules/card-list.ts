@@ -1,3 +1,4 @@
+import { ImageIcon } from '@sanity/icons'
 import { defineArrayMember, defineField } from 'sanity'
 import { TfiLayoutGrid2Thumb } from 'react-icons/tfi'
 import { count, getBlockText } from '@/lib/utils'
@@ -49,7 +50,23 @@ export default defineModule({
 						defineField({
 							name: 'content',
 							type: 'array',
-							of: [{ type: 'block' }],
+							of: [
+								{ type: 'block' },
+								defineArrayMember({
+									type: 'image',
+									icon: ImageIcon,
+									options: {
+										hotspot: true,
+										metadata: ['lqip'],
+									},
+									fields: [
+										defineField({
+											name: 'alt',
+											type: 'string',
+										}),
+									],
+								}),
+							],
 						}),
 						defineField({
 							name: 'ctas',
