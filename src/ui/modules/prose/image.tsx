@@ -9,7 +9,7 @@ export default function ({
 			<Img
 				className="mx-auto"
 				image={image}
-				width={900}
+				width={1000}
 				alt={image.alt ?? ''}
 			/>
 

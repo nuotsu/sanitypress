@@ -48,6 +48,10 @@ export default defineModule({
 							fieldset: 'asset',
 						}),
 						defineField({
+							name: 'eyebrow',
+							type: 'string',
+						}),
+						defineField({
 							name: 'content',
 							type: 'array',
 							of: [
@@ -78,13 +82,14 @@ export default defineModule({
 					preview: {
 						select: {
 							content: 'content',
+							eyebrow: 'eyebrow',
 							cta: 'ctas.0.link.label',
 							image: 'image',
 							icon: 'icon',
 						},
-						prepare: ({ content, cta, image, icon }) => ({
+						prepare: ({ content, eyebrow, cta, image, icon }) => ({
 							title: getBlockText(content),
-							subtitle: cta,
+							subtitle: eyebrow || cta,
 							media: image || icon,
 						}),
 					},

@@ -449,6 +449,7 @@ export type CardList = {
 	cards?: Array<{
 		image?: CardImage
 		icon?: Icon
+		eyebrow?: string
 		content?: Array<
 			| {
 					children?: Array<{
@@ -1886,6 +1887,7 @@ export type PAGE_QUERY_RESULT = {
 				cards: Array<{
 					image?: CardImage
 					icon?: Icon
+					eyebrow?: string
 					content?: Array<
 						| {
 								children?: Array<{
@@ -3098,6 +3100,7 @@ export type BLOG_POST_QUERY_RESULT = {
 				cards: Array<{
 					image?: CardImage
 					icon?: Icon
+					eyebrow?: string
 					content?: Array<
 						| {
 								children?: Array<{
@@ -4214,6 +4217,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 				cards: Array<{
 					image?: CardImage
 					icon?: Icon
+					eyebrow?: string
 					content?: Array<
 						| {
 								children?: Array<{

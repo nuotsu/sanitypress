@@ -53,6 +53,8 @@ export default function ({
 								</figure>
 							)}
 
+							<Eyebrow value={item.eyebrow} />
+
 							<PortableText
 								value={item.content ?? []}
 								components={{ types: { image: Image } }}
