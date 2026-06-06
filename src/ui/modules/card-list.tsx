@@ -1,4 +1,5 @@
 import { PortableText } from 'next-sanity'
+import { ImageProps } from 'next/image'
 import { cn } from '@/lib/utils'
 import type { CardList } from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
@@ -57,7 +58,20 @@ export default function ({
 
 							<PortableText
 								value={item.content ?? []}
-								components={{ types: { image: Image } }}
+								components={{
+									types: {
+										image: ({ value }) => (
+											<figure>
+												<Img
+													className="mx-auto w-full"
+													image={value}
+													width={1000}
+													alt={value.alt ?? ''}
+												/>
+											</figure>
+										),
+									},
+								}}
 							/>
 
 							<CTAList ctas={item.ctas} className="max-sm:*:w-full" />
