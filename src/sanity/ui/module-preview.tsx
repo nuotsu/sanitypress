@@ -1,5 +1,5 @@
 import type { PreviewProps } from 'sanity'
-import { Badge, Box, Flex, Text } from '@sanity/ui'
+import { Badge, Box, Flex } from '@sanity/ui'
 import { VscEyeClosed } from 'react-icons/vsc'
 
 export default function (
