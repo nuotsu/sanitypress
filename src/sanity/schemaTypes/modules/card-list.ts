@@ -1,5 +1,5 @@
-import { ImageIcon } from '@sanity/icons'
 import { defineArrayMember, defineField } from 'sanity'
+import { ImageIcon } from '@sanity/icons'
 import { TfiLayoutGrid2Thumb } from 'react-icons/tfi'
 import { count, getBlockText } from '@/lib/utils'
 import defineModule from '@/sanity/schemaTypes/fragments/define-module'
@@ -9,7 +9,11 @@ export default defineModule({
 	title: 'Card list',
 	type: 'object',
 	icon: TfiLayoutGrid2Thumb,
-	groups: [{ name: 'content', default: true }, { name: 'options' }],
+	groups: [
+		{ name: 'content', default: true },
+		{ name: 'cards' },
+		{ name: 'options' },
+	],
 	fields: [
 		defineField({
 			name: 'eyebrow',
@@ -95,7 +99,7 @@ export default defineModule({
 					},
 				}),
 			],
-			group: 'content',
+			group: 'cards',
 		}),
 		defineField({
 			name: 'ctas',
@@ -105,11 +109,20 @@ export default defineModule({
 			group: 'content',
 		}),
 		defineField({
+			name: 'layout',
+			type: 'string',
+			options: {
+				list: ['grid', 'carousel'],
+			},
+			group: 'options',
+		}),
+		defineField({
 			name: 'columns',
 			type: 'number',
 			description:
 				'Overrides the default dynamic columns (~256px). Desktop only.',
 			validation: (Rule) => Rule.min(1),
+			hidden: ({ parent }) => parent?.layout === 'carousel',
 			group: 'options',
 		}),
 	],

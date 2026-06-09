@@ -92,7 +92,7 @@
 }
 
 @utility h0 {
-	@apply h-base text-5xl;
+	@apply h-base text-5xl leading-[1.1];
 }
 
 @utility h1 {

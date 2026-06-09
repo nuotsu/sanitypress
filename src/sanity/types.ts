@@ -27,7 +27,7 @@ export type SanityImageAssetReference = {
 
 export type CardImage = {
 	asset?: SanityImageAssetReference
-	media?: unknown // Unable to locate the referenced type "media" in schema
+	media?: unknown // Unable to locate the referenced type "image.media" in schema
 	hotspot?: SanityImageHotspot
 	crop?: SanityImageCrop
 	_type: 'image'
@@ -500,6 +500,7 @@ export type CardList = {
 			_key: string
 		} & Cta
 	>
+	layout?: 'grid' | 'carousel'
 	columns?: number
 }
 
@@ -507,24 +508,46 @@ export type Callout = {
 	_type: 'callout'
 	attributes?: ModuleAttributes
 	eyebrow?: string
-	intro?: Array<{
-		children?: Array<{
-			marks?: Array<string>
-			text?: string
-			_type: 'span'
-			_key: string
-		}>
-		style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
-		listItem?: 'bullet' | 'number'
-		markDefs?: Array<{
-			href?: string
-			_type: 'link'
-			_key: string
-		}>
-		level?: number
-		_type: 'block'
-		_key: string
-	}>
+	intro?: Array<
+		| {
+				children?: Array<{
+					marks?: Array<string>
+					text?: string
+					_type: 'span'
+					_key: string
+				}>
+				style?:
+					| 'normal'
+					| 'h1'
+					| 'h2'
+					| 'h3'
+					| 'h4'
+					| 'h5'
+					| 'h6'
+					| 'blockquote'
+				listItem?: 'bullet' | 'number'
+				markDefs?: Array<{
+					href?: string
+					_type: 'link'
+					_key: string
+				}>
+				level?: number
+				_type: 'block'
+				_key: string
+		  }
+		| {
+				asset?: SanityImageAssetReference
+				media?: unknown
+				hotspot?: SanityImageHotspot
+				crop?: SanityImageCrop
+				alt?: string
+				_type: 'image'
+				_key: string
+		  }
+		| ({
+				_key: string
+		  } & CustomHtml)
+	>
 	ctas?: Array<
 		{
 			_key: string
@@ -1799,32 +1822,46 @@ export type PAGE_QUERY_RESULT = {
 				_type: 'callout'
 				attributes?: ModuleAttributes
 				eyebrow?: string
-				intro?: Array<{
-					children?: Array<{
-						marks?: Array<string>
-						text?: string
-						_type: 'span'
-						_key: string
-					}>
-					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
-					listItem?: 'bullet' | 'number'
-					markDefs?: Array<{
-						href?: string
-						_type: 'link'
-						_key: string
-					}>
-					level?: number
-					_type: 'block'
-					_key: string
-				}>
+				intro?: Array<
+					| ({
+							_key: string
+					  } & CustomHtml)
+					| {
+							children?: Array<{
+								marks?: Array<string>
+								text?: string
+								_type: 'span'
+								_key: string
+							}>
+							style?:
+								| 'blockquote'
+								| 'h1'
+								| 'h2'
+								| 'h3'
+								| 'h4'
+								| 'h5'
+								| 'h6'
+								| 'normal'
+							listItem?: 'bullet' | 'number'
+							markDefs?: Array<{
+								href?: string
+								_type: 'link'
+								_key: string
+							}>
+							level?: number
+							_type: 'block'
+							_key: string
+					  }
+					| {
+							asset?: SanityImageAssetReference
+							media?: unknown
+							hotspot?: SanityImageHotspot
+							crop?: SanityImageCrop
+							alt?: string
+							_type: 'image'
+							_key: string
+					  }
+				>
 				ctas: Array<{
 					_key: string
 					_type: 'cta'
@@ -1982,6 +2019,7 @@ export type PAGE_QUERY_RESULT = {
 						| null
 					theme?: 'action-outline' | 'action' | 'ghost' | 'link'
 				}> | null
+				layout?: 'carousel' | 'grid'
 				columns?: number
 		  }
 		| {
@@ -3012,32 +3050,46 @@ export type BLOG_POST_QUERY_RESULT = {
 				_type: 'callout'
 				attributes?: ModuleAttributes
 				eyebrow?: string
-				intro?: Array<{
-					children?: Array<{
-						marks?: Array<string>
-						text?: string
-						_type: 'span'
-						_key: string
-					}>
-					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
-					listItem?: 'bullet' | 'number'
-					markDefs?: Array<{
-						href?: string
-						_type: 'link'
-						_key: string
-					}>
-					level?: number
-					_type: 'block'
-					_key: string
-				}>
+				intro?: Array<
+					| ({
+							_key: string
+					  } & CustomHtml)
+					| {
+							children?: Array<{
+								marks?: Array<string>
+								text?: string
+								_type: 'span'
+								_key: string
+							}>
+							style?:
+								| 'blockquote'
+								| 'h1'
+								| 'h2'
+								| 'h3'
+								| 'h4'
+								| 'h5'
+								| 'h6'
+								| 'normal'
+							listItem?: 'bullet' | 'number'
+							markDefs?: Array<{
+								href?: string
+								_type: 'link'
+								_key: string
+							}>
+							level?: number
+							_type: 'block'
+							_key: string
+					  }
+					| {
+							asset?: SanityImageAssetReference
+							media?: unknown
+							hotspot?: SanityImageHotspot
+							crop?: SanityImageCrop
+							alt?: string
+							_type: 'image'
+							_key: string
+					  }
+				>
 				ctas: Array<{
 					_key: string
 					_type: 'cta'
@@ -3195,6 +3247,7 @@ export type BLOG_POST_QUERY_RESULT = {
 						| null
 					theme?: 'action-outline' | 'action' | 'ghost' | 'link'
 				}> | null
+				layout?: 'carousel' | 'grid'
 				columns?: number
 		  }
 		| {
@@ -4129,32 +4182,46 @@ export type NOT_FOUND_QUERY_RESULT = {
 				_type: 'callout'
 				attributes?: ModuleAttributes
 				eyebrow?: string
-				intro?: Array<{
-					children?: Array<{
-						marks?: Array<string>
-						text?: string
-						_type: 'span'
-						_key: string
-					}>
-					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
-					listItem?: 'bullet' | 'number'
-					markDefs?: Array<{
-						href?: string
-						_type: 'link'
-						_key: string
-					}>
-					level?: number
-					_type: 'block'
-					_key: string
-				}>
+				intro?: Array<
+					| ({
+							_key: string
+					  } & CustomHtml)
+					| {
+							children?: Array<{
+								marks?: Array<string>
+								text?: string
+								_type: 'span'
+								_key: string
+							}>
+							style?:
+								| 'blockquote'
+								| 'h1'
+								| 'h2'
+								| 'h3'
+								| 'h4'
+								| 'h5'
+								| 'h6'
+								| 'normal'
+							listItem?: 'bullet' | 'number'
+							markDefs?: Array<{
+								href?: string
+								_type: 'link'
+								_key: string
+							}>
+							level?: number
+							_type: 'block'
+							_key: string
+					  }
+					| {
+							asset?: SanityImageAssetReference
+							media?: unknown
+							hotspot?: SanityImageHotspot
+							crop?: SanityImageCrop
+							alt?: string
+							_type: 'image'
+							_key: string
+					  }
+				>
 				ctas: Array<{
 					_key: string
 					_type: 'cta'
@@ -4312,6 +4379,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 						| null
 					theme?: 'action-outline' | 'action' | 'ghost' | 'link'
 				}> | null
+				layout?: 'carousel' | 'grid'
 				columns?: number
 		  }
 		| {

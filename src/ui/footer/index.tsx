@@ -14,7 +14,7 @@ export default async function () {
 					<div className="flex flex-col items-center gap-4 max-md:text-center md:items-start">
 						<Logo className="[&_img]:h-[2lh]" />
 						<PortableText value={site?.footer?.blurb ?? []} />
-						<SocialNavigation className="[&_svg]:size-lh link flex items-center gap-4 max-md:justify-center" />
+						<SocialNavigation className="social [&_svg]:size-lh link flex items-center gap-4 max-md:justify-center" />
 					</div>
 
 					<Navigation />

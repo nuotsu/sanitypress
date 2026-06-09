@@ -1,4 +1,5 @@
-import { defineField } from 'sanity'
+import { defineArrayMember, defineField } from 'sanity'
+import { ImageIcon } from '@sanity/icons'
 import { VscInspect } from 'react-icons/vsc'
 import { getBlockText } from '@/lib/utils'
 import defineModule from '@/sanity/schemaTypes/fragments/define-module'
@@ -18,7 +19,24 @@ export default defineModule({
 		defineField({
 			name: 'intro',
 			type: 'array',
-			of: [{ type: 'block' }],
+			of: [
+				{ type: 'block' },
+				defineArrayMember({
+					type: 'image',
+					icon: ImageIcon,
+					options: {
+						hotspot: true,
+						metadata: ['lqip'],
+					},
+					fields: [
+						defineField({
+							name: 'alt',
+							type: 'string',
+						}),
+					],
+				}),
+				{ type: 'custom-html' },
+			],
 			group: 'content',
 		}),
 		defineField({

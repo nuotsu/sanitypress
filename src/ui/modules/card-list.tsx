@@ -1,21 +1,22 @@
-import { PortableText } from 'next-sanity'
-import { ImageProps } from 'next/image'
+import { PortableText, stegaClean } from 'next-sanity'
 import { cn } from '@/lib/utils'
 import type { CardList } from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
 import Eyebrow from '@/ui/eyebrow'
 import Img from '@/ui/img'
 import { Module } from '.'
-import Image from './prose/image'
 
 export default function ({
 	eyebrow,
 	intro,
 	cards,
 	ctas,
+	layout: l = 'grid',
 	columns,
 	...props
 }: CardList) {
+	const layout = stegaClean(l)
+
 	return (
 		<Module className="section space-y-8" {...props}>
 			{(eyebrow || intro) && (
@@ -28,10 +29,15 @@ export default function ({
 			{!!cards?.length && (
 				<div
 					className={cn(
-						'grid gap-8 md:grid-cols-2',
-						columns
-							? 'lg:grid-cols-[repeat(var(--columns,1),minmax(0px,1fr))]'
-							: 'lg:grid-cols-[repeat(auto-fit,minmax(var(--container-3xs),1fr))]',
+						'grid gap-8',
+						layout === 'carousel'
+							? 'carousel carousel-scroll-buttons carousel-scroll-marker max-md:full-bleed auto-rows-fr pb-2 max-md:px-4 md:mask-r-from-[calc(100%-2rem)] md:pr-4'
+							: [
+									'md:auto-rows-fr',
+									columns
+										? 'lg:grid-cols-[repeat(var(--columns,1),minmax(0px,1fr))]'
+										: 'lg:grid-cols-[repeat(auto-fit,minmax(var(--container-3xs),1fr))]',
+								],
 					)}
 					style={{ '--columns': columns }}
 				>
