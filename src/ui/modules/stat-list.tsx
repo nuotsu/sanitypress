@@ -1,12 +1,14 @@
 import { PortableText } from 'next-sanity'
 import type { StatList } from '@/sanity/types'
+import Eyebrow from '@/ui/eyebrow'
 import { Module } from '.'
 
-export default function ({ intro, stats, ...props }: StatList) {
+export default function ({ eyebrow, intro, stats, ...props }: StatList) {
 	return (
 		<Module className="section space-y-8" {...props}>
-			{intro && (
+			{(eyebrow || intro) && (
 				<header className="prose text-center">
+					<Eyebrow value={eyebrow} />
 					<PortableText value={intro} />
 				</header>
 			)}

@@ -95,6 +95,7 @@ export type StepList = {
 export type StatList = {
 	_type: 'stat-list'
 	attributes?: ModuleAttributes
+	eyebrow?: string
 	intro?: Array<{
 		children?: Array<{
 			marks?: Array<string>
@@ -2488,6 +2489,7 @@ export type PAGE_QUERY_RESULT = {
 				_key: string
 				_type: 'stat-list'
 				attributes?: ModuleAttributes
+				eyebrow?: string
 				intro?: Array<{
 					children?: Array<{
 						marks?: Array<string>
@@ -3716,6 +3718,7 @@ export type BLOG_POST_QUERY_RESULT = {
 				_key: string
 				_type: 'stat-list'
 				attributes?: ModuleAttributes
+				eyebrow?: string
 				intro?: Array<{
 					children?: Array<{
 						marks?: Array<string>
@@ -4848,6 +4851,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 				_key: string
 				_type: 'stat-list'
 				attributes?: ModuleAttributes
+				eyebrow?: string
 				intro?: Array<{
 					children?: Array<{
 						marks?: Array<string>
