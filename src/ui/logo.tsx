@@ -16,7 +16,7 @@ export default async function ({
 	return (
 		<Link
 			href="/"
-			className={cn('text-foreground inline-block font-bold', className)}
+			className={cn('logo text-foreground inline-block font-bold', className)}
 		>
 			{logo ? (
 				<Img
