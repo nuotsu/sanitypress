@@ -8,7 +8,7 @@ import { Module } from '.'
 export default function ({
 	eyebrow,
 	intro = [],
-	testimonials,
+	quotes,
 	layout: l = 'grid',
 	columns,
 	_key,
@@ -40,28 +40,28 @@ export default function ({
 				style={{ '--columns': columns }}
 				data-anchor-name={`--quote-list-${_key}`}
 			>
-				{(testimonials as unknown as Quote[])?.map((testimonial) => (
+				{(quotes as unknown as Quote[])?.map((quote) => (
 					<article
 						className="border-stroke bg-background flex flex-col gap-4 border p-4 md:snap-start"
-						key={testimonial._id}
+						key={quote._id}
 					>
 						<blockquote className="prose grow">
-							<PortableText value={testimonial.quote} />
+							<PortableText value={quote.quote} />
 						</blockquote>
 
-						{testimonial.author?.name && (
+						{quote.author?.name && (
 							<cite className="flex items-center gap-2">
 								<Img
 									className="aspect-square size-[2lh] shrink-0 rounded-full object-cover"
-									image={testimonial.author?.image}
+									image={quote.author?.image}
 									width={48}
-									alt={testimonial.author?.name}
+									alt={quote.author?.name}
 								/>
 
 								<dl>
-									<dt>{testimonial.author.name}</dt>
-									{testimonial.author?.title && (
-										<dd className="text-sm">{testimonial.author?.title}</dd>
+									<dt>{quote.author.name}</dt>
+									{quote.author?.title && (
+										<dd className="text-sm">{quote.author?.title}</dd>
 									)}
 								</dl>
 							</cite>

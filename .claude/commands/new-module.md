@@ -20,7 +20,7 @@ Common inferences:
 | `image`, `photo`, `thumbnail`, `cover` | `image` |
 | `theme`, `layout`, `variant`, `size`, `color` | `string` with `options.list` (ask for allowed values) |
 | `items`, `cards`, `steps`, `features`, `accordions`, `stats` | `array of objects` (ask for sub-fields) |
-| `logos`, `people`, `testimonials`, `quotes` | `array of references` (ask for reference type) |
+| `logos`, `people`, `quotes` | `array of references` (ask for reference type) |
 
 Once fields are confirmed (and any ambiguous types resolved), proceed with the steps below.
 
@@ -160,7 +160,7 @@ _type == 'my-module' => {
 },
 ```
 
-Reference field pattern (e.g. logo, person, testimonial):
+Reference field pattern (e.g. logo, person, quote):
 
 ```groq
 _type == 'my-module' => {

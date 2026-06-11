@@ -8,7 +8,11 @@ export default defineModule({
 	title: 'Quote list',
 	type: 'object',
 	icon: FeedbackIcon,
-	groups: [{ name: 'content', default: true }, { name: 'options' }],
+	groups: [
+		{ name: 'content', default: true },
+		{ name: 'quotes' },
+		{ name: 'options' },
+	],
 	fields: [
 		defineField({
 			name: 'eyebrow',
@@ -22,10 +26,10 @@ export default defineModule({
 			group: 'content',
 		}),
 		defineField({
-			name: 'testimonials',
+			name: 'quotes',
 			type: 'array',
 			of: [{ type: 'reference', to: [{ type: 'quote' }] }],
-			group: 'content',
+			group: 'quotes',
 		}),
 		defineField({
 			name: 'layout',

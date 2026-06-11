@@ -108,7 +108,7 @@ export const MODULES_QUERY = groq`
 		}
 	},
 	_type == 'quote-list' => {
-		testimonials[]->
+		quotes[]->
 	},
 `
 

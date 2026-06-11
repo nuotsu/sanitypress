@@ -1467,7 +1467,7 @@
           },
           "optional": true
         },
-        "testimonials": {
+        "quotes": {
           "type": "objectAttribute",
           "value": {
             "type": "array",
