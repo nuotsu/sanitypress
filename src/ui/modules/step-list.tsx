@@ -42,6 +42,7 @@ export default function ({
 
 						<div className="prose" {...(enableSchema && { itemProp: 'text' })}>
 							<PortableText value={step.content ?? []} />
+							<CTAList ctas={step.ctas} className="max-sm:*:w-full" />
 						</div>
 
 						{enableSchema && (

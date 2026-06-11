@@ -86,6 +86,11 @@ export type StepList = {
 			_type: 'block'
 			_key: string
 		}>
+		ctas?: Array<
+			{
+				_key: string
+			} & Cta
+		>
 		_type: 'step'
 		_key: string
 	}>
@@ -2634,6 +2639,11 @@ export type PAGE_QUERY_RESULT = {
 						_type: 'block'
 						_key: string
 					}>
+					ctas?: Array<
+						{
+							_key: string
+						} & Cta
+					>
 					_type: 'step'
 					_key: string
 				}>
@@ -3863,6 +3873,11 @@ export type BLOG_POST_QUERY_RESULT = {
 						_type: 'block'
 						_key: string
 					}>
+					ctas?: Array<
+						{
+							_key: string
+						} & Cta
+					>
 					_type: 'step'
 					_key: string
 				}>
@@ -4996,6 +5011,11 @@ export type NOT_FOUND_QUERY_RESULT = {
 						_type: 'block'
 						_key: string
 					}>
+					ctas?: Array<
+						{
+							_key: string
+						} & Cta
+					>
 					_type: 'step'
 					_key: string
 				}>
