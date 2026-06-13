@@ -1,10 +1,12 @@
-import { StructureBuilder, structureTool } from 'sanity/structure'
+import { structureTool } from 'sanity/structure'
+import { DocumentIcon } from '@sanity/icons'
 import { VscServerProcess } from 'react-icons/vsc'
 import { singleton } from './lib/builders'
+import { pageDirectoriesListItem } from './lib/page-directories'
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 export default structureTool({
-	structure: (S: StructureBuilder) =>
+	structure: (S, context) =>
 		S.list()
 			.title('Content')
 			.items([
@@ -13,7 +15,8 @@ export default structureTool({
 				S.documentTypeListItem('global-module').title('Global modules'),
 
 				S.divider().title('Pages'),
-				S.documentTypeListItem('page').title('Pages'),
+				S.documentTypeListItem('page').title('Pages').icon(DocumentIcon),
+				pageDirectoriesListItem(S, context),
 
 				S.divider().title('Blog'),
 				S.documentTypeListItem('blog.post').title('Posts'),
