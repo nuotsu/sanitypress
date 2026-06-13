@@ -13,9 +13,9 @@
 	},
 	"dependencies": {
 		"@portabletext/to-html": "^5.0.2",
-		"@sanity/assist": "^6.1.0",
+		"@sanity/assist": "^6.1.1",
 		"@sanity/cli": "^7.2.3",
-		"@sanity/code-input": "^7.1.2",
+		"@sanity/code-input": "^7.1.3",
 		"@sanity/dashboard": "^5.0.1",
 		"@sanity/image-url": "^2.1.1",
 		"@sanity/vision": "^6.0.0",
@@ -38,13 +38,13 @@
 	},
 	"devDependencies": {
 		"@ianvs/prettier-plugin-sort-imports": "^4.7.1",
-		"@tailwindcss/postcss": "^4.3.0",
+		"@tailwindcss/postcss": "^4.3.1",
 		"@types/node": "^25.9.3",
 		"@types/react": "19.2.17",
 		"@types/react-dom": "19.2.3",
 		"prettier": "^3.8.4",
 		"prettier-plugin-tailwindcss": "^0.8.0",
-		"tailwindcss": "^4.3.0",
+		"tailwindcss": "^4.3.1",
 		"typescript": "^6.0.3"
 	}
 }
