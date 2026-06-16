@@ -5,6 +5,10 @@ import {
 } from 'sanity/presentation'
 import { groq } from 'next-sanity'
 import { ROUTES } from '@/lib/env'
+import {
+	locationResolvers,
+	referenceLocations,
+} from './presentation/reference-locations'
 
 export default presentationTool({
 	previewUrl: {
@@ -29,7 +33,7 @@ export default presentationTool({
 				filter: groq`_type == 'blog.post' && metadata.slug.current == $slug`,
 			},
 		]),
-		locations: {
+		locations: locationResolvers({
 			// global
 			site: defineLocations({
 				message: 'Global settings used on all pages',
@@ -64,6 +68,10 @@ export default presentationTool({
 					],
 				}),
 			}),
-		},
+			form: referenceLocations('form'),
+			quote: referenceLocations('quote'),
+			logo: referenceLocations('logo'),
+			person: referenceLocations('person'),
+		}),
 	},
 })
