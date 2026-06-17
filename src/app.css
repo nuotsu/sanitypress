@@ -137,7 +137,7 @@
 }
 
 @utility action {
-	@apply action-base bg-foreground text-background;
+	@apply action-base bg-primary text-background;
 }
 
 @utility action-outline {
@@ -145,7 +145,7 @@
 }
 
 @utility ghost {
-	@apply action-base bg-foreground/2 text-foreground hover:bg-foreground/5;
+	@apply action-base bg-primary/2 text-foreground hover:bg-primary/5;
 }
 
 @utility link {
