@@ -22,7 +22,7 @@ export default defineModule({
 		defineField({
 			name: 'content',
 			type: 'array',
-			of: [{ type: 'block' }],
+			of: [{ type: 'block' }, { type: 'custom-html' }],
 			group: 'content',
 		}),
 		defineField({

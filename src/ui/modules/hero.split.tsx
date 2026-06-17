@@ -5,6 +5,7 @@ import CTAList from '@/ui/cta-list'
 import Eyebrow from '@/ui/eyebrow'
 import Img from '@/ui/img'
 import { Module } from '.'
+import CustomHtml from './custom-html'
 
 export default function ({
 	eyebrow,
@@ -34,7 +35,14 @@ export default function ({
 
 			<header className="prose">
 				<Eyebrow value={eyebrow} />
-				<PortableText value={content} />
+				<PortableText
+					value={content}
+					components={{
+						types: {
+							'custom-html': ({ value }) => <CustomHtml {...value} />,
+						},
+					}}
+				/>
 				<CTAList ctas={ctas} className="max-sm:*:w-full" />
 			</header>
 		</Module>
