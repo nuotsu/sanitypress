@@ -1,4 +1,4 @@
-import { PortableText, stegaClean } from 'next-sanity'
+import { PortableText } from 'next-sanity'
 import { cn } from '@/lib/utils'
 import type {
 	BLOG_POST_QUERY_RESULT,
@@ -11,7 +11,7 @@ import CustomHTML from '@/ui/modules/custom-html'
 import AnchoredHeading from '@/ui/modules/prose/anchored-heading'
 import Code from '@/ui/modules/prose/code'
 import Image from '@/ui/modules/prose/image'
-import TableOfContents from '@/ui/table-of-contents'
+import Sidebar from '@/ui/sidebar'
 import { Module } from '..'
 import css from './blog-post-content.module.css'
 import Byline from './byline'
@@ -21,12 +21,10 @@ import Schema from './schema'
 
 export default function ({
 	post,
-	tableOfContents,
+	sidebar,
 	...props
 }: { post: BLOG_POST_QUERY_RESULT } & BlogPostContent) {
 	if (!post) return null
-
-	const toc = stegaClean(tableOfContents)
 
 	return (
 		<>
@@ -60,17 +58,11 @@ export default function ({
 				</header>
 
 				<section className="section gap-lh flex max-md:flex-col md:items-start">
-					{(toc === 'left' || toc === 'right') && (
-						<TableOfContents
-							summary="On this page"
-							headings={post.headings}
-							className={cn(
-								'md:sticky-below-header max-md:p-ch max-md:bg-stroke/50 shrink-0 [--offset:1rem] md:w-[20ch]',
-								toc === 'right' && 'md:order-last',
-							)}
-							open
-						/>
-					)}
+					<Sidebar
+						{...sidebar}
+						headings={post.headings}
+						className="max-md:p-ch max-md:bg-stroke/50"
+					/>
 
 					<div className={cn(css.body, 'prose mx-auto grid w-full max-w-4xl')}>
 						<PortableText

@@ -1,7 +1,8 @@
-import { PortableText, stegaClean } from 'next-sanity'
+import { PortableText } from 'next-sanity'
 import { cn } from '@/lib/utils'
 import type { Prose } from '@/sanity/types'
 import CustomHTML from '@/ui/modules/custom-html'
+import Sidebar from '@/ui/sidebar'
 import TableOfContents from '@/ui/table-of-contents'
 import { Module } from '..'
 import AnchoredHeading from './anchored-heading'
@@ -10,30 +11,19 @@ import Image from './image'
 
 export default function ({
 	content,
-	tableOfContents,
+	sidebar,
 	headings,
 	...props
 }: Prose & React.ComponentProps<typeof TableOfContents>) {
-	const toc = stegaClean(tableOfContents)
-
 	return (
 		<Module
 			className={cn(
 				'section',
-				toc && 'flex gap-4 max-md:flex-col md:items-start',
+				sidebar && 'flex gap-4 max-md:flex-col md:items-start',
 			)}
 			{...props}
 		>
-			{(toc === 'left' || toc === 'right') && (
-				<TableOfContents
-					headings={headings}
-					className={cn(
-						'md:sticky-below-header shrink-0 [--offset:1rem] md:w-[20ch]',
-						toc === 'right' && 'md:order-last',
-					)}
-					open
-				/>
-			)}
+			<Sidebar {...sidebar} headings={headings} />
 
 			<article className="prose mx-auto w-full max-w-3xl">
 				<PortableText

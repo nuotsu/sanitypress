@@ -272,7 +272,7 @@ export type Prose = {
 				_key: string
 		  } & CustomHtml)
 	>
-	tableOfContents?: 'left' | 'right'
+	sidebar?: Sidebar
 }
 
 export type PersonReference = {
@@ -354,24 +354,37 @@ export type HeroSplit = {
 	_type: 'hero.split'
 	attributes?: ModuleAttributes
 	eyebrow?: string
-	content?: Array<{
-		children?: Array<{
-			marks?: Array<string>
-			text?: string
-			_type: 'span'
-			_key: string
-		}>
-		style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
-		listItem?: 'bullet' | 'number'
-		markDefs?: Array<{
-			href?: string
-			_type: 'link'
-			_key: string
-		}>
-		level?: number
-		_type: 'block'
-		_key: string
-	}>
+	content?: Array<
+		| {
+				children?: Array<{
+					marks?: Array<string>
+					text?: string
+					_type: 'span'
+					_key: string
+				}>
+				style?:
+					| 'normal'
+					| 'h1'
+					| 'h2'
+					| 'h3'
+					| 'h4'
+					| 'h5'
+					| 'h6'
+					| 'blockquote'
+				listItem?: 'bullet' | 'number'
+				markDefs?: Array<{
+					href?: string
+					_type: 'link'
+					_key: string
+				}>
+				level?: number
+				_type: 'block'
+				_key: string
+		  }
+		| ({
+				_key: string
+		  } & CustomHtml)
+	>
 	ctas?: Array<
 		{
 			_key: string
@@ -604,7 +617,7 @@ export type BlogPostList = {
 export type BlogPostContent = {
 	_type: 'blog-post-content'
 	attributes?: ModuleAttributes
-	tableOfContents?: 'left' | 'right'
+	sidebar?: Sidebar
 }
 
 export type BlogIndex = {
@@ -684,6 +697,24 @@ export type AccordionList = {
 	exclusive?: boolean
 	enableSchema?: boolean
 	layout?: 'vertical' | 'horizontal'
+}
+
+export type Sidebar = {
+	_type: 'sidebar'
+	position?: 'left' | 'right'
+	modules?: Array<
+		| {
+				summary?: string
+				_type: 'tableOfContents'
+				_key: string
+		  }
+		| ({
+				_key: string
+		  } & Callout)
+		| ({
+				_key: string
+		  } & CustomHtml)
+	>
 }
 
 export type ModuleAttributes = {
@@ -1542,6 +1573,7 @@ export type AllSanitySchemaTypes =
 	| BlogPostContent
 	| BlogIndex
 	| AccordionList
+	| Sidebar
 	| ModuleAttributes
 	| Metadata
 	| Megamenu
@@ -1730,7 +1762,7 @@ export type PAGE_QUERY_RESULT = {
 				_key: string
 				_type: 'blog-post-content'
 				attributes?: ModuleAttributes
-				tableOfContents?: 'left' | 'right'
+				sidebar?: Sidebar
 				ctas: null
 		  }
 		| {
@@ -2084,32 +2116,37 @@ export type PAGE_QUERY_RESULT = {
 				_type: 'hero.split'
 				attributes?: ModuleAttributes
 				eyebrow?: string
-				content?: Array<{
-					children?: Array<{
-						marks?: Array<string>
-						text?: string
-						_type: 'span'
-						_key: string
-					}>
-					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
-					listItem?: 'bullet' | 'number'
-					markDefs?: Array<{
-						href?: string
-						_type: 'link'
-						_key: string
-					}>
-					level?: number
-					_type: 'block'
-					_key: string
-				}>
+				content?: Array<
+					| ({
+							_key: string
+					  } & CustomHtml)
+					| {
+							children?: Array<{
+								marks?: Array<string>
+								text?: string
+								_type: 'span'
+								_key: string
+							}>
+							style?:
+								| 'blockquote'
+								| 'h1'
+								| 'h2'
+								| 'h3'
+								| 'h4'
+								| 'h5'
+								| 'h6'
+								| 'normal'
+							listItem?: 'bullet' | 'number'
+							markDefs?: Array<{
+								href?: string
+								_type: 'link'
+								_key: string
+							}>
+							level?: number
+							_type: 'block'
+							_key: string
+					  }
+				>
 				ctas: Array<{
 					_key: string
 					_type: 'cta'
@@ -2361,7 +2398,7 @@ export type PAGE_QUERY_RESULT = {
 							_key: string
 					  }
 				> | null
-				tableOfContents?: 'left' | 'right'
+				sidebar?: Sidebar
 				ctas: null
 				headings: Array<{
 					style:
@@ -2964,7 +3001,7 @@ export type BLOG_POST_QUERY_RESULT = {
 				_key: string
 				_type: 'blog-post-content'
 				attributes?: ModuleAttributes
-				tableOfContents?: 'left' | 'right'
+				sidebar?: Sidebar
 				ctas: null
 		  }
 		| {
@@ -3318,32 +3355,37 @@ export type BLOG_POST_QUERY_RESULT = {
 				_type: 'hero.split'
 				attributes?: ModuleAttributes
 				eyebrow?: string
-				content?: Array<{
-					children?: Array<{
-						marks?: Array<string>
-						text?: string
-						_type: 'span'
-						_key: string
-					}>
-					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
-					listItem?: 'bullet' | 'number'
-					markDefs?: Array<{
-						href?: string
-						_type: 'link'
-						_key: string
-					}>
-					level?: number
-					_type: 'block'
-					_key: string
-				}>
+				content?: Array<
+					| ({
+							_key: string
+					  } & CustomHtml)
+					| {
+							children?: Array<{
+								marks?: Array<string>
+								text?: string
+								_type: 'span'
+								_key: string
+							}>
+							style?:
+								| 'blockquote'
+								| 'h1'
+								| 'h2'
+								| 'h3'
+								| 'h4'
+								| 'h5'
+								| 'h6'
+								| 'normal'
+							listItem?: 'bullet' | 'number'
+							markDefs?: Array<{
+								href?: string
+								_type: 'link'
+								_key: string
+							}>
+							level?: number
+							_type: 'block'
+							_key: string
+					  }
+				>
 				ctas: Array<{
 					_key: string
 					_type: 'cta'
@@ -3595,7 +3637,7 @@ export type BLOG_POST_QUERY_RESULT = {
 							_key: string
 					  }
 				> | null
-				tableOfContents?: 'left' | 'right'
+				sidebar?: Sidebar
 				ctas: null
 				headings: Array<{
 					style:
@@ -4456,32 +4498,37 @@ export type NOT_FOUND_QUERY_RESULT = {
 				_type: 'hero.split'
 				attributes?: ModuleAttributes
 				eyebrow?: string
-				content?: Array<{
-					children?: Array<{
-						marks?: Array<string>
-						text?: string
-						_type: 'span'
-						_key: string
-					}>
-					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
-					listItem?: 'bullet' | 'number'
-					markDefs?: Array<{
-						href?: string
-						_type: 'link'
-						_key: string
-					}>
-					level?: number
-					_type: 'block'
-					_key: string
-				}>
+				content?: Array<
+					| ({
+							_key: string
+					  } & CustomHtml)
+					| {
+							children?: Array<{
+								marks?: Array<string>
+								text?: string
+								_type: 'span'
+								_key: string
+							}>
+							style?:
+								| 'blockquote'
+								| 'h1'
+								| 'h2'
+								| 'h3'
+								| 'h4'
+								| 'h5'
+								| 'h6'
+								| 'normal'
+							listItem?: 'bullet' | 'number'
+							markDefs?: Array<{
+								href?: string
+								_type: 'link'
+								_key: string
+							}>
+							level?: number
+							_type: 'block'
+							_key: string
+					  }
+				>
 				ctas: Array<{
 					_key: string
 					_type: 'cta'
@@ -4733,7 +4780,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 							_key: string
 					  }
 				> | null
-				tableOfContents?: 'left' | 'right'
+				sidebar?: Sidebar
 				ctas: null
 				headings: Array<{
 					style:

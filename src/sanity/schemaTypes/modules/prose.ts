@@ -1,5 +1,6 @@
 import { defineArrayMember, defineField } from 'sanity'
 import { BlockContentIcon, ImageIcon } from '@sanity/icons'
+import { VscListTree } from 'react-icons/vsc'
 import { getBlockText } from '@/lib/utils'
 import defineModule from '@/sanity/schemaTypes/fragments/define-module'
 
@@ -8,7 +9,11 @@ export default defineModule({
 	title: 'Prose',
 	type: 'object',
 	icon: BlockContentIcon,
-	groups: [{ name: 'content', default: true }, { name: 'options' }],
+	groups: [
+		{ name: 'content', default: true },
+		{ name: 'sidebar' },
+		{ name: 'options' },
+	],
 	fields: [
 		defineField({
 			name: 'content',
@@ -49,13 +54,9 @@ export default defineModule({
 			group: 'content',
 		}),
 		defineField({
-			name: 'tableOfContents',
-			title: 'Table of contents (position)',
-			type: 'string',
-			options: {
-				list: ['left', 'right'],
-			},
-			group: 'options',
+			name: 'sidebar',
+			type: 'sidebar',
+			group: 'sidebar',
 		}),
 	],
 	preview: {

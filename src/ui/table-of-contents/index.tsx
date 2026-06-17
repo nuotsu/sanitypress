@@ -3,6 +3,11 @@ import { cn } from '@/lib/utils'
 import ToCItem from './toc-item'
 import css from './toc.module.css'
 
+export type ToCHeadings = Array<{
+	style: string | null
+	text: string | null
+}> | null
+
 export default function ({
 	summary = 'Table of Contents',
 	headings,
@@ -10,10 +15,7 @@ export default function ({
 	...props
 }: {
 	summary?: string
-	headings: Array<{
-		style: string | null
-		text: string | null
-	}> | null
+	headings: ToCHeadings
 } & React.ComponentProps<'details'>) {
 	if (!headings?.length) return null
 

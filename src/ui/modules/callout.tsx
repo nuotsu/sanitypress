@@ -1,4 +1,5 @@
 import { PortableText } from 'next-sanity'
+import { cn } from '@/lib/utils'
 import type { Callout } from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
 import Eyebrow from '@/ui/eyebrow'
@@ -6,9 +7,15 @@ import Img from '@/ui/img'
 import { Module } from '.'
 import CustomHtml from './custom-html'
 
-export default function ({ eyebrow, intro = [], ctas, ...props }: Callout) {
+export default function ({
+	eyebrow,
+	intro = [],
+	ctas,
+	className,
+	...props
+}: Callout & React.ComponentProps<'section'>) {
 	return (
-		<Module className="section text-center" {...props}>
+		<Module className={cn('section text-center', className)} {...props}>
 			<header className="prose mx-auto max-w-3xl text-balance">
 				<Eyebrow value={eyebrow} />
 				<PortableText

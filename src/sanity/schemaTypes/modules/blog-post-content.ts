@@ -7,16 +7,12 @@ export default defineModule({
 	title: 'Blog post content',
 	type: 'object',
 	icon: EditIcon,
-	groups: [{ name: 'layout', default: true }],
+	groups: [{ name: 'sidebar', default: true }],
 	fields: [
 		defineField({
-			name: 'tableOfContents',
-			title: 'Table of contents (position)',
-			type: 'string',
-			options: {
-				list: ['left', 'right'],
-			},
-			group: 'layout',
+			name: 'sidebar',
+			type: 'sidebar',
+			group: 'sidebar',
 		}),
 	],
 	preview: {
