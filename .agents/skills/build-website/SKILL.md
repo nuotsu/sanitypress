@@ -58,21 +58,80 @@ Propose a direction derived from Steps 1–2 (business + intent), and confirm it
 ### Step 4 — Confirm pages & copy
 Propose the page list (tailored to the business + primary goal, with a slug for each) **and a copy outline for each page** — the modules it'll use and the headline/key messages — so the user approves the actual words before anything is published:
 
-> Here's the plan — **[Home, About, Services, Pricing, FAQ, Contact]** (Blog optional). For each, here's the structure and draft copy:
+> Here's the plan — **[Home, About, Services, Pricing, FAQ, Contact]**. For each, here's the structure and draft copy:
 > - **Home:** hero "[headline]" → services → stats → testimonial → CTA …
 > - **About:** …
 >
-> Look good, or want changes to any page or wording?
+> Do you also want a **blog**? Look good, or want changes to any page or wording?
 
-- Draft **genuine copy** in the chosen tone — never invent facts (prices, claims, testimonials, client names). Where a real detail is unknown, use a clearly-marked placeholder like `[ADD PRICING]` and list every such marker at the end.
+- **Ask explicitly about a blog.** Only build the blog system (see "Blog setup") if the user says yes — it pulls in extra documents and a global template.
+- Draft **genuine, on-brand copy** in the chosen tone — read like a real site, never lorem ipsum.
+- **Facts vs. demo content:** never fabricate *verifiable* facts — real prices, specific claims, named real clients, hard stats. Where one is needed and unknown, use a clearly-marked `[ADD PRICING]`-style placeholder and list every marker at the end. *Illustrative* content that any demo site needs (sample testimonials, team members, partner logos) is created as realistic, authentic-sounding placeholders per the "Content documents" policy — plausible names/titles/quotes, not "Lorem ipsum" or "Person 1".
 - Adjust the page set to what the business actually needs (e.g. drop Pricing for custom-quote lead-gen; add a Gallery for a visual brand).
-- Only after pages **and** copy are confirmed, proceed to build (Phases 2–5).
+- Only after pages **and** copy are confirmed, proceed to build (Build order → Phases 2–5).
+
+---
+
+## Build order & dependencies (follow this sequence)
+
+Documents reference each other, and **only published documents render** — references resolve with GROQ `->`, so a draft target shows as nothing. Build in dependency order so nothing renders empty or broken:
+
+1. **Content documents first** — generate the brand `logo` and create + publish it, plus the `person` / `quote` docs that list modules reference (and `blog.category` + author `person` if a blog was requested). See "Content documents".
+2. **Pages** — create every `page` document so each has an `_id` to link to. You can attach modules now, or add them in step 5.
+3. **Navigation** — create the header / footer / social `navigation` docs, referencing page `_id`s. See Phase 3.
+4. **Site (singleton)** — create the **single** `site` document referencing the navigation docs, `logo`, header `ctas[]`, and `copyright`. There must be exactly **one** `site` doc (queries use `[0]`).
+5. **Patch cross-references** — fill in any CTA/nav `link` that points to a page which didn't exist when its parent was created.
+6. **Publish everything** (Phase 5). Drafts don't appear on the frontend.
+
+Global CSS (Phase 2) can be created any time before publish.
+
+---
+
+## Content documents (create + publish FIRST)
+
+Four list-style modules render **nothing** unless their referenced documents exist **and are published**. Create and publish these before adding the module:
+
+| Module | References | Document type → required fields |
+|---|---|---|
+| `logo-list` | `logos[]` → | `logo`: `title`, `image.default` (also optional `image.light` / `image.dark`) |
+| `person-list` | `people[]` → | `person`: `name`, `title` (role), `image` |
+| `quote-list` | `quotes[]` → | `quote`: `quote` (Portable Text), `author.name`, optional `author.title` / `author.image` |
+| `form-module` | `form` → | `form`: `identifier`, `endpoint` — **see forms note below** |
+
+Reference shape inside the module array, e.g. `person-list`:
+```
+{ _type:'person-list', _key:'<k>',
+  people:[ { _type:'reference', _key:'<k>', _ref:'<personDocId>' }, … ] }
+```
+
+**Authentic-placeholder policy.** Auto-create these backing docs with **realistic, brand-appropriate** content — never lorem ipsum, never "Person 1" / "Company A". Plausible full names + job titles, believable testimonial quotes written in the brand tone, sensible partner/company names. Generate matching placeholder images (headshots for people, wordmark-style images for logos) with the MCP image tools. If a *verifiable* real detail is required (a real client's name, a real quote), use a flagged `[ADD …]` marker instead and list it at the end.
+
+**Logo (always generate one).** Every site needs a brand mark. Generate a fitting logo with the MCP image tools that matches the **brand from Phase 1** — use the chosen `--color-primary`/palette and the **heading font** (`--font-serif`) for a wordmark, or a simple geometric mark + wordmark, on a **transparent background**. Then create a `logo` document and wire it into `site.logo`:
+- `image.default` — the primary logo (required).
+- `image.light` — optional light/white version for dark backgrounds (header overlays, footer); generate it if the design uses dark sections.
+- `image.dark` — optional dark version for light backgrounds.
+
+Prefer a clean wordmark in the brand fonts/colors over a busy illustration. If the user provides a real logo asset, use it instead of generating one. The `logo` doc must be **published** for the header/footer to show it.
+
+**Forms note (content-only limitation).** A `form` document only stores an `identifier` + `endpoint`; the actual fields live in code/backend, so a working form **cannot** be built through content alone. **Default Contact to a `callout` (or `hero.split`) with a `mailto:` / `tel:` CTA.** Only use `form-module` if the user supplies a real submission `endpoint` URL.
 
 ---
 
 ## Phase 2 — CSS architecture
 
 SanityPress has **three** CSS layers. Use them in this order of preference. All CSS lives in `code`-typed fields — remember every code value is an object: `{ _type: 'code', language: 'css', code: '<the css>' }`.
+
+### Styling: deviate from the defaults to match the brand
+The template's stock styles are a **starting point, not a constraint**. Overriding or fully replacing them to better fit the brand direction from Phase 1 is **encouraged and expected** — a site that looks generically "SanityPress" is a worse result than one that looks like the business. Common things to restyle (with their real class hooks, so selectors match):
+- **Eyebrows** — `.eyebrow` (also `.technical`): change case, color, letter-spacing, or drop the uppercase/mono look entirely.
+- **CTAs / buttons** — `.action`, `.action-outline`, `.ghost`, `.link`, and the container `.cta-list`: restyle colors, radius, padding, borders, hover/active.
+- **Cards & items** — `card-list` renders each card as `article.prose` inside a `div.grid` (restyle the cards *and* the grid for bento/custom layouts); `quote-list` cards are `article.border-stroke.bg-background`; `stat-list` uses `dl > div > dt` (value `.h0`, suffix `.h3`) + `dd.prose`.
+
+Mechanics:
+- **Site-wide** restyle → put the overrides in the **Layer 1** global stylesheet (e.g. redefine `.action`, `.eyebrow`).
+- **One instance** → use the module's **Layer 3** `scopedCss` with `:scope` (e.g. `:scope .action { … }`).
+- Injected CSS lands after the head styles, so a selector matching a utility class wins by source order at equal specificity; if an override doesn't take, bump specificity (`:scope .action`, `:where(.eyebrow)`, etc.).
+- Still prefer **design tokens** over hardcoded hex, and keep it **light-mode only** (see Layer 3).
 
 ### Layer 1 — Global stylesheet (tokens, fonts, base type)
 There is **no `css` field on `global-module`.** Instead, create/find a `global-module` document with `path: "*"` and put a **`custom-html` module in its `before[]` array** holding the global CSS in `css.code`. It renders on every page.
@@ -117,7 +176,7 @@ Every module object carries an `attributes` object. Set `attributes.scopedCss` (
   attributes: {
     _type: 'module-attributes',
     scopedCss: { _type: 'code', language: 'css', code: `
-      :scope { background: [BG]; }
+      :scope { background: var(--color-foreground); color: var(--color-background); }
       :scope .grid { display:grid; grid-template-columns: 2fr 1fr 1fr; gap: 1rem; }
     ` }
   },
@@ -125,7 +184,23 @@ Every module object carries an `attributes` object. Set `attributes.scopedCss` (
 }
 ```
 
+**Use design tokens, not hardcoded hex** — `var(--color-primary)`, `var(--color-foreground)`, `var(--color-background)`, `var(--color-stroke)` — so per-module CSS stays on-brand and consistent. The template is **light-mode only** (no dark mode); don't add `prefers-color-scheme` logic.
+
 You can also set `attributes.uid` (string → becomes the element `id`, for deep links) and `attributes.hidden` (boolean).
+
+### Full-bleed background-image hero (common for the homepage)
+The lead hero (`hero.split` with an image) often reads best as a **full-width background image with the copy on top**, rather than the default side-by-side split. Its DOM is `<section class="section …"> > <figure>` (the image) `+ <header class="prose">` (eyebrow/copy/CTAs). Achieve the background treatment with `scopedCss` on that hero module:
+```
+:scope { max-width: initial; display: block; position: relative; padding-block: 8rem; }
+:scope > figure { position: absolute; inset: 0; margin: 0; z-index: 0; }
+:scope > figure img { width: 100%; height: 100%; object-fit: cover; }
+:scope > header { position: relative; z-index: 1; color: var(--color-background); }
+```
+Why each line:
+- `max-width: initial` removes the `.section` `max-w-7xl` cap so the section spans the **full container width** (edge-to-edge) — this is the key override.
+- `display: block` collapses the default `md:grid-cols-2` so the copy overlays the image instead of sitting beside it.
+- The absolute `figure` with `inset: 0` fills the section's padding box, so the image covers edge-to-edge while the `header` copy stays within `.section` padding.
+- Give the `header` a contrasting color (token-based) and/or add a scrim — e.g. `:scope::before { content:''; position:absolute; inset:0; background: color-mix(in oklab, var(--color-foreground) 45%, transparent); z-index:0; }` — so text stays legible over the image.
 
 ### Module-choice rules
 - **Never** create new module files or change schema. Compose from existing types only.
@@ -136,9 +211,44 @@ You can also set `attributes.uid` (string → becomes the element `id`, for deep
 
 ## Phase 3 — Site settings & navigation
 
-1. **`site`** (singleton, required): `title`, optional `logo`, `header`/`footer`/`social` references to `navigation` docs, top-level `ctas[]`, `copyright`.
-2. **`navigation`** docs for header and footer, then reference them from `site`. Nav `items[]` use `link` objects (see link shape below) or `link.list` / `megamenu`.
-3. Create these as drafts, then publish (Phase 5).
+Create `navigation` docs first (they reference pages), then the `site` singleton (it references the navigation docs).
+
+### Navigation docs
+A `navigation` doc has `title`, optional `blurb` (Portable Text, shown in footer), and `items[]`. Each item is one of:
+- **`link`** — a single link (the `link` object: `label`, `type:'internal'|'external'`, `internal` ref or `external` URL, optional `params`).
+- **`link.list`** — a dropdown / footer group: a parent `link` plus `links[]` (array of `link`s).
+- **`megamenu`** — a multi-column header menu: a parent `link` plus `items[]` of `link.list` (and/or `link`).
+
+Build **three** navigation docs and wire them from `site`:
+- **Header** (`site.header`): top-level `link`s, with `link.list`/`megamenu` for dropdowns.
+- **Footer** (`site.footer`): `link.list` groups (heading + links). Megamenus are ignored in the footer.
+- **Social** (`site.social`): plain `link`s with `external` URLs. The UI **auto-maps known domains to brand icons** (facebook, x/twitter, linkedin, github, instagram, youtube, tiktok, yelp); non-`link` items are ignored, so keep social items as flat `link`s.
+
+Header nav example:
+```
+{ _type:'navigation', title:'Header', items:[
+  { _type:'link', _key:'a', label:'About', type:'internal', internal:{ _type:'reference', _ref:'<aboutId>' } },
+  { _type:'link.list', _key:'b',
+    link:{ _type:'link', label:'Services', type:'internal', internal:{ _type:'reference', _ref:'<servicesId>' } },
+    links:[ { _type:'link', _key:'b1', label:'Pricing', type:'internal', internal:{ _type:'reference', _ref:'<pricingId>' } } ] }
+] }
+```
+Footer group example: same `link.list` shape. Social example: `{ _type:'link', _key:'s1', label:'Instagram', type:'external', external:'https://instagram.com/<handle>' }`.
+
+### Site singleton
+Exactly **one** `site` document:
+```
+{ _type:'site', title:'[BUSINESS NAME]',
+  logo:{ _type:'reference', _ref:'<logoDocId>' },         // a published, generated `logo` doc (see Content documents)
+  ogimage:{ _type:'image', asset:{ _type:'reference', _ref:'image-…' } },  // global social fallback
+  header:{ _type:'reference', _ref:'<headerNavId>' },
+  footer:{ _type:'reference', _ref:'<footerNavId>' },
+  social:{ _type:'reference', _ref:'<socialNavId>' },
+  ctas:[ { _type:'cta', _key:'c1', link:{ … }, theme:'action' } ],   // header CTA(s) — make the primary CTA `action`
+  copyright:[ /* Portable Text */ ] }
+```
+
+Create these as drafts, then publish (Phase 5).
 
 ---
 
@@ -173,24 +283,47 @@ For each page create a `page` document. **Required:** `title` and `metadata.slug
 | `stat-list` | Metrics / numbers | `eyebrow`, `intro`, `stats[]` (`value`, `suffix`, `content`) |
 | `step-list` | How-it-works / process | `intro`, `ctas[]`, `steps[]` (`content`, `ctas`), `enableSchema` |
 | `accordion-list` | FAQ | `intro`, `ctas[]`, `accordions[]` (`summary`, `content`, `open`), `exclusive`, `layout` |
-| `logo-list` | Logo wall / "as seen in" | `logos[]` (references to `logo` docs) |
-| `person-list` | Team / people | references to `person` docs |
-| `quote-list` | Testimonials | references to `quote` docs |
-| `form-module` | Contact / signup form | reference to a `form` doc |
+| `logo-list` | Logo wall / "as seen in" | `eyebrow`, `intro`, `logos[]` → **needs published `logo` docs** |
+| `person-list` | Team / people | `intro`, `people[]` → **needs published `person` docs**, `columns` |
+| `quote-list` | Testimonials | `eyebrow`, `intro`, `quotes[]` → **needs published `quote` docs**, `layout` |
+| `form-module` | Contact / signup form | `form` → **needs a `form` doc + real endpoint; otherwise use a mailto CTA** |
 | `breadcrumbs` | Breadcrumb nav | `crumbs[]` |
 | `custom-html` | Page CSS / bespoke HTML | `html` (code), `css` (code), `className` |
 | `search-module` | On-page search | — |
-| `blog-index`, `blog-post-list` | Blog listing pages | (only if Blog is included) |
+| `blog-index`, `blog-post-list` | Blog listing pages | auto-query published posts, no refs (only if Blog requested) |
 
-`blog-post-content` is **not** a page module — it lives only in a `global-module` before/after for the blog post template.
+Modules marked **needs published … docs** render empty without their backing documents — see "Content documents". `blog-post-content` is **not** a page module — it lives only in a `global-module` before/after as the blog post template.
 
 ### Suggested page → module recipes
-- **Home:** `hero.split` → `card-list` (services) → `stat-list` → `quote-list`/`logo-list` → `callout`.
+- **Home:** `hero.split` → `card-list` (services) → `stat-list` → `quote-list`/`logo-list` → `callout`. Consider making the lead hero a **full-bleed background image** (see Phase 2 → "Full-bleed background-image hero").
 - **About:** `hero.split` → `prose` → `person-list` → `stat-list` → `callout`.
 - **Destinations/Services:** `hero.split` → `card-list` (one card per item) → `callout`.
 - **Packages/Pricing:** `card-list` (pricing tiers via `scopedCss`) → `accordion-list` (FAQ) → `callout`.
 - **FAQ:** `hero.split` (short) → `accordion-list` → `callout`.
-- **Contact:** `hero.split` (short) → `form-module` (or `callout` with mailto CTA if no form doc).
+- **Contact:** `hero.split` (short) → `callout` with a `mailto:`/`tel:` CTA (default). Use `form-module` only if the user gave a real endpoint.
+
+### One H1 per page
+Each page should have **exactly one `h1`** — put it in the opening `hero.split`'s `content` (style `h1`). All later section modules lead with `h2`/`h3`. Use the `eyebrow` string fields (hero, card-list, callout, stat-list, step-list) for small uppercase section labels above the heading.
+
+### SEO & metadata (per page)
+- `metadata.title` ≤ 60 chars, `metadata.description` ≤ 160 chars.
+- The site **auto-generates an OG image** from the title, splitting on `|`/`-`/`—` into a headline + subhead — so format titles as **`"Main | Subtitle"`** (e.g. `"Pricing | [Business]"`). Only set `metadata.image` to override with a real asset.
+- `site.ogimage` is the global social fallback (set once on the `site` doc).
+- **Add a `404` page:** `page` with slug `404`, a short `prose`/`hero.split` message + a CTA home, and `metadata.noIndex: true` (keeps it out of the sitemap). Optionally a `search` page if you use `search-module`.
+
+---
+
+## Blog setup (only if the user said yes in Phase 1)
+
+Skip this entirely unless a blog was requested. A working blog needs these, in order:
+
+1. **`blog.category`** doc(s): `title` (slug auto-derives). At least one.
+2. **Author** — a published `person` doc (reuse the team docs or create one).
+3. **`blog.post`** doc(s): `title`, `content` (Portable Text — blocks, images w/ `alt`, code), `publishDate`, `categories[]` (refs to `blog.category`), `author` (ref to `person`), and `metadata` (`slug`, `title`, `description`, optional `image`). Posts live at `/blog/<slug>`.
+4. **Post template** — a `global-module` with `path: 'blog/'` whose `before[]` (or `after[]`) contains a **`blog-post-content`** module. This is what actually renders each post's title/byline/content; without it, blog post pages are blank. `blog-post-content` may carry a `sidebar` (position + `tableOfContents`/`callout`/`custom-html`).
+5. **Blog index** (optional) — a `page` with slug `blog` containing a `blog-index` module (or `blog-post-list`). These auto-query all published posts, so no references are needed.
+
+Publish categories + author **before** posts, and posts **before** the index renders them.
 
 ---
 
@@ -215,7 +348,10 @@ Styles: `normal`, `h1`–`h6`, `blockquote`. Bold/italic via `marks: ['strong']`
 ```
 `link` `params` (e.g. `#section` or `?x=1`) applies to internal links only.
 
-**Images:** by default, **generate placeholder imagery** with the MCP image tools (`generate_image`, then `transform_image` to fit) so every page looks complete out of the box — heroes, cards, team headshots, etc. Match the prompts to the brand direction from Phase 1. If the user supplies real assets, use those instead. Reference an asset as `{ _type:'image', asset:{ _type:'reference', _ref:'image-…' }, alt:'…' }`, and always set descriptive `alt`.
+**Images:** by default, **generate placeholder imagery** with the MCP image tools (`generate_image`, then `transform_image` to fit) so every page looks complete out of the box — heroes, cards, team headshots, logos. Match the prompts to the brand direction from Phase 1. If the user supplies real assets, use those instead. Reference shape: `{ _type:'image', asset:{ _type:'reference', _ref:'image-…' }, alt:'…' }` — **`alt` lives on the image object**, not the asset.
+- **Hero image** (`hero.split.image`): set `loading:'eager'` and a meaningful `alt`; sub-fields `onRight` (desktop side) / `afterContent` (mobile order) control placement. Only the first above-the-fold hero should be `eager`.
+- **Prose / content images:** meaningful `alt` (+ optional `figcaption`); these stay lazy.
+- **Decorative images** (card `image`/`icon`): set `alt:''`.
 
 **`_key` on every array member.** Each item in any array (`modules`, `cards`, `ctas`, `stats`, `accordions`, `children`, `before`…) needs a unique `_key`.
 
@@ -226,7 +362,7 @@ Styles: `normal`, `h1`–`h6`, `blockquote`. Bold/italic via `marks: ['strong']`
 ## Phase 5 — Publish
 
 1. `create_documents` produces **drafts** — they are not live until published.
-2. After creating + linking everything, call `publish_documents` for every doc: `site`, `navigation`(s), `global-module`, and each `page`.
+2. After creating + linking everything, call `publish_documents` for every doc: the content docs (`logo`/`person`/`quote`, and blog docs if any), `navigation`(s), `site`, `global-module`(s), and each `page`. **Publish referenced docs before (or with) the docs that point to them** — an unpublished target renders as nothing.
 3. **Exceptions:**
    - The pre-existing `index` page: `patch_documents` then `publish_documents` (don't recreate).
    - **Do not publish a page whose `modules` array is empty** — leave it as a draft and tell the user.
@@ -236,12 +372,19 @@ Styles: `normal`, `h1`–`h6`, `blockquote`. Bold/italic via `marks: ['strong']`
 
 ## Verification checklist
 - [ ] `get_schema` was read before any write; all `_type`s and field names match the live schema.
-- [ ] Brand direction (palette + fonts) was confirmed with the user, not invented.
+- [ ] Discovery ran in order (business → intent/CTA → brand → pages+copy); brand and page list were confirmed, not invented.
+- [ ] Build order followed: content docs → pages → navigation → `site` → patch refs → publish. Exactly **one** `site` doc.
+- [ ] Every `logo-list`/`person-list`/`quote-list`/`form-module` has its backing docs **created and published** — no list module renders empty.
+- [ ] Placeholder content is authentic (no lorem ipsum / "Person 1"); verifiable unknowns flagged with `[ADD …]` and listed at the end.
+- [ ] Contact uses a `mailto:`/`tel:` CTA (or a `form-module` only with a real endpoint).
 - [ ] Global CSS lives in a `custom-html` inside a `global-module` (`path:"*"`) `before[]` — not a non-existent `css` field.
-- [ ] All `html`/`css`/`scopedCss` values are `code` objects (`{_type:'code',language,code}`), never raw strings.
-- [ ] `scopedCss` is under each module's `attributes`, using `:scope`.
-- [ ] Every page has `title` + `metadata.slug.current`; home uses `index` (patched, not recreated).
-- [ ] No new module/schema/code files were created.
-- [ ] Placeholder images were generated (brand-matched) for heroes/cards/people unless the user supplied real assets; all images have `alt`.
-- [ ] Every array member has a unique `_key`.
+- [ ] All `html`/`css`/`scopedCss` values are `code` objects (`{_type:'code',language,code}`), never raw strings; `scopedCss` is under `attributes`, uses `:scope` and design tokens.
+- [ ] Each page has exactly one `h1` (in the hero); sections use `h2`/`h3`. Every page has `title` + `metadata.slug.current`; home uses `index` (patched, not recreated).
+- [ ] Stock styles were customized to the brand where it helps (eyebrows/CTAs/cards not left generically "SanityPress"); any full-bleed hero renders edge-to-edge with legible copy.
+- [ ] A brand `logo` was generated (matching palette + heading font) or supplied, published, and referenced from `site.logo`.
+- [ ] Titles formatted `"Main | Subtitle"`; a `404` page exists with `noIndex: true`; `site.ogimage` set.
+- [ ] Hero image is `eager` with `alt`; content images have `alt`; decorative images use `alt:''`.
+- [ ] If a blog was requested: categories + author + posts + a `blog/` `global-module` with `blog-post-content` all exist and are published.
+- [ ] No new module/schema/code files were created. Every array member has a unique `_key`.
 - [ ] All non-empty docs published; empty-module pages left as drafts and reported.
+- [ ] **Rendered site checked** — load the frontend (dev server or deployed URL): every page renders, nav links resolve, images load, and no module is visibly empty.
