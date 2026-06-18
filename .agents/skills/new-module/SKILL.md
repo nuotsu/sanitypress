@@ -1,5 +1,6 @@
-Create a new Sanity module named $ARGUMENTS following the established pattern for this project. Work through each step in order.
-
+---
+name: new-module
+description: Create a new Sanity module named $ARGUMENTS following the established pattern for this project. Work through each step in order.
 ---
 
 ## Before you begin — confirm fields

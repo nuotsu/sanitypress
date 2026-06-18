@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "build-website": {
+      "source": "sanitypress/skills",
+      "sourceType": "github",
+      "skillPath": "skills/build-website/SKILL.md",
+      "computedHash": "0a3bdc945481b53c7c604e7cf3e725d59fb4230823a15b00b6d1b00f6ed5cab9"
+    },
+    "new-module": {
+      "source": "sanitypress/skills",
+      "sourceType": "github",
+      "skillPath": "skills/new-module/SKILL.md",
+      "computedHash": "604a246e048cbcc6d22ea48bdc9841c533a358cbaf0042616e21c75cb3aba950"
+    }
+  }
+}
