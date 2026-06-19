@@ -21,6 +21,7 @@ import callout from './modules/callout'
 import cardList from './modules/card-list'
 import customHtml from './modules/custom-html'
 import formModule from './modules/form-module'
+import heroCover from './modules/hero.cover'
 import heroSplit from './modules/hero.split'
 import logoList from './modules/logo-list'
 import personList from './modules/person-list'
@@ -74,6 +75,7 @@ export const schema: SchemaPluginOptions = {
 		cardList,
 		customHtml,
 		formModule,
+		heroCover,
 		heroSplit,
 		logoList,
 		personList,

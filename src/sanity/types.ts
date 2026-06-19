@@ -41,6 +41,14 @@ export type Icon = {
 	_type: 'image'
 }
 
+export type Mobile = {
+	asset?: SanityImageAssetReference
+	media?: unknown // Unable to locate the referenced type "mobile.media" in schema
+	hotspot?: SanityImageHotspot
+	crop?: SanityImageCrop
+	_type: 'image'
+}
+
 export type StepList = {
 	_type: 'step-list'
 	attributes?: ModuleAttributes
@@ -403,6 +411,61 @@ export type HeroSplit = {
 	}
 }
 
+export type HeroCover = {
+	_type: 'hero.cover'
+	attributes?: ModuleAttributes
+	eyebrow?: string
+	content?: Array<
+		| {
+				children?: Array<{
+					marks?: Array<string>
+					text?: string
+					_type: 'span'
+					_key: string
+				}>
+				style?:
+					| 'normal'
+					| 'h1'
+					| 'h2'
+					| 'h3'
+					| 'h4'
+					| 'h5'
+					| 'h6'
+					| 'blockquote'
+				listItem?: 'bullet' | 'number'
+				markDefs?: Array<{
+					href?: string
+					_type: 'link'
+					_key: string
+				}>
+				level?: number
+				_type: 'block'
+				_key: string
+		  }
+		| ({
+				_key: string
+		  } & CustomHtml)
+	>
+	ctas?: Array<
+		{
+			_key: string
+		} & Cta
+	>
+	image?: {
+		asset?: SanityImageAssetReference
+		media?: unknown
+		hotspot?: SanityImageHotspot
+		crop?: SanityImageCrop
+		mobile?: Mobile
+		opacity?: number
+		alt?: string
+		loading?: 'lazy' | 'eager'
+		_type: 'image'
+	}
+	verticalAlign?: 'top' | 'center' | 'bottom'
+	textAlign?: 'left' | 'center' | 'right'
+}
+
 export type FormReference = {
 	_ref: string
 	_type: 'reference'
@@ -703,17 +766,17 @@ export type Sidebar = {
 	_type: 'sidebar'
 	position?: 'left' | 'right'
 	modules?: Array<
-		| {
-				summary?: string
-				_type: 'tableOfContents'
-				_key: string
-		  }
 		| ({
 				_key: string
 		  } & Callout)
 		| ({
 				_key: string
 		  } & CustomHtml)
+		| {
+				summary?: string
+				_type: 'tableOfContents'
+				_key: string
+		  }
 	>
 }
 
@@ -1032,6 +1095,9 @@ export type GlobalModule = {
 		  } & FormModule)
 		| ({
 				_key: string
+		  } & HeroCover)
+		| ({
+				_key: string
 		  } & HeroSplit)
 		| ({
 				_key: string
@@ -1083,6 +1149,9 @@ export type GlobalModule = {
 		| ({
 				_key: string
 		  } & FormModule)
+		| ({
+				_key: string
+		  } & HeroCover)
 		| ({
 				_key: string
 		  } & HeroSplit)
@@ -1155,6 +1224,9 @@ export type Page = {
 		| ({
 				_key: string
 		  } & FormModule)
+		| ({
+				_key: string
+		  } & HeroCover)
 		| ({
 				_key: string
 		  } & HeroSplit)
@@ -1552,6 +1624,7 @@ export type AllSanitySchemaTypes =
 	| SanityImageAssetReference
 	| CardImage
 	| Icon
+	| Mobile
 	| StepList
 	| StatList
 	| SearchModule
@@ -1563,6 +1636,7 @@ export type AllSanitySchemaTypes =
 	| LogoReference
 	| LogoList
 	| HeroSplit
+	| HeroCover
 	| FormReference
 	| FormModule
 	| CustomHtml
@@ -2110,6 +2184,83 @@ export type PAGE_QUERY_RESULT = {
 					endpoint?: string
 				} | null
 				ctas: null
+		  }
+		| {
+				_key: string
+				_type: 'hero.cover'
+				attributes?: ModuleAttributes
+				eyebrow?: string
+				content?: Array<
+					| ({
+							_key: string
+					  } & CustomHtml)
+					| {
+							children?: Array<{
+								marks?: Array<string>
+								text?: string
+								_type: 'span'
+								_key: string
+							}>
+							style?:
+								| 'blockquote'
+								| 'h1'
+								| 'h2'
+								| 'h3'
+								| 'h4'
+								| 'h5'
+								| 'h6'
+								| 'normal'
+							listItem?: 'bullet' | 'number'
+							markDefs?: Array<{
+								href?: string
+								_type: 'link'
+								_key: string
+							}>
+							level?: number
+							_type: 'block'
+							_key: string
+					  }
+				>
+				ctas: Array<{
+					_key: string
+					_type: 'cta'
+					link:
+						| {
+								_type: 'link'
+								label?: string
+								type?: 'external' | 'internal'
+								internal?: PageReference
+								external?: string
+								params?: string
+						  }
+						| {
+								_type: 'link'
+								label?: string
+								type?: 'external' | 'internal'
+								internal: {
+									_type: 'page'
+									title: string | null
+									slug: string | '/' | null
+								} | null
+								external?: string
+								params?: string
+						  }
+						| null
+					theme?: 'action-outline' | 'action' | 'ghost' | 'link'
+				}> | null
+				image?: {
+					asset?: SanityImageAssetReference
+					media?: unknown
+					hotspot?: SanityImageHotspot
+					crop?: SanityImageCrop
+					mobile?: Mobile
+					opacity?: number
+					alt?: string
+					loading?: 'eager' | 'lazy'
+					_type: 'image'
+				}
+				verticalAlign?: 'bottom' | 'center' | 'top'
+				textAlign?: 'center' | 'left' | 'right'
 		  }
 		| {
 				_key: string
@@ -3352,6 +3503,83 @@ export type BLOG_POST_QUERY_RESULT = {
 		  }
 		| {
 				_key: string
+				_type: 'hero.cover'
+				attributes?: ModuleAttributes
+				eyebrow?: string
+				content?: Array<
+					| ({
+							_key: string
+					  } & CustomHtml)
+					| {
+							children?: Array<{
+								marks?: Array<string>
+								text?: string
+								_type: 'span'
+								_key: string
+							}>
+							style?:
+								| 'blockquote'
+								| 'h1'
+								| 'h2'
+								| 'h3'
+								| 'h4'
+								| 'h5'
+								| 'h6'
+								| 'normal'
+							listItem?: 'bullet' | 'number'
+							markDefs?: Array<{
+								href?: string
+								_type: 'link'
+								_key: string
+							}>
+							level?: number
+							_type: 'block'
+							_key: string
+					  }
+				>
+				ctas: Array<{
+					_key: string
+					_type: 'cta'
+					link:
+						| {
+								_type: 'link'
+								label?: string
+								type?: 'external' | 'internal'
+								internal?: PageReference
+								external?: string
+								params?: string
+						  }
+						| {
+								_type: 'link'
+								label?: string
+								type?: 'external' | 'internal'
+								internal: {
+									_type: 'page'
+									title: string | null
+									slug: string | '/' | null
+								} | null
+								external?: string
+								params?: string
+						  }
+						| null
+					theme?: 'action-outline' | 'action' | 'ghost' | 'link'
+				}> | null
+				image?: {
+					asset?: SanityImageAssetReference
+					media?: unknown
+					hotspot?: SanityImageHotspot
+					crop?: SanityImageCrop
+					mobile?: Mobile
+					opacity?: number
+					alt?: string
+					loading?: 'eager' | 'lazy'
+					_type: 'image'
+				}
+				verticalAlign?: 'bottom' | 'center' | 'top'
+				textAlign?: 'center' | 'left' | 'right'
+		  }
+		| {
+				_key: string
 				_type: 'hero.split'
 				attributes?: ModuleAttributes
 				eyebrow?: string
@@ -4492,6 +4720,83 @@ export type NOT_FOUND_QUERY_RESULT = {
 					endpoint?: string
 				} | null
 				ctas: null
+		  }
+		| {
+				_key: string
+				_type: 'hero.cover'
+				attributes?: ModuleAttributes
+				eyebrow?: string
+				content?: Array<
+					| ({
+							_key: string
+					  } & CustomHtml)
+					| {
+							children?: Array<{
+								marks?: Array<string>
+								text?: string
+								_type: 'span'
+								_key: string
+							}>
+							style?:
+								| 'blockquote'
+								| 'h1'
+								| 'h2'
+								| 'h3'
+								| 'h4'
+								| 'h5'
+								| 'h6'
+								| 'normal'
+							listItem?: 'bullet' | 'number'
+							markDefs?: Array<{
+								href?: string
+								_type: 'link'
+								_key: string
+							}>
+							level?: number
+							_type: 'block'
+							_key: string
+					  }
+				>
+				ctas: Array<{
+					_key: string
+					_type: 'cta'
+					link:
+						| {
+								_type: 'link'
+								label?: string
+								type?: 'external' | 'internal'
+								internal?: PageReference
+								external?: string
+								params?: string
+						  }
+						| {
+								_type: 'link'
+								label?: string
+								type?: 'external' | 'internal'
+								internal: {
+									_type: 'page'
+									title: string | null
+									slug: string | '/' | null
+								} | null
+								external?: string
+								params?: string
+						  }
+						| null
+					theme?: 'action-outline' | 'action' | 'ghost' | 'link'
+				}> | null
+				image?: {
+					asset?: SanityImageAssetReference
+					media?: unknown
+					hotspot?: SanityImageHotspot
+					crop?: SanityImageCrop
+					mobile?: Mobile
+					opacity?: number
+					alt?: string
+					loading?: 'eager' | 'lazy'
+					_type: 'image'
+				}
+				verticalAlign?: 'bottom' | 'center' | 'top'
+				textAlign?: 'center' | 'left' | 'right'
 		  }
 		| {
 				_key: string
