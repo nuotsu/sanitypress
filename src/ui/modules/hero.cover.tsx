@@ -23,16 +23,16 @@ export default function ({
 	return (
 		<Module
 			className={cn(
-				'relative grid min-h-[60svh]',
+				'relative flex min-h-[60svh] flex-col',
 				{
-					'items-start': verticalAlign === 'top',
-					'items-center': verticalAlign === 'center',
-					'items-end': verticalAlign === 'bottom',
+					'justify-start': verticalAlign === 'top',
+					'justify-center': verticalAlign === 'center',
+					'justify-end': verticalAlign === 'bottom',
 				},
 				{
-					'justify-start text-left': textAlign === 'left',
-					'justify-center text-center': textAlign === 'center',
-					'justify-end text-right': textAlign === 'right',
+					'items-start text-left': textAlign === 'left',
+					'items-center text-center': textAlign === 'center',
+					'items-end text-right': textAlign === 'right',
 				},
 			)}
 			{...props}
