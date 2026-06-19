@@ -149,8 +149,10 @@ Adjust frontend styles to your liking, edit or add new schema and modules, etc.
   - OR as `featured: true` on blog.post
 - Modules
   - Announcement bar
+  - Image gallery
   - Tabbed content
   - Tier list
+  - Sticky navigation
 
 ## Not included
 
