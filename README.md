@@ -148,9 +148,10 @@ Adjust frontend styles to your liking, edit or add new schema and modules, etc.
   - reference to blog.post on blog-index, blog-post-list
   - OR as `featured: true` on blog.post
 - Modules
-  - Announcement bar?
-- rename `global-module` to `module.global`?
+  - Announcement bar
+  - Tabbed content
+  - Tier list
 
-## \*Not included
+## Not included
 
 - Internationalization (i18n) and multi-lingual support
