@@ -68,8 +68,8 @@ export default defineModule({
 			stats: 'stats',
 		},
 		prepare: ({ intro, stats }) => ({
-			title: getBlockText(intro) || count(stats, 'stat'),
-			subtitle: 'Stat list',
+			title: getBlockText(intro),
+			subtitle: `Stat list (${count(stats, 'stat')})`,
 		}),
 	},
 })

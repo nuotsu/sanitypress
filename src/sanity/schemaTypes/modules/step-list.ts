@@ -73,8 +73,8 @@ export default defineModule({
 			steps: 'steps',
 		},
 		prepare: ({ intro, steps }) => ({
-			title: getBlockText(intro) || count(steps, 'step'),
-			subtitle: 'Step list',
+			title: getBlockText(intro),
+			subtitle: `Step list (${count(steps, 'step')})`,
 		}),
 	},
 })

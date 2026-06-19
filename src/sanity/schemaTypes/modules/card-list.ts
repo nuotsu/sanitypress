@@ -132,8 +132,8 @@ export default defineModule({
 			cards: 'cards',
 		},
 		prepare: ({ intro, cards }) => ({
-			title: getBlockText(intro) || count(cards, 'card'),
-			subtitle: 'Card list',
+			title: getBlockText(intro),
+			subtitle: `Card list (${count(cards, 'card')})`,
 		}),
 	},
 })

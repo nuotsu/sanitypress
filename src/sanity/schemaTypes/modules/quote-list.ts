@@ -1,6 +1,6 @@
 import { defineField } from 'sanity'
 import { FeedbackIcon } from '@sanity/icons'
-import { getBlockText } from '@/lib/utils'
+import { count, getBlockText } from '@/lib/utils'
 import defineModule from '@/sanity/schemaTypes/fragments/define-module'
 
 export default defineModule({
@@ -52,10 +52,11 @@ export default defineModule({
 	preview: {
 		select: {
 			intro: 'intro',
+			quotes: 'quotes',
 		},
-		prepare: ({ intro }) => ({
+		prepare: ({ intro, quotes }) => ({
 			title: getBlockText(intro),
-			subtitle: 'Quote list',
+			subtitle: `Quote list (${count(quotes, 'quote')})`,
 		}),
 	},
 })

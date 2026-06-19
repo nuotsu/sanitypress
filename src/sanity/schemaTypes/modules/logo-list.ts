@@ -60,8 +60,8 @@ export default defineModule({
 			logos: 'logos',
 		},
 		prepare: ({ intro, logos }) => ({
-			title: getBlockText(intro) || count(logos, 'logo'),
-			subtitle: 'Logo list',
+			title: getBlockText(intro),
+			subtitle: `Logo list (${count(logos, 'logo')})`,
 		}),
 	},
 })

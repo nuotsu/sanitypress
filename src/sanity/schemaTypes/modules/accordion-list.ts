@@ -1,6 +1,6 @@
 import { defineArrayMember, defineField } from 'sanity'
 import { TfiLayoutAccordionMerged } from 'react-icons/tfi'
-import { getBlockText } from '@/lib/utils'
+import { count, getBlockText } from '@/lib/utils'
 import defineModule from '@/sanity/schemaTypes/fragments/define-module'
 
 export default defineModule({
@@ -88,10 +88,11 @@ export default defineModule({
 	preview: {
 		select: {
 			intro: 'intro',
+			accordions: 'accordions',
 		},
-		prepare: ({ intro }) => ({
+		prepare: ({ intro, accordions }) => ({
 			title: getBlockText(intro),
-			subtitle: 'Accordion list',
+			subtitle: `Accordion list (${count(accordions, 'accordion')})`,
 		}),
 	},
 })
