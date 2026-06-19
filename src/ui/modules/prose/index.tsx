@@ -19,7 +19,7 @@ export default function ({
 		<Module
 			className={cn(
 				'section',
-				sidebar && 'flex gap-4 max-md:flex-col md:items-start',
+				sidebar && 'gap-lh flex max-md:flex-col md:items-start',
 			)}
 			{...props}
 		>

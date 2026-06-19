@@ -64,12 +64,27 @@ export const GLOBAL_MODULE_PATH_QUERY = groq`
 `
 
 // @sanity-typegen-ignore
+const SIDEBAR_QUERY = groq`
+	...,
+	modules[]{
+		...,
+		_type == 'callout' => {
+			ctas[]{
+				...,
+				link{ ${LINK_QUERY} }
+			}
+		}
+	}
+`
+
+// @sanity-typegen-ignore
 export const MODULES_QUERY = groq`
 	...,
 	ctas[]{
 		...,
 		link{ ${LINK_QUERY} }
 	},
+	sidebar{ ${SIDEBAR_QUERY} },
 	_type == 'form-module' => {
 		form->
 	},
