@@ -30,7 +30,7 @@ export default ({ of = [] }: { of?: Array<{ type: string }> } = {}) =>
 				views: [
 					{
 						name: 'grid',
-						previewImageUrl: (module) => `/module-thumbnails/${module}.png`,
+						previewImageUrl: (module) => `/module-thumbnails/${module}.webp`,
 					},
 					{ name: 'list' },
 				],
