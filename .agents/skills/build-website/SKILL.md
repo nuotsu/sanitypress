@@ -189,7 +189,9 @@ Every module object carries an `attributes` object. Set `attributes.scopedCss` (
 You can also set `attributes.uid` (string → becomes the element `id`, for deep links) and `attributes.hidden` (boolean).
 
 ### Full-bleed background-image hero (common for the homepage)
-The lead hero (`hero.split` with an image) often reads best as a **full-width background image with the copy on top**, rather than the default side-by-side split. Its DOM is `<section class="section …"> > <figure>` (the image) `+ <header class="prose">` (eyebrow/copy/CTAs). Achieve the background treatment with `scopedCss` on that hero module:
+**Prefer the dedicated `hero.cover` module** for this — it's purpose-built for a full-bleed background image with overlaid copy, so it needs **no CSS hacks**. Set its `image` (with optional `image.mobile` portrait crop and `image.opacity` to dim), `eyebrow`/`content`/`ctas[]`, and use the `verticalAlign` (top/center/bottom) + `textAlign` (left/center/right) fields to place the copy. The component renders the image full-bleed behind the copy and **auto-switches text to the background color when `image.opacity > 0.5`** for legibility — so setting `opacity` (e.g. `0.5`) doubles as a built-in scrim; no manual overlay needed.
+
+**Fallback — `hero.split` + `scopedCss`** (only if you need the split layout's other fields, or you're editing an existing `hero.split`): a `hero.split` with an image can be coerced into the same full-width background treatment. Its DOM is `<section class="section …"> > <figure>` (the image) `+ <header class="prose">` (eyebrow/copy/CTAs). Achieve the background treatment with `scopedCss` on that hero module:
 ```
 :scope { max-width: initial; display: block; position: relative; padding-block: 8rem; }
 :scope > figure { position: absolute; inset: 0; margin: 0; z-index: 0; }
@@ -276,6 +278,7 @@ For each page create a `page` document. **Required:** `title` and `metadata.slug
 ### Available module `_type`s (page `modules[]`)
 | `_type` | Use for | Key content fields |
 |---|---|---|
+| `hero.cover` | Full-bleed cover hero (homepage / landing page lead) | `eyebrow`, `content` (blocks), `ctas[]`, `image` (`opacity`/`mobile`/`loading`/`alt`), `verticalAlign`, `textAlign` |
 | `hero.split` | Page hero w/ image | `eyebrow`, `content` (blocks), `ctas[]`, `image` |
 | `prose` | Rich text / article body | `content` (blocks, images, code), `sidebar` |
 | `callout` | Highlighted CTA banner | `eyebrow`, `intro` (blocks), `ctas[]` |
@@ -295,7 +298,7 @@ For each page create a `page` document. **Required:** `title` and `metadata.slug
 Modules marked **needs published … docs** render empty without their backing documents — see "Content documents". `blog-post-content` is **not** a page module — it lives only in a `global-module` before/after as the blog post template.
 
 ### Suggested page → module recipes
-- **Home:** `hero.split` → `card-list` (services) → `stat-list` → `quote-list`/`logo-list` → `callout`. Consider making the lead hero a **full-bleed background image** (see Phase 2 → "Full-bleed background-image hero").
+- **Home:** `hero.cover` (full-bleed lead) → `card-list` (services) → `stat-list` → `quote-list`/`logo-list` → `callout`. `hero.cover` gives the homepage a full-bleed background-image hero natively (see Phase 2 → "Full-bleed background-image hero").
 - **About:** `hero.split` → `prose` → `person-list` → `stat-list` → `callout`.
 - **Destinations/Services:** `hero.split` → `card-list` (one card per item) → `callout`.
 - **Packages/Pricing:** `card-list` (pricing tiers via `scopedCss`) → `accordion-list` (FAQ) → `callout`.
@@ -303,7 +306,7 @@ Modules marked **needs published … docs** render empty without their backing d
 - **Contact:** `hero.split` (short) → `callout` with a `mailto:`/`tel:` CTA (default). Use `form-module` only if the user gave a real endpoint.
 
 ### One H1 per page
-Each page should have **exactly one `h1`** — put it in the opening `hero.split`'s `content` (style `h1`). All later section modules lead with `h2`/`h3`. Use the `eyebrow` string fields (hero, card-list, callout, stat-list, step-list) for small uppercase section labels above the heading.
+Each page should have **exactly one `h1`** — put it in the opening hero's `content` (style `h1`), whether that's a `hero.cover` (homepage/landing leads) or a `hero.split`. All later section modules lead with `h2`/`h3`. Use the `eyebrow` string fields (hero, card-list, callout, stat-list, step-list) for small uppercase section labels above the heading.
 
 ### SEO & metadata (per page)
 - `metadata.title` ≤ 60 chars, `metadata.description` ≤ 160 chars.
@@ -350,6 +353,7 @@ Styles: `normal`, `h1`–`h6`, `blockquote`. Bold/italic via `marks: ['strong']`
 
 **Images:** by default, **generate placeholder imagery** with the MCP image tools (`generate_image`, then `transform_image` to fit) so every page looks complete out of the box — heroes, cards, team headshots, logos. Match the prompts to the brand direction from Phase 1. If the user supplies real assets, use those instead. Reference shape: `{ _type:'image', asset:{ _type:'reference', _ref:'image-…' }, alt:'…' }` — **`alt` lives on the image object**, not the asset.
 - **Hero image** (`hero.split.image`): set `loading:'eager'` and a meaningful `alt`; sub-fields `onRight` (desktop side) / `afterContent` (mobile order) control placement. Only the first above-the-fold hero should be `eager`.
+- **Cover hero image** (`hero.cover.image`): same `loading:'eager'` + meaningful `alt` for the lead hero; add an optional `image.mobile` (portrait crop for small screens) and set `image.opacity` (e.g. `0.5`) to dim the background for text contrast.
 - **Prose / content images:** meaningful `alt` (+ optional `figcaption`); these stay lazy.
 - **Decorative images** (card `image`/`icon`): set `alt:''`.
 
