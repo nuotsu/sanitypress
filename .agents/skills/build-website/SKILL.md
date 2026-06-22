@@ -126,11 +126,14 @@ The template's stock styles are a **starting point, not a constraint**. Overridi
 - **Eyebrows** — `.eyebrow` (also `.technical`): change case, color, letter-spacing, or drop the uppercase/mono look entirely.
 - **CTAs / buttons** — `.action`, `.action-outline`, `.ghost`, `.link`, and the container `.cta-list`: restyle colors, radius, padding, borders, hover/active.
 - **Cards & items** — `card-list` renders each card as `article.prose` inside a `div.grid` (restyle the cards *and* the grid for bento/custom layouts); `quote-list` cards are `article.border-stroke.bg-background`; `stat-list` uses `dl > div > dt` (value `.h0`, suffix `.h3`) + `dd.prose`.
+- **Step items** — `step-list` (`section[data-module="step-list"]`) is an `ol.grid` of `li.gap-ch`, each led by a numbered badge `span.h3.bg-foreground.text-background.size-lh` (digit drawn via `content: counter(step)`) with the body in `div.prose`. Restyle the badge shape/color/size and the step rhythm to the brand.
+- **Accordion items** — `accordion-list` renders native `details.accordion.border-stroke` rows (`not-last:border-b`) with a `summary.font-bold` trigger + chevron `svg` (the `.accordion` utility rotates it when open) and a `div.prose` body. Restyle the divider/border, summary type, and chevron rather than leaving the default rows.
 
 Mechanics:
 - **Site-wide** restyle → put the overrides in the **Layer 1** global stylesheet (e.g. redefine `.action`, `.eyebrow`).
 - **One instance** → use the module's **Layer 3** `scopedCss` with `:scope` (e.g. `:scope .action { … }`).
 - Injected CSS lands after the head styles, so a selector matching a utility class wins by source order at equal specificity; if an override doesn't take, bump specificity (`:scope .action`, `:where(.eyebrow)`, etc.).
+- Every module root also carries a stable `[data-module="<type>"]` attribute (e.g. `section[data-module="card-list"]`) — prefer it as a type-targeted hook for Layer 1 global overrides, since it won't break if a Tailwind utility class changes.
 - Still prefer **design tokens** over hardcoded hex, and keep it **light-mode only** (see Layer 3).
 
 ### Layer 1 — Global stylesheet (tokens, fonts, base type)
@@ -295,6 +298,8 @@ For each page create a `page` document. **Required:** `title` and `metadata.slug
 | `search-module` | On-page search | — |
 | `blog-index`, `blog-post-list` | Blog listing pages | auto-query published posts, no refs (only if Blog requested) |
 
+**Restyle the repeating items to the brand.** `eyebrow`s, `cta` actions, and the items in `card-list` / `stat-list` / `step-list` / `accordion-list` / `quote-list` are expected to be reskinned via Layer 1 / Layer 3 CSS (see Phase 2 → "deviate from the defaults"), not left at their default look.
+
 Modules marked **needs published … docs** render empty without their backing documents — see "Content documents". `blog-post-content` is **not** a page module — it lives only in a `global-module` before/after as the blog post template.
 
 ### Suggested page → module recipes
@@ -384,7 +389,7 @@ Styles: `normal`, `h1`–`h6`, `blockquote`. Bold/italic via `marks: ['strong']`
 - [ ] Global CSS lives in a `custom-html` inside a `global-module` (`path:"*"`) `before[]` — not a non-existent `css` field.
 - [ ] All `html`/`css`/`scopedCss` values are `code` objects (`{_type:'code',language,code}`), never raw strings; `scopedCss` is under `attributes`, uses `:scope` and design tokens.
 - [ ] Each page has exactly one `h1` (in the hero); sections use `h2`/`h3`. Every page has `title` + `metadata.slug.current`; home uses `index` (patched, not recreated).
-- [ ] Stock styles were customized to the brand where it helps (eyebrows/CTAs/cards not left generically "SanityPress"); any full-bleed hero renders edge-to-edge with legible copy.
+- [ ] Stock styles were **deviated from** to match the brand — eyebrows, CTAs, and `card`/`stat`/`step`/`accordion`/`quote` items are reskinned, not left generically "SanityPress"; any full-bleed hero renders edge-to-edge with legible copy.
 - [ ] A brand `logo` was generated (matching palette + heading font) or supplied, published, and referenced from `site.logo`.
 - [ ] Titles formatted `"Main | Subtitle"`; a `404` page exists with `noIndex: true`; `site.ogimage` set.
 - [ ] Hero image is `eager` with `alt`; content images have `alt`; decorative images use `alt:''`.
