@@ -29,10 +29,10 @@ export default function ({
 			{modules?.map((module) => {
 				switch (module._type) {
 					case 'callout':
-						return <Callout {...module} className="p-0" />
+						return <Callout {...module} className="p-0" key={module._key} />
 
 					case 'custom-html':
-						return <CustomHtml {...module} />
+						return <CustomHtml {...module} key={module._key} />
 
 					case 'tableOfContents':
 						return (
@@ -40,6 +40,7 @@ export default function ({
 								summary="On this page"
 								headings={headings}
 								open
+								key={module._key}
 							/>
 						)
 

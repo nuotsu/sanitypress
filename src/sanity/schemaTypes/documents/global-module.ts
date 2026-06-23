@@ -1,6 +1,6 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { InsertAboveIcon, InsertBelowIcon } from '@sanity/icons'
-import { VscRegex } from 'react-icons/vsc'
+import { VscSymbolField } from 'react-icons/vsc'
 import { count } from '@/lib/utils'
 import modules from '../fragments/modules'
 
@@ -8,7 +8,7 @@ export default defineType({
 	name: 'global-module',
 	title: 'Global module',
 	type: 'document',
-	icon: VscRegex,
+	icon: VscSymbolField,
 	fieldsets: [
 		{
 			name: 'path',
