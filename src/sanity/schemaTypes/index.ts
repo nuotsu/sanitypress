@@ -11,6 +11,7 @@ import person from './documents/person'
 import quote from './documents/quote'
 import redirect from './documents/redirect'
 import site from './documents/site'
+import skill from './documents/skill'
 // modules
 import accordionList from './modules/accordion-list'
 import blogIndex from './modules/blog-index'
@@ -43,12 +44,12 @@ export const schema: SchemaPluginOptions = {
 	types: [
 		// documents
 		site,
+		skill,
 		page,
-		form,
 		globalModule,
 		blogPost,
 		redirect,
-
+		form,
 		// references
 		blogCategory,
 		logo,
