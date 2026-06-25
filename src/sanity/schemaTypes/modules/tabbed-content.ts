@@ -29,11 +29,21 @@ export default defineModule({
 				defineArrayMember({
 					name: 'tab',
 					type: 'object',
+					fieldsets: [{ name: 'label', options: { columns: 2 } }],
 					fields: [
 						defineField({
 							name: 'label',
 							type: 'string',
-							validation: (Rule) => Rule.required(),
+							fieldset: 'label',
+						}),
+						defineField({
+							name: 'icon',
+							type: 'image',
+							options: {
+								hotspot: true,
+								metadata: ['lqip'],
+							},
+							fieldset: 'label',
 						}),
 						defineField({
 							name: 'content',
@@ -66,14 +76,10 @@ export default defineModule({
 					],
 					preview: {
 						select: {
-							label: 'label',
-							overline: 'overline',
-							content: 'content',
+							title: 'content',
+							subtitle: 'label',
+							media: 'icon',
 						},
-						prepare: ({ label, overline, content }) => ({
-							title: label || overline || getBlockText(content),
-							subtitle: label && overline ? overline : 'Tab',
-						}),
 					},
 				}),
 			],

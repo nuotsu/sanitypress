@@ -137,6 +137,10 @@ export const MODULES_QUERY = groq`
 						metadata
 					}
 				}
+			},
+			ctas[]{
+				...,
+				link{ ${LINK_QUERY} }
 			}
 		}
 	},

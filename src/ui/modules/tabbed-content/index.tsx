@@ -1,11 +1,14 @@
 import { PortableText } from 'next-sanity'
 import { Fragment } from 'react'
 import type { TabbedContent } from '@/sanity/types'
+import CTAList from '@/ui/cta-list'
 import Eyebrow from '@/ui/eyebrow'
 import Img from '@/ui/img'
 import CustomHtml from '@/ui/modules/custom-html'
 import { Module, type ModuleProps } from '..'
-import { Label, Provider, Radio } from './store'
+import Label from './label'
+import Radio from './radio'
+import { Provider } from './store'
 
 export default function ({
 	eyebrow,
@@ -15,7 +18,7 @@ export default function ({
 }: TabbedContent & ModuleProps) {
 	return (
 		<Module
-			className="section gap-lh grid items-start md:grid-cols-[24ch_1fr]"
+			className="section gap-x-lh grid items-start gap-y-8 md:grid-cols-[24ch_1fr]"
 			{...props}
 		>
 			{(eyebrow || intro) && (
@@ -26,20 +29,27 @@ export default function ({
 			)}
 
 			<Provider>
-				<fieldset className="max-md:full-bleed no-scrollbar flex snap-x snap-mandatory overflow-x-auto max-md:px-4 md:flex-col">
+				<fieldset className="max-md:full-bleed no-scrollbar md:sticky-below-header flex snap-x snap-mandatory overflow-x-auto [--offset:1rem] max-md:px-4 max-md:text-sm md:flex-col">
 					{tabs?.map((tab, i) => (
 						<Label
 							index={i}
 							htmlFor={`tabbed-content-${props._key}-${tab._key}`}
-							className="action-base shrink-0 snap-start justify-start data-active:bg-current/5"
+							className="data-active:border-stroke inline-flex shrink-0 snap-center items-center gap-[.5em] border border-transparent p-[.5em] leading-tight not-hover:not-data-active:opacity-50 data-active:font-bold"
 							key={tab._key}
 						>
+							<Img
+								className="size-[1.5lh] shrink-0 object-contain"
+								image={tab.icon}
+								width={60}
+								alt=""
+							/>
+
 							{tab.label}
 						</Label>
 					))}
 				</fieldset>
 
-				<div>
+				<div className="mx-auto w-full max-w-3xl">
 					{tabs?.map((tab, i) => (
 						<Fragment key={tab._key}>
 							<Radio
@@ -68,6 +78,7 @@ export default function ({
 										},
 									}}
 								/>
+								<CTAList ctas={tab.ctas} className="max-sm:*:w-full" />
 							</article>
 						</Fragment>
 					))}
