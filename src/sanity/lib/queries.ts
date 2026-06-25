@@ -125,6 +125,21 @@ export const MODULES_QUERY = groq`
 	_type == 'quote-list' => {
 		quotes[]->
 	},
+	_type == 'tabbed-content' => {
+		tabs[]{
+			...,
+			content[]{
+				...,
+				_type == 'image' => {
+					...,
+					asset->{
+						...,
+						metadata
+					}
+				}
+			}
+		}
+	},
 `
 
 /* queries */

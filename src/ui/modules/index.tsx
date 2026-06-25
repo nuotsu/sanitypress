@@ -23,6 +23,7 @@ import QuoteList from './quote-list'
 import SearchModule from './search'
 import StatList from './stat-list'
 import StepList from './step-list'
+import TabbedContent from './tabbed-content'
 
 const MODULES_MAP = {
 	'accordion-list': AccordionList,
@@ -43,6 +44,7 @@ const MODULES_MAP = {
 	'search-module': SearchModule,
 	'stat-list': StatList,
 	'step-list': StepList,
+	'tabbed-content': TabbedContent,
 } as const
 
 export default function ({

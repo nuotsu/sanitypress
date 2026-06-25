@@ -150,7 +150,6 @@ Adjust frontend styles to your liking, edit or add new schema and modules, etc.
 - Modules
   - Announcement bar
   - Image gallery
-  - Tabbed content
   - Tier list
   - Sticky navigation
 

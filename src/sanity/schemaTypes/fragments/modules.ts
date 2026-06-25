@@ -22,6 +22,7 @@ export default ({ of = [] }: { of?: Array<{ type: string }> } = {}) =>
 			{ type: 'search-module' },
 			{ type: 'stat-list' },
 			{ type: 'step-list' },
+			{ type: 'tabbed-content' },
 			...of,
 		],
 		options: {
@@ -50,6 +51,7 @@ export default ({ of = [] }: { of?: Array<{ type: string }> } = {}) =>
 							'quote-list',
 							'stat-list',
 							'step-list',
+							'tabbed-content',
 						],
 					},
 					{
