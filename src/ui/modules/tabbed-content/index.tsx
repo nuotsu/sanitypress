@@ -4,7 +4,7 @@ import type { TabbedContent } from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
 import Eyebrow from '@/ui/eyebrow'
 import Img from '@/ui/img'
-import CustomHtml from '@/ui/modules/custom-html'
+import CustomHTML from '@/ui/modules/custom-html'
 import { Module, type ModuleProps } from '..'
 import Label from './label'
 import Radio from './radio'
@@ -74,7 +74,7 @@ export default function ({
 													/>
 												</figure>
 											),
-											'custom-html': ({ value }) => <CustomHtml {...value} />,
+											'custom-html': ({ value }) => <CustomHTML {...value} />,
 										},
 									}}
 								/>

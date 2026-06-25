@@ -2,7 +2,7 @@ import { stegaClean } from 'next-sanity'
 import { cn } from '@/lib/utils'
 import type { Sidebar } from '@/sanity/types'
 import Callout from './modules/callout'
-import CustomHtml from './modules/custom-html'
+import CustomHTML from './modules/custom-html'
 import TableOfContents, { type ToCHeadings } from './table-of-contents'
 
 export default function ({
@@ -32,7 +32,7 @@ export default function ({
 						return <Callout {...module} className="p-0" key={module._key} />
 
 					case 'custom-html':
-						return <CustomHtml {...module} key={module._key} />
+						return <CustomHTML {...module} key={module._key} />
 
 					case 'tableOfContents':
 						return (

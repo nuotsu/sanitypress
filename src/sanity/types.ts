@@ -1347,14 +1347,6 @@ export type Page = {
 	metadata?: Metadata
 }
 
-export type Code = {
-	_type: 'code'
-	language?: string
-	filename?: string
-	code?: string
-	highlightedLines?: Array<number>
-}
-
 export type Skill = {
 	_id: string
 	_type: 'skill'
@@ -1365,6 +1357,14 @@ export type Skill = {
 	title?: string
 	description?: string
 	content?: Code
+}
+
+export type Code = {
+	_type: 'code'
+	language?: string
+	filename?: string
+	code?: string
+	highlightedLines?: Array<number>
 }
 
 export type NavigationReference = {
@@ -1450,24 +1450,29 @@ export type Navigation = {
 	_updatedAt: string
 	_rev: string
 	title?: string
-	blurb?: Array<{
-		children?: Array<{
-			marks?: Array<string>
-			text?: string
-			_type: 'span'
-			_key: string
-		}>
-		style?: 'normal'
-		listItem?: never
-		markDefs?: Array<{
-			href?: string
-			_type: 'link'
-			_key: string
-		}>
-		level?: number
-		_type: 'block'
-		_key: string
-	}>
+	blurb?: Array<
+		| {
+				children?: Array<{
+					marks?: Array<string>
+					text?: string
+					_type: 'span'
+					_key: string
+				}>
+				style?: 'normal'
+				listItem?: never
+				markDefs?: Array<{
+					href?: string
+					_type: 'link'
+					_key: string
+				}>
+				level?: number
+				_type: 'block'
+				_key: string
+		  }
+		| ({
+				_key: string
+		  } & CustomHtml)
+	>
 	items?: Array<
 		| ({
 				_key: string
@@ -1774,8 +1779,8 @@ export type AllSanitySchemaTypes =
 	| Person
 	| GlobalModule
 	| Page
-	| Code
 	| Skill
+	| Code
 	| NavigationReference
 	| Site
 	| Navigation
@@ -6455,24 +6460,29 @@ export type SITE_QUERY_RESULT = {
 		_updatedAt: string
 		_rev: string
 		title?: string
-		blurb?: Array<{
-			children?: Array<{
-				marks?: Array<string>
-				text?: string
-				_type: 'span'
-				_key: string
-			}>
-			style?: 'normal'
-			listItem?: never
-			markDefs?: Array<{
-				href?: string
-				_type: 'link'
-				_key: string
-			}>
-			level?: number
-			_type: 'block'
-			_key: string
-		}>
+		blurb?: Array<
+			| ({
+					_key: string
+			  } & CustomHtml)
+			| {
+					children?: Array<{
+						marks?: Array<string>
+						text?: string
+						_type: 'span'
+						_key: string
+					}>
+					style?: 'normal'
+					listItem?: never
+					markDefs?: Array<{
+						href?: string
+						_type: 'link'
+						_key: string
+					}>
+					level?: number
+					_type: 'block'
+					_key: string
+			  }
+		>
 		items: Array<
 			| {
 					_key: string
@@ -6936,24 +6946,29 @@ export type SITE_QUERY_RESULT = {
 		_updatedAt: string
 		_rev: string
 		title?: string
-		blurb?: Array<{
-			children?: Array<{
-				marks?: Array<string>
-				text?: string
-				_type: 'span'
-				_key: string
-			}>
-			style?: 'normal'
-			listItem?: never
-			markDefs?: Array<{
-				href?: string
-				_type: 'link'
-				_key: string
-			}>
-			level?: number
-			_type: 'block'
-			_key: string
-		}>
+		blurb?: Array<
+			| ({
+					_key: string
+			  } & CustomHtml)
+			| {
+					children?: Array<{
+						marks?: Array<string>
+						text?: string
+						_type: 'span'
+						_key: string
+					}>
+					style?: 'normal'
+					listItem?: never
+					markDefs?: Array<{
+						href?: string
+						_type: 'link'
+						_key: string
+					}>
+					level?: number
+					_type: 'block'
+					_key: string
+			  }
+		>
 		items: Array<
 			| {
 					_key: string
@@ -7390,24 +7405,29 @@ export type SITE_QUERY_RESULT = {
 		_updatedAt: string
 		_rev: string
 		title?: string
-		blurb?: Array<{
-			children?: Array<{
-				marks?: Array<string>
-				text?: string
-				_type: 'span'
-				_key: string
-			}>
-			style?: 'normal'
-			listItem?: never
-			markDefs?: Array<{
-				href?: string
-				_type: 'link'
-				_key: string
-			}>
-			level?: number
-			_type: 'block'
-			_key: string
-		}>
+		blurb?: Array<
+			| ({
+					_key: string
+			  } & CustomHtml)
+			| {
+					children?: Array<{
+						marks?: Array<string>
+						text?: string
+						_type: 'span'
+						_key: string
+					}>
+					style?: 'normal'
+					listItem?: never
+					markDefs?: Array<{
+						href?: string
+						_type: 'link'
+						_key: string
+					}>
+					level?: number
+					_type: 'block'
+					_key: string
+			  }
+		>
 		items: Array<
 			| {
 					_key: string

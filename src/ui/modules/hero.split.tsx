@@ -5,7 +5,7 @@ import CTAList from '@/ui/cta-list'
 import Eyebrow from '@/ui/eyebrow'
 import Img from '@/ui/img'
 import { Module } from '.'
-import CustomHtml from './custom-html'
+import CustomHTML from './custom-html'
 
 export default function ({
 	eyebrow,
@@ -39,7 +39,7 @@ export default function ({
 					value={content}
 					components={{
 						types: {
-							'custom-html': ({ value }) => <CustomHtml {...value} />,
+							'custom-html': ({ value }) => <CustomHTML {...value} />,
 						},
 					}}
 				/>

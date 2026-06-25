@@ -23,6 +23,7 @@ export default defineType({
 					styles: [{ title: 'Normal', value: 'normal' }],
 					lists: [],
 				},
+				{ type: 'custom-html' },
 			],
 		}),
 		defineField({

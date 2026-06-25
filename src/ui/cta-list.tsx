@@ -14,7 +14,7 @@ export default function ({
 	return (
 		<div
 			className={cn(
-				'cta-list flex flex-wrap items-center gap-x-[.5em] gap-y-[.25em]',
+				'cta-list flex flex-wrap items-center gap-[.25em_.5em]',
 				className,
 			)}
 		>
