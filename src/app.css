@@ -149,7 +149,7 @@
 }
 
 @utility link {
-	@apply text-primary text-center cursor-pointer underline hover:decoration-2;
+	@apply text-primary cursor-pointer underline hover:decoration-2;
 }
 
 @utility input {
