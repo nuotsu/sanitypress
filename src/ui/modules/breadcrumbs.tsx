@@ -17,7 +17,7 @@ export default function ({
 			{...props}
 		>
 			<ol
-				className="flex items-center gap-x-2 gap-y-1"
+				className="flex items-center gap-x-2 gap-y-1 break-all"
 				itemScope
 				itemType="https://schema.org/BreadcrumbList"
 			>
