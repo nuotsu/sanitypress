@@ -48,7 +48,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 		alternates: {
 			types: {
 				'application/rss+xml': `/${ROUTES.blog}/rss.xml`,
-				'text/markdown': `/${ROUTES.blog}/${slug}.md`,
+				// Only advertise the .md route when a curated markdown copy exists
+				...(post?.markdown?.code && {
+					'text/markdown': `/${ROUTES.blog}/${slug}.md`,
+				}),
 			},
 		},
 	}

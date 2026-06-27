@@ -55,7 +55,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 		alternates: {
 			types: {
 				'application/rss+xml': `/${ROUTES.blog}/rss.xml`,
-				'text/markdown': `/${slug?.length ? slug.join('/') : 'index'}.md`,
+				// Only advertise the .md route when a curated markdown copy exists
+				...(page?.markdown?.code && {
+					'text/markdown': `/${slug?.length ? slug.join('/') : 'index'}.md`,
+				}),
 			},
 		},
 		generator: `SanityPress v${pkg.version}`,

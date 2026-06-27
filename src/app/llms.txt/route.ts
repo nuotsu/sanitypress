@@ -48,9 +48,9 @@ const LLMS_PAGES_QUERY = groq`
 	*[_type == 'page'
 		&& defined(metadata.slug.current)
 		&& metadata.noIndex != true
-		&& metadata.slug.current != 'index'
 		&& metadata.slug.current != '404'
-	] | order(metadata.slug.current asc) {
+		&& length(markdown.code) > 0
+	] | order(metadata.slug.current != 'index', metadata.slug.current asc) {
 		'title': coalesce(metadata.title, metadata.slug.current),
 		'slug': metadata.slug.current,
 		'description': metadata.description,
@@ -61,6 +61,7 @@ const LLMS_BLOG_QUERY = groq`
 	*[_type == 'blog.post'
 		&& defined(metadata.slug.current)
 		&& metadata.noIndex != true
+		&& length(markdown.code) > 0
 	] | order(publishDate desc) {
 		'title': coalesce(title, metadata.title),
 		'slug': $blogDir + '/' + metadata.slug.current,

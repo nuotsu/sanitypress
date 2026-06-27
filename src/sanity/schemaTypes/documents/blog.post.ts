@@ -6,7 +6,11 @@ export default defineType({
 	title: 'Blog post',
 	type: 'document',
 	icon: EditIcon,
-	groups: [{ name: 'content', default: true }, { name: 'metadata' }],
+	groups: [
+		{ name: 'content', default: true },
+		{ name: 'markdown' },
+		{ name: 'metadata' },
+	],
 	fields: [
 		defineField({
 			name: 'title',
@@ -69,6 +73,17 @@ export default defineType({
 			type: 'reference',
 			to: [{ type: 'person' }],
 			group: 'content',
+		}),
+		defineField({
+			name: 'markdown',
+			type: 'code',
+			description:
+				'Served at <slug>.md; When empty, no .md route is generated.',
+			options: {
+				language: 'markdown',
+				languageAlternatives: [{ title: 'Markdown', value: 'markdown' }],
+			},
+			group: 'markdown',
 		}),
 		defineField({
 			name: 'metadata',
