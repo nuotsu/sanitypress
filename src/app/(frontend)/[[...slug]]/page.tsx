@@ -15,9 +15,7 @@ import {
 import type { PAGE_QUERY_RESULT } from '@/sanity/types'
 import ModulesResolver from '@/ui/modules'
 
-type Props = {
-	params: Promise<{ slug?: string[] }>
-}
+type Props = PageProps<'/[[...slug]]'>
 
 export default async function Page({ params }: Props) {
 	const { slug } = await params
