@@ -27,7 +27,7 @@ export default defineType({
 			name: 'markdown',
 			type: 'code',
 			description:
-				'Served at <slug>.md; When empty, no .md route is generated.',
+				'Served at <slug>.md; Leave empty to disable route generation.',
 			options: {
 				language: 'markdown',
 				languageAlternatives: [{ title: 'Markdown', value: 'markdown' }],
