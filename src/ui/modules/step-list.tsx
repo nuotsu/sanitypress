@@ -1,9 +1,11 @@
 import { PortableText } from 'next-sanity'
 import type { StepList } from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
+import Eyebrow from '@/ui/eyebrow'
 import { Module } from '.'
 
 export default function ({
+	eyebrow,
 	intro = [],
 	ctas,
 	steps,
@@ -23,6 +25,7 @@ export default function ({
 				className="prose md:sticky-below-header [--offset:1rem]"
 				{...(enableSchema && intro && { itemProp: 'name' })}
 			>
+				<Eyebrow value={eyebrow} />
 				<PortableText value={intro} />
 				<CTAList ctas={ctas} className="max-sm:*:w-full" />
 			</header>

@@ -135,6 +135,7 @@ export type TabbedContent = {
 export type StepList = {
 	_type: 'step-list'
 	attributes?: ModuleAttributes
+	eyebrow?: string
 	intro?: Array<{
 		children?: Array<{
 			marks?: Array<string>
@@ -793,6 +794,7 @@ export type BlogIndex = {
 export type AccordionList = {
 	_type: 'accordion-list'
 	attributes?: ModuleAttributes
+	eyebrow?: string
 	intro?: Array<{
 		children?: Array<{
 			marks?: Array<string>
@@ -1824,6 +1826,7 @@ export type PAGE_QUERY_RESULT = {
 				_key: string
 				_type: 'accordion-list'
 				attributes?: ModuleAttributes
+				eyebrow?: string
 				intro?: Array<{
 					children?: Array<{
 						marks?: Array<string>
@@ -3058,6 +3061,7 @@ export type PAGE_QUERY_RESULT = {
 				_key: string
 				_type: 'step-list'
 				attributes?: ModuleAttributes
+				eyebrow?: string
 				intro?: Array<{
 					children?: Array<{
 						marks?: Array<string>
@@ -3473,6 +3477,7 @@ export type BLOG_POST_QUERY_RESULT = {
 				_key: string
 				_type: 'accordion-list'
 				attributes?: ModuleAttributes
+				eyebrow?: string
 				intro?: Array<{
 					children?: Array<{
 						marks?: Array<string>
@@ -4707,6 +4712,7 @@ export type BLOG_POST_QUERY_RESULT = {
 				_key: string
 				_type: 'step-list'
 				attributes?: ModuleAttributes
+				eyebrow?: string
 				intro?: Array<{
 					children?: Array<{
 						marks?: Array<string>
@@ -5031,6 +5037,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 				_key: string
 				_type: 'accordion-list'
 				attributes?: ModuleAttributes
+				eyebrow?: string
 				intro?: Array<{
 					children?: Array<{
 						marks?: Array<string>
@@ -6167,6 +6174,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 				_key: string
 				_type: 'step-list'
 				attributes?: ModuleAttributes
+				eyebrow?: string
 				intro?: Array<{
 					children?: Array<{
 						marks?: Array<string>

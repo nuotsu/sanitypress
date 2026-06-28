@@ -3,10 +3,12 @@ import { VscChevronDown } from 'react-icons/vsc'
 import { cn } from '@/lib/utils'
 import type { AccordionList } from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
+import Eyebrow from '@/ui/eyebrow'
 import { Module } from '.'
 
 export default function ({
 	_key: _module_key,
+	eyebrow,
 	intro,
 	ctas,
 	accordions,
@@ -36,9 +38,10 @@ export default function ({
 						'prose',
 						layout === 'horizontal'
 							? 'md:sticky-below-header [--offset:1rem]'
-							: 'text-center',
+							: 'mx-auto max-w-3xl text-center',
 					)}
 				>
+					<Eyebrow value={eyebrow} />
 					<PortableText value={intro} />
 					<CTAList ctas={ctas} className="max-sm:*:w-full" />
 				</header>

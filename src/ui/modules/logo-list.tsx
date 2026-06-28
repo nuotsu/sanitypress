@@ -18,7 +18,7 @@ export default function ({
 	return (
 		<Module className="section space-y-8 text-center" {...props}>
 			{(eyebrow || intro) && (
-				<header className="prose">
+				<header className="prose mx-auto max-w-3xl">
 					<Eyebrow value={eyebrow} />
 					<PortableText value={intro ?? []} />
 				</header>
