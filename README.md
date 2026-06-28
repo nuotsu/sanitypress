@@ -139,20 +139,3 @@ Add a [Vercel](https://www.sanity.io/plugins/vercel-dashboard-widget) (default) 
 ### 6. Customize
 
 Adjust frontend styles to your liking, edit or add new schema and modules, etc.
-
-## Roadmap / To-do
-
-- read time for blog posts
-- improved error handling
-- featured post?
-  - reference to blog.post on blog-index, blog-post-list
-  - OR as `featured: true` on blog.post
-- Modules
-  - Announcement bar
-  - Image gallery
-  - Tier list
-  - Sticky navigation
-
-## Not included
-
-- Internationalization (i18n) and multi-lingual support
