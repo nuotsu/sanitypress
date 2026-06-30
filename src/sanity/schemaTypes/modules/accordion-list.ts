@@ -1,4 +1,5 @@
 import { defineArrayMember, defineField } from 'sanity'
+import { ChevronDownIcon, ChevronRightIcon } from '@sanity/icons'
 import { TfiLayoutAccordionMerged } from 'react-icons/tfi'
 import { count, getBlockText } from '@/lib/utils'
 import defineModule from '@/sanity/schemaTypes/fragments/define-module'
@@ -8,7 +9,11 @@ export default defineModule({
 	title: 'Accordion list',
 	type: 'object',
 	icon: TfiLayoutAccordionMerged,
-	groups: [{ name: 'content', default: true }, { name: 'options' }],
+	groups: [
+		{ name: 'content', default: true },
+		{ name: 'accordions' },
+		{ name: 'options' },
+	],
 	fields: [
 		defineField({
 			name: 'eyebrow',
@@ -54,13 +59,19 @@ export default defineModule({
 					],
 					preview: {
 						select: {
-							title: 'summary',
-							subtitle: 'content',
+							summary: 'summary',
+							content: 'content',
+							open: 'open',
 						},
+						prepare: ({ summary, content, open }) => ({
+							title: summary,
+							subtitle: getBlockText(content),
+							media: open ? ChevronDownIcon : ChevronRightIcon,
+						}),
 					},
 				}),
 			],
-			group: 'content',
+			group: 'accordions',
 		}),
 		defineField({
 			name: 'exclusive',

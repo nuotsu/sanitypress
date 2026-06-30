@@ -32,7 +32,7 @@ export default function ({
 			})}
 			{...props}
 		>
-			{intro && (
+			{(eyebrow || intro || ctas) && (
 				<header
 					className={cn(
 						'prose',
