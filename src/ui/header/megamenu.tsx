@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils'
 import type { Megamenu, Page } from '@/sanity/types'
 import HoverDetails from '@/ui/hover-details'
 import SanityLink, { type SanityLinkType } from '@/ui/sanity-link'
+import LinkCard from './link.card'
 import MobileOnlyDetails from './mobile-only-details'
 
 export default function ({
@@ -61,6 +62,9 @@ export default function ({
 										</ul>
 									</MobileOnlyDetails>
 								)
+
+							case 'link.card':
+								return <LinkCard {...item} key={item._key} />
 
 							case 'link':
 								return (

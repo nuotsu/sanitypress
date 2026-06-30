@@ -1,11 +1,12 @@
-import { defineField, defineType } from 'sanity'
-import { VscFolderLibrary } from 'react-icons/vsc'
-import { count } from '@/lib/utils'
+import { defineArrayMember, defineField, defineType } from 'sanity'
+import { FolderIcon } from '@sanity/icons'
+import { TfiLayoutMediaLeftAlt } from 'react-icons/tfi'
+import { count, getBlockText } from '@/lib/utils'
 
 export default defineType({
 	name: 'megamenu',
-	title: 'Mega menu',
-	icon: VscFolderLibrary,
+	title: 'Megamenu',
+	icon: FolderIcon,
 	type: 'object',
 	fields: [
 		defineField({
@@ -15,7 +16,52 @@ export default defineType({
 		defineField({
 			name: 'items',
 			type: 'array',
-			of: [{ type: 'link.list' }, { type: 'link' }],
+			of: [
+				{ type: 'link.list' },
+				defineArrayMember({
+					name: 'link.card',
+					title: 'Link card',
+					type: 'object',
+					icon: TfiLayoutMediaLeftAlt,
+					fields: [
+						defineField({
+							name: 'image',
+							type: 'image',
+							options: {
+								hotspot: true,
+							},
+						}),
+						defineField({
+							name: 'link',
+							type: 'link',
+						}),
+						defineField({
+							name: 'content',
+							type: 'array',
+							of: [
+								{
+									type: 'block',
+									styles: [{ title: 'Normal', value: 'normal' }],
+								},
+							],
+						}),
+					],
+					preview: {
+						select: {
+							image: 'image',
+							label: 'link.label',
+							title: 'link.internal.title',
+							content: 'content',
+						},
+						prepare: ({ image, label, title, content }) => ({
+							title: label || title,
+							subtitle: getBlockText(content),
+							media: image,
+						}),
+					},
+				}),
+				{ type: 'link' },
+			],
 		}),
 	],
 	preview: {
@@ -25,7 +71,7 @@ export default defineType({
 		},
 		prepare: ({ link, items }) => ({
 			title: link.label || link.internal?.title,
-			subtitle: count(items),
+			subtitle: `Megamenu (${count(items)})`,
 		}),
 	},
 })
