@@ -1,5 +1,4 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
-import { InsertAboveIcon, InsertBelowIcon } from '@sanity/icons'
 import { VscSymbolField } from 'react-icons/vsc'
 import { count } from '@/lib/utils'
 import modules from '../fragments/modules'
@@ -18,6 +17,10 @@ export default defineType({
 		},
 	],
 	fields: [
+		defineField({
+			name: 'identifier',
+			type: 'string',
+		}),
 		defineField({
 			name: 'path',
 			title: 'Target path',
@@ -56,14 +59,17 @@ export default defineType({
 	],
 	preview: {
 		select: {
+			identifier: 'identifier',
 			path: 'path',
 			before: 'before',
 			after: 'after',
 		},
-		prepare: ({ path, before, after }) => ({
-			title: count([...(before ?? []), ...(after ?? [])], 'global module'),
-			subtitle: path,
-			media: after ? InsertBelowIcon : InsertAboveIcon,
-		}),
+		prepare: ({ identifier, path, before, after }) => {
+			const modules = count([...(before ?? []), ...(after ?? [])], 'module')
+			return {
+				title: identifier ? `${identifier} (${modules})` : modules,
+				subtitle: path,
+			}
+		},
 	},
 })
