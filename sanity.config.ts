@@ -17,7 +17,6 @@ import { visionTool } from '@sanity/vision'
 import { vercelWidget } from 'sanity-plugin-dashboard-widget-vercel'
 import { media } from 'sanity-plugin-media'
 import { ROUTES } from './src/lib/env'
-import { copyDocumentIdAction } from './src/sanity/document-actions/copy-document-id'
 import { apiVersion, dataset, projectId } from './src/sanity/env'
 import icon from './src/sanity/icon'
 import presentation from './src/sanity/presentation'
@@ -47,7 +46,4 @@ export default defineConfig({
 		media(),
 		assist(),
 	],
-	document: {
-		actions: (prev) => [...prev, copyDocumentIdAction],
-	},
 })
