@@ -27,7 +27,7 @@
 		"react-dom": "19.2.7",
 		"react-icons": "^5.7.0",
 		"sanity": "^6.3.0",
-		"sanity-plugin-dashboard-widget-vercel": "4.0.8",
+		"sanity-plugin-dashboard-widget-vercel": "4.0.5",
 		"sanity-plugin-media": "^5.0.5",
 		"shiki": "^4.3.0",
 		"styled-components": "^6.4.3",
