@@ -8321,6 +8321,13 @@
           "type": "string"
         }
       },
+      "identifier": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "path": {
         "type": "objectAttribute",
         "value": {

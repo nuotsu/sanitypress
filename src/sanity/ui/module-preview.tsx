@@ -16,11 +16,7 @@ export default function (
 					<VscEyeClosed />
 				</Badge>
 			) : (
-				props.uid && (
-					<Badge size={0} marginRight={2}>
-						#{props.uid}
-					</Badge>
-				)
+				props.uid && <Badge marginRight={2}>#{props.uid}</Badge>
 			)}
 		</Flex>
 	)

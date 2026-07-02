@@ -99,14 +99,7 @@ export type TabbedContent = {
 						_key: string
 					}>
 					style?:
-						| 'normal'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'blockquote'
+						'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -320,14 +313,7 @@ export type Prose = {
 					_key: string
 				}>
 				style?:
-					| 'normal'
-					| 'h1'
-					| 'h2'
-					| 'h3'
-					| 'h4'
-					| 'h5'
-					| 'h6'
-					| 'blockquote'
+					'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
 				listItem?: 'bullet' | 'number'
 				markDefs?: Array<{
 					href?: string
@@ -463,14 +449,7 @@ export type HeroSplit = {
 					_key: string
 				}>
 				style?:
-					| 'normal'
-					| 'h1'
-					| 'h2'
-					| 'h3'
-					| 'h4'
-					| 'h5'
-					| 'h6'
-					| 'blockquote'
+					'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
 				listItem?: 'bullet' | 'number'
 				markDefs?: Array<{
 					href?: string
@@ -516,14 +495,7 @@ export type HeroCover = {
 					_key: string
 				}>
 				style?:
-					| 'normal'
-					| 'h1'
-					| 'h2'
-					| 'h3'
-					| 'h4'
-					| 'h5'
-					| 'h6'
-					| 'blockquote'
+					'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
 				listItem?: 'bullet' | 'number'
 				markDefs?: Array<{
 					href?: string
@@ -633,14 +605,7 @@ export type CardList = {
 						_key: string
 					}>
 					style?:
-						| 'normal'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'blockquote'
+						'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -691,14 +656,7 @@ export type Callout = {
 					_key: string
 				}>
 				style?:
-					| 'normal'
-					| 'h1'
-					| 'h2'
-					| 'h3'
-					| 'h4'
-					| 'h5'
-					| 'h6'
-					| 'blockquote'
+					'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
 				listItem?: 'bullet' | 'number'
 				markDefs?: Array<{
 					href?: string
@@ -1108,14 +1066,7 @@ export type BlogPost = {
 					_key: string
 				}>
 				style?:
-					| 'normal'
-					| 'h1'
-					| 'h2'
-					| 'h3'
-					| 'h4'
-					| 'h5'
-					| 'h6'
-					| 'blockquote'
+					'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
 				listItem?: 'bullet' | 'number'
 				markDefs?: Array<{
 					href?: string
@@ -1202,6 +1153,7 @@ export type GlobalModule = {
 	_createdAt: string
 	_updatedAt: string
 	_rev: string
+	identifier?: string
 	path?: string
 	excludePaths?: Array<string>
 	before?: Array<
@@ -1868,14 +1820,7 @@ export type PAGE_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -1923,14 +1868,7 @@ export type PAGE_QUERY_RESULT = {
 							_key: string
 						}>
 						style?:
-							| 'blockquote'
-							| 'h1'
-							| 'h2'
-							| 'h3'
-							| 'h4'
-							| 'h5'
-							| 'h6'
-							| 'normal'
+							'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 						listItem?: 'bullet' | 'number'
 						markDefs?: Array<{
 							href?: string
@@ -1962,14 +1900,7 @@ export type PAGE_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -2094,14 +2025,7 @@ export type PAGE_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -2261,14 +2185,7 @@ export type PAGE_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -2404,14 +2321,7 @@ export type PAGE_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -2601,14 +2511,7 @@ export type PAGE_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -2668,14 +2571,7 @@ export type PAGE_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -2922,14 +2818,7 @@ export type PAGE_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -2954,14 +2843,7 @@ export type PAGE_QUERY_RESULT = {
 							_key: string
 						}>
 						style?:
-							| 'blockquote'
-							| 'h1'
-							| 'h2'
-							| 'h3'
-							| 'h4'
-							| 'h5'
-							| 'h6'
-							| 'normal'
+							'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 						listItem?: 'bullet' | 'number'
 						markDefs?: Array<{
 							href?: string
@@ -3002,14 +2884,7 @@ export type PAGE_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -3037,14 +2912,7 @@ export type PAGE_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -3066,14 +2934,7 @@ export type PAGE_QUERY_RESULT = {
 							_key: string
 						}>
 						style?:
-							| 'blockquote'
-							| 'h1'
-							| 'h2'
-							| 'h3'
-							| 'h4'
-							| 'h5'
-							| 'h6'
-							| 'normal'
+							'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 						listItem?: 'bullet' | 'number'
 						markDefs?: Array<{
 							href?: string
@@ -3103,14 +2964,7 @@ export type PAGE_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -3157,14 +3011,7 @@ export type PAGE_QUERY_RESULT = {
 							_key: string
 						}>
 						style?:
-							| 'blockquote'
-							| 'h1'
-							| 'h2'
-							| 'h3'
-							| 'h4'
-							| 'h5'
-							| 'h6'
-							| 'normal'
+							'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 						listItem?: 'bullet' | 'number'
 						markDefs?: Array<{
 							href?: string
@@ -3199,14 +3046,7 @@ export type PAGE_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -3369,14 +3209,7 @@ export type BLOG_POST_QUERY_RESULT = {
 					_key: string
 				}>
 				style?:
-					| 'blockquote'
-					| 'h1'
-					| 'h2'
-					| 'h3'
-					| 'h4'
-					| 'h5'
-					| 'h6'
-					| 'normal'
+					'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 				listItem?: 'bullet' | 'number'
 				markDefs?: Array<{
 					href?: string
@@ -3494,15 +3327,7 @@ export type BLOG_POST_QUERY_RESULT = {
 	readTime: number
 	headings: Array<{
 		style:
-			| 'blockquote'
-			| 'h1'
-			| 'h2'
-			| 'h3'
-			| 'h4'
-			| 'h5'
-			| 'h6'
-			| 'normal'
-			| null
+			'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal' | null
 		text: string
 	}> | null
 	modules: Array<
@@ -3519,14 +3344,7 @@ export type BLOG_POST_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -3574,14 +3392,7 @@ export type BLOG_POST_QUERY_RESULT = {
 							_key: string
 						}>
 						style?:
-							| 'blockquote'
-							| 'h1'
-							| 'h2'
-							| 'h3'
-							| 'h4'
-							| 'h5'
-							| 'h6'
-							| 'normal'
+							'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 						listItem?: 'bullet' | 'number'
 						markDefs?: Array<{
 							href?: string
@@ -3613,14 +3424,7 @@ export type BLOG_POST_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -3745,14 +3549,7 @@ export type BLOG_POST_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -3912,14 +3709,7 @@ export type BLOG_POST_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -4055,14 +3845,7 @@ export type BLOG_POST_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -4252,14 +4035,7 @@ export type BLOG_POST_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -4319,14 +4095,7 @@ export type BLOG_POST_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -4573,14 +4342,7 @@ export type BLOG_POST_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -4605,14 +4367,7 @@ export type BLOG_POST_QUERY_RESULT = {
 							_key: string
 						}>
 						style?:
-							| 'blockquote'
-							| 'h1'
-							| 'h2'
-							| 'h3'
-							| 'h4'
-							| 'h5'
-							| 'h6'
-							| 'normal'
+							'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 						listItem?: 'bullet' | 'number'
 						markDefs?: Array<{
 							href?: string
@@ -4653,14 +4408,7 @@ export type BLOG_POST_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -4688,14 +4436,7 @@ export type BLOG_POST_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -4717,14 +4458,7 @@ export type BLOG_POST_QUERY_RESULT = {
 							_key: string
 						}>
 						style?:
-							| 'blockquote'
-							| 'h1'
-							| 'h2'
-							| 'h3'
-							| 'h4'
-							| 'h5'
-							| 'h6'
-							| 'normal'
+							'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 						listItem?: 'bullet' | 'number'
 						markDefs?: Array<{
 							href?: string
@@ -4754,14 +4488,7 @@ export type BLOG_POST_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -4808,14 +4535,7 @@ export type BLOG_POST_QUERY_RESULT = {
 							_key: string
 						}>
 						style?:
-							| 'blockquote'
-							| 'h1'
-							| 'h2'
-							| 'h3'
-							| 'h4'
-							| 'h5'
-							| 'h6'
-							| 'normal'
+							'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 						listItem?: 'bullet' | 'number'
 						markDefs?: Array<{
 							href?: string
@@ -4850,14 +4570,7 @@ export type BLOG_POST_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -4998,14 +4711,7 @@ export type BLOG_RSS_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -5079,14 +4785,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -5134,14 +4833,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 							_key: string
 						}>
 						style?:
-							| 'blockquote'
-							| 'h1'
-							| 'h2'
-							| 'h3'
-							| 'h4'
-							| 'h5'
-							| 'h6'
-							| 'normal'
+							'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 						listItem?: 'bullet' | 'number'
 						markDefs?: Array<{
 							href?: string
@@ -5173,14 +4865,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -5207,14 +4892,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -5374,14 +5052,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -5517,14 +5188,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -5714,14 +5378,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -5781,14 +5438,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -6035,14 +5685,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -6067,14 +5710,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 							_key: string
 						}>
 						style?:
-							| 'blockquote'
-							| 'h1'
-							| 'h2'
-							| 'h3'
-							| 'h4'
-							| 'h5'
-							| 'h6'
-							| 'normal'
+							'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 						listItem?: 'bullet' | 'number'
 						markDefs?: Array<{
 							href?: string
@@ -6115,14 +5751,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -6150,14 +5779,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -6179,14 +5801,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 							_key: string
 						}>
 						style?:
-							| 'blockquote'
-							| 'h1'
-							| 'h2'
-							| 'h3'
-							| 'h4'
-							| 'h5'
-							| 'h6'
-							| 'normal'
+							'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 						listItem?: 'bullet' | 'number'
 						markDefs?: Array<{
 							href?: string
@@ -6216,14 +5831,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -6270,14 +5878,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 							_key: string
 						}>
 						style?:
-							| 'blockquote'
-							| 'h1'
-							| 'h2'
-							| 'h3'
-							| 'h4'
-							| 'h5'
-							| 'h6'
-							| 'normal'
+							'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 						listItem?: 'bullet' | 'number'
 						markDefs?: Array<{
 							href?: string
@@ -6312,14 +5913,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 						_key: string
 					}>
 					style?:
-						| 'blockquote'
-						| 'h1'
-						| 'h2'
-						| 'h3'
-						| 'h4'
-						| 'h5'
-						| 'h6'
-						| 'normal'
+						'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 					listItem?: 'bullet' | 'number'
 					markDefs?: Array<{
 						href?: string
@@ -8840,14 +8434,7 @@ export type BLOG_INDEX_QUERY_RESULT = Array<{
 					_key: string
 				}>
 				style?:
-					| 'blockquote'
-					| 'h1'
-					| 'h2'
-					| 'h3'
-					| 'h4'
-					| 'h5'
-					| 'h6'
-					| 'normal'
+					'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 				listItem?: 'bullet' | 'number'
 				markDefs?: Array<{
 					href?: string
@@ -8991,14 +8578,7 @@ export type BLOG_POST_LIST_QUERY_RESULT = Array<{
 					_key: string
 				}>
 				style?:
-					| 'blockquote'
-					| 'h1'
-					| 'h2'
-					| 'h3'
-					| 'h4'
-					| 'h5'
-					| 'h6'
-					| 'normal'
+					'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
 				listItem?: 'bullet' | 'number'
 				markDefs?: Array<{
 					href?: string
