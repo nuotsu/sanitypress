@@ -40,15 +40,19 @@ export default function ({
 
 	const loading = stegaClean(props.loading || image.loading)
 
+	const finalWidth = width ?? Math.round(height ? (Number(height) * w) / h : w)
+	const finalHeight = height ?? Math.round(width ? (Number(width) * h) / w : h)
+
 	return (
 		<NextImage
 			src={
 				urlFor(image)
-					.withOptions({ auto: 'format', q: 100, ...imageOptions })
+					.withOptions({ auto: 'format', q: 75, ...imageOptions })
 					.url() ?? image.asset.url!
 			}
-			width={width ?? Math.round(height ? (Number(height) * w) / h : w)}
-			height={height ?? Math.round(width ? (Number(width) * h) / w : h)}
+			width={finalWidth}
+			height={finalHeight}
+			sizes={`(min-width: 640px) ${finalWidth}px, 100vw`}
 			loading={loading}
 			{...(loading === 'eager'
 				? { priority: true, fetchPriority: 'high' }
