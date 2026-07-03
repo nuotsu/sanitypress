@@ -41,6 +41,14 @@ const dirItem = (S: StructureBuilder, dir: string) =>
 				.params({ dir })
 				.defaultOrdering([
 					{ field: 'metadata.slug.current', direction: 'asc' },
+				])
+				.menuItems([
+					S.orderingMenuItem({
+						name: 'path',
+						title: 'Path',
+						by: [{ field: 'metadata.slug.current', direction: 'asc' }],
+					}),
+					...(S.documentTypeList('page').getMenuItems() ?? []),
 				]),
 		)
 

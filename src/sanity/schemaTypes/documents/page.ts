@@ -57,4 +57,11 @@ export default defineType({
 				(noIndex && VscEyeClosed),
 		}),
 	},
+	orderings: [
+		{
+			name: 'title',
+			title: 'Title',
+			by: [{ field: 'title', direction: 'asc' }],
+		},
+	],
 })
