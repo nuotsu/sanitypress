@@ -825,6 +825,7 @@ export type Sidebar = {
 		  } & CustomHtml)
 		| {
 				summary?: string
+				maxHeadingDepth?: number
 				_type: 'tableOfContents'
 				_key: string
 		  }
@@ -2006,6 +2007,7 @@ export type PAGE_QUERY_RESULT = {
 						  }
 						| {
 								summary?: string
+								maxHeadingDepth?: number
 								_type: 'tableOfContents'
 								_key: string
 						  }
@@ -2785,6 +2787,7 @@ export type PAGE_QUERY_RESULT = {
 						  }
 						| {
 								summary?: string
+								maxHeadingDepth?: number
 								_type: 'tableOfContents'
 								_key: string
 						  }
@@ -3530,6 +3533,7 @@ export type BLOG_POST_QUERY_RESULT = {
 						  }
 						| {
 								summary?: string
+								maxHeadingDepth?: number
 								_type: 'tableOfContents'
 								_key: string
 						  }
@@ -4309,6 +4313,7 @@ export type BLOG_POST_QUERY_RESULT = {
 						  }
 						| {
 								summary?: string
+								maxHeadingDepth?: number
 								_type: 'tableOfContents'
 								_key: string
 						  }
@@ -5652,6 +5657,7 @@ export type NOT_FOUND_QUERY_RESULT = {
 						  }
 						| {
 								summary?: string
+								maxHeadingDepth?: number
 								_type: 'tableOfContents'
 								_key: string
 						  }

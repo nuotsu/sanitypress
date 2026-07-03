@@ -40,15 +40,22 @@ export default function ({
 					case 'custom-html':
 						return <CustomHTML {...module} key={`${module._key}-${i}`} />
 
-					case 'tableOfContents':
+					case 'tableOfContents': {
+						const maxHeadingDepth = stegaClean(module.maxHeadingDepth) ?? 6
+						const filtered = headings?.filter((h) => {
+							const level = Number(stegaClean(h.style)?.slice(1))
+							return level >= 2 && level <= maxHeadingDepth
+						})
+
 						return (
 							<TableOfContents
-								summary="On this page"
-								headings={headings}
+								summary={module.summary}
+								headings={filtered ?? null}
 								open
 								key={`${module._key}-${i}`}
 							/>
 						)
+					}
 
 					default:
 						return null
