@@ -1,5 +1,5 @@
 import { defineArrayMember, defineField } from 'sanity'
-import { ImageIcon } from '@sanity/icons'
+import { ImageIcon } from '@sanity/icons/Image'
 import { TfiLayoutTab } from 'react-icons/tfi'
 import { count, getBlockText } from '@/lib/utils'
 import defineModule from '@/sanity/schemaTypes/fragments/define-module'

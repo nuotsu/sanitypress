@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { FolderIcon } from '@sanity/icons'
+import { FolderIcon } from '@sanity/icons/Folder'
 import { count } from '@/lib/utils'
 
 export default defineType({

@@ -1,5 +1,5 @@
 import { defineArrayMember, defineField } from 'sanity'
-import { OlistIcon } from '@sanity/icons'
+import { OlistIcon } from '@sanity/icons/Olist'
 import { count, getBlockText } from '@/lib/utils'
 import defineModule from '@/sanity/schemaTypes/fragments/define-module'
 

@@ -1,5 +1,5 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
-import { FolderIcon } from '@sanity/icons'
+import { FolderIcon } from '@sanity/icons/Folder'
 import { TfiLayoutMediaLeftAlt } from 'react-icons/tfi'
 import { count, getBlockText } from '@/lib/utils'
 

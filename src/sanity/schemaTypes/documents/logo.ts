@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { ComponentIcon } from '@sanity/icons'
+import { ComponentIcon } from '@sanity/icons/Component'
 
 export default defineType({
 	name: 'logo',

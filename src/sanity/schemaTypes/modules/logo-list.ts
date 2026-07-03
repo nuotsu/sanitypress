@@ -1,5 +1,5 @@
 import { defineField } from 'sanity'
-import { ComponentIcon } from '@sanity/icons'
+import { ComponentIcon } from '@sanity/icons/Component'
 import { count, getBlockText } from '@/lib/utils'
 import defineModule from '@/sanity/schemaTypes/fragments/define-module'
 

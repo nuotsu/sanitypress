@@ -1,5 +1,6 @@
 import { defineArrayMember, defineField } from 'sanity'
-import { ChevronDownIcon, ChevronRightIcon } from '@sanity/icons'
+import { ChevronDownIcon } from '@sanity/icons/ChevronDown'
+import { ChevronRightIcon } from '@sanity/icons/ChevronRight'
 import { TfiLayoutAccordionMerged } from 'react-icons/tfi'
 import { count, getBlockText } from '@/lib/utils'
 import defineModule from '@/sanity/schemaTypes/fragments/define-module'
