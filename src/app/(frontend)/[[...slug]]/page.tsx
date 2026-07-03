@@ -1,11 +1,18 @@
 import pkg from '@@/package.json'
 import type { Metadata } from 'next'
 import { groq } from 'next-sanity'
+import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
+import { Suspense } from 'react'
 import { ROUTES } from '@/lib/env'
-import { client } from '@/sanity/lib/client'
 import { urlFor } from '@/sanity/lib/image'
-import { sanityFetchLive } from '@/sanity/lib/live'
+import {
+	getDynamicFetchOptions,
+	sanityFetch,
+	sanityFetchMetadata,
+	sanityFetchStaticParams,
+	type DynamicFetchOptions,
+} from '@/sanity/lib/live'
 import {
 	getSite,
 	GLOBAL_MODULE_EXCLUDE_QUERY,
@@ -13,21 +20,56 @@ import {
 	MODULES_QUERY,
 } from '@/sanity/lib/queries'
 import type { PAGE_QUERY_RESULT } from '@/sanity/types'
+import Loading from '@/ui/loading'
 import ModulesResolver from '@/ui/modules'
 
 type Props = PageProps<'/[[...slug]]'>
 
 export default async function Page({ params }: Props) {
+	const { isEnabled: isDraftMode } = await draftMode()
+
+	if (isDraftMode) {
+		return (
+			<Suspense fallback={<Loading className="section" />}>
+				<DynamicPage params={params} />
+			</Suspense>
+		)
+	}
+
 	const { slug } = await params
-	const page = await getPage(slug)
+	return <CachedPage slug={slug} perspective="published" stega={false} />
+}
+
+async function DynamicPage({ params }: Pick<Props, 'params'>) {
+	const [{ slug }, { perspective, stega }] = await Promise.all([
+		params,
+		getDynamicFetchOptions(),
+	])
+
+	return <CachedPage slug={slug} perspective={perspective} stega={stega} />
+}
+
+async function CachedPage({
+	slug,
+	perspective,
+	stega,
+}: { slug?: string[] } & DynamicFetchOptions) {
+	'use cache'
+	const page = await getPage({ slug, perspective, stega })
 	if (!page) notFound()
 
-	return <ModulesResolver page={page} />
+	return <ModulesResolver page={page} perspective={perspective} stega={stega} />
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-	const { slug } = await params
-	const [page, site] = await Promise.all([getPage(slug), getSite()])
+	const [{ slug }, { perspective }] = await Promise.all([
+		params,
+		getDynamicFetchOptions(),
+	])
+	const [page, site] = await Promise.all([
+		getPageMetadata({ slug, perspective }),
+		getSite({ perspective, stega: false }),
+	])
 	const { title, description, image, noIndex } = page?.metadata ?? {}
 
 	return {
@@ -64,28 +106,45 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-	const slugs = await client.fetch<string[]>(
-		groq`
+	const slugs = (await sanityFetchStaticParams({
+		query: groq`
 			*[
 				_type == 'page'
 				&& defined(metadata.slug.current)
 				&& !(metadata.slug.current in ['404'])
 			].metadata.slug.current
 		`,
-	)
+	})) as string[]
 
 	return slugs.map((slug) => ({
 		slug: slug === 'index' ? undefined : slug.split('/'),
 	}))
 }
 
-async function getPage(slug?: string[]) {
-	return await sanityFetchLive<PAGE_QUERY_RESULT>({
+async function getPage({
+	slug,
+	perspective,
+	stega,
+}: { slug?: string[] } & DynamicFetchOptions) {
+	'use cache'
+	const { data } = await sanityFetch({
 		query: PAGE_QUERY,
-		params: {
-			slug: slug ? slug.join('/') : 'index',
-		},
+		params: { slug: slug ? slug.join('/') : 'index' },
+		perspective,
+		stega,
 	})
+	return data as PAGE_QUERY_RESULT
+}
+
+async function getPageMetadata({
+	slug,
+	perspective,
+}: { slug?: string[] } & Pick<DynamicFetchOptions, 'perspective'>) {
+	return (await sanityFetchMetadata({
+		query: PAGE_QUERY,
+		params: { slug: slug ? slug.join('/') : 'index' },
+		perspective,
+	})) as PAGE_QUERY_RESULT
 }
 
 const PAGE_QUERY = groq`

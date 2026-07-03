@@ -1,9 +1,13 @@
+import { VisualEditing } from 'next-sanity/visual-editing'
 import { Geist } from 'next/font/google'
+import { draftMode } from 'next/headers'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
+import { Suspense } from 'react'
 import { preconnect } from 'react-dom'
-import Footer from '@/ui/footer'
-import Header from '@/ui/header'
-import VisualEditing from '@/ui/modules/visual-editing'
+import { SanityLive } from '@/sanity/lib/live'
+import DraftModeBanner from '@/ui/draft-mode-banner'
+import Footer, { DynamicFooter } from '@/ui/footer'
+import Header, { DynamicHeader } from '@/ui/header'
 import '@/app.css'
 
 const fontSans = Geist({
@@ -17,15 +21,38 @@ export default async function RootLayout({
 }>) {
 	preconnect('https://cdn.sanity.io')
 
+	const { isEnabled: isDraftMode } = await draftMode()
+
 	return (
 		<html lang="en" data-scroll-behavior="smooth">
 			<NuqsAdapter>
 				<body className="bg-background text-foreground antialiased">
-					<Header />
-					<main>{children}</main>
-					<Footer />
+					{isDraftMode ? (
+						<Suspense fallback={<div className="header-fallback" />}>
+							<DynamicHeader />
+						</Suspense>
+					) : (
+						<Header perspective="published" stega={false} />
+					)}
 
-					<VisualEditing />
+					<main>{children}</main>
+
+					{isDraftMode ? (
+						<Suspense fallback={<div className="footer-fallback" />}>
+							<DynamicFooter />
+						</Suspense>
+					) : (
+						<Footer perspective="published" stega={false} />
+					)}
+
+					<SanityLive includeDrafts={isDraftMode} />
+
+					{isDraftMode && (
+						<>
+							<VisualEditing />
+							<DraftModeBanner />
+						</>
+					)}
 				</body>
 			</NuqsAdapter>
 		</html>

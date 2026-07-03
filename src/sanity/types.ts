@@ -8709,7 +8709,7 @@ export type CATEGORIES_QUERY_RESULT = Array<{
 	slug?: Slug
 }>
 
-// Source: src/ui/modules/search/store.ts
+// Source: src/ui/modules/search/actions.ts
 // Variable: SEARCH_QUERY
 // Query: *[	_type in $scope	&& defined(metadata.slug.current)	&& metadata.noIndex != true	&& !(metadata.slug.current in ['404'])	&& @ match text::query($queryMatch)]{	_id,	_type,	title,	'slug': select(		_type == 'blog.post' => $blogDir + metadata.slug.current,		metadata.slug.current == 'index' => '/',		'/' + metadata.slug.current	)}
 export type SEARCH_QUERY_RESULT = Array<

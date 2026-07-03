@@ -2,7 +2,11 @@ import { groq } from 'next-sanity'
 import { ImageResponse } from 'next/og'
 import { ROUTES } from '@/lib/env'
 import { cn } from '@/lib/utils'
-import { sanityFetchLive } from '@/sanity/lib/live'
+import {
+	getDynamicFetchOptions,
+	sanityFetch,
+	type DynamicFetchOptions,
+} from '@/sanity/lib/live'
 import { getSite } from '@/sanity/lib/queries'
 import type { OG_QUERY_RESULT } from '@/sanity/types'
 
@@ -20,15 +24,15 @@ export async function GET(request: Request) {
 
 	const type = slug.startsWith(blogDir) ? 'blog.post' : 'page'
 
+	const { perspective } = await getDynamicFetchOptions()
+
 	const [page, site] = await Promise.all([
-		sanityFetchLive<OG_QUERY_RESULT>({
-			query: OG_QUERY,
-			params: {
-				type,
-				slug: type === 'blog.post' ? slug.replace(blogDir, '') : slug,
-			},
+		getPage({
+			type,
+			slug: type === 'blog.post' ? slug.replace(blogDir, '') : slug,
+			perspective,
 		}),
-		getSite(),
+		getSite({ perspective, stega: false }),
 	])
 
 	const [h1 = '', h2 = ''] =
@@ -69,6 +73,24 @@ export async function GET(request: Request) {
 			],
 		},
 	)
+}
+
+async function getPage({
+	type,
+	slug,
+	perspective,
+}: {
+	type: string
+	slug: string
+} & Pick<DynamicFetchOptions, 'perspective'>) {
+	'use cache'
+	const { data } = await sanityFetch({
+		query: OG_QUERY,
+		params: { type, slug },
+		perspective,
+		stega: false,
+	})
+	return data as OG_QUERY_RESULT
 }
 
 async function loadGoogleFont(font: string, text: string) {

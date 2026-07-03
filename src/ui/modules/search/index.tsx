@@ -1,12 +1,17 @@
 import { PortableText, stegaClean } from 'next-sanity'
 import { Suspense } from 'react'
 import type { SearchModule } from '@/sanity/types'
-import Loading from '@/ui/loading'
 import Eyebrow from '@/ui/eyebrow'
+import Loading from '@/ui/loading'
 import { Module } from '..'
 import SearchForm from './search-form'
 
-export default function ({ eyebrow, intro = [], scope, ...props }: SearchModule) {
+export default function ({
+	eyebrow,
+	intro = [],
+	scope,
+	...props
+}: SearchModule) {
 	return (
 		<Module className="section" {...props}>
 			<div className="mx-auto max-w-2xl space-y-8">

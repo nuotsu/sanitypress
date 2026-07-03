@@ -1,17 +1,46 @@
 import type { Metadata } from 'next'
 import { groq } from 'next-sanity'
-import { sanityFetchLive } from '@/sanity/lib/live'
+import { draftMode } from 'next/headers'
+import { Suspense } from 'react'
+import {
+	getDynamicFetchOptions,
+	sanityFetch,
+	sanityFetchMetadata,
+	type DynamicFetchOptions,
+} from '@/sanity/lib/live'
 import { MODULES_QUERY } from '@/sanity/lib/queries'
 import type { NOT_FOUND_QUERY_RESULT } from '@/sanity/types'
+import Loading from '@/ui/loading'
 import ModulesResolver from '@/ui/modules'
 
-export default async function () {
-	const page = await getPage()
-	return <ModulesResolver page={page} />
+export default async function NotFound() {
+	const { isEnabled: isDraftMode } = await draftMode()
+
+	if (isDraftMode) {
+		return (
+			<Suspense fallback={<Loading className="section" />}>
+				<DynamicNotFound />
+			</Suspense>
+		)
+	}
+
+	return <CachedNotFound perspective="published" stega={false} />
+}
+
+async function DynamicNotFound() {
+	const { perspective, stega } = await getDynamicFetchOptions()
+	return <CachedNotFound perspective={perspective} stega={stega} />
+}
+
+async function CachedNotFound({ perspective, stega }: DynamicFetchOptions) {
+	'use cache'
+	const page = await getPage({ perspective, stega })
+	return <ModulesResolver page={page} perspective={perspective} stega={stega} />
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-	const page = await getPage()
+	const { perspective } = await getDynamicFetchOptions()
+	const page = await getPageMetadata({ perspective })
 
 	return {
 		title: page?.metadata?.title,
@@ -26,10 +55,23 @@ export async function generateMetadata(): Promise<Metadata> {
 	}
 }
 
-async function getPage() {
-	return await sanityFetchLive<NOT_FOUND_QUERY_RESULT>({
+async function getPage({ perspective, stega }: DynamicFetchOptions) {
+	'use cache'
+	const { data } = await sanityFetch({
 		query: NOT_FOUND_QUERY,
+		perspective,
+		stega,
 	})
+	return data as NOT_FOUND_QUERY_RESULT
+}
+
+async function getPageMetadata({
+	perspective,
+}: Pick<DynamicFetchOptions, 'perspective'>) {
+	return (await sanityFetchMetadata({
+		query: NOT_FOUND_QUERY,
+		perspective,
+	})) as NOT_FOUND_QUERY_RESULT
 }
 
 const NOT_FOUND_QUERY = groq`

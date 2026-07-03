@@ -13,9 +13,7 @@ export default defineModule({
 		{ name: 'image' },
 		{ name: 'options' },
 	],
-	fieldsets: [
-		{ name: 'alignment', options: { columns: 2 } },
-	],
+	fieldsets: [{ name: 'alignment', options: { columns: 2 } }],
 	fields: [
 		defineField({
 			name: 'eyebrow',

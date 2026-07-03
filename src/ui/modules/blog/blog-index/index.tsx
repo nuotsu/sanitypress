@@ -2,8 +2,8 @@ import { groq, PortableText } from 'next-sanity'
 import { Suspense } from 'react'
 import { ROUTES } from '@/lib/env'
 import { cn } from '@/lib/utils'
-import { sanityFetchLive } from '@/sanity/lib/live'
-import type { BlogIndex } from '@/sanity/types'
+import { sanityFetch, type DynamicFetchOptions } from '@/sanity/lib/live'
+import type { BLOG_INDEX_QUERY_RESULT, BlogIndex } from '@/sanity/types'
 import Loading from '@/ui/loading'
 import { Module, type ModuleProps } from '@/ui/modules'
 import FilterList from '@/ui/modules/blog/filter-list'
@@ -14,12 +14,11 @@ import SortBy from './sort-by'
 export default async function ({
 	intro,
 	postsPerPage = 6,
+	perspective,
+	stega,
 	...props
-}: BlogIndex & ModuleProps) {
-	const posts = await sanityFetchLive<any>({
-		query: BLOG_INDEX_QUERY,
-		params: { blogDir: `/${ROUTES.blog}/` },
-	})
+}: BlogIndex & ModuleProps & DynamicFetchOptions) {
+	const posts = await getPosts({ perspective, stega })
 
 	return (
 		<Module className={cn('section space-y-lh', intro && 'pt-4')} {...props}>
@@ -38,7 +37,7 @@ export default async function ({
 							</Loading>
 						}
 					>
-						<FilterList />
+						<FilterList perspective={perspective} stega={stega} />
 						<SortBy />
 					</Suspense>
 				</fieldset>
@@ -49,6 +48,17 @@ export default async function ({
 			</div>
 		</Module>
 	)
+}
+
+async function getPosts({ perspective, stega }: DynamicFetchOptions) {
+	'use cache'
+	const { data } = await sanityFetch({
+		query: BLOG_INDEX_QUERY,
+		params: { blogDir: `/${ROUTES.blog}/` },
+		perspective,
+		stega,
+	})
+	return data as BLOG_INDEX_QUERY_RESULT
 }
 
 const BLOG_INDEX_QUERY = groq`

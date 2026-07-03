@@ -4,7 +4,12 @@ import type { Person, PersonList } from '@/sanity/types'
 import Img from '@/ui/img'
 import { Module } from '.'
 
-export default function ({ intro = [], people, columns, ...props }: PersonList) {
+export default function ({
+	intro = [],
+	people,
+	columns,
+	...props
+}: PersonList) {
 	return (
 		<Module className="section space-y-8" {...props}>
 			<header className="prose">

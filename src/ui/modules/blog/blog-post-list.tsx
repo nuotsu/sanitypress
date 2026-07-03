@@ -1,7 +1,11 @@
 import { groq, PortableText } from 'next-sanity'
 import { ROUTES } from '@/lib/env'
-import { sanityFetchLive } from '@/sanity/lib/live'
-import type { BlogPost, BlogPostList } from '@/sanity/types'
+import { sanityFetch, type DynamicFetchOptions } from '@/sanity/lib/live'
+import type {
+	BLOG_POST_LIST_QUERY_RESULT,
+	BlogPost,
+	BlogPostList,
+} from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
 import { Module } from '@/ui/modules'
 import PostPreview from './post-preview'
@@ -11,12 +15,11 @@ export default async function ({
 	ctas,
 	limit = 6,
 	_key,
+	perspective,
+	stega,
 	...props
-}: BlogPostList & { _key: string }) {
-	const posts = await sanityFetchLive<any>({
-		query: BLOG_POST_LIST_QUERY,
-		params: { limit, blogDir: `/${ROUTES.blog}/` },
-	})
+}: BlogPostList & { _key: string } & DynamicFetchOptions) {
+	const posts = await getPosts({ limit, perspective, stega })
 
 	return (
 		<Module _key={_key} className="section space-y-8" {...props}>
@@ -42,6 +45,21 @@ export default async function ({
 			<CTAList ctas={ctas} className="justify-center max-sm:*:w-full" />
 		</Module>
 	)
+}
+
+async function getPosts({
+	limit,
+	perspective,
+	stega,
+}: { limit: number } & DynamicFetchOptions) {
+	'use cache'
+	const { data } = await sanityFetch({
+		query: BLOG_POST_LIST_QUERY,
+		params: { limit, blogDir: `/${ROUTES.blog}/` },
+		perspective,
+		stega,
+	})
+	return data as BLOG_POST_LIST_QUERY_RESULT
 }
 
 const BLOG_POST_LIST_QUERY = groq`

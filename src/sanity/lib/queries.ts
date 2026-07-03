@@ -1,6 +1,6 @@
 import { groq } from 'next-sanity'
 import type { SITE_QUERY_RESULT } from '@/sanity/types'
-import { sanityFetchLive } from './live'
+import { sanityFetch, type DynamicFetchOptions } from './live'
 
 /* fragments */
 
@@ -158,8 +158,8 @@ export const MODULES_QUERY = groq`
 
 /* queries */
 
-export async function getSite() {
-	return await sanityFetchLive<SITE_QUERY_RESULT>({
-		query: SITE_QUERY,
-	})
+export async function getSite({ perspective, stega }: DynamicFetchOptions) {
+	'use cache'
+	const { data } = await sanityFetch({ query: SITE_QUERY, perspective, stega })
+	return data as SITE_QUERY_RESULT
 }

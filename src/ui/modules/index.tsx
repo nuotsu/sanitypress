@@ -1,5 +1,6 @@
 import type { Get } from '@sanity/codegen'
 import { stegaClean } from 'next-sanity'
+import type { DynamicFetchOptions } from '@/sanity/lib/live'
 import type {
 	BLOG_POST_QUERY_RESULT,
 	ModuleAttributes,
@@ -50,10 +51,12 @@ const MODULES_MAP = {
 export default function ({
 	page,
 	post,
+	perspective,
+	stega,
 }: {
 	page?: PAGE_QUERY_RESULT
 	post?: BLOG_POST_QUERY_RESULT
-}) {
+} & Partial<DynamicFetchOptions>) {
 	const modules = [page, post].flatMap((item) => item?.modules ?? [])
 
 	const moduleSpecificProps = (module: ModuleProps) => {
@@ -62,6 +65,9 @@ export default function ({
 				return { post }
 			case 'breadcrumbs':
 				return { currentPage: page || post }
+			case 'blog-index':
+			case 'blog-post-list':
+				return { perspective, stega }
 			default:
 				return {}
 		}
