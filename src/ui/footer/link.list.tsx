@@ -22,8 +22,8 @@ export default function ({
 			)}
 
 			<ul className="leading-tight">
-				{links?.map((item) => (
-					<li key={item._key}>
+				{links?.map((item, i) => (
+					<li key={`${item._key}-${i}`}>
 						<SanityLink
 							className="inline-block py-[.3ch] text-current hover:underline"
 							link={item as SanityLinkType}

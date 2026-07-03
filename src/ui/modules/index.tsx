@@ -69,7 +69,7 @@ export default function ({
 
 	return (
 		<>
-			{modules?.map((module) => {
+			{modules?.map((module, i) => {
 				if (!module) return null
 
 				const Component = MODULES_MAP[
@@ -82,7 +82,7 @@ export default function ({
 					<Component
 						{...module}
 						{...moduleSpecificProps(module)}
-						key={module._key}
+						key={`${module._key}-${i}`}
 					/>
 				)
 			})}
