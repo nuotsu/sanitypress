@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+@AGENTS.md
+
 ## Commands
 
 ```bash
@@ -39,6 +41,8 @@ Every page section is a **module**: a Sanity schema object + a React component. 
 | 4. GROQ query (if needed) | `src/sanity/lib/queries.ts` → `MODULES_QUERY`                                 |
 | 5. Frontend component     | `src/ui/modules/<module-name>.tsx` (or `/<module-name>/index.tsx` for client) |
 | 6. Component index        | `src/ui/modules/index.tsx` → `MODULES_MAP`                                    |
+
+A module that runs its own independent Sanity fetch (not just what `MODULES_QUERY` already resolves) needs a 7th touchpoint — see [AGENTS.md](./AGENTS.md#modules-that-fetch-their-own-sanity-data).
 
 **Schema:** Use `defineModule` (not `defineType`) from `src/sanity/schemaTypes/fragments/define-module.ts`. It auto-injects the `attributes` field, `options` group, and Studio preview component — never add these manually.
 

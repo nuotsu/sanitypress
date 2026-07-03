@@ -195,6 +195,12 @@ First, ask:
 - **Empty** → leave a `{/* content area */}` comment inside the section; just render confirmed fields with minimal wrappers
 - **Scaffolded** → use the confirmed fields and their types to generate a reasonable Tailwind layout (e.g. grid for cards/items, `<dl>` for stats, `<details>` for accordions, prose header for intro, CTA row for ctas). Base the structure on similar existing modules in `src/ui/modules/` where applicable.
 
+Then ask:
+
+> **Does this module need to fetch its own Sanity data** (e.g. a live list, search results — anything beyond what's already resolved by the page's `MODULES_QUERY`)? Most modules don't — they only render props already resolved by the page query.
+
+#### No independent fetch (default)
+
 Create the file at `src/ui/modules/<module-name>.tsx`:
 
 ```tsx
@@ -216,6 +222,45 @@ export default function ({ intro, items, ctas, ...props }: MyModule) {
 	)
 }
 ```
+
+#### Fetches its own data
+
+Model this on `src/ui/modules/blog/blog-index/index.tsx`. The exported component receives `perspective`/`stega` (`DynamicFetchOptions`) as props and awaits a sibling `'use cache'` fetch helper — it does not fetch directly in its own body:
+
+```tsx
+import { groq } from 'next-sanity'
+import { Suspense } from 'react'
+import { sanityFetch, type DynamicFetchOptions } from '@/sanity/lib/live'
+import type { MY_MODULE_QUERY_RESULT, MyModule } from '@/sanity/types'
+import { Module, type ModuleProps } from '@/ui/modules'
+
+export default async function ({
+	intro,
+	perspective,
+	stega,
+	...props
+}: MyModule & ModuleProps & DynamicFetchOptions) {
+	const items = await getItems({ perspective, stega })
+
+	return (
+		<Module className="section space-y-8" {...props}>
+			{/* render `items`; wrap any independently-streamed part (pagination, filters) in its own <Suspense fallback={...}> */}
+		</Module>
+	)
+}
+
+async function getItems({ perspective, stega }: DynamicFetchOptions) {
+	'use cache'
+	const { data } = await sanityFetch({ query: MY_MODULE_QUERY, perspective, stega })
+	return data as MY_MODULE_QUERY_RESULT
+}
+
+const MY_MODULE_QUERY = groq`
+	*[_type == 'my-doc-type']{ ... }
+`
+```
+
+This module also needs a registration step in [Step 7](#step-7--register-the-component) that no-fetch modules skip. For the full explanation of `perspective`/`stega` and cache boundaries, see the `sanity-live-cache-components` skill's `reference/three-layer-pattern.md`.
 
 After creating the file, ask:
 
@@ -254,6 +299,15 @@ import MyModule from './my-module' // single-file layout
 'my-module': MyModule,
 ```
 
+3. **If this module fetches its own data** (answered "yes" in Step 6), also add a case to `moduleSpecificProps` in this same file:
+
+```ts
+case 'my-module':
+	return { perspective, stega }
+```
+
+Skipping this is silent — the module still renders, but its `'use cache'` fetch always resolves the published/non-stega view, so draft mode and Visual Editing never show up for it.
+
 ---
 
 ## Verification checklist
@@ -262,3 +316,4 @@ import MyModule from './my-module' // single-file layout
 - [ ] TypeScript compiles cleanly (no IDE errors, or `bun run build` passes)
 - [ ] Module appears as an option in Sanity Studio when adding modules to a page
 - [ ] Component renders (even if empty) when module is added to a page in preview
+- [ ] If the module fetches its own data: it's registered in `moduleSpecificProps`, its `<Suspense>` fallback shows then resolves to real content, and draft-mode edits are visible when previewing
