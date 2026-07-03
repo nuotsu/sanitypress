@@ -1,41 +1,46 @@
 import { groq } from 'next-sanity'
 import { ROUTES } from '@/lib/env'
 import { client } from '@/sanity/lib/client'
-import type {
-	LLMS_BLOG_QUERY_RESULT,
-	LLMS_PAGES_QUERY_RESULT,
-} from '@/sanity/types'
+import type { LLMS_QUERY_RESULT } from '@/sanity/types'
 
 export async function GET() {
 	const baseUrl = (process.env.NEXT_PUBLIC_BASE_URL ?? '').replace(/\/$/, '')
 
-	const [pages, posts] = await Promise.all([
-		client.fetch<LLMS_PAGES_QUERY_RESULT>(LLMS_PAGES_QUERY),
-		client.fetch<LLMS_BLOG_QUERY_RESULT>(LLMS_BLOG_QUERY, {
-			blogDir: ROUTES.blog,
-		}),
-	])
+	const { site, home, pages, posts } = await client.fetch<LLMS_QUERY_RESULT>(
+		LLMS_QUERY,
+		{ blogDir: ROUTES.blog },
+	)
 
+	const title = site?.title || (baseUrl && new URL(baseUrl).hostname) || 'Site'
 	const mdUrl = (slug: string) => `${baseUrl}/${slug}.md`
 
 	const lines = [
-		`# ${baseUrl}`,
+		`# ${title}`,
+		...(home?.description ? ['', `> ${home.description}`] : []),
 		'',
-		'> AI-readable index of all site content. Each link points to a Markdown version of the page.',
-		'',
-		'## Pages',
-		'',
-		...pages.map(
-			(p) =>
-				`- [${p.title}](${mdUrl(p.slug ?? '')})${p.description ? ': ' + p.description : ''}`,
-		),
-		'',
-		'## Blog Posts',
-		'',
-		...posts.map(
-			(p) =>
-				`- [${p.title}](${mdUrl(String(p.slug))})${p.description ? ': ' + p.description : ''}`,
-		),
+		'Markdown versions of the pages below are available by appending `.md` to their URL, or via content negotiation with an `Accept: text/markdown` header.',
+		...(pages.length
+			? [
+					'',
+					'## Pages',
+					'',
+					...pages.map(
+						(p) =>
+							`- [${p.title}](${mdUrl(p.slug ?? '')})${p.description ? ': ' + p.description : ''}`,
+					),
+				]
+			: []),
+		...(posts.length
+			? [
+					'',
+					'## Blog Posts',
+					'',
+					...posts.map(
+						(p) =>
+							`- [${p.title}](${mdUrl(String(p.slug))})${p.description ? ': ' + p.description : ''}`,
+					),
+				]
+			: []),
 		'',
 	]
 
@@ -44,21 +49,27 @@ export async function GET() {
 	})
 }
 
-const LLMS_PAGES_QUERY = groq`
-	*[_type == 'page'
+const LLMS_QUERY = groq`{
+	'site': *[_type == 'site'][0]{
+		title
+	},
+	'home': *[_type == 'page' && metadata.slug.current == 'index'][0]{
+		'description': metadata.description
+	},
+	'pages': *[_type == 'page'
 		&& defined(metadata.slug.current)
 		&& metadata.noIndex != true
 		&& metadata.slug.current != '404'
 		&& length(markdown.code) > 0
 	] | order(metadata.slug.current != 'index', metadata.slug.current asc) {
-		'title': coalesce(metadata.title, metadata.slug.current),
+		'title': select(
+			metadata.slug.current == 'index' => coalesce(metadata.title, 'Home'),
+			coalesce(metadata.title, metadata.slug.current)
+		),
 		'slug': metadata.slug.current,
 		'description': metadata.description,
-	}
-`
-
-const LLMS_BLOG_QUERY = groq`
-	*[_type == 'blog.post'
+	},
+	'posts': *[_type == 'blog.post'
 		&& defined(metadata.slug.current)
 		&& metadata.noIndex != true
 		&& length(markdown.code) > 0
@@ -67,4 +78,4 @@ const LLMS_BLOG_QUERY = groq`
 		'slug': $blogDir + '/' + metadata.slug.current,
 		'description': metadata.description,
 	}
-`
+}`
