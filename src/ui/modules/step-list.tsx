@@ -39,7 +39,7 @@ export default function ({
 							itemProp: 'step',
 							itemType: 'https://schema.org/HowToStep',
 						})}
-						key={step._key}
+						key={`${step._key}-${index}`}
 					>
 						<span className="h3 bg-foreground text-background size-lh grid shrink-0 place-content-center text-center before:content-[counter(step)]" />
 

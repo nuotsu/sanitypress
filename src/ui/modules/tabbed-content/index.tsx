@@ -35,7 +35,7 @@ export default function ({
 							index={i}
 							htmlFor={`tabbed-content-${props._key}-${tab._key}`}
 							className="data-active:border-stroke inline-flex shrink-0 snap-center items-center gap-[.5em] border border-transparent p-[.5em] leading-tight not-hover:not-data-active:opacity-50 data-active:font-bold"
-							key={tab._key}
+							key={`${tab._key}-${i}`}
 						>
 							<Img
 								className="size-[1.5lh] shrink-0 object-contain"
@@ -51,7 +51,7 @@ export default function ({
 
 				<div className="mx-auto w-full max-w-3xl">
 					{tabs?.map((tab, i) => (
-						<Fragment key={tab._key}>
+						<Fragment key={`${tab._key}-${i}`}>
 							<Radio
 								name={`tabbed-content-${props._key}`}
 								id={`tabbed-content-${props._key}-${tab._key}`}

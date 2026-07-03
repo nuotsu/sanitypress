@@ -17,7 +17,7 @@ export default async function (props: React.ComponentProps<'nav'>) {
 
 	return (
 		<nav {...props}>
-			{site?.social?.items?.map((link) => {
+			{site?.social?.items?.map((link, i) => {
 				switch (link._type) {
 					case 'link':
 						const url = link.external
@@ -27,7 +27,7 @@ export default async function (props: React.ComponentProps<'nav'>) {
 								link={link as SanityLinkType}
 								className="text-current"
 								aria-label={link.label || url}
-								key={link._key}
+								key={`${link._key}-${i}`}
 							>
 								{url?.includes('facebook.com') ? (
 									<FaFacebook />

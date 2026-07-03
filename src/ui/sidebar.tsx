@@ -26,13 +26,19 @@ export default function ({
 				className,
 			)}
 		>
-			{modules?.map((module) => {
+			{modules?.map((module, i) => {
 				switch (module._type) {
 					case 'callout':
-						return <Callout {...module} className="p-0" key={module._key} />
+						return (
+							<Callout
+								{...module}
+								className="p-0"
+								key={`${module._key}-${i}`}
+							/>
+						)
 
 					case 'custom-html':
-						return <CustomHTML {...module} key={module._key} />
+						return <CustomHTML {...module} key={`${module._key}-${i}`} />
 
 					case 'tableOfContents':
 						return (
@@ -40,7 +46,7 @@ export default function ({
 								summary="On this page"
 								headings={headings}
 								open
-								key={module._key}
+								key={`${module._key}-${i}`}
 							/>
 						)
 

@@ -18,11 +18,11 @@ export default function ({
 				className,
 			)}
 		>
-			{ctas.map((cta) => (
+			{ctas.map((cta, i) => (
 				<SanityLink
 					link={cta.link as SanityLinkType}
 					className={stegaClean(cta.theme)}
-					key={cta._key}
+					key={`${cta._key}-${i}`}
 				/>
 			))}
 		</div>

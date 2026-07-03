@@ -14,7 +14,7 @@ export default async function () {
 
 	return (
 		<nav className="max-md:header-not-open:hidden max-md:anim-fade-to-b gap-x-lh flex items-stretch [grid-area:navigation] max-md:my-4 max-md:flex-col">
-			{site?.header?.items?.map((item) => {
+			{site?.header?.items?.map((item, i) => {
 				switch (item._type) {
 					case 'link':
 						return (
@@ -24,7 +24,7 @@ export default async function () {
 									topLevelClassName,
 									'text-current hover:underline',
 								)}
-								key={item._key}
+								key={`${item._key}-${i}`}
 							/>
 						)
 
@@ -33,7 +33,7 @@ export default async function () {
 							<Dropdown
 								{...(item as LinkList & { _key: string })}
 								summaryClassName={topLevelClassName}
-								key={item._key}
+								key={`${item._key}-${i}`}
 							/>
 						)
 
@@ -42,7 +42,7 @@ export default async function () {
 							<Megamenu
 								{...(item as MegamenuType)}
 								summaryClassName={topLevelClassName}
-								key={item._key}
+								key={`${item._key}-${i}`}
 							/>
 						)
 

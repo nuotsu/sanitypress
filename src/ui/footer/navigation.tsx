@@ -9,11 +9,11 @@ export default async function () {
 	return (
 		<nav>
 			<ul className="gap-y-lh flex items-start justify-center gap-x-[2lh] max-md:flex-col">
-				{site?.footer?.items?.map((item) => {
+				{site?.footer?.items?.map((item, i) => {
 					switch (item._type) {
 						case 'link':
 							return (
-								<li key={item._key}>
+								<li key={`${item._key}-${i}`}>
 									<SanityLink
 										link={item as SanityLinkType}
 										className="text-current hover:underline"
@@ -25,7 +25,7 @@ export default async function () {
 							return (
 								<LinkList
 									{...(item as unknown as LinkListType)}
-									key={item._key}
+									key={`${item._key}-${i}`}
 								/>
 							)
 

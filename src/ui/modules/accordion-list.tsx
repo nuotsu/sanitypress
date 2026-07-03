@@ -48,23 +48,23 @@ export default function ({
 			)}
 
 			<div className="mx-auto w-full max-w-3xl">
-				{accordions?.map(({ _key, summary, content, open }) => (
+				{accordions?.map((accordion, i) => (
 					<details
+						key={`${accordion._key}-${i}`}
 						className="accordion border-stroke not-last:border-b"
 						name={exclusive ? _module_key : undefined}
-						open={open}
+						open={accordion.open}
 						{...(enableSchema && {
 							itemScope: true,
 							itemProp: 'mainEntity',
 							itemType: 'https://schema.org/Question',
 						})}
-						key={_key}
 					>
 						<summary
 							className="py-[.5lh] font-bold"
 							{...(enableSchema && { itemProp: 'name' })}
 						>
-							{summary}
+							{accordion.summary}
 							<VscChevronDown />
 						</summary>
 
@@ -80,7 +80,7 @@ export default function ({
 								className="prose"
 								{...(enableSchema && { itemProp: 'text' })}
 							>
-								<PortableText value={content ?? []} />
+								<PortableText value={accordion.content ?? []} />
 							</div>
 						</div>
 					</details>

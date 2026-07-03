@@ -25,7 +25,7 @@ export default function ({
 					<Crumb
 						link={crumb as SanityLinkType}
 						position={index + 1}
-						key={crumb._key}
+						key={`${crumb._key}-${index}`}
 					/>
 				))}
 

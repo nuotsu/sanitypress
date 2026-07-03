@@ -41,8 +41,8 @@ export default function ({
 					)}
 					style={{ '--columns': columns }}
 				>
-					{cards.map((item) => (
-						<article key={item._key} className="prose">
+					{cards.map((item, i) => (
+						<article key={`${item._key}-${i}`} className="prose">
 							{(item.image || item.icon) && (
 								<figure>
 									<Img
