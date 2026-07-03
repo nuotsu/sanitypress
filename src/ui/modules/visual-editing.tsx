@@ -3,7 +3,7 @@ import { draftMode } from 'next/headers'
 import { VscChevronDown } from 'react-icons/vsc'
 import { ROUTES } from '@/lib/env'
 import { SanityLive } from '@/sanity/lib/live'
-import HoverDetails from '@/ui/hover-details'
+import HoverDetails from '@/ui/details/hover-details'
 
 export default async function () {
 	const isDraftMode = (await draftMode()).isEnabled

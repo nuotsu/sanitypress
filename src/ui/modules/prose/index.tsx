@@ -23,7 +23,11 @@ export default function ({
 			)}
 			{...props}
 		>
-			<Sidebar {...sidebar} headings={headings} />
+			<Sidebar
+				{...sidebar}
+				headings={headings}
+				className="max-md:p-ch max-md:bg-[#ededed] [&_summary]:max-md:bg-[#ededed]"
+			/>
 
 			<article className="prose mx-auto w-full max-w-3xl">
 				<PortableText

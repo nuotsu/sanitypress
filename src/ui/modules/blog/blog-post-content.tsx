@@ -61,7 +61,7 @@ export default function ({
 					<Sidebar
 						{...sidebar}
 						headings={post.headings}
-						className="max-md:p-ch max-md:bg-stroke/50"
+						className="max-md:p-ch max-md:bg-[#ededed] [&_summary]:max-md:bg-[#ededed]"
 					/>
 
 					<div className={cn(css.body, 'prose mx-auto grid w-full max-w-4xl')}>
