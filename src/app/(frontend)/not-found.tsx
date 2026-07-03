@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { groq } from 'next-sanity'
 import { draftMode } from 'next/headers'
 import { Suspense } from 'react'
+import { dev } from '@/lib/env'
 import {
 	getDynamicFetchOptions,
 	sanityFetch,
@@ -15,8 +16,9 @@ import ModulesResolver from '@/ui/modules'
 
 export default async function NotFound() {
 	const { isEnabled: isDraftMode } = await draftMode()
+	const showDrafts = isDraftMode || dev
 
-	if (isDraftMode) {
+	if (showDrafts) {
 		return (
 			<Suspense fallback={<Loading className="section" />}>
 				<DynamicNotFound />

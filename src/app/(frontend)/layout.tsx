@@ -4,6 +4,7 @@ import { draftMode } from 'next/headers'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import { Suspense } from 'react'
 import { preconnect } from 'react-dom'
+import { dev } from '@/lib/env'
 import { SanityLive } from '@/sanity/lib/live'
 import DraftModeBanner from '@/ui/draft-mode-banner'
 import Footer, { DynamicFooter } from '@/ui/footer'
@@ -22,12 +23,13 @@ export default async function RootLayout({
 	preconnect('https://cdn.sanity.io')
 
 	const { isEnabled: isDraftMode } = await draftMode()
+	const showDrafts = isDraftMode || dev
 
 	return (
 		<html lang="en" data-scroll-behavior="smooth">
 			<NuqsAdapter>
 				<body className="bg-background text-foreground antialiased">
-					{isDraftMode ? (
+					{showDrafts ? (
 						<Suspense fallback={<div className="header-fallback" />}>
 							<DynamicHeader />
 						</Suspense>
@@ -37,7 +39,7 @@ export default async function RootLayout({
 
 					<main>{children}</main>
 
-					{isDraftMode ? (
+					{showDrafts ? (
 						<Suspense fallback={<div className="footer-fallback" />}>
 							<DynamicFooter />
 						</Suspense>
@@ -45,7 +47,7 @@ export default async function RootLayout({
 						<Footer perspective="published" stega={false} />
 					)}
 
-					<SanityLive includeDrafts={isDraftMode} />
+					<SanityLive includeDrafts={showDrafts} />
 
 					{isDraftMode && (
 						<>

@@ -13,7 +13,9 @@ import type { BLOG_RSS_QUERY_RESULT } from '@/sanity/types'
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
 export async function GET() {
-	const { perspective } = await getDynamicFetchOptions()
+	const { perspective } = await getDynamicFetchOptions({
+		allowDevPreview: false,
+	})
 	const { blog, posts } = await getRssData({ perspective })
 
 	const rssXML = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel>

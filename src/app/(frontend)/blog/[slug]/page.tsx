@@ -3,7 +3,7 @@ import { groq } from 'next-sanity'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
-import { ROUTES } from '@/lib/env'
+import { dev, ROUTES } from '@/lib/env'
 import { urlFor } from '@/sanity/lib/image'
 import {
 	getDynamicFetchOptions,
@@ -24,8 +24,9 @@ type Props = PageProps<'/blog/[slug]'>
 
 export default async function ({ params }: Props) {
 	const { isEnabled: isDraftMode } = await draftMode()
+	const showDrafts = isDraftMode || dev
 
-	if (isDraftMode) {
+	if (showDrafts) {
 		return (
 			<Suspense fallback={<Loading className="section" />}>
 				<DynamicPost params={params} />

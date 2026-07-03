@@ -8,6 +8,7 @@ import {
 	type LivePerspective,
 } from 'next-sanity/live'
 import { cookies, draftMode } from 'next/headers'
+import { dev } from '@/lib/env'
 import { apiVersion } from '@/sanity/env'
 import { client } from './client'
 import { token } from './token'
@@ -26,9 +27,12 @@ export interface DynamicFetchOptions {
 
 // Resolve dynamic values (perspective/stega) outside `'use cache'` boundaries,
 // then pass them into cached components as plain props.
-export async function getDynamicFetchOptions(): Promise<DynamicFetchOptions> {
+export async function getDynamicFetchOptions({
+	allowDevPreview = true,
+}: { allowDevPreview?: boolean } = {}): Promise<DynamicFetchOptions> {
 	const { isEnabled: isDraftMode } = await draftMode()
 	if (!isDraftMode) {
+		if (allowDevPreview && dev) return { perspective: 'drafts', stega: false }
 		return { perspective: 'published', stega: false }
 	}
 

@@ -24,7 +24,9 @@ export async function GET(request: Request) {
 
 	const type = slug.startsWith(blogDir) ? 'blog.post' : 'page'
 
-	const { perspective } = await getDynamicFetchOptions()
+	const { perspective } = await getDynamicFetchOptions({
+		allowDevPreview: false,
+	})
 
 	const [page, site] = await Promise.all([
 		getPage({
