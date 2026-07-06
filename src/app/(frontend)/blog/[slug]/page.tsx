@@ -6,6 +6,7 @@ import { client } from '@/sanity/lib/client'
 import { urlFor } from '@/sanity/lib/image'
 import { sanityFetchLive } from '@/sanity/lib/live'
 import {
+	BLOG_POST_FRAGMENT_QUERY,
 	GLOBAL_MODULE_EXCLUDE_QUERY,
 	MODULES_QUERY,
 } from '@/sanity/lib/queries'
@@ -80,22 +81,11 @@ export const BLOG_POST_QUERY = groq`*[_type == 'blog.post' && metadata.slug.curr
 		}
 	},
 	'contentPlainText': pt::text(content),
-	'readTime': length(string::split(pt::text(content), ' ')) / 200,
 	'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{
 		style,
 		'text': pt::text(@)
 	},
-	categories[]->{
-		title,
-		slug
-	},
-	author->{
-		name,
-		image{
-			...,
-			asset->
-		}
-	},
+	${BLOG_POST_FRAGMENT_QUERY},
 	'modules': (
 		// global modules (before)
 		*[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}].before[]{ ${MODULES_QUERY} }

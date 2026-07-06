@@ -88,6 +88,22 @@ const SIDEBAR_QUERY = groq`
 `
 
 // @sanity-typegen-ignore
+export const BLOG_POST_FRAGMENT_QUERY = groq`
+	'readTime': length(string::split(pt::text(content), ' ')) / 200,
+	categories[]->{
+		title,
+		slug
+	},
+	author->{
+		name,
+		image{
+			...,
+			asset->
+		}
+	}
+`
+
+// @sanity-typegen-ignore
 export const MODULES_QUERY = groq`
 	...,
 	ctas[]{

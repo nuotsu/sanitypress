@@ -4,6 +4,7 @@ import { Suspense } from 'react'
 import { ROUTES } from '@/lib/env'
 import { cn } from '@/lib/utils'
 import { sanityFetchLive } from '@/sanity/lib/live'
+import { BLOG_POST_FRAGMENT_QUERY } from '@/sanity/lib/queries'
 import type {
 	BLOG_FEATURED_QUERY_RESULT,
 	BLOG_INDEX_QUERY_RESULT,
@@ -85,21 +86,7 @@ export default async function ({
 export const BLOG_INDEX_QUERY = groq`
 	*[_type == 'blog.post' && !(_id in $featuredIds)]|order(publishDate desc){
 		...,
-		categories[]->,
-		author->{
-			name,
-			image{
-				...,
-				asset->
-			}
-		},
-		metadata{
-			...,
-			image{
-				...,
-				asset->
-			}
-		},
+		${BLOG_POST_FRAGMENT_QUERY},
 		'slug': $blogDir + metadata.slug.current,
 	}
 `
@@ -107,21 +94,7 @@ export const BLOG_INDEX_QUERY = groq`
 export const BLOG_FEATURED_QUERY = groq`
 	*[_type == 'blog.post' && _id in $featuredIds]{
 		...,
-		categories[]->,
-		author->{
-			name,
-			image{
-				...,
-				asset->
-			}
-		},
-		metadata{
-			...,
-			image{
-				...,
-				asset->
-			}
-		},
+		${BLOG_POST_FRAGMENT_QUERY},
 		'slug': $blogDir + metadata.slug.current,
 	}
 `
