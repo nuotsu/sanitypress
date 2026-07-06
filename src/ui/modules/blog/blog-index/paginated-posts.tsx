@@ -24,11 +24,13 @@ export default function ({
 		)
 		?.sort((a, b) => {
 			if (sortBy === 'publishDate_desc')
-				return b.publishDate!.localeCompare(a.publishDate!)
+				return (b.publishDate ?? '').localeCompare(a.publishDate ?? '')
 			if (sortBy === 'publishDate_asc')
-				return a.publishDate!.localeCompare(b.publishDate!)
-			if (sortBy === 'title_asc') return a.title!.localeCompare(b.title!)
-			if (sortBy === 'title_desc') return b.title!.localeCompare(a.title!)
+				return (a.publishDate ?? '').localeCompare(b.publishDate ?? '')
+			if (sortBy === 'title_asc')
+				return (a.title ?? '').localeCompare(b.title ?? '')
+			if (sortBy === 'title_desc')
+				return (b.title ?? '').localeCompare(a.title ?? '')
 			return 0
 		})
 
