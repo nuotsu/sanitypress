@@ -1,5 +1,6 @@
 import { VscChevronDown } from 'react-icons/vsc'
 import { cn } from '@/lib/utils'
+import MobileClosedDetails from '@/ui/details/mobile-closed-details'
 import ToCItem from './toc-item'
 import css from './toc.module.css'
 
@@ -20,14 +21,14 @@ export default function ({
 	if (!headings?.length) return null
 
 	return (
-		<details
+		<MobileClosedDetails
 			className={cn(
-				'accordion max-h-[calc(100svh-var(--header-height)-var(--offset))] overflow-y-auto',
+				'table-of-contents accordion max-h-[calc(100svh-var(--header-height)-var(--offset))] overflow-y-auto',
 				className,
 			)}
 			{...props}
 		>
-			<summary className="md:bg-background sticky top-0 font-bold">
+			<summary className="bg-background sticky top-0 z-1 py-1 font-bold">
 				{summary}
 				<VscChevronDown className="md:hidden" />
 			</summary>
@@ -37,6 +38,6 @@ export default function ({
 					<ToCItem heading={heading} key={key} />
 				))}
 			</ol>
-		</details>
+		</MobileClosedDetails>
 	)
 }

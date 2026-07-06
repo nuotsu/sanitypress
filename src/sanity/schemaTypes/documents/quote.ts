@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { FeedbackIcon } from '@sanity/icons'
+import { FeedbackIcon } from '@sanity/icons/Feedback'
 import { getBlockText } from '@/lib/utils'
 
 export default defineType({

@@ -1,5 +1,5 @@
 import { defineArrayMember, defineField } from 'sanity'
-import { ImageIcon } from '@sanity/icons'
+import { ImageIcon } from '@sanity/icons/Image'
 import { VscInspect } from 'react-icons/vsc'
 import { getBlockText } from '@/lib/utils'
 import defineModule from '@/sanity/schemaTypes/fragments/define-module'

@@ -21,7 +21,7 @@ export default function ({
 	return (
 		<aside
 			className={cn(
-				'md:sticky-below-header space-y-lh shrink-0 [--offset:1rem] md:w-[24ch]',
+				'md:sticky-below-header space-y-lh shrink-0 [--offset:1rem] has-[.table-of-contents:not(:open)]:*:not-[.table-of-contents]:hidden md:w-[24ch]',
 				position === 'right' && 'md:order-last',
 				className,
 			)}
@@ -40,15 +40,22 @@ export default function ({
 					case 'custom-html':
 						return <CustomHTML {...module} key={`${module._key}-${i}`} />
 
-					case 'tableOfContents':
+					case 'tableOfContents': {
+						const maxHeadingDepth = stegaClean(module.maxHeadingDepth) ?? 6
+						const filtered = headings?.filter((h) => {
+							const level = Number(stegaClean(h.style)?.slice(1))
+							return level >= 2 && level <= maxHeadingDepth
+						})
+
 						return (
 							<TableOfContents
-								summary="On this page"
-								headings={headings}
-								open
+								className="max-md:not-open:mb-0"
+								summary={module.summary}
+								headings={filtered ?? null}
 								key={`${module._key}-${i}`}
 							/>
 						)
+					}
 
 					default:
 						return null

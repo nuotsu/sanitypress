@@ -1,5 +1,6 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
-import { EditIcon, ImageIcon } from '@sanity/icons'
+import { EditIcon } from '@sanity/icons/Edit'
+import { ImageIcon } from '@sanity/icons/Image'
 
 export default defineType({
 	name: 'blog.post',

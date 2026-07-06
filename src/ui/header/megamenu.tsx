@@ -1,10 +1,10 @@
 import { VscChevronDown } from 'react-icons/vsc'
 import { cn } from '@/lib/utils'
 import type { Megamenu, Page } from '@/sanity/types'
-import HoverDetails from '@/ui/hover-details'
+import HoverDetails from '@/ui/details/hover-details'
+import MobileOnlyDetails from '@/ui/details/mobile-only-details'
 import SanityLink, { type SanityLinkType } from '@/ui/sanity-link'
 import LinkCard from './link.card'
-import MobileOnlyDetails from './mobile-only-details'
 
 export default function ({
 	link,

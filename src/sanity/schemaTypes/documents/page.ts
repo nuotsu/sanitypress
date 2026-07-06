@@ -1,5 +1,8 @@
 import { defineField, defineType } from 'sanity'
-import { EditIcon, ErrorScreenIcon, HomeIcon, SearchIcon } from '@sanity/icons'
+import { EditIcon } from '@sanity/icons/Edit'
+import { ErrorScreenIcon } from '@sanity/icons/ErrorScreen'
+import { HomeIcon } from '@sanity/icons/Home'
+import { SearchIcon } from '@sanity/icons/Search'
 import { VscEyeClosed } from 'react-icons/vsc'
 import modules from '../fragments/modules'
 
@@ -57,4 +60,11 @@ export default defineType({
 				(noIndex && VscEyeClosed),
 		}),
 	},
+	orderings: [
+		{
+			name: 'title',
+			title: 'Title',
+			by: [{ field: 'title', direction: 'asc' }],
+		},
+	],
 })

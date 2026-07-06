@@ -1,5 +1,5 @@
 import { defineField } from 'sanity'
-import { CodeIcon } from '@sanity/icons'
+import { CodeIcon } from '@sanity/icons/Code'
 import defineModule from '@/sanity/schemaTypes/fragments/define-module'
 
 export default defineModule({

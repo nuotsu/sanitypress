@@ -1,5 +1,5 @@
 import { defineField } from 'sanity'
-import { SearchIcon } from '@sanity/icons'
+import { SearchIcon } from '@sanity/icons/Search'
 import { getBlockText } from '@/lib/utils'
 import defineModule from '@/sanity/schemaTypes/fragments/define-module'
 

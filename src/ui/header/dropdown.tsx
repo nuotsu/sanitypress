@@ -1,7 +1,7 @@
 import { VscChevronDown } from 'react-icons/vsc'
 import { cn } from '@/lib/utils'
 import type { LinkList, Page } from '@/sanity/types'
-import HoverDetails from '@/ui/hover-details'
+import HoverDetails from '@/ui/details/hover-details'
 import SanityLink, { type SanityLinkType } from '@/ui/sanity-link'
 
 export default function ({

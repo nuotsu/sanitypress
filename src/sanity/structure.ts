@@ -1,5 +1,5 @@
 import { structureTool } from 'sanity/structure'
-import { DocumentIcon } from '@sanity/icons'
+import { DocumentIcon } from '@sanity/icons/Document'
 import { VscServerProcess } from 'react-icons/vsc'
 import { singleton } from './lib/builders'
 import { pageDirectoriesListItem } from './lib/page-directories'

@@ -29,14 +29,26 @@ export default defineType({
 							type: 'string',
 							placeholder: 'e.g. On this page, etc.',
 						}),
+						defineField({
+							name: 'maxHeadingDepth',
+							type: 'number',
+							description:
+								'Include headings from H2 up to this level (2 = H2 only, 6 = H2-H6)',
+							validation: (Rule) => Rule.min(2).max(6).integer(),
+							initialValue: 6,
+						}),
 					],
 					preview: {
 						select: {
 							summary: 'summary',
+							maxHeadingDepth: 'maxHeadingDepth',
 						},
-						prepare: ({ summary = 'Table of Contents' }) => ({
+						prepare: ({
+							summary = 'Table of Contents',
+							maxHeadingDepth = 6,
+						}) => ({
 							title: summary,
-							subtitle: 'Table of Contents',
+							subtitle: `H2-H${maxHeadingDepth}`,
 						}),
 					},
 				}),
