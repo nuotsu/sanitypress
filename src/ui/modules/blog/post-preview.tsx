@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { ROUTES } from '@/lib/env'
 import { cn } from '@/lib/utils'
 import type { BlogCategory, BlogPost, Person } from '@/sanity/types'
+import Eyebrow from '@/ui/eyebrow'
 import Img from '@/ui/img'
 import SanityLink, { type SanityLinkType } from '@/ui/sanity-link'
 import Byline from './byline'
@@ -11,10 +12,12 @@ import Date from './date'
 export default function ({
 	post,
 	className,
-}: { post: BlogPost } & React.ComponentProps<'li'>) {
+}: {
+	post: BlogPost & { isFeatured?: boolean }
+} & React.ComponentProps<'li'>) {
 	return (
 		<li className={cn('relative grid gap-2', className)}>
-			<figure className="bg-foreground/5 aspect-video">
+			<figure className="bg-foreground/5 relative aspect-video">
 				{post.metadata?.image ? (
 					<Img
 						className="aspect-video w-full object-cover"
@@ -31,10 +34,17 @@ export default function ({
 						height={(400 * 9) / 16}
 					/>
 				)}
+
+				{post.isFeatured && (
+					<Eyebrow
+						className="text-background bg-foreground/60 m-ch absolute bottom-0 left-0 p-[.25em_.5em] text-xs backdrop-blur"
+						value="Featured"
+					/>
+				)}
 			</figure>
 
 			<SanityLink
-				className="block leading-snug text-current before:absolute before:inset-0 hover:underline"
+				className="block leading-snug text-current after:absolute after:inset-0 hover:underline"
 				link={{ type: 'internal', internal: post } as unknown as SanityLinkType}
 			>
 				<strong>{post.title}</strong>

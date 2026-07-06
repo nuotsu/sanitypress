@@ -2,26 +2,42 @@
 
 import { useQueryState } from 'nuqs'
 import { usePagination } from '@/hooks/usePagination'
-import type { BLOG_INDEX_QUERY_RESULT, BlogPost } from '@/sanity/types'
+import type {
+	BLOG_FEATURED_QUERY_RESULT,
+	BLOG_INDEX_QUERY_RESULT,
+	BlogPost,
+} from '@/sanity/types'
 import PostPreview from '@/ui/modules/blog/post-preview'
 import PostPreviewLarge from '@/ui/modules/blog/post-preview-large'
 
 export default function ({
 	posts,
+	featured,
 	postsPerPage,
 }: {
 	posts: BLOG_INDEX_QUERY_RESULT
+	featured?: BLOG_FEATURED_QUERY_RESULT
 	postsPerPage?: number
 }) {
 	const [category] = useQueryState('category')
 	const [sortBy] = useQueryState('sortBy')
 
+	const showFeatured = !category && !!featured?.length
+	const heroPost = showFeatured
+		? featured[0]
+		: !category
+			? posts?.[0]
+			: undefined
+	const additionalFeatured = showFeatured ? featured.slice(1) : []
+	const featuredIdSet = new Set(featured?.map((post) => post._id) ?? [])
+
 	const processedPosts = posts
-		?.filter((post, i) =>
-			!category
-				? i !== 0
-				: post.categories?.some((c) => c.slug?.current === category),
-		)
+		?.filter((post, i) => {
+			if (category)
+				return post.categories?.some((c) => c.slug?.current === category)
+			if (showFeatured) return !featuredIdSet.has(post._id)
+			return i !== 0
+		})
 		?.sort((a, b) => {
 			if (sortBy === 'publishDate_desc')
 				return (b.publishDate ?? '').localeCompare(a.publishDate ?? '')
@@ -34,17 +50,25 @@ export default function ({
 			return 0
 		})
 
+	const gridItems = showFeatured
+		? [
+				...additionalFeatured.map((post) => ({ ...post, isFeatured: true })),
+				...(processedPosts ?? []),
+			]
+		: (processedPosts ?? [])
+
 	const { paginatedItems, Pagination, currentPage } = usePagination({
-		items: processedPosts,
+		items: gridItems,
 		itemsPerPage: postsPerPage,
 	})
 
 	return (
 		<>
-			{currentPage === 1 && !category && (
+			{currentPage === 1 && !category && heroPost && (
 				<>
 					<PostPreviewLarge
-						post={posts?.[0] as unknown as BlogPost}
+						post={heroPost as unknown as BlogPost}
+						isFeatured={showFeatured}
 						className="md:order-first"
 					/>
 					<hr className="max-md:full-bleed border-stroke md:order-first" />

@@ -1,7 +1,11 @@
 import { groq, PortableText } from 'next-sanity'
 import { ROUTES } from '@/lib/env'
 import { sanityFetchLive } from '@/sanity/lib/live'
-import type { BlogPost, BlogPostList } from '@/sanity/types'
+import type {
+	BLOG_POST_LIST_QUERY_RESULT,
+	BlogPost,
+	BlogPostList,
+} from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
 import { Module } from '@/ui/modules'
 import PostPreview from './post-preview'
@@ -13,7 +17,7 @@ export default async function ({
 	_key,
 	...props
 }: BlogPostList & { _key: string }) {
-	const posts = await sanityFetchLive<any>({
+	const posts = await sanityFetchLive<BLOG_POST_LIST_QUERY_RESULT>({
 		query: BLOG_POST_LIST_QUERY,
 		params: { limit, blogDir: `/${ROUTES.blog}/` },
 	})
@@ -44,13 +48,10 @@ export default async function ({
 	)
 }
 
-const BLOG_POST_LIST_QUERY = groq`
+export const BLOG_POST_LIST_QUERY = groq`
 	*[_type == 'blog.post']|order(publishDate desc)[0...$limit]{
 		...,
-		categories[]->{
-			title,
-			slug
-		},
+		categories[]->,
 		author->{
 			name,
 			image{

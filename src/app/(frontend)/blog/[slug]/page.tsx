@@ -70,7 +70,7 @@ async function getPost(slug: string) {
 	})
 }
 
-const BLOG_POST_QUERY = groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{
+export const BLOG_POST_QUERY = groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{
 	...,
 	content[]{
 		...,

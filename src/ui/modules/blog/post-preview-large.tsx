@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { ROUTES } from '@/lib/env'
 import { cn } from '@/lib/utils'
 import type { BlogCategory, BlogPost, Person } from '@/sanity/types'
+import Eyebrow from '@/ui/eyebrow'
 import Img from '@/ui/img'
 import SanityLink, { type SanityLinkType } from '@/ui/sanity-link'
 import Byline from './byline'
@@ -10,8 +11,12 @@ import Date from './date'
 
 export default function ({
 	post,
+	isFeatured,
 	className,
-}: { post: BlogPost } & React.ComponentProps<'article'>) {
+}: {
+	post: BlogPost
+	isFeatured?: boolean
+} & React.ComponentProps<'article'>) {
 	if (!post) return null
 
 	return (
@@ -38,8 +43,10 @@ export default function ({
 			</figure>
 
 			<div className="grid gap-2 self-center">
+				{isFeatured && <Eyebrow value="Featured" />}
+
 				<SanityLink
-					className="h1 block text-current before:absolute before:inset-0 hover:underline"
+					className="h1 block text-current after:absolute after:inset-0 hover:underline"
 					link={
 						{ type: 'internal', internal: post } as unknown as SanityLinkType
 					}

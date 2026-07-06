@@ -1,6 +1,6 @@
 import { defineField } from 'sanity'
 import { EditIcon } from '@sanity/icons/Edit'
-import { getBlockText } from '@/lib/utils'
+import { count, getBlockText } from '@/lib/utils'
 import defineModule from '@/sanity/schemaTypes/fragments/define-module'
 
 export default defineModule({
@@ -17,6 +17,12 @@ export default defineModule({
 			group: 'content',
 		}),
 		defineField({
+			name: 'featured',
+			type: 'array',
+			of: [{ type: 'reference', to: [{ type: 'blog.post' }] }],
+			group: 'content',
+		}),
+		defineField({
 			name: 'postsPerPage',
 			type: 'number',
 			initialValue: 6,
@@ -27,10 +33,16 @@ export default defineModule({
 	preview: {
 		select: {
 			intro: 'intro',
+			featured: 'featured',
 		},
-		prepare: ({ intro }) => ({
+		prepare: ({ intro, featured }) => ({
 			title: getBlockText(intro),
-			subtitle: 'Blog index',
+			subtitle: [
+				'Blog index',
+				featured?.length && `(${count(featured, 'featured post')})`,
+			]
+				.filter(Boolean)
+				.join(' '),
 		}),
 	},
 })
