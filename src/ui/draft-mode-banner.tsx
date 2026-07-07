@@ -1,6 +1,6 @@
 import { VscChevronDown } from 'react-icons/vsc'
 import { ROUTES } from '@/lib/env'
-import HoverDetails from '@/ui/hover-details'
+import HoverDetails from '@/ui/details/hover-details'
 
 export default function DraftModeBanner() {
 	return (
