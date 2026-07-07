@@ -35,7 +35,7 @@ Use [`defineModule`](src/sanity/schemaTypes/fragments/define-module.ts) instead 
 
 ```ts
 import { defineArrayMember, defineField } from 'sanity'
-import { SomeIcon } from '@sanity/icons/Some'
+import { FooIcon } from '@sanity/icons/Foo'
 import { count, getBlockText } from '@/lib/utils'
 import defineModule from '@/sanity/schemaTypes/fragments/define-module'
 
@@ -43,7 +43,7 @@ export default defineModule({
 	name: 'my-module',
 	title: 'My module',
 	type: 'object',
-	icon: SomeIcon,
+	icon: FooIcon,
 	groups: [
 		{ name: 'content', default: true },
 		// { name: 'asset' },   // add if module has a dedicated image tab
