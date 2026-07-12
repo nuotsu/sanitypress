@@ -45,6 +45,7 @@
 		"@types/node": "^26.1.1",
 		"@types/react": "19.2.17",
 		"@types/react-dom": "19.2.3",
+		"@typescript/native-preview": "^7.0.0-dev.20260707.2",
 		"prettier": "^3.9.5",
 		"prettier-plugin-tailwindcss": "^0.8.0",
 		"tailwindcss": "^4.3.2",
