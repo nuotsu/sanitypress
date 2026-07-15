@@ -16,7 +16,7 @@ export default function ({
 	enableSchema = true,
 	layout: l,
 	...props
-}: AccordionList & { _key: string }) {
+}: AccordionList & { _key: string } & React.ComponentProps<'section'>) {
 	const layout = stegaClean(l)
 
 	return (
@@ -25,6 +25,7 @@ export default function ({
 			className={cn(
 				'section grid gap-8',
 				layout === 'horizontal' && 'items-start md:grid-cols-2',
+				props.className,
 			)}
 			{...(enableSchema && {
 				itemScope: true,
@@ -64,7 +65,7 @@ export default function ({
 							className="py-[.5lh] font-bold"
 							{...(enableSchema && { itemProp: 'name' })}
 						>
-							{accordion.summary}
+							{accordion.summary || 'Details'}
 							<VscChevronDown />
 						</summary>
 

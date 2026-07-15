@@ -13,6 +13,7 @@ import Code from '@/ui/modules/prose/code'
 import Image from '@/ui/modules/prose/image'
 import Sidebar from '@/ui/sidebar'
 import { Module } from '..'
+import AccordionList from '../accordion-list'
 import css from './blog-post-content.module.css'
 import Byline from './byline'
 import Categories from './categories'
@@ -57,7 +58,7 @@ export default function ({
 					</div>
 				</header>
 
-				<section className="section gap-lh flex max-md:flex-col md:items-start">
+				<section className="post-content section gap-lh flex max-md:flex-col md:items-start">
 					<Sidebar
 						{...sidebar}
 						headings={post.headings}
@@ -78,6 +79,12 @@ export default function ({
 								},
 								types: {
 									image: Image,
+									'accordion-list': ({ value }) => (
+										<AccordionList
+											{...value}
+											className="p-0 [&_header]:text-left"
+										/>
+									),
 									code: Code,
 									'custom-html': ({ value }) => (
 										<CustomHTML {...value} className="my-6" />

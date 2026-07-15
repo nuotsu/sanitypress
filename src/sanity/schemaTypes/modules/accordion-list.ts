@@ -45,6 +45,7 @@ export default defineModule({
 						defineField({
 							name: 'summary',
 							type: 'string',
+							validation: (Rule) => Rule.required(),
 						}),
 						defineField({
 							name: 'content',
