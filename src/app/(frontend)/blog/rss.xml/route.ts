@@ -4,7 +4,7 @@ import { ROUTES } from '@/lib/env'
 import { getBlockText } from '@/lib/utils'
 import { urlFor } from '@/sanity/lib/image'
 import { sanityFetchLive } from '@/sanity/lib/live'
-import type { BLOG_RSS_QUERY_RESULT } from '@/sanity/types'
+import type { AccordionList, BLOG_RSS_QUERY_RESULT } from '@/sanity/types'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -66,6 +66,23 @@ function Item({ post }: { post: BLOG_RSS_QUERY_RESULT['posts'][number] }) {
 							code: ({ value: { code } }) =>
 								code && `<pre><code>${code}</code></pre>`,
 							'custom-html': ({ value: { html } }) => html?.code,
+							'accordion-list': ({
+								value: { eyebrow, intro, accordions },
+							}: {
+								value: AccordionList
+							}) =>
+								[
+									eyebrow && `<p>${escapeHTML(eyebrow)}</p>`,
+									intro?.length && toHTML(intro),
+									accordions
+										?.map(
+											(a) =>
+												`<details${a.open ? ' open' : ''}><summary>${escapeHTML(a.summary ?? 'Details')}</summary>${a.content?.length ? toHTML(a.content) : ''}</details>`,
+										)
+										.join(''),
+								]
+									.filter(Boolean)
+									.join(''),
 						},
 					},
 				})}]]></content:encoded>`,
