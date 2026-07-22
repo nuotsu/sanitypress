@@ -32,5 +32,16 @@ export default structureTool({
 				S.documentTypeListItem('logo').title('Logos'),
 				S.documentTypeListItem('person').title('People'),
 				S.documentTypeListItem('quote').title('Quotes'),
+
+				S.divider().title('Drafts'),
+				S.listItem()
+					.title('Drafts')
+					.child(
+						S.documentList()
+							.title('Drafts')
+							.filter(
+								'_originalId in path("drafts.**") && !(_type match "sanity.*")',
+							),
+					),
 			]),
 })
