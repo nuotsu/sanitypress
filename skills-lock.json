@@ -5,13 +5,19 @@
       "source": "sanitypress/skills",
       "sourceType": "github",
       "skillPath": "skills/build-website/SKILL.md",
-      "computedHash": "b002328581289efa9e993a51dd90f544cd6bf6ca339c2a1ba8347bdcf7031d31"
+      "computedHash": "08dcea4bd1bf1278788d1236c9d4dc8301c1cc248d40b6bf05c9e963545c521f"
+    },
+    "check-studio-skills": {
+      "source": "sanitypress/skills",
+      "sourceType": "github",
+      "skillPath": "skills/check-studio-skills/SKILL.md",
+      "computedHash": "f34ba908ec87cee336b19aef0809985678f0bbc3ccd11b82b8c7770e8ebadd0a"
     },
     "generate-markdown": {
       "source": "sanitypress/skills",
       "sourceType": "github",
       "skillPath": "skills/generate-markdown/SKILL.md",
-      "computedHash": "5a230acebef9b61c3862a3171369da54da6725370c44d46e15fc58f00e4b28fd"
+      "computedHash": "f281fbb6a908566cb9621df6dbf83d1c5001c46c6e90d109c50248ae12fe9514"
     },
     "new-module": {
       "source": "sanitypress/skills",

@@ -14,6 +14,7 @@ This skill assumes the SanityPress schema (page, site, navigation, global-module
 1. Confirm the Sanity MCP connector is available (`list_projects` / `whoami`). If multiple projects exist and the target is ambiguous, ask which **project id** and **dataset** to use. Default dataset: `production`.
 2. **Always** call `get_schema` first. Do not write any document until you have read the live schema — field names, `code`-typed fields, and module `_type`s must match exactly.
 3. If unsure about any field shape, call `search_docs` / `read_docs` before guessing.
+4. Check for relevant per-instance `skill` documents before drafting any copy — see the `check-studio-skills` skill (query `_type == "skill"`, surface/confirm anything relevant, e.g. a `content-guidelines` doc, before Phase 1 copywriting).
 
 ---
 
