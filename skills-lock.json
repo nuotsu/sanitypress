@@ -11,13 +11,13 @@
       "source": "sanitypress/skills",
       "sourceType": "github",
       "skillPath": "skills/generate-markdown/SKILL.md",
-      "computedHash": "becc4eaba9637cefc6b59f06b8bf79d5dda4366b153a9875cf84ea6cc0687ae6"
+      "computedHash": "5a230acebef9b61c3862a3171369da54da6725370c44d46e15fc58f00e4b28fd"
     },
     "new-module": {
       "source": "sanitypress/skills",
       "sourceType": "github",
       "skillPath": "skills/new-module/SKILL.md",
-      "computedHash": "9bb533f47b0d9abb48aa1fa8da86a705da20f57b51dd505c63e76a7134814da7"
+      "computedHash": "6ecad49864c393db41cce25f579e27ad346f26d407601dd96c71c2af54384620"
     }
   }
 }
