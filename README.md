@@ -35,27 +35,31 @@ SanityPress
 │ │ │ │ └─ og/         # Open Graph image generation
 │ │ ├─ (studio)/admin/ # Sanity Studio (CMS editor UI)
 │ │ └─ sitemap.ts      # Auto-generated sitemap
+│ ├─ modules/          # Colocated modules (one folder per Sanity module `_type`)
+│ │ └─ <module-name>/
+│ │   ├─ index.tsx     # Frontend component
+│ │   ├─ schema.ts     # Sanity schema
+│ │   └─ query.ts      # GROQ projection (only if needed)
 │ ├─ ui/               # React components
-│ │ ├─ modules/        # One component per Sanity module
-│ │ │ ├─ blog/         # Blog-specific components (post list, filters, etc.)
-│ │ │ ├─ prose/        # Rich text components / portable text renderer
-│ │ │ └─ ...           # Modules
+│ │ ├─ modules/        # ModulesResolver + <Module> wrapper
+│ │ ├─ blog/           # Shared blog UI helpers (filters, previews, etc.)
 │ │ ├─ header/         # Header, navigation, megamenu
 │ │ ├─ footer/         # Footer and link list
 │ │ └─ ...             # Shared components (CTA, Img, Logo, etc.)
 │ ├─ sanity/           # Sanity CMS configuration
 │ │ ├─ schemaTypes/
 │ │ │ ├─ documents/    # Top-level content types (page, blog.post, site, navigation…)
-│ │ │ ├─ modules/      # Page-building blocks (heroes, grids, prose, search…)
 │ │ │ ├─ objects/      # Reusable field groups (cta, link, metadata…)
-│ │ │ └─ fragments/    # Shared GROQ fragment definitions
-│ │ ├─ lib/            # Queries, fetch helpers, image builder
+│ │ │ └─ fragments/    # Shared helpers (define-module, modules field)
+│ │ ├─ lib/            # Queries, GROQ fragments, fetch helpers, image builder
 │ │ ├─ ui/             # Custom Studio UI components
 │ │ └─ ...             # Sanity files
 │ ├─ lib/              # Shared app utilities and env helpers
 │ ├─ hooks/            # Custom React hooks
 │ └─ types/            # Global TypeScript declarations
-├─ public/             # Static assets (favicon, etc.)
+├─ public/
+│ ├─ module-thumbnails/ # Studio insert-menu previews (`<module-name>.webp`)
+│ └─ ...               # Favicon and other static assets
 ├─ .env.*              # Environment variable template
 ├─ next.config.ts      # Next.js configuration
 ├─ sanity.config.ts    # Sanity Studio configuration

@@ -3,6 +3,7 @@ import { groq } from 'next-sanity'
 import { draftMode } from 'next/headers'
 import { Suspense } from 'react'
 import { dev } from '@/lib/env'
+import ModulesResolver from '@/modules'
 import {
 	getDynamicFetchOptions,
 	sanityFetch,
@@ -12,7 +13,6 @@ import {
 import { MODULES_QUERY } from '@/sanity/lib/queries'
 import type { NOT_FOUND_QUERY_RESULT } from '@/sanity/types'
 import Loading from '@/ui/loading'
-import ModulesResolver from '@/ui/modules'
 
 export default async function NotFound() {
 	const { isEnabled: isDraftMode } = await draftMode()

@@ -13,12 +13,11 @@ export default function ({
 	_key: string
 	summaryClassName?: string
 }) {
-	const anchorName = `--dropdown-${_key}`
-
 	return (
 		<HoverDetails
 			name="header"
-			className="accordion group/dropdown"
+			className="accordion md:dropdown group/dropdown"
+			style={{ '--anchor-name': `--dropdown-${_key}` }}
 			safeAreaOnHover
 		>
 			<summary
@@ -26,20 +25,12 @@ export default function ({
 					'h-full group-open/dropdown:max-md:font-bold',
 					summaryClassName,
 				)}
-				style={{ anchorName }}
 			>
 				{summary?.label || (summary?.internal as unknown as Page)?.title}
 				<VscChevronDown />
 			</summary>
 
-			<ul
-				className="md:bg-background anim-fade border-stroke max-md:pl-ch mb-ch md:py-ch top-0 z-1 origin-top leading-tight max-md:border-l md:absolute md:ml-[-1.5ch] md:min-w-max md:border md:p-[1ch_1.5ch] md:shadow-lg starting:-translate-y-1 md:starting:scale-95"
-				style={{
-					positionAnchor: anchorName,
-					positionArea: 'end span-end',
-					positionTryFallbacks: 'end span-start',
-				}}
-			>
+			<ul className="max-md:anim-fade-to-b border-stroke max-md:pl-ch mb-ch md:py-ch leading-tight max-md:border-l md:ml-[-1.5ch] md:border md:p-[1ch_1.5ch]">
 				{links?.map((link, key) => (
 					<li key={key}>
 						<SanityLink

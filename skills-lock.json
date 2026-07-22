@@ -7,11 +7,17 @@
       "skillPath": "skills/build-website/SKILL.md",
       "computedHash": "b002328581289efa9e993a51dd90f544cd6bf6ca339c2a1ba8347bdcf7031d31"
     },
+    "generate-markdown": {
+      "source": "sanitypress/skills",
+      "sourceType": "github",
+      "skillPath": "skills/generate-markdown/SKILL.md",
+      "computedHash": "becc4eaba9637cefc6b59f06b8bf79d5dda4366b153a9875cf84ea6cc0687ae6"
+    },
     "new-module": {
       "source": "sanitypress/skills",
       "sourceType": "github",
       "skillPath": "skills/new-module/SKILL.md",
-      "computedHash": "604a246e048cbcc6d22ea48bdc9841c533a358cbaf0042616e21c75cb3aba950"
+      "computedHash": "9bb533f47b0d9abb48aa1fa8da86a705da20f57b51dd505c63e76a7134814da7"
     },
     "sanity-live-cache-components": {
       "source": "sanity-io/next-sanity",

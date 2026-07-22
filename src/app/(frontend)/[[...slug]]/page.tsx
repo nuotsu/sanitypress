@@ -5,6 +5,7 @@ import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import { dev, ROUTES } from '@/lib/env'
+import ModulesResolver from '@/modules'
 import { urlFor } from '@/sanity/lib/image'
 import {
 	getDynamicFetchOptions,
@@ -21,7 +22,6 @@ import {
 } from '@/sanity/lib/queries'
 import type { PAGE_QUERY_RESULT } from '@/sanity/types'
 import Loading from '@/ui/loading'
-import ModulesResolver from '@/ui/modules'
 
 type Props = PageProps<'/[[...slug]]'>
 

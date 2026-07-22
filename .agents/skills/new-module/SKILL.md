@@ -12,30 +12,33 @@ If the user has not already specified the fields for this module, ask before pro
 When the user provides field names, infer the type from the name before asking. Only ask for clarification when the type is genuinely ambiguous.
 
 Common inferences:
-| Field name pattern | Inferred type |
-|---|---|
-| `intro`, `content`, `body`, `description` | `array of block` (PortableText) |
-| `pretitle`, `title`, `subtitle`, `label`, `name`, `value`, `suffix` | `string` |
-| `ctas` | `array of type cta` |
-| `icon` | `image` |
-| `image`, `photo`, `thumbnail`, `cover` | `image` |
-| `theme`, `layout`, `variant`, `size`, `color` | `string` with `options.list` (ask for allowed values) |
-| `items`, `cards`, `steps`, `features`, `accordions`, `stats` | `array of objects` (ask for sub-fields) |
-| `logos`, `people`, `quotes` | `array of references` (ask for reference type) |
+
+| Field name pattern                                                  | Inferred type                                         |
+| ------------------------------------------------------------------- | ----------------------------------------------------- |
+| `intro`, `content`, `body`, `description`                           | `array of block` (PortableText)                       |
+| `pretitle`, `title`, `subtitle`, `label`, `name`, `value`, `suffix` | `string`                                              |
+| `ctas`                                                              | `array of type cta`                                   |
+| `icon`                                                              | `image`                                               |
+| `image`, `photo`, `thumbnail`, `cover`                              | `image`                                               |
+| `theme`, `layout`, `variant`, `size`, `color`                       | `string` with `options.list` (ask for allowed values) |
+| `items`, `cards`, `steps`, `features`, `accordions`, `stats`        | `array of objects` (ask for sub-fields)               |
+| `logos`, `people`, `quotes`                                         | `array of references` (ask for reference type)        |
 
 Once fields are confirmed (and any ambiguous types resolved), proceed with the steps below.
 
+Modules are colocated under `src/modules/<module-name>/` (folder name = Sanity `_type`). Shared blog UI that is not a module lives in `src/ui/blog/`.
+
 ---
 
-## Step 1 — Create the schema file
+## Step 1 — Create the module folder + schema
 
-**File:** `src/sanity/schemaTypes/modules/<module-name>.ts`
+**File:** `src/modules/<module-name>/schema.ts`
 
 Use [`defineModule`](src/sanity/schemaTypes/fragments/define-module.ts) instead of `defineType`. It prepends the `attributes` (`module-attributes`) field, appends an **Options** group, wires `preview.select.hidden` for the Studio list badge, and sets the shared `modulePreview` component—do **not** add those by hand.
 
 ```ts
 import { defineArrayMember, defineField } from 'sanity'
-import { SomeIcon } from '@sanity/icons/Some'
+import { FooIcon } from '@sanity/icons/Foo'
 import { count, getBlockText } from '@/lib/utils'
 import defineModule from '@/sanity/schemaTypes/fragments/define-module'
 
@@ -43,7 +46,7 @@ export default defineModule({
 	name: 'my-module',
 	title: 'My module',
 	type: 'object',
-	icon: SomeIcon,
+	icon: FooIcon,
 	groups: [
 		{ name: 'content', default: true },
 		// { name: 'asset' },   // add if module has a dedicated image tab
@@ -119,7 +122,7 @@ export default defineModule({
 1. Import at the top under `// modules` (alphabetical order):
 
    ```ts
-   import myModule from './modules/my-module'
+   import myModule from '@/modules/my-module/schema'
    ```
 
 2. Add to `schema.types` array under `// modules` (alphabetical order):
@@ -141,35 +144,63 @@ Add to the `of` array (alphabetical order):
 
 Optionally add to an `insertMenu.groups` entry if it belongs to a logical group (e.g. `hero`, `blog`).
 
+Studio grid previews load `/module-thumbnails/${module}.webp`. When you add a thumbnail, place it at `public/module-thumbnails/<module-name>.webp` (match the module `_type` filename).
+
 ---
 
-## Step 4 — Update the GROQ query (only if needed)
+## Step 4 — Add a GROQ query fragment (only if needed)
 
-**File:** `src/sanity/lib/queries.ts` → `MODULES_QUERY`
+**File:** `src/modules/<module-name>/query.ts`
 
-Only add an entry here if the module has nested CTAs with links, reference fields, or other joins. Skip this step if the module has only simple scalar/block fields.
+Only create this file if the module has nested CTAs with links, reference fields, or other joins. Skip this step if the module has only simple scalar/block fields.
 
-```groq
-_type == 'my-module' => {
-	items[]{
-		...,
-		ctas[]{
+Export an **uppercase** named constant: `_type` → `SCREAMING_SNAKE` + `_QUERY` (e.g. `my-module` → `MY_MODULE_QUERY`).
+
+If the fragment needs `LINK_QUERY`, import it from `@/sanity/lib/fragments` (not from `queries.ts` — that would create a circular import):
+
+```ts
+import { groq } from 'next-sanity'
+import { LINK_QUERY } from '@/sanity/lib/fragments'
+
+// @sanity-typegen-ignore
+export const MY_MODULE_QUERY = groq`
+	_type == 'my-module' => {
+		items[]{
 			...,
-			link{ ${LINK_QUERY} }
+			ctas[]{
+				...,
+				link{ ${LINK_QUERY} }
+			}
 		}
 	}
-},
+`
 ```
 
-Reference field pattern (e.g. logo, person, quote):
+Otherwise export a plain string fragment:
 
-```groq
-_type == 'my-module' => {
-	items[]{
-		...,
-		_type == 'reference' => @->
+```ts
+import { groq } from 'next-sanity'
+
+// @sanity-typegen-ignore
+export const MY_MODULE_QUERY = groq`
+	_type == 'my-module' => {
+		items[]->
 	}
-},
+`
+```
+
+Then wire it into `MODULES_QUERY` in `src/sanity/lib/queries.ts`:
+
+```ts
+import { MY_MODULE_QUERY } from '@/modules/my-module/query'
+
+export const MODULES_QUERY = groq`
+	...,
+	ctas[]{ ..., link{ ${LINK_QUERY} } },
+	sidebar{ ${SIDEBAR_QUERY} },
+	${MY_MODULE_QUERY},
+	// …
+`
 ```
 
 Top-level CTAs on the module itself are already covered by the top-level `ctas[]` clause in `MODULES_QUERY` — no need to repeat them inside the conditional block.
@@ -193,7 +224,7 @@ First, ask:
 > **Should the JSX be left empty (placeholder only) or scaffolded with basic Tailwind layout?**
 
 - **Empty** → leave a `{/* content area */}` comment inside the section; just render confirmed fields with minimal wrappers
-- **Scaffolded** → use the confirmed fields and their types to generate a reasonable Tailwind layout (e.g. grid for cards/items, `<dl>` for stats, `<details>` for accordions, prose header for intro, CTA row for ctas). Base the structure on similar existing modules in `src/ui/modules/` where applicable.
+- **Scaffolded** → use the confirmed fields and their types to generate a reasonable Tailwind layout (e.g. grid for cards/items, `<dl>` for stats, `<details>` for accordions, prose header for intro, CTA row for ctas). Base the structure on similar existing modules in `src/modules/` where applicable.
 
 Then ask:
 
@@ -201,12 +232,12 @@ Then ask:
 
 #### No independent fetch (default)
 
-Create the file at `src/ui/modules/<module-name>.tsx`:
+Create the file at `src/modules/<module-name>/index.tsx`:
 
 ```tsx
 import { PortableText, stegaClean } from 'next-sanity'
+import { Module } from '@/modules'
 import type { MyModule } from '@/sanity/types'
-import { Module } from '.'
 
 export default function ({ intro, items, ctas, ...props }: MyModule) {
 	return (
@@ -225,14 +256,14 @@ export default function ({ intro, items, ctas, ...props }: MyModule) {
 
 #### Fetches its own data
 
-Model this on `src/ui/modules/blog/blog-index/index.tsx`. The exported component receives `perspective`/`stega` (`DynamicFetchOptions`) as props and awaits a sibling `'use cache'` fetch helper — it does not fetch directly in its own body:
+Model this on `src/modules/blog-index/index.tsx`. The exported component receives `perspective`/`stega` (`DynamicFetchOptions`) as props and awaits a sibling `'use cache'` fetch helper — it does not fetch directly in its own body:
 
 ```tsx
 import { groq } from 'next-sanity'
 import { Suspense } from 'react'
+import { Module, type ModuleProps } from '@/modules'
 import { sanityFetch, type DynamicFetchOptions } from '@/sanity/lib/live'
 import type { MY_MODULE_QUERY_RESULT, MyModule } from '@/sanity/types'
-import { Module, type ModuleProps } from '@/ui/modules'
 
 export default async function ({
 	intro,
@@ -266,10 +297,7 @@ After creating the file, ask:
 
 > **Does this module have any client-side interactivity?** (e.g. state, effects, event handlers, browser APIs)
 
-If **yes**: convert to the subdirectory layout so a sibling `client.tsx` with `'use client'` can live alongside it:
-
-1. Move `src/ui/modules/<module-name>.tsx` → `src/ui/modules/<module-name>/index.tsx`
-2. Update the `Module` import from `'.'` to `'..'`
+If **yes**: keep `index.tsx` as a server component and add sibling `'use client'` files in the same folder (e.g. `client.tsx`, `store.ts`).
 
 **Notes:**
 
@@ -283,14 +311,12 @@ If **yes**: convert to the subdirectory layout so a sibling `client.tsx` with `'
 
 ## Step 7 — Register the component
 
-**File:** `src/ui/modules/index.tsx`
+**File:** `src/modules/index.tsx`
 
 1. Import at the top (alphabetical with other imports):
 
 ```tsx
-import MyModule from './my-module' // single-file layout
-
-// import MyModule from './my-module/index' // subdirectory layout (equivalent, explicit)
+import MyModule from '@/modules/my-module'
 ```
 
 2. Add to `MODULES_MAP` (alphabetical order):
@@ -316,4 +342,5 @@ Skipping this is silent — the module still renders, but its `'use cache'` fetc
 - [ ] TypeScript compiles cleanly (no IDE errors, or `bun run build` passes)
 - [ ] Module appears as an option in Sanity Studio when adding modules to a page
 - [ ] Component renders (even if empty) when module is added to a page in preview
+- [ ] If a thumbnail was added: `public/module-thumbnails/<name>.webp` exists
 - [ ] If the module fetches its own data: it's registered in `moduleSpecificProps`, its `<Suspense>` fallback shows then resolves to real content, and draft-mode edits are visible when previewing

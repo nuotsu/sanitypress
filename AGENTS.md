@@ -23,35 +23,35 @@ This is a **Next.js 16 (App Router) + Sanity CMS** site with full TypeGen type s
 
 - **Frontend:** `src/app/(frontend)/` — catch-all route `[[...slug]]` renders any page by fetching a `page` document from Sanity and piping its `modules[]` array through `ModulesResolver`.
 - **Studio:** `src/app/(studio)/admin/` — embedded Sanity Studio served at `/admin`.
-- **Live Content API:** `sanityFetchLive` (from `src/sanity/lib/live.ts`) is used for all page data fetches; it supports Sanity's real-time Visual Editing.
+- **Live Content API:** `sanityFetch` + `DynamicFetchOptions` (`perspective`/`stega`) from `src/sanity/lib/live.ts`, used with Next.js Cache Components (`'use cache'`).
 
 ### Page rendering flow
 
-1. `[[...slug]]/page.tsx` fetches a `page` document with `PAGE_QUERY`.
+1. `[[...slug]]/page.tsx` fetches a `page` document with `PAGE_QUERY` (draft/dev via Suspense + dynamic options; published via cached path).
 2. `PAGE_QUERY` assembles `modules[]` by concatenating global-before + path-before + page + path-after + global-after modules (all resolved via `MODULES_QUERY`).
-3. `<ModulesResolver>` (`src/ui/modules/index.tsx`) maps each `_type` to a React component via `MODULES_MAP`.
+3. `<ModulesResolver>` (`src/modules/index.tsx`) maps each `_type` to a React component via `MODULES_MAP`.
 
 ### Module system
 
-Every page section is a **module**: a Sanity schema object + a React component. Adding a new module requires changes in 5 places — use `/new-module` to do this automatically:
+Every page section is a **colocated module** under `src/modules/<module-name>/`. Adding a new module — use `/new-module`:
 
-| Step                      | File                                                                          |
-| ------------------------- | ----------------------------------------------------------------------------- |
-| 1. Schema                 | `src/sanity/schemaTypes/modules/<module-name>.ts`                             |
-| 2. Schema index           | `src/sanity/schemaTypes/index.ts`                                             |
-| 3. Modules fragment       | `src/sanity/schemaTypes/fragments/modules.ts`                                 |
-| 4. GROQ query (if needed) | `src/sanity/lib/queries.ts` → `MODULES_QUERY`                                 |
-| 5. Frontend component     | `src/ui/modules/<module-name>.tsx` (or `/<module-name>/index.tsx` for client) |
-| 6. Component index        | `src/ui/modules/index.tsx` → `MODULES_MAP`                                    |
+| Step                      | File                                                                                     |
+| ------------------------- | ---------------------------------------------------------------------------------------- |
+| 1. Module folder          | `src/modules/<module-name>/` — `schema.ts`, `index.tsx`, optional `query.ts`             |
+| 2. Schema index           | `src/sanity/schemaTypes/index.ts` → `import … from '@/modules/<name>/schema'`            |
+| 3. Modules fragment       | `src/sanity/schemaTypes/fragments/modules.ts`                                            |
+| 4. GROQ query (if needed) | `src/modules/<name>/query.ts` → export e.g. `MY_MODULE_QUERY`; wire into `MODULES_QUERY` |
+| 5. Component index        | `src/modules/index.tsx` → `MODULES_MAP`                                                  |
+| 6. Thumbnail (optional)   | `public/module-thumbnails/<module-name>.webp` (Studio insert-menu grid)                  |
 
-A module that runs its own independent Sanity fetch (not just what `MODULES_QUERY` already resolves) needs a 7th touchpoint — see [Modules that fetch their own Sanity data](#modules-that-fetch-their-own-sanity-data) below.
+A module that runs its own independent Sanity fetch (not just what `MODULES_QUERY` already resolves) needs a registration step — see [Modules that fetch their own Sanity data](#modules-that-fetch-their-own-sanity-data) below.
 
 **Schema:** Use `defineModule` (not `defineType`) from `src/sanity/schemaTypes/fragments/define-module.ts`. It auto-injects the `attributes` field, `options` group, and Studio preview component — never add these manually.
 
 **Component:** Always spread `...props` into `<Module>` (default `as="section"`). This wires up `id`, `data-module`, `hidden`, and scoped CSS for Visual Editing.
 
 ```tsx
-import { Module } from '.'
+import { Module } from '@/modules'
 
 export default function ({ intro, ...props }: MyModule) {
 	return (
@@ -62,7 +62,7 @@ export default function ({ intro, ...props }: MyModule) {
 }
 ```
 
-**GROQ query:** Only add a `_type == 'my-module' => { ... }` block to `MODULES_QUERY` if the module has nested CTAs with links, references, or other joins. Simple scalar/block-only modules need no entry.
+**GROQ query:** Only add `src/modules/<name>/query.ts` (uppercase export like `MY_MODULE_QUERY`) if the module has nested CTAs with links, references, or other joins. Simple scalar/block-only modules need no `query.ts`. Shared fragments (`LINK_QUERY`, etc.) live in `src/sanity/lib/queries.ts`.
 
 **TypeGen types:** After `bun run typegen`, the module type is exported from `src/sanity/types.ts` as PascalCase (e.g. `my-module` → `MyModule`). Import it from `@/sanity/types`.
 
@@ -72,9 +72,9 @@ A module component that runs an independent Sanity query (beyond what the page's
 
 - wrap the fetch in a sibling function with `'use cache'`
 - accept `perspective`/`stega` (`DynamicFetchOptions` from `@/sanity/lib/live`) as props
-- register that module's `_type` in the `moduleSpecificProps` switch in `src/ui/modules/index.tsx` so `ModulesResolver` actually passes those props down
+- register that module's `_type` in the `moduleSpecificProps` switch in `src/modules/index.tsx` so `ModulesResolver` actually passes those props down
 
-See `src/ui/modules/blog/blog-index/index.tsx` for a worked example and `.agents/skills/sanity-live-cache-components/reference/three-layer-pattern.md` for the full pattern. Missing the registration step is silent — the module still renders, but its `'use cache'` fetch always resolves the published/non-stega view, so draft mode and Visual Editing never show up for it.
+See `src/modules/blog-index/index.tsx` for a worked example and `.agents/skills/sanity-live-cache-components/reference/three-layer-pattern.md` for the full pattern. Missing the registration step is silent — the module still renders, but its `'use cache'` fetch always resolves the published/non-stega view, so draft mode and Visual Editing never show up for it.
 
 ### Key utilities (`src/lib/utils.ts`)
 
@@ -102,11 +102,15 @@ SANITY_API_READ_TOKEN          # "Viewer" permissions
 ### Sanity schema layout
 
 ```
+src/modules/<name>/           # Colocated module: schema.ts, index.tsx, query.ts?
+src/modules/index.tsx         # ModulesResolver + <Module> wrapper
+src/ui/blog/                  # Shared blog UI helpers (not modules)
 src/sanity/schemaTypes/
-  documents/    # Top-level content types: page, blog.post, site, navigation, etc.
-  modules/      # Page-building blocks (one file per module type)
-  objects/      # Reusable field groups: cta, link, metadata, module-attributes
-  fragments/    # Shared helpers: define-module.ts, modules.ts (fragment field), GROQ fragments
+  documents/                  # Top-level content types: page, blog.post, site, navigation, etc.
+  objects/                    # Reusable field groups: cta, link, metadata, module-attributes
+  fragments/                  # Shared helpers: define-module.ts, modules.ts (fragment field)
+src/sanity/lib/
+  queries.ts                  # Shared GROQ fragments + assembles MODULES_QUERY from per-module query.ts exports
 ```
 
 ### Styling

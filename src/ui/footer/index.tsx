@@ -5,7 +5,7 @@ import {
 } from '@/sanity/lib/live'
 import { getSite } from '@/sanity/lib/queries'
 import Logo from '@/ui/logo'
-import CustomHTML from '@/ui/modules/custom-html'
+import CustomHTML from '@/modules/custom-html'
 import SocialNavigation from '@/ui/social-navigation'
 import Navigation from './navigation'
 

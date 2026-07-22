@@ -326,6 +326,21 @@
 	}
 }
 
+@utility dropdown {
+	summary {
+		anchor-name: var(--anchor-name);
+	}
+
+	> :not(summary) {
+		position-anchor: var(--anchor-name);
+		position-area: end span-end;
+		position-try-fallbacks: end span-start, flip-block;
+		position-try: end span-start, flip-block;
+
+		@apply anim-fade fixed z-1 min-w-max bg-background shadow-lg origin-top starting:-translate-y-1 starting:scale-95;
+	}
+}
+
 @utility skeleton {
 	@apply bg-foreground/5 block h-lh;
 }

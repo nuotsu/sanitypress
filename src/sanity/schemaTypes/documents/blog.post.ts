@@ -47,6 +47,7 @@ export default defineType({
 						}),
 					],
 				}),
+				{ type: 'accordion-list' },
 				defineArrayMember({
 					type: 'code',
 					title: 'Code block',
