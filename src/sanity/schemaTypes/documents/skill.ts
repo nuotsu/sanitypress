@@ -1,10 +1,10 @@
 import { defineField, defineType } from 'sanity'
-import { VscEditSparkle } from 'react-icons/vsc'
+import { ComposeSparklesIcon } from '@sanity/icons/ComposeSparkles'
 
 export default defineType({
 	name: 'skill',
 	title: 'Skill',
-	icon: VscEditSparkle,
+	icon: ComposeSparklesIcon,
 	type: 'document',
 	fields: [
 		defineField({

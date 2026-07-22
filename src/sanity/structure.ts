@@ -1,6 +1,8 @@
 import { structureTool } from 'sanity/structure'
 import { DocumentIcon } from '@sanity/icons/Document'
-import { VscServerProcess } from 'react-icons/vsc'
+import { EarthGlobeIcon } from '@sanity/icons/EarthGlobe'
+import { EmptyIcon } from '@sanity/icons/Empty'
+import { apiVersion } from './env'
 import { singleton } from './lib/builders'
 import { pageDirectoriesListItem } from './lib/page-directories'
 
@@ -8,10 +10,10 @@ import { pageDirectoriesListItem } from './lib/page-directories'
 export default structureTool({
 	structure: (S, context) =>
 		S.list()
-			.title('Content')
+			.title('Structure')
 			.items([
 				S.divider().title('Global'),
-				singleton(S, 'site').title('Site').icon(VscServerProcess),
+				singleton(S, 'site').title('Site').icon(EarthGlobeIcon),
 				S.documentTypeListItem('global-module').title('Global modules'),
 				S.documentTypeListItem('skill').title('Skills'),
 
@@ -36,9 +38,11 @@ export default structureTool({
 				S.divider().title('Drafts'),
 				S.listItem()
 					.title('Drafts')
+					.icon(EmptyIcon)
 					.child(
 						S.documentList()
 							.title('Drafts')
+							.apiVersion(apiVersion)
 							.filter(
 								'_originalId in path("drafts.**") && !(_type match "sanity.*")',
 							),
