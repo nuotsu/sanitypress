@@ -25,27 +25,27 @@ This is a **Next.js 16 (App Router) + Sanity CMS** site with full TypeGen type s
 
 1. `[[...slug]]/page.tsx` fetches a `page` document with `PAGE_QUERY`.
 2. `PAGE_QUERY` assembles `modules[]` by concatenating global-before + path-before + page + path-after + global-after modules (all resolved via `MODULES_QUERY`).
-3. `<ModulesResolver>` (`src/ui/modules/index.tsx`) maps each `_type` to a React component via `MODULES_MAP`.
+   modules/index.tsx`) maps each `_type`to a React component via`MODULES_MAP`.
 
 ### Module system
 
-Every page section is a **module**: a Sanity schema object + a React component. Adding a new module requires changes in 5 places — use `/new-module` to do this automatically:
+Every page section is a **colocated module** under `src/modules/<module-name>/`. Adding a new module — use `/new-module`:
 
-| Step                      | File                                                                          |
-| ------------------------- | ----------------------------------------------------------------------------- |
-| 1. Schema                 | `src/sanity/schemaTypes/modules/<module-name>.ts`                             |
-| 2. Schema index           | `src/sanity/schemaTypes/index.ts`                                             |
-| 3. Modules fragment       | `src/sanity/schemaTypes/fragments/modules.ts`                                 |
-| 4. GROQ query (if needed) | `src/sanity/lib/queries.ts` → `MODULES_QUERY`                                 |
-| 5. Frontend component     | `src/ui/modules/<module-name>.tsx` (or `/<module-name>/index.tsx` for client) |
-| 6. Component index        | `src/ui/modules/index.tsx` → `MODULES_MAP`                                    |
+| Step                      | File                                                                                     |
+| ------------------------- | ---------------------------------------------------------------------------------------- |
+| 1. Module folder          | `src/modules/<module-name>/` — `schema.ts`, `index.tsx`, optional `query.ts`             |
+| 2. Schema index           | `src/sanity/schemaTypes/index.ts` → `import … from '@/modules/<name>/schema'`            |
+| 3. Modules fragment       | `src/sanity/schemaTypes/fragments/modules.ts`                                            |
+| 4. GROQ query (if needed) | `src/modules/<name>/query.ts` → export e.g. `MY_MODULE_QUERY`; wire into `MODULES_QUERY` |
+| 5. Component index        | `src/modules/index.tsx` → `MODULES_MAP`                                                  |
+| 6. Thumbnail (optional)   | `public/module-thumbnails/<module-name>.webp` (Studio insert-menu grid)                  |
 
 **Schema:** Use `defineModule` (not `defineType`) from `src/sanity/schemaTypes/fragments/define-module.ts`. It auto-injects the `attributes` field, `options` group, and Studio preview component — never add these manually.
 
 **Component:** Always spread `...props` into `<Module>` (default `as="section"`). This wires up `id`, `data-module`, `hidden`, and scoped CSS for Visual Editing.
 
 ```tsx
-import { Module } from '.'
+import { Module } from '@/ui/modules'
 
 export default function ({ intro, ...props }: MyModule) {
 	return (
@@ -56,7 +56,7 @@ export default function ({ intro, ...props }: MyModule) {
 }
 ```
 
-**GROQ query:** Only add a `_type == 'my-module' => { ... }` block to `MODULES_QUERY` if the module has nested CTAs with links, references, or other joins. Simple scalar/block-only modules need no entry.
+**GROQ query:** Only add `src/modules/<name>/query.ts` (uppercase export like `MY_MODULE_QUERY`) if the module has nested CTAs with links, references, or other joins. Simple scalar/block-only modules need no `query.ts`. Shared fragments (`LINK_QUERY`, etc.) live in `src/sanity/lib/queries.ts`.
 
 **TypeGen types:** After `bun run typegen`, the module type is exported from `src/sanity/types.ts` as PascalCase (e.g. `my-module` → `MyModule`). Import it from `@/sanity/types`.
 
@@ -86,11 +86,15 @@ SANITY_API_READ_TOKEN          # "Viewer" permissions
 ### Sanity schema layout
 
 ```
+src/modules/<name>/           # Colocated module: schema.ts, index.tsx, query.ts?
+src/ui/modules/               # ModulesResolver + <Module> wrapper (+ visual-editing)
+src/ui/blog/                  # Shared blog UI helpers (not modules)
 src/sanity/schemaTypes/
-  documents/    # Top-level content types: page, blog.post, site, navigation, etc.
-  modules/      # Page-building blocks (one file per module type)
-  objects/      # Reusable field groups: cta, link, metadata, module-attributes
-  fragments/    # Shared helpers: define-module.ts, modules.ts (fragment field), GROQ fragments
+  documents/                  # Top-level content types: page, blog.post, site, navigation, etc.
+  objects/                    # Reusable field groups: cta, link, metadata, module-attributes
+  fragments/                  # Shared helpers: define-module.ts, modules.ts (fragment field)
+src/sanity/lib/
+  queries.ts                  # Shared GROQ fragments + assembles MODULES_QUERY from per-module query.ts exports
 ```
 
 ### Styling

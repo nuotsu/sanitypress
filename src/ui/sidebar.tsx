@@ -1,8 +1,8 @@
 import { stegaClean } from 'next-sanity'
 import { cn } from '@/lib/utils'
 import type { Sidebar } from '@/sanity/types'
-import Callout from './modules/callout'
-import CustomHTML from './modules/custom-html'
+import Callout from '@/modules/callout'
+import CustomHTML from '@/modules/custom-html'
 import TableOfContents, { type ToCHeadings } from './table-of-contents'
 
 export default function ({

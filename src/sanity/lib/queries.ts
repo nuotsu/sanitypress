@@ -1,11 +1,19 @@
 import { groq } from 'next-sanity'
+import { BREADCRUMBS_QUERY } from '@/modules/breadcrumbs/query'
+import { CARD_LIST_QUERY } from '@/modules/card-list/query'
+import { FORM_MODULE_QUERY } from '@/modules/form-module/query'
+import { LOGO_LIST_QUERY } from '@/modules/logo-list/query'
+import { PERSON_LIST_QUERY } from '@/modules/person-list/query'
+import { PROSE_QUERY } from '@/modules/prose/query'
+import { QUOTE_LIST_QUERY } from '@/modules/quote-list/query'
+import { TABBED_CONTENT_QUERY } from '@/modules/tabbed-content/query'
 import type { SITE_QUERY_RESULT } from '@/sanity/types'
 import { sanityFetchLive } from './live'
 
 /* fragments */
 
 // @sanity-typegen-ignore
-const LINK_QUERY = groq`
+export const LINK_QUERY = groq`
 	...,
 	type == 'internal' => {
 		internal->{
@@ -50,6 +58,20 @@ const NAVIGATION_QUERY = groq`
 	}
 `
 
+// @sanity-typegen-ignore
+const SIDEBAR_QUERY = groq`
+	...,
+	modules[]{
+		...,
+		_type == 'callout' => {
+			ctas[]{
+				...,
+				link{ ${LINK_QUERY} }
+			}
+		}
+	}
+`
+
 const SITE_QUERY = groq`*[_type == 'site'][0]{
 	...,
 	header->{ ${NAVIGATION_QUERY} },
@@ -71,20 +93,6 @@ export const GLOBAL_MODULE_EXCLUDE_QUERY = groq`
 export const GLOBAL_MODULE_PATH_QUERY = groq`
 	string::startsWith($slug, path)
 	&& ${GLOBAL_MODULE_EXCLUDE_QUERY}
-`
-
-// @sanity-typegen-ignore
-const SIDEBAR_QUERY = groq`
-	...,
-	modules[]{
-		...,
-		_type == 'callout' => {
-			ctas[]{
-				...,
-				link{ ${LINK_QUERY} }
-			}
-		}
-	}
 `
 
 // @sanity-typegen-ignore
@@ -111,65 +119,14 @@ export const MODULES_QUERY = groq`
 		link{ ${LINK_QUERY} }
 	},
 	sidebar{ ${SIDEBAR_QUERY} },
-	_type == 'form-module' => {
-		form->
-	},
-	_type == 'breadcrumbs' => {
-		crumbs[]{ ${LINK_QUERY} }
-	},
-	_type == 'card-list' => {
-		cards[]{
-			...,
-			ctas[]{
-				...,
-				link{ ${LINK_QUERY} }
-			}
-		}
-	},
-	_type == 'logo-list' => {
-		logos[]->
-	},
-	_type == 'person-list' => {
-		people[]->
-	},
-	_type == 'prose' => {
-		content[]{
-			...,
-			_type == 'image' => {
-				...,
-				asset->{
-					...,
-					metadata
-				}
-			}
-		},
-		'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{
-			style,
-			'text': pt::text(@)
-		}
-	},
-	_type == 'quote-list' => {
-		quotes[]->
-	},
-	_type == 'tabbed-content' => {
-		tabs[]{
-			...,
-			content[]{
-				...,
-				_type == 'image' => {
-					...,
-					asset->{
-						...,
-						metadata
-					}
-				}
-		},
-		ctas[]{
-			...,
-			link{ ${LINK_QUERY} }
-			}
-		}
-	},
+	${FORM_MODULE_QUERY},
+	${BREADCRUMBS_QUERY(LINK_QUERY)},
+	${CARD_LIST_QUERY(LINK_QUERY)},
+	${LOGO_LIST_QUERY},
+	${PERSON_LIST_QUERY},
+	${PROSE_QUERY},
+	${QUOTE_LIST_QUERY},
+	${TABBED_CONTENT_QUERY(LINK_QUERY)},
 `
 
 /* queries */

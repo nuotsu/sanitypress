@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { groq } from 'next-sanity'
 import { notFound } from 'next/navigation'
 import { ROUTES } from '@/lib/env'
+import ModulesResolver from '@/modules'
 import { client } from '@/sanity/lib/client'
 import { urlFor } from '@/sanity/lib/image'
 import { sanityFetchLive } from '@/sanity/lib/live'
@@ -13,7 +14,6 @@ import {
 	MODULES_QUERY,
 } from '@/sanity/lib/queries'
 import type { PAGE_QUERY_RESULT } from '@/sanity/types'
-import ModulesResolver from '@/ui/modules'
 
 type Props = PageProps<'/[[...slug]]'>
 

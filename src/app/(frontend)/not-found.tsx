@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { groq } from 'next-sanity'
+import ModulesResolver from '@/modules'
 import { sanityFetchLive } from '@/sanity/lib/live'
 import { MODULES_QUERY } from '@/sanity/lib/queries'
 import type { NOT_FOUND_QUERY_RESULT } from '@/sanity/types'
-import ModulesResolver from '@/ui/modules'
 
 export default async function () {
 	const page = await getPage()

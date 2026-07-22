@@ -14,7 +14,7 @@ Populate the `markdown` field (`type: 'code'`, `language: 'markdown'`) on a `pag
 3. Check `_type` — the source field differs:
    - `blog.post` → convert the `content` field (a Portable Text array).
    - `page` → convert the `modules` field (an array of heterogeneous module objects — see Step 4).
-4. If a module or field shape is unfamiliar, read its schema at `src/sanity/schemaTypes/modules/<module-name>.ts` rather than guessing.
+4. If a module or field shape is unfamiliar, read its schema at `src/modules/<module-name>/schema.ts` rather than guessing.
 
 ## Step 2 — Convert Portable Text to Markdown
 
@@ -57,7 +57,7 @@ Render as `![alt](url)`, using the image's own `alt` field. If it also has a `fi
 
 ## Step 4 — For `page` documents: convert `modules[]`
 
-Unlike `blog.post.content`, each entry in `modules[]` has its own schema (`src/sanity/schemaTypes/modules/*.ts`) — there's no single field to walk mechanically. For each module, in document order:
+Unlike `blog.post.content`, each entry in `modules[]` has its own schema (`src/modules/*/schema.ts`) — there's no single field to walk mechanically. For each module, in document order:
 
 1. **Pull only reader-facing text.** Headings/intros (Portable Text, convert per Step 2), card/item titles and bodies, CTA labels + resolved hrefs, stat values/labels, accordion question/answer pairs, etc. Skip purely structural/visual fields — `attributes` (scoped CSS, `hidden`), layout options (`columns`, `theme`, `variant`, `size`) — and skip modules with no narrative content entirely (`breadcrumbs`, `search-module`'s non-heading chrome, decorative `logo-list`, `custom-html`).
 2. **Resolve internal links before rendering.** A `cta.link` or an inline link mark with `type: 'internal'` only carries `internal._ref` — it is not a usable href on its own. Fetch that referenced document's `_type` and `metadata.slug.current` and build the href:

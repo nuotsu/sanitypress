@@ -12,7 +12,7 @@ export default defineCliConfig({
 	typegen: {
 		enabled: true,
 		path: [
-			'./src/{app,ui}/**/*.{ts,tsx,js,jsx}',
+			'./src/{app,ui,modules}/**/*.{ts,tsx,js,jsx}',
 			'./src/sanity/schemaTypes/**/*.{ts,tsx,js,jsx}',
 			'./src/sanity/lib/queries.ts',
 		],

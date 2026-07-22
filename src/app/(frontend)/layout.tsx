@@ -3,7 +3,7 @@ import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import { preconnect } from 'react-dom'
 import Footer from '@/ui/footer'
 import Header from '@/ui/header'
-import VisualEditing from '@/ui/modules/visual-editing'
+import VisualEditing from '@/ui/visual-editing'
 import '@/app.css'
 
 const fontSans = Geist({
