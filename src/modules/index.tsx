@@ -108,8 +108,8 @@ export function Module({
 
 	return (
 		<As id={id} data-module={_type} hidden={attributes?.hidden} {...props}>
-			{children}
 			{css && <style>{`@scope{${css}}`}</style>}
+			{children}
 		</As>
 	)
 }

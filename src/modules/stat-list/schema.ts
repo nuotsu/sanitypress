@@ -8,7 +8,10 @@ export default defineModule({
 	title: 'Stat list',
 	type: 'object',
 	icon: NumberIcon,
-	groups: [{ name: 'content', default: true }],
+	groups: [
+		{ name: 'content', default: true },
+		{ name: 'options' },
+	],
 	fields: [
 		defineField({
 			name: 'eyebrow',
@@ -60,6 +63,23 @@ export default defineModule({
 				}),
 			],
 			group: 'content',
+		}),
+		defineField({
+			name: 'layout',
+			type: 'string',
+			options: {
+				list: ['grid', 'carousel'],
+			},
+			group: 'options',
+		}),
+		defineField({
+			name: 'columns',
+			type: 'number',
+			description:
+				'Overrides the default dynamic columns (~256px). Desktop only.',
+			validation: (Rule) => Rule.min(1),
+			hidden: ({ parent }) => parent?.layout === 'carousel',
+			group: 'options',
 		}),
 	],
 	preview: {
