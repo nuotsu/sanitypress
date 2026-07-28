@@ -12,20 +12,20 @@ export default function ({
 }: CustomHtml & ModuleProps) {
 	if (!html?.code && !css?.code) return null
 
+	const code = html?.code ? stegaClean(html.code) : undefined
+	const cleanedClassName = stegaClean(className)
+
 	return (
 		<Module as="div" {...props}>
 			{css?.code && <CSS code={stegaClean(css.code)} {...props} />}
 
-			{html?.code &&
-				(html.code.includes('<script') ? (
-					<WithScript
-						code={stegaClean(html.code)}
-						className={stegaClean(className)}
-					/>
+			{code &&
+				(/<script[\s>]/i.test(code) ? (
+					<WithScript code={code} className={cleanedClassName} />
 				) : (
 					<div
-						className={stegaClean(className)}
-						dangerouslySetInnerHTML={{ __html: stegaClean(html.code) }}
+						className={cleanedClassName}
+						dangerouslySetInnerHTML={{ __html: code }}
 					/>
 				))}
 		</Module>

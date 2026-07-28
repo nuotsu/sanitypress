@@ -1,6 +1,6 @@
 {
 	"name": "sanitypress",
-	"version": "0.0.126",
+	"version": "0.0.127",
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
