@@ -15,10 +15,10 @@
 
 @custom-variant hover (&:hover);
 
-@variant header-open (body:has(#header-open:checked) &);
-@variant header-not-open (body:has(#header-open:not(:checked)) &);
+@custom-variant header-open (body:has(#header-open:checked) &);
+@custom-variant header-not-open (body:has(#header-open:not(:checked)) &);
 
-@variant headings (& :is(h1, h2, h3, h4, h5, h6));
+@custom-variant headings (& :is(h1, h2, h3, h4, h5, h6));
 
 @layer base {
 	@supports (interpolate-size: allow-keywords) {
