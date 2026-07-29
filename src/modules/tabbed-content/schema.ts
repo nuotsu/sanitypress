@@ -76,10 +76,15 @@ export default defineModule({
 					],
 					preview: {
 						select: {
-							title: 'content',
-							subtitle: 'label',
-							media: 'icon',
+							label: 'label',
+							content: 'content',
+							icon: 'icon',
 						},
+						prepare: ({ label, content, icon }) => ({
+							title: label,
+							subtitle: getBlockText(content),
+							media: icon,
+						}),
 					},
 				}),
 			],

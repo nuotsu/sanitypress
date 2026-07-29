@@ -23,21 +23,21 @@ export default function ({
 	return (
 		<Module
 			className={cn(
-				'relative flex min-h-[60svh] flex-col',
+				'relative grid min-h-[60svh]',
 				{
-					'justify-start': verticalAlign === 'top',
-					'justify-center': verticalAlign === 'center',
-					'justify-end': verticalAlign === 'bottom',
+					'items-start': verticalAlign === 'top',
+					'items-center': verticalAlign === 'center',
+					'items-end': verticalAlign === 'bottom',
 				},
 				{
-					'items-start text-left': textAlign === 'left',
-					'items-center text-center': textAlign === 'center',
-					'items-end text-right': textAlign === 'right',
+					'justify-start text-left': textAlign === 'left',
+					'justify-center text-center': textAlign === 'center',
+					'justify-end text-right': textAlign === 'right',
 				},
 			)}
 			{...props}
 		>
-			{image && (
+			{image?.asset && (
 				<picture className="contents">
 					<Source image={image.mobile} width={1000} />
 					<Img
@@ -52,7 +52,10 @@ export default function ({
 			)}
 
 			<div
-				className={cn('section relative', opacity > 0.5 && 'text-background')}
+				className={cn(
+					'section relative',
+					image?.asset && opacity > 0.5 && 'text-background',
+				)}
 			>
 				<header className="prose max-w-xl">
 					<Eyebrow value={eyebrow} />
