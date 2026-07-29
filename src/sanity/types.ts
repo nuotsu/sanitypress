@@ -508,6 +508,15 @@ export type HeroCover = {
 				_type: 'block'
 				_key: string
 		  }
+		| {
+				asset?: SanityImageAssetReference
+				media?: unknown
+				hotspot?: SanityImageHotspot
+				crop?: SanityImageCrop
+				alt?: string
+				_type: 'image'
+				_key: string
+		  }
 		| ({
 				_key: string
 		  } & CustomHtml)

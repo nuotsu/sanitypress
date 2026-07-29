@@ -63,6 +63,20 @@ export default function ({
 						value={content}
 						components={{
 							types: {
+								image: ({ value }) => (
+									<figure>
+										<Img
+											className={cn('w-full', {
+												'mr-auto': textAlign === 'left',
+												'mx-auto': textAlign === 'center',
+												'ml-auto': textAlign === 'right',
+											})}
+											image={value}
+											width={1000}
+											alt={value.alt ?? ''}
+										/>
+									</figure>
+								),
 								'custom-html': ({ value }) => <CustomHTML {...value} />,
 							},
 						}}
