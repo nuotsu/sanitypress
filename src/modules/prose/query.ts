@@ -1,7 +1,7 @@
 import { groq } from 'next-sanity'
 
 // @sanity-typegen-ignore
-export const PROSE_QUERY = groq`
+export const PROSE_QUERY = (LINK_QUERY: string) => groq`
 	_type == 'prose' => {
 		content[]{
 			...,
@@ -10,6 +10,12 @@ export const PROSE_QUERY = groq`
 				asset->{
 					...,
 					metadata
+				}
+			},
+			_type == 'ctas' => {
+				ctas[]{
+					...,
+					link{ ${LINK_QUERY} }
 				}
 			}
 		},

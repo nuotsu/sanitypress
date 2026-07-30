@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils'
 import { Module } from '@/modules'
 import CustomHTML from '@/modules/custom-html'
 import type { Prose } from '@/sanity/types'
+import CTAList from '@/ui/cta-list'
 import Sidebar from '@/ui/sidebar'
 import TableOfContents from '@/ui/table-of-contents'
 import AnchoredHeading from './anchored-heading'
@@ -43,6 +44,7 @@ export default function ({
 						},
 						types: {
 							image: Image,
+							ctas: ({ value }) => <CTAList ctas={value.ctas} />,
 							code: Code,
 							'custom-html': ({ value }) => <CustomHTML {...value} />,
 						},

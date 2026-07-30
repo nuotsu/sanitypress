@@ -16,6 +16,7 @@ import Byline from '@/ui/blog/byline'
 import Categories from '@/ui/blog/categories'
 import Date from '@/ui/blog/date'
 import Schema from '@/ui/blog/schema'
+import CTAList from '@/ui/cta-list'
 import Img from '@/ui/img'
 import Sidebar from '@/ui/sidebar'
 import css from './blog-post-content.module.css'
@@ -85,6 +86,7 @@ export default function ({
 											className="p-0 [&_header]:text-left"
 										/>
 									),
+									ctas: ({ value }) => <CTAList ctas={value.ctas} />,
 									code: Code,
 									'custom-html': ({ value }) => (
 										<CustomHTML {...value} className="my-6" />

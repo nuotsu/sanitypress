@@ -45,6 +45,7 @@ export default defineModule({
 						}),
 					],
 				}),
+				{ type: 'ctas' },
 				defineArrayMember({
 					type: 'code',
 					title: 'Code block',

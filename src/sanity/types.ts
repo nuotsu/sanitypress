@@ -355,6 +355,9 @@ export type Prose = {
 		  }
 		| ({
 				_key: string
+		  } & Ctas)
+		| ({
+				_key: string
 		  } & Code)
 		| ({
 				_key: string
@@ -940,6 +943,15 @@ export type Link = {
 	params?: string
 }
 
+export type Ctas = {
+	_type: 'ctas'
+	ctas?: Array<
+		{
+			_key: string
+		} & Cta
+	>
+}
+
 export type Cta = {
 	_type: 'cta'
 	link?: Link
@@ -1131,6 +1143,9 @@ export type BlogPost = {
 		| ({
 				_key: string
 		  } & AccordionList)
+		| ({
+				_key: string
+		  } & Ctas)
 		| ({
 				_key: string
 		  } & Code)
@@ -1782,6 +1797,7 @@ export type AllSanitySchemaTypes =
 	| LinkList
 	| PageReference
 	| Link
+	| Ctas
 	| Cta
 	| Quote
 	| SanityImageCrop
@@ -1851,7 +1867,7 @@ export type OG_QUERY_RESULT =
 
 // Source: src/app/(frontend)/blog/rss.xml/route.ts
 // Variable: BLOG_RSS_QUERY
-// Query: {	'blog': *[_type == 'page' && metadata.slug.current == $blogDir][0]{		metadata	},	'posts': *[_type == 'blog.post' && metadata.noIndex != true]|order(publishDate desc){		title,		content,		publishDate,		categories[]->{ title },		author->{ name },		metadata	}}
+// Query: {	'blog': *[_type == 'page' && metadata.slug.current == $blogDir][0]{		metadata	},	'posts': *[_type == 'blog.post' && metadata.noIndex != true]|order(publishDate desc){		title,		content[]{			...,			_type == 'ctas' => {				ctas[]{					...,					link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				'/' + metadata.slug.current			)		}	} }				}			}		},		publishDate,		categories[]->{ title },		author->{ name },		metadata	}}
 export type BLOG_RSS_QUERY_RESULT = {
 	blog: {
 		metadata: Metadata | null
@@ -1859,15 +1875,71 @@ export type BLOG_RSS_QUERY_RESULT = {
 	posts: Array<{
 		title: string | null
 		content: Array<
-			| ({
+			| {
 					_key: string
-			  } & AccordionList)
-			| ({
-					_key: string
-			  } & Code)
-			| ({
-					_key: string
-			  } & CustomHtml)
+					_type: 'accordion-list'
+					attributes?: ModuleAttributes
+					eyebrow?: string
+					intro?: Array<{
+						children?: Array<{
+							marks?: Array<string>
+							text?: string
+							_type: 'span'
+							_key: string
+						}>
+						style?:
+							'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
+						listItem?: 'bullet' | 'number'
+						markDefs?: Array<{
+							href?: string
+							_type: 'link'
+							_key: string
+						}>
+						level?: number
+						_type: 'block'
+						_key: string
+					}>
+					ctas?: Array<
+						{
+							_key: string
+						} & Cta
+					>
+					accordions?: Array<{
+						summary?: string
+						content?: Array<{
+							children?: Array<{
+								marks?: Array<string>
+								text?: string
+								_type: 'span'
+								_key: string
+							}>
+							style?:
+								| 'blockquote'
+								| 'h1'
+								| 'h2'
+								| 'h3'
+								| 'h4'
+								| 'h5'
+								| 'h6'
+								| 'normal'
+							listItem?: 'bullet' | 'number'
+							markDefs?: Array<{
+								href?: string
+								_type: 'link'
+								_key: string
+							}>
+							level?: number
+							_type: 'block'
+							_key: string
+						}>
+						open?: boolean
+						_type: 'accordion'
+						_key: string
+					}>
+					exclusive?: boolean
+					enableSchema?: boolean
+					layout?: 'horizontal' | 'vertical'
+			  }
 			| {
 					children?: Array<{
 						marks?: Array<string>
@@ -1886,6 +1958,53 @@ export type BLOG_RSS_QUERY_RESULT = {
 					level?: number
 					_type: 'block'
 					_key: string
+			  }
+			| {
+					_key: string
+					_type: 'code'
+					language?: string
+					filename?: string
+					code?: string
+					highlightedLines?: Array<number>
+			  }
+			| {
+					_key: string
+					_type: 'ctas'
+					ctas: Array<{
+						_key: string
+						_type: 'cta'
+						link:
+							| {
+									_type: 'link'
+									label?: string
+									type?: 'external' | 'internal'
+									internal?: PageReference
+									external?: string
+									params?: string
+							  }
+							| {
+									_type: 'link'
+									label?: string
+									type?: 'external' | 'internal'
+									internal: {
+										_type: 'page'
+										title: string | null
+										slug: string | '/' | null
+									} | null
+									external?: string
+									params?: string
+							  }
+							| null
+						theme?: 'action-outline' | 'action' | 'ghost' | 'link'
+					}> | null
+			  }
+			| {
+					_key: string
+					_type: 'custom-html'
+					attributes?: ModuleAttributes
+					html?: Code
+					css?: Code
+					className?: string
 			  }
 			| {
 					asset?: SanityImageAssetReference
@@ -1965,6 +2084,9 @@ export type BLOG_INDEX_QUERY_RESULT = Array<{
 		| ({
 				_key: string
 		  } & Code)
+		| ({
+				_key: string
+		  } & Ctas)
 		| ({
 				_key: string
 		  } & CustomHtml)
@@ -2076,6 +2198,9 @@ export type BLOG_FEATURED_QUERY_RESULT = Array<{
 		  } & Code)
 		| ({
 				_key: string
+		  } & Ctas)
+		| ({
+				_key: string
 		  } & CustomHtml)
 		| {
 				children?: Array<{
@@ -2183,6 +2308,9 @@ export type BLOG_POST_LIST_QUERY_RESULT = Array<{
 		| ({
 				_key: string
 		  } & Code)
+		| ({
+				_key: string
+		  } & Ctas)
 		| ({
 				_key: string
 		  } & CustomHtml)
@@ -4671,7 +4799,7 @@ declare module '@sanity/client' {
 		"*[_type == 'page' && metadata.slug.current == $slug][0].markdown.code": PAGE_MD_QUERY_RESULT
 		"*[_type == 'blog.post' && metadata.slug.current == $slug][0].markdown.code": BLOG_POST_MD_QUERY_RESULT
 		"*[_type == $type && metadata.slug.current == $slug][0]{\n\t'title': coalesce(metadata.title, title),\n}": OG_QUERY_RESULT
-		"{\n\t'blog': *[_type == 'page' && metadata.slug.current == $blogDir][0]{\n\t\tmetadata\n\t},\n\t'posts': *[_type == 'blog.post' && metadata.noIndex != true]|order(publishDate desc){\n\t\ttitle,\n\t\tcontent,\n\t\tpublishDate,\n\t\tcategories[]->{ title },\n\t\tauthor->{ name },\n\t\tmetadata\n\t}\n}": BLOG_RSS_QUERY_RESULT
+		"{\n\t'blog': *[_type == 'page' && metadata.slug.current == $blogDir][0]{\n\t\tmetadata\n\t},\n\t'posts': *[_type == 'blog.post' && metadata.noIndex != true]|order(publishDate desc){\n\t\ttitle,\n\t\tcontent[]{\n\t\t\t...,\n\t\t\t_type == 'ctas' => {\n\t\t\t\tctas[]{\n\t\t\t\t\t...,\n\t\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\tpublishDate,\n\t\tcategories[]->{ title },\n\t\tauthor->{ name },\n\t\tmetadata\n\t}\n}": BLOG_RSS_QUERY_RESULT
 		"{\n\t'site': *[_type == 'site'][0]{\n\t\ttitle\n\t},\n\t'home': *[_type == 'page' && metadata.slug.current == 'index'][0]{\n\t\t'description': metadata.description\n\t},\n\t'pages': *[_type == 'page'\n\t\t&& defined(metadata.slug.current)\n\t\t&& metadata.noIndex != true\n\t\t&& metadata.slug.current != '404'\n\t\t&& length(markdown.code) > 0\n\t] | order(metadata.slug.current != 'index', metadata.slug.current asc) {\n\t\t'title': select(\n\t\t\tmetadata.slug.current == 'index' => coalesce(metadata.title, 'Home'),\n\t\t\tcoalesce(metadata.title, metadata.slug.current)\n\t\t),\n\t\t'slug': metadata.slug.current,\n\t\t'description': metadata.description,\n\t},\n\t'posts': *[_type == 'blog.post'\n\t\t&& defined(metadata.slug.current)\n\t\t&& metadata.noIndex != true\n\t\t&& length(markdown.code) > 0\n\t] | order(publishDate desc) {\n\t\t'title': coalesce(title, metadata.title),\n\t\t'slug': $blogDir + '/' + metadata.slug.current,\n\t\t'description': metadata.description,\n\t}\n}": LLMS_QUERY_RESULT
 		"\n\t*[_type == 'blog.post' && !(_id in $featuredIds)]|order(publishDate desc){\n\t\t...,\n\t\t\n\t'readTime': length(string::split(pt::text(content), ' ')) / 200,\n\tcategories[]->{\n\t\ttitle,\n\t\tslug\n\t},\n\tauthor->{\n\t\tname,\n\t\timage{\n\t\t\t...,\n\t\t\tasset->\n\t\t}\n\t}\n,\n\t\t'slug': $blogDir + metadata.slug.current,\n\t}\n": BLOG_INDEX_QUERY_RESULT
 		"\n\t*[_type == 'blog.post' && _id in $featuredIds]{\n\t\t...,\n\t\t\n\t'readTime': length(string::split(pt::text(content), ' ')) / 200,\n\tcategories[]->{\n\t\ttitle,\n\t\tslug\n\t},\n\tauthor->{\n\t\tname,\n\t\timage{\n\t\t\t...,\n\t\t\tasset->\n\t\t}\n\t}\n,\n\t\t'slug': $blogDir + metadata.slug.current,\n\t}\n": BLOG_FEATURED_QUERY_RESULT

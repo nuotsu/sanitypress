@@ -48,6 +48,7 @@ export default defineType({
 					],
 				}),
 				{ type: 'accordion-list' },
+				{ type: 'ctas' },
 				defineArrayMember({
 					type: 'code',
 					title: 'Code block',

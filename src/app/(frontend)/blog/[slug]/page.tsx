@@ -9,6 +9,7 @@ import { sanityFetchLive } from '@/sanity/lib/live'
 import {
 	BLOG_POST_FRAGMENT_QUERY,
 	GLOBAL_MODULE_EXCLUDE_QUERY,
+	LINK_QUERY,
 	MODULES_QUERY,
 } from '@/sanity/lib/queries'
 import type { BLOG_POST_QUERY_RESULT } from '@/sanity/types'
@@ -78,6 +79,12 @@ export const BLOG_POST_QUERY = groq`*[_type == 'blog.post' && metadata.slug.curr
 		_type == 'image' => {
 			...,
 			asset->
+		},
+		_type == 'ctas' => {
+			ctas[]{
+				...,
+				link{ ${LINK_QUERY} }
+			}
 		}
 	},
 	'contentPlainText': pt::text(content),

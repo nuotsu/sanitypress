@@ -4,9 +4,15 @@ import { ROUTES } from '@/lib/env'
 import { getBlockText } from '@/lib/utils'
 import { urlFor } from '@/sanity/lib/image'
 import { sanityFetchLive } from '@/sanity/lib/live'
+import { LINK_QUERY } from '@/sanity/lib/queries'
 import type { AccordionList, BLOG_RSS_QUERY_RESULT } from '@/sanity/types'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+
+type RssCtas = Extract<
+	NonNullable<BLOG_RSS_QUERY_RESULT['posts'][number]['content']>[number],
+	{ _type: 'ctas' }
+>
 
 export async function GET() {
 	const { blog, posts } = await sanityFetchLive<BLOG_RSS_QUERY_RESULT>({
@@ -83,6 +89,29 @@ function Item({ post }: { post: BLOG_RSS_QUERY_RESULT['posts'][number] }) {
 								]
 									.filter(Boolean)
 									.join(''),
+							ctas: ({ value }: { value: RssCtas }) =>
+								value.ctas
+									?.map((cta) => {
+										const link = cta.link
+										const internal =
+											link?.internal && 'slug' in link.internal
+												? link.internal
+												: null
+										const href =
+											link?.type === 'internal' && internal?.slug
+												? [internal.slug, link.params]
+														.filter(Boolean)
+														.join('')
+												: link?.type === 'external'
+													? link.external
+													: null
+										const label =
+											link?.label || internal?.title || link?.external
+										if (!href || !label) return null
+										return `<a href="${escapeHTML(href)}">${escapeHTML(label)}</a>`
+									})
+									.filter(Boolean)
+									.join(' ') ?? '',
 						},
 					},
 				})}]]></content:encoded>`,
@@ -98,7 +127,15 @@ const BLOG_RSS_QUERY = groq`{
 	},
 	'posts': *[_type == 'blog.post' && metadata.noIndex != true]|order(publishDate desc){
 		title,
-		content,
+		content[]{
+			...,
+			_type == 'ctas' => {
+				ctas[]{
+					...,
+					link{ ${LINK_QUERY} }
+				}
+			}
+		},
 		publishDate,
 		categories[]->{ title },
 		author->{ name },
