@@ -1,8 +1,8 @@
 import { defineArrayMember, defineField } from 'sanity'
 import { BlockContentIcon } from '@sanity/icons/BlockContent'
 import { ImageIcon } from '@sanity/icons/Image'
-import { VscListTree } from 'react-icons/vsc'
-import { getBlockText } from '@/lib/utils'
+import { VscInspect } from 'react-icons/vsc'
+import { count, getBlockText } from '@/lib/utils'
 import defineModule from '@/sanity/schemaTypes/fragments/define-module'
 
 export default defineModule({
@@ -45,7 +45,27 @@ export default defineModule({
 						}),
 					],
 				}),
-				{ type: 'ctas' },
+				defineArrayMember({
+					name: 'ctas',
+					title: 'Call-to-actions',
+					type: 'object',
+					icon: VscInspect,
+					fields: [
+						defineField({
+							name: 'ctas',
+							title: 'Call-to-actions',
+							type: 'array',
+							of: [{ type: 'cta' }],
+						}),
+					],
+					preview: {
+						select: { ctas: 'ctas' },
+						prepare: ({ ctas }) => ({
+							title: count(ctas, 'CTA'),
+							subtitle: 'Call-to-actions',
+						}),
+					},
+				}),
 				defineArrayMember({
 					type: 'code',
 					title: 'Code block',

@@ -2665,16 +2665,46 @@
                 {
                   "type": "object",
                   "attributes": {
-                    "_key": {
+                    "ctas": {
                       "type": "objectAttribute",
                       "value": {
-                        "type": "string"
+                        "type": "array",
+                        "of": {
+                          "type": "object",
+                          "attributes": {
+                            "_key": {
+                              "type": "objectAttribute",
+                              "value": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "rest": {
+                            "type": "inline",
+                            "name": "cta"
+                          }
+                        }
+                      },
+                      "optional": true
+                    },
+                    "_type": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string",
+                        "value": "ctas"
                       }
                     }
                   },
                   "rest": {
-                    "type": "inline",
-                    "name": "ctas"
+                    "type": "object",
+                    "attributes": {
+                      "_key": {
+                        "type": "objectAttribute",
+                        "value": {
+                          "type": "string"
+                        }
+                      }
+                    }
                   }
                 },
                 {
@@ -6946,44 +6976,6 @@
     }
   },
   {
-    "name": "ctas",
-    "type": "type",
-    "value": {
-      "type": "object",
-      "attributes": {
-        "_type": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string",
-            "value": "ctas"
-          }
-        },
-        "ctas": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "array",
-            "of": {
-              "type": "object",
-              "attributes": {
-                "_key": {
-                  "type": "objectAttribute",
-                  "value": {
-                    "type": "string"
-                  }
-                }
-              },
-              "rest": {
-                "type": "inline",
-                "name": "cta"
-              }
-            }
-          },
-          "optional": true
-        }
-      }
-    }
-  },
-  {
     "name": "cta",
     "type": "type",
     "value": {
@@ -8266,16 +8258,46 @@
               {
                 "type": "object",
                 "attributes": {
-                  "_key": {
+                  "ctas": {
                     "type": "objectAttribute",
                     "value": {
-                      "type": "string"
+                      "type": "array",
+                      "of": {
+                        "type": "object",
+                        "attributes": {
+                          "_key": {
+                            "type": "objectAttribute",
+                            "value": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "rest": {
+                          "type": "inline",
+                          "name": "cta"
+                        }
+                      }
+                    },
+                    "optional": true
+                  },
+                  "_type": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string",
+                      "value": "ctas"
                     }
                   }
                 },
                 "rest": {
-                  "type": "inline",
-                  "name": "ctas"
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  }
                 }
               },
               {

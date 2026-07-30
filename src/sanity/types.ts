@@ -353,9 +353,15 @@ export type Prose = {
 				_type: 'image'
 				_key: string
 		  }
-		| ({
+		| {
+				ctas?: Array<
+					{
+						_key: string
+					} & Cta
+				>
+				_type: 'ctas'
 				_key: string
-		  } & Ctas)
+		  }
 		| ({
 				_key: string
 		  } & Code)
@@ -943,15 +949,6 @@ export type Link = {
 	params?: string
 }
 
-export type Ctas = {
-	_type: 'ctas'
-	ctas?: Array<
-		{
-			_key: string
-		} & Cta
-	>
-}
-
 export type Cta = {
 	_type: 'cta'
 	link?: Link
@@ -1143,9 +1140,15 @@ export type BlogPost = {
 		| ({
 				_key: string
 		  } & AccordionList)
-		| ({
+		| {
+				ctas?: Array<
+					{
+						_key: string
+					} & Cta
+				>
+				_type: 'ctas'
 				_key: string
-		  } & Ctas)
+		  }
 		| ({
 				_key: string
 		  } & Code)
@@ -1797,7 +1800,6 @@ export type AllSanitySchemaTypes =
 	| LinkList
 	| PageReference
 	| Link
-	| Ctas
 	| Cta
 	| Quote
 	| SanityImageCrop
@@ -1968,8 +1970,6 @@ export type BLOG_RSS_QUERY_RESULT = {
 					highlightedLines?: Array<number>
 			  }
 			| {
-					_key: string
-					_type: 'ctas'
 					ctas: Array<{
 						_key: string
 						_type: 'cta'
@@ -1997,6 +1997,8 @@ export type BLOG_RSS_QUERY_RESULT = {
 							| null
 						theme?: 'action-outline' | 'action' | 'ghost' | 'link'
 					}> | null
+					_type: 'ctas'
+					_key: string
 			  }
 			| {
 					_key: string
@@ -2086,9 +2088,6 @@ export type BLOG_INDEX_QUERY_RESULT = Array<{
 		  } & Code)
 		| ({
 				_key: string
-		  } & Ctas)
-		| ({
-				_key: string
 		  } & CustomHtml)
 		| {
 				children?: Array<{
@@ -2107,6 +2106,15 @@ export type BLOG_INDEX_QUERY_RESULT = Array<{
 				}>
 				level?: number
 				_type: 'block'
+				_key: string
+		  }
+		| {
+				ctas?: Array<
+					{
+						_key: string
+					} & Cta
+				>
+				_type: 'ctas'
 				_key: string
 		  }
 		| {
@@ -2198,9 +2206,6 @@ export type BLOG_FEATURED_QUERY_RESULT = Array<{
 		  } & Code)
 		| ({
 				_key: string
-		  } & Ctas)
-		| ({
-				_key: string
 		  } & CustomHtml)
 		| {
 				children?: Array<{
@@ -2219,6 +2224,15 @@ export type BLOG_FEATURED_QUERY_RESULT = Array<{
 				}>
 				level?: number
 				_type: 'block'
+				_key: string
+		  }
+		| {
+				ctas?: Array<
+					{
+						_key: string
+					} & Cta
+				>
+				_type: 'ctas'
 				_key: string
 		  }
 		| {
@@ -2310,9 +2324,6 @@ export type BLOG_POST_LIST_QUERY_RESULT = Array<{
 		  } & Code)
 		| ({
 				_key: string
-		  } & Ctas)
-		| ({
-				_key: string
 		  } & CustomHtml)
 		| {
 				children?: Array<{
@@ -2331,6 +2342,15 @@ export type BLOG_POST_LIST_QUERY_RESULT = Array<{
 				}>
 				level?: number
 				_type: 'block'
+				_key: string
+		  }
+		| {
+				ctas?: Array<
+					{
+						_key: string
+					} & Cta
+				>
+				_type: 'ctas'
 				_key: string
 		  }
 		| {

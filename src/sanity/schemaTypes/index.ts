@@ -34,7 +34,6 @@ import stepList from '@/modules/step-list/schema'
 import tabbedContent from '@/modules/tabbed-content/schema'
 // objects
 import cta from './objects/cta'
-import ctas from './objects/ctas'
 import link from './objects/link'
 import linkList from './objects/link.list'
 import megamenu from './objects/megamenu'
@@ -61,7 +60,6 @@ export const schema: SchemaPluginOptions = {
 
 		// objects
 		cta,
-		ctas,
 		link,
 		linkList,
 		megamenu,
