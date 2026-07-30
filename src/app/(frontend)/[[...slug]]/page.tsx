@@ -3,9 +3,9 @@ import type { Metadata } from 'next'
 import { groq } from 'next-sanity'
 import { notFound } from 'next/navigation'
 import { ROUTES } from '@/lib/env'
+import { resolveOgImage } from '@/lib/og'
 import ModulesResolver from '@/modules'
 import { client } from '@/sanity/lib/client'
-import { urlFor } from '@/sanity/lib/image'
 import { sanityFetchLive } from '@/sanity/lib/live'
 import {
 	getSite,
@@ -40,11 +40,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 				.filter(Boolean)
 				.join('/'),
 			images: [
-				image
-					? urlFor(image).width(1200).url()
-					: site?.ogimage
-						? urlFor(site.ogimage).width(1200).url()
-						: `${process.env.NEXT_PUBLIC_BASE_URL}/api/og?slug=${slug?.join('/')}`,
+				resolveOgImage({
+					image,
+					siteOgImage: site?.ogimage,
+					slug: slug?.join('/') || 'index',
+				}),
 			],
 		},
 		robots: {

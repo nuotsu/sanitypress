@@ -2,12 +2,13 @@ import type { Metadata } from 'next'
 import { groq } from 'next-sanity'
 import { notFound } from 'next/navigation'
 import { ROUTES } from '@/lib/env'
+import { resolveOgImage } from '@/lib/og'
 import ModulesResolver from '@/modules'
 import { client } from '@/sanity/lib/client'
-import { urlFor } from '@/sanity/lib/image'
 import { sanityFetchLive } from '@/sanity/lib/live'
 import {
 	BLOG_POST_FRAGMENT_QUERY,
+	getSite,
 	GLOBAL_MODULE_EXCLUDE_QUERY,
 	LINK_QUERY,
 	MODULES_QUERY,
@@ -26,7 +27,7 @@ export default async function ({ params }: Props) {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { slug } = await params
-	const post = await getPost(slug)
+	const [post, site] = await Promise.all([getPost(slug), getSite()])
 	const { title, description, image, noIndex } = post?.metadata ?? {}
 
 	return {
@@ -37,9 +38,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 			description: description,
 			url: `${process.env.NEXT_PUBLIC_BASE_URL}/${ROUTES.blog}/${slug}`,
 			images: [
-				image
-					? urlFor(image).width(1200).url()
-					: `${process.env.NEXT_PUBLIC_BASE_URL}/api/og?slug=${ROUTES.blog}/${slug}`,
+				resolveOgImage({
+					image,
+					siteOgImage: site?.ogimage,
+					slug: `${ROUTES.blog}/${slug}`,
+				}),
 			],
 		},
 		robots: {
