@@ -70,7 +70,7 @@ export default defineType({
 			items: 'items',
 		},
 		prepare: ({ link, items }) => ({
-			title: link.label || link.internal?.title,
+			title: link?.label || link?.internal?.title,
 			subtitle: `Megamenu (${count(items)})`,
 		}),
 	},
