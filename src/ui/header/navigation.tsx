@@ -13,7 +13,7 @@ export default async function () {
 	const site = await getSite()
 
 	return (
-		<nav className="max-md:header-not-open:hidden max-md:anim-fade-to-b gap-x-lh flex items-stretch [grid-area:navigation] max-md:my-4 max-md:flex-col">
+		<nav className="gap-x-lh flex items-stretch [grid-area:navigation] max-md:my-4 max-md:flex-col">
 			{site?.header?.items?.map((item, i) => {
 				switch (item._type) {
 					case 'link':

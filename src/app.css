@@ -54,6 +54,12 @@
 		@apply accent-primary caret-primary;
 	}
 
+	body {
+		&:has(#header-open:checked):has(.layout-header nav > details:open) {
+			overflow: hidden;
+		}
+	}
+
 	details {
 		--details-duration: var(--default-transition-duration);
 
