@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { useEffect, useState, type ComponentProps } from 'react'
+import { useEffect, useRef, useState, type ComponentProps } from 'react'
 import { useIsDesktop } from '@/hooks/useMatchMedia'
 import { cn } from '@/lib/utils'
 import css from './hover-details.module.css'
@@ -23,19 +23,21 @@ export default function ({
 } & ComponentProps<'details'>) {
 	const isDesktop = useIsDesktop()
 	const [open, setOpen] = useState(false)
-	let timeout: NodeJS.Timeout
+	const timeout = useRef<ReturnType<typeof setTimeout>>(undefined)
 
 	const events = isDesktop
 		? {
 				onMouseEnter: () => {
+					clearTimeout(timeout.current)
+
 					if (delay) {
-						timeout = setTimeout(() => setOpen(true), delay)
+						timeout.current = setTimeout(() => setOpen(true), delay)
 					} else {
 						setOpen(true)
 					}
 				},
 				onMouseLeave: () => {
-					if (delay) clearTimeout(timeout)
+					clearTimeout(timeout.current)
 					setOpen(false)
 				},
 			}
@@ -51,9 +53,12 @@ export default function ({
 		<details
 			className={cn(safeAreaOnHover && css.safearea, className)}
 			open={open}
-			key={String(open)}
 			{...events}
 			{...props}
+			onToggle={(e) => {
+				setOpen(e.currentTarget.open)
+				props.onToggle?.(e)
+			}}
 		/>
 	)
 }

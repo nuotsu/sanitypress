@@ -25,10 +25,6 @@
 		:root {
 			interpolate-size: allow-keywords;
 		}
-
-		:open::details-content {
-			height: auto;
-		}
 	}
 
 	:target {
@@ -59,15 +55,38 @@
 	}
 
 	details {
+		--details-duration: var(--default-transition-duration);
+
+		display: grid;
+		grid-template-rows: auto 0fr;
+		align-content: start;
+		transition: grid-template-rows var(--details-duration) var(--default-transition-timing-function);
+
 		&::details-content {
+			content-visibility: visible;
 			overflow: clip;
-			transition-duration: var(--default-transition-duration);
-			transition-property: content-visibility, block-size;
-			transition-behavior: allow-discrete;
+			min-block-size: 0;
 		}
 
-		&:not(:open)::details-content {
-			block-size: 0;
+		>:not(summary) {
+			transition: visibility var(--details-duration);
+		}
+
+		&:not(:is([open], :open))>:not(summary) {
+			visibility: hidden;
+		}
+
+		&:is([open], :open) {
+			grid-template-rows: auto 1fr;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+
+		details,
+		details::details-content,
+		details>:not(summary) {
+			transition-duration: 0s;
 		}
 	}
 
@@ -337,7 +356,14 @@
 		position-try-fallbacks: end span-start, flip-block;
 		position-try: end span-start, flip-block;
 
-		@apply anim-fade fixed z-1 min-w-max bg-background shadow-lg origin-top starting:-translate-y-1 starting:scale-95;
+		transition: var(--default-transition-duration) var(--default-transition-timing-function);
+		transition-property: opacity, translate, scale, visibility;
+
+		@apply fixed z-1 min-w-max bg-background shadow-lg origin-top;
+	}
+
+	&:not(:open)>:not(summary) {
+		@apply -translate-y-1 scale-95 opacity-0;
 	}
 }
 
@@ -375,7 +401,7 @@
 }
 
 @utility anim-fade-to-l {
-	@apply anim-fade starting:-translate-x-4;
+	@apply anim-fade starting:translate-x-4;
 }
 
 @utility anim-fade-to-r {
@@ -383,9 +409,18 @@
 }
 
 @utility anim-fade-to-t {
-	@apply anim-fade starting:-translate-y-4;
+	@apply anim-fade starting:translate-y-4;
 }
 
 @utility anim-fade-to-b {
 	@apply anim-fade starting:-translate-y-4;
+}
+
+@utility anim-toggle {
+	transition: var(--default-transition-duration) var(--default-transition-timing-function);
+	transition-property: opacity, translate, scale, visibility;
+
+	:where(details:not(:open))>& {
+		@apply -translate-y-4 opacity-0;
+	}
 }

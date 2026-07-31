@@ -70,7 +70,7 @@ export default function ({
 						</summary>
 
 						<div
-							className="not-supports-[interpolate-size:allow-keywords]:anim-fade-to-b pb-lh"
+							className="anim-toggle pb-lh"
 							{...(enableSchema && {
 								itemScope: true,
 								itemProp: 'acceptedAnswer',

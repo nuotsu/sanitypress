@@ -29,14 +29,14 @@ export default function ({
 				<VscChevronDown />
 			</summary>
 
-			<div className="anim-fade-to-b md:bg-background border-stroke inset-x-0 top-full md:absolute md:max-h-[calc(100vh-var(--header-height))] md:overflow-y-auto md:border-b md:shadow-lg">
+			<div className="anim-toggle md:bg-background border-stroke inset-x-0 top-full md:absolute md:max-h-[calc(100vh-var(--header-height))] md:overflow-y-auto md:border-b md:shadow-lg">
 				<div className="section md:py-lh gap-x-lh border-stroke max-md:pl-ch md:*:mb-lh py-0 max-md:grid max-md:border-l sm:columns-3xs">
 					{items?.map((item, i) => {
 						switch (item._type) {
 							case 'link.list':
 								return (
 									<MobileOnlyDetails
-										className="accordion group/megamenu-linklist break-inside-avoid md:details-content:h-[initial]"
+										className="accordion group/megamenu-linklist break-inside-avoid md:grid-rows-[auto_1fr]"
 										name="megamenu-linklist"
 										key={`${item._key}-${i}`}
 									>
@@ -48,7 +48,7 @@ export default function ({
 											<VscChevronDown className="md:hidden" />
 										</summary>
 
-										<ul className="border-stroke max-md:pl-ch max-md:anim-fade-to-b mb-ch leading-tight max-md:border-l">
+										<ul className="border-stroke max-md:pl-ch max-md:anim-toggle mb-ch leading-tight max-md:border-l">
 											{item.links?.map((link, j) => {
 												return (
 													<li key={`${link._key}-${j}`}>

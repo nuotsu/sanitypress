@@ -22,10 +22,7 @@ export default function ({
 
 	return (
 		<MobileClosedDetails
-			className={cn(
-				'table-of-contents accordion max-h-[calc(100svh-var(--header-height)-var(--offset))] overflow-y-auto',
-				className,
-			)}
+			className={cn('table-of-contents accordion', className)}
 			{...props}
 		>
 			<summary className="bg-background sticky top-0 z-1 py-1 font-bold">

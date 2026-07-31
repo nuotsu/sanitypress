@@ -30,7 +30,7 @@ export default function ({
 				<VscChevronDown />
 			</summary>
 
-			<ul className="max-md:anim-fade-to-b border-stroke max-md:pl-ch mb-ch md:py-ch leading-tight max-md:border-l md:ml-[-1.5ch] md:border md:p-[1ch_1.5ch]">
+			<ul className="max-md:anim-toggle border-stroke max-md:pl-ch mb-ch md:py-ch leading-tight max-md:border-l md:ml-[-1.5ch] md:border md:p-[1ch_1.5ch]">
 				{links?.map((link, key) => (
 					<li key={key}>
 						<SanityLink
