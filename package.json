@@ -14,7 +14,7 @@
 	"dependencies": {
 		"@portabletext/to-html": "^5.0.2",
 		"@sanity/assist": "^6.1.17",
-		"@sanity/cli": "^7.17.0",
+		"@sanity/cli": "^7.18.0",
 		"@sanity/code-input": "^7.3.3",
 		"@sanity/dashboard": "^6.0.14",
 		"@sanity/image-url": "^2.1.1",
