@@ -25,7 +25,7 @@ const nextConfig: NextConfig = {
 	turbopack: {},
 
 	async redirects() {
-		return await client.fetch(
+		const sanityRedirects = await client.fetch(
 			groq`*[_type == 'redirect']{
 				source,
 				'destination': select(
@@ -43,6 +43,12 @@ const nextConfig: NextConfig = {
 			}`,
 			{ blogDir: `/${ROUTES.blog}/` },
 		)
+
+		return [
+			// Homepage slug is "index" in Sanity; /index must not duplicate /
+			{ source: '/index', destination: '/', permanent: true },
+			...sanityRedirects,
+		]
 	},
 }
 
