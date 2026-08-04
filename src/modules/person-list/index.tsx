@@ -25,23 +25,31 @@ export default function ({
 				)}
 				style={{ '--columns': columns }}
 			>
-				{(people as unknown as Person[])?.map(({ name, title, image }, key) => (
-					<article key={key}>
-						<article className="space-y-4">
-							<Img
-								className="aspect-square w-full object-cover"
-								width={400}
-								image={image}
-								alt={name ?? ''}
-							/>
+				{(people as unknown as Person[])?.map(
+					({ name, title, content, image }, key) => (
+						<article key={key}>
+							<article className="space-y-4">
+								<Img
+									className="aspect-square w-full object-cover"
+									width={400}
+									image={image}
+									alt={name ?? ''}
+								/>
 
-							<dl>
-								<dt className="h3">{name}</dt>
-								{title && <dd>{title}</dd>}
-							</dl>
+								<dl>
+									<dt className="h3">{name}</dt>
+									{title && <dd>{title}</dd>}
+								</dl>
+
+								{content && (
+									<div className="prose">
+										<PortableText value={content} />
+									</div>
+								)}
+							</article>
 						</article>
-					</article>
-				))}
+					),
+				)}
 			</div>
 		</Module>
 	)
