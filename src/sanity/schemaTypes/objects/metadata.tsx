@@ -29,7 +29,16 @@ export default defineType({
 			options: {
 				source: (doc: any) => doc.title || doc.metadata.title,
 			},
-			validation: (Rule) => Rule.required(),
+			validation: (Rule) => [
+				Rule.required(),
+				Rule.custom((slug, context) => {
+					if (context.document?._type !== 'page') return true
+					if (slug?.current === 'index') {
+						return 'This page will show at / (Homepage)'
+					}
+					return true
+				}).info(),
+			],
 		}),
 		defineField({
 			name: 'image',
