@@ -33,13 +33,13 @@ export default function ({
 			<ol className="grid gap-8">
 				{steps?.map((step, index) => (
 					<li
+						key={`${step._key}-${index}`}
 						className="gap-ch flex items-start [counter-increment:step]"
 						{...(enableSchema && {
 							itemScope: true,
 							itemProp: 'step',
 							itemType: 'https://schema.org/HowToStep',
 						})}
-						key={`${step._key}-${index}`}
 					>
 						<span className="h3 bg-foreground text-background size-lh grid shrink-0 place-content-center text-center before:content-[counter(step)]" />
 

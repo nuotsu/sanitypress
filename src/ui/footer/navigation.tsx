@@ -25,8 +25,8 @@ export default async function ({ perspective, stega }: DynamicFetchOptions) {
 						case 'link.list':
 							return (
 								<LinkList
-									{...(item as unknown as LinkListType)}
 									key={`${item._key}-${i}`}
+									{...(item as unknown as LinkListType)}
 								/>
 							)
 

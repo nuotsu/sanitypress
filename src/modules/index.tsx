@@ -86,9 +86,9 @@ export default function ({
 
 				return (
 					<Component
+						key={`${module._key}-${i}`}
 						{...module}
 						{...moduleSpecificProps(module)}
-						key={`${module._key}-${i}`}
 					/>
 				)
 			})}

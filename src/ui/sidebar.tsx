@@ -31,14 +31,16 @@ export default function ({
 					case 'callout':
 						return (
 							<Callout
+								key={`${module._key}-${i}`}
 								{...module}
 								className="p-0"
-								key={`${module._key}-${i}`}
 							/>
 						)
 
 					case 'custom-html':
-						return <CustomHTML {...module} key={`${module._key}-${i}`} />
+						return (
+							<CustomHTML key={`${module._key}-${i}`} {...module} />
+						)
 
 					case 'tableOfContents': {
 						const maxHeadingDepth = stegaClean(module.maxHeadingDepth) ?? 6

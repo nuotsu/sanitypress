@@ -32,18 +32,18 @@ export default async function ({ perspective, stega }: DynamicFetchOptions) {
 					case 'link.list':
 						return (
 							<Dropdown
+								key={`${item._key}-${i}`}
 								{...(item as LinkList & { _key: string })}
 								summaryClassName={topLevelClassName}
-								key={`${item._key}-${i}`}
 							/>
 						)
 
 					case 'megamenu':
 						return (
 							<Megamenu
+								key={`${item._key}-${i}`}
 								{...(item as MegamenuType)}
 								summaryClassName={topLevelClassName}
-								key={`${item._key}-${i}`}
 							/>
 						)
 

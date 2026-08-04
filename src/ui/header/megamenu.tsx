@@ -65,7 +65,9 @@ export default function ({
 								)
 
 							case 'link.card':
-								return <LinkCard {...item} key={`${item._key}-${i}`} />
+								return (
+									<LinkCard key={`${item._key}-${i}`} {...item} />
+								)
 
 							case 'link':
 								return (
