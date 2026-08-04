@@ -291,7 +291,7 @@ const MY_MODULE_QUERY = groq`
 `
 ```
 
-This module also needs a registration step in [Step 7](#step-7--register-the-component) that no-fetch modules skip. For the full explanation of `perspective`/`stega` and cache boundaries, see the `sanity-live-cache-components` skill's `reference/three-layer-pattern.md`.
+This module also needs a registration step in [Step 7](#step-7--register-the-component) that no-fetch modules skip.
 
 After creating the file, ask:
 
