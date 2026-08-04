@@ -18,6 +18,7 @@ export default function ({
 			name="header"
 			className="accordion group/megamenu [--safearea-x:20vw]!"
 			safeAreaOnHover
+			closeAfterNavigate
 		>
 			<summary
 				className={cn(

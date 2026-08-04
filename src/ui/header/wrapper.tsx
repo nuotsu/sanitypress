@@ -24,16 +24,11 @@ export default function (props: React.ComponentProps<'header'>) {
 		return () => window.removeEventListener('resize', setHeight)
 	}, [])
 
-	// close menus after navigation
+	// close mobile menu after navigation
 	useEffect(() => {
 		if (typeof document === 'undefined') return
 		const toggle = document.querySelector('#header-open') as HTMLInputElement
 		if (toggle) toggle.checked = false
-
-		if (!ref.current) return
-		ref.current.querySelectorAll('details').forEach((element) => {
-			if (element.open) element.open = false
-		})
 	}, [pathname])
 
 	return <header ref={ref} role="banner" {...props} />

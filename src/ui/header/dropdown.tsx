@@ -19,6 +19,7 @@ export default function ({
 			className="accordion md:dropdown group/dropdown"
 			style={{ '--anchor-name': `--dropdown-${_key}` }}
 			safeAreaOnHover
+			closeAfterNavigate
 		>
 			<summary
 				className={cn(
