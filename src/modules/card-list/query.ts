@@ -1,7 +1,8 @@
 import { groq } from 'next-sanity'
+import { LINK_QUERY } from '@/sanity/lib/fragments'
 
 // @sanity-typegen-ignore
-export const CARD_LIST_QUERY = (LINK_QUERY: string) => groq`
+export const CARD_LIST_QUERY = groq`
 	_type == 'card-list' => {
 		cards[]{
 			...,

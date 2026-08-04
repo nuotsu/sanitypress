@@ -1,7 +1,8 @@
 import { groq } from 'next-sanity'
+import { LINK_QUERY } from '@/sanity/lib/fragments'
 
 // @sanity-typegen-ignore
-export const TABBED_CONTENT_QUERY = (LINK_QUERY: string) => groq`
+export const TABBED_CONTENT_QUERY = groq`
 	_type == 'tabbed-content' => {
 		tabs[]{
 			...,

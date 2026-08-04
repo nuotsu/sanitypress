@@ -1,10 +1,14 @@
 import type { NextConfig } from 'next'
 import { groq } from 'next-sanity'
+import { sanity } from 'next-sanity/live/cache-life'
 import { ROUTES } from './src/lib/env'
 import { client } from './src/sanity/lib/client'
 
 const nextConfig: NextConfig = {
 	reactCompiler: true,
+
+	cacheComponents: true,
+	cacheLife: { default: sanity },
 
 	images: {
 		localPatterns: [{ pathname: '/api/og' }],

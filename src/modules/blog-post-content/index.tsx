@@ -10,6 +10,7 @@ import type {
 	BLOG_POST_QUERY_RESULT,
 	BlogCategory,
 	BlogPostContent,
+	Cta,
 	Person,
 } from '@/sanity/types'
 import Byline from '@/ui/blog/byline'
@@ -86,7 +87,9 @@ export default function ({
 											className="p-0 [&_header]:text-left"
 										/>
 									),
-									ctas: ({ value }) => <CTAList ctas={value.ctas} />,
+									ctas: ({ value }) => (
+										<CTAList ctas={value.ctas as Cta[] | undefined} />
+									),
 									code: Code,
 									'custom-html': ({ value }) => (
 										<CustomHTML {...value} className="my-6" />

@@ -9,11 +9,16 @@ import {
 	FaYelp,
 	FaYoutube,
 } from 'react-icons/fa6'
+import type { DynamicFetchOptions } from '@/sanity/lib/live'
 import { getSite } from '@/sanity/lib/queries'
 import SanityLink, { type SanityLinkType } from './sanity-link'
 
-export default async function (props: React.ComponentProps<'nav'>) {
-	const site = await getSite()
+export default async function ({
+	perspective,
+	stega,
+	...props
+}: React.ComponentProps<'nav'> & DynamicFetchOptions) {
+	const site = await getSite({ perspective, stega })
 
 	return (
 		<nav {...props}>

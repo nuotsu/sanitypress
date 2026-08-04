@@ -1,6 +1,10 @@
 import { PortableText } from 'next-sanity'
 import { cn } from '@/lib/utils'
 import CustomHTML from '@/modules/custom-html'
+import {
+	getDynamicFetchOptions,
+	type DynamicFetchOptions,
+} from '@/sanity/lib/live'
 import { getSite } from '@/sanity/lib/queries'
 import type { Cta } from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
@@ -10,8 +14,18 @@ import MobileToggle from './mobile-toggle'
 import Navigation from './navigation'
 import Wrapper from './wrapper'
 
-export default async function () {
-	const site = await getSite()
+export async function DynamicHeader() {
+	const { perspective, stega } = await getDynamicFetchOptions()
+	return <CachedHeader perspective={perspective} stega={stega} />
+}
+
+export default async function Header(props: DynamicFetchOptions) {
+	return <CachedHeader {...props} />
+}
+
+async function CachedHeader({ perspective, stega }: DynamicFetchOptions) {
+	'use cache'
+	const site = await getSite({ perspective, stega })
 	const blurb = site?.header?.blurb
 
 	return (
@@ -23,7 +37,11 @@ export default async function () {
 				)}
 			>
 				<div className="max-md:header-open:bg-background sticky top-0 z-1 flex items-center justify-between gap-4 py-4 [grid-area:top]">
-					<Logo className="max-w-max grow has-[img]:-my-2 has-[img]:h-[2lh]" />
+					<Logo
+						className="max-w-max grow has-[img]:-my-2 has-[img]:h-[2lh]"
+						perspective={perspective}
+						stega={stega}
+					/>
 					<MobileToggle />
 				</div>
 
@@ -31,7 +49,7 @@ export default async function () {
 					className={cn(css.menu, 'max-md:header-open:pb-4 [grid-area:menu]')}
 				>
 					<div>
-						<Navigation />
+						<Navigation perspective={perspective} stega={stega} />
 
 						<div className="flex items-center gap-[.5em_1em] [grid-area:ctas] max-md:flex-col">
 							{blurb && (

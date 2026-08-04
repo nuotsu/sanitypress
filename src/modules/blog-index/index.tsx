@@ -4,7 +4,7 @@ import { Suspense } from 'react'
 import { ROUTES } from '@/lib/env'
 import { cn } from '@/lib/utils'
 import { Module, type ModuleProps } from '@/modules'
-import { sanityFetchLive } from '@/sanity/lib/live'
+import { sanityFetch, type DynamicFetchOptions } from '@/sanity/lib/live'
 import { BLOG_POST_FRAGMENT_QUERY } from '@/sanity/lib/queries'
 import type {
 	BLOG_FEATURED_QUERY_RESULT,
@@ -26,22 +26,18 @@ export default async function ({
 	intro,
 	featured,
 	postsPerPage = 6,
+	perspective,
+	stega,
 	...props
-}: BlogIndexModule & ModuleProps) {
+}: BlogIndexModule & ModuleProps & DynamicFetchOptions) {
 	const blogDir = `/${ROUTES.blog}/`
 	const featuredIds = featured?.map((ref) => ref._ref).filter(Boolean) ?? []
 
 	const [posts, featuredPosts] = await Promise.all([
-		sanityFetchLive<BLOG_INDEX_QUERY_RESULT>({
-			query: BLOG_INDEX_QUERY,
-			params: { blogDir, featuredIds },
-		}),
+		getPosts({ blogDir, featuredIds, perspective, stega }),
 		featuredIds.length
-			? sanityFetchLive<BLOG_FEATURED_QUERY_RESULT>({
-					query: BLOG_FEATURED_QUERY,
-					params: { blogDir, featuredIds },
-				})
-			: Promise.resolve([]),
+			? getFeaturedPosts({ blogDir, featuredIds, perspective, stega })
+			: Promise.resolve([] as BLOG_FEATURED_QUERY_RESULT),
 	])
 
 	const featuredById = new Map(featuredPosts.map((post) => [post._id, post]))
@@ -66,7 +62,7 @@ export default async function ({
 							</Loading>
 						}
 					>
-						<FilterList />
+						<FilterList perspective={perspective} stega={stega} />
 						<SortBy />
 					</Suspense>
 				</fieldset>
@@ -83,7 +79,45 @@ export default async function ({
 	)
 }
 
-export const BLOG_INDEX_QUERY = groq`
+async function getPosts({
+	blogDir,
+	featuredIds,
+	perspective,
+	stega,
+}: {
+	blogDir: string
+	featuredIds: string[]
+} & DynamicFetchOptions) {
+	'use cache'
+	const { data } = await sanityFetch({
+		query: BLOG_INDEX_QUERY,
+		params: { blogDir, featuredIds },
+		perspective,
+		stega,
+	})
+	return data as BLOG_INDEX_QUERY_RESULT
+}
+
+async function getFeaturedPosts({
+	blogDir,
+	featuredIds,
+	perspective,
+	stega,
+}: {
+	blogDir: string
+	featuredIds: string[]
+} & DynamicFetchOptions) {
+	'use cache'
+	const { data } = await sanityFetch({
+		query: BLOG_FEATURED_QUERY,
+		params: { blogDir, featuredIds },
+		perspective,
+		stega,
+	})
+	return data as BLOG_FEATURED_QUERY_RESULT
+}
+
+const BLOG_INDEX_QUERY = groq`
 	*[_type == 'blog.post' && !(_id in $featuredIds)]|order(publishDate desc){
 		...,
 		${BLOG_POST_FRAGMENT_QUERY},
@@ -91,7 +125,7 @@ export const BLOG_INDEX_QUERY = groq`
 	}
 `
 
-export const BLOG_FEATURED_QUERY = groq`
+const BLOG_FEATURED_QUERY = groq`
 	*[_type == 'blog.post' && _id in $featuredIds]{
 		...,
 		${BLOG_POST_FRAGMENT_QUERY},

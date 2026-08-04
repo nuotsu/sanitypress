@@ -8,24 +8,12 @@ import { PROSE_QUERY } from '@/modules/prose/query'
 import { QUOTE_LIST_QUERY } from '@/modules/quote-list/query'
 import { TABBED_CONTENT_QUERY } from '@/modules/tabbed-content/query'
 import type { SITE_QUERY_RESULT } from '@/sanity/types'
-import { sanityFetchLive } from './live'
+import { LINK_QUERY } from './fragments'
+import { sanityFetch, type DynamicFetchOptions } from './live'
 
 /* fragments */
 
-// @sanity-typegen-ignore
-export const LINK_QUERY = groq`
-	...,
-	type == 'internal' => {
-		internal->{
-			_type,
-			title,
-			'slug': select(
-				metadata.slug.current == 'index' => '/',
-				'/' + metadata.slug.current
-			)
-		}
-	}
-`
+export { LINK_QUERY }
 
 // @sanity-typegen-ignore
 const NAVIGATION_QUERY = groq`
@@ -120,19 +108,19 @@ export const MODULES_QUERY = groq`
 	},
 	sidebar{ ${SIDEBAR_QUERY} },
 	${FORM_MODULE_QUERY},
-	${BREADCRUMBS_QUERY(LINK_QUERY)},
-	${CARD_LIST_QUERY(LINK_QUERY)},
+	${BREADCRUMBS_QUERY},
+	${CARD_LIST_QUERY},
 	${LOGO_LIST_QUERY},
 	${PERSON_LIST_QUERY},
-	${PROSE_QUERY(LINK_QUERY)},
+	${PROSE_QUERY},
 	${QUOTE_LIST_QUERY},
-	${TABBED_CONTENT_QUERY(LINK_QUERY)},
+	${TABBED_CONTENT_QUERY},
 `
 
 /* queries */
 
-export async function getSite() {
-	return await sanityFetchLive<SITE_QUERY_RESULT>({
-		query: SITE_QUERY,
-	})
+export async function getSite({ perspective, stega }: DynamicFetchOptions) {
+	'use cache'
+	const { data } = await sanityFetch({ query: SITE_QUERY, perspective, stega })
+	return data as SITE_QUERY_RESULT
 }

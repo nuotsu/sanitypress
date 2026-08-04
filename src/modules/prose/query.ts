@@ -1,7 +1,8 @@
 import { groq } from 'next-sanity'
+import { LINK_QUERY } from '@/sanity/lib/fragments'
 
 // @sanity-typegen-ignore
-export const PROSE_QUERY = (LINK_QUERY: string) => groq`
+export const PROSE_QUERY = groq`
 	_type == 'prose' => {
 		content[]{
 			...,

@@ -1,11 +1,18 @@
 import type { Metadata } from 'next'
 import { groq } from 'next-sanity'
+import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
-import { ROUTES } from '@/lib/env'
+import { Suspense } from 'react'
+import { dev, ROUTES } from '@/lib/env'
 import { resolveOgImage } from '@/lib/og'
 import ModulesResolver from '@/modules'
-import { client } from '@/sanity/lib/client'
-import { sanityFetchLive } from '@/sanity/lib/live'
+import {
+	getDynamicFetchOptions,
+	sanityFetch,
+	sanityFetchMetadata,
+	sanityFetchStaticParams,
+	type DynamicFetchOptions,
+} from '@/sanity/lib/live'
 import {
 	BLOG_POST_FRAGMENT_QUERY,
 	getSite,
@@ -14,20 +21,56 @@ import {
 	MODULES_QUERY,
 } from '@/sanity/lib/queries'
 import type { BLOG_POST_QUERY_RESULT } from '@/sanity/types'
+import Loading from '@/ui/loading'
 
 type Props = PageProps<'/blog/[slug]'>
 
 export default async function ({ params }: Props) {
+	const { isEnabled: isDraftMode } = await draftMode()
+	const showDrafts = isDraftMode || dev
+
+	if (showDrafts) {
+		return (
+			<Suspense fallback={<Loading className="section" />}>
+				<DynamicPost params={params} />
+			</Suspense>
+		)
+	}
+
 	const { slug } = await params
-	const post = await getPost(slug)
+	return <CachedPost slug={slug} perspective="published" stega={false} />
+}
+
+async function DynamicPost({ params }: Pick<Props, 'params'>) {
+	const [{ slug }, { perspective, stega }] = await Promise.all([
+		params,
+		getDynamicFetchOptions(),
+	])
+
+	return <CachedPost slug={slug} perspective={perspective} stega={stega} />
+}
+
+async function CachedPost({
+	slug,
+	perspective,
+	stega,
+}: { slug: string } & DynamicFetchOptions) {
+	'use cache'
+	const post = await getPost({ slug, perspective, stega })
 	if (!post) notFound()
 
-	return <ModulesResolver post={post} />
+	return <ModulesResolver post={post} perspective={perspective} stega={stega} />
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-	const { slug } = await params
-	const [post, site] = await Promise.all([getPost(slug), getSite()])
+	const [{ slug }, { perspective }] = await Promise.all([
+		params,
+		getDynamicFetchOptions(),
+	])
+	const [post, site] = await Promise.all([
+		getPostMetadata({ slug, perspective }),
+		getSite({ perspective, stega: false }),
+	])
 	const { title, description, image, noIndex } = post?.metadata ?? {}
 
 	return {
@@ -61,18 +104,37 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-	return await client.fetch<{ slug: string }[]>(
-		groq`*[_type == 'blog.post' && defined(metadata.slug.current)]{
+	return (await sanityFetchStaticParams({
+		query: groq`*[_type == 'blog.post' && defined(metadata.slug.current)]{
 			'slug': '/' + metadata.slug.current
 		}`,
-	)
+	})) as { slug: string }[]
 }
 
-async function getPost(slug: string) {
-	return await sanityFetchLive<BLOG_POST_QUERY_RESULT>({
+async function getPost({
+	slug,
+	perspective,
+	stega,
+}: { slug: string } & DynamicFetchOptions) {
+	'use cache'
+	const { data } = await sanityFetch({
 		query: BLOG_POST_QUERY,
 		params: { slug, blogDir: `${ROUTES.blog}/` },
+		perspective,
+		stega,
 	})
+	return data as BLOG_POST_QUERY_RESULT
+}
+
+async function getPostMetadata({
+	slug,
+	perspective,
+}: { slug: string } & Pick<DynamicFetchOptions, 'perspective'>) {
+	return (await sanityFetchMetadata({
+		query: BLOG_POST_QUERY,
+		params: { slug, blogDir: `${ROUTES.blog}/` },
+		perspective,
+	})) as BLOG_POST_QUERY_RESULT
 }
 
 export const BLOG_POST_QUERY = groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{

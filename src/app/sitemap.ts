@@ -1,15 +1,10 @@
 import type { MetadataRoute } from 'next'
 import { groq } from 'next-sanity'
 import { ROUTES } from '@/lib/env'
-import { sanityFetchLive } from '@/sanity/lib/live'
-
-export const dynamic = 'force-dynamic'
+import { sanityFetchMetadata } from '@/sanity/lib/live'
 
 export default async function (): Promise<MetadataRoute.Sitemap> {
-	const data = await sanityFetchLive<{
-		pages: MetadataRoute.Sitemap
-		posts: MetadataRoute.Sitemap
-	}>({
+	const data = (await sanityFetchMetadata({
 		query: groq`{
 			'pages': *[
 				_type == 'page'
@@ -41,7 +36,11 @@ export default async function (): Promise<MetadataRoute.Sitemap> {
 			baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
 			blogDir: ROUTES.blog,
 		},
-	})
+		perspective: 'published',
+	})) as {
+		pages: MetadataRoute.Sitemap
+		posts: MetadataRoute.Sitemap
+	}
 
 	return Object.values(data).flat()
 }

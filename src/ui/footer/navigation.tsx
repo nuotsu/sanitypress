@@ -1,10 +1,11 @@
+import type { DynamicFetchOptions } from '@/sanity/lib/live'
 import { getSite } from '@/sanity/lib/queries'
 import type { LinkList as LinkListType } from '@/sanity/types'
 import SanityLink, { type SanityLinkType } from '@/ui/sanity-link'
 import LinkList from './link.list'
 
-export default async function () {
-	const site = await getSite()
+export default async function ({ perspective, stega }: DynamicFetchOptions) {
+	const site = await getSite({ perspective, stega })
 
 	return (
 		<nav>

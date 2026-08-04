@@ -3,7 +3,11 @@ import { groq } from 'next-sanity'
 import { ROUTES } from '@/lib/env'
 import { getBlockText } from '@/lib/utils'
 import { urlFor } from '@/sanity/lib/image'
-import { sanityFetchLive } from '@/sanity/lib/live'
+import {
+	getDynamicFetchOptions,
+	sanityFetch,
+	type DynamicFetchOptions,
+} from '@/sanity/lib/live'
 import { LINK_QUERY } from '@/sanity/lib/queries'
 import type { AccordionList, BLOG_RSS_QUERY_RESULT } from '@/sanity/types'
 
@@ -15,12 +19,10 @@ type RssCtas = Extract<
 >
 
 export async function GET() {
-	const { blog, posts } = await sanityFetchLive<BLOG_RSS_QUERY_RESULT>({
-		query: BLOG_RSS_QUERY,
-		params: {
-			blogDir: ROUTES.blog,
-		},
+	const { perspective } = await getDynamicFetchOptions({
+		allowDevPreview: false,
 	})
+	const { blog, posts } = await getRssData({ perspective })
 
 	const rssXML = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel>
 		<title>${blog?.metadata?.title}</title>
@@ -119,6 +121,19 @@ function Item({ post }: { post: BLOG_RSS_QUERY_RESULT['posts'][number] }) {
 			.filter(Boolean)
 			.join('')}
 	</item>`
+}
+
+async function getRssData({
+	perspective,
+}: Pick<DynamicFetchOptions, 'perspective'>) {
+	'use cache'
+	const { data } = await sanityFetch({
+		query: BLOG_RSS_QUERY,
+		params: { blogDir: ROUTES.blog },
+		perspective,
+		stega: false,
+	})
+	return data as BLOG_RSS_QUERY_RESULT
 }
 
 const BLOG_RSS_QUERY = groq`{
