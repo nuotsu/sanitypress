@@ -9,7 +9,11 @@ import {
 	type DynamicFetchOptions,
 } from '@/sanity/lib/live'
 import { LINK_QUERY } from '@/sanity/lib/queries'
-import type { AccordionList, BLOG_RSS_QUERY_RESULT } from '@/sanity/types'
+import type {
+	AccordionList,
+	BLOG_RSS_QUERY_RESULT,
+	Table,
+} from '@/sanity/types'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -73,6 +77,36 @@ function Item({ post }: { post: BLOG_RSS_QUERY_RESULT['posts'][number] }) {
 									.join('')}</figure>`,
 							code: ({ value: { code } }) =>
 								code && `<pre><code>${code}</code></pre>`,
+							table: ({ value }: { value: Table }) => {
+								const rows = value.rows ?? []
+								if (!rows.length) return ''
+								const headerCount = Math.max(
+									0,
+									Math.min(value.headerRows ?? 0, rows.length),
+								)
+								const headerRows = rows.slice(0, headerCount)
+								const bodyRows = rows.slice(headerCount)
+								const renderRow = (
+									row: NonNullable<Table['rows']>[number],
+									tag: 'th' | 'td',
+								) =>
+									`<tr>${
+										row.cells
+											?.map(
+												(cell) =>
+													`<${tag}>${cell.value?.length ? toHTML(cell.value) : ''}</${tag}>`,
+											)
+											.join('') ?? ''
+									}</tr>`
+								return `<table>${[
+									headerRows.length &&
+										`<thead>${headerRows.map((row) => renderRow(row, 'th')).join('')}</thead>`,
+									bodyRows.length &&
+										`<tbody>${bodyRows.map((row) => renderRow(row, 'td')).join('')}</tbody>`,
+								]
+									.filter(Boolean)
+									.join('')}</table>`
+							},
 							'custom-html': ({ value: { html } }) => html?.code,
 							'accordion-list': ({
 								value: { eyebrow, intro, accordions },

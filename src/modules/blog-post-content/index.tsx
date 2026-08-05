@@ -6,6 +6,7 @@ import CustomHTML from '@/modules/custom-html'
 import AnchoredHeading from '@/modules/prose/anchored-heading'
 import Code from '@/modules/prose/code'
 import Image from '@/modules/prose/image'
+import Table from '@/modules/prose/table'
 import type {
 	BLOG_POST_QUERY_RESULT,
 	BlogCategory,
@@ -91,6 +92,7 @@ export default function ({
 										<CTAList ctas={value.ctas as Cta[] | undefined} />
 									),
 									code: Code,
+									table: Table,
 									'custom-html': ({ value }) => (
 										<CustomHTML {...value} className="my-6" />
 									),

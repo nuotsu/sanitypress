@@ -9,6 +9,7 @@ import TableOfContents from '@/ui/table-of-contents'
 import AnchoredHeading from './anchored-heading'
 import Code from './code'
 import Image from './image'
+import Table from './table'
 
 export default function ({
 	content,
@@ -46,6 +47,7 @@ export default function ({
 							image: Image,
 							ctas: ({ value }) => <CTAList ctas={value.ctas} />,
 							code: Code,
+							table: Table,
 							'custom-html': ({ value }) => <CustomHTML {...value} />,
 						},
 					}}

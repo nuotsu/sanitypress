@@ -367,6 +367,9 @@ export type Prose = {
 		  } & Code)
 		| ({
 				_key: string
+		  } & Table)
+		| ({
+				_key: string
 		  } & CustomHtml)
 	>
 	sidebar?: Sidebar
@@ -845,6 +848,38 @@ export type AccordionList = {
 	layout?: 'vertical' | 'horizontal'
 }
 
+export type Table = {
+	_type: 'table'
+	headerRows?: number
+	rows?: Array<{
+		cells?: Array<{
+			value?: Array<{
+				children?: Array<{
+					marks?: Array<string>
+					text?: string
+					_type: 'span'
+					_key: string
+				}>
+				style?:
+					'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+				listItem?: 'bullet' | 'number'
+				markDefs?: Array<{
+					href?: string
+					_type: 'link'
+					_key: string
+				}>
+				level?: number
+				_type: 'block'
+				_key: string
+			}>
+			_type: 'cell'
+			_key: string
+		}>
+		_type: 'row'
+		_key: string
+	}>
+}
+
 export type Sidebar = {
 	_type: 'sidebar'
 	position?: 'left' | 'right'
@@ -1152,6 +1187,9 @@ export type BlogPost = {
 		| ({
 				_key: string
 		  } & Code)
+		| ({
+				_key: string
+		  } & Table)
 		| ({
 				_key: string
 		  } & CustomHtml)
@@ -1828,6 +1866,7 @@ export type AllSanitySchemaTypes =
 	| BlogPostReference
 	| BlogIndex
 	| AccordionList
+	| Table
 	| Sidebar
 	| ModuleAttributes
 	| Metadata
@@ -2845,6 +2884,45 @@ export type PAGE_QUERY_RESULT = {
 							_type: 'image'
 							_key: string
 					  }
+					| {
+							_key: string
+							_type: 'table'
+							headerRows?: number
+							rows?: Array<{
+								cells?: Array<{
+									value?: Array<{
+										children?: Array<{
+											marks?: Array<string>
+											text?: string
+											_type: 'span'
+											_key: string
+										}>
+										style?:
+											| 'blockquote'
+											| 'h1'
+											| 'h2'
+											| 'h3'
+											| 'h4'
+											| 'h5'
+											| 'h6'
+											| 'normal'
+										listItem?: 'bullet' | 'number'
+										markDefs?: Array<{
+											href?: string
+											_type: 'link'
+											_key: string
+										}>
+										level?: number
+										_type: 'block'
+										_key: string
+									}>
+									_type: 'cell'
+									_key: string
+								}>
+								_type: 'row'
+								_key: string
+							}>
+					  }
 				> | null
 				sidebar: {
 					_type: 'sidebar'
@@ -3523,6 +3601,45 @@ export type BLOG_POST_QUERY_RESULT = {
 				}>
 				_type: 'image'
 				_key: string
+		  }
+		| {
+				_key: string
+				_type: 'table'
+				headerRows?: number
+				rows?: Array<{
+					cells?: Array<{
+						value?: Array<{
+							children?: Array<{
+								marks?: Array<string>
+								text?: string
+								_type: 'span'
+								_key: string
+							}>
+							style?:
+								| 'blockquote'
+								| 'h1'
+								| 'h2'
+								| 'h3'
+								| 'h4'
+								| 'h5'
+								| 'h6'
+								| 'normal'
+							listItem?: 'bullet' | 'number'
+							markDefs?: Array<{
+								href?: string
+								_type: 'link'
+								_key: string
+							}>
+							level?: number
+							_type: 'block'
+							_key: string
+						}>
+						_type: 'cell'
+						_key: string
+					}>
+					_type: 'row'
+					_key: string
+				}>
 		  }
 	> | null
 	publishDate?: string
@@ -4526,6 +4643,45 @@ export type BLOG_POST_QUERY_RESULT = {
 							_type: 'image'
 							_key: string
 					  }
+					| {
+							_key: string
+							_type: 'table'
+							headerRows?: number
+							rows?: Array<{
+								cells?: Array<{
+									value?: Array<{
+										children?: Array<{
+											marks?: Array<string>
+											text?: string
+											_type: 'span'
+											_key: string
+										}>
+										style?:
+											| 'blockquote'
+											| 'h1'
+											| 'h2'
+											| 'h3'
+											| 'h4'
+											| 'h5'
+											| 'h6'
+											| 'normal'
+										listItem?: 'bullet' | 'number'
+										markDefs?: Array<{
+											href?: string
+											_type: 'link'
+											_key: string
+										}>
+										level?: number
+										_type: 'block'
+										_key: string
+									}>
+									_type: 'cell'
+									_key: string
+								}>
+								_type: 'row'
+								_key: string
+							}>
+					  }
 				> | null
 				sidebar: {
 					_type: 'sidebar'
@@ -5162,6 +5318,45 @@ export type BLOG_RSS_QUERY_RESULT = {
 					}>
 					_type: 'image'
 					_key: string
+			  }
+			| {
+					_key: string
+					_type: 'table'
+					headerRows?: number
+					rows?: Array<{
+						cells?: Array<{
+							value?: Array<{
+								children?: Array<{
+									marks?: Array<string>
+									text?: string
+									_type: 'span'
+									_key: string
+								}>
+								style?:
+									| 'blockquote'
+									| 'h1'
+									| 'h2'
+									| 'h3'
+									| 'h4'
+									| 'h5'
+									| 'h6'
+									| 'normal'
+								listItem?: 'bullet' | 'number'
+								markDefs?: Array<{
+									href?: string
+									_type: 'link'
+									_key: string
+								}>
+								level?: number
+								_type: 'block'
+								_key: string
+							}>
+							_type: 'cell'
+							_key: string
+						}>
+						_type: 'row'
+						_key: string
+					}>
 			  }
 		> | null
 		publishDate: string | null
@@ -6042,6 +6237,45 @@ export type NOT_FOUND_QUERY_RESULT = {
 							_type: 'image'
 							_key: string
 					  }
+					| {
+							_key: string
+							_type: 'table'
+							headerRows?: number
+							rows?: Array<{
+								cells?: Array<{
+									value?: Array<{
+										children?: Array<{
+											marks?: Array<string>
+											text?: string
+											_type: 'span'
+											_key: string
+										}>
+										style?:
+											| 'blockquote'
+											| 'h1'
+											| 'h2'
+											| 'h3'
+											| 'h4'
+											| 'h5'
+											| 'h6'
+											| 'normal'
+										listItem?: 'bullet' | 'number'
+										markDefs?: Array<{
+											href?: string
+											_type: 'link'
+											_key: string
+										}>
+										level?: number
+										_type: 'block'
+										_key: string
+									}>
+									_type: 'cell'
+									_key: string
+								}>
+								_type: 'row'
+								_key: string
+							}>
+					  }
 				> | null
 				sidebar: {
 					_type: 'sidebar'
@@ -6554,6 +6788,9 @@ export type BLOG_INDEX_QUERY_RESULT = Array<{
 		| ({
 				_key: string
 		  } & CustomHtml)
+		| ({
+				_key: string
+		  } & Table)
 		| {
 				children?: Array<{
 					marks?: Array<string>
@@ -6672,6 +6909,9 @@ export type BLOG_FEATURED_QUERY_RESULT = Array<{
 		| ({
 				_key: string
 		  } & CustomHtml)
+		| ({
+				_key: string
+		  } & Table)
 		| {
 				children?: Array<{
 					marks?: Array<string>
@@ -6790,6 +7030,9 @@ export type BLOG_POST_LIST_QUERY_RESULT = Array<{
 		| ({
 				_key: string
 		  } & CustomHtml)
+		| ({
+				_key: string
+		  } & Table)
 		| {
 				children?: Array<{
 					marks?: Array<string>

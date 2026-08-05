@@ -40,6 +40,7 @@ import megamenu from './objects/megamenu'
 import metadata from './objects/metadata'
 import moduleAttributes from './objects/module-attributes'
 import sidebar from './objects/sidebar'
+import table from './objects/table'
 
 export const schema: SchemaPluginOptions = {
 	types: [
@@ -66,6 +67,7 @@ export const schema: SchemaPluginOptions = {
 		metadata,
 		moduleAttributes,
 		sidebar,
+		table,
 
 		// modules
 		accordionList,
