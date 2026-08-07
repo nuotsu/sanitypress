@@ -24,6 +24,7 @@ import customHtml from '@/modules/custom-html/schema'
 import formModule from '@/modules/form-module/schema'
 import heroCover from '@/modules/hero.cover/schema'
 import heroSplit from '@/modules/hero.split/schema'
+import imageGallery from '@/modules/image-gallery/schema'
 import logoList from '@/modules/logo-list/schema'
 import personList from '@/modules/person-list/schema'
 import prose from '@/modules/prose/schema'
@@ -81,6 +82,7 @@ export const schema: SchemaPluginOptions = {
 		formModule,
 		heroCover,
 		heroSplit,
+		imageGallery,
 		logoList,
 		personList,
 		prose,

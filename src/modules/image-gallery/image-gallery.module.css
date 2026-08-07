@@ -1,0 +1,31 @@
+.track {
+	display: flex;
+	width: max-content;
+	will-change: transform;
+	animation: scroll var(--duration) linear infinite;
+
+	&:hover {
+		animation-play-state: paused;
+	}
+}
+
+.reverse {
+	animation-direction: reverse;
+}
+
+.paused {
+	animation-play-state: paused;
+}
+
+@keyframes scroll {
+	to {
+		translate: -50% 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.track {
+		animation: none;
+		will-change: auto;
+	}
+}

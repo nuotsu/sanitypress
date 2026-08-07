@@ -11,6 +11,7 @@ import CustomHTML from '@/modules/custom-html'
 import FormModule from '@/modules/form-module'
 import HeroCover from '@/modules/hero.cover'
 import HeroSplit from '@/modules/hero.split'
+import ImageGallery from '@/modules/image-gallery'
 import LogoList from '@/modules/logo-list'
 import PersonList from '@/modules/person-list'
 import Prose from '@/modules/prose'
@@ -38,6 +39,7 @@ const MODULES_MAP = {
 	'form-module': FormModule,
 	'hero.cover': HeroCover,
 	'hero.split': HeroSplit,
+	'image-gallery': ImageGallery,
 	'logo-list': LogoList,
 	'person-list': PersonList,
 	prose: Prose,

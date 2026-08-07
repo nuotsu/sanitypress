@@ -2,6 +2,7 @@ import { groq } from 'next-sanity'
 import { BREADCRUMBS_QUERY } from '@/modules/breadcrumbs/query'
 import { CARD_LIST_QUERY } from '@/modules/card-list/query'
 import { FORM_MODULE_QUERY } from '@/modules/form-module/query'
+import { IMAGE_GALLERY_QUERY } from '@/modules/image-gallery/query'
 import { LOGO_LIST_QUERY } from '@/modules/logo-list/query'
 import { PERSON_LIST_QUERY } from '@/modules/person-list/query'
 import { PROSE_QUERY } from '@/modules/prose/query'
@@ -110,6 +111,7 @@ export const MODULES_QUERY = groq`
 	${FORM_MODULE_QUERY},
 	${BREADCRUMBS_QUERY},
 	${CARD_LIST_QUERY},
+	${IMAGE_GALLERY_QUERY},
 	${LOGO_LIST_QUERY},
 	${PERSON_LIST_QUERY},
 	${PROSE_QUERY},
