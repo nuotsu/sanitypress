@@ -16,7 +16,7 @@ export default function ({
 	const Input = as === 'textarea' ? TextArea : TextInput
 
 	return (
-		<Stack space={2}>
+		<Stack gap={2}>
 			<Input
 				{...elementProps}
 				style={as === 'textarea' ? { resize: 'block', height: '4lh' } : {}}
