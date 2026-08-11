@@ -44,7 +44,13 @@ export default function ({
 				>
 					<Eyebrow value={eyebrow} />
 					<PortableText value={intro} />
-					<CTAList ctas={ctas} className="max-sm:*:w-full" />
+					<CTAList
+						ctas={ctas}
+						className={cn(
+							'max-sm:*:w-full',
+							layout === 'vertical' && 'justify-center',
+						)}
+					/>
 				</header>
 			)}
 
