@@ -191,31 +191,31 @@
 @utility prose {
 	@apply space-y-4 leading-relaxed;
 
-	& h1 {
+	h1 {
 		@apply h1;
 	}
 
-	& h2 {
+	h2 {
 		@apply h2;
 	}
 
-	& h3 {
+	h3 {
 		@apply h3;
 	}
 
-	& h4 {
+	h4 {
 		@apply h4;
 	}
 
-	& h5 {
+	h5 {
 		@apply h5;
 	}
 
-	& h6 {
+	h6 {
 		@apply h6;
 	}
 
-	& :is(ul, ol) {
+	:is(ul, ol) {
 		list-style: revert;
 		padding-left: 1.5em;
 
@@ -224,30 +224,30 @@
 		}
 	}
 
-	& .cta-list {
+	.cta-list {
 		@apply mt-6;
 	}
 
-	& a:not([class]) {
+	a:not([class]) {
 		@apply link;
 	}
 
-	& blockquote {
+	blockquote {
 		@apply border-stroke border-l-4 pl-4;
 	}
 
-	& :not(pre)>code {
+	:not(pre)>code {
 		padding-inline: 0.25em;
 		font-size: 0.875em;
 		@apply bg-foreground/5 rounded-sm;
 	}
 
-	& pre {
+	pre {
 		overflow-x: auto;
 		font-size: 0.875em;
 	}
 
-	& table {
+	table {
 		min-width: 100%;
 		display: block;
 		overflow-x: auto;
@@ -255,11 +255,11 @@
 
 		@apply max-md:full-bleed;
 
-		& :is(th, td) {
+		:is(th, td) {
 			padding: 0.5lh 1em;
 		}
 
-		& tbody tr:nth-child(odd) {
+		tbody tr:nth-child(odd) {
 			@apply bg-foreground/5;
 		}
 	}
@@ -341,7 +341,7 @@
 		justify-content: space-between;
 		gap: 0.5em;
 
-		& svg {
+		svg {
 			@apply shrink-0 transition-[rotate];
 		}
 	}
