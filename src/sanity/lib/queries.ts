@@ -63,6 +63,13 @@ const SIDEBAR_QUERY = groq`
 
 const SITE_QUERY = groq`*[_type == 'site'][0]{
 	...,
+	announcement->{
+		...,
+		ctas[]{
+			...,
+			link{ ${LINK_QUERY} }
+		}
+	},
 	header->{ ${NAVIGATION_QUERY} },
 	ctas[]{
 		...,

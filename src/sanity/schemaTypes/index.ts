@@ -1,17 +1,4 @@
 import type { SchemaPluginOptions } from 'sanity'
-// documents
-import blogCategory from './documents/blog.category'
-import blogPost from './documents/blog.post'
-import form from './documents/form'
-import globalModule from './documents/global-module'
-import logo from './documents/logo'
-import navigation from './documents/navigation'
-import page from './documents/page'
-import person from './documents/person'
-import quote from './documents/quote'
-import redirect from './documents/redirect'
-import site from './documents/site'
-import skill from './documents/skill'
 // modules
 import accordionList from '@/modules/accordion-list/schema'
 import blogIndex from '@/modules/blog-index/schema'
@@ -33,6 +20,20 @@ import searchModule from '@/modules/search-module/schema'
 import statList from '@/modules/stat-list/schema'
 import stepList from '@/modules/step-list/schema'
 import tabbedContent from '@/modules/tabbed-content/schema'
+// documents
+import announcement from './documents/announcement'
+import blogCategory from './documents/blog.category'
+import blogPost from './documents/blog.post'
+import form from './documents/form'
+import globalModule from './documents/global-module'
+import logo from './documents/logo'
+import navigation from './documents/navigation'
+import page from './documents/page'
+import person from './documents/person'
+import quote from './documents/quote'
+import redirect from './documents/redirect'
+import site from './documents/site'
+import skill from './documents/skill'
 // objects
 import cta from './objects/cta'
 import link from './objects/link'
@@ -54,6 +55,7 @@ export const schema: SchemaPluginOptions = {
 		redirect,
 		form,
 		// references
+		announcement,
 		blogCategory,
 		logo,
 		navigation,

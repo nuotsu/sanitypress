@@ -109,8 +109,12 @@ export function Module({
 	attributes,
 	children,
 	...props
-}: ModuleProps &
-	React.HTMLAttributes<HTMLElement> & { as?: React.ElementType }) {
+}: Omit<ModuleProps, '_type' | '_key'> &
+	React.HTMLAttributes<HTMLElement> & {
+		as?: React.ElementType
+		_type?: string
+		_key?: string
+	}) {
 	const id = stegaClean(attributes?.uid) || `module-${_key}`
 	const css = stegaClean(attributes?.scopedCss?.code)
 

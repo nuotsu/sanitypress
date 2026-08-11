@@ -30,7 +30,7 @@ export default function ({
 				<VscChevronDown />
 			</summary>
 
-			<div className="anim-toggle md:bg-background border-stroke inset-x-0 top-full md:absolute md:max-h-[calc(100vh-var(--header-height))] md:overflow-y-auto md:border-b md:shadow-lg">
+			<div className="anim-toggle md:bg-background border-stroke inset-x-0 top-full md:absolute md:max-h-[calc(100vh-var(--announcement-height)-var(--header-height))] md:overflow-y-auto md:border-b md:shadow-lg">
 				<div className="section md:py-lh gap-x-lh border-stroke max-md:pl-ch md:*:mb-lh py-0 max-md:grid max-md:border-l sm:columns-3xs">
 					{items?.map((item, i) => {
 						switch (item._type) {
@@ -65,9 +65,7 @@ export default function ({
 								)
 
 							case 'link.card':
-								return (
-									<LinkCard key={`${item._key}-${i}`} {...item} />
-								)
+								return <LinkCard key={`${item._key}-${i}`} {...item} />
 
 							case 'link':
 								return (

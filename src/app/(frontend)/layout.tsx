@@ -6,6 +6,7 @@ import { Suspense } from 'react'
 import { preconnect } from 'react-dom'
 import { dev } from '@/lib/env'
 import { SanityLive } from '@/sanity/lib/live'
+import Announcement, { DynamicAnnouncement } from '@/ui/announcement'
 import DraftModeBanner from '@/ui/draft-mode-banner'
 import Footer, { DynamicFooter } from '@/ui/footer'
 import Header, { DynamicHeader } from '@/ui/header'
@@ -29,6 +30,14 @@ export default async function RootLayout({
 		<html lang="en" data-scroll-behavior="smooth">
 			<NuqsAdapter>
 				<body className="bg-background text-foreground antialiased">
+					{showDrafts ? (
+						<Suspense>
+							<DynamicAnnouncement />
+						</Suspense>
+					) : (
+						<Announcement perspective="published" stega={false} />
+					)}
+
 					{showDrafts ? (
 						<Suspense fallback={<div className="header-fallback" />}>
 							<DynamicHeader />

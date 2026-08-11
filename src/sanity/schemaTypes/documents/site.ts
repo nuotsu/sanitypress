@@ -29,6 +29,12 @@ export default defineType({
 			group: 'branding',
 		}),
 		defineField({
+			name: 'announcement',
+			type: 'reference',
+			to: [{ type: 'announcement' }],
+			group: 'navigation',
+		}),
+		defineField({
 			name: 'header',
 			type: 'reference',
 			to: [{ type: 'navigation' }],

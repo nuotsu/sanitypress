@@ -1,28 +1,11 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
+import ElementHeight from '@/ui/element-height'
 
-export default function (props: React.ComponentProps<'header'>) {
-	const ref = useRef<HTMLDivElement>(null)
+export default function (props: React.ComponentPropsWithoutRef<'header'>) {
 	const pathname = usePathname()
-
-	// set --header-height
-	useEffect(() => {
-		if (typeof window === 'undefined') return
-
-		function setHeight() {
-			if (!ref.current) return
-			document.documentElement.style.setProperty(
-				'--header-height',
-				`${ref.current.offsetHeight ?? 0}px`,
-			)
-		}
-		setHeight()
-		window.addEventListener('resize', setHeight)
-
-		return () => window.removeEventListener('resize', setHeight)
-	}, [])
 
 	// close mobile menu after navigation
 	useEffect(() => {
@@ -31,5 +14,12 @@ export default function (props: React.ComponentProps<'header'>) {
 		if (toggle) toggle.checked = false
 	}, [pathname])
 
-	return <header ref={ref} role="banner" {...props} />
+	return (
+		<ElementHeight
+			as="header"
+			cssVar="--header-height"
+			role="banner"
+			{...props}
+		/>
+	)
 }
