@@ -26,6 +26,9 @@ export default defineType({
 			title: 'OpenGraph image (global)',
 			description: 'Used for social sharing previews',
 			type: 'image',
+			options: {
+				hotspot: true,
+			},
 			group: 'branding',
 		}),
 		defineField({
