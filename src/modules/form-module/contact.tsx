@@ -15,7 +15,12 @@ export default function ({ form }: { form: Form }) {
 			</label>
 
 			<label>
-				<span>Email</span>
+				<span>
+					Email{' '}
+					<small aria-hidden="true" className="text-foreground/50 ml-[.5ch]">
+						Required
+					</small>
+				</span>
 				<input
 					className="input w-full"
 					name="email"
@@ -23,6 +28,7 @@ export default function ({ form }: { form: Form }) {
 					autoComplete="email"
 					placeholder="john@example.com"
 					required
+					aria-required="true"
 				/>
 			</label>
 

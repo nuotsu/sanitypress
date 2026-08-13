@@ -46,6 +46,10 @@
 		}
 	}
 
+	:focus-visible {
+		@apply focus-ring;
+	}
+
 	* {
 		min-width: 0;
 	}
@@ -181,6 +185,22 @@
 @utility input {
 	padding: 0.25em 0.5em;
 	@apply bg-background border-foreground/10 focus-within:border-foreground/30 border leading-normal;
+
+	&:focus {
+		@apply outline-none ring-3 ring-primary/20 border-primary;
+	}
+}
+
+@utility focus-ring {
+	@apply outline-2 outline-dashed outline-offset-2 outline-primary z-1;
+}
+
+@utility skip-link {
+	@apply action-base bg-background text-foreground sr-only;
+
+	&:focus {
+		@apply not-sr-only fixed top-4 left-4 focus-ring z-100;
+	}
 }
 
 /* components */

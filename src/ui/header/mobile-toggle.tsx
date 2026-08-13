@@ -2,11 +2,19 @@ import { VscChromeClose, VscMenu } from 'react-icons/vsc'
 
 export default function () {
 	return (
-		<label className="text-xl md:hidden">
-			<input id="header-open" type="checkbox" hidden />
+		<label className="has-focus-visible:focus-ring text-xl md:hidden">
+			<input
+				id="header-open"
+				type="checkbox"
+				className="sr-only"
+				aria-controls="mobile-menu"
+			/>
 
-			<VscMenu className="header-open:hidden" title="Open" />
-			<VscChromeClose className="header-not-open:hidden" title="Close" />
+			<span className="header-open:hidden sr-only">Open menu</span>
+			<span className="header-not-open:hidden sr-only">Close menu</span>
+
+			<VscMenu className="header-open:hidden" aria-hidden />
+			<VscChromeClose className="header-not-open:hidden" aria-hidden />
 		</label>
 	)
 }
