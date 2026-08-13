@@ -29,7 +29,7 @@ async function CachedHeader({ perspective, stega }: DynamicFetchOptions) {
 	const blurb = site?.header?.blurb
 
 	return (
-		<Wrapper className="layout-header bg-background/80 max-md:has-[.accordion:open]:bg-background max-md:header-open:shadow-xl md:has-[nav>details:open]:bg-background sticky top-0 z-10 backdrop-blur-[2px] transition-colors">
+		<Wrapper className="layout-header bg-background/80 max-md:header-open:bg-background max-md:header-open:shadow-xl md:has-[nav>details:open]:bg-background sticky top-0 z-10 backdrop-blur-[2px] transition-colors">
 			<div
 				className={cn(
 					css.root,
