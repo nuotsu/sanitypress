@@ -25,7 +25,7 @@ export default function ({
 			className={cn('table-of-contents accordion', className)}
 			{...props}
 		>
-			<summary className="bg-background sticky top-0 z-1 py-1 font-bold">
+			<summary className="md:bg-background top-0 z-1 py-1 font-bold md:sticky">
 				{summary}
 				<VscChevronDown className="md:hidden" />
 			</summary>

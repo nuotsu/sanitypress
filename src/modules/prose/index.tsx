@@ -28,7 +28,7 @@ export default function ({
 			<Sidebar
 				{...sidebar}
 				headings={headings}
-				className="max-md:p-ch max-md:bg-[#ededed] [&_summary]:max-md:bg-[#ededed]"
+				className="max-md:p-ch max-md:bg-current/5"
 			/>
 
 			<article className="prose mx-auto w-full max-w-3xl">
