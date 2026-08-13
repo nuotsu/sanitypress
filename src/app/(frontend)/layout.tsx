@@ -12,12 +12,8 @@ import Footer, { DynamicFooter } from '@/ui/footer'
 import Header, { DynamicHeader } from '@/ui/header'
 import '@/app.css'
 
-const fontSans = Geist({
-	subsets: ['latin'],
-})
-const fontMono = Geist_Mono({
-	subsets: ['latin'],
-})
+const fontSans = Geist({ subsets: ['latin'] })
+const fontMono = Geist_Mono({ subsets: ['latin'] })
 
 export default async function RootLayout({
 	children,

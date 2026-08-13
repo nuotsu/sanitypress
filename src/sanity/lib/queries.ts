@@ -76,6 +76,7 @@ const SITE_QUERY = groq`*[_type == 'site'][0]{
 		link{ ${LINK_QUERY} }
 	},
 	footer->{ ${NAVIGATION_QUERY} },
+	bottom->{ ${NAVIGATION_QUERY} },
 	social->{ ${NAVIGATION_QUERY} },
 }`
 

@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import { BillIcon } from '@sanity/icons/Bill'
 import { IoShareSocialOutline } from 'react-icons/io5'
 import { VscLayoutMenubar, VscLayoutPanelOff, VscMap } from 'react-icons/vsc'
 import { count } from '@/lib/utils'
@@ -49,7 +50,9 @@ export default defineType({
 						? VscLayoutMenubar
 						: t.includes('footer')
 							? VscLayoutPanelOff
-							: null,
+							: t.includes('legal')
+								? BillIcon
+								: null,
 			}
 		},
 	},
