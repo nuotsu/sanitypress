@@ -1,11 +1,11 @@
 import { PortableText } from 'next-sanity'
+import CustomHTML from '@/modules/custom-html'
 import {
 	getDynamicFetchOptions,
 	type DynamicFetchOptions,
 } from '@/sanity/lib/live'
 import { getSite } from '@/sanity/lib/queries'
 import Logo from '@/ui/logo'
-import CustomHTML from '@/modules/custom-html'
 import SocialNavigation from '@/ui/social-navigation'
 import Navigation from './navigation'
 
@@ -57,7 +57,7 @@ async function CachedFooter({ perspective, stega }: DynamicFetchOptions) {
 					<Navigation perspective={perspective} stega={stega} />
 				</div>
 
-				<div className="[&_a]:link text-center">
+				<div className="[&_a]:link copyright text-center">
 					<PortableText value={site?.copyright ?? []} />
 				</div>
 			</div>

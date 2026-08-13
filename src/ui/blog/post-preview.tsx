@@ -16,7 +16,7 @@ export default function ({
 	post: BlogPost & { isFeatured?: boolean }
 } & React.ComponentProps<'li'>) {
 	return (
-		<li className={cn('relative grid gap-2', className)}>
+		<li className={cn('post-preview relative flex flex-col gap-2', className)}>
 			<figure className="bg-foreground/5 relative aspect-video">
 				{post.metadata?.image ? (
 					<Img

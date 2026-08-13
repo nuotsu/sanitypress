@@ -1,5 +1,5 @@
 import { VisualEditing } from 'next-sanity/visual-editing'
-import { Geist } from 'next/font/google'
+import { Geist, Geist_Mono } from 'next/font/google'
 import { draftMode } from 'next/headers'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import { Suspense } from 'react'
@@ -13,6 +13,9 @@ import Header, { DynamicHeader } from '@/ui/header'
 import '@/app.css'
 
 const fontSans = Geist({
+	subsets: ['latin'],
+})
+const fontMono = Geist_Mono({
 	subsets: ['latin'],
 })
 

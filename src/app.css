@@ -2,8 +2,9 @@
 
 @theme {
 	--font-sans: 'Geist', sans-serif;
+	--font-mono: 'Geist Mono', monospace;
 
-	--color-background: var(--color-neutral-100);
+	--color-background: #fff;
 	--color-foreground: var(--color-neutral-900);
 	--color-stroke: var(--color-neutral-200);
 
@@ -117,27 +118,27 @@
 }
 
 @utility h0 {
-	@apply h-base text-5xl leading-[1.1];
+	@apply h-base text-6xl leading-[1.1];
 }
 
 @utility h1 {
-	@apply h-base text-3xl;
+	@apply h-base text-4xl;
 }
 
 @utility h2 {
-	@apply h-base text-2xl;
+	@apply h-base text-3xl;
 }
 
 @utility h3 {
-	@apply h-base text-xl;
+	@apply h-base text-2xl;
 }
 
 @utility h4 {
-	@apply h-base text-lg;
+	@apply h-base text-xl;
 }
 
 @utility h5 {
-	@apply h-base text-base;
+	@apply h-base text-lg;
 }
 
 @utility h6 {
@@ -145,7 +146,7 @@
 }
 
 @utility technical {
-	@apply font-mono font-bold tracking-widest uppercase;
+	@apply font-mono tracking-widest uppercase;
 }
 
 /* ctas, links */
@@ -157,7 +158,7 @@
 	justify-content: center;
 	text-align: center;
 	gap: 0.5em;
-	padding: 0.25em 0.5em;
+	padding: 0.25em 0.75em;
 	@apply active:scale-98 transition-all;
 }
 

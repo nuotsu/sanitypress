@@ -15,7 +15,7 @@ export default function ({
 			{link && (
 				<div>
 					<SanityLink
-						className="text-foreground/50 [[href]]:hover:underline"
+						className="technical text-xs text-current/60 [[href]]:hover:underline"
 						link={link as SanityLinkType}
 					/>
 				</div>

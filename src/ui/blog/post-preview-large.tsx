@@ -21,7 +21,10 @@ export default function ({
 
 	return (
 		<article
-			className={cn('relative grid gap-x-8 gap-y-4 md:grid-cols-2', className)}
+			className={cn(
+				'post-preview-large relative grid gap-x-8 gap-y-4 md:grid-cols-2',
+				className,
+			)}
 		>
 			<figure className="bg-foreground/5 max-md:full-bleed aspect-video self-start">
 				{post.metadata?.image ? (

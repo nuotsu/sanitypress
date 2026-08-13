@@ -41,9 +41,9 @@ export default function ({
 										name="megamenu-linklist"
 										key={`${item._key}-${i}`}
 									>
-										<summary className="text-foreground/50 relative py-1 md:cursor-default">
+										<summary className="text-foreground/60 relative py-1 md:cursor-default">
 											<SanityLink
-												className="after:absolute after:inset-0"
+												className="technical text-xs after:absolute after:inset-0"
 												link={item.link as unknown as SanityLinkType}
 											/>
 											<VscChevronDown className="md:hidden" />

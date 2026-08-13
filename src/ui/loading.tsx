@@ -7,7 +7,10 @@ export default function ({
 }: React.ComponentProps<'aside'>) {
 	return (
 		<aside
-			className={cn('gap-ch flex items-center justify-center', className)}
+			className={cn(
+				'gap-ch loading flex items-center justify-center text-current/50',
+				className,
+			)}
 			role="status"
 		>
 			<VscLoading className="animate-spin" />
