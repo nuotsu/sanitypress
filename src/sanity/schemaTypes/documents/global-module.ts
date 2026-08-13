@@ -12,7 +12,7 @@ export default defineType({
 		{
 			name: 'path',
 			description:
-				'Use "*" to target all pages. A trailing slash ".../" excludes the parent path.',
+				'Use * to target all pages. A trailing slash (.../) excludes the parent path.',
 			options: { columns: 2 },
 		},
 	],
