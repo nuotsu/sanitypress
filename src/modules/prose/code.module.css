@@ -17,7 +17,7 @@
 .code :global(.highlight) {
 	position: relative;
 
-	& > * {
+	&>* {
 		position: relative;
 		z-index: 1;
 	}
@@ -26,14 +26,10 @@
 		content: '';
 		position: absolute;
 		z-index: 0;
-		inset-block: -2px;
-		inset-inline: -1.6ch -0.5ch;
-		border-radius: 0 0.25rem 0.25rem 0;
-		border-inline-start: 4px solid var(--highlight-color);
-		background-color: color-mix(
-			in oklab,
-			var(--highlight-color) 20%,
-			transparent
-		);
+		inset: 0 -2ch;
+		border-inline-start: 1ch solid var(--highlight-color);
+		background-color: color-mix(in oklab,
+				var(--highlight-color) 20%,
+				transparent);
 	}
 }

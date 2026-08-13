@@ -8,7 +8,7 @@ import css from './code.module.css'
 
 export default async function ({
 	value,
-	theme = 'dark-plus',
+	theme = 'github-dark-high-contrast',
 	className,
 }: {
 	theme?: keyof typeof bundledThemes
@@ -37,10 +37,7 @@ export default async function ({
 		: [, value.filename]
 
 	return (
-		<article
-			className={cn('overflow-hidden rounded', className)}
-			data-module="code"
-		>
+		<article className={cn('overflow-hidden', className)} data-module="code">
 			<menu className="text-background gap-ch bg-foreground flex min-h-lh items-center border-b border-current/30 text-sm">
 				{value.filename && (
 					<li className="line-clamp-1 pl-4 break-all">
