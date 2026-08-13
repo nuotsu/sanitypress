@@ -57,6 +57,12 @@ export default defineType({
 			group: 'navigation',
 		}),
 		defineField({
+			name: 'bottom',
+			type: 'reference',
+			to: [{ type: 'navigation' }],
+			group: 'navigation',
+		}),
+		defineField({
 			name: 'social',
 			type: 'reference',
 			to: [{ type: 'navigation' }],

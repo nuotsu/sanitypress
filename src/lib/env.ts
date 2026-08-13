@@ -7,6 +7,7 @@ export const dev =
 export const ROUTES = {
 	studio: 'admin',
 	blog: 'blog',
+	a11y: 'accessibility-statement',
 	// @example services: 'services',
 	// @example caseStudies: 'case-studies',
 } as const

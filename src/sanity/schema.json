@@ -10819,6 +10819,14 @@
         },
         "optional": true
       },
+      "bottom": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "inline",
+          "name": "navigation.reference"
+        },
+        "optional": true
+      },
       "social": {
         "type": "objectAttribute",
         "value": {

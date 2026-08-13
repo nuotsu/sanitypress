@@ -15,7 +15,7 @@ export default function ({ scope }: Partial<SearchModule>) {
 
 	return (
 		<search className="group/search relative">
-			<label className="input flex items-center gap-2 py-0">
+			<label className="input focus-within:ring-primary/20 focus-within:border-primary flex items-center gap-2 py-0 focus-within:ring-3">
 				<VscSearch className="shrink-0" />
 
 				<input

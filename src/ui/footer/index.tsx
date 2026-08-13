@@ -7,6 +7,7 @@ import {
 import { getSite } from '@/sanity/lib/queries'
 import Logo from '@/ui/logo'
 import SocialNavigation from '@/ui/social-navigation'
+import SanityLink, { type SanityLinkType } from '../sanity-link'
 import Navigation from './navigation'
 
 export async function DynamicFooter() {
@@ -57,9 +58,28 @@ async function CachedFooter({ perspective, stega }: DynamicFetchOptions) {
 					<Navigation perspective={perspective} stega={stega} />
 				</div>
 
-				<div className="[&_a]:link copyright text-center">
-					<PortableText value={site?.copyright ?? []} />
-				</div>
+				{(site?.copyright || site?.bottom?.items) && (
+					<div className="flex items-center justify-between gap-4 text-center not-has-[.bottom-navigation]:justify-center max-md:flex-col">
+						{site?.bottom?.items && (
+							<ul className="bottom-navigation flex flex-wrap gap-x-4">
+								{site?.bottom?.items?.map((item, i) => (
+									<li key={`${item._key}-${i}`}>
+										<SanityLink
+											link={item as SanityLinkType}
+											className="text-current hover:underline"
+										/>
+									</li>
+								))}
+							</ul>
+						)}
+
+						{site?.copyright && (
+							<div className="[&_a]:link copyright md:order-first">
+								<PortableText value={site.copyright} />
+							</div>
+						)}
+					</div>
+				)}
 			</div>
 		</footer>
 	)

@@ -4,7 +4,7 @@ import { draftMode } from 'next/headers'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import { Suspense } from 'react'
 import { preconnect } from 'react-dom'
-import { dev } from '@/lib/env'
+import { dev, ROUTES } from '@/lib/env'
 import { SanityLive } from '@/sanity/lib/live'
 import Announcement, { DynamicAnnouncement } from '@/ui/announcement'
 import DraftModeBanner from '@/ui/draft-mode-banner'
@@ -12,12 +12,8 @@ import Footer, { DynamicFooter } from '@/ui/footer'
 import Header, { DynamicHeader } from '@/ui/header'
 import '@/app.css'
 
-const fontSans = Geist({
-	subsets: ['latin'],
-})
-const fontMono = Geist_Mono({
-	subsets: ['latin'],
-})
+const fontSans = Geist({ subsets: ['latin'] })
+const fontMono = Geist_Mono({ subsets: ['latin'] })
 
 export default async function RootLayout({
 	children,
@@ -33,6 +29,13 @@ export default async function RootLayout({
 		<html lang="en" data-scroll-behavior="smooth">
 			<NuqsAdapter>
 				<body className="bg-background text-foreground antialiased">
+					<a href="#main-content" className="skip-link">
+						Skip to main content
+					</a>
+					<a href={`/${ROUTES.a11y}`} className="skip-link">
+						Accessibility statement
+					</a>
+
 					{showDrafts ? (
 						<Suspense>
 							<DynamicAnnouncement />
@@ -49,7 +52,9 @@ export default async function RootLayout({
 						<Header perspective="published" stega={false} />
 					)}
 
-					<main>{children}</main>
+					<main id="main-content" tabIndex={-1}>
+						{children}
+					</main>
 
 					{showDrafts ? (
 						<Suspense fallback={<div className="footer-fallback" />}>

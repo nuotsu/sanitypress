@@ -46,6 +46,7 @@ async function CachedHeader({ perspective, stega }: DynamicFetchOptions) {
 				</div>
 
 				<div
+					id="mobile-menu"
 					className={cn(css.menu, 'max-md:header-open:pb-4 [grid-area:menu]')}
 				>
 					<div>
