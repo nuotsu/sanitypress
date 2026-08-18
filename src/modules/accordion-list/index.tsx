@@ -14,7 +14,7 @@ export default function ({
 	accordions,
 	exclusive,
 	enableSchema = true,
-	layout: l,
+	layout: l = 'vertical',
 	...props
 }: AccordionList & { _key: string } & React.ComponentProps<'section'>) {
 	const layout = stegaClean(l)
