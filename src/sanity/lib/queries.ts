@@ -101,6 +101,9 @@ export const BLOG_POST_FRAGMENT_QUERY = groq`
 	},
 	author->{
 		name,
+		title,
+		enableSchema,
+		'description': pt::text(content),
 		image{
 			...,
 			asset->

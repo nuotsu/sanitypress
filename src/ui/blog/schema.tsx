@@ -32,6 +32,12 @@ export default function BlogPostSchema({
 				...(post.author.image && {
 					image: urlFor(post.author.image).width(200).url(),
 				}),
+				...(post.author.enableSchema && {
+					...(post.author.title && { jobTitle: post.author.title }),
+					...(post.author.description && {
+						description: post.author.description,
+					}),
+				}),
 			},
 		}),
 	}

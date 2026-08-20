@@ -1,4 +1,6 @@
 import { PortableText } from 'next-sanity'
+import { portableTextToSchemaHtml } from '@/lib/portable-text-to-schema-html'
+import { getBlockText } from '@/lib/utils'
 import { Module } from '@/modules'
 import type { StepList } from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
@@ -15,16 +17,27 @@ export default function ({
 	return (
 		<Module
 			className="section grid items-start gap-8 md:grid-cols-2"
-			{...(enableSchema && {
-				itemScope: true,
-				itemType: 'https://schema.org/HowTo',
-			})}
 			{...props}
 		>
-			<header
-				className="prose md:sticky-below-header [--offset:1rem]"
-				{...(enableSchema && intro && { itemProp: 'name' })}
-			>
+			{enableSchema && steps?.length && (
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify({
+							'@context': 'https://schema.org',
+							'@type': 'HowTo',
+							...(!!intro.length && { name: getBlockText(intro, ' ') }),
+							step: steps.map((step, index) => ({
+								'@type': 'HowToStep',
+								position: index + 1,
+								text: portableTextToSchemaHtml(step.content) || '',
+							})),
+						}),
+					}}
+				/>
+			)}
+
+			<header className="prose md:sticky-below-header [--offset:1rem]">
 				<Eyebrow value={eyebrow} />
 				<PortableText value={intro} />
 				<CTAList ctas={ctas} className="max-sm:*:w-full" />
@@ -35,22 +48,13 @@ export default function ({
 					<li
 						key={`${step._key}-${index}`}
 						className="gap-ch flex items-start [counter-increment:step]"
-						{...(enableSchema && {
-							itemScope: true,
-							itemProp: 'step',
-							itemType: 'https://schema.org/HowToStep',
-						})}
 					>
 						<span className="h3 bg-foreground text-background size-lh grid shrink-0 place-content-center text-center before:content-[counter(step)]" />
 
-						<div className="prose" {...(enableSchema && { itemProp: 'text' })}>
+						<div className="prose">
 							<PortableText value={step.content ?? []} />
 							<CTAList ctas={step.ctas} className="max-sm:*:w-full" />
 						</div>
-
-						{enableSchema && (
-							<meta itemProp="position" content={String(index + 1)} />
-						)}
 					</li>
 				))}
 			</ol>

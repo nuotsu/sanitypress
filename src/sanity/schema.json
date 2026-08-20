@@ -9339,6 +9339,13 @@
           }
         },
         "optional": true
+      },
+      "enableSchema": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
       }
     }
   },

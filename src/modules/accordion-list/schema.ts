@@ -84,7 +84,7 @@ export default defineModule({
 		}),
 		defineField({
 			name: 'enableSchema',
-			title: 'Enable schema.org markup',
+			title: 'Enable FAQPage schema.org markup',
 			type: 'boolean',
 			initialValue: true,
 			group: 'options',

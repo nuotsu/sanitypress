@@ -27,6 +27,12 @@ export default defineType({
 				hotspot: true,
 			},
 		}),
+		defineField({
+			name: 'enableSchema',
+			title: 'Enable Person schema.org markup',
+			type: 'boolean',
+			initialValue: false,
+		}),
 	],
 	preview: {
 		select: {
