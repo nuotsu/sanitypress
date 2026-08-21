@@ -1,12 +1,12 @@
 import { groq } from 'next-sanity'
 import { ROUTES } from '@/lib/env'
 import { client } from '@/sanity/lib/client'
-import type { LLMS_QUERY_RESULT } from '@/sanity/types'
+import type { AGENT_DIRECTIONS_QUERY_RESULT } from '@/sanity/types'
 
 export async function getAgentDirections() {
 	const baseUrl = (process.env.NEXT_PUBLIC_BASE_URL ?? '').replace(/\/$/, '')
 
-	const { site, home, pages, posts } = await client.fetch<LLMS_QUERY_RESULT>(
+	const { site, home, pages, posts } = await client.fetch<AGENT_DIRECTIONS_QUERY_RESULT>(
 		AGENT_DIRECTIONS_QUERY,
 		{ blogDir: ROUTES.blog },
 	)
