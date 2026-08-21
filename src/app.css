@@ -391,7 +391,20 @@
 }
 
 @utility skeleton {
-	@apply bg-foreground/5 block h-lh;
+	background-size: 200% 100%;
+	background-image: linear-gradient(to right,
+			color-mix(in oklab, var(--color-foreground) 10%, transparent),
+			color-mix(in oklab, var(--color-foreground) 5%, transparent),
+			color-mix(in oklab, var(--color-foreground) 10%, transparent));
+	animation: skeleton 1.2s linear infinite;
+
+	@apply block h-lh;
+}
+
+@keyframes skeleton {
+	to {
+		background-position: -200% 0;
+	}
 }
 
 /* utilities */
