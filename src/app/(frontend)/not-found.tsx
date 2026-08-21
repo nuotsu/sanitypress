@@ -48,6 +48,7 @@ export async function generateMetadata(): Promise<Metadata> {
 		title: page?.metadata?.title,
 		description: page?.metadata?.description,
 		openGraph: {
+			type: 'website',
 			title: page?.metadata?.title,
 			description: page?.metadata?.description,
 		},

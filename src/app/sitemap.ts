@@ -28,7 +28,7 @@ export default async function (): Promise<MetadataRoute.Sitemap> {
 				&& metadata.noIndex != true
 			]|order(publishDate desc){
 				'url': $baseUrl + '/' + $blogDir + '/' + metadata.slug.current,
-				'lastModified': _updatedAt,
+				'lastModified': coalesce(publishDate, _updatedAt),
 				'priority': 0.4
 			}
 		}`,

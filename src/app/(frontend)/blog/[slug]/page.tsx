@@ -72,11 +72,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 		getSite({ perspective, stega: false }),
 	])
 	const { title, description, image, noIndex } = post?.metadata ?? {}
+	const authors = post?.author?.name ? [post.author.name] : undefined
+	const tags = post?.categories
+		?.map((category) => category.title)
+		.filter((tag): tag is string => Boolean(tag))
 
 	return {
 		title,
 		description: description,
 		openGraph: {
+			type: 'article',
 			title: title,
 			description: description,
 			url: `${process.env.NEXT_PUBLIC_BASE_URL}/${ROUTES.blog}/${slug}`,
@@ -87,6 +92,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 					slug: `${ROUTES.blog}/${slug}`,
 				}),
 			],
+			publishedTime: post?.publishDate || undefined,
+			authors,
+			tags: tags?.length ? tags : undefined,
 		},
 		robots: {
 			index: noIndex ? false : undefined,
