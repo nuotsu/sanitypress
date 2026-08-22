@@ -8,7 +8,7 @@ export default function ({ query }: { query: string }) {
 	if (!results.length) return null
 
 	return (
-		<ul aria-live="polite">
+		<ul className="grid gap-px" aria-live="polite">
 			{results.map(
 				(result) =>
 					!!result.slug && (
