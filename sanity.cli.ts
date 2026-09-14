@@ -23,4 +23,10 @@ export default defineCliConfig({
 		schema: './src/sanity/schema.json',
 		generates: './src/sanity/types.ts',
 	},
+	// Vite 8 SSR breaks CJS `toposort.array` used by yup (Vercel dashboard widget).
+	vite: {
+		ssr: {
+			external: ['toposort'],
+		},
+	},
 })
