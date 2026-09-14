@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { groq } from 'next-sanity'
 import { draftMode } from 'next/headers'
-import { Suspense } from 'react'
+import { Suspense, ViewTransition } from 'react'
 import { dev } from '@/lib/env'
 import ModulesResolver from '@/modules'
 import {
@@ -20,9 +20,11 @@ export default async function NotFound() {
 
 	if (showDrafts) {
 		return (
-			<Suspense fallback={<Loading className="section" />}>
-				<DynamicNotFound />
-			</Suspense>
+			<ViewTransition update="auto" default="none">
+				<Suspense fallback={<Loading className="section" />}>
+					<DynamicNotFound />
+				</Suspense>
+			</ViewTransition>
 		)
 	}
 

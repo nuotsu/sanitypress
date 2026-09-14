@@ -1,6 +1,6 @@
 import type { Get } from '@sanity/codegen'
 import { groq, PortableText } from 'next-sanity'
-import { Suspense } from 'react'
+import { Suspense, ViewTransition } from 'react'
 import { ROUTES } from '@/lib/env'
 import { cn } from '@/lib/utils'
 import { Module, type ModuleProps } from '@/modules'
@@ -55,25 +55,29 @@ export default async function ({
 
 			<div className="gap-lh grid">
 				<fieldset className="flex flex-wrap items-end justify-between gap-4">
-					<Suspense
-						fallback={
-							<Loading className="p-[.25em_.5em]">
-								Loading categories...
-							</Loading>
-						}
-					>
-						<FilterList perspective={perspective} stega={stega} />
-						<SortBy />
-					</Suspense>
+					<ViewTransition update="auto" default="none">
+						<Suspense
+							fallback={
+								<Loading className="p-[.25em_.5em]">
+									Loading categories...
+								</Loading>
+							}
+						>
+							<FilterList perspective={perspective} stega={stega} />
+							<SortBy />
+						</Suspense>
+					</ViewTransition>
 				</fieldset>
 
-				<Suspense fallback={<Skeleton postsPerPage={postsPerPage} />}>
-					<PaginatedPosts
-						posts={posts}
-						featured={resolvedFeatured}
-						postsPerPage={postsPerPage}
-					/>
-				</Suspense>
+				<ViewTransition update="auto" default="none">
+					<Suspense fallback={<Skeleton postsPerPage={postsPerPage} />}>
+						<PaginatedPosts
+							posts={posts}
+							featured={resolvedFeatured}
+							postsPerPage={postsPerPage}
+						/>
+					</Suspense>
+				</ViewTransition>
 			</div>
 		</Module>
 	)

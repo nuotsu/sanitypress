@@ -2,7 +2,7 @@ import { VisualEditing } from 'next-sanity/visual-editing'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { draftMode } from 'next/headers'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
-import { Suspense } from 'react'
+import { Suspense, ViewTransition } from 'react'
 import { preconnect } from 'react-dom'
 import { dev, ROUTES } from '@/lib/env'
 import { SanityLive } from '@/sanity/lib/live'
@@ -37,17 +37,21 @@ export default async function RootLayout({
 					</a>
 
 					{showDrafts ? (
-						<Suspense>
-							<DynamicAnnouncement />
-						</Suspense>
+						<ViewTransition update="auto" default="none">
+							<Suspense>
+								<DynamicAnnouncement />
+							</Suspense>
+						</ViewTransition>
 					) : (
 						<Announcement perspective="published" stega={false} />
 					)}
 
 					{showDrafts ? (
-						<Suspense fallback={<div className="header-fallback" />}>
-							<DynamicHeader />
-						</Suspense>
+						<ViewTransition update="auto" default="none">
+							<Suspense fallback={<div className="header-fallback" />}>
+								<DynamicHeader />
+							</Suspense>
+						</ViewTransition>
 					) : (
 						<Header perspective="published" stega={false} />
 					)}
@@ -57,9 +61,11 @@ export default async function RootLayout({
 					</main>
 
 					{showDrafts ? (
-						<Suspense fallback={<div className="footer-fallback" />}>
-							<DynamicFooter />
-						</Suspense>
+						<ViewTransition update="auto" default="none">
+							<Suspense fallback={<div className="footer-fallback" />}>
+								<DynamicFooter />
+							</Suspense>
+						</ViewTransition>
 					) : (
 						<Footer perspective="published" stega={false} />
 					)}

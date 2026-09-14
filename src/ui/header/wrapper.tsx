@@ -9,7 +9,6 @@ export default function (props: React.ComponentPropsWithoutRef<'header'>) {
 
 	// close mobile menu after navigation
 	useEffect(() => {
-		if (typeof document === 'undefined') return
 		const toggle = document.querySelector('#header-open') as HTMLInputElement
 		if (toggle) toggle.checked = false
 	}, [pathname])

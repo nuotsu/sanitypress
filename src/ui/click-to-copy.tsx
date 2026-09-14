@@ -24,7 +24,7 @@ export default function ({
 				className,
 			)}
 			onClick={async () => {
-				if (typeof window === 'undefined' || !value) return
+				if (!value) return
 
 				await navigator.clipboard.writeText(value)
 

@@ -13,8 +13,6 @@ export default function ({
 	const ref = useRef<HTMLElement>(null)
 
 	useEffect(() => {
-		if (typeof window === 'undefined') return
-
 		function setHeight() {
 			if (!ref.current) return
 			document.documentElement.style.setProperty(

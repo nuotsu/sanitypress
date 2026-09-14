@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { groq } from 'next-sanity'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
-import { Suspense } from 'react'
+import { Suspense, ViewTransition } from 'react'
 import { dev, ROUTES } from '@/lib/env'
 import { resolveOgImage } from '@/lib/og'
 import ModulesResolver from '@/modules'
@@ -31,9 +31,11 @@ export default async function Page({ params }: Props) {
 
 	if (showDrafts) {
 		return (
-			<Suspense fallback={<Loading className="section" />}>
-				<DynamicPage params={params} />
-			</Suspense>
+			<ViewTransition update="auto" default="none">
+				<Suspense fallback={<Loading className="section" />}>
+					<DynamicPage params={params} />
+				</Suspense>
+			</ViewTransition>
 		)
 	}
 

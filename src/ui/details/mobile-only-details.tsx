@@ -1,11 +1,25 @@
 'use client'
 
 import { useIsDesktop } from '@/hooks/useMatchMedia'
+import BrowserOnly from '@/ui/browser-only'
 
 /**
  * @description - Details functionality that works only on mobile
  */
-export default function ({ name, ...props }: React.ComponentProps<'details'>) {
+export default function MobileOnlyDetails(
+	props: React.ComponentProps<'details'>,
+) {
+	return (
+		<BrowserOnly fallback={<details {...props} />}>
+			<MobileOnlyDetailsClient {...props} />
+		</BrowserOnly>
+	)
+}
+
+function MobileOnlyDetailsClient({
+	name,
+	...props
+}: React.ComponentProps<'details'>) {
 	const isDesktop = useIsDesktop()
 
 	const detailsProps: React.ComponentProps<'details'> = isDesktop
