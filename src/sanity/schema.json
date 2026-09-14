@@ -7566,8 +7566,17 @@
         "internal": {
           "type": "objectAttribute",
           "value": {
-            "type": "inline",
-            "name": "page.reference"
+            "type": "union",
+            "of": [
+              {
+                "type": "inline",
+                "name": "page.reference"
+              },
+              {
+                "type": "inline",
+                "name": "blog.post.reference"
+              }
+            ]
           },
           "optional": true
         },

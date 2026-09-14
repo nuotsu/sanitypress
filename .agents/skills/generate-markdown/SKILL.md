@@ -3,7 +3,11 @@ name: generate-markdown
 description: Generate the verbatim Markdown for a `page` or `blog.post` document's `markdown` field (served at `<slug>.md` and listed in `/llms.txt`), converting Portable Text / modules into Markdown and resolving image references to Sanity CDN URLs. Use when the user asks to generate, refresh, or fill in the markdown field for a page or blog post.
 ---
 
-Populate the `markdown` field (`type: 'code'`, `language: 'markdown'`) on a `page` or `blog.post` document, via the Sanity MCP connector only. This field is served verbatim at `<slug>.md` (`src/app/(frontend)/api/md/[...slug]/route.ts`) and gates whether the document appears in `/llms.txt` (`src/app/llms.txt/route.ts` requires `length(markdown.code) > 0`). Nothing generates it automatically — it's hand-curated, and this skill is that curation step.
+Populate the `markdown` field (`type: 'code'`, `language: 'markdown'`) on a `page` or `blog.post` document. This field is served verbatim at `<slug>.md` (`src/app/(frontend)/api/md/[...slug]/route.ts`) and gates whether the document appears in `/llms.txt` (`src/app/llms.txt/route.ts` requires `length(markdown.code) > 0`).
+
+**Prefer the Studio action when an editor can click it:** open the document in Sanity Studio → Markdown group → Assist menu on the `markdown` field → **Generate markdown**. That Assist field action (`src/sanity/assist/`) assembles the live-page module list (including global modules), resolves CDN image URLs and permalinks, then runs Agent Action Generate into `markdown.code`.
+
+**Use this skill (Sanity MCP) when Assist is unavailable** — e.g. the user asks you to fill markdown from chat, or Studio Assist/Agent Actions aren't configured. Nothing generates the field automatically otherwise — MCP patching is the fallback curation step.
 
 ---
 
