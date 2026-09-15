@@ -9,6 +9,9 @@ export default function ({ form }: { form?: Form }) {
 		case 'contact':
 			return <Contact form={form} />
 
+		// case 'demo-request':
+		// 	return <DemoRequest form={form} />
+
 		default:
 			return null
 	}
