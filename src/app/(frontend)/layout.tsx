@@ -1,10 +1,11 @@
+import type { Metadata } from 'next'
 import { VisualEditing } from 'next-sanity/visual-editing'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { draftMode } from 'next/headers'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import { Suspense, ViewTransition } from 'react'
 import { preconnect } from 'react-dom'
-import { dev, ROUTES } from '@/lib/env'
+import { BASE_URL, dev, ROUTES } from '@/lib/env'
 import { SanityLive } from '@/sanity/lib/live'
 import Announcement, { DynamicAnnouncement } from '@/ui/announcement'
 import DraftModeBanner from '@/ui/draft-mode-banner'
@@ -14,6 +15,11 @@ import '@/app.css'
 
 const fontSans = Geist({ subsets: ['latin'] })
 const fontMono = Geist_Mono({ subsets: ['latin'] })
+
+// Resolves relative metadata URLs (e.g. `alternates.canonical`) against the production domain
+export const metadata: Metadata = {
+	metadataBase: BASE_URL ? new URL(BASE_URL) : undefined,
+}
 
 export default async function RootLayout({
 	children,

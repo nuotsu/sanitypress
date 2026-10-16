@@ -1,8 +1,11 @@
 import type { NextConfig } from 'next'
 import { groq } from 'next-sanity'
 import { sanity } from 'next-sanity/live/cache-life'
-import { ROUTES } from './src/lib/env'
+import { BASE_URL, ROUTES } from './src/lib/env'
 import { client } from './src/sanity/lib/client'
+
+// Only the production domain may be indexed (not *.vercel.app or preview deployments)
+const PRODUCTION_HOSTNAME = BASE_URL && new URL(BASE_URL).hostname
 
 const nextConfig: NextConfig = {
 	reactCompiler: true,
@@ -13,6 +16,23 @@ const nextConfig: NextConfig = {
 	images: {
 		localPatterns: [{ pathname: '/api/og' }],
 		remotePatterns: [{ protocol: 'https', hostname: 'cdn.sanity.io' }],
+	},
+
+	async headers() {
+		if (!PRODUCTION_HOSTNAME) return []
+
+		return [
+			{
+				source: '/:path*',
+				missing: [
+					{
+						type: 'host',
+						value: PRODUCTION_HOSTNAME.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
+					},
+				],
+				headers: [{ key: 'X-Robots-Tag', value: 'noindex' }],
+			},
+		]
 	},
 
 	async rewrites() {

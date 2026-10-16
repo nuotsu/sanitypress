@@ -102,6 +102,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 			index: noIndex ? false : undefined,
 		},
 		alternates: {
+			// Self-referencing, resolved against `metadataBase` (no trailing slash or query)
+			canonical: post ? `/${ROUTES.blog}/${slug}` : undefined,
 			types: {
 				'application/rss+xml': `/${ROUTES.blog}/rss.xml`,
 				// Only advertise the .md route when a curated markdown copy exists
