@@ -12,7 +12,7 @@ This repository is the actively maintained version of SanityPress. The original 
 
 [Get started](https://www.sanity.io/get-started?template=sanitypress) | [Read more about TypeGen](https://sanitypress.dev/blog/introducing-sanitypress-with-typegen) | [View on Sanity.io](https://www.sanity.io/templates/sanitypress)
 
-![](https://cdn.sanity.io/images/cyu7k2r0/production/e2d0ef9f4d1d7330056981d86d6c3157de94cca9-2062x1032.png)
+![SanityPress: The Next.js + Sanity page builder template](https://cdn.sanity.io/images/cyu7k2r0/production/082d65996a8142d3de23484391d1aeee7787b1e5-2400x1260.png)
 
 ## Key Features
 
