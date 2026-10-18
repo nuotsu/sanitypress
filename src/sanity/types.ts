@@ -686,6 +686,9 @@ export type CardList = {
 					_type: 'image'
 					_key: string
 			  }
+			| ({
+					_key: string
+			  } & CustomHtml)
 		>
 		ctas?: Array<
 			{
@@ -2456,6 +2459,9 @@ export type PAGE_QUERY_RESULT = {
 					icon?: Icon
 					eyebrow?: string
 					content?: Array<
+						| ({
+								_key: string
+						  } & CustomHtml)
 						| {
 								children?: Array<{
 									marks?: Array<string>
@@ -4398,6 +4404,9 @@ export type BLOG_POST_QUERY_RESULT = {
 					icon?: Icon
 					eyebrow?: string
 					content?: Array<
+						| ({
+								_key: string
+						  } & CustomHtml)
 						| {
 								children?: Array<{
 									marks?: Array<string>
@@ -6165,6 +6174,9 @@ export type NOT_FOUND_QUERY_RESULT = {
 					icon?: Icon
 					eyebrow?: string
 					content?: Array<
+						| ({
+								_key: string
+						  } & CustomHtml)
 						| {
 								children?: Array<{
 									marks?: Array<string>
