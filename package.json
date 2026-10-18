@@ -1,6 +1,7 @@
 {
 	"name": "sanitypress",
 	"version": "0.0.145",
+	"license": "MIT",
 	"private": true,
 	"scripts": {
 		"dev": "next dev",

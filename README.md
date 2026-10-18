@@ -1,8 +1,14 @@
-# SanityPress (with TypeGen)
+# SanityPress
+
+SanityPress is a free, open-source (MIT) Next.js 16 + Sanity page builder template for marketing sites and blogs. Editors build pages from reusable modules in Sanity Studio, and developers get a type-safe App Router codebase with SEO, redirects, and Visual Editing built in.
+
+```sh
+npm create sanity@latest -- --template=nuotsu/sanitypress
+```
+
+This repository is the actively maintained version of SanityPress. The original 2023 version ([nuotsu/sanitypress-2023](https://github.com/nuotsu/sanitypress-2023)) is archived.
 
 > Zero setup stress. 100% type-safe.
-
-An improved successor to the acclaimed Next.js + Sanity.io starter template—now with auto-generated TypeScript types from your Sanity schema and GROQ queries.
 
 [Get started](https://www.sanity.io/get-started?template=sanitypress) | [Read more about TypeGen](https://sanitypress.dev/blog/introducing-sanitypress-with-typegen) | [View on Sanity.io](https://www.sanity.io/templates/sanitypress)
 
@@ -11,12 +17,15 @@ An improved successor to the acclaimed Next.js + Sanity.io starter template—no
 ## Key Features
 
 - Next.js 16 (App Router, Server Components, TypeScript) with Tailwind 4
-- Improved successor to the acclaimed [SanityPress](https://sanitypress.dev) starter template (over 400 stars)
+- Page builder with reusable modules
 - GROQ TypeGen for your Sanity Schema types
 - [Perfect PageSpeed Insight scores](https://pagespeed.web.dev/analysis/https-typed-sanitypress-dev/78sjwe1x39?form_factor=desktop)
 - Live Content API with Visual Editing
 - Optimized images with Next Image component and Sanity CDN
 - Auto-generated sitemap.xml and blog RSS feed
+- SEO built in (metadata, canonicals, sitemap.xml, redirects managed in Studio)
+- AI-agent ready (`/llms.txt` and Markdown versions of pages for AI crawlers)
+- Agent skills included (`.agents/skills/`, tracked in `skills-lock.json`) plus `AGENTS.md` / `CLAUDE.md` guidance for Claude Code and other coding agents
 
 ## File Structure
 
@@ -143,3 +152,11 @@ Add a [Vercel](https://www.sanity.io/plugins/vercel-dashboard-widget) (default) 
 ### 6. Customize
 
 Adjust frontend styles to your liking, edit or add new schema and modules, etc.
+
+## History
+
+SanityPress started in 2023 as a Next.js + Sanity.io starter template. That version lives on, archived, at [nuotsu/sanitypress-2023](https://github.com/nuotsu/sanitypress-2023). This repository is its rewrite, adding auto-generated TypeScript types from your Sanity schema and GROQ queries, and is the version that is actively maintained.
+
+## License
+
+[MIT](LICENSE)
