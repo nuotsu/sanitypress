@@ -1,6 +1,7 @@
 import { PortableText, stegaClean } from 'next-sanity'
 import { cn } from '@/lib/utils'
 import { Module } from '@/modules'
+import CustomHTML from '@/modules/custom-html'
 import type { CardList } from '@/sanity/types'
 import CTAList from '@/ui/cta-list'
 import Eyebrow from '@/ui/eyebrow'
@@ -76,6 +77,7 @@ export default function ({
 												/>
 											</figure>
 										),
+										'custom-html': ({ value }) => <CustomHTML {...value} />,
 									},
 								}}
 							/>

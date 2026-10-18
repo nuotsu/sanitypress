@@ -74,6 +74,7 @@ export default defineModule({
 										}),
 									],
 								}),
+								{ type: 'custom-html' },
 							],
 						}),
 						defineField({
