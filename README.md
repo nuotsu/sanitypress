@@ -8,8 +8,6 @@ npm create sanity@latest -- --template=nuotsu/sanitypress
 
 This repository is the actively maintained version of SanityPress. The original 2023 version ([nuotsu/sanitypress-2023](https://github.com/nuotsu/sanitypress-2023)) is archived.
 
-> Zero setup stress. 100% type-safe.
-
 [Get started](https://www.sanity.io/get-started?template=sanitypress) | [Read more about TypeGen](https://sanitypress.dev/blog/introducing-sanitypress-with-typegen) | [View on Sanity.io](https://www.sanity.io/templates/sanitypress)
 
 ![SanityPress: The Next.js + Sanity page builder template](https://cdn.sanity.io/images/cyu7k2r0/production/082d65996a8142d3de23484391d1aeee7787b1e5-2400x1260.png)
