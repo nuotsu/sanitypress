@@ -6,7 +6,7 @@ import css from './toc.module.css'
 /**
  * @description Marks each item whose heading has scrolled above the middle of the viewport, using one shared observer
  */
-export default function ToCList(props: ComponentProps<'ol'>) {
+export default function (props: ComponentProps<'ol'>) {
 	const ref = useRef<HTMLOListElement>(null)
 
 	useEffect(() => {

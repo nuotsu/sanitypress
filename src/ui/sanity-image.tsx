@@ -4,6 +4,6 @@ import NextImage, { type ImageProps } from 'next/image'
 import { sanityImageLoader } from '@/sanity/lib/image'
 
 // The loader must be passed from a client module (functions can't cross the server/client boundary)
-export default function SanityImage(props: ImageProps) {
+export default function (props: ImageProps) {
 	return <NextImage loader={sanityImageLoader} {...props} />
 }
