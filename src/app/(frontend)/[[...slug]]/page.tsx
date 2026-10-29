@@ -20,7 +20,10 @@ import {
 	GLOBAL_MODULE_PATH_QUERY,
 	MODULES_QUERY,
 } from '@/sanity/lib/queries'
-import type { PAGE_QUERY_RESULT } from '@/sanity/types'
+import type {
+	PAGE_METADATA_QUERY_RESULT,
+	PAGE_QUERY_RESULT,
+} from '@/sanity/types'
 import Loading from '@/ui/loading'
 
 type Props = PageProps<'/[[...slug]]'>
@@ -102,7 +105,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 			types: {
 				'application/rss+xml': `/${ROUTES.blog}/rss.xml`,
 				// Only advertise the .md route when a curated markdown copy exists
-				...(page?.markdown?.code && {
+				...(page?.hasMarkdown && {
 					'text/markdown': `/${slug?.length ? slug.join('/') : 'index'}.md`,
 				}),
 			},
@@ -147,26 +150,34 @@ async function getPageMetadata({
 	perspective,
 }: { slug?: string[] } & Pick<DynamicFetchOptions, 'perspective'>) {
 	return (await sanityFetchMetadata({
-		query: PAGE_QUERY,
+		query: PAGE_METADATA_QUERY,
 		params: { slug: slug ? slug.join('/') : 'index' },
 		perspective,
-	})) as PAGE_QUERY_RESULT
+	})) as PAGE_METADATA_QUERY_RESULT
 }
 
 const PAGE_QUERY = groq`
 	*[_type == 'page' && metadata.slug.current == $slug][0]{
 		...,
+		// concatenate first, then resolve every module with a single projection
 		'modules': (
-			// global moddules (before)
-			*[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}].before[]{ ${MODULES_QUERY} }
+			// global modules (before)
+			*[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}].before[]
 			// path modules (before)
-			+ *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_PATH_QUERY}].before[]{ ${MODULES_QUERY} }
+			+ *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_PATH_QUERY}].before[]
 			// page modules
-			+ modules[]{ ${MODULES_QUERY} }
+			+ modules[]
 			// path modules (after)
-			+ *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_PATH_QUERY}].after[]{ ${MODULES_QUERY} }
-			// global moddules (after)
-			+ *[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}].after[]{ ${MODULES_QUERY} }
-		)
+			+ *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_PATH_QUERY}].after[]
+			// global modules (after)
+			+ *[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}].after[]
+		)[]{ ${MODULES_QUERY} }
+	}
+`
+
+const PAGE_METADATA_QUERY = groq`
+	*[_type == 'page' && metadata.slug.current == $slug][0]{
+		metadata,
+		'hasMarkdown': defined(markdown.code)
 	}
 `

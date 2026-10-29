@@ -6,46 +6,59 @@ import type { AGENT_DIRECTIONS_QUERY_RESULT } from '@/sanity/types'
 export async function getAgentDirections() {
 	const baseUrl = (process.env.NEXT_PUBLIC_BASE_URL ?? '').replace(/\/$/, '')
 
-	const { site, home, pages, posts } = await client.fetch<AGENT_DIRECTIONS_QUERY_RESULT>(
-		AGENT_DIRECTIONS_QUERY,
-		{ blogDir: ROUTES.blog },
-	)
+	const { site, home, pages, posts } =
+		await client.fetch<AGENT_DIRECTIONS_QUERY_RESULT>(AGENT_DIRECTIONS_QUERY, {
+			blogDir: ROUTES.blog,
+		})
 
 	const title = site?.title || (baseUrl && new URL(baseUrl).hostname) || 'Site'
-	const mdUrl = (slug: string) => `${baseUrl}/${slug}.md`
 
 	const lines = [
 		`# ${title}`,
 		...(home?.description ? ['', `> ${home.description}`] : []),
 		'',
 		'Markdown versions of the pages below are available by appending `.md` to their URL, or via content negotiation with an `Accept: text/markdown` header.',
-		...(pages.length
-			? [
-					'',
-					'## Pages',
-					'',
-					...pages.map(
-						(p) =>
-							`- [${p.title}](${mdUrl(p.slug ?? '')})${p.description ? ': ' + p.description : ''}`,
-					),
-				]
-			: []),
+		...(pages.length ? ['', '## Pages', '', ...formatLinkList(pages)] : []),
 		...(posts.length
-			? [
-					'',
-					'## Blog Posts',
-					'',
-					...posts.map(
-						(p) =>
-							`- [${p.title}](${mdUrl(String(p.slug))})${p.description ? ': ' + p.description : ''}`,
-					),
-				]
+			? ['', '## Blog Posts', '', ...formatLinkList(posts)]
 			: []),
 		'',
 	]
 
 	return lines.join('\n')
 }
+
+/**
+ * @description Markdown list items linking to each item's `.md` copy, e.g. `- [Title](https://…/slug.md): description`
+ */
+export function formatLinkList(
+	items: Array<{
+		title: string | null
+		slug: unknown // typed `unknown` by typegen when built from a GROQ param
+		description: string | null
+	}>,
+) {
+	const baseUrl = (process.env.NEXT_PUBLIC_BASE_URL ?? '').replace(/\/$/, '')
+
+	return items.map(
+		({ title, slug, description }) =>
+			`- [${title}](${baseUrl}/${String(slug ?? '')}.md)${description ? ': ' + description : ''}`,
+	)
+}
+
+// Blog posts with a curated markdown copy, newest first
+// @sanity-typegen-ignore
+export const AGENT_POSTS_QUERY = groq`
+	*[_type == 'blog.post'
+		&& defined(metadata.slug.current)
+		&& metadata.noIndex != true
+		&& length(markdown.code) > 0
+	] | order(publishDate desc) {
+		'title': coalesce(title, metadata.title),
+		'slug': $blogDir + '/' + metadata.slug.current,
+		'description': metadata.description,
+	}
+`
 
 const AGENT_DIRECTIONS_QUERY = groq`{
 	'site': *[_type == 'site'][0]{
@@ -67,13 +80,5 @@ const AGENT_DIRECTIONS_QUERY = groq`{
 		'slug': metadata.slug.current,
 		'description': metadata.description,
 	},
-	'posts': *[_type == 'blog.post'
-		&& defined(metadata.slug.current)
-		&& metadata.noIndex != true
-		&& length(markdown.code) > 0
-	] | order(publishDate desc) {
-		'title': coalesce(title, metadata.title),
-		'slug': $blogDir + '/' + metadata.slug.current,
-		'description': metadata.description,
-	}
+	'posts': ${AGENT_POSTS_QUERY}
 }`

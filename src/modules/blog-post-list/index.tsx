@@ -2,7 +2,7 @@ import { groq, PortableText } from 'next-sanity'
 import { ROUTES } from '@/lib/env'
 import { Module } from '@/modules'
 import { sanityFetch, type DynamicFetchOptions } from '@/sanity/lib/live'
-import { BLOG_POST_FRAGMENT_QUERY } from '@/sanity/lib/queries'
+import { BLOG_POST_PREVIEW_QUERY } from '@/sanity/lib/queries'
 import type {
 	BLOG_POST_LIST_QUERY_RESULT,
 	BlogPost,
@@ -65,8 +65,6 @@ async function getPosts({
 
 const BLOG_POST_LIST_QUERY = groq`
 	*[_type == 'blog.post']|order(publishDate desc)[0...$limit]{
-		...,
-		${BLOG_POST_FRAGMENT_QUERY},
-		'slug': $blogDir + metadata.slug.current,
+		${BLOG_POST_PREVIEW_QUERY}
 	}
 `

@@ -2,6 +2,7 @@ import { VscChevronDown } from 'react-icons/vsc'
 import { cn } from '@/lib/utils'
 import MobileClosedDetails from '@/ui/details/mobile-closed-details'
 import ToCItem from './toc-item'
+import ToCList from './toc-list'
 import css from './toc.module.css'
 
 export type ToCHeadings = Array<{
@@ -30,11 +31,11 @@ export default function ({
 				<VscChevronDown className="md:hidden" />
 			</summary>
 
-			<ol className={cn(css.list, 'leading-tight')}>
+			<ToCList className={cn(css.list, 'leading-tight')}>
 				{headings?.map((heading, key) => (
 					<ToCItem heading={heading} key={key} />
 				))}
-			</ol>
+			</ToCList>
 		</MobileClosedDetails>
 	)
 }

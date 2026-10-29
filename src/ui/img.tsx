@@ -1,9 +1,10 @@
 import { getImageDimensions } from '@sanity/asset-utils'
 import type { ImageUrlBuilderOptionsWithAliases } from '@sanity/image-url'
 import { stegaClean } from 'next-sanity'
-import NextImage, { getImageProps, type ImageProps } from 'next/image'
+import { getImageProps, type ImageProps } from 'next/image'
 import { preload } from 'react-dom'
-import { urlFor } from '@/sanity/lib/image'
+import { sanityImageLoader, urlFor } from '@/sanity/lib/image'
+import SanityImage from './sanity-image'
 import type {
 	SanityImageAsset,
 	SanityImageCrop,
@@ -44,7 +45,7 @@ export default function ({
 	const finalHeight = height ?? Math.round(width ? (Number(width) * h) / w : h)
 
 	return (
-		<NextImage
+		<SanityImage
 			src={
 				urlFor(image)
 					.withOptions({ auto: 'format', q: 75, ...imageOptions })
@@ -54,9 +55,7 @@ export default function ({
 			height={finalHeight}
 			sizes={`(min-width: 640px) ${finalWidth}px, 100vw`}
 			loading={loading}
-			{...(loading === 'eager'
-				? { priority: true, fetchPriority: 'high' }
-				: {})}
+			{...(loading === 'eager' ? { fetchPriority: 'high' } : {})}
 			placeholder={lqip ? 'blur' : undefined}
 			blurDataURL={lqip}
 			{...props}
@@ -83,7 +82,13 @@ export function Source({
 		targetHeight,
 		options,
 	)
-	const { props: imageProps } = getImageProps({ src, width, height, alt: '' })
+	const { props: imageProps } = getImageProps({
+		src,
+		width,
+		height,
+		alt: '',
+		loader: sanityImageLoader,
+	})
 
 	if (stegaClean(image.loading) === 'eager') {
 		preload(imageProps.src, { as: 'image' })

@@ -111,6 +111,36 @@ export const BLOG_POST_FRAGMENT_QUERY = groq`
 	}
 `
 
+// Only the fields post previews render; previews are passed to client
+// components, so everything here is serialized into the page payload
+// @sanity-typegen-ignore
+export const BLOG_POST_PREVIEW_QUERY = groq`
+	_id,
+	_type,
+	title,
+	publishDate,
+	'slug': $blogDir + metadata.slug.current,
+	metadata{
+		slug,
+		description,
+		image{
+			...,
+			asset->{ _id, url, metadata{ lqip } }
+		}
+	},
+	categories[]->{
+		title,
+		slug
+	},
+	author->{
+		name,
+		image{
+			...,
+			asset->{ _id, url, metadata{ lqip } }
+		}
+	}
+`
+
 // @sanity-typegen-ignore
 export const MODULES_QUERY = groq`
 	...,

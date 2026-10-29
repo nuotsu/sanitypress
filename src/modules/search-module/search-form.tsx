@@ -1,6 +1,7 @@
 'use client'
 
 import { useQueryState } from 'nuqs'
+import { useMemo } from 'react'
 import { VscSearch } from 'react-icons/vsc'
 import { count, debounce } from '@/lib/utils'
 import type { SearchModule } from '@/sanity/types'
@@ -13,6 +14,16 @@ export default function ({ scope }: Partial<SearchModule>) {
 	const [query, setQuery] = useQueryState('query', { defaultValue: '' })
 	const { loading, setLoading, results, setResults } = useSearchStore()
 
+	// one debounced handler for the component's lifetime (a new one per render would never cancel pending calls)
+	const onSearch = useMemo(
+		() =>
+			debounce((value: string) => {
+				setQuery(value)
+				handleSearch({ scope, query: value, setLoading, setResults })
+			}),
+		[scope, setQuery, setLoading, setResults],
+	)
+
 	return (
 		<search className="group/search relative">
 			<label className="input focus-within:ring-primary/20 focus-within:border-primary flex items-center gap-2 py-0 focus-within:ring-3">
@@ -24,15 +35,7 @@ export default function ({ scope }: Partial<SearchModule>) {
 					type="search"
 					placeholder={scope === 'all' ? 'Search' : `Search ${scope}`}
 					defaultValue={query}
-					onChange={debounce((e) => {
-						setQuery(e.target.value)
-						handleSearch({
-							scope,
-							query: e.target.value,
-							setLoading,
-							setResults,
-						})
-					})}
+					onChange={(e) => onSearch(e.target.value)}
 				/>
 			</label>
 

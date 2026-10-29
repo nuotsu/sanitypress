@@ -16,13 +16,15 @@ export default async function ({
 } & ComponentProps<'article'>) {
 	if (!value?.code) return null
 
+	const lines = splitLines(value.code)
+
 	const html = await codeToHtml(stegaClean(value.code), {
 		lang: value.language as any,
 		theme,
 		decorations: value.highlightedLines
 			?.map((row) => ({
 				row,
-				characters: stegaClean(splitLines(value.code!)[row - 1]?.[0])?.length,
+				characters: stegaClean(lines[row - 1]?.[0])?.length,
 			}))
 			?.filter(({ characters }) => characters > 0)
 			?.map(({ row, characters }) => ({
