@@ -20,7 +20,10 @@ import {
 	LINK_QUERY,
 	MODULES_QUERY,
 } from '@/sanity/lib/queries'
-import type { BLOG_POST_QUERY_RESULT } from '@/sanity/types'
+import type {
+	BLOG_POST_METADATA_QUERY_RESULT,
+	BLOG_POST_QUERY_RESULT,
+} from '@/sanity/types'
 import Loading from '@/ui/loading'
 
 type Props = PageProps<'/blog/[slug]'>
@@ -107,7 +110,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 			types: {
 				'application/rss+xml': `/${ROUTES.blog}/rss.xml`,
 				// Only advertise the .md route when a curated markdown copy exists
-				...(post?.markdown?.code && {
+				...(post?.hasMarkdown && {
 					'text/markdown': `/${ROUTES.blog}/${slug}.md`,
 				}),
 			},
@@ -118,7 +121,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export async function generateStaticParams() {
 	return (await sanityFetchStaticParams({
 		query: groq`*[_type == 'blog.post' && defined(metadata.slug.current)]{
-			'slug': '/' + metadata.slug.current
+			'slug': metadata.slug.current
 		}`,
 	})) as { slug: string }[]
 }
@@ -143,10 +146,10 @@ async function getPostMetadata({
 	perspective,
 }: { slug: string } & Pick<DynamicFetchOptions, 'perspective'>) {
 	return (await sanityFetchMetadata({
-		query: BLOG_POST_QUERY,
-		params: { slug, blogDir: `${ROUTES.blog}/` },
+		query: BLOG_POST_METADATA_QUERY,
+		params: { slug },
 		perspective,
-	})) as BLOG_POST_QUERY_RESULT
+	})) as BLOG_POST_METADATA_QUERY_RESULT
 }
 
 export const BLOG_POST_QUERY = groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{
@@ -170,14 +173,23 @@ export const BLOG_POST_QUERY = groq`*[_type == 'blog.post' && metadata.slug.curr
 		'text': pt::text(@)
 	},
 	${BLOG_POST_FRAGMENT_QUERY},
+	// concatenate first, then resolve every module with a single projection
 	'modules': (
 		// global modules (before)
-		*[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}].before[]{ ${MODULES_QUERY} }
+		*[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}].before[]
 		// path modules (before)
-		+ *[_type == 'global-module' && path == $blogDir].before[]{ ${MODULES_QUERY} }
+		+ *[_type == 'global-module' && path == $blogDir].before[]
 		// path modules (after)
-		+ *[_type == 'global-module' && path == $blogDir].after[]{ ${MODULES_QUERY} }
+		+ *[_type == 'global-module' && path == $blogDir].after[]
 		// global modules (after)
-		+ *[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}].after[]{ ${MODULES_QUERY} }
-	)
+		+ *[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}].after[]
+	)[]{ ${MODULES_QUERY} }
+}`
+
+const BLOG_POST_METADATA_QUERY = groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{
+	metadata,
+	publishDate,
+	author->{ name },
+	categories[]->{ title },
+	'hasMarkdown': defined(markdown.code)
 }`

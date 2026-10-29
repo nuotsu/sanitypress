@@ -2015,7 +2015,7 @@ export type AllSanitySchemaTypes =
 
 // Source: src/app/(frontend)/[[...slug]]/page.tsx
 // Variable: PAGE_QUERY
-// Query: *[_type == 'page' && metadata.slug.current == $slug][0]{		...,		'modules': (			// global moddules (before)			*[_type == 'global-module' && path == '*' && 	select(		defined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,		true	)].before[]{ 	...,	ctas[]{		...,		link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},	sidebar{ 	...,	modules[]{		...,		_type == 'callout' => {			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	} },		_type == 'form-module' => {		form->	},		_type == 'breadcrumbs' => {		crumbs[]{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},		_type == 'card-list' => {		cards[]{			...,			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	},		_type == 'image-gallery' => {		rows[]{			...,			images[]{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'logo-list' => {		logos[]->	},		_type == 'person-list' => {		people[]->{			name,			title,			content,			enableSchema,			image{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'prose' => {		content[]{			...,			_type == 'image' => {				...,				asset->{					...,					metadata				}			},			_type == 'ctas' => {				ctas[]{					...,					link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }				}			}		},		'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{			style,			'text': pt::text(@)		}	},		_type == 'quote-list' => {		quotes[]->	},		_type == 'tabbed-content' => {		tabs[]{			...,			content[]{				...,				_type == 'image' => {					...,					asset->{						...,						metadata					}				}			},			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	}, }			// path modules (before)			+ *[_type == 'global-module' && path != '*' && 	string::startsWith($slug, path)	&& 	select(		defined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,		true	)].before[]{ 	...,	ctas[]{		...,		link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},	sidebar{ 	...,	modules[]{		...,		_type == 'callout' => {			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	} },		_type == 'form-module' => {		form->	},		_type == 'breadcrumbs' => {		crumbs[]{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},		_type == 'card-list' => {		cards[]{			...,			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	},		_type == 'image-gallery' => {		rows[]{			...,			images[]{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'logo-list' => {		logos[]->	},		_type == 'person-list' => {		people[]->{			name,			title,			content,			enableSchema,			image{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'prose' => {		content[]{			...,			_type == 'image' => {				...,				asset->{					...,					metadata				}			},			_type == 'ctas' => {				ctas[]{					...,					link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }				}			}		},		'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{			style,			'text': pt::text(@)		}	},		_type == 'quote-list' => {		quotes[]->	},		_type == 'tabbed-content' => {		tabs[]{			...,			content[]{				...,				_type == 'image' => {					...,					asset->{						...,						metadata					}				}			},			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	}, }			// page modules			+ modules[]{ 	...,	ctas[]{		...,		link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},	sidebar{ 	...,	modules[]{		...,		_type == 'callout' => {			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	} },		_type == 'form-module' => {		form->	},		_type == 'breadcrumbs' => {		crumbs[]{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},		_type == 'card-list' => {		cards[]{			...,			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	},		_type == 'image-gallery' => {		rows[]{			...,			images[]{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'logo-list' => {		logos[]->	},		_type == 'person-list' => {		people[]->{			name,			title,			content,			enableSchema,			image{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'prose' => {		content[]{			...,			_type == 'image' => {				...,				asset->{					...,					metadata				}			},			_type == 'ctas' => {				ctas[]{					...,					link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }				}			}		},		'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{			style,			'text': pt::text(@)		}	},		_type == 'quote-list' => {		quotes[]->	},		_type == 'tabbed-content' => {		tabs[]{			...,			content[]{				...,				_type == 'image' => {					...,					asset->{						...,						metadata					}				}			},			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	}, }			// path modules (after)			+ *[_type == 'global-module' && path != '*' && 	string::startsWith($slug, path)	&& 	select(		defined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,		true	)].after[]{ 	...,	ctas[]{		...,		link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},	sidebar{ 	...,	modules[]{		...,		_type == 'callout' => {			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	} },		_type == 'form-module' => {		form->	},		_type == 'breadcrumbs' => {		crumbs[]{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},		_type == 'card-list' => {		cards[]{			...,			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	},		_type == 'image-gallery' => {		rows[]{			...,			images[]{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'logo-list' => {		logos[]->	},		_type == 'person-list' => {		people[]->{			name,			title,			content,			enableSchema,			image{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'prose' => {		content[]{			...,			_type == 'image' => {				...,				asset->{					...,					metadata				}			},			_type == 'ctas' => {				ctas[]{					...,					link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }				}			}		},		'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{			style,			'text': pt::text(@)		}	},		_type == 'quote-list' => {		quotes[]->	},		_type == 'tabbed-content' => {		tabs[]{			...,			content[]{				...,				_type == 'image' => {					...,					asset->{						...,						metadata					}				}			},			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	}, }			// global moddules (after)			+ *[_type == 'global-module' && path == '*' && 	select(		defined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,		true	)].after[]{ 	...,	ctas[]{		...,		link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},	sidebar{ 	...,	modules[]{		...,		_type == 'callout' => {			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	} },		_type == 'form-module' => {		form->	},		_type == 'breadcrumbs' => {		crumbs[]{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},		_type == 'card-list' => {		cards[]{			...,			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	},		_type == 'image-gallery' => {		rows[]{			...,			images[]{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'logo-list' => {		logos[]->	},		_type == 'person-list' => {		people[]->{			name,			title,			content,			enableSchema,			image{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'prose' => {		content[]{			...,			_type == 'image' => {				...,				asset->{					...,					metadata				}			},			_type == 'ctas' => {				ctas[]{					...,					link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }				}			}		},		'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{			style,			'text': pt::text(@)		}	},		_type == 'quote-list' => {		quotes[]->	},		_type == 'tabbed-content' => {		tabs[]{			...,			content[]{				...,				_type == 'image' => {					...,					asset->{						...,						metadata					}				}			},			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	}, }		)	}
+// Query: *[_type == 'page' && metadata.slug.current == $slug][0]{		...,		// concatenate first, then resolve every module with a single projection		'modules': (			// global modules (before)			*[_type == 'global-module' && path == '*' && 	select(		defined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,		true	)].before[]			// path modules (before)			+ *[_type == 'global-module' && path != '*' && 	string::startsWith($slug, path)	&& 	select(		defined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,		true	)].before[]			// page modules			+ modules[]			// path modules (after)			+ *[_type == 'global-module' && path != '*' && 	string::startsWith($slug, path)	&& 	select(		defined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,		true	)].after[]			// global modules (after)			+ *[_type == 'global-module' && path == '*' && 	select(		defined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,		true	)].after[]		)[]{ 	...,	ctas[]{		...,		link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},	sidebar{ 	...,	modules[]{		...,		_type == 'callout' => {			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	} },		_type == 'form-module' => {		form->	},		_type == 'breadcrumbs' => {		crumbs[]{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},		_type == 'card-list' => {		cards[]{			...,			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	},		_type == 'image-gallery' => {		rows[]{			...,			images[]{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'logo-list' => {		logos[]->	},		_type == 'person-list' => {		people[]->{			name,			title,			content,			enableSchema,			image{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'prose' => {		content[]{			...,			_type == 'image' => {				...,				asset->{					...,					metadata				}			},			_type == 'ctas' => {				ctas[]{					...,					link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }				}			}		},		'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{			style,			'text': pt::text(@)		}	},		_type == 'quote-list' => {		quotes[]->	},		_type == 'tabbed-content' => {		tabs[]{			...,			content[]{				...,				_type == 'image' => {					...,					asset->{						...,						metadata					}				}			},			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	}, }	}
 export type PAGE_QUERY_RESULT = {
 	_id: string
 	_type: 'page'
@@ -3665,6 +3665,14 @@ export type PAGE_QUERY_RESULT = {
 	metadata?: Metadata
 } | null
 
+// Source: src/app/(frontend)/[[...slug]]/page.tsx
+// Variable: PAGE_METADATA_QUERY
+// Query: *[_type == 'page' && metadata.slug.current == $slug][0]{		metadata,		'hasMarkdown': defined(markdown.code)	}
+export type PAGE_METADATA_QUERY_RESULT = {
+	metadata: Metadata | null
+	hasMarkdown: false | true
+} | null
+
 // Source: src/app/(frontend)/api/md/[...slug]/route.ts
 // Variable: PAGE_MD_QUERY
 // Query: *[_type == 'page' && metadata.slug.current == $slug][0].markdown.code
@@ -3692,7 +3700,7 @@ export type OG_QUERY_RESULT =
 
 // Source: src/app/(frontend)/blog/[slug]/page.tsx
 // Variable: BLOG_POST_QUERY
-// Query: *[_type == 'blog.post' && metadata.slug.current == $slug][0]{	...,	content[]{		...,		_type == 'image' => {			...,			asset->		},		_type == 'ctas' => {			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	},	'contentPlainText': pt::text(content),	'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{		style,		'text': pt::text(@)	},		'readTime': length(string::split(pt::text(content), ' ')) / 200,	categories[]->{		title,		slug	},	author->{		name,		title,		enableSchema,		'description': pt::text(content),		image{			...,			asset->		}	},	'modules': (		// global modules (before)		*[_type == 'global-module' && path == '*' && 	select(		defined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,		true	)].before[]{ 	...,	ctas[]{		...,		link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},	sidebar{ 	...,	modules[]{		...,		_type == 'callout' => {			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	} },		_type == 'form-module' => {		form->	},		_type == 'breadcrumbs' => {		crumbs[]{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},		_type == 'card-list' => {		cards[]{			...,			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	},		_type == 'image-gallery' => {		rows[]{			...,			images[]{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'logo-list' => {		logos[]->	},		_type == 'person-list' => {		people[]->{			name,			title,			content,			enableSchema,			image{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'prose' => {		content[]{			...,			_type == 'image' => {				...,				asset->{					...,					metadata				}			},			_type == 'ctas' => {				ctas[]{					...,					link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }				}			}		},		'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{			style,			'text': pt::text(@)		}	},		_type == 'quote-list' => {		quotes[]->	},		_type == 'tabbed-content' => {		tabs[]{			...,			content[]{				...,				_type == 'image' => {					...,					asset->{						...,						metadata					}				}			},			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	}, }		// path modules (before)		+ *[_type == 'global-module' && path == $blogDir].before[]{ 	...,	ctas[]{		...,		link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},	sidebar{ 	...,	modules[]{		...,		_type == 'callout' => {			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	} },		_type == 'form-module' => {		form->	},		_type == 'breadcrumbs' => {		crumbs[]{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},		_type == 'card-list' => {		cards[]{			...,			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	},		_type == 'image-gallery' => {		rows[]{			...,			images[]{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'logo-list' => {		logos[]->	},		_type == 'person-list' => {		people[]->{			name,			title,			content,			enableSchema,			image{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'prose' => {		content[]{			...,			_type == 'image' => {				...,				asset->{					...,					metadata				}			},			_type == 'ctas' => {				ctas[]{					...,					link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }				}			}		},		'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{			style,			'text': pt::text(@)		}	},		_type == 'quote-list' => {		quotes[]->	},		_type == 'tabbed-content' => {		tabs[]{			...,			content[]{				...,				_type == 'image' => {					...,					asset->{						...,						metadata					}				}			},			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	}, }		// path modules (after)		+ *[_type == 'global-module' && path == $blogDir].after[]{ 	...,	ctas[]{		...,		link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},	sidebar{ 	...,	modules[]{		...,		_type == 'callout' => {			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	} },		_type == 'form-module' => {		form->	},		_type == 'breadcrumbs' => {		crumbs[]{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},		_type == 'card-list' => {		cards[]{			...,			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	},		_type == 'image-gallery' => {		rows[]{			...,			images[]{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'logo-list' => {		logos[]->	},		_type == 'person-list' => {		people[]->{			name,			title,			content,			enableSchema,			image{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'prose' => {		content[]{			...,			_type == 'image' => {				...,				asset->{					...,					metadata				}			},			_type == 'ctas' => {				ctas[]{					...,					link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }				}			}		},		'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{			style,			'text': pt::text(@)		}	},		_type == 'quote-list' => {		quotes[]->	},		_type == 'tabbed-content' => {		tabs[]{			...,			content[]{				...,				_type == 'image' => {					...,					asset->{						...,						metadata					}				}			},			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	}, }		// global modules (after)		+ *[_type == 'global-module' && path == '*' && 	select(		defined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,		true	)].after[]{ 	...,	ctas[]{		...,		link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},	sidebar{ 	...,	modules[]{		...,		_type == 'callout' => {			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	} },		_type == 'form-module' => {		form->	},		_type == 'breadcrumbs' => {		crumbs[]{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},		_type == 'card-list' => {		cards[]{			...,			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	},		_type == 'image-gallery' => {		rows[]{			...,			images[]{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'logo-list' => {		logos[]->	},		_type == 'person-list' => {		people[]->{			name,			title,			content,			enableSchema,			image{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'prose' => {		content[]{			...,			_type == 'image' => {				...,				asset->{					...,					metadata				}			},			_type == 'ctas' => {				ctas[]{					...,					link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }				}			}		},		'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{			style,			'text': pt::text(@)		}	},		_type == 'quote-list' => {		quotes[]->	},		_type == 'tabbed-content' => {		tabs[]{			...,			content[]{				...,				_type == 'image' => {					...,					asset->{						...,						metadata					}				}			},			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	}, }	)}
+// Query: *[_type == 'blog.post' && metadata.slug.current == $slug][0]{	...,	content[]{		...,		_type == 'image' => {			...,			asset->		},		_type == 'ctas' => {			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	},	'contentPlainText': pt::text(content),	'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{		style,		'text': pt::text(@)	},		'readTime': length(string::split(pt::text(content), ' ')) / 200,	categories[]->{		title,		slug	},	author->{		name,		title,		enableSchema,		'description': pt::text(content),		image{			...,			asset->		}	},	// concatenate first, then resolve every module with a single projection	'modules': (		// global modules (before)		*[_type == 'global-module' && path == '*' && 	select(		defined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,		true	)].before[]		// path modules (before)		+ *[_type == 'global-module' && path == $blogDir].before[]		// path modules (after)		+ *[_type == 'global-module' && path == $blogDir].after[]		// global modules (after)		+ *[_type == 'global-module' && path == '*' && 	select(		defined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,		true	)].after[]	)[]{ 	...,	ctas[]{		...,		link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},	sidebar{ 	...,	modules[]{		...,		_type == 'callout' => {			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	} },		_type == 'form-module' => {		form->	},		_type == 'breadcrumbs' => {		crumbs[]{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }	},		_type == 'card-list' => {		cards[]{			...,			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	},		_type == 'image-gallery' => {		rows[]{			...,			images[]{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'logo-list' => {		logos[]->	},		_type == 'person-list' => {		people[]->{			name,			title,			content,			enableSchema,			image{				...,				asset->{					...,					metadata				}			}		}	},		_type == 'prose' => {		content[]{			...,			_type == 'image' => {				...,				asset->{					...,					metadata				}			},			_type == 'ctas' => {				ctas[]{					...,					link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }				}			}		},		'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{			style,			'text': pt::text(@)		}	},		_type == 'quote-list' => {		quotes[]->	},		_type == 'tabbed-content' => {		tabs[]{			...,			content[]{				...,				_type == 'image' => {					...,					asset->{						...,						metadata					}				}			},			ctas[]{				...,				link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }			}		}	}, }}
 export type BLOG_POST_QUERY_RESULT = {
 	_id: string
 	_type: 'blog.post'
@@ -5608,6 +5616,21 @@ export type BLOG_POST_QUERY_RESULT = {
 	>
 } | null
 
+// Source: src/app/(frontend)/blog/[slug]/page.tsx
+// Variable: BLOG_POST_METADATA_QUERY
+// Query: *[_type == 'blog.post' && metadata.slug.current == $slug][0]{	metadata,	publishDate,	author->{ name },	categories[]->{ title },	'hasMarkdown': defined(markdown.code)}
+export type BLOG_POST_METADATA_QUERY_RESULT = {
+	metadata: Metadata | null
+	publishDate: string | null
+	author: {
+		name: string | null
+	} | null
+	categories: Array<{
+		title: string | null
+	}> | null
+	hasMarkdown: false | true
+} | null
+
 // Source: src/app/(frontend)/blog/rss.xml/route.ts
 // Variable: BLOG_RSS_QUERY
 // Query: {	'blog': *[_type == 'page' && metadata.slug.current == $blogDir][0]{		metadata	},	'posts': *[_type == 'blog.post' && metadata.noIndex != true]|order(publishDate desc){		title,		content[]{			...,			_type == 'ctas' => {				ctas[]{					...,					link{ 	...,	type == 'internal' => {		internal->{			_type,			title,			'slug': select(				metadata.slug.current == 'index' => '/',				_type == 'blog.post' => '/blog/' + metadata.slug.current,				'/' + metadata.slug.current			)		}	} }				}			}		},		publishDate,		categories[]->{ title },		author->{ name },		metadata	}}
@@ -7379,6 +7402,13 @@ export type NOT_FOUND_QUERY_RESULT = {
 	metadata?: Metadata
 } | null
 
+// Source: src/app/(frontend)/not-found.tsx
+// Variable: NOT_FOUND_METADATA_QUERY
+// Query: *[_type == 'page' && metadata.slug.current == '404'][0]{ metadata }
+export type NOT_FOUND_METADATA_QUERY_RESULT = {
+	metadata: Metadata | null
+} | null
+
 // Source: src/lib/agent-directions.ts
 // Variable: AGENT_DIRECTIONS_QUERY
 // Query: {	'site': *[_type == 'site'][0]{		title	},	'home': *[_type == 'page' && metadata.slug.current == 'index'][0]{		'description': metadata.description	},	'pages': *[_type == 'page'		&& defined(metadata.slug.current)		&& metadata.noIndex != true		&& metadata.slug.current != '404'		&& length(markdown.code) > 0	] | order(metadata.slug.current != 'index', metadata.slug.current asc) {		'title': select(			metadata.slug.current == 'index' => coalesce(metadata.title, 'Home'),			coalesce(metadata.title, metadata.slug.current)		),		'slug': metadata.slug.current,		'description': metadata.description,	},	'posts': *[_type == 'blog.post'		&& defined(metadata.slug.current)		&& metadata.noIndex != true		&& length(markdown.code) > 0	] | order(publishDate desc) {		'title': coalesce(title, metadata.title),		'slug': $blogDir + '/' + metadata.slug.current,		'description': metadata.description,	}}
@@ -7403,115 +7433,23 @@ export type AGENT_DIRECTIONS_QUERY_RESULT = {
 
 // Source: src/modules/blog-index/index.tsx
 // Variable: BLOG_INDEX_QUERY
-// Query: *[_type == 'blog.post' && !(_id in $featuredIds)]|order(publishDate desc){		...,			'readTime': length(string::split(pt::text(content), ' ')) / 200,	categories[]->{		title,		slug	},	author->{		name,		title,		enableSchema,		'description': pt::text(content),		image{			...,			asset->		}	},		'slug': $blogDir + metadata.slug.current,	}
+// Query: *[_type == 'blog.post' && !(_id in $featuredIds)]|order(publishDate desc){			_id,	_type,	title,	publishDate,	'slug': $blogDir + metadata.slug.current,	metadata{		slug,		description,		image{			...,			asset->{ _id, url, metadata{ lqip } }		}	},	categories[]->{		title,		slug	},	author->{		name,		image{			...,			asset->{ _id, url, metadata{ lqip } }		}	}	}
 export type BLOG_INDEX_QUERY_RESULT = Array<{
 	_id: string
 	_type: 'blog.post'
-	_createdAt: string
-	_updatedAt: string
-	_rev: string
-	title?: string
-	content?: Array<
-		| ({
-				_key: string
-		  } & AccordionList)
-		| ({
-				_key: string
-		  } & Code)
-		| ({
-				_key: string
-		  } & CustomHtml)
-		| ({
-				_key: string
-		  } & Table)
-		| {
-				children?: Array<{
-					marks?: Array<string>
-					text?: string
-					_type: 'span'
-					_key: string
-				}>
-				style?:
-					'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
-				listItem?: 'bullet' | 'number'
-				markDefs?: Array<{
-					href?: string
-					_type: 'link'
-					_key: string
-				}>
-				level?: number
-				_type: 'block'
-				_key: string
-		  }
-		| {
-				ctas?: Array<
-					{
-						_key: string
-					} & Cta
-				>
-				_type: 'ctas'
-				_key: string
-		  }
-		| {
-				asset?: SanityImageAssetReference
-				media?: unknown
-				hotspot?: SanityImageHotspot
-				crop?: SanityImageCrop
-				alt?: string
-				figcaption?: Array<{
-					children?: Array<{
-						marks?: Array<string>
-						text?: string
-						_type: 'span'
-						_key: string
-					}>
-					style?: 'normal'
-					listItem?: 'bullet' | 'number'
-					markDefs?: Array<{
-						href?: string
-						_type: 'link'
-						_key: string
-					}>
-					level?: number
-					_type: 'block'
-					_key: string
-				}>
-				_type: 'image'
-				_key: string
-		  }
-	>
-	publishDate?: string
-	categories: Array<{
-		title: string | null
+	title: string | null
+	publishDate: string | null
+	slug: unknown
+	metadata: {
 		slug: Slug | null
-	}> | null
-	author: {
-		name: string | null
-		title: string | null
-		enableSchema: boolean | null
-		description: string
+		description: string | null
 		image: {
 			asset: {
 				_id: string
-				_type: 'sanity.imageAsset'
-				_createdAt: string
-				_updatedAt: string
-				_rev: string
-				originalFilename?: string
-				label?: string
-				title?: string
-				description?: string
-				altText?: string
-				sha1hash?: string
-				extension?: string
-				mimeType?: string
-				size?: number
-				assetId?: string
-				uploadId?: string
-				path?: string
-				url?: string
-				metadata?: SanityImageMetadata
-				source?: SanityAssetSourceData
+				url: string | null
+				metadata: {
+					lqip: string | null
+				} | null
 			} | null
 			media?: unknown
 			hotspot?: SanityImageHotspot
@@ -7519,123 +7457,47 @@ export type BLOG_INDEX_QUERY_RESULT = Array<{
 			_type: 'image'
 		} | null
 	} | null
-	markdown?: Code
-	metadata?: Metadata
-	readTime: number
-	slug: unknown
+	categories: Array<{
+		title: string | null
+		slug: Slug | null
+	}> | null
+	author: {
+		name: string | null
+		image: {
+			asset: {
+				_id: string
+				url: string | null
+				metadata: {
+					lqip: string | null
+				} | null
+			} | null
+			media?: unknown
+			hotspot?: SanityImageHotspot
+			crop?: SanityImageCrop
+			_type: 'image'
+		} | null
+	} | null
 }>
 
 // Source: src/modules/blog-index/index.tsx
 // Variable: BLOG_FEATURED_QUERY
-// Query: *[_type == 'blog.post' && _id in $featuredIds]{		...,			'readTime': length(string::split(pt::text(content), ' ')) / 200,	categories[]->{		title,		slug	},	author->{		name,		title,		enableSchema,		'description': pt::text(content),		image{			...,			asset->		}	},		'slug': $blogDir + metadata.slug.current,	}
+// Query: *[_type == 'blog.post' && _id in $featuredIds]{			_id,	_type,	title,	publishDate,	'slug': $blogDir + metadata.slug.current,	metadata{		slug,		description,		image{			...,			asset->{ _id, url, metadata{ lqip } }		}	},	categories[]->{		title,		slug	},	author->{		name,		image{			...,			asset->{ _id, url, metadata{ lqip } }		}	}	}
 export type BLOG_FEATURED_QUERY_RESULT = Array<{
 	_id: string
 	_type: 'blog.post'
-	_createdAt: string
-	_updatedAt: string
-	_rev: string
-	title?: string
-	content?: Array<
-		| ({
-				_key: string
-		  } & AccordionList)
-		| ({
-				_key: string
-		  } & Code)
-		| ({
-				_key: string
-		  } & CustomHtml)
-		| ({
-				_key: string
-		  } & Table)
-		| {
-				children?: Array<{
-					marks?: Array<string>
-					text?: string
-					_type: 'span'
-					_key: string
-				}>
-				style?:
-					'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
-				listItem?: 'bullet' | 'number'
-				markDefs?: Array<{
-					href?: string
-					_type: 'link'
-					_key: string
-				}>
-				level?: number
-				_type: 'block'
-				_key: string
-		  }
-		| {
-				ctas?: Array<
-					{
-						_key: string
-					} & Cta
-				>
-				_type: 'ctas'
-				_key: string
-		  }
-		| {
-				asset?: SanityImageAssetReference
-				media?: unknown
-				hotspot?: SanityImageHotspot
-				crop?: SanityImageCrop
-				alt?: string
-				figcaption?: Array<{
-					children?: Array<{
-						marks?: Array<string>
-						text?: string
-						_type: 'span'
-						_key: string
-					}>
-					style?: 'normal'
-					listItem?: 'bullet' | 'number'
-					markDefs?: Array<{
-						href?: string
-						_type: 'link'
-						_key: string
-					}>
-					level?: number
-					_type: 'block'
-					_key: string
-				}>
-				_type: 'image'
-				_key: string
-		  }
-	>
-	publishDate?: string
-	categories: Array<{
-		title: string | null
+	title: string | null
+	publishDate: string | null
+	slug: unknown
+	metadata: {
 		slug: Slug | null
-	}> | null
-	author: {
-		name: string | null
-		title: string | null
-		enableSchema: boolean | null
-		description: string
+		description: string | null
 		image: {
 			asset: {
 				_id: string
-				_type: 'sanity.imageAsset'
-				_createdAt: string
-				_updatedAt: string
-				_rev: string
-				originalFilename?: string
-				label?: string
-				title?: string
-				description?: string
-				altText?: string
-				sha1hash?: string
-				extension?: string
-				mimeType?: string
-				size?: number
-				assetId?: string
-				uploadId?: string
-				path?: string
-				url?: string
-				metadata?: SanityImageMetadata
-				source?: SanityAssetSourceData
+				url: string | null
+				metadata: {
+					lqip: string | null
+				} | null
 			} | null
 			media?: unknown
 			hotspot?: SanityImageHotspot
@@ -7643,123 +7505,47 @@ export type BLOG_FEATURED_QUERY_RESULT = Array<{
 			_type: 'image'
 		} | null
 	} | null
-	markdown?: Code
-	metadata?: Metadata
-	readTime: number
-	slug: unknown
+	categories: Array<{
+		title: string | null
+		slug: Slug | null
+	}> | null
+	author: {
+		name: string | null
+		image: {
+			asset: {
+				_id: string
+				url: string | null
+				metadata: {
+					lqip: string | null
+				} | null
+			} | null
+			media?: unknown
+			hotspot?: SanityImageHotspot
+			crop?: SanityImageCrop
+			_type: 'image'
+		} | null
+	} | null
 }>
 
 // Source: src/modules/blog-post-list/index.tsx
 // Variable: BLOG_POST_LIST_QUERY
-// Query: *[_type == 'blog.post']|order(publishDate desc)[0...$limit]{		...,			'readTime': length(string::split(pt::text(content), ' ')) / 200,	categories[]->{		title,		slug	},	author->{		name,		title,		enableSchema,		'description': pt::text(content),		image{			...,			asset->		}	},		'slug': $blogDir + metadata.slug.current,	}
+// Query: *[_type == 'blog.post']|order(publishDate desc)[0...$limit]{			_id,	_type,	title,	publishDate,	'slug': $blogDir + metadata.slug.current,	metadata{		slug,		description,		image{			...,			asset->{ _id, url, metadata{ lqip } }		}	},	categories[]->{		title,		slug	},	author->{		name,		image{			...,			asset->{ _id, url, metadata{ lqip } }		}	}	}
 export type BLOG_POST_LIST_QUERY_RESULT = Array<{
 	_id: string
 	_type: 'blog.post'
-	_createdAt: string
-	_updatedAt: string
-	_rev: string
-	title?: string
-	content?: Array<
-		| ({
-				_key: string
-		  } & AccordionList)
-		| ({
-				_key: string
-		  } & Code)
-		| ({
-				_key: string
-		  } & CustomHtml)
-		| ({
-				_key: string
-		  } & Table)
-		| {
-				children?: Array<{
-					marks?: Array<string>
-					text?: string
-					_type: 'span'
-					_key: string
-				}>
-				style?:
-					'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
-				listItem?: 'bullet' | 'number'
-				markDefs?: Array<{
-					href?: string
-					_type: 'link'
-					_key: string
-				}>
-				level?: number
-				_type: 'block'
-				_key: string
-		  }
-		| {
-				ctas?: Array<
-					{
-						_key: string
-					} & Cta
-				>
-				_type: 'ctas'
-				_key: string
-		  }
-		| {
-				asset?: SanityImageAssetReference
-				media?: unknown
-				hotspot?: SanityImageHotspot
-				crop?: SanityImageCrop
-				alt?: string
-				figcaption?: Array<{
-					children?: Array<{
-						marks?: Array<string>
-						text?: string
-						_type: 'span'
-						_key: string
-					}>
-					style?: 'normal'
-					listItem?: 'bullet' | 'number'
-					markDefs?: Array<{
-						href?: string
-						_type: 'link'
-						_key: string
-					}>
-					level?: number
-					_type: 'block'
-					_key: string
-				}>
-				_type: 'image'
-				_key: string
-		  }
-	>
-	publishDate?: string
-	categories: Array<{
-		title: string | null
+	title: string | null
+	publishDate: string | null
+	slug: unknown
+	metadata: {
 		slug: Slug | null
-	}> | null
-	author: {
-		name: string | null
-		title: string | null
-		enableSchema: boolean | null
-		description: string
+		description: string | null
 		image: {
 			asset: {
 				_id: string
-				_type: 'sanity.imageAsset'
-				_createdAt: string
-				_updatedAt: string
-				_rev: string
-				originalFilename?: string
-				label?: string
-				title?: string
-				description?: string
-				altText?: string
-				sha1hash?: string
-				extension?: string
-				mimeType?: string
-				size?: number
-				assetId?: string
-				uploadId?: string
-				path?: string
-				url?: string
-				metadata?: SanityImageMetadata
-				source?: SanityAssetSourceData
+				url: string | null
+				metadata: {
+					lqip: string | null
+				} | null
 			} | null
 			media?: unknown
 			hotspot?: SanityImageHotspot
@@ -7767,10 +7553,26 @@ export type BLOG_POST_LIST_QUERY_RESULT = Array<{
 			_type: 'image'
 		} | null
 	} | null
-	markdown?: Code
-	metadata?: Metadata
-	readTime: number
-	slug: unknown
+	categories: Array<{
+		title: string | null
+		slug: Slug | null
+	}> | null
+	author: {
+		name: string | null
+		image: {
+			asset: {
+				_id: string
+				url: string | null
+				metadata: {
+					lqip: string | null
+				} | null
+			} | null
+			media?: unknown
+			hotspot?: SanityImageHotspot
+			crop?: SanityImageCrop
+			_type: 'image'
+		} | null
+	} | null
 }>
 
 // Source: src/modules/search-module/actions.ts
@@ -11463,17 +11265,20 @@ export type CATEGORIES_QUERY_RESULT = Array<{
 // Query TypeMap
 declare global {
 	interface SanityQueries {
-		"\n\t*[_type == 'page' && metadata.slug.current == $slug][0]{\n\t\t...,\n\t\t'modules': (\n\t\t\t// global moddules (before)\n\t\t\t*[_type == 'global-module' && path == '*' && \n\tselect(\n\t\tdefined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,\n\t\ttrue\n\t)\n].before[]{ \n\t...,\n\tctas[]{\n\t\t...,\n\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t},\n\tsidebar{ \n\t...,\n\tmodules[]{\n\t\t...,\n\t\t_type == 'callout' => {\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n },\n\t\n\t_type == 'form-module' => {\n\t\tform->\n\t}\n,\n\t\n\t_type == 'breadcrumbs' => {\n\t\tcrumbs[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t}\n,\n\t\n\t_type == 'card-list' => {\n\t\tcards[]{\n\t\t\t...,\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'image-gallery' => {\n\t\trows[]{\n\t\t\t...,\n\t\t\timages[]{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'logo-list' => {\n\t\tlogos[]->\n\t}\n,\n\t\n\t_type == 'person-list' => {\n\t\tpeople[]->{\n\t\t\tname,\n\t\t\ttitle,\n\t\t\tcontent,\n\t\t\tenableSchema,\n\t\t\timage{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'prose' => {\n\t\tcontent[]{\n\t\t\t...,\n\t\t\t_type == 'image' => {\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t},\n\t\t\t_type == 'ctas' => {\n\t\t\t\tctas[]{\n\t\t\t\t\t...,\n\t\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{\n\t\t\tstyle,\n\t\t\t'text': pt::text(@)\n\t\t}\n\t}\n,\n\t\n\t_type == 'quote-list' => {\n\t\tquotes[]->\n\t}\n,\n\t\n\t_type == 'tabbed-content' => {\n\t\ttabs[]{\n\t\t\t...,\n\t\t\tcontent[]{\n\t\t\t\t...,\n\t\t\t\t_type == 'image' => {\n\t\t\t\t\t...,\n\t\t\t\t\tasset->{\n\t\t\t\t\t\t...,\n\t\t\t\t\t\tmetadata\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n }\n\t\t\t// path modules (before)\n\t\t\t+ *[_type == 'global-module' && path != '*' && \n\tstring::startsWith($slug, path)\n\t&& \n\tselect(\n\t\tdefined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,\n\t\ttrue\n\t)\n\n].before[]{ \n\t...,\n\tctas[]{\n\t\t...,\n\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t},\n\tsidebar{ \n\t...,\n\tmodules[]{\n\t\t...,\n\t\t_type == 'callout' => {\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n },\n\t\n\t_type == 'form-module' => {\n\t\tform->\n\t}\n,\n\t\n\t_type == 'breadcrumbs' => {\n\t\tcrumbs[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t}\n,\n\t\n\t_type == 'card-list' => {\n\t\tcards[]{\n\t\t\t...,\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'image-gallery' => {\n\t\trows[]{\n\t\t\t...,\n\t\t\timages[]{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'logo-list' => {\n\t\tlogos[]->\n\t}\n,\n\t\n\t_type == 'person-list' => {\n\t\tpeople[]->{\n\t\t\tname,\n\t\t\ttitle,\n\t\t\tcontent,\n\t\t\tenableSchema,\n\t\t\timage{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'prose' => {\n\t\tcontent[]{\n\t\t\t...,\n\t\t\t_type == 'image' => {\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t},\n\t\t\t_type == 'ctas' => {\n\t\t\t\tctas[]{\n\t\t\t\t\t...,\n\t\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{\n\t\t\tstyle,\n\t\t\t'text': pt::text(@)\n\t\t}\n\t}\n,\n\t\n\t_type == 'quote-list' => {\n\t\tquotes[]->\n\t}\n,\n\t\n\t_type == 'tabbed-content' => {\n\t\ttabs[]{\n\t\t\t...,\n\t\t\tcontent[]{\n\t\t\t\t...,\n\t\t\t\t_type == 'image' => {\n\t\t\t\t\t...,\n\t\t\t\t\tasset->{\n\t\t\t\t\t\t...,\n\t\t\t\t\t\tmetadata\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n }\n\t\t\t// page modules\n\t\t\t+ modules[]{ \n\t...,\n\tctas[]{\n\t\t...,\n\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t},\n\tsidebar{ \n\t...,\n\tmodules[]{\n\t\t...,\n\t\t_type == 'callout' => {\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n },\n\t\n\t_type == 'form-module' => {\n\t\tform->\n\t}\n,\n\t\n\t_type == 'breadcrumbs' => {\n\t\tcrumbs[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t}\n,\n\t\n\t_type == 'card-list' => {\n\t\tcards[]{\n\t\t\t...,\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'image-gallery' => {\n\t\trows[]{\n\t\t\t...,\n\t\t\timages[]{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'logo-list' => {\n\t\tlogos[]->\n\t}\n,\n\t\n\t_type == 'person-list' => {\n\t\tpeople[]->{\n\t\t\tname,\n\t\t\ttitle,\n\t\t\tcontent,\n\t\t\tenableSchema,\n\t\t\timage{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'prose' => {\n\t\tcontent[]{\n\t\t\t...,\n\t\t\t_type == 'image' => {\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t},\n\t\t\t_type == 'ctas' => {\n\t\t\t\tctas[]{\n\t\t\t\t\t...,\n\t\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{\n\t\t\tstyle,\n\t\t\t'text': pt::text(@)\n\t\t}\n\t}\n,\n\t\n\t_type == 'quote-list' => {\n\t\tquotes[]->\n\t}\n,\n\t\n\t_type == 'tabbed-content' => {\n\t\ttabs[]{\n\t\t\t...,\n\t\t\tcontent[]{\n\t\t\t\t...,\n\t\t\t\t_type == 'image' => {\n\t\t\t\t\t...,\n\t\t\t\t\tasset->{\n\t\t\t\t\t\t...,\n\t\t\t\t\t\tmetadata\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n }\n\t\t\t// path modules (after)\n\t\t\t+ *[_type == 'global-module' && path != '*' && \n\tstring::startsWith($slug, path)\n\t&& \n\tselect(\n\t\tdefined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,\n\t\ttrue\n\t)\n\n].after[]{ \n\t...,\n\tctas[]{\n\t\t...,\n\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t},\n\tsidebar{ \n\t...,\n\tmodules[]{\n\t\t...,\n\t\t_type == 'callout' => {\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n },\n\t\n\t_type == 'form-module' => {\n\t\tform->\n\t}\n,\n\t\n\t_type == 'breadcrumbs' => {\n\t\tcrumbs[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t}\n,\n\t\n\t_type == 'card-list' => {\n\t\tcards[]{\n\t\t\t...,\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'image-gallery' => {\n\t\trows[]{\n\t\t\t...,\n\t\t\timages[]{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'logo-list' => {\n\t\tlogos[]->\n\t}\n,\n\t\n\t_type == 'person-list' => {\n\t\tpeople[]->{\n\t\t\tname,\n\t\t\ttitle,\n\t\t\tcontent,\n\t\t\tenableSchema,\n\t\t\timage{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'prose' => {\n\t\tcontent[]{\n\t\t\t...,\n\t\t\t_type == 'image' => {\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t},\n\t\t\t_type == 'ctas' => {\n\t\t\t\tctas[]{\n\t\t\t\t\t...,\n\t\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{\n\t\t\tstyle,\n\t\t\t'text': pt::text(@)\n\t\t}\n\t}\n,\n\t\n\t_type == 'quote-list' => {\n\t\tquotes[]->\n\t}\n,\n\t\n\t_type == 'tabbed-content' => {\n\t\ttabs[]{\n\t\t\t...,\n\t\t\tcontent[]{\n\t\t\t\t...,\n\t\t\t\t_type == 'image' => {\n\t\t\t\t\t...,\n\t\t\t\t\tasset->{\n\t\t\t\t\t\t...,\n\t\t\t\t\t\tmetadata\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n }\n\t\t\t// global moddules (after)\n\t\t\t+ *[_type == 'global-module' && path == '*' && \n\tselect(\n\t\tdefined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,\n\t\ttrue\n\t)\n].after[]{ \n\t...,\n\tctas[]{\n\t\t...,\n\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t},\n\tsidebar{ \n\t...,\n\tmodules[]{\n\t\t...,\n\t\t_type == 'callout' => {\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n },\n\t\n\t_type == 'form-module' => {\n\t\tform->\n\t}\n,\n\t\n\t_type == 'breadcrumbs' => {\n\t\tcrumbs[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t}\n,\n\t\n\t_type == 'card-list' => {\n\t\tcards[]{\n\t\t\t...,\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'image-gallery' => {\n\t\trows[]{\n\t\t\t...,\n\t\t\timages[]{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'logo-list' => {\n\t\tlogos[]->\n\t}\n,\n\t\n\t_type == 'person-list' => {\n\t\tpeople[]->{\n\t\t\tname,\n\t\t\ttitle,\n\t\t\tcontent,\n\t\t\tenableSchema,\n\t\t\timage{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'prose' => {\n\t\tcontent[]{\n\t\t\t...,\n\t\t\t_type == 'image' => {\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t},\n\t\t\t_type == 'ctas' => {\n\t\t\t\tctas[]{\n\t\t\t\t\t...,\n\t\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{\n\t\t\tstyle,\n\t\t\t'text': pt::text(@)\n\t\t}\n\t}\n,\n\t\n\t_type == 'quote-list' => {\n\t\tquotes[]->\n\t}\n,\n\t\n\t_type == 'tabbed-content' => {\n\t\ttabs[]{\n\t\t\t...,\n\t\t\tcontent[]{\n\t\t\t\t...,\n\t\t\t\t_type == 'image' => {\n\t\t\t\t\t...,\n\t\t\t\t\tasset->{\n\t\t\t\t\t\t...,\n\t\t\t\t\t\tmetadata\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n }\n\t\t)\n\t}\n": PAGE_QUERY_RESULT
+		"\n\t*[_type == 'page' && metadata.slug.current == $slug][0]{\n\t\t...,\n\t\t// concatenate first, then resolve every module with a single projection\n\t\t'modules': (\n\t\t\t// global modules (before)\n\t\t\t*[_type == 'global-module' && path == '*' && \n\tselect(\n\t\tdefined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,\n\t\ttrue\n\t)\n].before[]\n\t\t\t// path modules (before)\n\t\t\t+ *[_type == 'global-module' && path != '*' && \n\tstring::startsWith($slug, path)\n\t&& \n\tselect(\n\t\tdefined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,\n\t\ttrue\n\t)\n\n].before[]\n\t\t\t// page modules\n\t\t\t+ modules[]\n\t\t\t// path modules (after)\n\t\t\t+ *[_type == 'global-module' && path != '*' && \n\tstring::startsWith($slug, path)\n\t&& \n\tselect(\n\t\tdefined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,\n\t\ttrue\n\t)\n\n].after[]\n\t\t\t// global modules (after)\n\t\t\t+ *[_type == 'global-module' && path == '*' && \n\tselect(\n\t\tdefined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,\n\t\ttrue\n\t)\n].after[]\n\t\t)[]{ \n\t...,\n\tctas[]{\n\t\t...,\n\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t},\n\tsidebar{ \n\t...,\n\tmodules[]{\n\t\t...,\n\t\t_type == 'callout' => {\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n },\n\t\n\t_type == 'form-module' => {\n\t\tform->\n\t}\n,\n\t\n\t_type == 'breadcrumbs' => {\n\t\tcrumbs[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t}\n,\n\t\n\t_type == 'card-list' => {\n\t\tcards[]{\n\t\t\t...,\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'image-gallery' => {\n\t\trows[]{\n\t\t\t...,\n\t\t\timages[]{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'logo-list' => {\n\t\tlogos[]->\n\t}\n,\n\t\n\t_type == 'person-list' => {\n\t\tpeople[]->{\n\t\t\tname,\n\t\t\ttitle,\n\t\t\tcontent,\n\t\t\tenableSchema,\n\t\t\timage{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'prose' => {\n\t\tcontent[]{\n\t\t\t...,\n\t\t\t_type == 'image' => {\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t},\n\t\t\t_type == 'ctas' => {\n\t\t\t\tctas[]{\n\t\t\t\t\t...,\n\t\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{\n\t\t\tstyle,\n\t\t\t'text': pt::text(@)\n\t\t}\n\t}\n,\n\t\n\t_type == 'quote-list' => {\n\t\tquotes[]->\n\t}\n,\n\t\n\t_type == 'tabbed-content' => {\n\t\ttabs[]{\n\t\t\t...,\n\t\t\tcontent[]{\n\t\t\t\t...,\n\t\t\t\t_type == 'image' => {\n\t\t\t\t\t...,\n\t\t\t\t\tasset->{\n\t\t\t\t\t\t...,\n\t\t\t\t\t\tmetadata\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n }\n\t}\n": PAGE_QUERY_RESULT
+		"\n\t*[_type == 'page' && metadata.slug.current == $slug][0]{\n\t\tmetadata,\n\t\t'hasMarkdown': defined(markdown.code)\n\t}\n": PAGE_METADATA_QUERY_RESULT
 		"*[_type == 'page' && metadata.slug.current == $slug][0].markdown.code": PAGE_MD_QUERY_RESULT
 		"*[_type == 'blog.post' && metadata.slug.current == $slug][0].markdown.code": BLOG_POST_MD_QUERY_RESULT
 		"*[_type == $type && metadata.slug.current == $slug][0]{\n\t'title': coalesce(metadata.title, title),\n}": OG_QUERY_RESULT
-		"*[_type == 'blog.post' && metadata.slug.current == $slug][0]{\n\t...,\n\tcontent[]{\n\t\t...,\n\t\t_type == 'image' => {\n\t\t\t...,\n\t\t\tasset->\n\t\t},\n\t\t_type == 'ctas' => {\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t},\n\t'contentPlainText': pt::text(content),\n\t'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{\n\t\tstyle,\n\t\t'text': pt::text(@)\n\t},\n\t\n\t'readTime': length(string::split(pt::text(content), ' ')) / 200,\n\tcategories[]->{\n\t\ttitle,\n\t\tslug\n\t},\n\tauthor->{\n\t\tname,\n\t\ttitle,\n\t\tenableSchema,\n\t\t'description': pt::text(content),\n\t\timage{\n\t\t\t...,\n\t\t\tasset->\n\t\t}\n\t}\n,\n\t'modules': (\n\t\t// global modules (before)\n\t\t*[_type == 'global-module' && path == '*' && \n\tselect(\n\t\tdefined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,\n\t\ttrue\n\t)\n].before[]{ \n\t...,\n\tctas[]{\n\t\t...,\n\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t},\n\tsidebar{ \n\t...,\n\tmodules[]{\n\t\t...,\n\t\t_type == 'callout' => {\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n },\n\t\n\t_type == 'form-module' => {\n\t\tform->\n\t}\n,\n\t\n\t_type == 'breadcrumbs' => {\n\t\tcrumbs[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t}\n,\n\t\n\t_type == 'card-list' => {\n\t\tcards[]{\n\t\t\t...,\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'image-gallery' => {\n\t\trows[]{\n\t\t\t...,\n\t\t\timages[]{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'logo-list' => {\n\t\tlogos[]->\n\t}\n,\n\t\n\t_type == 'person-list' => {\n\t\tpeople[]->{\n\t\t\tname,\n\t\t\ttitle,\n\t\t\tcontent,\n\t\t\tenableSchema,\n\t\t\timage{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'prose' => {\n\t\tcontent[]{\n\t\t\t...,\n\t\t\t_type == 'image' => {\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t},\n\t\t\t_type == 'ctas' => {\n\t\t\t\tctas[]{\n\t\t\t\t\t...,\n\t\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{\n\t\t\tstyle,\n\t\t\t'text': pt::text(@)\n\t\t}\n\t}\n,\n\t\n\t_type == 'quote-list' => {\n\t\tquotes[]->\n\t}\n,\n\t\n\t_type == 'tabbed-content' => {\n\t\ttabs[]{\n\t\t\t...,\n\t\t\tcontent[]{\n\t\t\t\t...,\n\t\t\t\t_type == 'image' => {\n\t\t\t\t\t...,\n\t\t\t\t\tasset->{\n\t\t\t\t\t\t...,\n\t\t\t\t\t\tmetadata\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n }\n\t\t// path modules (before)\n\t\t+ *[_type == 'global-module' && path == $blogDir].before[]{ \n\t...,\n\tctas[]{\n\t\t...,\n\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t},\n\tsidebar{ \n\t...,\n\tmodules[]{\n\t\t...,\n\t\t_type == 'callout' => {\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n },\n\t\n\t_type == 'form-module' => {\n\t\tform->\n\t}\n,\n\t\n\t_type == 'breadcrumbs' => {\n\t\tcrumbs[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t}\n,\n\t\n\t_type == 'card-list' => {\n\t\tcards[]{\n\t\t\t...,\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'image-gallery' => {\n\t\trows[]{\n\t\t\t...,\n\t\t\timages[]{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'logo-list' => {\n\t\tlogos[]->\n\t}\n,\n\t\n\t_type == 'person-list' => {\n\t\tpeople[]->{\n\t\t\tname,\n\t\t\ttitle,\n\t\t\tcontent,\n\t\t\tenableSchema,\n\t\t\timage{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'prose' => {\n\t\tcontent[]{\n\t\t\t...,\n\t\t\t_type == 'image' => {\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t},\n\t\t\t_type == 'ctas' => {\n\t\t\t\tctas[]{\n\t\t\t\t\t...,\n\t\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{\n\t\t\tstyle,\n\t\t\t'text': pt::text(@)\n\t\t}\n\t}\n,\n\t\n\t_type == 'quote-list' => {\n\t\tquotes[]->\n\t}\n,\n\t\n\t_type == 'tabbed-content' => {\n\t\ttabs[]{\n\t\t\t...,\n\t\t\tcontent[]{\n\t\t\t\t...,\n\t\t\t\t_type == 'image' => {\n\t\t\t\t\t...,\n\t\t\t\t\tasset->{\n\t\t\t\t\t\t...,\n\t\t\t\t\t\tmetadata\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n }\n\t\t// path modules (after)\n\t\t+ *[_type == 'global-module' && path == $blogDir].after[]{ \n\t...,\n\tctas[]{\n\t\t...,\n\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t},\n\tsidebar{ \n\t...,\n\tmodules[]{\n\t\t...,\n\t\t_type == 'callout' => {\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n },\n\t\n\t_type == 'form-module' => {\n\t\tform->\n\t}\n,\n\t\n\t_type == 'breadcrumbs' => {\n\t\tcrumbs[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t}\n,\n\t\n\t_type == 'card-list' => {\n\t\tcards[]{\n\t\t\t...,\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'image-gallery' => {\n\t\trows[]{\n\t\t\t...,\n\t\t\timages[]{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'logo-list' => {\n\t\tlogos[]->\n\t}\n,\n\t\n\t_type == 'person-list' => {\n\t\tpeople[]->{\n\t\t\tname,\n\t\t\ttitle,\n\t\t\tcontent,\n\t\t\tenableSchema,\n\t\t\timage{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'prose' => {\n\t\tcontent[]{\n\t\t\t...,\n\t\t\t_type == 'image' => {\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t},\n\t\t\t_type == 'ctas' => {\n\t\t\t\tctas[]{\n\t\t\t\t\t...,\n\t\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{\n\t\t\tstyle,\n\t\t\t'text': pt::text(@)\n\t\t}\n\t}\n,\n\t\n\t_type == 'quote-list' => {\n\t\tquotes[]->\n\t}\n,\n\t\n\t_type == 'tabbed-content' => {\n\t\ttabs[]{\n\t\t\t...,\n\t\t\tcontent[]{\n\t\t\t\t...,\n\t\t\t\t_type == 'image' => {\n\t\t\t\t\t...,\n\t\t\t\t\tasset->{\n\t\t\t\t\t\t...,\n\t\t\t\t\t\tmetadata\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n }\n\t\t// global modules (after)\n\t\t+ *[_type == 'global-module' && path == '*' && \n\tselect(\n\t\tdefined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,\n\t\ttrue\n\t)\n].after[]{ \n\t...,\n\tctas[]{\n\t\t...,\n\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t},\n\tsidebar{ \n\t...,\n\tmodules[]{\n\t\t...,\n\t\t_type == 'callout' => {\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n },\n\t\n\t_type == 'form-module' => {\n\t\tform->\n\t}\n,\n\t\n\t_type == 'breadcrumbs' => {\n\t\tcrumbs[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t}\n,\n\t\n\t_type == 'card-list' => {\n\t\tcards[]{\n\t\t\t...,\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'image-gallery' => {\n\t\trows[]{\n\t\t\t...,\n\t\t\timages[]{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'logo-list' => {\n\t\tlogos[]->\n\t}\n,\n\t\n\t_type == 'person-list' => {\n\t\tpeople[]->{\n\t\t\tname,\n\t\t\ttitle,\n\t\t\tcontent,\n\t\t\tenableSchema,\n\t\t\timage{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'prose' => {\n\t\tcontent[]{\n\t\t\t...,\n\t\t\t_type == 'image' => {\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t},\n\t\t\t_type == 'ctas' => {\n\t\t\t\tctas[]{\n\t\t\t\t\t...,\n\t\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{\n\t\t\tstyle,\n\t\t\t'text': pt::text(@)\n\t\t}\n\t}\n,\n\t\n\t_type == 'quote-list' => {\n\t\tquotes[]->\n\t}\n,\n\t\n\t_type == 'tabbed-content' => {\n\t\ttabs[]{\n\t\t\t...,\n\t\t\tcontent[]{\n\t\t\t\t...,\n\t\t\t\t_type == 'image' => {\n\t\t\t\t\t...,\n\t\t\t\t\tasset->{\n\t\t\t\t\t\t...,\n\t\t\t\t\t\tmetadata\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n }\n\t)\n}": BLOG_POST_QUERY_RESULT
+		"*[_type == 'blog.post' && metadata.slug.current == $slug][0]{\n\t...,\n\tcontent[]{\n\t\t...,\n\t\t_type == 'image' => {\n\t\t\t...,\n\t\t\tasset->\n\t\t},\n\t\t_type == 'ctas' => {\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t},\n\t'contentPlainText': pt::text(content),\n\t'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{\n\t\tstyle,\n\t\t'text': pt::text(@)\n\t},\n\t\n\t'readTime': length(string::split(pt::text(content), ' ')) / 200,\n\tcategories[]->{\n\t\ttitle,\n\t\tslug\n\t},\n\tauthor->{\n\t\tname,\n\t\ttitle,\n\t\tenableSchema,\n\t\t'description': pt::text(content),\n\t\timage{\n\t\t\t...,\n\t\t\tasset->\n\t\t}\n\t}\n,\n\t// concatenate first, then resolve every module with a single projection\n\t'modules': (\n\t\t// global modules (before)\n\t\t*[_type == 'global-module' && path == '*' && \n\tselect(\n\t\tdefined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,\n\t\ttrue\n\t)\n].before[]\n\t\t// path modules (before)\n\t\t+ *[_type == 'global-module' && path == $blogDir].before[]\n\t\t// path modules (after)\n\t\t+ *[_type == 'global-module' && path == $blogDir].after[]\n\t\t// global modules (after)\n\t\t+ *[_type == 'global-module' && path == '*' && \n\tselect(\n\t\tdefined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,\n\t\ttrue\n\t)\n].after[]\n\t)[]{ \n\t...,\n\tctas[]{\n\t\t...,\n\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t},\n\tsidebar{ \n\t...,\n\tmodules[]{\n\t\t...,\n\t\t_type == 'callout' => {\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n },\n\t\n\t_type == 'form-module' => {\n\t\tform->\n\t}\n,\n\t\n\t_type == 'breadcrumbs' => {\n\t\tcrumbs[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t}\n,\n\t\n\t_type == 'card-list' => {\n\t\tcards[]{\n\t\t\t...,\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'image-gallery' => {\n\t\trows[]{\n\t\t\t...,\n\t\t\timages[]{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'logo-list' => {\n\t\tlogos[]->\n\t}\n,\n\t\n\t_type == 'person-list' => {\n\t\tpeople[]->{\n\t\t\tname,\n\t\t\ttitle,\n\t\t\tcontent,\n\t\t\tenableSchema,\n\t\t\timage{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'prose' => {\n\t\tcontent[]{\n\t\t\t...,\n\t\t\t_type == 'image' => {\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t},\n\t\t\t_type == 'ctas' => {\n\t\t\t\tctas[]{\n\t\t\t\t\t...,\n\t\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{\n\t\t\tstyle,\n\t\t\t'text': pt::text(@)\n\t\t}\n\t}\n,\n\t\n\t_type == 'quote-list' => {\n\t\tquotes[]->\n\t}\n,\n\t\n\t_type == 'tabbed-content' => {\n\t\ttabs[]{\n\t\t\t...,\n\t\t\tcontent[]{\n\t\t\t\t...,\n\t\t\t\t_type == 'image' => {\n\t\t\t\t\t...,\n\t\t\t\t\tasset->{\n\t\t\t\t\t\t...,\n\t\t\t\t\t\tmetadata\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n }\n}": BLOG_POST_QUERY_RESULT
+		"*[_type == 'blog.post' && metadata.slug.current == $slug][0]{\n\tmetadata,\n\tpublishDate,\n\tauthor->{ name },\n\tcategories[]->{ title },\n\t'hasMarkdown': defined(markdown.code)\n}": BLOG_POST_METADATA_QUERY_RESULT
 		"{\n\t'blog': *[_type == 'page' && metadata.slug.current == $blogDir][0]{\n\t\tmetadata\n\t},\n\t'posts': *[_type == 'blog.post' && metadata.noIndex != true]|order(publishDate desc){\n\t\ttitle,\n\t\tcontent[]{\n\t\t\t...,\n\t\t\t_type == 'ctas' => {\n\t\t\t\tctas[]{\n\t\t\t\t\t...,\n\t\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\tpublishDate,\n\t\tcategories[]->{ title },\n\t\tauthor->{ name },\n\t\tmetadata\n\t}\n}": BLOG_RSS_QUERY_RESULT
 		"\n\t*[_type == 'page' && metadata.slug.current == '404'][0]{\n\t\t...,\n\t\tmodules[]{ \n\t...,\n\tctas[]{\n\t\t...,\n\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t},\n\tsidebar{ \n\t...,\n\tmodules[]{\n\t\t...,\n\t\t_type == 'callout' => {\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n },\n\t\n\t_type == 'form-module' => {\n\t\tform->\n\t}\n,\n\t\n\t_type == 'breadcrumbs' => {\n\t\tcrumbs[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t}\n,\n\t\n\t_type == 'card-list' => {\n\t\tcards[]{\n\t\t\t...,\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'image-gallery' => {\n\t\trows[]{\n\t\t\t...,\n\t\t\timages[]{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'logo-list' => {\n\t\tlogos[]->\n\t}\n,\n\t\n\t_type == 'person-list' => {\n\t\tpeople[]->{\n\t\t\tname,\n\t\t\ttitle,\n\t\t\tcontent,\n\t\t\tenableSchema,\n\t\t\timage{\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n,\n\t\n\t_type == 'prose' => {\n\t\tcontent[]{\n\t\t\t...,\n\t\t\t_type == 'image' => {\n\t\t\t\t...,\n\t\t\t\tasset->{\n\t\t\t\t\t...,\n\t\t\t\t\tmetadata\n\t\t\t\t}\n\t\t\t},\n\t\t\t_type == 'ctas' => {\n\t\t\t\tctas[]{\n\t\t\t\t\t...,\n\t\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t'headings': content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{\n\t\t\tstyle,\n\t\t\t'text': pt::text(@)\n\t\t}\n\t}\n,\n\t\n\t_type == 'quote-list' => {\n\t\tquotes[]->\n\t}\n,\n\t\n\t_type == 'tabbed-content' => {\n\t\ttabs[]{\n\t\t\t...,\n\t\t\tcontent[]{\n\t\t\t\t...,\n\t\t\t\t_type == 'image' => {\n\t\t\t\t\t...,\n\t\t\t\t\tasset->{\n\t\t\t\t\t\t...,\n\t\t\t\t\t\tmetadata\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\tctas[]{\n\t\t\t\t...,\n\t\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t}\n\t\t}\n\t}\n,\n }\n\t}\n": NOT_FOUND_QUERY_RESULT
+		"\n\t*[_type == 'page' && metadata.slug.current == '404'][0]{ metadata }\n": NOT_FOUND_METADATA_QUERY_RESULT
 		"{\n\t'site': *[_type == 'site'][0]{\n\t\ttitle\n\t},\n\t'home': *[_type == 'page' && metadata.slug.current == 'index'][0]{\n\t\t'description': metadata.description\n\t},\n\t'pages': *[_type == 'page'\n\t\t&& defined(metadata.slug.current)\n\t\t&& metadata.noIndex != true\n\t\t&& metadata.slug.current != '404'\n\t\t&& length(markdown.code) > 0\n\t] | order(metadata.slug.current != 'index', metadata.slug.current asc) {\n\t\t'title': select(\n\t\t\tmetadata.slug.current == 'index' => coalesce(metadata.title, 'Home'),\n\t\t\tcoalesce(metadata.title, metadata.slug.current)\n\t\t),\n\t\t'slug': metadata.slug.current,\n\t\t'description': metadata.description,\n\t},\n\t'posts': *[_type == 'blog.post'\n\t\t&& defined(metadata.slug.current)\n\t\t&& metadata.noIndex != true\n\t\t&& length(markdown.code) > 0\n\t] | order(publishDate desc) {\n\t\t'title': coalesce(title, metadata.title),\n\t\t'slug': $blogDir + '/' + metadata.slug.current,\n\t\t'description': metadata.description,\n\t}\n}": AGENT_DIRECTIONS_QUERY_RESULT
-		"\n\t*[_type == 'blog.post' && !(_id in $featuredIds)]|order(publishDate desc){\n\t\t...,\n\t\t\n\t'readTime': length(string::split(pt::text(content), ' ')) / 200,\n\tcategories[]->{\n\t\ttitle,\n\t\tslug\n\t},\n\tauthor->{\n\t\tname,\n\t\ttitle,\n\t\tenableSchema,\n\t\t'description': pt::text(content),\n\t\timage{\n\t\t\t...,\n\t\t\tasset->\n\t\t}\n\t}\n,\n\t\t'slug': $blogDir + metadata.slug.current,\n\t}\n": BLOG_INDEX_QUERY_RESULT
-		"\n\t*[_type == 'blog.post' && _id in $featuredIds]{\n\t\t...,\n\t\t\n\t'readTime': length(string::split(pt::text(content), ' ')) / 200,\n\tcategories[]->{\n\t\ttitle,\n\t\tslug\n\t},\n\tauthor->{\n\t\tname,\n\t\ttitle,\n\t\tenableSchema,\n\t\t'description': pt::text(content),\n\t\timage{\n\t\t\t...,\n\t\t\tasset->\n\t\t}\n\t}\n,\n\t\t'slug': $blogDir + metadata.slug.current,\n\t}\n": BLOG_FEATURED_QUERY_RESULT
-		"\n\t*[_type == 'blog.post']|order(publishDate desc)[0...$limit]{\n\t\t...,\n\t\t\n\t'readTime': length(string::split(pt::text(content), ' ')) / 200,\n\tcategories[]->{\n\t\ttitle,\n\t\tslug\n\t},\n\tauthor->{\n\t\tname,\n\t\ttitle,\n\t\tenableSchema,\n\t\t'description': pt::text(content),\n\t\timage{\n\t\t\t...,\n\t\t\tasset->\n\t\t}\n\t}\n,\n\t\t'slug': $blogDir + metadata.slug.current,\n\t}\n": BLOG_POST_LIST_QUERY_RESULT
+		"\n\t*[_type == 'blog.post' && !(_id in $featuredIds)]|order(publishDate desc){\n\t\t\n\t_id,\n\t_type,\n\ttitle,\n\tpublishDate,\n\t'slug': $blogDir + metadata.slug.current,\n\tmetadata{\n\t\tslug,\n\t\tdescription,\n\t\timage{\n\t\t\t...,\n\t\t\tasset->{ _id, url, metadata{ lqip } }\n\t\t}\n\t},\n\tcategories[]->{\n\t\ttitle,\n\t\tslug\n\t},\n\tauthor->{\n\t\tname,\n\t\timage{\n\t\t\t...,\n\t\t\tasset->{ _id, url, metadata{ lqip } }\n\t\t}\n\t}\n\n\t}\n": BLOG_INDEX_QUERY_RESULT
+		"\n\t*[_type == 'blog.post' && _id in $featuredIds]{\n\t\t\n\t_id,\n\t_type,\n\ttitle,\n\tpublishDate,\n\t'slug': $blogDir + metadata.slug.current,\n\tmetadata{\n\t\tslug,\n\t\tdescription,\n\t\timage{\n\t\t\t...,\n\t\t\tasset->{ _id, url, metadata{ lqip } }\n\t\t}\n\t},\n\tcategories[]->{\n\t\ttitle,\n\t\tslug\n\t},\n\tauthor->{\n\t\tname,\n\t\timage{\n\t\t\t...,\n\t\t\tasset->{ _id, url, metadata{ lqip } }\n\t\t}\n\t}\n\n\t}\n": BLOG_FEATURED_QUERY_RESULT
+		"\n\t*[_type == 'blog.post']|order(publishDate desc)[0...$limit]{\n\t\t\n\t_id,\n\t_type,\n\ttitle,\n\tpublishDate,\n\t'slug': $blogDir + metadata.slug.current,\n\tmetadata{\n\t\tslug,\n\t\tdescription,\n\t\timage{\n\t\t\t...,\n\t\t\tasset->{ _id, url, metadata{ lqip } }\n\t\t}\n\t},\n\tcategories[]->{\n\t\ttitle,\n\t\tslug\n\t},\n\tauthor->{\n\t\tname,\n\t\timage{\n\t\t\t...,\n\t\t\tasset->{ _id, url, metadata{ lqip } }\n\t\t}\n\t}\n\n\t}\n": BLOG_POST_LIST_QUERY_RESULT
 		"*[\n\t_type in $scope\n\t&& defined(metadata.slug.current)\n\t&& metadata.noIndex != true\n\t&& !(metadata.slug.current in ['404'])\n\t&& @ match text::query($queryMatch)\n]{\n\t_id,\n\t_type,\n\ttitle,\n\t'slug': select(\n\t\t_type == 'blog.post' => $blogDir + metadata.slug.current,\n\t\tmetadata.slug.current == 'index' => '/',\n\t\t'/' + metadata.slug.current\n\t)\n}": SEARCH_QUERY_RESULT
 		"*[_type == 'site'][0]{\n\t...,\n\tannouncement->{\n\t\t...,\n\t\tctas[]{\n\t\t\t...,\n\t\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t}\n\t},\n\theader->{ \n\t...,\n\titems[]{\n\t\t\n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n,\n\t\tdefined(link) => { link{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\tdefined(links[]) => { links[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\t_type == 'megamenu' => {\n\t\t\tdefined(link) => { link{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\t\titems[]{\n\t\t\t\t...,\n\t\t\t\t_type == 'link' => { \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n },\n\t\t\t\t_type == 'link.list' => {\n\t\t\t\t\tdefined(link) => { link{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\t\t\t\tlinks[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t\t},\n\t\t\t\t_type == 'link.card' => {\n\t\t\t\t\tdefined(link) => { link{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\t\t\t\timage{\n\t\t\t\t\t\t...,\n\t\t\t\t\t\tasset->{\n\t\t\t\t\t\t\t...,\n\t\t\t\t\t\t\tmetadata\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n },\n\tctas[]{\n\t\t...,\n\t\tlink{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t},\n\tfooter->{ \n\t...,\n\titems[]{\n\t\t\n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n,\n\t\tdefined(link) => { link{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\tdefined(links[]) => { links[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\t_type == 'megamenu' => {\n\t\t\tdefined(link) => { link{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\t\titems[]{\n\t\t\t\t...,\n\t\t\t\t_type == 'link' => { \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n },\n\t\t\t\t_type == 'link.list' => {\n\t\t\t\t\tdefined(link) => { link{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\t\t\t\tlinks[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t\t},\n\t\t\t\t_type == 'link.card' => {\n\t\t\t\t\tdefined(link) => { link{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\t\t\t\timage{\n\t\t\t\t\t\t...,\n\t\t\t\t\t\tasset->{\n\t\t\t\t\t\t\t...,\n\t\t\t\t\t\t\tmetadata\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n },\n\tbottom->{ \n\t...,\n\titems[]{\n\t\t\n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n,\n\t\tdefined(link) => { link{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\tdefined(links[]) => { links[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\t_type == 'megamenu' => {\n\t\t\tdefined(link) => { link{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\t\titems[]{\n\t\t\t\t...,\n\t\t\t\t_type == 'link' => { \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n },\n\t\t\t\t_type == 'link.list' => {\n\t\t\t\t\tdefined(link) => { link{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\t\t\t\tlinks[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t\t},\n\t\t\t\t_type == 'link.card' => {\n\t\t\t\t\tdefined(link) => { link{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\t\t\t\timage{\n\t\t\t\t\t\t...,\n\t\t\t\t\t\tasset->{\n\t\t\t\t\t\t\t...,\n\t\t\t\t\t\t\tmetadata\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n },\n\tsocial->{ \n\t...,\n\titems[]{\n\t\t\n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n,\n\t\tdefined(link) => { link{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\tdefined(links[]) => { links[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\t_type == 'megamenu' => {\n\t\t\tdefined(link) => { link{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\t\titems[]{\n\t\t\t\t...,\n\t\t\t\t_type == 'link' => { \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n },\n\t\t\t\t_type == 'link.list' => {\n\t\t\t\t\tdefined(link) => { link{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\t\t\t\tlinks[]{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n }\n\t\t\t\t},\n\t\t\t\t_type == 'link.card' => {\n\t\t\t\t\tdefined(link) => { link{ \n\t...,\n\ttype == 'internal' => {\n\t\tinternal->{\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\t'slug': select(\n\t\t\t\tmetadata.slug.current == 'index' => '/',\n\t\t\t\t_type == 'blog.post' => '/blog/' + metadata.slug.current,\n\t\t\t\t'/' + metadata.slug.current\n\t\t\t)\n\t\t}\n\t}\n } },\n\t\t\t\t\timage{\n\t\t\t\t\t\t...,\n\t\t\t\t\t\tasset->{\n\t\t\t\t\t\t\t...,\n\t\t\t\t\t\t\tmetadata\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n },\n}": SITE_QUERY_RESULT
 		'\n\tselect(\n\t\tdefined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,\n\t\ttrue\n\t)\n': GLOBAL_MODULE_EXCLUDE_QUERY_RESULT

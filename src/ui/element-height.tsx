@@ -13,17 +13,19 @@ export default function ({
 	const ref = useRef<HTMLElement>(null)
 
 	useEffect(() => {
-		function setHeight() {
-			if (!ref.current) return
+		const el = ref.current
+		if (!el) return
+
+		// also catches content changes (e.g. wrapping text, open mobile menu), not just window resizes
+		const observer = new ResizeObserver(() => {
 			document.documentElement.style.setProperty(
 				cssVar,
-				`${ref.current.offsetHeight ?? 0}px`,
+				`${el.offsetHeight}px`,
 			)
-		}
-		setHeight()
-		window.addEventListener('resize', setHeight)
+		})
+		observer.observe(el)
 
-		return () => window.removeEventListener('resize', setHeight)
+		return () => observer.disconnect()
 	}, [cssVar])
 
 	return <As ref={ref} {...props} />

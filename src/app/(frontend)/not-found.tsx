@@ -11,7 +11,10 @@ import {
 	type DynamicFetchOptions,
 } from '@/sanity/lib/live'
 import { MODULES_QUERY } from '@/sanity/lib/queries'
-import type { NOT_FOUND_QUERY_RESULT } from '@/sanity/types'
+import type {
+	NOT_FOUND_METADATA_QUERY_RESULT,
+	NOT_FOUND_QUERY_RESULT,
+} from '@/sanity/types'
 import Loading from '@/ui/loading'
 
 export default async function NotFound() {
@@ -74,9 +77,9 @@ async function getPageMetadata({
 	perspective,
 }: Pick<DynamicFetchOptions, 'perspective'>) {
 	return (await sanityFetchMetadata({
-		query: NOT_FOUND_QUERY,
+		query: NOT_FOUND_METADATA_QUERY,
 		perspective,
-	})) as NOT_FOUND_QUERY_RESULT
+	})) as NOT_FOUND_METADATA_QUERY_RESULT
 }
 
 const NOT_FOUND_QUERY = groq`
@@ -84,4 +87,8 @@ const NOT_FOUND_QUERY = groq`
 		...,
 		modules[]{ ${MODULES_QUERY} }
 	}
+`
+
+const NOT_FOUND_METADATA_QUERY = groq`
+	*[_type == 'page' && metadata.slug.current == '404'][0]{ metadata }
 `

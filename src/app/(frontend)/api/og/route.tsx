@@ -1,4 +1,5 @@
 import { groq } from 'next-sanity'
+import { cacheLife } from 'next/cache'
 import { ImageResponse } from 'next/og'
 import { ROUTES } from '@/lib/env'
 import { cn } from '@/lib/utils'
@@ -39,7 +40,13 @@ export async function GET(request: Request) {
 
 	const [h1 = '', h2 = ''] =
 		(page?.title || site?.title)?.split(/(?:\s*[|-—]\s*)/) ?? []
-	const text = [...new Set([...h1, ...h2, ...hostname])].join('')
+	// sorted so the same glyph set always hits the same cache entry
+	const text = [...new Set([...h1, ...h2, ...hostname])].sort().join('')
+
+	const [regular, bold] = await Promise.all([
+		loadGoogleFont('Geist:wght@400', text),
+		loadGoogleFont('Geist:wght@700', text),
+	])
 
 	return new ImageResponse(
 		<div
@@ -62,13 +69,13 @@ export async function GET(request: Request) {
 			fonts: [
 				{
 					name: 'Geist',
-					data: await loadGoogleFont('Geist:wght@400', text),
+					data: regular,
 					weight: 400,
 					style: 'normal',
 				},
 				{
 					name: 'Geist',
-					data: await loadGoogleFont('Geist:wght@700', text),
+					data: bold,
 					weight: 700,
 					style: 'normal',
 				},
@@ -96,6 +103,8 @@ async function getPage({
 }
 
 async function loadGoogleFont(font: string, text: string) {
+	'use cache'
+	cacheLife('max')
 	const url = `https://fonts.googleapis.com/css2?family=${font}&text=${encodeURIComponent(text)}`
 	const css = await (await fetch(url)).text()
 	const regex = /src: url\((?<resource>.+)\) format\('(opentype|truetype)'\)/g

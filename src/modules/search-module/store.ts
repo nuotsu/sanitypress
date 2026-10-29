@@ -16,6 +16,9 @@ export const useSearchStore = create<{
 	setResults: (results) => set({ results }),
 }))
 
+// Incremented per search, so a slow response can't overwrite newer results
+let latestSearch = 0
+
 export async function handleSearch({
 	scope = 'all',
 	query,
@@ -27,6 +30,8 @@ export async function handleSearch({
 	setLoading: (loading: boolean) => void
 	setResults: (results: SEARCH_QUERY_RESULT) => void
 }) {
+	const search = ++latestSearch
+
 	if (!query) {
 		setResults([])
 		setLoading(false)
@@ -34,6 +39,9 @@ export async function handleSearch({
 	}
 
 	setLoading(true)
-	setResults(await searchAction(scope, query))
+	const results = await searchAction(scope, query)
+	if (search !== latestSearch) return
+
+	setResults(results)
 	setLoading(false)
 }

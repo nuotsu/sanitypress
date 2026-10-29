@@ -5,7 +5,7 @@ import { ROUTES } from '@/lib/env'
 import { cn } from '@/lib/utils'
 import { Module, type ModuleProps } from '@/modules'
 import { sanityFetch, type DynamicFetchOptions } from '@/sanity/lib/live'
-import { BLOG_POST_FRAGMENT_QUERY } from '@/sanity/lib/queries'
+import { BLOG_POST_PREVIEW_QUERY } from '@/sanity/lib/queries'
 import type {
 	BLOG_FEATURED_QUERY_RESULT,
 	BLOG_INDEX_QUERY_RESULT,
@@ -123,16 +123,12 @@ async function getFeaturedPosts({
 
 const BLOG_INDEX_QUERY = groq`
 	*[_type == 'blog.post' && !(_id in $featuredIds)]|order(publishDate desc){
-		...,
-		${BLOG_POST_FRAGMENT_QUERY},
-		'slug': $blogDir + metadata.slug.current,
+		${BLOG_POST_PREVIEW_QUERY}
 	}
 `
 
 const BLOG_FEATURED_QUERY = groq`
 	*[_type == 'blog.post' && _id in $featuredIds]{
-		...,
-		${BLOG_POST_FRAGMENT_QUERY},
-		'slug': $blogDir + metadata.slug.current,
+		${BLOG_POST_PREVIEW_QUERY}
 	}
 `
