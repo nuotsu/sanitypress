@@ -61,11 +61,31 @@ async function CachedPage({
 	stega,
 }: { slug?: string[] } & DynamicFetchOptions) {
 	'use cache'
-	const page = await getPage({ slug, perspective, stega })
-	if (!page) notFound()
+	const [page, site] = await Promise.all([
+		getPage({ slug, perspective, stega }),
+		getSite({ perspective, stega }),
+	])
+
+	if (!site) {
+		throw new Error(
+			`Site settings not found. Create and publish the Site document: ${studioUrl('structure/site')}`,
+		)
+	}
+
+	if (!page) {
+		if (!slug?.length) {
+			throw new Error(
+				`Homepage not found. Create and publish a Page with the slug "index": ${studioUrl('intent/create/type=page/')}`,
+			)
+		}
+		notFound()
+	}
 
 	return <ModulesResolver page={page} perspective={perspective} stega={stega} />
 }
+
+const studioUrl = (path: string) =>
+	`${process.env.NODE_ENV === 'development' ? `http://localhost:${process.env.PORT || 3000}` : ''}/${ROUTES.studio}/${path}`
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const [{ slug }, { perspective }] = await Promise.all([
@@ -120,14 +140,17 @@ export async function generateStaticParams() {
 			*[
 				_type == 'page'
 				&& defined(metadata.slug.current)
-				&& !(metadata.slug.current in ['404'])
+				&& !(metadata.slug.current in ['index', '404'])
 			].metadata.slug.current
 		`,
 	})) as string[]
 
-	return slugs.map((slug) => ({
-		slug: slug === 'index' ? undefined : slug.split('/'),
-	}))
+	// Always include the homepage so the list is never empty (required by Cache
+	// Components) and a missing `index` page throws a helpful error
+	return [
+		{ slug: undefined },
+		...slugs.map((slug) => ({ slug: slug.split('/') })),
+	]
 }
 
 async function getPage({
