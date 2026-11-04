@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
 	reactCompiler: true,
 
 	cacheComponents: true,
+	partialPrefetching: true,
 	cacheLife: { default: sanity },
 
 	images: {
