@@ -33,7 +33,6 @@ import person from './documents/person'
 import quote from './documents/quote'
 import redirect from './documents/redirect'
 import site from './documents/site'
-import skill from './documents/skill'
 // objects
 import cta from './objects/cta'
 import link from './objects/link'
@@ -48,7 +47,6 @@ export const schema: SchemaPluginOptions = {
 	types: [
 		// documents
 		site,
-		skill,
 		page,
 		globalModule,
 		blogPost,

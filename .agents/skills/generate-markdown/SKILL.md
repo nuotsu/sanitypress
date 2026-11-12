@@ -90,7 +90,6 @@ description: "..."
 
 Reuse `metadata.title` / `metadata.description` when they read well standalone; otherwise write a short title/description by hand — they don't have to match `metadata` verbatim. This isn't enforced by any code path (the `.md` route serves `markdown.code` as-is), it's purely a convention for whoever reads `<slug>.md` — match it for consistency, but don't force it if the fields don't fit the piece.
 
-If hand-writing a title/description rather than reusing `metadata` verbatim, check for a relevant per-instance `skill` document first — see the `check-studio-skills` skill (query `_type == "skill"`, e.g. a `content-guidelines` doc) — since that's original prose, not verbatim transcription.
 
 ## Step 6 — Write it back
 
