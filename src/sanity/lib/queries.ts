@@ -141,6 +141,20 @@ export const BLOG_POST_PREVIEW_QUERY = groq`
 	}
 `
 
+// Tag each module with the document + array field it came from, so the
+// combined `modules[]` can still be addressed (and reordered) in Presentation.
+// `^` must resolve to the parent document, so use these inside a projection
+// on that document (e.g. `*[...]{ 'before': before[]{ ..., ${MODULE_SOURCE_BEFORE} } }`).
+
+// @sanity-typegen-ignore
+export const MODULE_SOURCE_MODULES = groq`'_source': { 'id': ^._id, 'type': ^._type, 'field': 'modules' }`
+
+// @sanity-typegen-ignore
+export const MODULE_SOURCE_BEFORE = groq`'_source': { 'id': ^._id, 'type': ^._type, 'field': 'before' }`
+
+// @sanity-typegen-ignore
+export const MODULE_SOURCE_AFTER = groq`'_source': { 'id': ^._id, 'type': ^._type, 'field': 'after' }`
+
 // @sanity-typegen-ignore
 export const MODULES_QUERY = groq`
 	...,

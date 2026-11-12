@@ -18,6 +18,8 @@ import {
 	getSite,
 	GLOBAL_MODULE_EXCLUDE_QUERY,
 	LINK_QUERY,
+	MODULE_SOURCE_AFTER,
+	MODULE_SOURCE_BEFORE,
 	MODULES_QUERY,
 } from '@/sanity/lib/queries'
 import type {
@@ -176,13 +178,13 @@ export const BLOG_POST_QUERY = groq`*[_type == 'blog.post' && metadata.slug.curr
 	// concatenate first, then resolve every module with a single projection
 	'modules': (
 		// global modules (before)
-		*[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}].before[]
+		*[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}]{ 'before': before[]{ ..., ${MODULE_SOURCE_BEFORE} } }.before[]
 		// path modules (before)
-		+ *[_type == 'global-module' && path == $blogDir].before[]
+		+ *[_type == 'global-module' && path == $blogDir]{ 'before': before[]{ ..., ${MODULE_SOURCE_BEFORE} } }.before[]
 		// path modules (after)
-		+ *[_type == 'global-module' && path == $blogDir].after[]
+		+ *[_type == 'global-module' && path == $blogDir]{ 'after': after[]{ ..., ${MODULE_SOURCE_AFTER} } }.after[]
 		// global modules (after)
-		+ *[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}].after[]
+		+ *[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}]{ 'after': after[]{ ..., ${MODULE_SOURCE_AFTER} } }.after[]
 	)[]{ ${MODULES_QUERY} }
 }`
 

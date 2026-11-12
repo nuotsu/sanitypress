@@ -1,5 +1,7 @@
 import type { Get } from '@sanity/codegen'
-import { stegaClean } from 'next-sanity'
+import { createDataAttribute, stegaClean } from 'next-sanity'
+import { Fragment } from 'react'
+import { ROUTES } from '@/lib/env'
 import AccordionList from '@/modules/accordion-list'
 import BlogIndex from '@/modules/blog-index'
 import BlogPostContent from '@/modules/blog-post-content'
@@ -13,6 +15,7 @@ import HeroCover from '@/modules/hero.cover'
 import HeroSplit from '@/modules/hero.split'
 import ImageGallery from '@/modules/image-gallery'
 import LogoList from '@/modules/logo-list'
+import OptimisticModules from '@/modules/optimistic-modules'
 import PersonList from '@/modules/person-list'
 import Prose from '@/modules/prose'
 import QuoteList from '@/modules/quote-list'
@@ -21,6 +24,7 @@ import SearchModule from '@/modules/search-module'
 import StatList from '@/modules/stat-list'
 import StepList from '@/modules/step-list'
 import TabbedContent from '@/modules/tabbed-content'
+import { dataset, projectId } from '@/sanity/env'
 import type { DynamicFetchOptions } from '@/sanity/lib/live'
 import type {
 	BLOG_POST_QUERY_RESULT,
@@ -77,28 +81,92 @@ export default function ({
 		}
 	}
 
+	const render = (module: ModuleProps, dataSanity?: string) => {
+		const Component = MODULES_MAP[
+			module._type as keyof typeof MODULES_MAP
+		] as React.ComponentType<Record<string, unknown>>
+
+		if (!Component) return null
+
+		const { _source, ...rest } = module
+
+		return (
+			<Component
+				{...rest}
+				{...moduleSpecificProps(module)}
+				data-sanity={dataSanity}
+			/>
+		)
+	}
+
+	// Published / non-Visual-Editing: plain server render, no `data-sanity`
+	if (!stega) {
+		return (
+			<>
+				{modules.map((module, i) =>
+					module ? (
+						<Fragment key={`${module._key}-${i}`}>{render(module)}</Fragment>
+					) : null,
+				)}
+			</>
+		)
+	}
+
+	// Visual Editing: group consecutive modules by their source document + array
+	// so each group can be reordered optimistically on drag-and-drop
+	const groups: { source?: ModuleSource; modules: ModuleProps[] }[] = []
+	for (const module of modules) {
+		if (!module) continue
+		const source = module._source && stegaClean(module._source)
+		const last = groups.at(-1)
+		if (
+			source &&
+			last?.source?.id === source.id &&
+			last.source.field === source.field
+		) {
+			last.modules.push(module)
+		} else {
+			groups.push({ source, modules: [module] })
+		}
+	}
+
 	return (
 		<>
-			{modules?.map((module, i) => {
-				if (!module) return null
-
-				const Component = MODULES_MAP[
-					module._type as keyof typeof MODULES_MAP
-				] as React.ComponentType
-
-				if (!Component) return null
-
-				return (
-					<Component
-						key={`${module._key}-${i}`}
-						{...module}
-						{...moduleSpecificProps(module)}
+			{groups.map(({ source, modules }, i) =>
+				source ? (
+					<OptimisticModules
+						key={`${source.id}.${source.field}`}
+						id={source.id}
+						field={source.field}
+						keys={modules.map((module) => module._key!)}
+						modules={Object.fromEntries(
+							modules.map((module) => [
+								module._key!,
+								render(
+									module,
+									createDataAttribute({
+										projectId,
+										dataset,
+										baseUrl: `/${ROUTES.studio}`,
+										id: source.id,
+										type: source.type,
+										path: `${source.field}[_key=="${module._key}"]`,
+									}).toString(),
+								),
+							]),
+						)}
 					/>
-				)
-			})}
+				) : (
+					<Fragment key={`${modules[0]._key}-${i}`}>
+						{render(modules[0])}
+					</Fragment>
+				),
+			)}
 		</>
 	)
 }
+
+type ModuleSource = NonNullable<ModuleProps['_source']>
 
 export type ModuleProps = Partial<
 	Get<PAGE_QUERY_RESULT | BLOG_POST_QUERY_RESULT, 'modules', 0>

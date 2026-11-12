@@ -18,6 +18,9 @@ import {
 	getSite,
 	GLOBAL_MODULE_EXCLUDE_QUERY,
 	GLOBAL_MODULE_PATH_QUERY,
+	MODULE_SOURCE_AFTER,
+	MODULE_SOURCE_BEFORE,
+	MODULE_SOURCE_MODULES,
 	MODULES_QUERY,
 } from '@/sanity/lib/queries'
 import type {
@@ -185,15 +188,15 @@ const PAGE_QUERY = groq`
 		// concatenate first, then resolve every module with a single projection
 		'modules': (
 			// global modules (before)
-			*[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}].before[]
+			*[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}]{ 'before': before[]{ ..., ${MODULE_SOURCE_BEFORE} } }.before[]
 			// path modules (before)
-			+ *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_PATH_QUERY}].before[]
+			+ *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_PATH_QUERY}]{ 'before': before[]{ ..., ${MODULE_SOURCE_BEFORE} } }.before[]
 			// page modules
-			+ modules[]
+			+ modules[]{ ..., ${MODULE_SOURCE_MODULES} }
 			// path modules (after)
-			+ *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_PATH_QUERY}].after[]
+			+ *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_PATH_QUERY}]{ 'after': after[]{ ..., ${MODULE_SOURCE_AFTER} } }.after[]
 			// global modules (after)
-			+ *[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}].after[]
+			+ *[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}]{ 'after': after[]{ ..., ${MODULE_SOURCE_AFTER} } }.after[]
 		)[]{ ${MODULES_QUERY} }
 	}
 `

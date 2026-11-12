@@ -10,7 +10,7 @@ import {
 	sanityFetchMetadata,
 	type DynamicFetchOptions,
 } from '@/sanity/lib/live'
-import { MODULES_QUERY } from '@/sanity/lib/queries'
+import { MODULE_SOURCE_MODULES, MODULES_QUERY } from '@/sanity/lib/queries'
 import type {
 	NOT_FOUND_METADATA_QUERY_RESULT,
 	NOT_FOUND_QUERY_RESULT,
@@ -85,7 +85,7 @@ async function getPageMetadata({
 const NOT_FOUND_QUERY = groq`
 	*[_type == 'page' && metadata.slug.current == '404'][0]{
 		...,
-		modules[]{ ${MODULES_QUERY} }
+		modules[]{ ${MODULE_SOURCE_MODULES}, ${MODULES_QUERY} }
 	}
 `
 
