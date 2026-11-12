@@ -1,23 +1,23 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "build-website": {
       "source": "sanitypress/skills",
       "sourceType": "github",
       "skillPath": "skills/build-website/SKILL.md",
-      "computedHash": "08dcea4bd1bf1278788d1236c9d4dc8301c1cc248d40b6bf05c9e963545c521f"
+      "computedHash": "5915cefc7ced2d80da8ff811b121a9f28ccd173aee77dfc6bed871f2dbe1d1b6"
     },
     "generate-markdown": {
       "source": "sanitypress/skills",
       "sourceType": "github",
       "skillPath": "skills/generate-markdown/SKILL.md",
-      "computedHash": "f281fbb6a908566cb9621df6dbf83d1c5001c46c6e90d109c50248ae12fe9514"
+      "computedHash": "3289e8638d743b7bb26f0169e38ec8117f4cbe47ce404458966a5d78d961fd20"
     },
     "new-module": {
       "source": "sanitypress/skills",
       "sourceType": "github",
       "skillPath": "skills/new-module/SKILL.md",
-      "computedHash": "a7b7211e75ae4bc031123b0e8b1a29b887384373595e9a66710dbe69b1fd64af"
+      "computedHash": "34235a58962ad7e94819ac67bb343da4a07444ff1455c8500428db69f076d3c4"
     }
   }
 }

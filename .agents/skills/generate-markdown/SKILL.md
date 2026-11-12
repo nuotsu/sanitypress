@@ -3,7 +3,7 @@ name: generate-markdown
 description: Generate the verbatim Markdown for a `page` or `blog.post` document's `markdown` field (served at `<slug>.md` and listed in `/llms.txt`), converting Portable Text / modules into Markdown and resolving image references to Sanity CDN URLs. Use when the user asks to generate, refresh, or fill in the markdown field for a page or blog post.
 ---
 
-Populate the `markdown` field (`type: 'code'`, `language: 'markdown'`) on a `page` or `blog.post` document. This field is served verbatim at `<slug>.md` (`src/app/(frontend)/api/md/[...slug]/route.ts`) and gates whether the document appears in `/llms.txt` (`src/app/llms.txt/route.ts` requires `length(markdown.code) > 0`).
+Populate the `markdown` field (`type: 'code'`, `language: 'markdown'`) on a `page` or `blog.post` document. This field is served verbatim at `<slug>.md` (`src/app/(frontend)/api/md/[...slug]/route.ts`) and gates whether the document appears in `/llms.txt` and `/agents.md` (both built by `src/lib/agent-directions.ts`, which requires `length(markdown.code) > 0` and skips `noIndex` documents and the `404` page).
 
 **Prefer the Studio action when an editor can click it:** open the document in Sanity Studio → Markdown group → Assist menu on the `markdown` field → **Generate markdown**. That Assist field action (`src/sanity/assist/`) assembles the live-page module list (including global modules), resolves CDN image URLs and permalinks, then runs Agent Action Generate into `markdown.code`.
 
@@ -37,7 +37,9 @@ Walk the block array **in order**. Transcribe verbatim — no paraphrasing, no r
 | span mark → `markDefs` link, `type: 'link'`, external (`href` present) | `[text](href)` |
 | span mark → `markDefs` link, `type: 'link'`, internal (`internal._ref`) | resolve the reference to a real href first — see Step 4.2 — then `[text](href)` |
 | `_type: 'code'` array member (`language`, `filename`, `code`) | fenced block, `` ```<language> ``. Put `filename` as a bold label on its own line above the fence — fences can't carry it, and the raw `.md` route has no renderer to display it otherwise. Never alter the `code` string itself. |
+| `_type: 'table'` array member (`rows[].cells[].value`, `headerRows`) | GFM pipe table. Each cell's `value` is Portable Text: convert it inline (marks and links per this table) and escape any `\|`. The first row is the header row (`headerRows` defaults to `1`); if `headerRows` is `0`, emit an empty header row. |
 | `_type: 'image'` array member | see Step 3 |
+| `_type: 'schema-markup'` array member | drop it — it's JSON-LD for search engines, not reader-facing content |
 | `_type: 'custom-html'` array member | drop it — raw script/widget embeds (comment widgets, analytics snippets) have no meaningful Markdown form, unless the user explicitly wants the raw HTML kept inline |
 
 ## Step 3 — Convert images to Sanity CDN links
@@ -63,19 +65,20 @@ Render as `![alt](url)`, using the image's own `alt` field. If it also has a `fi
 
 Unlike `blog.post.content`, each entry in `modules[]` has its own schema (`src/modules/*/schema.ts`) — there's no single field to walk mechanically. For each module, in document order:
 
-1. **Pull only reader-facing text.** Headings/intros (Portable Text, convert per Step 2), card/item titles and bodies, CTA labels + resolved hrefs, stat values/labels, accordion question/answer pairs, etc. Skip purely structural/visual fields — `attributes` (scoped CSS, `hidden`), layout options (`columns`, `theme`, `variant`, `size`) — and skip modules with no narrative content entirely (`breadcrumbs`, `search-module`'s non-heading chrome, decorative `logo-list`, `custom-html`).
+1. **Pull only reader-facing text.** Headings/intros (Portable Text, convert per Step 2), card/item titles and bodies, CTA labels + resolved hrefs, stat values/labels, accordion question/answer pairs, etc. Skip purely structural/visual fields — `attributes` (scoped CSS, `hidden`), layout options (`columns`, `theme`, `variant`, `size`) — and skip modules with no narrative content entirely (`breadcrumbs`, `search-module`'s non-heading chrome, decorative `logo-list`, `custom-html`, `schema-markup`).
 2. **Resolve internal links before rendering.** A `cta.link` or an inline link mark with `type: 'internal'` only carries `internal._ref` — it is not a usable href on its own. Fetch that referenced document's `_type` and `metadata.slug.current` and build the href:
    - `metadata.slug.current == 'index'` → `/`
    - `_type == 'blog.post'` → `/${ROUTES.blog}/<slug>` (blog path segment from `src/lib/env.ts`, default `'blog'`)
    - otherwise → `/<slug>`
 
-   This mirrors `LINK_QUERY` in `src/sanity/lib/queries.ts`. If a module has many links, write one GROQ query with that resolution (`internal->{_type, 'slug': select(...)}`) instead of resolving references one at a time.
+   This mirrors `LINK_QUERY` in `src/sanity/lib/fragments.ts`. If a module has many links, write one GROQ query with that resolution (`internal->{_type, 'slug': select(...)}`) instead of resolving references one at a time.
 3. There's no fixed per-module template — use judgment about what a module's fields mean as prose. As a reference point, a `card-list` module (each card holding a Portable Text `content` + `ctas`) tends to read naturally as one heading + link per card:
    ```md
    ## <card content h2 text>
 
    [<cta label>](<resolved href>)
    ```
+4. **Blog index page** (the `page` whose slug equals the blog route, default `blog`): `/blog.md` serves this page's markdown followed by an auto-generated `## Blog Posts` list linking every post that has its own markdown. Don't hand-write a post list from the `blog-index` / `blog-post-list` modules, or it will appear twice.
 
 ## Step 5 — Frontmatter (optional, but conventional)
 
@@ -89,7 +92,6 @@ description: "..."
 ```
 
 Reuse `metadata.title` / `metadata.description` when they read well standalone; otherwise write a short title/description by hand — they don't have to match `metadata` verbatim. This isn't enforced by any code path (the `.md` route serves `markdown.code` as-is), it's purely a convention for whoever reads `<slug>.md` — match it for consistency, but don't force it if the fields don't fit the piece.
-
 
 ## Step 6 — Write it back
 

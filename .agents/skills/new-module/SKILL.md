@@ -34,7 +34,7 @@ Modules are colocated under `src/modules/<module-name>/` (folder name = Sanity `
 
 **File:** `src/modules/<module-name>/schema.ts`
 
-Use [`defineModule`](src/sanity/schemaTypes/fragments/define-module.ts) instead of `defineType`. It prepends the `attributes` (`module-attributes`) field, appends an **Options** group, wires `preview.select.hidden` for the Studio list badge, and sets the shared `modulePreview` component—do **not** add those by hand.
+Use [`defineModule`](src/sanity/schemaTypes/fragments/define-module.ts) instead of `defineType`. It prepends the `attributes` (`module-attributes`) field, appends an **Attributes** group (`{ name: 'attributes' }`) to hold it, wires `preview.select.hidden` for the Studio list badge, and sets the shared `modulePreview` component—do **not** add those by hand.
 
 ```ts
 import { defineArrayMember, defineField } from 'sanity'
@@ -50,7 +50,8 @@ export default defineModule({
 	groups: [
 		{ name: 'content', default: true },
 		// { name: 'asset' },   // add if module has a dedicated image tab
-		// Do NOT add { name: 'options' } — defineModule appends it
+		// { name: 'options' }, // add if module has display settings (layout, columns, theme)
+		// Do NOT add { name: 'attributes' } — defineModule appends it
 	],
 	fields: [
 		// Add your fields here — examples:
@@ -107,7 +108,7 @@ export default defineModule({
 
 **Notes:**
 
-- **Groups:** List only non-options groups (e.g. `content`, optional `asset`, `layout`, `html`/`css` as needed). `defineModule` always appends `{ name: 'options' }` and places `attributes` there. Omit `groups` entirely if everything is ungrouped (still get Options + attributes).
+- **Groups:** List the module's own groups (e.g. `content`, optional `asset`, `options` for display settings like `layout`/`columns`, `html`/`css` as needed). `defineModule` always appends `{ name: 'attributes' }` and places the `attributes` field there, so never declare that group yourself. Omit `groups` entirely if everything is ungrouped (you still get the Attributes group).
 - **Do not** declare an `attributes` field or `components.preview`—`defineModule` injects them.
 - **`preview.prepare`:** Return only `title` / `subtitle` / `media` as usual; `hidden` for the list badge is merged in automatically.
 - Use `getBlockText` for PortableText preview, `count` for array lengths — both from `@/lib/utils`
@@ -306,6 +307,7 @@ If **yes**: keep `index.tsx` as a server component and add sibling `'use client'
 - `<Module>` sets `id`, `data-module`, `hidden`, and injects scoped CSS on the root element (default `<section>`; use `as="nav"` etc. when needed)
 - Wrap `stegaClean()` around any string field used in conditional logic (e.g. `theme`, `layout`)
 - Use `PortableText` from `next-sanity` for `array of block` fields
+- Render `image` fields with `Img` from `@/ui/img` (as `card-list`, `hero.split`, etc. do), not `next/image` directly; it wires the Sanity CDN loader
 
 ---
 

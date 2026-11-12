@@ -94,7 +94,7 @@ Four list-style modules render **nothing** unless their referenced documents exi
 | Module | References | Document type → required fields |
 |---|---|---|
 | `logo-list` | `logos[]` → | `logo`: `title`, `image.default` (also optional `image.light` / `image.dark`) |
-| `person-list` | `people[]` → | `person`: `name`, `title` (role), `image` |
+| `person-list` | `people[]` → | `person`: `name`, `title` (role), `image`, optional `content` (bio, Portable Text) |
 | `quote-list` | `quotes[]` → | `quote`: `quote` (Portable Text), `author.name`, optional `author.title` / `author.image` |
 | `form-module` | `form` → | `form`: `identifier`, `endpoint` — **see forms note below** |
 
@@ -210,7 +210,7 @@ Why each line:
 ### Module-choice rules
 - **Never** create new module files or change schema. Compose from existing types only.
 - **`card-list` is the Swiss-army knife** — use it with `scopedCss` grids for bento/feature/team/pricing layouts.
-- **`custom-html`** is the last resort for genuinely custom UI. Never put `<style>` tags inside the `html` field — use the `css` field.
+- **`custom-html`** is the last resort for genuinely custom UI. Never put `<style>` tags inside the `html` field — use the `css` field. Never put JSON-LD `<script type="application/ld+json">` in it either — use a `schema-markup` module.
 
 ---
 
@@ -228,6 +228,8 @@ Build **three** navigation docs and wire them from `site`:
 - **Header** (`site.header`): top-level `link`s, with `link.list`/`megamenu` for dropdowns.
 - **Footer** (`site.footer`): `link.list` groups (heading + links). Megamenus are ignored in the footer.
 - **Social** (`site.social`): plain `link`s with `external` URLs. The UI **auto-maps known domains to brand icons** (facebook, x/twitter, linkedin, github, instagram, youtube, tiktok, yelp); non-`link` items are ignored, so keep social items as flat `link`s.
+
+Optionally add a fourth, **Bottom** (`site.bottom`): flat `link`s (e.g. Privacy, Terms, Accessibility) rendered in a row beside the copyright at the very bottom of the footer.
 
 Header nav example:
 ```
@@ -249,9 +251,13 @@ Exactly **one** `site` document:
   header:{ _type:'reference', _ref:'<headerNavId>' },
   footer:{ _type:'reference', _ref:'<footerNavId>' },
   social:{ _type:'reference', _ref:'<socialNavId>' },
+  bottom:{ _type:'reference', _ref:'<bottomNavId>' },      // optional legal links row
+  announcement:{ _type:'reference', _ref:'<announcementId>' },  // optional site-wide bar
   ctas:[ { _type:'cta', _key:'c1', link:{ … }, theme:'action' } ],   // header CTA(s) — make the primary CTA `action`
   copyright:[ /* Portable Text */ ] }
 ```
+
+**Announcement bar (optional).** Only if the user wants a site-wide notice (launch, sale, holiday hours): create and publish an `announcement` document with `content` (Portable Text, `normal` style) and optional `ctas[]`, then reference it from `site.announcement`. It renders as a bar at the top of every page. Like modules, it carries `attributes.scopedCss` for restyling.
 
 Create these as drafts, then publish (Phase 5).
 
@@ -276,27 +282,30 @@ For each page create a `page` document. **Required:** `title` and `metadata.slug
 }
 ```
 
-⚠️ **The `index` page already exists with zero modules.** Do **not** recreate it — `patch_documents` to set its `modules`/`metadata`, then publish.
+⚠️ **Check for an existing `index` page first** (`*[_type == 'page' && metadata.slug.current == 'index']`). Starter datasets often include one with zero modules: if it exists, `patch_documents` to set its `modules`/`metadata` instead of creating a duplicate. If it doesn't, create it. The frontend throws a "Homepage not found" error until a published `index` page exists (and a "Site settings not found" error until the `site` doc is published).
 
 ### Available module `_type`s (page `modules[]`)
 | `_type` | Use for | Key content fields |
 |---|---|---|
 | `hero.cover` | Full-bleed cover hero (homepage / landing page lead) | `eyebrow`, `content` (blocks), `ctas[]`, `image` (`opacity`/`mobile`/`loading`/`alt`), `verticalAlign`, `textAlign` |
 | `hero.split` | Page hero w/ image | `eyebrow`, `content` (blocks), `ctas[]`, `image` |
-| `prose` | Rich text / article body | `content` (blocks, images, code), `sidebar` |
+| `prose` | Rich text / article body | `content` (blocks, images, CTAs, code, tables, custom-html), `sidebar` |
 | `callout` | Highlighted CTA banner | `eyebrow`, `intro` (blocks), `ctas[]` |
 | `card-list` | Features, services, team, pricing, bento | `eyebrow`, `intro`, `cards[]` (`image`/`icon`/`eyebrow`/`content`/`ctas`), `ctas[]`, `layout` (`grid`\|`carousel`), `columns` |
-| `stat-list` | Metrics / numbers | `eyebrow`, `intro`, `stats[]` (`value`, `suffix`, `content`) |
-| `step-list` | How-it-works / process | `intro`, `ctas[]`, `steps[]` (`content`, `ctas`), `enableSchema` |
-| `accordion-list` | FAQ | `intro`, `ctas[]`, `accordions[]` (`summary`, `content`, `open`), `exclusive`, `layout` |
-| `logo-list` | Logo wall / "as seen in" | `eyebrow`, `intro`, `logos[]` → **needs published `logo` docs** |
+| `stat-list` | Metrics / numbers | `eyebrow`, `intro`, `stats[]` (`value`, `suffix`, `content`), `layout`, `columns` |
+| `step-list` | How-it-works / process | `eyebrow`, `intro`, `ctas[]`, `steps[]` (`content`, `ctas`), `enableSchema` |
+| `accordion-list` | FAQ | `eyebrow`, `intro`, `ctas[]`, `accordions[]` (`summary`, `content`, `open`), `exclusive`, `enableSchema`, `layout` |
+| `tabbed-content` | Tabbed sections (e.g. plans, use cases, product features) | `eyebrow`, `intro`, `tabs[]` (`label`, `icon`, `content` (blocks, images, custom-html), `ctas`) |
+| `image-gallery` | Photo gallery / scrolling image rows | `eyebrow`, `intro`, `rows[]` (`images[]` with `alt`/`caption`, `autoScroll`, `duration`, `alternateScrollDirection`) |
+| `logo-list` | Logo wall / "as seen in" | `eyebrow`, `intro`, `logos[]` → **needs published `logo` docs**, `logoType`, `autoScroll`, `duration` |
 | `person-list` | Team / people | `intro`, `people[]` → **needs published `person` docs**, `columns` |
-| `quote-list` | Testimonials | `eyebrow`, `intro`, `quotes[]` → **needs published `quote` docs**, `layout` |
-| `form-module` | Contact / signup form | `form` → **needs a `form` doc + real endpoint; otherwise use a mailto CTA** |
-| `breadcrumbs` | Breadcrumb nav | `crumbs[]` |
-| `custom-html` | Page CSS / bespoke HTML | `html` (code), `css` (code), `className` |
-| `search-module` | On-page search | — |
-| `blog-index`, `blog-post-list` | Blog listing pages | auto-query published posts, no refs (only if Blog requested) |
+| `quote-list` | Testimonials | `eyebrow`, `intro`, `quotes[]` → **needs published `quote` docs**, `layout`, `columns` |
+| `form-module` | Contact / signup form | `eyebrow`, `intro`, `form` → **needs a `form` doc + real endpoint; otherwise use a mailto CTA** |
+| `breadcrumbs` | Breadcrumb nav | `crumbs[]`, `structuredDataOnly` |
+| `custom-html` | Page CSS / bespoke HTML | `html` (code), `css` (code), `className`. Not for JSON-LD (Studio warns): use `schema-markup` |
+| `schema-markup` | Structured data (JSON-LD) for search engines; renders nothing visible | `code` (code object, `language:'json'`): raw JSON with `@context` + `@type` (or `@graph`), **no `<script>` tag**. See "Structured data" |
+| `search-module` | On-page search | `eyebrow`, `intro`, `scope` |
+| `blog-index`, `blog-post-list` | Blog listing pages | auto-query published posts, no refs (only if Blog requested). `blog-index`: `intro`, optional `featured[]` post refs, `postsPerPage`. `blog-post-list`: `intro`, `ctas[]`, `limit` |
 
 **Restyle the repeating items to the brand.** `eyebrow`s, `cta` actions, and the items in `card-list` / `stat-list` / `step-list` / `accordion-list` / `quote-list` are expected to be reskinned via Layer 1 / Layer 3 CSS (see Phase 2 → "deviate from the defaults"), not left at their default look.
 
@@ -319,6 +328,27 @@ Each page should have **exactly one `h1`** — put it in the opening hero's `con
 - `site.ogimage` is the global social fallback (set once on the `site` doc).
 - **Add a `404` page:** `page` with slug `404`, a short `prose`/`hero.split` message + a CTA home, and `metadata.noIndex: true` (keeps it out of the sitemap). Optionally a `search` page if you use `search-module`.
 
+### Structured data (JSON-LD)
+Several modules already emit JSON-LD, so don't duplicate them by hand: `accordion-list` (`FAQPage`) and `step-list` (`HowTo`) when `enableSchema` is on, `person-list` (`Person`) for `person` docs with `enableSchema` on, `breadcrumbs` (`BreadcrumbList` microdata), and blog posts (`BlogPosting`, automatically via `blog-post-content`).
+
+For everything else, add a `schema-markup` module. At minimum, put one on the **home page** describing the business: `Organization`, or a `LocalBusiness` subtype (e.g. `Restaurant`, `Dentist`) for a physical location:
+
+```
+{ _type:'schema-markup', _key:'<k>',
+  code:{ _type:'code', language:'json', code: JSON.stringify({
+    '@context':'https://schema.org',
+    '@type':'Organization',
+    name:'[BUSINESS NAME]',
+    url:'https://[domain]',
+    logo:'https://cdn.sanity.io/images/<projectId>/<dataset>/<logo file>',
+    sameAs:[ /* the social nav URLs */ ]
+  }) } }
+```
+
+- Studio validates it: the `code` must be valid JSON, and every top-level node (or array item) needs `@context` plus `@type` or `@graph`. Never wrap it in a `<script>` tag.
+- Place it anywhere in `modules[]` (it renders only a `<script>`). It also works in a `global-module`'s `before[]`/`after[]` and in `blog.post` `content`.
+- **Facts only.** Include only properties you know (name, URL, logo, social links). Leave out unknown addresses, phone numbers, hours, prices and ratings rather than inventing them or using `[ADD …]` markers, and list them as follow-ups at the end. Never add `aggregateRating`/`review` from placeholder testimonials.
+
 ---
 
 ## Blog setup (only if the user said yes in Phase 1)
@@ -327,7 +357,7 @@ Skip this entirely unless a blog was requested. A working blog needs these, in o
 
 1. **`blog.category`** doc(s): `title` (slug auto-derives). At least one.
 2. **Author** — a published `person` doc (reuse the team docs or create one).
-3. **`blog.post`** doc(s): `title`, `content` (Portable Text — blocks, images w/ `alt`, code), `publishDate`, `categories[]` (refs to `blog.category`), `author` (ref to `person`), and `metadata` (`slug`, `title`, `description`, optional `image`). Posts live at `/blog/<slug>`.
+3. **`blog.post`** doc(s): `title`, `content` (Portable Text — blocks, images w/ `alt`, CTAs, code, tables, optional `schema-markup` for extra JSON-LD beyond the automatic `BlogPosting`), `publishDate`, `categories[]` (refs to `blog.category`), `author` (ref to `person`), and `metadata` (`slug`, `title`, `description`, optional `image`). Posts live at `/blog/<slug>`.
 4. **Post template** — a `global-module` with `path: 'blog/'` whose `before[]` (or `after[]`) contains a **`blog-post-content`** module. This is what actually renders each post's title/byline/content; without it, blog post pages are blank. `blog-post-content` may carry a `sidebar` (position + `tableOfContents`/`callout`/`custom-html`).
 5. **Blog index** (optional) — a `page` with slug `blog` containing a `blog-index` module (or `blog-post-list`). These auto-query all published posts, so no references are needed.
 
@@ -373,7 +403,7 @@ Styles: `normal`, `h1`–`h6`, `blockquote`. Bold/italic via `marks: ['strong']`
 1. `create_documents` produces **drafts** — they are not live until published.
 2. After creating + linking everything, call `publish_documents` for every doc: the content docs (`logo`/`person`/`quote`, and blog docs if any), `navigation`(s), `site`, `global-module`(s), and each `page`. **Publish referenced docs before (or with) the docs that point to them** — an unpublished target renders as nothing.
 3. **Exceptions:**
-   - The pre-existing `index` page: `patch_documents` then `publish_documents` (don't recreate).
+   - A pre-existing `index` page: `patch_documents` then `publish_documents` (don't create a duplicate).
    - **Do not publish a page whose `modules` array is empty** — leave it as a draft and tell the user.
 4. Report back: list each published page with its slug/URL path, and note anything left as a draft.
 
@@ -388,11 +418,12 @@ Styles: `normal`, `h1`–`h6`, `blockquote`. Bold/italic via `marks: ['strong']`
 - [ ] Contact uses a `mailto:`/`tel:` CTA (or a `form-module` only with a real endpoint).
 - [ ] Global CSS lives in a `custom-html` inside a `global-module` (`path:"*"`) `before[]` — not a non-existent `css` field.
 - [ ] All `html`/`css`/`scopedCss` values are `code` objects (`{_type:'code',language,code}`), never raw strings; `scopedCss` is under `attributes`, uses `:scope` and design tokens.
-- [ ] Each page has exactly one `h1` (in the hero); sections use `h2`/`h3`. Every page has `title` + `metadata.slug.current`; home uses `index` (patched, not recreated).
+- [ ] Each page has exactly one `h1` (in the hero); sections use `h2`/`h3`. Every page has `title` + `metadata.slug.current`; home uses `index` (patched if it already existed, never duplicated).
 - [ ] Stock styles were **deviated from** to match the brand — eyebrows, CTAs, and `card`/`stat`/`step`/`accordion`/`quote` items are reskinned, not left generically "SanityPress"; any full-bleed hero renders edge-to-edge with legible copy.
 - [ ] A brand `logo` was generated (matching palette + heading font) or supplied, published, and referenced from `site.logo`.
 - [ ] Titles formatted `"Main | Subtitle"`; a `404` page exists with `noIndex: true`; `site.ogimage` set.
 - [ ] Hero image is `eager` with `alt`; content images have `alt`; decorative images use `alt:''`.
+- [ ] Home page has a `schema-markup` module (`Organization` / `LocalBusiness`) with only known facts; no JSON-LD in `custom-html`, and nothing a module already emits via `enableSchema` is duplicated.
 - [ ] If a blog was requested: categories + author + posts + a `blog/` `global-module` with `blog-post-content` all exist and are published.
 - [ ] No new module/schema/code files were created. Every array member has a unique `_key`.
 - [ ] All non-empty docs published; empty-module pages left as drafts and reported.
