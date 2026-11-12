@@ -53,9 +53,7 @@ export default defineType({
 			return {
 				title: 'Table',
 				subtitle:
-					rowCount || colCount
-						? `${rowCount} × ${colCount}`
-						: 'Empty table',
+					rowCount || colCount ? `${rowCount} × ${colCount}` : 'Empty table',
 			}
 		},
 	},

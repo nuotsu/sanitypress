@@ -39,9 +39,7 @@ const dirItem = (S: StructureBuilder, dir: string) =>
 				.schemaType('page')
 				.filter(PAGE_DIRECTORY_FILTER)
 				.params({ dir })
-				.defaultOrdering([
-					{ field: 'metadata.slug.current', direction: 'asc' },
-				])
+				.defaultOrdering([{ field: 'metadata.slug.current', direction: 'asc' }])
 				.menuItems([
 					S.orderingMenuItem({
 						name: 'path',

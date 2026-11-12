@@ -1,5 +1,6 @@
 import { getImageAsset, isImageSource } from '@sanity/asset-utils'
 import groq from 'groq'
+import { ROUTES } from '@/lib/env'
 import { BREADCRUMBS_QUERY } from '@/modules/breadcrumbs/query'
 import { CARD_LIST_QUERY } from '@/modules/card-list/query'
 import { FORM_MODULE_QUERY } from '@/modules/form-module/query'
@@ -9,7 +10,6 @@ import { PERSON_LIST_QUERY } from '@/modules/person-list/query'
 import { PROSE_QUERY } from '@/modules/prose/query'
 import { QUOTE_LIST_QUERY } from '@/modules/quote-list/query'
 import { TABBED_CONTENT_QUERY } from '@/modules/tabbed-content/query'
-import { ROUTES } from '@/lib/env'
 import { dataset, projectId } from '@/sanity/env'
 import { LINK_QUERY } from '@/sanity/lib/fragments'
 
@@ -169,7 +169,9 @@ export function enrichMarkdownSource<T>(value: T): T {
 }
 
 export async function fetchMarkdownSource(
-	client: { fetch: (query: string, params?: Record<string, unknown>) => Promise<unknown> },
+	client: {
+		fetch: (query: string, params?: Record<string, unknown>) => Promise<unknown>
+	},
 	{
 		id,
 		slug,

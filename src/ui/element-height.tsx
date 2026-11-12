@@ -18,10 +18,7 @@ export default function ({
 
 		// also catches content changes (e.g. wrapping text, open mobile menu), not just window resizes
 		const observer = new ResizeObserver(() => {
-			document.documentElement.style.setProperty(
-				cssVar,
-				`${el.offsetHeight}px`,
-			)
+			document.documentElement.style.setProperty(cssVar, `${el.offsetHeight}px`)
 		})
 		observer.observe(el)
 

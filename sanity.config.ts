@@ -5,7 +5,6 @@
  * Keep `basePath` in sync with `ROUTES.studio` in `src/lib/env.ts` and the App Router folder name.
  */
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import { useMemo } from 'react'
 import { defineConfig } from 'sanity'
 import { assist } from '@sanity/assist'
 import { codeInput } from '@sanity/code-input'
@@ -17,6 +16,7 @@ import {
 import { visionTool } from '@sanity/vision'
 import { vercelWidget } from 'sanity-plugin-dashboard-widget-vercel'
 import { media } from 'sanity-plugin-media'
+import { useMemo } from 'react'
 import { ROUTES } from './src/lib/env'
 import { useGenerateMarkdownAction } from './src/sanity/assist/use-generate-markdown-action'
 import PortableTextEditorPlugins from './src/sanity/components/portable-text-plugins'
@@ -52,10 +52,7 @@ export default defineConfig({
 				title: 'Markdown',
 				useFieldActions: (props) => {
 					const generateMarkdown = useGenerateMarkdownAction(props)
-					return useMemo(
-						() => [generateMarkdown],
-						[generateMarkdown],
-					)
+					return useMemo(() => [generateMarkdown], [generateMarkdown])
 				},
 			},
 		}),

@@ -8,10 +8,7 @@ export default defineModule({
 	title: 'Stat list',
 	type: 'object',
 	icon: NumberIcon,
-	groups: [
-		{ name: 'content', default: true },
-		{ name: 'options' },
-	],
+	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fields: [
 		defineField({
 			name: 'eyebrow',

@@ -4,9 +4,7 @@ import { browser } from 'react-dom'
 export default function useMatchMedia(query: string) {
 	use(browser())
 
-	const [isMatch, setIsMatch] = useState(
-		() => window.matchMedia(query).matches,
-	)
+	const [isMatch, setIsMatch] = useState(() => window.matchMedia(query).matches)
 
 	useEffect(() => {
 		const mq = window.matchMedia(query)

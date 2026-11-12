@@ -4,12 +4,12 @@ import { stegaClean } from 'next-sanity'
 import { getImageProps, type ImageProps } from 'next/image'
 import { preload } from 'react-dom'
 import { sanityImageLoader, urlFor } from '@/sanity/lib/image'
-import SanityImage from './sanity-image'
 import type {
 	SanityImageAsset,
 	SanityImageCrop,
 	SanityImageHotspot,
 } from '@/sanity/types'
+import SanityImage from './sanity-image'
 
 type Image =
 	| {

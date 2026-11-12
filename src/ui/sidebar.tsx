@@ -1,8 +1,8 @@
 import { stegaClean } from 'next-sanity'
 import { cn } from '@/lib/utils'
-import type { Sidebar } from '@/sanity/types'
 import Callout from '@/modules/callout'
 import CustomHTML from '@/modules/custom-html'
+import type { Sidebar } from '@/sanity/types'
 import TableOfContents, { type ToCHeadings } from './table-of-contents'
 
 export default function ({
@@ -38,9 +38,7 @@ export default function ({
 						)
 
 					case 'custom-html':
-						return (
-							<CustomHTML key={`${module._key}-${i}`} {...module} />
-						)
+						return <CustomHTML key={`${module._key}-${i}`} {...module} />
 
 					case 'tableOfContents': {
 						const maxHeadingDepth = stegaClean(module.maxHeadingDepth) ?? 6

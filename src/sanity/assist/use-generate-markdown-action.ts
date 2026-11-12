@@ -1,11 +1,11 @@
-import { useMemo } from 'react'
+import { useClient } from 'sanity'
 import {
 	defineAssistFieldAction,
 	type AssistFieldActionProps,
 } from '@sanity/assist'
 import { ComposeSparklesIcon } from '@sanity/icons/ComposeSparkles'
 import { useToast } from '@sanity/ui/toast'
-import { useClient } from 'sanity'
+import { useMemo } from 'react'
 import { fetchMarkdownSource } from './markdown-source'
 
 const MARKDOWN_DOC_TYPES = new Set(['page', 'blog.post'])
