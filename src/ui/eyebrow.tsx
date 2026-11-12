@@ -1,4 +1,4 @@
-import { stegaClean } from 'next-sanity'
+import { stegaToAttribute } from '@/lib/stega'
 import { cn } from '@/lib/utils'
 
 export default function ({
@@ -8,12 +8,15 @@ export default function ({
 }: { value?: string } & React.ComponentProps<'p'>) {
 	if (!value) return null
 
+	const { cleaned, attr } = stegaToAttribute(value)
+
 	return (
 		<p
 			className={cn('technical eyebrow text-sm text-current/60', className)}
+			{...attr}
 			{...props}
 		>
-			{stegaClean(value)}
+			{cleaned}
 		</p>
 	)
 }

@@ -1,5 +1,6 @@
 import { stegaClean } from 'next-sanity'
 import NextLink, { type LinkProps } from 'next/link'
+import { stegaToAttribute } from '@/lib/stega'
 import type { Link, Page } from '@/sanity/types'
 
 export type SanityLinkType = Omit<Link, 'internal'> & {
@@ -18,11 +19,14 @@ export default function ({
 >) {
 	const { label, type, internal, external, params } = link ?? {}
 
+	const { cleaned: cleanedLabel, attr } = stegaToAttribute(label)
+
 	const linkProps: Omit<LinkProps, 'href'> | React.ComponentProps<'a'> = {
+		...attr,
 		...props,
 		children:
 			children ||
-			stegaClean(label) ||
+			cleanedLabel ||
 			stegaClean(internal?.title) ||
 			stegaClean(external),
 	}

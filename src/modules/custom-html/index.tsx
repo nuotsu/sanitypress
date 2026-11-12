@@ -1,4 +1,5 @@
 import { stegaClean } from 'next-sanity'
+import { stegaToAttribute } from '@/lib/stega'
 import { Module, ModuleProps } from '@/modules'
 import type { CustomHtml } from '@/sanity/types'
 import { deferScripts } from './utils'
@@ -10,7 +11,8 @@ export default function ({
 	css,
 	...props
 }: CustomHtml & ModuleProps) {
-	const htmlCode = stegaClean(html?.code)
+	// On the wrapper since scripts may replace inner HTML; `props` can override
+	const { cleaned: htmlCode, attr } = stegaToAttribute(html?.code)
 	const cssCode = stegaClean(css?.code)
 
 	if (!htmlCode && !cssCode) return null
@@ -19,7 +21,7 @@ export default function ({
 	const { code, hasScripts } = deferScripts(htmlCode ?? '')
 
 	return (
-		<Module as="div" {...props}>
+		<Module as="div" {...attr} {...props}>
 			{cssCode && <style>{cssCode}</style>}
 
 			{code &&
