@@ -6,7 +6,7 @@ import GlobalModules from './global-modules'
 export default function DraftModeBanner() {
 	return (
 		<HoverDetails className="accordion fixed right-0 bottom-0 bg-amber-200/60 backdrop-blur-xs">
-			<summary className="px-4 py-2">
+			<summary className="px-4 py-2 font-mono uppercase">
 				🚧 Draft mode
 				<VscChevronDown />
 			</summary>
