@@ -1495,18 +1495,6 @@ export type Page = {
 	metadata?: Metadata
 }
 
-export type Skill = {
-	_id: string
-	_type: 'skill'
-	_createdAt: string
-	_updatedAt: string
-	_rev: string
-	name?: Slug
-	title?: string
-	description?: string
-	content?: Code
-}
-
 export type AnnouncementReference = {
 	_ref: string
 	_type: 'reference'
@@ -1982,7 +1970,6 @@ export type AllSanitySchemaTypes =
 	| Person
 	| GlobalModule
 	| Page
-	| Skill
 	| AnnouncementReference
 	| NavigationReference
 	| Site

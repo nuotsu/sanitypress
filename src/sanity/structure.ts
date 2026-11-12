@@ -15,7 +15,6 @@ export default structureTool({
 				S.divider().title('Global'),
 				singleton(S, 'site').title('Site').icon(EarthGlobeIcon),
 				S.documentTypeListItem('global-module').title('Global modules'),
-				S.documentTypeListItem('skill').title('Skills'),
 
 				S.divider().title('Pages'),
 				S.documentTypeListItem('page').title('Pages').icon(DocumentIcon),

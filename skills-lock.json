@@ -7,12 +7,6 @@
       "skillPath": "skills/build-website/SKILL.md",
       "computedHash": "08dcea4bd1bf1278788d1236c9d4dc8301c1cc248d40b6bf05c9e963545c521f"
     },
-    "check-studio-skills": {
-      "source": "sanitypress/skills",
-      "sourceType": "github",
-      "skillPath": "skills/check-studio-skills/SKILL.md",
-      "computedHash": "f34ba908ec87cee336b19aef0809985678f0bbc3ccd11b82b8c7770e8ebadd0a"
-    },
     "generate-markdown": {
       "source": "sanitypress/skills",
       "sourceType": "github",
