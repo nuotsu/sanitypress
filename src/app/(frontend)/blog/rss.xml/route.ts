@@ -107,7 +107,9 @@ function Item({ post }: { post: BLOG_RSS_QUERY_RESULT['posts'][number] }) {
 									.filter(Boolean)
 									.join('')}</table>`
 							},
-							'custom-html': ({ value: { html } }) => html?.code,
+							'schema-markup': () => '',
+							'custom-html': ({ value: { html } }) =>
+								html?.code?.replace(/<script\b[\s\S]*?<\/script>/gi, ''),
 							'accordion-list': ({
 								value: { eyebrow, intro, accordions },
 							}: {
@@ -135,9 +137,7 @@ function Item({ post }: { post: BLOG_RSS_QUERY_RESULT['posts'][number] }) {
 												: null
 										const href =
 											link?.type === 'internal' && internal?.slug
-												? [internal.slug, link.params]
-														.filter(Boolean)
-														.join('')
+												? [internal.slug, link.params].filter(Boolean).join('')
 												: link?.type === 'external'
 													? link.external
 													: null

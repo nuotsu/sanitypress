@@ -20,6 +20,7 @@ export default ({ of = [] }: { of?: Array<{ type: string }> } = {}) =>
 			{ type: 'person-list' },
 			{ type: 'prose' },
 			{ type: 'quote-list' },
+			{ type: 'schema-markup' },
 			{ type: 'search-module' },
 			{ type: 'stat-list' },
 			{ type: 'step-list' },
@@ -58,7 +59,13 @@ export default ({ of = [] }: { of?: Array<{ type: string }> } = {}) =>
 					},
 					{
 						name: 'utility',
-						of: ['breadcrumbs', 'custom-html', 'form-module', 'search-module'],
+						of: [
+							'breadcrumbs',
+							'custom-html',
+							'form-module',
+							'schema-markup',
+							'search-module',
+						],
 					},
 					{
 						name: 'blog',

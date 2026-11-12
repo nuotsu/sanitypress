@@ -1,6 +1,7 @@
 import { defineField } from 'sanity'
 import { CodeIcon } from '@sanity/icons/Code'
 import defineModule from '@/sanity/schemaTypes/fragments/define-module'
+import { getCodeKinds } from './utils'
 
 export default defineModule({
 	name: 'custom-html',
@@ -21,6 +22,12 @@ export default defineModule({
 				languageAlternatives: [{ title: 'HTML', value: 'html' }],
 			},
 			group: 'html',
+			validation: (Rule) =>
+				Rule.custom((value: { code?: string } | undefined) =>
+					/application\/ld\+json/i.test(value?.code ?? '')
+						? 'Use the "Schema markup" module for JSON-LD instead'
+						: true,
+				).warning(),
 		}),
 		defineField({
 			name: 'css',
@@ -45,11 +52,9 @@ export default defineModule({
 			html: 'html.code',
 			css: 'css.code',
 		},
-		prepare: ({ html, css }) => {
-			return {
-				title: html || css,
-				subtitle: `Custom ${[html && 'HTML', html?.includes('<script') && 'JS', css && 'CSS'].filter(Boolean).join(' / ')}`,
-			}
-		},
+		prepare: ({ html, css }) => ({
+			title: html || css,
+			subtitle: `Custom ${getCodeKinds(html, css).join(' / ')}`,
+		}),
 	},
 })

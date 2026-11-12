@@ -80,6 +80,7 @@ export default defineType({
 				}),
 				{ type: 'table' },
 				{ type: 'custom-html' },
+				{ type: 'schema-markup' },
 			],
 			group: 'content',
 		}),

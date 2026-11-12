@@ -16,6 +16,7 @@ import LogoList from '@/modules/logo-list'
 import PersonList from '@/modules/person-list'
 import Prose from '@/modules/prose'
 import QuoteList from '@/modules/quote-list'
+import SchemaMarkup from '@/modules/schema-markup'
 import SearchModule from '@/modules/search-module'
 import StatList from '@/modules/stat-list'
 import StepList from '@/modules/step-list'
@@ -44,6 +45,7 @@ const MODULES_MAP = {
 	'person-list': PersonList,
 	prose: Prose,
 	'quote-list': QuoteList,
+	'schema-markup': SchemaMarkup,
 	'search-module': SearchModule,
 	'stat-list': StatList,
 	'step-list': StepList,

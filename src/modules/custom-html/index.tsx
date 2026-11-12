@@ -1,7 +1,7 @@
 import { stegaClean } from 'next-sanity'
 import { Module, ModuleProps } from '@/modules'
 import type { CustomHtml } from '@/sanity/types'
-import CSS from './css'
+import { deferScripts } from './utils'
 import WithScript from './with-script'
 
 export default function ({
@@ -10,17 +10,20 @@ export default function ({
 	css,
 	...props
 }: CustomHtml & ModuleProps) {
-	if (!html?.code && !css?.code) return null
+	const htmlCode = stegaClean(html?.code)
+	const cssCode = stegaClean(css?.code)
 
-	const code = html?.code ? stegaClean(html.code) : undefined
+	if (!htmlCode && !cssCode) return null
+
 	const cleanedClassName = stegaClean(className)
+	const { code, hasScripts } = deferScripts(htmlCode ?? '')
 
 	return (
 		<Module as="div" {...props}>
-			{css?.code && <CSS code={stegaClean(css.code)} {...props} />}
+			{cssCode && <style>{cssCode}</style>}
 
 			{code &&
-				(/<script[\s>]/i.test(code) ? (
+				(hasScripts ? (
 					<WithScript code={code} className={cleanedClassName} />
 				) : (
 					<div

@@ -16,6 +16,7 @@ import logoList from '@/modules/logo-list/schema'
 import personList from '@/modules/person-list/schema'
 import prose from '@/modules/prose/schema'
 import quoteList from '@/modules/quote-list/schema'
+import schemaMarkup from '@/modules/schema-markup/schema'
 import searchModule from '@/modules/search-module/schema'
 import statList from '@/modules/stat-list/schema'
 import stepList from '@/modules/step-list/schema'
@@ -87,6 +88,7 @@ export const schema: SchemaPluginOptions = {
 		personList,
 		prose,
 		quoteList,
+		schemaMarkup,
 		searchModule,
 		statList,
 		stepList,

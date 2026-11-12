@@ -7,6 +7,7 @@ import AnchoredHeading from '@/modules/prose/anchored-heading'
 import Code from '@/modules/prose/code'
 import Image from '@/modules/prose/image'
 import Table from '@/modules/prose/table'
+import SchemaMarkup from '@/modules/schema-markup'
 import type {
 	BLOG_POST_QUERY_RESULT,
 	BlogCategory,
@@ -96,6 +97,7 @@ export default function ({
 									'custom-html': ({ value }) => (
 										<CustomHTML {...value} className="my-6" />
 									),
+									'schema-markup': ({ value }) => <SchemaMarkup {...value} />,
 								},
 							}}
 						/>

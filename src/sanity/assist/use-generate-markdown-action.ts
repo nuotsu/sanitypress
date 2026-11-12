@@ -157,7 +157,7 @@ $source is a JSON payload already prepared for you (body content only — ignore
 - CTAs → [label](href) using the pre-resolved href (or link.label / link.internal.title for the label).
 - Code blocks → fenced blocks with language; if filename is set, put it as a bold label on its own line above the fence. Never alter the code string.
 - Tables → GitHub-flavored markdown tables.
-- Skip custom-html blocks entirely.
+- Skip custom-html and schema-markup blocks entirely.
 - Skip purely structural/visual fields (attributes, scopedCss, layout, theme, variant, columns, opacity, loading, etc.).
 - Skip decorative modules with no narrative (empty logo-lists, search chrome without headings). Prefer prose, heroes, callouts, cards, stats, steps, accordions, galleries, quotes, tabbed content.
 - Do not invent content that is not in $source.

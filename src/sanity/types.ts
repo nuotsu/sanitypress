@@ -262,6 +262,12 @@ export type SearchModule = {
 	scope?: 'all' | 'pages' | 'blog posts'
 }
 
+export type SchemaMarkup = {
+	_type: 'schema-markup'
+	attributes?: ModuleAttributes
+	code?: Code
+}
+
 export type QuoteReference = {
 	_ref: string
 	_type: 'reference'
@@ -1234,6 +1240,9 @@ export type BlogPost = {
 		| ({
 				_key: string
 		  } & CustomHtml)
+		| ({
+				_key: string
+		  } & SchemaMarkup)
 	>
 	publishDate?: string
 	categories?: Array<
@@ -1347,6 +1356,9 @@ export type GlobalModule = {
 		  } & QuoteList)
 		| ({
 				_key: string
+		  } & SchemaMarkup)
+		| ({
+				_key: string
 		  } & SearchModule)
 		| ({
 				_key: string
@@ -1407,6 +1419,9 @@ export type GlobalModule = {
 		| ({
 				_key: string
 		  } & QuoteList)
+		| ({
+				_key: string
+		  } & SchemaMarkup)
 		| ({
 				_key: string
 		  } & SearchModule)
@@ -1478,6 +1493,9 @@ export type Page = {
 		| ({
 				_key: string
 		  } & QuoteList)
+		| ({
+				_key: string
+		  } & SchemaMarkup)
 		| ({
 				_key: string
 		  } & SearchModule)
@@ -1926,6 +1944,7 @@ export type AllSanitySchemaTypes =
 	| StepList
 	| StatList
 	| SearchModule
+	| SchemaMarkup
 	| QuoteReference
 	| QuoteList
 	| Prose
@@ -3344,6 +3363,14 @@ export type PAGE_QUERY_RESULT = {
 		  }
 		| {
 				_key: string
+				_type: 'schema-markup'
+				attributes?: ModuleAttributes
+				code?: Code
+				ctas: null
+				sidebar: null
+		  }
+		| {
+				_key: string
 				_type: 'search-module'
 				attributes?: ModuleAttributes
 				eyebrow?: string
@@ -3886,6 +3913,12 @@ export type BLOG_POST_QUERY_RESULT = {
 				}>
 				_type: 'image'
 				_key: string
+		  }
+		| {
+				_key: string
+				_type: 'schema-markup'
+				attributes?: ModuleAttributes
+				code?: Code
 		  }
 		| {
 				_key: string
@@ -5309,6 +5342,14 @@ export type BLOG_POST_QUERY_RESULT = {
 		  }
 		| {
 				_key: string
+				_type: 'schema-markup'
+				attributes?: ModuleAttributes
+				code?: Code
+				ctas: null
+				sidebar: null
+		  }
+		| {
+				_key: string
 				_type: 'search-module'
 				attributes?: ModuleAttributes
 				eyebrow?: string
@@ -5804,6 +5845,12 @@ export type BLOG_RSS_QUERY_RESULT = {
 					}>
 					_type: 'image'
 					_key: string
+			  }
+			| {
+					_key: string
+					_type: 'schema-markup'
+					attributes?: ModuleAttributes
+					code?: Code
 			  }
 			| {
 					_key: string
@@ -7089,6 +7136,14 @@ export type NOT_FOUND_QUERY_RESULT = {
 				}> | null
 				layout?: 'carousel' | 'grid'
 				columns?: number
+				ctas: null
+				sidebar: null
+		  }
+		| {
+				_key: string
+				_type: 'schema-markup'
+				attributes?: ModuleAttributes
+				code?: Code
 				ctas: null
 				sidebar: null
 		  }
