@@ -11316,6 +11316,24 @@ export type CATEGORIES_QUERY_RESULT = Array<{
 	slug?: Slug
 }>
 
+// Source: src/ui/draft-mode-banner/actions.ts
+// Variable: PAGE_GLOBAL_MODULES_QUERY
+// Query: *[		_type == 'global-module'		&& (			(path == '*' && 	select(		defined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,		true	))			|| (path != '*' && 	string::startsWith($slug, path)	&& 	select(		defined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,		true	))		)	]|order(path asc){		_id,		identifier,		path	}
+export type PAGE_GLOBAL_MODULES_QUERY_RESULT = Array<{
+	_id: string
+	identifier: string | null
+	path: string | null
+}>
+
+// Source: src/ui/draft-mode-banner/actions.ts
+// Variable: BLOG_POST_GLOBAL_MODULES_QUERY
+// Query: *[		_type == 'global-module'		&& (			(path == '*' && 	select(		defined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,		true	))			|| path == $blogDir		)	]|order(path asc){		_id,		identifier,		path	}
+export type BLOG_POST_GLOBAL_MODULES_QUERY_RESULT = Array<{
+	_id: string
+	identifier: string | null
+	path: string | null
+}>
+
 // Query TypeMap
 declare global {
 	interface SanityQueries {
@@ -11339,6 +11357,8 @@ declare global {
 		'\n\tselect(\n\t\tdefined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,\n\t\ttrue\n\t)\n': GLOBAL_MODULE_EXCLUDE_QUERY_RESULT
 		'\n\tstring::startsWith($slug, path)\n\t&& \n\tselect(\n\t\tdefined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,\n\t\ttrue\n\t)\n\n': GLOBAL_MODULE_PATH_QUERY_RESULT
 		"\n\t*[\n\t\t_type == 'blog.category'\n\t\t&& count(*[_type == 'blog.post' && references(^._id)]) > 0\n\t]|order(title)\n": CATEGORIES_QUERY_RESULT
+		"\n\t*[\n\t\t_type == 'global-module'\n\t\t&& (\n\t\t\t(path == '*' && \n\tselect(\n\t\tdefined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,\n\t\ttrue\n\t)\n)\n\t\t\t|| (path != '*' && \n\tstring::startsWith($slug, path)\n\t&& \n\tselect(\n\t\tdefined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,\n\t\ttrue\n\t)\n\n)\n\t\t)\n\t]|order(path asc){\n\t\t_id,\n\t\tidentifier,\n\t\tpath\n\t}\n": PAGE_GLOBAL_MODULES_QUERY_RESULT
+		"\n\t*[\n\t\t_type == 'global-module'\n\t\t&& (\n\t\t\t(path == '*' && \n\tselect(\n\t\tdefined(excludePaths) => count(excludePaths[string::startsWith($slug, @)]) == 0,\n\t\ttrue\n\t)\n)\n\t\t\t|| path == $blogDir\n\t\t)\n\t]|order(path asc){\n\t\t_id,\n\t\tidentifier,\n\t\tpath\n\t}\n": BLOG_POST_GLOBAL_MODULES_QUERY_RESULT
 	}
 }
 // Lets @sanity/client releases that predate the global registry read it too
