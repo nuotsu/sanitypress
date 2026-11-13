@@ -3,6 +3,7 @@ import { stegaToAttribute } from '@/lib/stega'
 import { Module, ModuleProps } from '@/modules'
 import type { CustomHtml } from '@/sanity/types'
 import { deferScripts } from './utils'
+import ActivityStyle from './activity-style'
 import WithScript from './with-script'
 
 export default function ({
@@ -22,7 +23,7 @@ export default function ({
 
 	return (
 		<Module as="div" {...attr} {...props}>
-			{cssCode && <style>{cssCode}</style>}
+			{cssCode && <ActivityStyle css={cssCode} />}
 
 			{code &&
 				(hasScripts ? (
