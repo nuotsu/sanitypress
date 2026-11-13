@@ -26,10 +26,10 @@ export async function GET() {
 	const { perspective } = await getDynamicFetchOptions({
 		allowDevPreview: false,
 	})
-	const { blog, posts } = await getRssData({ perspective })
+	const { site, blog, posts } = await getRssData({ perspective })
 
 	const rssXML = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel>
-		<title>${blog?.metadata?.title}</title>
+		<title><![CDATA[${site?.title ?? 'SanityPress'} Blog]]></title>
 		<description>${blog?.metadata?.description}</description>
 		<link>${BASE_URL}/${ROUTES.blog}</link>
 		<language>en-US</language>
@@ -171,6 +171,7 @@ async function getRssData({
 }
 
 const BLOG_RSS_QUERY = groq`{
+	'site': *[_type == 'site'][0]{ title },
 	'blog': *[_type == 'page' && metadata.slug.current == $blogDir][0]{
 		metadata
 	},
