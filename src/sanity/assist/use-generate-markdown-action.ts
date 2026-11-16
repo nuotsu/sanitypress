@@ -156,6 +156,7 @@ $source is a JSON payload already prepared for you (body content only — ignore
 - Images → ![alt](cdnUrl). If figcaption exists, render an italic caption line beneath: *caption*.
 - CTAs → [label](href) using the pre-resolved href (or link.label / link.internal.title for the label).
 - Code blocks → fenced blocks with language; if filename is set, put it as a bold label on its own line above the fence. Never alter the code string.
+- Code groups (code-group, tabbed code) → if every tab is a single line in the same language (e.g. npm/pnpm/bun commands), one fenced block: the first tab's line, then a "# or" line, then every other tab's line. Otherwise one fenced block per tab, in order, each preceded by its tab label (or filename) in bold on its own line.
 - Tables → GitHub-flavored markdown tables.
 - Skip custom-html and schema-markup blocks entirely.
 - Skip purely structural/visual fields (attributes, scopedCss, layout, theme, variant, columns, opacity, loading, etc.).

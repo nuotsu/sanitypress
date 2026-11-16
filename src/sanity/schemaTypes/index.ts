@@ -35,6 +35,7 @@ import quote from './documents/quote'
 import redirect from './documents/redirect'
 import site from './documents/site'
 // objects
+import codeGroup from './objects/code-group'
 import cta from './objects/cta'
 import link from './objects/link'
 import linkList from './objects/link.list'
@@ -62,6 +63,7 @@ export const schema: SchemaPluginOptions = {
 		quote,
 
 		// objects
+		codeGroup,
 		cta,
 		link,
 		linkList,

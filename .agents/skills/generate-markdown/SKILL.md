@@ -37,6 +37,7 @@ Walk the block array **in order**. Transcribe verbatim — no paraphrasing, no r
 | span mark → `markDefs` link, `type: 'link'`, external (`href` present) | `[text](href)` |
 | span mark → `markDefs` link, `type: 'link'`, internal (`internal._ref`) | resolve the reference to a real href first — see Step 4.2 — then `[text](href)` |
 | `_type: 'code'` array member (`language`, `filename`, `code`) | fenced block, `` ```<language> ``. Put `filename` as a bold label on its own line above the fence — fences can't carry it, and the raw `.md` route has no renderer to display it otherwise. Never alter the `code` string itself. |
+| `_type: 'code-group'` array member (`tabs[]` of `{ label, code }`) | If every tab is a single line in the same language (e.g. npm / pnpm / bun commands), one fence: the first tab's line, then `# or`, then every other tab's line. Otherwise one fenced block per tab, in order, each converted like a `code` member above, with the tab's `label` (falling back to `code.filename`, then `code.language`) as the bold label above its fence. |
 | `_type: 'table'` array member (`rows[].cells[].value`, `headerRows`) | GFM pipe table. Each cell's `value` is Portable Text: convert it inline (marks and links per this table) and escape any `\|`. The first row is the header row (`headerRows` defaults to `1`); if `headerRows` is `0`, emit an empty header row. |
 | `_type: 'image'` array member | see Step 3 |
 | `_type: 'schema-markup'` array member | drop it — it's JSON-LD for search engines, not reader-facing content |

@@ -5,6 +5,7 @@ import AccordionList from '@/modules/accordion-list'
 import CustomHTML from '@/modules/custom-html'
 import AnchoredHeading from '@/modules/prose/anchored-heading'
 import Code from '@/modules/prose/code'
+import CodeGroup from '@/modules/prose/code/group'
 import Image from '@/modules/prose/image'
 import Table from '@/modules/prose/table'
 import SchemaMarkup from '@/modules/schema-markup'
@@ -93,6 +94,7 @@ export default function ({
 										<CTAList ctas={value.ctas as Cta[] | undefined} />
 									),
 									code: Code,
+									'code-group': CodeGroup,
 									table: Table,
 									'custom-html': ({ value }) => (
 										<CustomHTML {...value} className="my-6" />

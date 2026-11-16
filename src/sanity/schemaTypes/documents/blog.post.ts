@@ -78,6 +78,7 @@ export default defineType({
 						withFilename: true,
 					},
 				}),
+				{ type: 'code-group' },
 				{ type: 'table' },
 				{ type: 'custom-html' },
 				{ type: 'schema-markup' },

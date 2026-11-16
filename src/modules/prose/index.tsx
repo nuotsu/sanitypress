@@ -8,6 +8,7 @@ import Sidebar from '@/ui/sidebar'
 import TableOfContents from '@/ui/table-of-contents'
 import AnchoredHeading from './anchored-heading'
 import Code from './code'
+import CodeGroup from './code/group'
 import Image from './image'
 import Table from './table'
 
@@ -47,6 +48,7 @@ export default function ({
 							image: Image,
 							ctas: ({ value }) => <CTAList ctas={value.ctas} />,
 							code: Code,
+							'code-group': CodeGroup,
 							table: Table,
 							'custom-html': ({ value }) => <CustomHTML {...value} />,
 						},

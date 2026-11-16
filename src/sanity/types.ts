@@ -370,6 +370,9 @@ export type Prose = {
 		  } & Code)
 		| ({
 				_key: string
+		  } & CodeGroup)
+		| ({
+				_key: string
 		  } & Table)
 		| ({
 				_key: string
@@ -1037,6 +1040,17 @@ export type Cta = {
 	theme?: 'action' | 'action-outline' | 'ghost' | 'link'
 }
 
+export type CodeGroup = {
+	_type: 'code-group'
+	tabs?: Array<{
+		label?: string
+		code?: Code
+		_type: 'code-tab'
+		_key: string
+	}>
+	syncKey?: string
+}
+
 export type Quote = {
 	_id: string
 	_type: 'quote'
@@ -1234,6 +1248,9 @@ export type BlogPost = {
 		| ({
 				_key: string
 		  } & Code)
+		| ({
+				_key: string
+		  } & CodeGroup)
 		| ({
 				_key: string
 		  } & Table)
@@ -1975,6 +1992,7 @@ export type AllSanitySchemaTypes =
 	| PageReference
 	| Link
 	| Cta
+	| CodeGroup
 	| Quote
 	| SanityImageCrop
 	| SanityImageHotspot
@@ -3040,6 +3058,17 @@ export type PAGE_QUERY_RESULT = {
 					  }
 					| {
 							_key: string
+							_type: 'code-group'
+							tabs?: Array<{
+								label?: string
+								code?: Code
+								_type: 'code-tab'
+								_key: string
+							}>
+							syncKey?: string
+					  }
+					| {
+							_key: string
 							_type: 'code'
 							language?: string
 							filename?: string
@@ -3811,6 +3840,17 @@ export type BLOG_POST_QUERY_RESULT = {
 				level?: number
 				_type: 'block'
 				_key: string
+		  }
+		| {
+				_key: string
+				_type: 'code-group'
+				tabs?: Array<{
+					label?: string
+					code?: Code
+					_type: 'code-tab'
+					_key: string
+				}>
+				syncKey?: string
 		  }
 		| {
 				_key: string
@@ -5019,6 +5059,17 @@ export type BLOG_POST_QUERY_RESULT = {
 					  }
 					| {
 							_key: string
+							_type: 'code-group'
+							tabs?: Array<{
+								label?: string
+								code?: Code
+								_type: 'code-tab'
+								_key: string
+							}>
+							syncKey?: string
+					  }
+					| {
+							_key: string
 							_type: 'code'
 							language?: string
 							filename?: string
@@ -5767,6 +5818,17 @@ export type BLOG_RSS_QUERY_RESULT = {
 					level?: number
 					_type: 'block'
 					_key: string
+			  }
+			| {
+					_key: string
+					_type: 'code-group'
+					tabs?: Array<{
+						label?: string
+						code?: Code
+						_type: 'code-tab'
+						_key: string
+					}>
+					syncKey?: string
 			  }
 			| {
 					_key: string
@@ -6818,6 +6880,17 @@ export type NOT_FOUND_QUERY_RESULT = {
 							level?: number
 							_type: 'block'
 							_key: string
+					  }
+					| {
+							_key: string
+							_type: 'code-group'
+							tabs?: Array<{
+								label?: string
+								code?: Code
+								_type: 'code-tab'
+								_key: string
+							}>
+							syncKey?: string
 					  }
 					| {
 							_key: string

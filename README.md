@@ -3,7 +3,7 @@
 SanityPress is a free, open-source (MIT) Next.js 16 + Sanity page builder template for marketing sites and blogs. Editors build pages from reusable modules in Sanity Studio, and developers get a type-safe App Router codebase with SEO, redirects, and Visual Editing built in.
 
 ```sh
-npm create sanity@latest -- --template=nuotsu/sanitypress
+npm create sanitypress
 ```
 
 This repository is the actively maintained version of SanityPress. The original 2023 version ([nuotsu/sanitypress-2023](https://github.com/nuotsu/sanitypress-2023)) is archived.
@@ -78,17 +78,28 @@ SanityPress
 
 ### 1. Initialize the project
 
-Click the [Sanity template link](https://www.sanity.io/get-started?template=sanitypress) -- OR -- install with the Sanity CLI:
+Install with the [SanityPress CLI](https://github.com/sanitypress/create-sanitypress):
 
 ```sh
-npm create sanity@latest -- --template=nuotsu/sanitypress
+npm create sanitypress
 ```
+
+This creates your Sanity project and `.env.local`, installs dependencies, imports the required starter documents and adds the SanityPress agent skills. Options:
+
+| Option                       | Default   | Description                                                     |
+| ---------------------------- | --------- | --------------------------------------------------------------- |
+| `--seed=minimal\|demo\|none` | `minimal` | Starter content to import                                       |
+| `--no-blog`                  | blog on   | Leave out the Blog page and blog post template (`minimal` only) |
+
+With npm, pass options after `--` (e.g. `npm create sanitypress my-site -- --seed=demo`).
+
+Alternatively, click the [Sanity template link](https://www.sanity.io/get-started?template=sanitypress).
 
 ### 2. Set environment variables
 
-If initialized via the Sanity template link, the `.env.local` file should be created automatically.
+If initialized via the SanityPress CLI, the Sanity CLI or the Sanity template link, the `.env.local` file should be created automatically.
 
-If initialized via the CLI, duplicate the `.env.example` file as `.env.local` and assign the variables to your project:
+Otherwise, duplicate the `.env.example` file as `.env.local` and assign the variables to your project:
 
 ```sh
 # .env.local
@@ -124,6 +135,8 @@ Then open:
 ### 4. Add content in your Sanity Studio
 
 Publish the **required** documents: `site` and `page` (with the slug "index"). Otherwise, you’ll just see a blank page on the Next.js frontend.
+
+The SanityPress CLI (`--seed=minimal`, the default) imports all of these except the `404` page.
 
 What you'll need:
 

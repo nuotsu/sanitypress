@@ -71,6 +71,7 @@ export default defineModule({
 					title: 'Code block',
 					options: { withFilename: true },
 				}),
+				{ type: 'code-group' },
 				{ type: 'table' },
 				{ type: 'custom-html' },
 			],

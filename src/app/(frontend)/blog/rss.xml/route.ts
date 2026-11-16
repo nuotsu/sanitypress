@@ -12,6 +12,7 @@ import { LINK_QUERY } from '@/sanity/lib/queries'
 import type {
 	AccordionList,
 	BLOG_RSS_QUERY_RESULT,
+	CodeGroup,
 	Table,
 } from '@/sanity/types'
 
@@ -76,7 +77,35 @@ function Item({ post }: { post: BLOG_RSS_QUERY_RESULT['posts'][number] }) {
 									.filter(Boolean)
 									.join('')}</figure>`,
 							code: ({ value: { code } }) =>
-								code && `<pre><code>${code}</code></pre>`,
+								code && `<pre><code>${escapeHTML(code)}</code></pre>`,
+							'code-group': ({ value }: { value: CodeGroup }) => {
+								const tabs = value.tabs?.filter((tab) => tab.code?.code) ?? []
+								const oneLiners =
+									tabs.every((tab) => !tab.code!.code!.includes('\n')) &&
+									new Set(tabs.map((tab) => tab.code!.language)).size === 1
+
+								// Mirrors the markdown: one-line alternatives (npm / bun) join with `# or`
+								if (oneLiners) {
+									const [first, ...rest] = tabs.map((tab) => tab.code!.code!)
+									return `<pre><code>${escapeHTML(
+										[first, rest.length && '# or', ...rest]
+											.filter(Boolean)
+											.join('\n'),
+									)}</code></pre>`
+								}
+
+								return tabs
+									.map((tab) => {
+										const label = tab.label || tab.code!.filename
+										return [
+											label && `<p><strong>${escapeHTML(label)}</strong></p>`,
+											`<pre><code>${escapeHTML(tab.code!.code!)}</code></pre>`,
+										]
+											.filter(Boolean)
+											.join('')
+									})
+									.join('')
+							},
 							table: ({ value }: { value: Table }) => {
 								const rows = value.rows ?? []
 								if (!rows.length) return ''
