@@ -50,6 +50,33 @@ const dirItem = (S: StructureBuilder, dir: string) =>
 				]),
 		)
 
+// top-level pages only: `index` (/) and slugs without a nested path
+const ROOT_FILTER = groq`
+	_type == 'page' && count(string::split(metadata.slug.current, '/')) == 1
+`
+
+const rootItem = (S: StructureBuilder) =>
+	S.listItem()
+		.id('page-dir-root')
+		.title('/')
+		.child(
+			S.documentList()
+				.id('page-dir-root-list')
+				.apiVersion(apiVersion)
+				.title('/')
+				.schemaType('page')
+				.filter(ROOT_FILTER)
+				.defaultOrdering([{ field: 'metadata.slug.current', direction: 'asc' }])
+				.menuItems([
+					S.orderingMenuItem({
+						name: 'path',
+						title: 'Path',
+						by: [{ field: 'metadata.slug.current', direction: 'asc' }],
+					}),
+					...(S.documentTypeList('page').getMenuItems() ?? []),
+				]),
+		)
+
 export function pageDirectoriesListItem(
 	S: StructureBuilder,
 	{ documentStore }: StructureResolverContext,
@@ -68,11 +95,12 @@ export function pageDirectoriesListItem(
 					map((pages: { slug: string }[]) =>
 						S.list()
 							.title('Directories')
-							.items(
-								getUniqueDirs(pages.map((p) => p.slug)).map((dir) =>
+							.items([
+								rootItem(S),
+								...getUniqueDirs(pages.map((p) => p.slug)).map((dir) =>
 									dirItem(S, dir),
 								),
-							),
+							]),
 					),
 				),
 		)
