@@ -10,7 +10,11 @@ import {
 	sanityFetchMetadata,
 	type DynamicFetchOptions,
 } from '@/sanity/lib/live'
-import { MODULES_QUERY } from '@/sanity/lib/queries'
+import {
+	GLOBAL_MODULE_EXCLUDE_QUERY,
+	GLOBAL_MODULE_PATH_QUERY,
+	MODULES_QUERY,
+} from '@/sanity/lib/queries'
 import type {
 	NOT_FOUND_METADATA_QUERY_RESULT,
 	NOT_FOUND_QUERY_RESULT,
@@ -67,6 +71,7 @@ async function getPage({ perspective, stega }: DynamicFetchOptions) {
 	'use cache'
 	const { data } = await sanityFetch({
 		query: NOT_FOUND_QUERY,
+		params: { slug: '404' },
 		perspective,
 		stega,
 	})
@@ -83,9 +88,16 @@ async function getPageMetadata({
 }
 
 const NOT_FOUND_QUERY = groq`
-	*[_type == 'page' && metadata.slug.current == '404'][0]{
+	*[_type == 'page' && metadata.slug.current == $slug][0]{
 		...,
-		modules[]{ ${MODULES_QUERY} }
+		// mirrors PAGE_QUERY in [[...slug]]/page.tsx
+		'modules': (
+			*[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}].before[]
+			+ *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_PATH_QUERY}].before[]
+			+ modules[]
+			+ *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_PATH_QUERY}].after[]
+			+ *[_type == 'global-module' && path == '*' && ${GLOBAL_MODULE_EXCLUDE_QUERY}].after[]
+		)[]{ ${MODULES_QUERY} }
 	}
 `
 
